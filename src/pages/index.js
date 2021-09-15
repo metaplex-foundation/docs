@@ -15,7 +15,7 @@ function Home() {
               <div className={clsx("col col--4", styles.feature)}>
                 <Link
                   className="navbar__link"
-                  to="architecture"
+                  to="docs/architecture/overview"
                 >
                   <div className="card">
                     <div className="card__header">
