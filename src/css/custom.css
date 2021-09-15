@@ -13,6 +13,7 @@
   --ifm-color-primary-light: rgb(70, 203, 174);
   --ifm-color-primary-lighter: rgb(102, 212, 189);
   --ifm-color-primary-lightest: rgb(146, 224, 208);
+  --ifm-spacing-horizontal: 1em;
   --ifm-code-font-size: 95%;
 }
 
@@ -23,6 +24,24 @@
   padding: 0 var(--ifm-pre-padding);
 }
 
-html[data-theme='dark'] .docusaurus-highlight-code-line {
+html[data-theme="dark"] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+.card {
+  padding: 1rem;
+  margin-top: 0rem;
+  animation: fadeInUp 400ms backwards;
+  animation-delay: 150ms;
+  transition-property: all;
+  transition-duration: 200ms;
+  box-shadow: 0 8px 28px 4px rgba(86, 91, 115, 0.15);
+}
+
+.card a {
+  text-decoration: none;
+}
+
+.card:hover {
+  transform: translate(0px, -5px);
 }

@@ -1,40 +1,46 @@
-import React from 'react';
-import clsx from 'clsx';
-import Layout from '@theme/Layout';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import styles from './index.module.css';
-import HomepageFeatures from '../components/HomepageFeatures';
+import React from "react";
+import clsx from "clsx";
+import Layout from "@theme/Layout";
+import Link from "@docusaurus/Link";
+import styles from "./index.module.css";
+import Translate from "@docusaurus/Translate";
 
-function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+function Home() {
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
-}
-
-export default function Home() {
-  const {siteConfig} = useDocusaurusContext();
-  return (
-    <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
-      <HomepageHeader />
+    <Layout title="Homepage" description="Metaplex Documentation">
       <main>
-        <HomepageFeatures />
+        <section className={styles.features}>
+          <div className="container">
+            <div className="row cards__container">
+              <div className={clsx("col col--4", styles.feature)}>
+                <Link
+                  className="navbar__link"
+                  to="architecture"
+                >
+                  <div className="card">
+                    <div className="card__header">
+                      <h3>
+                        <Translate description="architecture">
+                          ⛏ Architecture
+                        </Translate>
+                      </h3>
+                    </div>
+                    <div className="card__body">
+                      <p>
+                        <Translate description="get-started-building">
+                          Get a high-level understanding of Metaplex's architecture.
+                        </Translate>
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
     </Layout>
   );
 }
+
+export default Home;
