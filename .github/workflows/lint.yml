@@ -1,4 +1,4 @@
-name: Lint
+name: Lint & Test Build
 
 on:
   # Trigger the workflow on push or pull request,
@@ -28,4 +28,16 @@ jobs:
         run: |
           yarn install --frozen-lockfile
           yarn lint
+  test-build:
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 12
+      - name: Test Build
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
 
