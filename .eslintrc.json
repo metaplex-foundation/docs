@@ -1,0 +1,18 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["eslint:recommended", "prettier", "plugin:prettier/recommended", "plugin:react/recommended"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "legacyDecorators": true
+    },
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "prettier"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
