@@ -30,6 +30,7 @@ jobs:
           yarn lint
   test-build:
     if: github.event_name != 'push'
+    name: Test Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
