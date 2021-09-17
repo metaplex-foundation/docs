@@ -1,0 +1,13 @@
+# Dependencies
+/node_modules
+
+# Production
+/build
+
+# Generated files
+.docusaurus
+.cache-loader
+.github
+
+babel.config.js
+docusaurus.config.js

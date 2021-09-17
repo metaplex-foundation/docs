@@ -13,10 +13,7 @@ function Home() {
           <div className="container">
             <div className="row cards__container">
               <div className={clsx("col col--4", styles.feature)}>
-                <Link
-                  className="navbar__link"
-                  to="docs/architecture/overview"
-                >
+                <Link className="navbar__link" to="docs/architecture/overview">
                   <div className="card">
                     <div className="card__header">
                       <h3>
@@ -28,7 +25,8 @@ function Home() {
                     <div className="card__body">
                       <p>
                         <Translate description="get-started-building">
-                          Get a high-level understanding of Metaplex's architecture.
+                          Get a high-level understanding of Metaplex&apos;s
+                          architecture.
                         </Translate>
                       </p>
                     </div>

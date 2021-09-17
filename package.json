@@ -11,7 +11,11 @@
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids"
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "fix:lint": "eslint src --fix",
+    "fix:prettier": "prettier src --write",
+    "fix": "yarn fix:prettier && yarn fix:lint",
+    "lint": "prettier src --check && eslint src"
   },
   "dependencies": {
     "@docusaurus/core": "2.0.0-beta.6",
@@ -36,5 +40,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-eslint": "10.1.0",
+    "eslint": "7.32.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-react": "7.25.2",
+    "prettier": "2.4.1"
   }
 }
