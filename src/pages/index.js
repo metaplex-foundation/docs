@@ -48,8 +48,7 @@ function Home() {
                     <div className="card__body">
                       <p>
                         <Translate description="get-started-building">
-                          Get a high-level understanding of Metaplex&apos;s
-                          architecture.
+                          Get understanding of Metaplex&apos;s architecture.
                         </Translate>
                       </p>
                     </div>
