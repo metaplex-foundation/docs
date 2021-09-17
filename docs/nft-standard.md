@@ -1,4 +1,4 @@
-# Metaplex Metadata Standard
+# Metadata Standard
 
 #### Huge thanks to SolFlare for putting this together!
 
