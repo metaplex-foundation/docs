@@ -18,7 +18,7 @@
   - [ ] Metadata
   - [ ] Stores
   - [ ] Candy Machine
-- [] Create a Store (Follow Directions)
+- [ ] Create a Store (Follow Directions)
   - [x] Standup Locally
   - [ ] Customize
   - [ ] Mint and Sell NFTs
@@ -28,7 +28,7 @@
 - [ ] Candy Machine (Follow Directions)
   - [ ] Setup Assets
   - [ ] etc...
-- [] Architecture (Clean up and repurpose ARCHITECTURE.md)
+- [ ] Architecture (Clean up and repurpose ARCHITECTURE.md)
   - [x] Overview (diagram at all phases)
   - [x] Metadata
   - [ ] Candy Machine
