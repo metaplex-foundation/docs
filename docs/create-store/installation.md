@@ -9,7 +9,7 @@ steps you need to take to create your store.
 
 ## Requirements {#requirements}
 
-- [Node.js](https://nodejs.org/en/download/) version >= 14.17.0 or above (which can be checked by running `node -v`). You can use [nvm](https://github.com/nvm-sh/nvm) for managing multiple Node versions on a single machine installed
+- [Node.js](https://nodejs.org/en/download/) version >= 14.17.0 or above (which can be checked by running `node -v`). You can use [nvm](https://github.com/nvm-sh/nvm) for managing multiple Node versions on a single machine installed.
 - [Yarn](https://yarnpkg.com/en/). Yarn is a performant package manager for JavaScript and replaces the `npm` client.
 
 ## Local setup
@@ -20,16 +20,9 @@ Clone the repo.
 $ git clone https://github.com/metaplex-foundation/metaplex.git
 ```
 
-### Setting Up the Store ID
-
-To create a store, you must first derive the store ID given your public address. The Metaplex devs have already created
-an environment variable for you to utilize - `REACT_APP_STORE_OWNER_ADDRESS_ADDRESS` - which you should set to be your
-wallet public address. To do this, you can edit a `.env` file in `js/packages/web`, and set
-`REACT_APP_STORE_OWNER_ADDRESS_ADDRESS` to be your wallet public address in there. You can get setup on [Phantom](https://phantom.app/) and create your wallet address there
-
 ### Running store web server
 
-Run `yarn start` to spin up a web server locally
+Run `yarn start` to spin up a web server locally.
 
 ```bash
 $ cd metaplex
@@ -40,3 +33,33 @@ $ yarn start
 ```
 
 After that you can open [http://localhost:3000/](http://localhost:3000/) in browser to see a storefront.
+
+### Setting Up the Store ID
+
+When opening a store for the first time you should see a welcome screen with **Init Store** button.
+
+![Init store](/img/mint-sell-nft/init-store.png)
+
+Click on this button to start the store initialization process, it is going to take some time (around 1-2 minutes).
+
+:::tip
+
+You must have some SOL on your wallet to be able to pay transaction fee. In case of using devnet or testnet it's possible to airdrop SOL via [Sol Faucet](https://solfaucet.com/).
+
+:::
+
+If you are using [Phantom](https://phantom.app/) wallet, it will ask you to approve a transaction.
+
+![Approve transaction](/img/mint-sell-nft/approve-transaction.png)
+
+After the store initialization is done, you need to save addresses. In the **Store configuration** section on the store page click on the **Copy** button and paste in the `.env` file in `js/packages/web`.
+
+![Save env](/img/mint-sell-nft/save-env.png)
+
+![Set env](/img/mint-sell-nft/set-env.png)
+
+Stop webserver (_Ctrl + C_) and run it again for `.env` changes to take place.
+
+```bash
+$ yarn start
+```
