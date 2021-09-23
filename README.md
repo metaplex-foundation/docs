@@ -10,7 +10,7 @@
 
 - [ ] About
   - [x] Introduction
-  - [ ] Terminology
+  - [x] Terminology
   - [ ] History
 - [ ] Overview (please add pictures)
   - [ ] Why/what Metaplex? Standards and tools to empower creation and usage of NFTs.
@@ -21,8 +21,8 @@
 - [ ] Create a Store (Follow Directions)
   - [x] Standup Locally
   - [ ] Customize
-  - [ ] Mint and Sell NFTs
-  - [ ] Deployment
+  - [x] Mint and Sell NFTs
+  - [x] Deployment
 - [x] Token Metadata Standard
   - [x] Can be technical here - Use smart contract (pros/cons)
 - [ ] Candy Machine (Follow Directions)
