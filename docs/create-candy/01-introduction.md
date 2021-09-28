@@ -60,7 +60,8 @@ $ yarn install --cwd ~/metaplex-foundation/metaplex/js/
 ```
 
 Future versions of this tooling will be "npx runnable". For now though, `ts-node` is recommended for most users.
-After ensuring `ts-node` is installed and cloning the repo you'll need to run two commands to confirm everything installed correctly.
+
+After ensuring `ts-node` is installed and cloning the repo run the following commands to confirm the command line tool is operating correctly:
 ```
 $ ts-node ~/metaplex-foundation/metaplex/js/packages/cli/src/candy-machine-cli.ts --version
 0.0.2
