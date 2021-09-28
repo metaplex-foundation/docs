@@ -1,6 +1,6 @@
 # Introduction
 
-The general process for creating and operating a Candy Machine is:
+After addressing the [prerequisites](#prerequisites), documented below, the general process for creating and operating a Candy Machine is:
 
 1. [Prepare your NFT Assets](./prepare-assets)
 2. [Upload your Assets](./upload-assets)
@@ -19,10 +19,10 @@ Before starting this journey, you'll need to install and understand how to opera
 
 Ensure you have recent versions of `git`, `node`, `yarn` and `ts-node` installed:
 
-* [Git Installation](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-* [Node Installation](https://nodejs.org/en/download/)
-* [Yarn Installation](https://classic.yarnpkg.com/lang/en/docs/install)
-* [ts-node Installation](https://www.npmjs.com/package/ts-node#installation)
+* [`git` Installation](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+* [`node` Installation](https://nodejs.org/en/download/)
+* [`yarn` Installation](https://classic.yarnpkg.com/lang/en/docs/install)
+* [`ts-node` Installation](https://www.npmjs.com/package/ts-node#installation)
 
 We recommend confirming these tools are working before proceeding further. Some sensible tests are running the following commands:
 
@@ -78,3 +78,85 @@ To get started, we recommend you begin by:
 * Reading the [Solana Command-line Guide](https://docs.solana.com/cli)
 * [Installing the Solana Command-line Tools](https://docs.solana.com/cli/install-solana-cli-tools)
 * And practice with the examples they provide in their documents.
+
+#### devnet for the win
+
+The Solana devnet serves as a playground for anyone who wants to take Solana for a test drive, as a user, token holder, app developer, or NFT publisher. NFT publishers should target devnet before going for mainnet.
+
+:::info
+We highly recommend making devnet your default Solana url
+`solana config set --url https://api.devnet.solana.com`
+:::
+
+#### Create devnet wallet (for testing)
+
+:::info
+Read the fine manual
+`solana-keygen help new`
+:::
+
+If your me, you'll redact your mnemonic, store it somewhere safe and take advantage of the `--outfile` flag.
+
+```bash
+$ solana-keygen new --outfile ~/.config/solana/devnet.json
+Generating a new keypair
+
+For added security, enter a BIP39 passphrase
+
+NOTE! This passphrase improves security of the recovery seed phrase NOT the
+keypair file itself, which is stored as insecure plain text
+
+BIP39 Passphrase (empty for none):
+
+Wrote new keypair to /Users/levi/.config/solana/devnet.json
+=====================================================================
+pubkey: 7zMqBkHowtpEC8iayNmCoT42T8dKjikzmTbZX5aNJbhJ
+=====================================================================
+Save this seed phrase and your BIP39 passphrase to recover your new keypair:
+# REDACTED
+=====================================================================
+```
+
+:::info
+We also recommend making devnet your default keypair:
+
+`solana config set  --keypair ~/.config/solana/devnet.json`
+:::
+
+
+#### Fund devnet wallet
+
+:::info
+To get started, read the fine manuals in the help system
+`solana help config`,
+`solana help balance` and
+`solana help airdrop`
+:::
+
+If you're me, you're confirming your config right now to ensure you're on devnet, because we're going to rely on this to make subsequent command line invocations simpler from here forward. Here's how you check it:
+
+```bash
+$ solana config get
+Config File: /Users/levi/.config/solana/cli/config.yml
+RPC URL: https://api.devnet.solana.com
+WebSocket URL: wss://api.devnet.solana.com/ (computed)
+Keypair Path: /Users/levi/.config/solana/devnet.json
+Commitment: confirmed
+```
+
+And here's how you can fund that wallet:
+
+```bash
+$ solana balance # check your initial balance
+0 SOL
+
+$ solana airdrop 10 # request funds
+Requesting airdrop of 10 SOL
+
+Signature: 2s8FE29f2fAaAoWphbiyb5b4iSKYWznLG64w93Jzx8k2DAbFGsmbyXhe3Uix8f5X6m9HRL5c6WB58j2t2WrUh88d
+
+10 SOL
+
+$ solana balance # confirm your balance
+10 SOL
+```
