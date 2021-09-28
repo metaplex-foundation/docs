@@ -24,8 +24,38 @@ Ensure you have recent versions of `git`, `node`, `yarn` and `ts-node` installed
 * [Yarn Installation](https://classic.yarnpkg.com/lang/en/docs/install)
 * [ts-node Installation](https://www.npmjs.com/package/ts-node#installation)
 
+We recommend confirming these tools are working before proceeding further. Some sensible tests are running the following commands:
+
+```bash
+$ git version
+git version 2.31.1
+
+$ node --version
+v16.2.0
+
+$ yarn --version
+1.22.11
+
+$ ts-node --version
+v10.2.1
+```
+
+The specific version numbers don't matter that much. Just make sure you're running something recent. The important thing is that these tools are installed and on your [system PATH](https://janelbrandon.medium.com/understanding-the-path-variable-6eae0936e976).
+
+
 ### The Candy Machine Command Line Tool
 
 Creating and controlling a Candy Machine is typically done through command line tool, currently distributed as source code in a GitHub repository.
 
-* ... 
+You can clone this repository anywhere you like, but the recommended practice is:
+```
+git clone git@github.com:metaplex-foundation/metaplex.git ~/metaplex-foundation/metaplex
+```
+
+If you use a different location, you'll need to adjust for it in subsequent instructions.
+
+Future versions of this tooling will be "npx runnable". For now though, `ts-node` is recommended for most users.
+After ensuring `ts-node` is installed and cloning the repo you'll need to run two commands to confirm everything installed correctly.
+```
+ts-node ~/metaplex-foundation/metaplex/js/packages/cli/src/candy-machine-cli.ts help
+```
