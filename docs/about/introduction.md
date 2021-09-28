@@ -4,7 +4,7 @@ unlisted: true
 ---
 
 # Introduction
-The Metaplex team has been moving quickly to support the thousands of projects looking to launch their NFT projects on Solana. We've done a good job of creating tools like our [Candie Machine](https://metaplex.github.io/docs/docs/create-candy/introduction), to help spin up the common profile picture projects you all know and love. We've also been hard at work creating primitives, recipies, and extensible store fronts that developers and artists alike can use. 
+The Metaplex team has been moving quickly to support the thousands of projects looking to launch their NFT projects on Solana. We've done a good job of creating tools like our [Candy Machine](https://metaplex.github.io/docs/docs/create-candy/introduction), to help spin up the common profile picture projects you all know and love. We've also been hard at work creating primitives, recipies, and extensible store fronts that developers and artists alike can use. 
 
 We're excited to see what you build with metaplex, if you have questions please reach out on our [discord!](https://discord.com/invite/metaplex)
 
