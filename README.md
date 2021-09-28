@@ -25,13 +25,14 @@
   - [x] Deployment
 - [x] Token Metadata Standard
   - [x] Can be technical here - Use smart contract (pros/cons)
-- [ ] Candy Machine (Follow Directions)
+- [ ] Create a Candy Machine (Follow Directions)
+  - [ ] Overview
   - [ ] Setup Assets
   - [ ] etc...
 - [ ] Architecture (Clean up and repurpose ARCHITECTURE.md)
   - [x] Overview (diagram at all phases)
   - [x] Metadata
-  - [ ] Candy Machine
+  - [!] Candy Machine
   - [x] Auction
   - [x] Vault
   - [x] Metaplex
