@@ -8,34 +8,41 @@
 
 # Outline
 
-- [ ] About
+- [ ] 1 About
   - [x] Introduction
   - [x] Terminology
   - [ ] History
-- [ ] Overview (please add pictures)
+
+- [ ] 2 Overview (please add pictures)
   - [ ] Why/what Metaplex? Standards and tools to empower creation and usage of NFTs.
   - [ ] Features
   - [ ] Metadata
   - [ ] Stores
   - [ ] Candy Machine
-- [ ] Create a Store (Follow Directions)
+
+- [ ] 3 Create a Store (Follow Directions)
   - [x] Standup Locally
   - [ ] Customize
   - [x] Mint and Sell NFTs
   - [x] Deployment
-- [x] Token Metadata Standard
-  - [x] Can be technical here - Use smart contract (pros/cons)
-- [ ] Candy Machine (Follow Directions)
+
+- [ ] 4 Create a Candy Machine (Follow Directions)
+  - [ ] Overview
   - [ ] Setup Assets
   - [ ] etc...
-- [ ] Architecture (Clean up and repurpose ARCHITECTURE.md)
+
+- [x] 5 Token Metadata Standard
+  - [x] Can be technical here - Use smart contract (pros/cons)
+
+- [ ] 6 Architecture (Clean up and repurpose ARCHITECTURE.md)
   - [x] Overview (diagram at all phases)
   - [x] Metadata
-  - [ ] Candy Machine
+  - [!] Candy Machine
   - [x] Auction
   - [x] Vault
   - [x] Metaplex
-- [ ] Development
+
+- [ ] 7 Development
   - [ ] Solana Foundation (SPL, Transactions, Program)
   - [ ] Directly using Smart Contracts (read metadata)
   - [ ] How to create an NFT
@@ -46,12 +53,15 @@
     - [ ] JS SDK
     - [ ] React SDK
   - [ ] CLI (JS SDK)
-- [ ] Advanced
+
+- [ ] 8 Advanced
   - [ ] Dynamic NFTs - techniques
   - [ ] Hosting nodes
   - [ ] Caching and performance
-- [ ] Design Proposals
+
+- [ ] 9 Design Proposals
   - [ ] Implemented
   - [ ] Accepted
-- [ ] FAQs
+
+- [ ] 10 FAQs
   - [ ] Some organization here

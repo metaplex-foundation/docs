@@ -1,4 +1,8 @@
-# Metadata Standard
+---
+sidebar_position: 5
+---
+
+# Token Metadata Standard
 
 #### Huge thanks to SolFlare for putting this together!
 
