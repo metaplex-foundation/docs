@@ -108,7 +108,7 @@ keypair file itself, which is stored as insecure plain text
 
 BIP39 Passphrase (empty for none):
 
-Wrote new keypair to /Users/levi/.config/solana/devnet.json
+Wrote new keypair to ~/.config/solana/devnet.json
 =====================================================================
 pubkey: 7zMqBkHowtpEC8iayNmCoT42T8dKjikzmTbZX5aNJbhJ
 =====================================================================
@@ -137,10 +137,10 @@ If you're me, you're confirming your config right now to ensure you're on devnet
 
 ```bash
 $ solana config get
-Config File: /Users/levi/.config/solana/cli/config.yml
+Config File: ~/.config/solana/cli/config.yml
 RPC URL: https://api.devnet.solana.com
 WebSocket URL: wss://api.devnet.solana.com/ (computed)
-Keypair Path: /Users/levi/.config/solana/devnet.json
+Keypair Path: ~/.config/solana/devnet.json
 Commitment: confirmed
 ```
 
