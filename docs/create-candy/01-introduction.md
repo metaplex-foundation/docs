@@ -55,7 +55,8 @@ git clone git@github.com:metaplex-foundation/metaplex.git ~/metaplex-foundation/
 If you use a different location, you'll need to adjust for it in subsequent instructions.
 
 Future versions of this tooling will be "npx runnable". For now though, `ts-node` is recommended for most users.
-After ensuring `ts-node` is installed and cloning the repo you'll need to run two commands to confirm everything installed correctly.
+
+After ensuring `ts-node` is installed and cloning the repo run the following commands to confirm the command line tool is operating correctly:
 ```
 ts-node ~/metaplex-foundation/metaplex/js/packages/cli/src/candy-machine-cli.ts help
 ```
