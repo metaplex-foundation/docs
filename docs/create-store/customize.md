@@ -1,5 +1,11 @@
 # Customize
 
+## General info
+
+Components in the project have two ways for customization:
+- Adding or editing classes in style file `.less` which located at the customized component;
+- Changing already prepared props variables based on `Antd` library;
+
 ## Logo and Left menu 
 
 ![Init store](/img/customize/left-menu.png)
@@ -94,7 +100,7 @@ And edit this code:
 
 ## Auction View
 
-![Init store](/img/customize/auction-view.png.png)
+![Init store](/img/customize/auction-view.png)
 
 You can change `PreSaleBanner` component with path:
 
@@ -102,5 +108,44 @@ You can change `PreSaleBanner` component with path:
 js/packages/web/src/components/PreSaleBanner/index.tsx
 ```
 
+This component consists from two parts:
+- Left - product view `ArtContent`, here can be videos or images
+```bash
+js/packages/web/src/components/ArtContent/index.tsx
+```
+For demonstrate video uses `@cloudflare/stream-react` library and `Image Antd` for images
+
+for changing styles need send `className` through props from parent component 
+
+```js
+<ArtContent
+  pubkey={id}
+  className="artwork-image"
+  allowMeshRender={true}
+/>
+```
+
+- Right - product info `AuctionCard`, here main info about product
+```bash
+js/packages/web/src/components/AuctionCard/index.tsx
+```
+
+This component has a props `style` where you can change global styles
+example:
+```js
+<AuctionCard
+    style={{
+      background: 'transparent',
+      width: '100%',
+      padding: 0,
+      margin: 0,
+    }}
+/>
+```
+
+This component has a local styles file for customization too
+````bash
+js/packages/web/src/components/AuctionCard/index.less
+````
 
 
