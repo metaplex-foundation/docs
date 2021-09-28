@@ -31,7 +31,7 @@ $ git version
 git version 2.31.1
 
 $ node --version
-v16.2.0
+v14.17.0
 
 $ yarn --version
 1.22.11
@@ -40,8 +40,7 @@ $ ts-node --version
 v10.2.1
 ```
 
-The specific version numbers don't matter that much. Just make sure you're running something recent. The important thing is that these tools are installed and on your [system PATH](https://janelbrandon.medium.com/understanding-the-path-variable-6eae0936e976).
-
+The specific version numbers don't matter that much, but make sure you're running something recent. The more important thing is confirming these tools are installed and on your [system PATH](https://janelbrandon.medium.com/understanding-the-path-variable-6eae0936e976) correctly.
 
 ### The Candy Machine Command Line Tool
 
@@ -49,13 +48,32 @@ Creating and controlling a Candy Machine is typically done through command line 
 
 You can clone this repository anywhere you like, but the recommended practice is:
 ```
-git clone git@github.com:metaplex-foundation/metaplex.git ~/metaplex-foundation/metaplex
+$ git clone git@github.com:metaplex-foundation/metaplex.git ~/metaplex-foundation/metaplex
 ```
 
 If you use a different location, you'll need to adjust for it in subsequent instructions.
 
+You also need to install the projects node/npm dependencies. The recommended way of doing this is:
+
+```
+$ yarn install --cwd ~/metaplex-foundation/metaplex/js/
+```
+
 Future versions of this tooling will be "npx runnable". For now though, `ts-node` is recommended for most users.
 After ensuring `ts-node` is installed and cloning the repo you'll need to run two commands to confirm everything installed correctly.
 ```
-ts-node ~/metaplex-foundation/metaplex/js/packages/cli/src/candy-machine-cli.ts help
+$ ts-node ~/metaplex-foundation/metaplex/js/packages/cli/src/candy-machine-cli.ts --version
+0.0.2
 ```
+
+### Solana Tooling Required
+
+The Candy Machine was built by Metaplex (and Solana) to operate on the Solana blockchain.
+
+To work with it effectively you will need to understand tools and practices from that ecosystem.
+
+To get started, we recommend you begin by:
+
+* Reading the [Solana Command-line Guide](https://docs.solana.com/cli)
+* [Installing the Solana Command-line Tools](https://docs.solana.com/cli/install-solana-cli-tools)
+* And practice with the examples they provide in their documents.
