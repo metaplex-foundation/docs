@@ -43,7 +43,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         },
         items: [
           {
-            href: 'https://github.com/metaplex/',
+            href: 'https://github.com/metaplex-foundation/metaplex/',
             label: 'GitHub',
             position: 'right',
           },
@@ -70,7 +70,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/metaplex',
+                href: 'https://github.com/metaplex-foundation/metaplex',
               },
             ],
           },
