@@ -17,7 +17,7 @@ steps you need to take to create your store.
 Clone the repo.
 
 ```bash
-$ git clone https://github.com/metaplex-foundation/metaplex.git
+git clone https://github.com/metaplex-foundation/metaplex.git
 ```
 
 ### Running store web server
@@ -25,11 +25,11 @@ $ git clone https://github.com/metaplex-foundation/metaplex.git
 Run `yarn start` to spin up a web server locally.
 
 ```bash
-$ cd metaplex
-$ cd js
-$ yarn install
-$ yarn bootstrap
-$ yarn start
+cd metaplex
+cd js
+yarn install
+yarn bootstrap
+yarn start
 ```
 
 After that you can open [http://localhost:3000/](http://localhost:3000/) in the browser to see a storefront.
