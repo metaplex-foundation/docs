@@ -6,34 +6,31 @@ sidebar_position: 3
 
 ### Setting Up the Store ID
 
-When opening a store for the first time you should see a welcome screen with **Init Store** button.
+When opening a store for the first time you will be asked to connect your wallet. Click the **Connect** button and follow the steps to get connected.
 
-Select a network in Phantom's dropdown and click on the **Init Store** button.
-
-![Select network](/img/installation/select-wallet.png)
+Once connected, the store will first run some checks to see if you've already set up a store. After a minute or so, a welcome screen is presented with an **Init Store** button.
 
 ![Init store](/img/installation/init-store.png)
 
-Click on this button to start the store initialization process, it is going to take some time (around 1-2 minutes).
+From the wallet dropdown (Phantom pictured below), select a network (mainnet for production, testnet or devnet for practice).
+
+![Select network](/img/installation/select-wallet.png)
 
 :::tip
 
-You must have some SOL on your wallet to be able to pay a transaction fee. In the case of using devnet or testnet it's possible to airdrop SOL via [Sol Faucet](https://solfaucet.com/).
+Before proceeding, you must have some SOL on your wallet to be able to pay the Init Store transaction fee. In the case of using devnet or testnet you can airdrop SOL to yourself via [Sol Faucet](https://solfaucet.com/).
 
 :::
 
-If you are using [Phantom](https://phantom.app/) wallet, it will ask you to approve a transaction.
+Click the **Init Store** button. This starts the store initialization process by prompting you to approve a transaction from your wallet. After approval, your store initialization begins which may take 1-2 minutes.
 
 ![Approve transaction](/img/installation/approve-transaction.png)
 
-After the store initialization is done, you need to save addresses. In the **Store configuration** section on the store page click on the **Copy** button and paste in the `.env` file in `js/packages/web`.
+After store initialization completes, you must save your new store addresses. In the **Store configuration** section on the store page click on the **Copy** button and paste in the `.env` file in `js/packages/web`.
 
 ![Save env](/img/installation/save-env.png)
 
 ![Set env](/img/installation/set-env.png)
 
-Stop webserver (_Ctrl + C_) and run it again for `.env` changes to take place.
+Now restart your webserver (_Ctrl + C_ + `yarn start`) for the `.env` changes to take affect.
 
-```bash
-$ yarn start
-```
