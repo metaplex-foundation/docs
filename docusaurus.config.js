@@ -6,8 +6,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 (module.exports = {
   title: 'Metaplex Docs',
   tagline: 'Documentation for the Metaplex frontend and NFT standard.',
-  url: 'https://metaplex.github.io',
-  baseUrl: '/docs/',
+  url: 'https://docs.metaplex.com',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
