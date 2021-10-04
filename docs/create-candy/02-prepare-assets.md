@@ -116,4 +116,4 @@ Also notice there are three changes between `0.json` and `1.json`:
 >         "uri": "1.png",
 ```
 
-[simple-collection.zip](./simple-collection.zip) can be downloaded for testing.
+[simple-collection.zip](./simple-collection.zip) can be downloaded and explored for testing and experimentation. Subsequent steps in this walkthrough will assume it's the collection in use.
