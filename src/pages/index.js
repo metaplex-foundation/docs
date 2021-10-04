@@ -12,8 +12,28 @@ function Home() {
         <section className={styles.features}>
           <div className="container">
             <div className="row cards__container">
+              <div className={clsx("col col--3", styles.feature)}>
+                <Link className="navbar__link" to="docs/community">
+                  <div className="card">
+                    <div className="card__header">
+                      <h3>
+                        <Translate description="community">
+                          🏘️ Community
+                        </Translate>
+                      </h3>
+                    </div>
+                    <div className="card__body">
+                      <p>
+                        <Translate description="awesome-projects">
+                          Awesome documentation and projects from the community.
+                        </Translate>
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              </div>
 
-              <div className={clsx("col col--4", styles.feature)}>
+              <div className={clsx("col col--3", styles.feature)}>
                 <Link
                   className="navbar__link"
                   to="docs/create-store/introduction"
@@ -37,7 +57,7 @@ function Home() {
                 </Link>
               </div>
 
-              <div className={clsx("col col--4", styles.feature)}>
+              <div className={clsx("col col--3", styles.feature)}>
                 <Link
                   className="navbar__link"
                   to="docs/create-candy/introduction"
@@ -46,7 +66,7 @@ function Home() {
                     <div className="card__header">
                       <h3>
                         <Translate description="create-a-candy">
-                        🍬 Candy Machine
+                          🍬 Candy Machine
                         </Translate>
                       </h3>
                     </div>
@@ -60,8 +80,9 @@ function Home() {
                   </div>
                 </Link>
               </div>
-
-              <div className={clsx("col col--4", styles.feature)}>
+            </div>
+            <div className="row cards__container">
+              <div className={clsx("col col--3", styles.feature)}>
                 <Link className="navbar__link" to="docs/architecture/overview">
                   <div className="card">
                     <div className="card__header">
@@ -74,7 +95,8 @@ function Home() {
                     <div className="card__body">
                       <p>
                         <Translate description="get-started-building">
-                          Build a deeper understanding of the Metaplex architecture.
+                          Build a deeper understanding of the Metaplex
+                          architecture.
                         </Translate>
                       </p>
                     </div>
