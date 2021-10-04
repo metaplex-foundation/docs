@@ -1,0 +1,12 @@
+{
+  "name": "Simple NFT #2",
+  "image": "1.png",
+  "properties": {
+    "files": [
+      {
+        "uri": "1.png",
+        "type": "image/png"
+      }
+    ]
+  }
+}
