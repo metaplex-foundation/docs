@@ -24,6 +24,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/metaplex/docs/tree/main/',
+          remarkPlugins: [require('mdx-mermaid')]
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
