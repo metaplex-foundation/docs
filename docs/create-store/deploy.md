@@ -29,7 +29,7 @@ After that, the lines will look like this:
 Add the file _config.yml to the root directory
 add to this file:
 
-`
+```yml
 lsi: false
 safe: true
 source: js/packages/web
@@ -40,7 +40,7 @@ gist:
 kramdown:
   math_engine: mathjax
   syntax_highlighter: rouge
-`
+```
 
 Please check that you select gh-pages branch in source on the GitHub Pages tab (current repository)
 
