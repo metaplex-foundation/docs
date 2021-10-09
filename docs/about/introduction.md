@@ -23,4 +23,4 @@ Currently our two major projects are:
 We have big plans. Like any startups we see a bright future for the tools and services we off and plan to offer. But for now we're doing what any great business does an remaining hyper focused on the task at hand, namely building great experiences for NFT creators and developers. If you want to help us on our mission we're [hiring](https://apply.workable.com/metaplex-studios/). 
 
 ## Thank you and stay in touch!
-This project wouldn't exist with you. We are thankful that you're using these tools and we want to make them better for you! Please reach out on [discord](https://discord.com/invite/metaplex) if you have any questions, or better yet make a pull request! 
+This project wouldn't exist without you. We are thankful that you're using these tools and we want to make them better for you! Please reach out on [discord](https://discord.com/invite/metaplex) if you have any questions, or better yet make a pull request! 
