@@ -38,7 +38,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       navbar: {
         title: 'Metaplex Docs',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Metaplex logo',
           src: 'img/meta-white.svg',
           srcDark: 'img/meta-black.svg',
         },
