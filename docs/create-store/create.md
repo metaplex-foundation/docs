@@ -10,44 +10,58 @@ Once you have finished with a store configuration, you will be able to **Create*
 
 ## Create NFT
 
-After clicking on the **Create** button, you will be redirected to a Create section. It's intended for minting NFT assets.
-As you may see, Metaplex supports a big amount of different NFT types. In this article, we'll be focusing on image assets.
+After clicking on the **Create** button, you will be redirected to the Create section, intended for minting NFT assets.
+Metaplex supports a wide variety of NFT types. In this article, we'll be focusing on image assets.
 
 ![Create welcome page](/img/mint-sell/create-welcome.png)
 
 ### Upload
 
-Firstly, you need to upload your file. The file will be uploaded to the decentralized web via Arweave. Depending on file type, can take up to 1 minute. Arweave is a new type of storage that backs data with sustainable and perpetual endowments, allowing users and developers to truly store data forever – for the very first time.
+First, you'll need to upload your image to [Arweave][]. Depending on file type, this can take up to 1 minute.
 
-It's possible to upload an image directly or to put an absolute url to it.
+:::info
 
-After you have done, click on **Continue to Mint**
+[Arweave][] is a decentralized storage service that backs data with sustainable and perpetual endowments, allowing users and developers to truly store data forever.
+
+:::
+
+Upload an image directly or provide an absolute url to your file on the internet to use as your NFT image.
+
+After you have finished uploading, you'll see the image name listed below the "Upload" section. Click on **Continue to Mint**
 
 ![Upload](/img/mint-sell/upload.png)
 
 ### Describe your item
 
-On this screen you can describe the item, by adding **Title**, **Description**, **Maximum Supply** and **Attributes**
-
-**Maximum Supply** allows having multiple copies (prints) from this master edition asset. The main difference is that each print is a numbered edition created from a master edition.
-
-You can read more about Master Edition and Maximum Supply in our [Architecture](../architecture/deep_dive/overview.md) docs.
-
-**Attributes** allow you to define custom properties that attribute your asset.
-
-After you have done, click on **Continue to royalties** to move on.
+Next you'll add your image **Title**, **Description**, **Maximum Supply** and **Attributes**.
 
 ![Describe asset](/img/mint-sell/describe-asset.png)
 
+**Maximum Supply** allows you to choose between having a single NFT or multiple copies (prints) from this master edition asset. The main difference between Master Edition and prints is that each print is a numbered edition created from a master edition.
+
+:::tip
+
+You can read more about Master Edition and Maximum Supply in our [Architecture](../architecture/deep_dive/overview.md) docs.
+
+:::
+
+**Attributes** allow you to define custom properties (key/value pairs) that describe your asset. These attributes are later displayed when viewing the NFT in your wallet or marketplace of choice. For `display_type`, the default is `string` but you can also set this to `date` to hint to downstream tools to format this approprately.
+
+When you are finished describing your item, click on **Continue to royalties**.
+
 ### Royalties
 
-Royalties ensure that you continue to get compensated for your work after its initial sale. So, you will be able to receive percentage after every secondary sale.
+Royalties declare how you and/or your creators are compensated for your work.
+
+#### Royalty Percentage
+
+This option specifies, as a percentage, how much of each secondary sale (all sales after the initial sale) will be paid out to the creators. For example, 1%.
 
 #### Creators Split
 
-This option allows you to split proceeds from the initial sale between creators. To do this, you need to add other creators to your store on an [admin page](http://localhost:3000/#/admin).
+This option allows you to split proceeds from the initial sale between creators. To do this, you first need to add other creators to your store on the [admin page](http://localhost:3000/#/admin).
 
-After you have done, click on **Continue to review** to move on.
+After you have finished defining royalties, click on **Continue to review**.
 
 ![Royalties](/img/mint-sell/royalties.png)
 
@@ -68,3 +82,5 @@ Running locally may require refreshing the page to see the item in Artworks.
 ![Finish screen](/img/mint-sell/finish.png)
 
 ![Item](/img/mint-sell/item.png)
+
+[arweave]: https://www.arweave.org/
