@@ -11,7 +11,7 @@ The mission of Metaplex Studios and the Metaplex community is to create the worl
 * Diverse community: from creators to industry partners, we're seeing a lot of teams invent the future of media, gaming, music, art, events and more. 
 * Funding your innovation: Through our Grants and Creator Fund programs, we're seeing the community drive towards building more smart contracts and tools for all. 
 
-## Comming Soon
+## Coming Soon
 * More documentation and support for your project. We're experiencing growing pains and a tenant of our community is to develop simple NFT resources for people everywhere to create their NFT project. 
 * Customer experience updates including better performance and more ways to sell. Stay tuned! 
 
