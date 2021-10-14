@@ -21,6 +21,7 @@ Send a tweet to @metaplex to suggest additions here.
 ## Candy Machine
 
 - [MintUI - An extensible UI fro creating Metaplex Candy Machines](https://github.com/InnerMindDAO/MintUI)
+- [TreatToolbox - Generative art manager for the non-technical](https://treattoolbox.com/)
 - [Metaplex Candy Machine Missing Guide](https://hackmd.io/@levicook/HJcDneEWF)
 - [Ultimate Metaplex Candy Machine guide on Solana](https://medium.com/@giacavicchioli/ultimate-metaplex-candy-machine-guide-on-solana-7643ed3b7267)
 
