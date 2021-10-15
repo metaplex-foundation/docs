@@ -39,7 +39,7 @@ Send a tweet to @metaplex to suggest additions here.
 
 ## Common Issues from the Community
 
--- Getting error "Auction manager must be validated to start auction!" How do I become validated? modify js/packages/web/src/config/userNames.json to add your wallet address to your storefront as an admin
+- Getting error "Auction manager must be validated to start auction!" How do I become validated? modify js/packages/web/src/config/userNames.json to add your wallet address to your storefront as an admin
 
 ## RPC
 
