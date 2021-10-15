@@ -47,6 +47,7 @@ Send a tweet to @metaplex to suggest additions here.
 
 _In no particular order_
 
+- [GenesysGo](https://genesysgo.com/)
 - [RunNode](https://runnode.com/)
 - [Triton RPC Pool](https://rpcpool.com/)
 - [Figment](https://figment.io/datahub/solana/)
