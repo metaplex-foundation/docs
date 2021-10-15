@@ -30,6 +30,7 @@ Send a tweet to @metaplex to suggest additions here.
 - [Ultimate Metaplex Candy Machine guide on Solana](https://medium.com/@giacavicchioli/ultimate-metaplex-candy-machine-guide-on-solana-7643ed3b7267)
 - [Candy Machine Costs](https://docs.google.com/spreadsheets/d/1tEHPIUN1GccLyTsd5PS0tAQMC6ihjq48jlPPz0FK9Yg/edit#gid=0)
 - [Hash Table tool](https://worldcities.aiphotos.art/hash-table) for listing your Candy Machine NFT Collection on Secondary Market places
+- [Fee Calculator](https://feecalc.live/) calculate accurate costs for arweave & config creation
 
 ## Fair Launch
 
