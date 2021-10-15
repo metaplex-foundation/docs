@@ -4,11 +4,15 @@ sidebar_position: 11
 
 # Community Docs
 
-> A random collection of articles/projects from Metaplex Community!
+_A collection of articles/projects from Metaplex Community_
 
-Send a tweet to @metaplex to suggest additions here.
+:::tip
 
-## General 
+Send a tweet to [@metaplex](https://twitter.com/metaplex) or [edit this page on Github](https://github.com/metaplex/docs/edit/main/docs/community.md) to suggest additions.
+
+:::
+
+## General
 
 - [Solana and Metaplex FAQ](https://hackmd.io/@archaeopteryx/By4bpbA4F#Solana-and-Metaplex-FAQ)
 
@@ -54,12 +58,10 @@ _In no particular order_
 - [Blockdaemon](https://blockdaemon.com/marketplace/solana/)
 - [Syndica](https://syndica.io/)
 
-
 ### Caches
 
 - https://github.com/zubr-exchange/cacherpc
 - https://github.com/Monadical-SAS/rpc-cache-server
-
 
 ## Other
 
