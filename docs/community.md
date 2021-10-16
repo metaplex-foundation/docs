@@ -54,7 +54,7 @@ _In no particular order_
 
 - [GenesysGo](https://genesysgo.com/)
 - [RunNode](https://runnode.com/)
-- [Triton RPC Pool](https://rpcpool.com/)
+- [Triton One | RPC Pool](https://www.triton.one/)
 - [Figment](https://figment.io/datahub/solana/)
 - [Blockdaemon](https://blockdaemon.com/marketplace/solana/)
 - [Syndica](https://syndica.io/)
