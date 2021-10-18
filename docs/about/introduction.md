@@ -17,7 +17,7 @@ Metaplex is a collection of tools, smart contracts, and more designed to make th
 
 Currently our two major projects are:
 - [Stores](./create-store/introduction) a generalizable NFT selling standard
-- [The Candy Machine™](./create-candy/introduction) a Profile Picture (PFP) focused tool that works like the gumball style candie machines of old 
+- [The Candy Machine™](./create-candy/introduction) a Profile Picture (PFP) focused tool that works like the gumball-style candy machines of old 
 
 ## What next for Metaplex?
 We have big plans. Based on response from the Metaplex Community, we see a bright future and lots of demand for the tools and services the help people everywhere create awesome NFT projects. Currently, we're remaining hyper focused on the task at hand, namely building great experiences for NFT creators and developers starting with creator storefronts and helping creators distribute NFTs to their communities via auctions, instant sales, NFTs, and even more ways coming very, very soon. If you want to help us on our mission we're [hiring](https://apply.workable.com/metaplex-studios/). Or, if you have ideas for your own project that furthers the capabilities of the Metaplex Ecosystem through smart contracts and beyond, we're providing grants. [Apply here](https://docs.google.com/forms/d/e/1FAIpQLScu3uXN-mLGbwZZhHYDsWepcE3XzFvnujm1qc7442UKtskpDA/viewform?usp=send_form). 
