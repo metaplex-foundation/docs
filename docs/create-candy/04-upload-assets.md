@@ -19,7 +19,24 @@ ts-node ~/metaplex-foundation/metaplex/js/packages/cli/src/candy-machine-cli.ts 
 
 expected output:
 ```
+Usage: candy-machine-cli upload [options] <directory>
 
+Arguments:
+  directory                          Directory containing images named from 0-n
+
+Options:
+  -e, --env <string>                 Solana cluster env name (default: "devnet")
+  -k, --keypair <path>               Solana wallet location (default: "--keypair not provided")
+  -l, --log-level <string>           log level
+  -c, --cache-name <string>          Cache file name (default: "temp")
+  -n, --number <number>              Number of images to upload
+  -s, --storage <string>             Database to use for storage (arweave, ipfs, aws) (default: "arweave")
+  --ipfs-infura-project-id <string>  Infura IPFS project id (required if using IPFS)
+  --ipfs-infura-secret <string>      Infura IPFS scret key (required if using IPFS)
+  --aws-s3-bucket <string>           (existing) AWS S3 Bucket name (required if using aws)
+  --no-retain-authority              Do not retain authority to update metadata
+  --no-mutable                       Metadata will not be editable
+  -h, --help                         display help for command
 ```
 
 
