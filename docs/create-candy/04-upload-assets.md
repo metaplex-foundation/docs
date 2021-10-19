@@ -1,5 +1,5 @@
 ---
-sidebar_label: "2. Upload NFT Assets"
+sidebar_label: "3. Upload NFT Assets"
 ---
 
 # Upload NFT Assets
