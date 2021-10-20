@@ -19,7 +19,6 @@ Send a tweet to [@metaplex](https://twitter.com/metaplex) or [edit this page on 
 ## Storefronts
 
 - [Setting up a Solana Metaplex NFT Storefront in the Cloud](https://artifact-staking.medium.com/setting-up-a-solana-metaplex-nft-storefront-in-the-cloud-a10ea2490ed9)
-- [Deploy Your Own Store, Mint NFT’s and Setup Auctions!](https://solana.blog/solana-metaplex-tutorial-deploy-your-own-store-mint-nfts-and-setup-auctions/) (A bit dated now)
 
 ## NFT Viewing
 
@@ -33,7 +32,6 @@ Send a tweet to [@metaplex](https://twitter.com/metaplex) or [edit this page on 
 - [Metaplex Candy Machine Missing Guide](https://hackmd.io/@levicook/HJcDneEWF)
 - [Ultimate Metaplex Candy Machine guide on Solana](https://medium.com/@giacavicchioli/ultimate-metaplex-candy-machine-guide-on-solana-7643ed3b7267)
 - [Candy Machine Costs](https://docs.google.com/spreadsheets/d/1tEHPIUN1GccLyTsd5PS0tAQMC6ihjq48jlPPz0FK9Yg/edit#gid=0)
-- [Hash Table tool](https://worldcities.aiphotos.art/hash-table) for listing your Candy Machine NFT Collection on Secondary Market places
 - [Fee Calculator](https://feecalc.live/) calculate accurate costs for arweave & config creation
 
 ## Fair Launch
