@@ -45,7 +45,7 @@ Options:
   -h, --help                         display help for command
 ```
 
-#Example: Default Arweave Upload
+## Example: Default Arweave Upload
 
 In this example, we will be uploading files from our "assets" folder onto the devnet using Arweave as the storage function.
 
