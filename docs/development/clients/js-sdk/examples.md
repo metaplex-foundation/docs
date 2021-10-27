@@ -14,7 +14,7 @@ const auctionManagers = await AuctionManager.findMany(connection, {
   store: storeId,
 });
 const auctions = await Promise.all(
-  managers.map((m) => m.getAuction(connection))
+  auctionManagers.map((m) => m.getAuction(connection))
 );
 
 // Getting Auction extended data
