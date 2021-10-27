@@ -17,7 +17,7 @@ const auctions = await Promise.all(
   auctionManagers.map((m) => m.getAuction(connection))
 );
 
-// Getting Auction extended data
+// Getting Auction extended data(instansSalePrice, totalUncancelledBids, tickSize...)
 const auctionsExtKeys = await Promise.all(
   auctionManagers.map((am) => AuctionExtended.getPDA(am.data.vault))
 );
