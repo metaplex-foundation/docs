@@ -7,11 +7,14 @@ sidebar_position: 2
 ## Store
 
 ```ts
-// Get store id
+// Init store
 const { storeId } = await actions.initStore({
   connection,
   wallet,
 });
+
+// Get existing store id
+const storeId = await Store.getPDA(publicKey as AnyPublicKey);
 ```
 
 ## Auctions
@@ -50,7 +53,7 @@ const safetyDepositBoxes = await Promise.all(vaults.map(v => v.getSafetyDepositB
 
 ## Metadata
 
-Getting store metadatas:
+Getting store metadata:
 
 ```ts
 // Load store
