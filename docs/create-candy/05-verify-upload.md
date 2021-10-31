@@ -1,5 +1,5 @@
 ---
-sidebar_label: "3. Verify Upload"
+sidebar_label: "4. Verify Upload"
 ---
 
 # Verify Upload
