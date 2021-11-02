@@ -45,7 +45,7 @@ example();
 ```
 
 Also, it's an excellent way to try to use one of these projects for complex applications:
-- [https://www.apollographql.com/](Apollo Client)l
+- [https://www.apollographql.com](Apollo Client)
 - [https://www.npmjs.com/package/graphql-request](graphql-request)
 - [https://www.npmjs.com/package/urql](urql)
 - [https://relay.dev/](Relay)
