@@ -20,9 +20,10 @@ Send a tweet to [@metaplex](https://twitter.com/metaplex) or [edit this page on 
 
 - [Setting up a Solana Metaplex NFT Storefront in the Cloud](https://artifact-staking.medium.com/setting-up-a-solana-metaplex-nft-storefront-in-the-cloud-a10ea2490ed9)
 
-## NFT Transfer
+## NFT Transfer and Airdrops
 
 - [Guide to Airdrop Using Metaplex](https://hackmd.io/@8LSEewFFQ2OwXMjUKZP-pA/HJ7jMxYEF)
+- [SkeletonCrew's Air Support](https://github.com/theskeletoncrew/air-support)
 
 ## NFT Viewing
 
