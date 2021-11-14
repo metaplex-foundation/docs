@@ -17,7 +17,7 @@ steps you need to take to create your store.
 Clone the repo and install its dependencies.
 
 ```bash
-git clone https://github.com/metaplex-foundation/metaplex.git
+git clone --branch v1.0.0 https://github.com/metaplex-foundation/metaplex.git
 cd metaplex/js && yarn install && yarn bootstrap
 ```
 
