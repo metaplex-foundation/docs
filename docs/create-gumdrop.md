@@ -183,6 +183,18 @@ More concretely, the frontends expect the list format to be
 ]
 ```
 
+The distribution method handles are as follows:
+
+| Type     | Format            | Example                |
+| -------- | ----------------- | ---------------------- |
+| Email    | local-part@domain | john.smith@example.com |
+| SMS      | E.164             | +18005550100           |
+| Discord  | User ID           | 898959704573759608     |
+
+At the moment, Discord handles are the hardest to programmatically create. One
+option is to query for members in a Discord Guild and filter for the relevant
+users by display-name there.
+
 NB: The frontends do some verification that the Gumdrop being created is
 sufficient to satisfy all the recipients specified. However, these checks are
 all dependent on the good behavior of the creator! For example, if the creator,
