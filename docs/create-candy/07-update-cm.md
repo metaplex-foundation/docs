@@ -7,7 +7,7 @@ sidebar_label: "6. Update Candy Machine"
 To update a Candy Machine, type
 ```cmd
 ts-node ~/metaplex/js/packages/cli/src/candy-machine-cli.ts \
-  create_candy_machine \
+  update_candy_machine \
   --env devnet \
   --keypair ~/.config/solana/devnet.json \
   -p 1
