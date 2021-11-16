@@ -1,0 +1,22 @@
+---
+sidebar_position: 7
+unlisted: true
+---
+
+#Burn NFTs 
+
+There are a couple of for burning NFTs. 
+
+## Manual Burn 
+https://gist.github.com/aheckmann/df6fdf795bb0843b4aea112b2b98a97e
+
+You can always use the CLI command 
+spl-token burn
+or sending it to the burn address 
+1nc1nerator11111111111111111111111111111111
+
+## Solana's Official Burn Guide 
+https://gist.github.com/aheckmann/df6fdf795bb0843b4aea112b2b98a97e
+
+
+
