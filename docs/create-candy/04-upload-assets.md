@@ -51,7 +51,7 @@ In this example, we will be uploading files from our "assets" folder onto the de
 
 command:
 ```
-ts-node ~/metaplex/js/packages/cli/src/candy-machine-cli.ts upload ./assets --env devnet --keypair ~/.config/solana/devnet.json
+ts-node ~/metaplex-foundation/metaplex/js/packages/cli/src/candy-machine-cli.ts upload ./assets --env devnet --keypair ~/.config/solana/devnet.json
 ```
 
 expected output:
