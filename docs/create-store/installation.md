@@ -28,3 +28,13 @@ yarn start
 ```
 
 After that you can open [http://localhost:3000/](http://localhost:3000/) in your browser to see a storefront (it may take a minute to load the first time).
+
+## Apple M1 Chip
+If you have Mac OS with the Apple M1 Chip, please do the following command before yarn install:
+
+```bash
+brew install pkg-config cairo pango libpng jpeg giflib librsvg
+```
+See additional information: https://github.com/Automattic/node-canvas/wiki/Installation%3A-Mac-OS-X
+
+
