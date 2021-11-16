@@ -2,7 +2,8 @@
 sidebar_position: 7
 ---
 
-# Create a Gumdrop
+# Gumdrop
+Gumdrop is a new feature from the metaplex community. It is currently in BETA so use at your own risk.
 
 The Gumdrop program leverages the Solana blockchain and merkle trees to
 facilitate airdrops to a large number of whitelisted users at a low cost to
