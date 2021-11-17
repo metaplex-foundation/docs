@@ -22,7 +22,7 @@ jobs:
           USE_SSH: true
           GIT_USER: git
         run: |
-          git config --global user.email "msebastiyan@techflower.io"
-          git config --global user.name "m-sebastiyan"
+          git config --global user.email "svc01@metaplex.com"
+          git config --global user.name "svc01-metaplex"
           yarn install --frozen-lockfile
           yarn deploy
