@@ -13,7 +13,7 @@ We've been impressed, surprised, and trying to keep up (frankly!) with all the N
 To take you through the different aspects of a Metaplex storefront, we'll take inspiration from [Cryptokickers](https://metaplex.cryptokickers.com/#/), one of the first NFT projects to launch on Metaplex. 
 
 ### Wallet 
-Uses can connect any Solana wallet using the connect Wallet in the page's top right corner. 
+Users can connect any Solana wallet using the connect Wallet in the page's top right corner. 
 
 ### Live Auctions or Drops 
 Primary sales. See the NFTs that are currently available for auction or sale by the developer or creator. 
