@@ -27,6 +27,9 @@ Options:
  To use this command, make sure you have the keypair that you made the candy machine with. Pass that keypair in as the `-k` argument. This command will find all the candy machine config accounts made by that keypair and attempt to drain them. 
  Its a good idea to first run this with `-d` to see how much you have locked up in those accounts and to make sure you arent draining an account you need. You can also donate a percentage of this money to charity "BE CAREFUL" this actually will take money out of the keypair you pass in and transfer it to the address you set as the `--charity` option.
  
+ ### NOTE
+ Your Keypair must have a little sol in it to pay the transaction fee to withdraw.
+ 
 If it all works like it should, you should see something like:
 
 ```
