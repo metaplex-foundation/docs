@@ -1,10 +1,11 @@
 ---
-sidebar_label: "4. Create Candy Machine"
+sidebar_label: "5. Create Candy Machine"
 ---
 
 # Create Candy Machine
 
 To create a Candy Machine, simply type:
+
 ```cmd
 ts-node ~/metaplex/js/packages/cli/src/candy-machine-cli.ts create_candy_machine --env devnet --keypair ~/.config/solana/devnet.json -p 1
 ```
