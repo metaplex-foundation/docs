@@ -151,13 +151,13 @@ And here's how you can fund that wallet:
 $ solana balance # check your initial balance
 0 SOL
 
-$ solana airdrop 10 # request funds
-Requesting airdrop of 10 SOL
+$ solana airdrop 5 # request funds
+Requesting airdrop of 5 SOL
 
 Signature: 2s8FE29f2fAaAoWphbiyb5b4iSKYWznLG64w93Jzx8k2DAbFGsmbyXhe3Uix8f5X6m9HRL5c6WB58j2t2WrUh88d
 
-10 SOL
+5 SOL
 
 $ solana balance # confirm your balance
-10 SOL
+5 SOL
 ```
