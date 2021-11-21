@@ -34,14 +34,14 @@ Gumdrop creators can use either the Gumdrop CLI or the [web
 UI](https://lwus.github.io/metaplex). Additional options are available through
 the CLI. To execute the Gumdrop CLI or deploy a local version of the web UI,
 please follow the same [prerequisite steps of Candy Machine
-creation](./create-candy/introduction#prerequisites).
+creation](/create-candy/introduction#prerequisites).
 
 - The CLI can be found in the [Metaplex
-  repo](github.com/metaplex-foundation/metaplex/) at
+  repo](https://github.com/metaplex-foundation/metaplex/) at
   `js/packages/cli/src/gumdrop-cli.ts` and will also be run with `ts-node`.
-- The web interface can be found either at the [example
-  deployment](https://lwus.github.io/metaplex) or run locally from the Metaplex
+- The web interface can be run locally from the Metaplex
   repo at `js/packages/gumdrop` with `yarn start`.
+  (You can also use an [example deployment](https://lwus.github.io/metaplex), but this site may not exist for long.)
 
 To create a drop, you must specify the [drop type](#drop-types), the
 [distribution method](#distribution-method), and the
