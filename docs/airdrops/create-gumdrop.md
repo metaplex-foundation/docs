@@ -1,7 +1,3 @@
----
-sidebar_position: 7
----
-
 # Gumdrop
 Gumdrop is a new feature from the metaplex community. It is currently in BETA so use at your own risk.
 
