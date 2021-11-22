@@ -147,7 +147,7 @@ sequenceDiagram
     Client->>+SPL_TOKEN_PROGRAM: Mint 1 token and send it to the PDA
     Client->>+METAPLEX_TOKEN_METADATA_PROGRAM: Create Master Edition
 ```
-The above instructions will get bundled up into one instruction and sent to the Solana netwokr. Once successful your token account has a bonafide NFT Master Edition in it, we can run an auction where we auction off Limited Edition prints! Let's say we want to auction off three such prints.
+The above instructions will get bundled up into one instruction and sent to the Solana network. Once successful your token account has a bonafide NFT Master Edition in it, we can run an auction where we auction off Limited Edition prints! Let's say we want to auction off three such prints.
 
 ### 2. The Auction
 5. Next, we create a token vault using the `init_vault` endpoint of the token vault contract. We'll store our master edition token in it by adding it to the vault using the `add_token_to_inactive_vault` endpoint. This will create a safety deposit box in the vault that contains the the token.
