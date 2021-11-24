@@ -55,9 +55,17 @@ There are multiple drop types supported by the gumdrop program. Each utilizes
 the same underlying mechanism of building a merkle tree from a whitelist and
 using some kind of off-chain distribution method to notify recipients.
 
-- [Token Airdrop](#token-airdrop)
-- [NFT Candy Machine Presale](#nft-candy-machine-presale)
-- [Edition Prints](#edition-prints)
+- [Gumdrop](#gumdrop)
+  - [Motivation](#motivation)
+  - [Setup](#setup)
+  - [Drop Types](#drop-types)
+    - [Token Airdrop](#token-airdrop)
+    - [NFT Candy Machine Pre-sale](#nft-candy-machine-pre-sale)
+    - [Edition Prints](#edition-prints)
+  - [Distribution Method](#distribution-method)
+  - [Whitelist](#whitelist)
+  - [Closing a Gumdrop](#closing-a-gumdrop)
+  - [Deploy Custom Gumdrop Site](#deploy-custom-gumdrop-site)
 
 The sections below give examples and explanations for CLI usage of the command
 line flags. A full list of options can be viewed with
@@ -208,3 +216,10 @@ on this behavior!
 NB: somewhat obviously, recipients will no longer be able to redeem the Gumdrop
 after it is closed.
 
+## Deploy Custom Gumdrop Site
+
+This method applies to _only_ [Vercel](https://vercel.com/).  In the `gumdrop` directory, remove `homepage` key-value entirely.  Connect your github to Vercel and create a new project.  In the project setup, make sure these settings are set.
+
+![Build and Development Settings](/img/gumdrop/build-and-development-settings.png)
+
+![Root Directory Settings](/img/gumdrop/root-directory.png)
