@@ -52,12 +52,19 @@ To make this concrete and relatable, we'll walk through a real two item collecti
 ```json
 {
   "name": "Simple NFT #1",
+  "symbol": "",
   "image": "0.png",
   "properties": {
     "files": [
       {
         "uri": "0.png",
         "type": "image/png"
+      }
+    ],
+    "creators": [
+      {
+        "address": "<YOUR WALLET'S PUBLIC KEY ADDRESS>",
+        "share": 100
       }
     ]
   }
@@ -72,12 +79,19 @@ To make this concrete and relatable, we'll walk through a real two item collecti
 ```json
 {
   "name": "Simple NFT #2",
+  "symbol": "",
   "image": "1.png",
   "properties": {
     "files": [
       {
         "uri": "1.png",
         "type": "image/png"
+      }
+    ],
+    "creators": [
+      {
+        "address": "<YOUR WALLET'S PUBLIC KEY ADDRESS>",
+        "share": 100
       }
     ]
   }
