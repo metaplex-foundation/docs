@@ -8,7 +8,7 @@ For now only owner of candy machine can mint tokens
 :::
 
 ## Preparation
-1. Check that you have `devnet-temp` file in your `.cache` folder
+1. Check that you have `devnet-temp`(if using devnet, it will say mainnet or otherwise on different networks) file in your `.cache` folder
 2. Check that you have more than 1 SOL in your devnet wallet
 
 ## Mint one token
