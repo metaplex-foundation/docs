@@ -49,7 +49,7 @@ Creating and controlling a Candy Machine is typically done through command line 
 You can clone this repository anywhere you like, but the recommended practice is:
 
 ```
-git clone --branch v1.0.0 https://github.com/metaplex-foundation/metaplex.git ~/metaplex-foundation/metaplex
+$ git clone --branch v1.0.0 https://github.com/metaplex-foundation/metaplex.git ~/metaplex-foundation/metaplex
 ```
 
 If you use a different location, you'll need to adjust for it in subsequent instructions.
