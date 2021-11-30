@@ -86,14 +86,16 @@ The Solana devnet serves as a playground for anyone who wants to take Solana for
 
 :::info
 We highly recommend making devnet your default Solana url
-`solana config set --url https://api.devnet.solana.com`
+
+`$ solana config set --url https://api.devnet.solana.com`
 :::
 
 #### Create devnet wallet (for testing)
 
 :::info
 Read the fine manual
-`solana-keygen help new`
+
+`$ solana-keygen help new`
 :::
 
 If your me, you'll redact your mnemonic, store it somewhere safe and take advantage of the `--outfile` flag.
@@ -121,7 +123,7 @@ Save this seed phrase and your BIP39 passphrase to recover your new keypair:
 :::info
 We also recommend making devnet your default keypair:
 
-`solana config set  --keypair ~/.config/solana/devnet.json`
+`$ solana config set  --keypair ~/.config/solana/devnet.json`
 :::
 
 
@@ -129,9 +131,9 @@ We also recommend making devnet your default keypair:
 
 :::info
 To get started, read the fine manuals in the help system
-`solana help config`,
-`solana help balance` and
-`solana help airdrop`
+`$ solana help config`,
+`$ solana help balance` and
+`$ solana help airdrop`
 :::
 
 If you're me, you're confirming your config right now to ensure you're on devnet, because we're going to rely on this to make subsequent command line invocations simpler from here forward. Here's how you check it:
