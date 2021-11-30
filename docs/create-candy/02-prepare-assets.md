@@ -25,7 +25,7 @@ A two item collection would contain four files.
 The content of the image files reflect the artwork you would like to display.
 The content of the metadata files describe each of these pieces of artwork using the schema defined in the [Token Metadata Standard](../nft-standard.md).
 
-Theses files are typically grouped in to a single folder, usually named `assets`, but that is not a hard requirement. Grouping them into a single folder simplifies next steps and is highly encouraged.
+Theses files are typically grouped into a single folder, usually named `assets`, but that is not a hard requirement. Grouping them into a single folder simplifies next steps and is highly encouraged.
 
 Larger collections follow these same conventions. For example, a 10k profile picture drop would look like this:
 
