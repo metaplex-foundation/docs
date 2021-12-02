@@ -13,11 +13,11 @@ For now only owner of candy machine can mint tokens
 
 ## Mint one token
 ```
-ts-node ~/metaplex-foundation/metaplex/js/packages/cli/src/candy-machine-cli.ts mint_one_token -k ~/.config/solana/devnet.json
+ts-node ~/metaplex-foundation/metaplex/js/packages/cli/src/candy-machine-cli.ts mint_one_token -k ~/.config/solana/devnet.json --env devnet
 ```
 
 ## Mint multiple tokens
 - `--number` number of tokens
 ```
-ts-node ~/metaplex-foundation/metaplex/js/packages/cli/src/candy-machine-cli.ts mint_one_token -k ~/.config/solana/devnet.json --number 2
+ts-node ~/metaplex-foundation/metaplex/js/packages/cli/src/candy-machine-cli.ts mint_multiple_tokens -k ~/.config/solana/devnet.json --env devnet --number 2
 ```
