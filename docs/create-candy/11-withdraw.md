@@ -41,10 +41,3 @@ HSLcb56y2wQEdaTcNoybcPJRrXuxRe3AnAXhpvJmZkMo has been withdrawn.
 Congratulations, 1 config accounts have been successfully drained.
 Now you kinda rich, please consider supporting Open Source developers.
 ```
-
-If a specific account fails you will see 
-```
-Withdraw has failed for config account 6xmVKq5Y1Va8TsCVMRm1jqpfxCi3LnANn2FbS8Uqirf1 Error: Transaction failed: Custom program error: 0xa2
-```
-
-But the program will keep running and trying to drain what it can.
