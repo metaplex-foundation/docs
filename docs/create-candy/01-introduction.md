@@ -44,7 +44,7 @@ The specific version numbers don't matter that much, but make sure you're runnin
 
 ### The Candy Machine Command Line Tool
 
-Creating and controlling a Candy Machine is typically done through command line tool, currently distributed as source code in a GitHub repository.
+Creating and controlling a Candy Machine is typically done through the Metaplex command line tool, currently distributed as source code in a GitHub repository.
 
 You can clone this repository anywhere you like, but the recommended practice is:
 
@@ -96,7 +96,7 @@ Read the fine manual
 `solana-keygen help new`
 :::
 
-If your me, you'll redact your mnemonic, store it somewhere safe and take advantage of the `--outfile` flag.
+If you're me, you'll redact your mnemonic, store it somewhere safe and take advantage of the `--outfile` flag.
 
 ```bash
 $ solana-keygen new --outfile ~/.config/solana/devnet.json
