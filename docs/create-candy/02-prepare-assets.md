@@ -6,7 +6,7 @@ sidebar_label: "1. Prepare NFT Assets"
 
 To mint NFTs, your Candy Machine needs to be loaded up with your project's artwork and metadata.
 
-The artwork is generally a collection of `.png` files and the metadata is a series of `.json` files that correspond 1:1 for each image in your collection.
+The artwork is generally a collection of `.png` files and the metadata is a series of `.json` files that correspond 1:1 with each image in your collection.
 
 Many projects choose to generate their artwork and metadata. This approach is powerful, but also advanced.
 
