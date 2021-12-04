@@ -47,7 +47,7 @@ Movie | .mp4, .mov, .webm
 VR | .gib
 HTML | .html 
 
-Max 2GB file. Limit doe to browser memory constraints. 
+Max 2GB file. Limit due to browser memory constraints. 
 
 Keep in mind that the Metaplex tool does not support previews yet for the vast majority of file types. 
 
