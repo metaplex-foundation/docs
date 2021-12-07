@@ -6,11 +6,11 @@ sidebar_label: "6. Update Candy Machine"
 
 To update a Candy Machine, type
 ```cmd
-ts-node ~/metaplex/js/packages/cli/src/candy-machine-cli.ts \
+ts-node ~/metaplex-foundation/metaplex/js/packages/cli/src/candy-machine-cli.ts \
   update_candy_machine \
   --env devnet \
   --keypair ~/.config/solana/devnet.json \
-  -p 1
+  -p 1 \
   --date "17 Oct 2021 00:00:00 GMT"
 ```
 
