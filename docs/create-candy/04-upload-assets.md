@@ -61,3 +61,8 @@ Writing indices 0-0
 Done. Successful = true.
 ended at: 2021-10-21T08:25:13.179Z. time taken: 00:00:33
 ```
+When working on mainnet-beta, it is recommended to use a custom RPC for this step to prevent being rate limited. The flag for this is:
+```
+--rpc-url <your-custom-rpc>
+```
+This flag can be appended at the end of the upload command.
