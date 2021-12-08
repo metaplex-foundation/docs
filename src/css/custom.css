@@ -57,7 +57,7 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
   line-height: 1.5;
 }
 .api_stability a {
-  color: rgb(88, 95, 88);
+  color: black;
   text-decoration: underline;
 }
 .api_stability_0 {
