@@ -37,6 +37,7 @@ Send a tweet to [@metaplex](https://twitter.com/metaplex) or [edit this page on 
 - [Metaplex Candy Machine Missing Guide](https://hackmd.io/@levicook/HJcDneEWF)
 - [Ultimate Metaplex Candy Machine guide on Solana](https://medium.com/@giacavicchioli/ultimate-metaplex-candy-machine-guide-on-solana-7643ed3b7267)
 - [Hash Table tool](https://aiphotos.art/hash-table) for listing your Candy Machine NFT Collection on Secondary Market places
+- [Candy Machine V2 Guide](https://hackmd.io/@MarkSackerberg/candyV2)
 
 ## Fair Launch
 
