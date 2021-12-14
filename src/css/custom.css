@@ -49,3 +49,26 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
 .col {
   margin-top: 32px;
 }
+
+.api_stability {
+  color: white;
+  margin: 0 0 1rem;
+  padding: 1rem;
+  line-height: 1.5;
+}
+.api_stability a {
+  color: black;
+  text-decoration: underline;
+}
+.api_stability_0 {
+  background-color: rgb(199, 43, 43);
+}
+.api_stability_1 {
+  background-color: #ca5010;
+}
+.api_stability_2 {
+  background-color: #5a8148;
+}
+.api_stability_3 {
+  background-color: #4550dd;
+}

@@ -4,17 +4,15 @@ sidebar_position: 1
 
 # Token Metadata Standard
 
-#### Huge thanks to SolFlare for putting this together!
+[Wallets](https://docs.solana.com/terminology#wallet) should support the display of metadata associated with [tokens](https://docs.solana.com/terminology#token), in accordance with the standards described by the [Metaplex Token Metadata contract](https://github.com/metaplex-foundation/metaplex/tree/master/rust/token-metadata/program). Wallets should pull both the on-chain data and the external JSON provided by the metadata's uri field and use them to display all relevant data.
 
-SPL wallets should support the displaying of _metadata_ associated with SPL tokens, in accordance with the standards described by the Metaplex Token Metadata contract. Wallets should pull both the on-chain data and the external JSON provided by the metadata's `uri` field and use them to display all relevant data.
-
-We recommend following the Metaplex standards and standards defined in this document to ensure your NFT will be correctly displayed in your wallets and to allow usage of all functionalities related to NFTs.
+Follow the standards defined in this document to ensure your NFTs will be correctly displayed in most wallets and to allow usage of all functionalities related to NFTs.
 
 ## Token Metadata Program
 
-The concept of the Token Metadata program is to provide decorator structs to a token mint. Basic info about the SPL token is provided with the `Metadata` struct, whose account address is a PDA with a derived key of `['metadata', metadata_program_id, mint_id]`.
+The Token Metadata program provides decorator structs to a token mint. Basic information about the token is provided with the `Metadata` struct, whose account address is a Program Derived Address (PDA) with a derived key of `['metadata', metadata_program_id, mint_id]`.
 
-Your wallet should be using the following information from the on-chain metadata:
+Your NFT should have the following information as on-chain metadata:
 
 | Field                   | Type    | Description                                                    | How do we display it                                                                                    |
 | ----------------------- | ------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
@@ -26,20 +24,17 @@ Your wallet should be using the following information from the on-chain metadata
 | primary_sale_happened   | boolean | flag describing whether the primary sale of the token happened | visible in the send NFT modal, can be updated                                                           |
 | seller_fee_basis_points | number  | royalties percentage awarded to creators                       | shown as a percentage received by each co-creator                                                       |
 
-The program also specifies optional structs used for the creation `Master Editions` and `Editions`. If these accounts exist, your wallet should display the Edition number (in case of a unique edition token) and whether a token is a `Master Edition`.
-
-!!! info
-You can explore the metadata standard in more detail on the [Metaplex project page](https://github.com/metaplex-foundation/metaplex) and in their developer guide.
+The program also specifies optional structs used for the creation `Master Editions` and `Editions`.
 
 ## URI JSON Schema
 
-To display off-chain metadata of SPL tokens, the on-chain struct needs to contain a URI as described above, which will allow your wallet to find it.
+To display off-chain metadata of tokens, the on-chain struct needs to contain a URI as described above, which will allow wallets to find it.
 
-Your wallet should be using the JSON standard as described in the Metaplex Developer Guide. You should also also supports additional optional fields, such as the `attributes` field, as described in the OpenSea NFT Standard.
 
 The file below should be used as a reference.
 
 ### JSON Structure
+Here is an example of off-chain JSON metadata.
 
 ```
 {
@@ -107,7 +102,7 @@ For the fields that match the on-chain metadata, on-chain information has priori
   - `"audio"` - MP3, FLAC, WAV
   - `"vr"` - 3D models; GLB, GLTF
   - `"html"` - HTML pages; scripts and relative paths within the HTML page are also supported
-- `properties.files` - Object array, where an object should contain the `uri` and `type` of the file that is part of the asset. The type should match the file extension. The array will also include files specified in `image` and `animation_url` fields, and any other that are associated with the asset.
+- `properties.files` - Object array, where an object should contain the `uri` and `type` of the file that is part of the asset. The type should match the file extension. The array should also include files specified in `image` and `animation_url` fields, and any other that are associated with the asset.
   You may use the `?ext={file_extension}` query to provide information on the file type.
 - `attributes` - Object array, where an object should contain `trait_type` and `value` fields. `value` can be a string or a number.
 
@@ -115,7 +110,7 @@ For the fields that match the on-chain metadata, on-chain information has priori
 
 #### CDN hosted files
 
-If you wish to provide additional hosting for your files to provide users a better experience (for example hosting your multi-media attachment on a CDN to provide faster loading times, in addition to hosting it on a permanent service), you can use the `cdn` boolean flag within the objects inside the `properties.files` array.
+In addition to hosting your assets on a permanent service, you can also host your assets on a CDN (to provide faster loading times). Just use the `cdn` boolean flag within the objects inside the `properties.files` array.
 
 ```
   "properties": {
@@ -131,7 +126,7 @@ If you wish to provide additional hosting for your files to provide users a bett
 }
 ```
 
-If such a flag exists, that file is the primary option when selecting the multimedia-attachment (video, audio or 3D) that will be displayed to owners. If that file is no longer available, you wallet should default to it using the URL in `animation_url` field.
+If such a flag exists, that file is the primary option when selecting the multimedia-attachment (video, audio or 3D) that will be displayed to owners. If that file is no longer available, wallets should default to it using the URL in `animation_url` field.
 
 #### Collections
 
@@ -146,11 +141,11 @@ If the NFT belongs to a group of other unique NFTs, you can mark them with an ad
 
 `collection.family` represents the larger set of NFTs your asset can belong to, in the case you are making multiple variations on a theme. It should always be a unique identifier of your whole project and never a general term like "cars", "art" or similar.
 
-You wallet should be able to group NFTs belonging to the same family and display the collection name on a single NFT view.
+Wallets might group NFTs belonging to the same family and display the collection name on a single NFT view.
 
 #### Additional attributes specification
 
-In addition to current fields available for specifying attributes, your wallet should integrate additional fields for describing attributes.
+In addition to current fields available for specifying attributes, wallets should integrate additional fields for describing attributes.
 Some of them are:
 
 - `display_type: "Date"` - will display the `value` as a date, use a unix timestamp to specify it
@@ -163,8 +158,13 @@ The only mandatory fields to describe an attribute are: `trait_type` and `value`
 
 Since your wallet will give users a direct link to the JSON file, it is recommended to keep the order of fields same as in the reference, so as to maintain good human readability of its contents.
 
+
 #### Other arbitrary data
 
-We suggest using the properties field to store other arbitrary data that will be used by specialized applications.
+Use the properties field to store other arbitrary data that will be used by specialized applications.
 
 If your project would benefit with the expansion of this standard, do not hesitate to contact us with your suggestions.
+
+#### Thanks
+
+Thanks to [Solflare](https://solflare.com/) for putting the first version of this document together.
