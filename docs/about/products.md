@@ -5,7 +5,7 @@ slug: /
 ---
 
 # Metaplex Products
-Below is a list of our Products and their stability levels. For more information on our Producte stability levels please see (Stability | https://docs.metaplex.com/stability)
+Below is a list of our Products and their stability levels. For more information on our Product stability levels please see (Stability | https://docs.metaplex.com/stability)
 
 | Product Name     | Stability Level |
 |------------------|-----------------|
