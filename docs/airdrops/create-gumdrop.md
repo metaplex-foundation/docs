@@ -213,6 +213,10 @@ edition can be reclaimed by closing the gumdrop. Currently, the small portion
 of rent used to store the Gumdrop state is also redeemed but please do not rely
 on this behavior!
 
+The command to close it is:
+```
+ts-node gumdrop-cli.ts close -e devnet --base <keypair that was created on gumdrop create> --keypair <your initial keypair>
+```
 NB: somewhat obviously, recipients will no longer be able to redeem the Gumdrop
 after it is closed.
 
