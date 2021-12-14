@@ -156,7 +156,8 @@ The only mandatory fields to describe an attribute are: `trait_type` and `value`
 
 #### Order of JSON fields
 
-It is recommended to keep the order of fields same as in the reference, so as to maintain good human readability of its contents.
+Since your wallet will give users a direct link to the JSON file, it is recommended to keep the order of fields same as in the reference, so as to maintain good human readability of its contents.
+
 
 #### Other arbitrary data
 
