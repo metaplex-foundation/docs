@@ -82,7 +82,7 @@ Here is an example of off-chain JSON metadata.
     "category": "video",
     "creators": [
       {
-        "address": "SOLFLR15asd9d21325bsadythp547912501b",
+        "address": "xEtQ9Fpv62qdc1GYfpNReMasVTe9YW5bHJwfVKqo72u",
         "share": 100
       }
     ]
