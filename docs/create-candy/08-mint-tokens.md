@@ -4,7 +4,7 @@ sidebar_label: "7. Mint Tokens"
 
 # Mint Tokens
 :::info
-For now only owner of candy machine can mint tokens
+For now, only the owner of the Candy Machine can mint tokens
 :::
 
 ## Preparation

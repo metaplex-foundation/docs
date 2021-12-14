@@ -5,7 +5,7 @@ sidebar_label: "2. Validate NFT Assets"
 # Validate NFT Assets
 
 :::info
-Don't skip this section. A lot of bugs happens because of invalid data.
+Don't skip this section. A lot of bugs happen because of invalid data.
 :::
 
 ## Developer Tooling Required
@@ -14,22 +14,22 @@ Ensure you have recent versions of `jq` installed:
 * [`jq` Installation](https://stedolan.github.io/jq/download/)
 
 ### 1. Check the number of assets (json and image files).
-Get count of total number of asset files:
+Get a count of the total number of asset files:
 ```bash
 $ find assets -type f  | wc -l
 ```
 
-Get count the metadata files
+Get a count of the metadata files
 ```bash
 $ find assets -type f -name '*.json' | wc -l
 ```
 
-Get count the images files
+Get a count of the image files
 ```bash
 $ find assets -type f -name '*.png' | wc -l
 ```
 
-For example, you have 10 images, and you will see next result after running the above commands:
+For example, if you have 10 images, you will see this result after running the above commands:
 ```bash
 $ find assets -type f  | wc -l
 20
@@ -49,7 +49,7 @@ Make sure your json and file name agree:
 - n.json should refer to n.png in the .image and .files props
 
 ### 3. Check name values
-This command lists then sorts all of your name values. For most projects, your just paging through and confirming. The pattern looks like you'd expect it to.
+This command lists then sorts all of your name values. For most projects, you're just paging through and confirming. The pattern looks like you'd expect it to.
 
 ```bash
 $ find assets -type f -name '*.json' |  xargs jq -r '.name' | sort | less
@@ -61,7 +61,7 @@ $ find assets -type f -name '*.json' |  xargs jq -r '.symbol' | sort | uniq -c
 ```
 
 ### 5. Check properties.creators
-This command flattens, then counts the unique properties.creators values in your metadata. For most projects, you should see a consistent count across all parties (address-[1..3])
+This command flattens, then counts the unique properties.creators values in your metadata. For most projects, you should see a consistent count across all parties (address-[1..3]).
 
 ```bash
 $ find assets -type f -name '*.json' | xargs jq '.properties.creators' | jq -c '.[] | [.address,.share]' | sort | uniq -c
