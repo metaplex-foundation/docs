@@ -11,3 +11,5 @@ ts-node ~/metaplex-foundation/metaplex/js/packages/cli/src/candy-machine-cli.ts 
 ```
 
 The command output will show the total count of successful uploads.
+
+You can also check the cache file created during upload to check for on-cahin true or false. Additionally, please note that if any were set to null after runny verify you will have to delete them and reupload. 
