@@ -45,6 +45,10 @@ Send a tweet to [@metaplex](https://twitter.com/metaplex) or [edit this page on 
 - [Zoom Meeting hook up by @redacted_j](https://t.co/tuIljNDN4K?amp=1) (pwd=`ep?a38$F`)
 - [Fair Launch Lottery Overview](https://www.youtube.com/watch?v=Ucfl_vbdYQI)
 
+## Gumdrop
+
+- [Gumdrop Notes/Guide](https://hackmd.io/@MarkSackerberg/gumdrop)
+
 ## Common Issues from the Community
 
 - Getting error "Auction manager must be validated to start auction!" How do I become validated? modify js/packages/web/src/config/userNames.json to add your wallet address to your storefront as an admin
