@@ -8,6 +8,18 @@ sidebar_position: 1
 
 Follow the standards defined in this document to ensure your NFTs will be correctly displayed in most wallets and to allow usage of all functionalities related to NFTs.
 
+## What is the different between a Fungible Token with Metadata and an NFT
+A token must pass 4 out of the 5 following checks to qualify as an nft.
+
+1. It must be a spl token (Required)
+2. It must have a Token Metadata PDA derivable from the mint address. (Required)
+3. It must have a supply of 1 (Required)
+4. It must have a decimals value on the mint of 0 (Optional)
+5. It must have a master edition/or limited edition PDA associated with it. (Required)
+
+A fungible Token with metadata must only satisfy bullets 1,2.
+
+Explorers, Wallets and Marketplaces should ensure they have these checks in place before choosing to diplsay the token as an NFT
 ## Token Metadata Program
 
 The Token Metadata program provides decorator structs to a token mint. Basic information about the token is provided with the `Metadata` struct, whose account address is a Program Derived Address (PDA) with a derived key of `['metadata', metadata_program_id, mint_id]`.
