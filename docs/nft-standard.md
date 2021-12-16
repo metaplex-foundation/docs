@@ -143,16 +143,6 @@ If the NFT belongs to a group of other unique NFTs, you can mark them with an ad
 
 Wallets might group NFTs belonging to the same family and display the collection name on a single NFT view.
 
-#### Additional attributes specification
-
-In addition to current fields available for specifying attributes, wallets should integrate additional fields for describing attributes.
-Some of them are:
-
-- `display_type: "Date"` - will display the `value` as a date, use a unix timestamp to specify it
-- `max_value: Number` - if the `value` is also a number, it will be displayed as a bar chart with a maximum value
-- `trait_count: Number` - if the asset is part of a collection, this number represents the total count of other assets with the same trait type and value
-
-The only mandatory fields to describe an attribute are: `trait_type` and `value`.
 
 #### Order of JSON fields
 
