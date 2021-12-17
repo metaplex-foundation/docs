@@ -32,7 +32,7 @@ Send a tweet to [@metaplex](https://twitter.com/metaplex) or [edit this page on 
 
 ## Candy Machine
 
-- [MintUI - An extensible UI fro creating Metaplex Candy Machines](https://github.com/InnerMindDAO/MintUI)
+- [MintUI - An extensible UI for creating Metaplex Candy Machines](https://github.com/InnerMindDAO/MintUI)
 - [TreatToolbox - Generative art manager for the non-technical](https://treattoolbox.com/)
 - [Metaplex Candy Machine Missing Guide](https://hackmd.io/@levicook/HJcDneEWF)
 - [Ultimate Metaplex Candy Machine guide on Solana](https://medium.com/@giacavicchioli/ultimate-metaplex-candy-machine-guide-on-solana-7643ed3b7267)
