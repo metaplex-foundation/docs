@@ -4,15 +4,23 @@ sidebar_position: 1
 
 # Getting started
 
-Metaplex JS is a library that allows you to:
+Metaplex JS SDK is a library that allows you to:
 
 - Load and Deserialize Accounts
 - Create transactions
-- `[In development]` Run Actions (mint NFT, create an auction, and so on)
+- Run Actions (mint NFT, create an auction, and so on)
 
-It works both in NodeJS and Browser.
+It works both in NodeJS and browsers.
 
-In order to get started with the Metaplex JS library, you'll need to install it and have a Solana wallet to work with.
+## Stability
+
+[Stability 1 - Experimental](/stability)
+
+This project is in development. **All** interfaces are _very likely_ to change very frequently. Please use caution when making use of this library. Bugs or behavior changes may surprise users when Experimental API modifications occur.
+
+### Getting started
+
+In order to get started with the Metaplex JS SDK, you'll need to install it and have a Solana wallet to work with.
 
 ### Installation
 
@@ -84,7 +92,7 @@ For the fields that match the on-chain metadata, on-chain information has priori
 
 - `pubkey` - Account public key.
 - `info` -  Information describing an account as in **@solana/web3.js** [AccountInfo](https://solana-labs.github.io/solana-web3.js/modules.html#AccountInfo).
-- `data` - Metadata program related data as described in [Token Metadata Standard](../../../nft-standard.md).
+- `data` - Metadata program related data as described in [Token Metadata Standard](../../nft-standard.md).
 
 ### How to retrieve data by other programs?
 
