@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 unlisted: true
-slug: /
+slug: /products
 ---
 
 # Metaplex Products
