@@ -6,7 +6,7 @@ sidebar_label: "1. Prepare NFT Assets"
 
 To mint NFTs, your Candy Machine needs to be loaded up with your project's artwork and metadata.
 
-The artwork is generally a collection of `.png` files and the metadata is a series of `.json` files that correspond 1:1 with each image in your collection.
+The artwork is generally a collection of `.png` files and the metadata is a series of `.json` files that correspond to 1:1 with each image in your collection.
 
 Many projects choose to generate their artwork and metadata. This approach is powerful, but also advanced.
 
@@ -25,7 +25,7 @@ A two item collection would contain four files.
 The content of the image files reflect the artwork you would like to display.
 The content of the metadata files describe each of these pieces of artwork using the schema defined in the [Token Metadata Standard](../nft-standard.md).
 
-Theses files are typically grouped into a single folder, usually named `assets`, but that is not a hard requirement. Grouping them into a single folder simplifies next steps and is highly encouraged.
+These files are typically grouped into a single folder, usually named `assets`, but that is not a hard requirement. Grouping them into a single folder simplifies next steps and is highly encouraged.
 
 Larger collections follow these same conventions. For example, a 10k profile picture drop would look like this:
 
