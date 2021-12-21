@@ -56,24 +56,29 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
   padding: 1rem;
   line-height: 1.5;
 }
+
 .api_stability a {
   color: black;
   text-decoration: underline;
 }
+
 .api_stability_0 {
   background-color: rgb(199, 43, 43);
 }
+
 .api_stability_1 {
   background-color: #ca5010;
 }
+
 .api_stability_2 {
   background-color: #5a8148;
 }
+
 .api_stability_3 {
   background-color: #4550dd;
 }
 
-html[data-theme='light'] .DocSearch {
+html[data-theme="light"] .DocSearch {
   /* --docsearch-primary-color: var(--ifm-color-primary); */
   /* --docsearch-text-color: var(--ifm-font-color-base); */
   --docsearch-muted-color: var(--ifm-color-secondary-darkest);
@@ -91,7 +96,7 @@ html[data-theme='light'] .DocSearch {
   --docsearch-footer-background: var(--ifm-color-white);
 }
 
-html[data-theme='dark'] .DocSearch {
+html[data-theme="dark"] .DocSearch {
   --docsearch-text-color: var(--ifm-font-color-base);
   --docsearch-muted-color: var(--ifm-color-secondary-darkest);
   --docsearch-container-background: rgba(47, 55, 69, 0.7);
