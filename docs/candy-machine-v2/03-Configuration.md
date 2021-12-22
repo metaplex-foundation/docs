@@ -56,8 +56,8 @@ A minimal Candy Machine config settings looks like this:
 ```json
 {
     "price": 1.0,
- 	"number": 10000,
- 	"gatekeeper": null,
+    "number": 10,
+    "gatekeeper": null,
     "solTreasuryAccount": "<YOUR WALLET ADDRESS>",
     "splTokenAccount": null,
     "splToken": null,
@@ -65,7 +65,7 @@ A minimal Candy Machine config settings looks like this:
     "endSettings": null,
     "whitelistMintSettings": null,
     "hiddenSettings": null,
-    "storage": "arweave-sol",
+    "storage": "arweave",
     "ipfsInfuraProjectId": null,
     "ipfsInfuraSecret": null,
     "awsS3Bucket": null,
@@ -85,6 +85,8 @@ The settings that are specified in this example are:
 - noMutable
 
 If this satisfies the requirement for your project, save these settings to a file (e.g., `config.json`) and you are ready to start uploading your items and create a Candy Machine. Below we will discuss other configuration examples that represent specific use-cases. These examples will use the settings above as a starting point.
+
+> It is important that the `number` property value matches the number of items in your Candy Machine.
 
 ## Captcha Settings (Gateway)
 

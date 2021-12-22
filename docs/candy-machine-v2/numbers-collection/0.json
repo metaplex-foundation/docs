@@ -11,7 +11,7 @@
         {"trait_type": "Layer-4", "value": "1"}
     ],
     "properties": {
-        "creators": [{"address": "N4f6zftYsuu4yT7icsjLwh4i6pB1zvvKbseHj2NmSQw", "share": 100}],
+        "creators": [{"address": "6j4nNrozTJkk1zatiXHezSLZArnRUq3WkGKHACThXGpZ", "share": 100}],
         "files": [{"uri": "0.png", "type": "image/png"}]
     },
     "collection": {"name": "numbers", "family": "numbers"}

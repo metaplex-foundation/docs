@@ -65,7 +65,7 @@ You can check your wallet address:
 
 ```bash
 $ solana address
-N4f6zftYsuu4yT7icsjLwh4i6pB1zvvKbseHj2NmSQw
+6j4nNrozTJkk1zatiXHezSLZArnRUq3WkGKHACThXGpZ
 ```
 
 and your balance:
@@ -96,7 +96,7 @@ keypair file itself, which is stored as insecure plain text
 
 BIP39 Passphrase (empty for none): 
 
-Wrote new keypair to /Users/febo/.config/solana/test.json
+Wrote new keypair to /Users/febo/.config/solana/devnet.json
 =======================================================================
 pubkey: 6j4nNrozTJkk1zatiXHezSLZArnRUq3WkGKHACThXGpZ
 =======================================================================
