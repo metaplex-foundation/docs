@@ -100,7 +100,7 @@ While the unpredictable mint index provides some protection against bots, bots a
 ```
 This will enable a captcha challenge once the mint button is clicked - only after passing the captcha you will be allowed to mint.
 
-When you use a captcha, you will not be able to mint from the CLI command `mint_one_token`. If you want to pre-mint from a `CMv2` and are planning to use a captcha, you should set the `goLiveDate` to `null` and turn captcha (temporarilly) off. This will allow you to mint from the command line, but only **you** as the `CMv2` authority. Once you complete the pre-mint, turn captch on and set the correct `goLiveDate`.
+When you use a captcha, you will not be able to mint from the CLI command `mint_one_token`. If you want to pre-mint from a `CMv2` and are planning to use a captcha, you should set the `goLiveDate` to `null` and turn captcha (temporarily) off. This will allow you to mint from the command line, but only **you** as the `CMv2` authority. Once you complete the pre-mint, turn captch on and set the correct `goLiveDate`.
 
 :::info
 If your Candy Machine is **live** and is has **no captcha**, it is open to bots attacks. The unpredictable mint index only prevents knowing which item to mint, but bots can still snipe large volume of items.
@@ -108,7 +108,7 @@ If your Candy Machine is **live** and is has **no captcha**, it is open to bots 
 
 ## Hidden Settings
 
-The hidden settings serve two purposes. It allows the creation of larger drops (20k+), since the metadata is not stored on-chain. In turn, this also allows the creation of hide-and-revel drops, where users discover which item(s) they minted after the mint is complete.
+Hidden settings serve two purposes. First, it allows the creation of larger drops (20k+), since the metadata is not stored on-chain. In turn, this also allows the creation of hide-and-revel drops, where users discover which item(s) they minted after the mint is complete.
 
 To enable hidden settings, you need to provide the details for the *hiddenSettings* in your `config.json`:
 
@@ -123,7 +123,7 @@ Once hidden settings are enabled, every mint will have the same URI and the name
 
 Since the metadata is not on-chain, it is possible to create very large drops. The only caveat is that there is a need for an off-chain process to update the metadata for each item. This is important otherwise all items will have the same metadata.
 
-### End Settigns
+### End Settings
 
 End Settings provides a mechanism to stop the mint if a certain condition is met without interaction. There are two conditions that can be specified.
 
@@ -146,7 +146,7 @@ Stop a mint after a certain amount of item have been minted (e.g., 10 items mint
 
 ## Whitelist Settings
 
-Whitelist settings provide a variety of different use cases and revolve on the idea of using custom SPL tokens to offer special rights to token holders - the way the SPL token is distributed is up to you. We will discuss a few scenarios below.
+Whitelist settings provide a variety of different use cases and revolve around the idea of using custom SPL tokens to offer special rights to token holders - how said SPL token is distributed is up to you. We will discuss a few scenarios below.
 
 > In all the examples below, you will need to change the `mint` settings address `"7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf"` with the mint address of your SPL token.
 
@@ -161,7 +161,7 @@ Whitelist settings provide a variety of different use cases and revolve on the i
 }
 ```
 
-#### Creating a whitelist for presale, burning the whitelist token each time and gives users a 0.5 SOL price tag instead. Once the sales begin (i.e., everyone can mint), the whitelist gets you only the discount.
+#### Creating a whitelist for presale, burning the whitelist token each time and provides users with a 0.5 SOL price tag instead. Once the sales begin (i.e., everyone can mint), the whitelist gets you only the discount.
 
 ```json
 "whitelistMintSettings": {
