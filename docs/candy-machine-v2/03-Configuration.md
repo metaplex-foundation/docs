@@ -150,60 +150,60 @@ Whitelist settings provide a variety of different use cases and revolve around t
 
 > In all the examples below, you will need to change the `mint` settings address `"7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf"` with the mint address of your SPL token.
 
-#### Creating a whitelist **only** for presale and burning the whitelist token each time. Once the sales begin, whitelist do not have any privileges.
+- Creating a whitelist **only** for presale and burning the whitelist token each time. Once the sales begin, whitelist do not have any privileges.
 
-```json
-"whitelistMintSettings": {
-    "mode" : { "burnEveryTime": true },
-    "mint" : "7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf",
-    "presale" : true,
-    "discountPrice" : null
-}
-```
+    ```json
+    "whitelistMintSettings": {
+        "mode" : { "burnEveryTime": true },
+        "mint" : "7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf",
+        "presale" : true,
+        "discountPrice" : null
+    }
+    ```
 
-#### Creating a whitelist for presale, burning the whitelist token each time and provides users with a 0.5 SOL price tag instead. Once the sales begin (i.e., everyone can mint), the whitelist gets you only the discount.
+- Creating a whitelist for presale, burning the whitelist token each time and provides users with a 0.5 SOL price tag instead. Once the sales begin (i.e., everyone can mint), the whitelist gets you only the discount.
 
-```json
-"whitelistMintSettings": {
-    "mode" : { "burnEveryTime": true },
-    "mint" : "7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf",
-    "presale" : true,
-    "discountPrice" : 0.5
-}
-```
+    ```json
+    "whitelistMintSettings": {
+        "mode" : { "burnEveryTime": true },
+        "mint" : "7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf",
+        "presale" : true,
+        "discountPrice" : 0.5
+    }
+    ```
 
-#### Creating a whitelist for presale, not burning the whitelist token (you will be able to reuse it) and gives users a 0.5 SOL price tag instead. Once the sales begin (i.e., everyone can mint), the whitelist gets you only the discount.
+- Creating a whitelist for presale, not burning the whitelist token (you will be able to reuse it) and gives users a 0.5 SOL price tag instead. Once the sales begin (i.e., everyone can mint), the whitelist gets you only the discount.
 
-```json
-"whitelistMintSettings": {
-    "mode" : { "neverBurn": true },
-    "mint" : "7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf",
-    "presale" : true,
-    "discountPrice" : 0.5
-}
-```
+    ```json
+    "whitelistMintSettings": {
+        "mode" : { "neverBurn": true },
+        "mint" : "7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf",
+        "presale" : true,
+        "discountPrice" : 0.5
+    }
+    ```
 
-#### Creating a whitelist, not burning the whitelist token (you will be able to reuse it) and gives users a 0.5 SOL price tag instead - i.e., the whitelist **only** gets you the discount.
+- Creating a whitelist, not burning the whitelist token (you will be able to reuse it) and gives users a 0.5 SOL price tag instead - i.e., the whitelist **only** gets you the discount.
 
-```json
-"whitelistMintSettings": {
-    "mode" : { "neverBurn": true },
-    "mint" : "7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf",
-    "presale" : false,
-    "discountPrice" : 0.5
-}
-```
+    ```json
+    "whitelistMintSettings": {
+        "mode" : { "neverBurn": true },
+        "mint" : "7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf",
+        "presale" : false,
+        "discountPrice" : 0.5
+    }
+    ```
 
-#### Creating a whitelist, burning the whitelist token each time, running the white list during the sale. This in effect restrict any user without the whitelist token from minting at all - this is why `presale` is set to `false` and `discount` set to `null`. The only purpose of the whitelist is to restrict the mint.
+- Creating a whitelist, burning the whitelist token each time, running the white list during the sale. This in effect restrict any user without the whitelist token from minting at all - this is why `presale` is set to `false` and `discountPrice` set to `null`. The only purpose of the whitelist is to restrict the mint.
 
-```json
-"whitelistMintSettings": {
-    "mode" : { "burnEveryTime": true },
-    "mint" : "7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf",
-    "presale" : false,
-    "discountPrice" : null
-}
-```
+    ```json
+    "whitelistMintSettings": {
+        "mode" : { "burnEveryTime": true },
+        "mint" : "7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf",
+        "presale" : false,
+        "discountPrice" : null
+    }
+    ```
 
 ## Finishing up
 
