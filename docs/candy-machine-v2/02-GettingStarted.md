@@ -2,7 +2,7 @@
 
 Before we can create a Candy Machine, you will need to install and operate a handful of developer tools.
 
-## Tooling required
+## Tooling required
 
 You will need recent version of the following tools:
 
@@ -54,7 +54,7 @@ $ ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts --version
 
 ## Solana Wallet
 
-The Candy Machine operates on the Solana blockchain. You will need a wallet with funds to create and deply a Candy Machine. You can create and use a wallet using the [Solana Tool Suite](https://docs.solana.com/cli/install-solana-cli-tools). This guide will assume that you are using the Solana CLI commands:
+The Candy Machine operates on the Solana blockchain. You will need a wallet with funds to create and deploy a Candy Machine. You can create and use a wallet using the [Solana Tool Suite](https://docs.solana.com/cli/install-solana-cli-tools). This guide will assume that you are using the Solana CLI commands:
 
 ```bash
 $ solana --version
@@ -76,12 +76,12 @@ $ solana balance
 ```
 
 :::info
-We highly recommend trying to first deploy a Candy Machine in Solana `devnet`, before moving to the `mainnet-beta` environment. This way you can freely test different settings without having to move SOL to your wallet.
+We highly recommend trying to first deploy a Candy Machine on Solana `devnet`, before moving to the `mainnet-beta` environment. This way you can freely test different settings without having to move SOL to your wallet.
 :::
 
 ### Setting up a `devnet` wallet (for testing)
 
-The steps described here will create a wallet to be used on the `devnet`. In normal circumstances you would redact your mnemonic, store it somewhere safe and take advantage of the `--outfile` flag.
+The steps described here will create a wallet to be used in the Solana `devnet` environment. In normal circumstances you would redact your mnemonic, store it somewhere safe and take advantage of the `--outfile` flag.
 
 To create a new wallet, we will use the `solana-keygen` commnand:
 

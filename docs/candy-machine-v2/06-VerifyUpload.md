@@ -1,6 +1,6 @@
-Verify Upload
+# Verify Upload
 
-> We strongly recommend not to skip this step.
+> We strongly recommend you do not skip this step.
 
 The Candy Machine provides a command to verify if the metadata URI on chain has been successfully uploaded.
 
@@ -30,10 +30,10 @@ uploaded (10) out of (10)
 ready to deploy!
 ```
 
-If any of the URI do not match the information on the chain, you will get an error:
+If any of the URI entries do not match the information on the chain, you will get an error:
 
 ```
 Error: not all NFTs checked out. check out logs above for details
 ```
 
-In this case, you will need to re-run the upload command. Only after the verify command succeed you should make your Candy Machine live.
+In this case, you will need to re-run the upload command. Only after the verify command succeeds should you make your Candy Machine live.

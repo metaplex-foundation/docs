@@ -45,7 +45,7 @@ ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts mint_multiple_tok
     --number 2
 ```
 
-If successful, the output will be similar to:
+If successful, the output will be similar to following output:
 
 ```
 Minting 2 tokens...
