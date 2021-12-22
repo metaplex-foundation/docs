@@ -1,6 +1,6 @@
 # Update the Candy Machine
 
-**Any** consiguration setting can be updated in the `CMv2` with a single command.
+**Any** configuration setting can be updated in the `CMv2` with a single command.
 
 :::info
 You need to be careful when updating a live Candy Machine, since setting a wrong value will immediately affect its functionality.
@@ -60,7 +60,7 @@ ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts update_candy_mach
     --new-authority 7idYCnwadSG8quKNr2qqtt2WVTGy8xwTF5uFvAuHyY1g
 ```
 
-The command above transfers the authority of the Candy Machine to the wallet `7idYCnwadSG8quKNr2qqtt2WVTGy8xwTF5uFvAuHyY1g`.
+The command above transfers the authority of the Candy Machine to the wallet `7idYCnwadSG8quKNr2qqtt2WVTGy8xwTF5uFvAuHyY1g`. After this point, only the owner of that wallet can operate the Candy Machine.
 
 :::info
 This operation is irreversible, once you change the authority of the Candy Machine, you will loose the right to operate it.

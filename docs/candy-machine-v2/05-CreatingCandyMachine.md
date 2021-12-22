@@ -50,13 +50,13 @@ ended at: 2021-12-22T16:44:38.446Z. time taken: 00:01:11
 ```
 Any execution that does not complete an upload successfully will have an output `Successful = false`. In this case, re-run the upload command until a successful execution is achieved.
 
-The command also outputs the Candy Machine PublicKey, which you can verify on the [Solana Explorer](https://explorer.solana.com):
-
-![Solana Explorer](./solana-explorer.png)
-
 :::info
 It is common to receive `signatureUnsubscribe error: Invalid subscription id.` messages. This is not an error that affects the upload.
 :::
+
+The command also outputs the Candy Machine PublicKey, which you can verify on the [Solana Explorer](https://explorer.solana.com):
+
+![Solana Explorer](./solana-explorer.png)
 
 :::info
 The example uses the `"arweave"` storage option as we are running it on the `devnet`. When running on `mainnet-beta`, check other storage options that better suit your project/needs.
