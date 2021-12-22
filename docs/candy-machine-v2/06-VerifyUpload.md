@@ -12,7 +12,7 @@ ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts verify \
     -c example
 ```
 
-The command will that each entry of the cache matches the URI stored on-chain. A successful execution will generated an output similar to:
+The command will check that each entry in the cache file matches the URI stored on-chain. A successful execution will generated an output similar to:
 
 ```
 Key size 10

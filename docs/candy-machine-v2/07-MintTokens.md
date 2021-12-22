@@ -2,7 +2,7 @@
 
 At this point, your Candy Machine is ready to mint tokens. Depending on your configurations, it is either restricted to whitelist users or the `goLiveDate` has not been reached yet. In all cases, the owner (authority) of the Candy Machine - i.e., the wallet that created the Candy Machine - can mint tokens.
 
-> The only exception is when captcha is enabled. In this case, it is not possible to mint tokens from the command line. If you would like to mint tokens, update the `goLiveDate` to `null` and disable the captcha settings.
+> The only exception is when captcha is enabled. In this case, it is not possible to mint tokens from the command line. If you would like to mint tokens, update the `goLiveDate` to `null` and temporarily disable the captcha settings.
 
 ## Mint One Token
 
