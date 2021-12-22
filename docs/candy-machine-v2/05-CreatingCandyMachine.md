@@ -1,6 +1,6 @@
 # Creating the Candy Machine
 
-Once you have your collection prepared, the next step is to upload your assets and create a Candy Machine. This step is complete by a single command from the Candy Machine CLI.
+Once you have your collection prepared, the next step is to upload your assets and create a Candy Machine. This step is completed by a single command via the Candy Machine CLI.
 
 Before you can proceed, you need to check that:
 
@@ -19,9 +19,9 @@ ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts upload \
     ./assets
 ```
 
-In this command we are specifying that we will run the upload on the `devnet` environment (`-e` option), we will use the wallet keypair `~/.config/solana/devnet.json` (`-k` option), the Candy Machine configuration file `config.json` (`-cp` option), the cache file suffix `example` (`-c` option) and upload our assets from the folder `./assets`.
+In this command we are specifying that we will run the upload in the `devnet` environment (`-e` option), we will use the wallet keypair `~/.config/solana/devnet.json` (`-k` option), the Candy Machine configuration file `config.json` (`-cp` option), the cache file suffix `example` (`-c` option) and upload our assets from the folder `./assets`.
 
-Depending of the size of the collection - number of items and/or size of the images - this command might fail multiple times. This should not be a problem since when you execute the command again, it will resume from the point it stopped in the last execution.
+Depending of the size of the collection - number of items and/or size of the images - this command has the potential to fail multiple times but should not be a problem when executed again, it will resume from the point it stopped in the previous execution.
 
 Below is a sample output of a successfull upload and Candy Machine creation:
 
@@ -48,9 +48,9 @@ Writing indices 0-9
 Done. Successful = true.
 ended at: 2021-12-22T16:44:38.446Z. time taken: 00:01:11
 ```
-Any execution that does not complete successfully the upload will have an output `Successful = false`. In this case, re-run the upload command until a successful execution is achieved.
+Any execution that does not complete an upload successfully will have an output `Successful = false`. In this case, re-run the upload command until a successful execution is achieved.
 
-The command also outputs the Candy Machine PublicKey, which you can verify it on [Solana Explorer](https://explorer.solana.com):
+The command also outputs the Candy Machine PublicKey, which you can verify on the [Solana Explorer](https://explorer.solana.com):
 
 ![Solana Explorer](./solana-explorer.png)
 
@@ -59,5 +59,5 @@ It is common to receive `signatureUnsubscribe error: Invalid subscription id.` m
 :::
 
 :::info
-The example uses the `"arweave"` storage option as we are running it on the `devnet`. When running on the `mainnet-beta`, check other storage options that better suit your project.
+The example uses the `"arweave"` storage option as we are running it on the `devnet`. When running on `mainnet-beta`, check other storage options that better suit your project/needs.
 :::
