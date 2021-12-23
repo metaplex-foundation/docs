@@ -35,7 +35,7 @@ Below are two simple examples of items in this collection:
 
 #### • Image: `0.png`
 
-<img src="./numbers-collection/0.png" width="300" />
+![0.png](0.png)
 
 #### • Metadata: `0.json`
 
@@ -62,7 +62,7 @@ Below are two simple examples of items in this collection:
 
 #### • Image: `9.png`
 
-<img src="./numbers-collection/9.png" width="300" />
+![9.png](9.png)
 
 #### • Metadata: `9.json`
 
