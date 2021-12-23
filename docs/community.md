@@ -61,6 +61,7 @@ _In no particular order_
 - [Figment](https://figment.io/datahub/solana/)
 - [Blockdaemon](https://blockdaemon.com/marketplace/solana/)
 - [Syndica](https://syndica.io/)
+- [QuickNode](https://quicknode.com/)
 
 ### Caches
 
