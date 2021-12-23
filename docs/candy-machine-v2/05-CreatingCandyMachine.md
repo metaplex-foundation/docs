@@ -21,9 +21,9 @@ ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts upload \
 
 In this command we are specifying that we will run the upload in the `devnet` environment (`-e` option), we will use the wallet keypair `~/.config/solana/devnet.json` (`-k` option), the Candy Machine configuration file `config.json` (`-cp` option), the cache file suffix `example` (`-c` option) and upload our assets from the folder `./assets`.
 
-Depending of the size of the collection - number of items and/or size of the images - this command has the potential to fail multiple times but should not be a problem when executed again, it will resume from the point it stopped in the previous execution.
+Depending on the size of the collection - number of items and/or size of the images - this command has the potential to fail multiple times but should not be a problem when executed again, it will resume from the point it stopped in the previous execution.
 
-Below is a sample output of a successfull upload and Candy Machine creation:
+Below is a sample output of a successful upload and Candy Machine creation:
 
 ```
 WARNING: The "arweave" storage option will be going away soon. Please migrate to arweave-bundle or arweave-sol for mainnet.

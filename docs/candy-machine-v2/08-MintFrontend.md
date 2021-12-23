@@ -2,7 +2,7 @@
 
 While the Candy Machine is ready to mint, in most cases you will want to provide a front end experience to allow your community the chance to mint, too.
 
-You can use the [Fair Launch Protocol](./fair-launch/introduction) front end experience, which is already in the Metaplex repository and downloaded when you executed the `git clone` command.
+You can use the [Fair Launch Protocol](../fair-launch/introduction) front end experience, which is already in the Metaplex repository and downloaded when you executed the `git clone` command.
 
 ## Setting up
 
