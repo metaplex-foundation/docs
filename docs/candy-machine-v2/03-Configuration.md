@@ -102,13 +102,13 @@ This will enable a captcha challenge once the mint button is clicked - only afte
 
 When you use a captcha, you will not be able to mint from the CLI command `mint_one_token`. If you want to pre-mint from a `CMv2` and are planning to use a captcha, you should set the `goLiveDate` to `null` and turn captcha (temporarily) off. This will allow you to mint from the command line, but only **you** as the `CMv2` authority. Once you complete the pre-mint, turn captch on and set the correct `goLiveDate`.
 
-:::info
-If your Candy Machine is **live** and is has **no captcha**, it is open to bots attacks. The unpredictable mint index only prevents knowing which item to mint, but bots can still snipe large volume of items.
+:::warning
+If your Candy Machine is **live** and is has **no captcha**, it is open to bots attacks. The unpredictable mint index only prevents knowing which item to mint, but bots can still snipe a large volume of items.
 :::
 
 ## Hidden Settings
 
-Hidden settings serve two purposes. First, it allows the creation of larger drops (20k+), since the metadata is not stored on-chain. In turn, this also allows the creation of hide-and-revel drops, where users discover which item(s) they minted after the mint is complete.
+Hidden settings serve two purposes. First, it allows the creation of larger drops (20k+), since the metadata is not stored on-chain. In turn, this also allows the creation of hide-and-reveal drops, where users discover which item(s) they minted after the mint is complete.
 
 To enable hidden settings, you need to provide the details for the *hiddenSettings* in your `config.json`:
 
