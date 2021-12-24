@@ -77,6 +77,8 @@ $ solana balance
 
 :::info
 We highly recommend trying to first deploy a Candy Machine on Solana `devnet`, before moving to the `mainnet-beta` environment. This way you can freely test different settings without having to move SOL to your wallet.
+
+In this guide we will use `devnet`, although all commands presented will work in a similar fashion once you are in `mainnet-beta`.
 :::
 
 ### Setting up a `devnet` wallet (for testing)
