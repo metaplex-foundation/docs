@@ -8,7 +8,7 @@ You need to be careful when updating a live Candy Machine, since setting a wrong
 
 ## Update Settings
 
-You will need to prepare an updated config file with the updated setting values. For example, if we want to change the mint price from the original value of `1` to `0.5` SOL, we would modify our `config.json` file to:
+You will need to prepare a config file with the updated setting values. For example, if we want to change the mint price from the original value of `1` to `0.5` SOL and maintain all other values unaltered, we would modify our `config.json` file to:
 
 ```json
 {
@@ -56,7 +56,7 @@ ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts update_candy_mach
     -e devnet \
     -k ~/.config/solana/devnet.json \
     -cp config.json \
-    -c example
+    -c example \
     --new-authority 7idYCnwadSG8quKNr2qqtt2WVTGy8xwTF5uFvAuHyY1g
 ```
 

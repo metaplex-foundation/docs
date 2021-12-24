@@ -35,7 +35,7 @@ The table below provides an overview of the settings available:
 | storage               |                   |                        | Storage type to upload images and metadata |
 |                       |                   | “arweave-sol”          | Uploads to arweave and payment are made in SOL (only works in mainnet) |
 |                       |                   | “arweave-bundle”       | Uploads to arweave and payment are made in AR (only work in mainnet and requires an Arweave wallet) |
-|                       |                   | “arweave”              | Uploads to arweave (only available on devnet) |
+|                       |                   | “arweave”              | Uploads to arweave |
 |                       |                   | “ipfs”                 | Uploads to IPFS (must specify either Infura Project ID or Secret Key) |
 |                       |                   | “aws”                  | Uploads to AWS (must specify AWS Bucket name) |
 | ipfsInfuraProjectId   |                   | String                 | Infura Project ID |
@@ -46,7 +46,7 @@ The table below provides an overview of the settings available:
 | noMutable             |                   | boolean                | Indicated whether each mint is mutable or not |
 
 :::info
-Note: Any setting that is not used must be set to null to avoid errors from the CLI.
+Any setting that is not used must be set to null to avoid errors from the CLI.
 :::
 
 ## Minimal Configuration
@@ -86,7 +86,7 @@ The settings that are specified in this example are:
 
 If this satisfies the requirement for your project, save these settings to a file (e.g., `config.json`) and you are ready to start uploading your items and create a Candy Machine. Below we will discuss other configuration examples that represent specific use-cases. These examples will use the settings above as a starting point.
 
-> It is important that the `number` property value matches the number of items in your Candy Machine.
+> It is important that the `number` setting value matches the number of items in your Candy Machine.
 
 ## Captcha Settings (Gateway)
 
@@ -123,7 +123,7 @@ Once hidden settings are enabled, every mint will have the same URI and the name
 
 Since the metadata is not on-chain, it is possible to create very large drops. The only caveat is that there is a need for an off-chain process to update the metadata for each item. This is important otherwise all items will have the same metadata.
 
-### End Settings
+## End Settings
 
 End Settings provides a mechanism to stop the mint if a certain condition is met without interaction. There are two conditions that can be specified.
 

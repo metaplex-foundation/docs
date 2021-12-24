@@ -15,7 +15,7 @@ ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts upload \
     -e devnet \
     -k ~/.config/solana/devnet.json \
     -cp config.json \
-    -c example 
+    -c example \
     ./assets
 ```
 
@@ -52,6 +52,8 @@ Any execution that does not complete an upload successfully will have an output 
 
 :::info
 It is common to receive `signatureUnsubscribe error: Invalid subscription id.` messages. This is not an error that affects the upload.
+
+The upload is a network-intense command, in particular when dealing with larger collections. We highly recommend using a custom RPC, which can be specified by the switch `--rpc-url <string>` in the `upload` command.
 :::
 
 The command also outputs the Candy Machine PublicKey, which you can verify on the [Solana Explorer](https://explorer.solana.com):
