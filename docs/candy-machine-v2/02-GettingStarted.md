@@ -17,7 +17,7 @@ Make sure you have recent versions of these tools:
 $ git version
 git version 2.32.0
 
-// The latest LTS version of node is recommended
+# The latest LTS version of node is recommended
 $ node --version
 v16.13.0 
 
