@@ -17,8 +17,9 @@ Make sure you have recent versions of these tools:
 $ git version
 git version 2.32.0
 
+# The latest LTS version of node is recommended
 $ node --version
-v17.2.0
+v16.13.0 
 
 $ yarn --version
 1.22.17
