@@ -8,7 +8,7 @@ sidebar_position: 1
 
 Follow the standards defined in this document to ensure your NFTs will be correctly displayed in most wallets and to allow usage of all functionalities related to NFTs.
 
-## What is the different between a Fungible Token with Metadata and an NFT
+## What is the difference between a Fungible Token with Metadata and an NFT?
 A token must pass 4 out of the 5 following checks to qualify as an nft.
 
 1. It must be a spl token (Required)
