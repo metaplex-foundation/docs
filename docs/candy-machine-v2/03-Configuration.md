@@ -1,3 +1,6 @@
+---
+sidebar_label: "2. Configuration"
+---
 # Configuration
 
 The configuration in `CMv2` is now specified in a single JSON file. This allows you to save and reuse the configuration across multiple drops. Additionally, there is a single account on-chain that holds all the configuration of a Candy Machine and the values can be updated at any point. The way the Candy Machine operates depends on the settings used, and therefore it is the **most important part in setting up your Candy Machine**. It is crucial to understand how the settings work to decide which ones to use for your project.

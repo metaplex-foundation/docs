@@ -4,6 +4,10 @@ sidebar_label: "6. Update Candy Machine"
 
 # Update Candy Machine
 
+:::warning
+The Candy Machine v1 is being deprecated on January 5th, 2022. Creating a new Candy Machine v1 will be disabled. Please use the [Candy Machine v2](../candy-machine-v2/introduction) instead.
+:::
+
 To update a Candy Machine, type
 ```cmd
 ts-node ~/metaplex-foundation/metaplex/js/packages/cli/src/candy-machine-cli.ts \

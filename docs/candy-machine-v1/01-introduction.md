@@ -1,5 +1,9 @@
 # Introduction
 
+:::warning
+The Candy Machine v1 is being deprecated on January 5th, 2022. Creating a new Candy Machine v1 will be disabled. Please use the [Candy Machine v2](../candy-machine-v2/introduction) instead.
+:::
+
 After addressing the [prerequisites](#prerequisites), documented below, the general process for creating and operating a Candy Machine is:
 
 1. [Prepare your NFT Assets](./prepare-assets)

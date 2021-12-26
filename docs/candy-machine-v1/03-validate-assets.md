@@ -4,6 +4,10 @@ sidebar_label: "2. Validate NFT Assets"
 
 # Validate NFT Assets
 
+:::warning
+The Candy Machine v1 is being deprecated on January 5th, 2022. Creating a new Candy Machine v1 will be disabled. Please use the [Candy Machine v2](../candy-machine-v2/introduction) instead.
+:::
+
 :::info
 Don't skip this section. A lot of bugs happen because of invalid data.
 :::

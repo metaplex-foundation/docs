@@ -1,3 +1,6 @@
+---
+sidebar_label: "7. Minting Website"
+---
 # A Front End Experience for Minting
 
 While the Candy Machine is ready to mint, in most cases you will want to provide a front end experience to allow your community the chance to mint, too.

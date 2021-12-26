@@ -4,6 +4,10 @@ sidebar_label: "3. Upload NFT Assets"
 
 # Upload NFT Assets
 
+:::warning
+The Candy Machine v1 is being deprecated on January 5th, 2022. Creating a new Candy Machine v1 will be disabled. Please use the [Candy Machine v2](../candy-machine-v2/introduction) instead.
+:::
+
 This section assumes you have completed the [prerequisites identified in the introduction](introduction#prerequisites). It also works with the [example collection](prepare-assets#example-two-item-collection) defined in the previous section, downloadable as [simple-collection.zip](./simple-collection.zip).
 
 <!-- 1. Download and unzip [simple-collection.zip](./simple-collection.zip)

@@ -1,3 +1,6 @@
+---
+sidebar_label: "7. Update the Candy Machine"
+---
 # Update the Candy Machine
 
 **Any** configuration setting can be updated in the `CMv2` with a single command.

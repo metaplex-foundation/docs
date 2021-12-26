@@ -3,6 +3,11 @@ sidebar_label: "7. Mint Tokens"
 ---
 
 # Mint Tokens
+
+:::warning
+The Candy Machine v1 is being deprecated on January 5th, 2022. Creating a new Candy Machine v1 will be disabled. Please use the [Candy Machine v2](../candy-machine-v2/introduction) instead.
+:::
+
 :::info
 For now, only the owner of the Candy Machine can mint tokens
 :::
