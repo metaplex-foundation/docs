@@ -4,7 +4,11 @@ sidebar_position: 10
 
 # Burn Token
 
-You can also get rid of NFTs (or any token) by using the [`spl-token burn`](https://spl.solana.com/token#burning) command available in your terminal after installing Solana.
+You can also get rid of NFTs (or any token) by using the [`spl-token burn`](https://spl.solana.com/token#burning) command available in your terminal after installing Solana. 
+
+:::info
+This does not remove the token mint acount or delete the metadata or master edition/edition accounts. It only deletes the token stored at your token account so it will not show up in your wallet anymore. 
+:::
 
 First, using the `spl-token accounts` command, list the account data in your wallet. You'll see your NFT (in this case `9w9Qe8GxkrFnSJYKfQMJug9k8ufpfzxW6o7kXTFKpXrK`) as well as it's token `Account` address.
 
