@@ -1,3 +1,6 @@
+---
+sidebar_label: "3. Preparing your Assets"
+---
 # Preparing your Assets
 
 The Candy Machine is a distribution program and in order to use it to mint NFTs, it needs to be loaded up with your project's artwork and metadata.
@@ -98,5 +101,7 @@ Notice that the difference in the metadata between each image is on:
 It is also important to make sure that you set royalties percentage awarded to creators (`"seller_fee_basis_points"` property) is set and each creators' wallet is listed in the `"properties.creators"` property.
 
 :::info
+
 You can download the complete [sample collection](assets.zip) for testing and experimentation. Subsequent steps in this walkthrough will assume it's the collection in use.
+
 :::

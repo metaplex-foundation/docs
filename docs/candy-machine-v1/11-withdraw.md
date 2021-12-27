@@ -3,6 +3,11 @@ sidebar_label: "10. Withdraw Funds"
 ---
 
 # Withdraw Funds
+
+:::warning
+The Candy Machine v1 is being deprecated on January 5th, 2022. Creating a new Candy Machine v1 will be disabled. Please use the [Candy Machine v2](../candy-machine-v2/introduction) instead.
+:::
+
 Candy machines rely on a special account called the config account. This account stores the big list of pointers to assets that will be minted. 
 This data is useless after the candy machine has been fully minted. You can drain this account by using the `withdraw` command.
 

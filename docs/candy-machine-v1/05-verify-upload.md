@@ -4,6 +4,10 @@ sidebar_label: "4. Verify Upload"
 
 # Verify Upload
 
+:::warning
+The Candy Machine v1 is being deprecated on January 5th, 2022. Creating a new Candy Machine v1 will be disabled. Please use the [Candy Machine v2](../candy-machine-v2/introduction) instead.
+:::
+
 To verify that the upload was successful, simply type:
 
 ```cmd

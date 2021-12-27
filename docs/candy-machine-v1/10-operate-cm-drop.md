@@ -3,6 +3,10 @@ sidebar_label: "9. Candy Machine Errors"
 ---
 # Candy Machine Errors
 
+:::warning
+The Candy Machine v1 is being deprecated on January 5th, 2022. Creating a new Candy Machine v1 will be disabled. Please use the [Candy Machine v2](../candy-machine-v2/introduction) instead.
+:::
+
 These are lists of different errors that can show while operating the candy machine.
 
 | Error      | Description |Solution|

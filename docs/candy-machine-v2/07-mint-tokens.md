@@ -1,3 +1,6 @@
+---
+sidebar_label: "6. Mint Tokens"
+---
 # Mint Tokens
 
 At this point, your Candy Machine is ready to mint tokens. Depending on your configurations, it is either restricted to whitelist users or the `goLiveDate` has not been reached yet. In all cases, the owner (authority) of the Candy Machine - i.e., the wallet that created the Candy Machine - can mint tokens.

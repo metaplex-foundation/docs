@@ -4,6 +4,10 @@ sidebar_label: "1. Prepare NFT Assets"
 
 # Prepare NFT Assets
 
+:::warning
+The Candy Machine v1 is being deprecated on January 5th, 2022. Creating a new Candy Machine v1 will be disabled. Please use the [Candy Machine v2](../candy-machine-v2/introduction) instead.
+:::
+
 To mint NFTs, your Candy Machine needs to be loaded up with your project's artwork and metadata.
 
 The artwork is generally a collection of `.png` files and the metadata is a series of `.json` files that correspond 1:1 with each image in your collection.

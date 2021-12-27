@@ -1,3 +1,6 @@
+---
+sidebar_label: "4. Creating the Candy Machine"
+---
 # Creating the Candy Machine
 
 Once you have your collection prepared, the next step is to upload your assets and create a Candy Machine. This step is completed by a single command via the Candy Machine CLI.
@@ -18,6 +21,10 @@ ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts upload \
     -c example \
     ./assets
 ```
+
+:::caution
+The upload is a network-intensive command, in particular when dealing with larger collections. We highly recommend using a custom RPC, which can be specified by the switch `--rpc-url <string>` in the `upload` command. You can find a list of custom RPC services in our [community docs](../community.md#RPC).
+:::
 
 In this command we are specifying that we will run the upload in the `devnet` environment (`-e` option), we will use the wallet keypair `~/.config/solana/devnet.json` (`-k` option), the Candy Machine configuration file `config.json` (`-cp` option), the cache file suffix `example` (`-c` option) and upload our assets from the folder `./assets`.
 
@@ -52,8 +59,6 @@ Any execution that does not complete an upload successfully will have an output 
 
 :::info
 It is common to receive `signatureUnsubscribe error: Invalid subscription id.` messages. This is not an error that affects the upload.
-
-The upload is a network-intensive command, in particular when dealing with larger collections. We highly recommend using a custom RPC, which can be specified by the switch `--rpc-url <string>` in the `upload` command. You can find a list of custom RPC services in our [community docs](../community.md#RPC).
 :::
 
 The command also outputs the Candy Machine PublicKey, which you can verify on the [Solana Explorer](https://explorer.solana.com):

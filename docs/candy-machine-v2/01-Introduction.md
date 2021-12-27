@@ -1,9 +1,11 @@
 # Introduction
 
 The second iteration of the well-known Candy Machine, a fully on-chain generative NFT distribution program, provides many improvements over its predecessor. The new version also allows you to create a whole new set of distribution scenarios and offers protection from bot attacks, while providing the same easy-to-use experience.
+:::info
 
-> Throughout this guide, we will refer to the Candy Machine v1 as `CMv1` and the newer Candy Machine v2 as `CMv2`
+ Throughout this guide, we will refer to the Candy Machine v1 as `CMv1` and the newer Candy Machine v2 as `CMv2`
 
+:::
 ## New Features
 
 - ***Unpredictable mint index:*** In the `CMv1` it is possible to estimate what item would be minted, since the mint happens in a sequential order. This created the opportunity to be able to choose which item to mint, given that all information about the items is available on-chain. Although this is not straightforward, it gives an advantage to a select few.

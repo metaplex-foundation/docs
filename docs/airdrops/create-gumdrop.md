@@ -34,7 +34,7 @@ Gumdrop creators can use either the Gumdrop CLI or the [web
 UI](https://lwus.github.io/metaplex). Additional options are available through
 the CLI. To execute the Gumdrop CLI or deploy a local version of the web UI,
 please follow the same [prerequisite steps of Candy Machine
-creation](/create-candy/introduction#prerequisites).
+creation](/candy-machine-v1/introduction#prerequisites).
 
 - The CLI can be found in the [Metaplex
   repo](https://github.com/metaplex-foundation/metaplex/) at
@@ -94,7 +94,7 @@ follows:
 
 1. Create a Candy Machine with at least as many assets as are to be distributed
    through the Gumdrop. [See instructions to create a Candy
-   Machine here](./create-candy/introduction)
+   Machine here](./candy-machine-v1/introduction)
 2. Set the Candy Machine start date to after the pre-sale ends (i.e when the
    mint should be open to all participants) or leave it None (so only
    whitelisted participants may ever mint).
