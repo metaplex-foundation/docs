@@ -24,7 +24,7 @@ ts-node ~/metaplex-foundation/metaplex/js/packages/cli/src/candy-machine-cli.ts 
 ## Mint multiple tokens
 - `--number` number of tokens
 ```
-//Forr mainnet
+//For mainnet
 ts-node ~/metaplex-foundation/metaplex/js/packages/cli/src/candy-machine-cli.ts mint_multiple_tokens -k ~/.config/solana/devnet.json --env mainnet-beta --number 2
 //For devnet
 ts-node ~/metaplex-foundation/metaplex/js/packages/cli/src/candy-machine-cli.ts mint_multiple_tokens -k ~/.config/solana/devnet.json --number 2
