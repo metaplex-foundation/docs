@@ -15,7 +15,6 @@ Minting one token can be done using the command `mint_one_token`:
 ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts mint_one_token \
     -e devnet \
     -k ~/.config/solana/devnet.json \
-    -cp config.json \
     -c example
 ```
 
@@ -43,7 +42,6 @@ You can also mint multiple tokens using the command `mint_multiple_tokens` and s
 ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts mint_multiple_tokens \
     -e devnet \
     -k ~/.config/solana/devnet.json \
-    -cp config.json \
     -c example \
     --number 2
 ```
