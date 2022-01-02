@@ -11,7 +11,6 @@ The Candy Machine provides a command to verify if the metadata URI on chain has 
 ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts verify \
     -e devnet \
     -k ~/.config/solana/devnet.json \
-    -cp config.json \
     -c example
 ```
 
