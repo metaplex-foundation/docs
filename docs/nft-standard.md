@@ -19,7 +19,7 @@ A token must pass 4 out of the 5 following checks to qualify as an nft.
 
 A fungible Token with metadata must only satisfy bullets 1,2.
 
-Explorers, Wallets and Marketplaces should ensure they have these checks in place before choosing to diplsay the token as an NFT
+Explorers, Wallets and Marketplaces should ensure they have these checks in place before choosing to display the token as an NFT
 ## Token Metadata Program
 
 The Token Metadata program provides decorator structs to a token mint. Basic information about the token is provided with the `Metadata` struct, whose account address is a Program Derived Address (PDA) with a derived key of `['metadata', metadata_program_id, mint_id]`.
