@@ -60,7 +60,7 @@ sequenceDiagram
    SPL_TOKEN_ASSOCIATED_PROGRAM->>-Client: Token Account
 ```
 
-#### Creating A Token Associated Account
+#### Creating A Token Metadata Account
 As we said above the steps we have gone through thus far are represented as one transaction on the Solana network. These are called instructions, and this is the last set of instructions before we hit the network. This step is the backbone of Metaplex. This allows us to store additional information with a Token. There are alot of variables needed to execute these set of instructions, lets go through them. In the frontend, the uris are blank and then updated after the actual upload to ARWEAVE succeeds.
 1. The Data - this is a blob of data that conforms to the [Token Metadata Standard](/nft-standard)
 2. Your Public Key 
