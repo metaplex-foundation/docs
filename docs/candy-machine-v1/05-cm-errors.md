@@ -24,6 +24,7 @@ Candy Machine v1 has been deprecated. Creating a new instance of a v1 Candy Mach
 | Token Metadata      | Description |
 | ----------- | ----------- | 
 | 0      | `InstructionUnpackError`: Failed to unpack instruction data      | 
+| 1      | `InstructionPackError`: Failed to pack instruction data      | 
 |  2  | `NotRentExempt`: Lamport balance below rent-exempt threshold        | 
 |3|`AlreadyInitialized`: Already initialized|
 |4|`Uninitialized`: Uninitialized|
