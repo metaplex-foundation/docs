@@ -9,7 +9,7 @@ Candy Machine v1 has been deprecated. Creating a new instance of Candy Machine v
 :::
 
 :::info
-For now, only the owner of the CMv1 can mint tokens
+For now, only the owner of the `CMv1` can mint tokens
 :::
 
 ## Preparation

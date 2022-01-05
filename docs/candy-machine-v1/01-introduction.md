@@ -19,4 +19,4 @@ After addressing the [prerequisites](#prerequisites), documented below, the gene
 
 :::
 
-As you are no longer able to create new CMv1s, this guide will assume you have already created one and are operating a CMv1 drop on the mainnet-beta cluster.
+As you are no longer able to create new `CMv1`s, this guide will assume you have already created one and are operating a `CMv1` drop on the mainnet-beta cluster.

@@ -8,7 +8,7 @@ sidebar_label: "1. Update Candy Machine"
 Candy Machine v1 has been deprecated. Creating a new instance of Candy Machine v1 is no longer possible. Please use [Candy Machine v2](../candy-machine-v2/introduction) instead.
 :::
 
-To update an existing CMv1, type
+To update an existing `CMv1`, type
 ```cmd
 ts-node ~/metaplex-foundation/metaplex/js/packages/cli/src/candy-machine-v1-cli.ts \
   update_candy_machine \

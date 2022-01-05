@@ -59,12 +59,12 @@ A minimal Candy Machine config settings looks like this:
 ```json
 {
     "price": 1.0,
-    "number": 10,
+    "number": 10, 
     "gatekeeper": null,
     "solTreasuryAccount": "<YOUR WALLET ADDRESS>",
     "splTokenAccount": null,
     "splToken": null,
-    "goLiveDate": "25 Dec 2021 00:00:00 GMT",
+    "goLiveDate": "25 Dec 2021 00:00:00 GMT", 
     "endSettings": null,
     "whitelistMintSettings": null,
     "hiddenSettings": null,
@@ -78,6 +78,12 @@ A minimal Candy Machine config settings looks like this:
 ```
 
 The above settings will configure a `CMv2` to operate in a similar way as a `CMv1` – although the mint order will be unpredictable. In other words, even the most simple v2 configuration provides an improvement over v1. You can view this as the minimum set of settings required to create a Candy Machine. Many projects will be using a similar set of settings, as this already provides a fully-working on-chain distribution mechanism.
+
+:::caution
+
+The `number` setting cannot be altered after you create your `CMv2`. 
+
+:::
 
 The settings that are specified in this example are:
 - price
