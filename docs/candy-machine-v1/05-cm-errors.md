@@ -4,29 +4,22 @@ sidebar_label: "4. Candy Machine Errors"
 # Candy Machine Errors
 
 :::warning
-The Candy Machine v1 is deprecated and creating a new Candy Machine v1 is disabled. Please use the [Candy Machine v2](../candy-machine-v2/introduction) instead.
+Candy Machine v1 has been deprecated. Creating a new instance of a v1 Candy Machine is no longer possible. Please use [Candy Machine v2](../candy-machine-v2/introduction).
 :::
 
-These are lists of different errors that can show while operating the candy machine.
+*Below is a list of potential errors you may encounter while operating an instance of a Candy Machine.*
 
 | Error      | Description |Solution|
 | ----------- | ----------- | ------ |
-| Enetunreach      | Conection Error       | Check or change internet connection.       |
-| Upload Loop Error   | Error keeps looping        |Revise your metadata for errors.        |
-|Unexpected token or end of JSON input|Error in the json file|Use the cli method: verify_token_metadata|
-|The term 'git' is not recognized as the name of a cmdlet|Git is not installed yet|[Install git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)|
+| Enetunreach      | Conection Error       | Check internet connection       |
+| Upload Loop Error   | Error keeps looping        |Check your metadata for errors        |
+|Unexpected token or end of JSON input|Error in the JSON file|Use the CLI method: `verify_token_metadata`|
+|The term 'git' is not recognized as the name of a cmdlet|Git is not installed |[Install git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)|
 |The arweave-sol storage option only works on mainnet. For devnet, please use either arweave, aws or ipfs||Add the ```--storage arweave``` flag at the end of the command|
-|Error: Non-base58 character|Error in the json file|Place a valid address in the json file|
+|Error: Non-base58 character|Error in your JSON file|Use a valid address in your JSON file|
+| 429      | Rate Limited by your RPC end-point       | Use a different RPC       |
+|Brackets `[]` when uploading assets    | Mulitple brackets with no content |Re-run your upload   |
 |||
-
-
-
-| Others      | Description |Solution|
-| ----------- | ----------- | ------ |
-| 429      | Rate Limtied       | Use a custom RPC       |
-|Brackets [] when uploading assets    | Mulitple brackets with no content |Rerun upload   |
-
-
 
 | Token Metadata      | Description |
 | ----------- | ----------- | 
@@ -34,8 +27,8 @@ These are lists of different errors that can show while operating the candy mach
 |  2  | `NotRentExempt`: Lamport balance below rent-exempt threshold        | 
 |3|`AlreadyInitialized`: Already initialized|
 |4|`Uninitialized`: Uninitialized|
-|5|`InvalidMetadataKey`: Metadata's key must match seed of ['metadata', program id, mint] provided|
-|6|`InvalidEditionKey`: Edition's key must match seed of ['metadata', program id, name, 'edition'] provided|
+|5|`InvalidMetadataKey`: Metadata's key must match seed of `['metadata', program id, mint]` provided|
+|6|`InvalidEditionKey`: Edition's key must match seed of `['metadata', program id, name, 'edition']` provided|
 |7|`UpdateAuthorityIncorrect`: Update Authority given does not match|
 |8|`UpdateAuthorityIsNotSigner`: Update Authority needs to be signer to update metadata|
 |9|`NotMintAuthority`: You must be the mint authority and signer on this transaction|
@@ -53,7 +46,7 @@ These are lists of different errors that can show while operating the candy mach
 |15|`EditionAlreadyMinted`: An edition can only mint one of its kind!|
 |16|`PrintingMintDecimalsShouldBeZero`: Printing mint decimals should be zero|
 |17|`OneTimePrintingAuthorizationMintDecimalsShouldBeZero`: OneTimePrintingAuthorization mint decimals should be zero|
-|18|`EditionMintDecimalsShouldBeZero`: EditionMintDecimalsShouldBeZero|
+|18|`EditionMintDecimalsShouldBeZero`: The decimal value on your Edition should be `0`|
 |19|`TokenBurnFailed`: Token burn failed|
 |1A|`TokenAccountOneTimeAuthMintMismatch`: The One Time authorization mint does not match that on the token account!|
 |1B|`DerivedKeyInvalid`: Derived key invalid|
@@ -62,7 +55,7 @@ These are lists of different errors that can show while operating the candy mach
 |1E|`TokenAccountMintMismatch`: The mint of the token account does not match the Printing mint!|
 |1F|`TokenAccountMintMismatchV2`: The mint of the token account does not match the master metadata mint!|
 |20|`NotEnoughTokens`: Not enough tokens to mint a limited edition|
-|21|`PrintingMintAuthorizationAccountMismatch`: The mint on your authorization token holding account does not match your Printing mint!|
+|21|`PrintingMintAuthorizationAccountMismatch`: The mint on your authorization token holding account does not match your printing mint!|
 |22|`AuthorizationTokenAccountOwnerMismatch`: The authorization token account has a different owner than the update authority for the master edition!|
 |23|`Disabled`: This feature is currently disabled.|
 |24|`CreatorsTooLong`: Creators list too long|
@@ -73,7 +66,7 @@ These are lists of different errors that can show while operating the candy mach
 |29|`InvalidBasisPoints`: Basis points cannot be more than 10000|
 |2A|`PrimarySaleCanOnlyBeFlippedToTrue`: Primary sale can only be flipped to true and is immutable|
 |2B|`OwnerMismatch`: Owner does not match that on the account given|
-|2C|`NoBalanceInAccountForAuthorization`: This account has no tokens to be used for authorization", "2D" => "ShareTotalMustBe100: Share total must equal 100 for creator array|
+|2C|`NoBalanceInAccountForAuthorization`: This account has no tokens to be used for authorization"|
 |2D|`ShareTotalMustBe100`: Share total must equal 100 for creator array|
 |2E|`ReservationExists`: This reservation list already exists!|
 |2F|`ReservationDoesNotExist`: This reservation list does not exist!|
@@ -81,7 +74,7 @@ These are lists of different errors that can show while operating the candy mach
 |31|`ReservationAlreadyMade`: This reservation list has already been set!|
 |32|`BeyondMaxAddressSize`: Provided more addresses than max allowed in single reservation"|
 |33|`NumericalOverflowError`: NumericalOverflowError|
-|34|`ReservationBreachesMaximumSupply`: This reservation would go beyond the maximum supply of the master edition!|
+|34|`ReservationBreachesMaximumSupply`: This reservation would go beyond the maximum supply of the master edition|
 |35|`AddressNotInReservation`: Address not in reservation!|
 |36|`CannotVerifyAnotherCreator`: You cannot unilaterally verify another creator, they must sign"|
 |37|`CannotUnverifyAnotherCreator`: You cannot unilaterally unverify another creator|
