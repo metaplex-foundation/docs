@@ -8,8 +8,8 @@ After addressing the [prerequisites](#prerequisites), documented below, the gene
 
 1. [Update your Candy Machine](./update-cm)
 2. [Mint Tokens](./mint-tokens)
-6. [Create your Candy Machine Mint Website](./create-mint-site)
-7. [Withdraw from the Config Account](./withdraw)
+3. [Create your Candy Machine Mint Website](./create-mint-site)
+4. [Withdraw from the Config Account](./withdraw)
 <!-- 8. ...Sign, 8. ...etc -->
 
 ## Prerequisites
