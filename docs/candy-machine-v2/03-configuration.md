@@ -59,12 +59,12 @@ A minimal Candy Machine config settings looks like this:
 ```json
 {
     "price": 1.0,
-    "number": 10, 
+    "number": 10,
     "gatekeeper": null,
     "solTreasuryAccount": "<YOUR WALLET ADDRESS>",
     "splTokenAccount": null,
     "splToken": null,
-    "goLiveDate": "25 Dec 2021 00:00:00 GMT", 
+    "goLiveDate": "25 Dec 2021 00:00:00 GMT",
     "endSettings": null,
     "whitelistMintSettings": null,
     "hiddenSettings": null,
