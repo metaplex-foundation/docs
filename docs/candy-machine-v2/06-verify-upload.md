@@ -8,7 +8,7 @@ sidebar_label: "5. Verify Upload"
 The Candy Machine provides a command to verify if the metadata URI on chain has been successfully uploaded.
 
 ```bash
-ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts verify \
+ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts verify_upload \
     -e devnet \
     -k ~/.config/solana/devnet.json \
     -c example

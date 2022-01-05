@@ -1,11 +1,11 @@
 ---
-sidebar_label: "8. Create Mint Website"
+sidebar_label: "3. Create Mint Website"
 ---
 
 # Create Mint Website
 
 :::warning
-The Candy Machine v1 is being deprecated on January 5th, 2022. Creating a new Candy Machine v1 will be disabled. Please use the [Candy Machine v2](../candy-machine-v2/introduction) instead.
+Candy Machine v1 has been deprecated. Creating a new instance of Candy Machine v1 is no longer possible. Please use [Candy Machine v2](../candy-machine-v2/introduction) instead.
 :::
 
 Once you have finished uploading your assets and creating the Candy Machine, you can start to create the mint website. You can use the [Exiled Apes Repository](https://github.com/exiled-apes/candy-machine-mint) for this step. You will first clone the repository.
@@ -40,12 +40,19 @@ We will replace the four "__PLACEHOLDER__" values with the following in this ord
 The network depends on whether you use mainnet-beta or devnet.
 You can also add your custom rpc after the "REACT_APP_SOLANA_RPC_HOST" value.
 
+:::caution
+
+A Candy Machine mint can be network intensive, and may become rate limited on the default RPC if there is enough traffic. We highly recommend using a custom RPC. You can find a list of custom RPC services in our [community docs](../community.md#RPC).
+
+:::
+
+
 To run the website locally run:
 ```
 yarn start
 ```
 A website should open here: localhost:3000/
-You can now connect to your wallet and mint.If you succeeded it should show up in your collectibles.
+You can now connect to your wallet and mint. If you succeeded it should show up in your collectibles.
 Once you are ready to upload the app run
 
 ```

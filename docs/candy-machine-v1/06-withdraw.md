@@ -1,18 +1,18 @@
 ---
-sidebar_label: "10. Withdraw Funds"
+sidebar_label: "5. Withdraw Funds"
 ---
 
 # Withdraw Funds
 
 :::warning
-The Candy Machine v1 is being deprecated on January 5th, 2022. Creating a new Candy Machine v1 will be disabled. Please use the [Candy Machine v2](../candy-machine-v2/introduction) instead.
+Candy Machine v1 has been deprecated. Creating a new instance of Candy Machine v1 is no longer possible. Please use [Candy Machine v2](../candy-machine-v2/introduction) instead.
 :::
 
-Candy machines rely on a special account called the config account. This account stores the big list of pointers to assets that will be minted. 
-This data is useless after the candy machine has been fully minted. You can drain this account by using the `withdraw` command.
+Candy Machine v1s rely on a special account called the config account. This account stores the big list of pointers to assets that will be minted. 
+This data is useless after the CMv1 has been fully minted. You can drain this account by using the `withdraw` command.
 
 ```
-Usage: candy-machine-cli withdraw [options]
+Usage: candy-machine-v1-cli withdraw [options]
 
 Options:
   -e, --env <string>              Solana cluster env name (default: "devnet")
