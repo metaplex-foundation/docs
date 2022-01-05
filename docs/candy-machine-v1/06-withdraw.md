@@ -5,7 +5,7 @@ sidebar_label: "5. Withdraw Funds"
 # Withdraw Funds
 
 :::warning
-The Candy Machine v1 is deprecated and creating a new Candy Machine v1 is disabled. Please use the [Candy Machine v2](../candy-machine-v2/introduction) instead.
+Candy Machine v1 has been deprecated. Creating a new instance of Candy Machine v1 is no longer possible. Please use [Candy Machine v2](../candy-machine-v2/introduction) instead.
 :::
 
 Candy Machine v1s rely on a special account called the config account. This account stores the big list of pointers to assets that will be minted. 

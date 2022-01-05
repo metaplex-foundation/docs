@@ -5,7 +5,7 @@ sidebar_label: "1. Update Candy Machine"
 # Update Candy Machine
 
 :::warning
-The Candy Machine v1 is deprecated and creating a new Candy Machine v1 is disabled. Please use the [Candy Machine v2](../candy-machine-v2/introduction) instead.
+Candy Machine v1 has been deprecated. Creating a new instance of Candy Machine v1 is no longer possible. Please use [Candy Machine v2](../candy-machine-v2/introduction) instead.
 :::
 
 To update an existing CMv1, type

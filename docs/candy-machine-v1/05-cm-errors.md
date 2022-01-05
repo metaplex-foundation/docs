@@ -4,7 +4,7 @@ sidebar_label: "4. Candy Machine Errors"
 # Candy Machine Errors
 
 :::warning
-Candy Machine v1 has been deprecated. Creating a new instance of a v1 Candy Machine is no longer possible. Please use [Candy Machine v2](../candy-machine-v2/introduction).
+Candy Machine v1 has been deprecated. Creating a new instance of Candy Machine v1 is no longer possible. Please use [Candy Machine v2](../candy-machine-v2/introduction) instead.
 :::
 
 *Below is a list of potential errors you may encounter while operating an instance of a Candy Machine.*

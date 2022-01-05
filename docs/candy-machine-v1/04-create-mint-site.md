@@ -5,7 +5,7 @@ sidebar_label: "3. Create Mint Website"
 # Create Mint Website
 
 :::warning
-The Candy Machine v1 is deprecated and creating a new Candy Machine v1 is disabled. Please use the [Candy Machine v2](../candy-machine-v2/introduction) instead.
+Candy Machine v1 has been deprecated. Creating a new instance of Candy Machine v1 is no longer possible. Please use [Candy Machine v2](../candy-machine-v2/introduction) instead.
 :::
 
 Once you have finished uploading your assets and creating the Candy Machine, you can start to create the mint website. You can use the [Exiled Apes Repository](https://github.com/exiled-apes/candy-machine-mint) for this step. You will first clone the repository.
