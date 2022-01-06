@@ -8,24 +8,24 @@ Candy Machines use an account to store configuration and a (potentially) large l
 To drain the account of a Candy Machine and recover the rent SOL, you can use the `withdraw` command.
 
 :::warning
-You should not withdraw the rent of a live Candy Machine, as the Candy Machine will stop working with you drain its account.
+You should not withdraw the rent of a live Candy Machine, as the Candy Machine will stop working when you drain its account.
 :::
 
 ## Requirements
 
-The `withdraw` command must be used with the keypair that created the Candy Machine, as it will find all Candy Machines accounts made by this keypair and attempt to drain them. Below are the options used in most cases for the `withdraw` command:
+The `withdraw` command must be executed with the keypair that created the Candy Machine - it will find all Candy Machines accounts made by this keypair and attempt to drain them. Below are the options used in most cases for the `withdraw` command:
 
-| option                         | description                                               |
-| ------------------------------ | --------------------------------------------------------- |
-| -k, --keypair <PublicKey>      |  SOL wallet that created the Candy Machine                |
-| -e, --env <string>             | Solana cluster environment (default: `devnet`)            |
-| -d, --dry                      | Show the withdraw amount without withdrawing the rent     |
-| -ch, --charity <PublicKey>     | SOL wallet for donation                                   |
-| -cp, --charityPercent <number> | Donation percentage of the total SOL drained              |
-| -r, --rpc-url <string>         | custom RPC as the withdraw is a network-intensive command |
+| option                           | description                                               |
+| -------------------------------- | --------------------------------------------------------- |
+| `-k, --keypair <PublicKey>`      |  SOL wallet that created the Candy Machine                |
+| `-e, --env <string>`             | Solana cluster environment (default: `devnet`)            |
+| `-d, --dry`                      | Show the withdraw amount without withdrawing the rent     |
+| `-ch, --charity <PublicKey>`     | SOL wallet for donation                                   |
+| `-cp, --charityPercent <number>` | Donation percentage of the total SOL drained              |
+| `-r, --rpc-url <string>`         | custom RPC as the withdraw is a network-intensive command |
 
 
-> The `withdraw` command drains all Candy Machine accounts made the specified keypair. You need to make sure that you want to drain all Candy Machines before you proceed. It is **strongly advised** that you first run the command with the option `--dry` to see how much you have locked up in those accounts and to make sure you arent draining an account you need. 
+> The `withdraw` command drains all Candy Machine accounts made by the specified keypair. You need to make sure that you want to drain all Candy Machines before you proceed. It is **strongly advised** that you first run the command with the option `--dry` to see how much you have locked up in those accounts and to make sure you are not draining an account you need. 
 
 ## Execution
 
