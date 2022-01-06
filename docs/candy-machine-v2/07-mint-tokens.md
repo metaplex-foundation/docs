@@ -20,7 +20,7 @@ ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts mint_one_token \
 
 If successful, the output will be similar to:
 
-```
+```bash
 wallet public key: N4f6zftYsuu4yT7icsjLwh4i6pB1zvvKbseHj2NmSQw
 mint_one_token finished 3R9XADK91RWESj3FZdzB2QXHchpjwcS5khdwZVoSd3petHyqt2T6MjntMxozX2meRFyaFZEsqjPxbCUjxz5eL5z9
 ```
