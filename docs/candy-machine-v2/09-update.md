@@ -3,7 +3,7 @@ sidebar_label: "7. Update the Candy Machine"
 ---
 # Update the Candy Machine
 
-**Any** configuration setting (besides `number`) can be updated in the `CMv2` with a single command.
+**Any** configuration setting, with the exception of `number`, can be updated in a `CMv2` with a single command.
 
 :::warning
 You need to be careful when updating a live Candy Machine, since setting a wrong value will immediately affect its functionality.
