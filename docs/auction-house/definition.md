@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # What is Auction House
 
-AuctionHouse is a protocol for marketplaces to implement a decentralized sales contract. It is simple, fast and very cheap. AuctionHouse is a Solana Program available on mainnet and devnet. Anyone can create an AuctionHouse and accept any SPL token they wish. 
+AuctionHouse is a protocol for marketplaces to implement a decentralized sales contract. It is simple, fast and very cheap. AuctionHouse is a Solana Program available on Mainnet Beta and Devnet. Anyone can create an AuctionHouse and accept any SPL token they wish. 
 ::: warning
 AuctionHouse is very different from our Storefront Auction system. See ()
 

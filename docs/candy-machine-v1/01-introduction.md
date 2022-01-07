@@ -2,6 +2,7 @@
 
 :::warning
 Candy Machine v1 has been deprecated. Creating a new instance of Candy Machine v1 is no longer possible. Please use [Candy Machine v2](../candy-machine-v2/introduction) instead.
+:::
 
 After addressing the [prerequisites](#prerequisites), documented below, the general process for updating and operating a Candy Machine v1 is:
 
