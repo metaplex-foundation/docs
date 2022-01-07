@@ -77,13 +77,13 @@ A minimal Candy Machine config settings looks like this:
 }
 ```
 
-The above settings will configure a `CMv2` to operate in a similar way as a `CMv1` – although the mint order will be unpredictable. In other words, even the most simple v2 configuration provides an improvement over v1. You can view this as the minimum set of settings required to create a Candy Machine. Many projects will be using a similar set of settings, as this already provides a fully-working on-chain distribution mechanism.
-
 :::caution
+The `number` of items setting can only be updated after you create your `CMv2` if you are using `hiddentSettings`. When `hiddentSettings` are not used, the `number` value is used to allocate the space required by the `CMv2` account and therefore cannot be modified.
 
-The `number` setting cannot be altered after you create your `CMv2`. 
-
+In case you require to change the `number` of items after creating a `CMv2` without `hiddenSettings`, you can withdraw rent of your current `CMv2` and then create a new one.
 :::
+
+The above settings will configure a `CMv2` to operate in a similar way as a `CMv1` – although the mint order will be unpredictable. In other words, even the most simple v2 configuration provides an improvement over v1. You can view this as the minimum set of settings required to create a Candy Machine. Many projects will be using a similar set of settings, as this already provides a fully-working on-chain distribution mechanism.
 
 The settings that are specified in this example are:
 - price
@@ -112,7 +112,7 @@ This will enable a captcha challenge once the mint button is clicked - only afte
 When you use a captcha, you will not be able to mint from the CLI command `mint_one_token`. If you want to pre-mint from a `CMv2` and are planning to use a captcha, you should set the `goLiveDate` to `null` and turn captcha (temporarily) off. This will allow you to mint from the command line, but only **you** as the `CMv2` authority. Once you complete the pre-mint, turn captch on and set the correct `goLiveDate`.
 
 :::warning
-If your Candy Machine is **live** and is has **no captcha**, it is open to bots attacks. The unpredictable mint index only prevents knowing which item to mint, but bots can still snipe a large volume of items.
+If your Candy Machine is **live** and it has **no captcha**, it is open to bots attacks. The unpredictable mint index only prevents knowing which item to mint, but bots can still snipe a large volume of items.
 :::
 
 ## Hidden Settings
@@ -158,6 +158,10 @@ Stop a mint after a certain amount of item have been minted (e.g., 10 items mint
 Whitelist settings provide a variety of different use cases and revolve around the idea of using custom SPL tokens to offer special rights to token holders - how said SPL token is distributed is up to you. We will discuss a few scenarios below.
 
 > In all the examples below, you will need to change the `mint` settings address `"7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf"` with the mint address of your SPL token.
+
+:::info
+If you are using the whitelist settings with the `presale` option set to `true` in combination with the gateway settings, you will need to set your `goLiveDate` to `null` in order to allow whitelist users to mint. Once the presale period is over, update your `goLiveDate` to the start of your public mint.
+:::
 
 - Creating a whitelist **only** for presale and burning the whitelist token each time. Once the sales begin, whitelist do not have any privileges.
 

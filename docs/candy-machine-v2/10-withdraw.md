@@ -7,6 +7,10 @@ Candy Machines use an account to store configuration and a (potentially) large l
 
 To drain the account of a Candy Machine and recover the rent SOL, you can use the `withdraw` command.
 
+:::info
+The `withdraw` command is also useful in cases where you made mistakes in the creation of the `CMv2` as it provides a way to retrieve the SOL used in the set up of the Candy Machine.
+:::
+
 :::warning
 You should not withdraw the rent of a live Candy Machine, as the Candy Machine will stop working when you drain its account.
 :::
@@ -17,7 +21,7 @@ The `withdraw` command must be executed with the keypair that created the Candy 
 
 | option                           | description                                               |
 | -------------------------------- | --------------------------------------------------------- |
-| `-k, --keypair <PublicKey>`      |  SOL wallet that created the Candy Machine                |
+| `-k, --keypair <PublicKey>`      | SOL wallet that created the Candy Machine                 |
 | `-e, --env <string>`             | Solana cluster environment (default: `devnet`)            |
 | `-d, --dry`                      | Show the withdraw amount without withdrawing the rent     |
 | `-ch, --charity <PublicKey>`     | SOL wallet for donation                                   |
@@ -26,6 +30,8 @@ The `withdraw` command must be executed with the keypair that created the Candy 
 
 
 > The `withdraw` command drains all Candy Machine accounts made by the specified keypair. You need to make sure that you want to drain all Candy Machines before you proceed. It is **strongly advised** that you first run the command with the option `--dry` to see how much you have locked up in those accounts and to make sure you are not draining an account you need. 
+
+You can also donate a percentage of the retrieved SOL to charity. But **BE CAREFUL**, this will actually take money out of the keypair you pass in and transfer it to the address you set as the `--charity` option.
 
 ## Execution
 
