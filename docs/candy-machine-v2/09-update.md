@@ -3,7 +3,13 @@ sidebar_label: "8. Update the Candy Machine"
 ---
 # Update the Candy Machine
 
-**Any** configuration setting, with the exception of `number`, can be updated in a `CMv2` with a single command.
+**Most** configuration settings can be updated in a `CMv2` with a single command, with the exception of:
+
+- `number` of items in the Candy Machine can only be updated when `hiddenSettings` are being used.
+
+- switching to use `hiddenSettings` is only possible if the `number` of items is equal to `0`. After the switch, you will be able to update the `number` of items.
+
+In case you require to change the `number` of items after creating a `CMv2` without `hiddenSettings`, you can withdraw rent of your current `CMv2` and then create a new one. 
 
 :::warning
 You need to be careful when updating a live Candy Machine, since setting a wrong value will immediately affect its functionality.
