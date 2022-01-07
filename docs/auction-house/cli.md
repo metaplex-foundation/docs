@@ -1,6 +1,6 @@
 ---
 sidebar_label: "CLI"
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # AuctionHouse CLI
@@ -14,7 +14,7 @@ sidebar_position: 3
 In order to get started with the AuctionHouse CLI please follow these steps.
 
 ```
-git clone --branch v1.1.0 https://github.com/metaplex-foundation/metaplex.git
+git clone --depth 1 --branch v1.1.0 https://github.com/metaplex-foundation/metaplex.git
 cd metaplex/js && yarn install && yarn bootstrap
 cd packages/cli
 ```
