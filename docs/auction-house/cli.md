@@ -157,7 +157,7 @@ Set 1 F7fejo7cT1fRyJxj1W2aWy3aeJz8iqLU9YvbBAzwJGh2 for sale for 1 from your acco
 ```
 
 #### Require Signoff
-If the auction house is setup to require sign off it's wallet, as well as the seller are provided to the command.
+If the auction house is setup to require sign off its wallet, as well as the seller are provided to the command.
 Do this using the ```-ak``` option.
 
 See the command help with
