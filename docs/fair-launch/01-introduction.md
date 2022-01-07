@@ -1,6 +1,10 @@
 # Introduction
 Fair launch is a protocol by which minters/prospective buyers can bid on the price of an NFT they are willing to pay in a range that is determined by the creator.
 
+:::warning
+The Fair Launch Protocol is being deprecated and will be receiving no updates/support moving forward.
+:::
+
 ## Prerequisites
 
 Before starting this journey, you'll need to install and understand how to operate a handful of developer tools.
