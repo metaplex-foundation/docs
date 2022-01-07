@@ -36,9 +36,9 @@ The table below provides an overview of the settings available:
 |                       | uri               | String                 | Single URI to all mints|
 |                       | hash              | String                 | 32 character hash – in most cases this is the hash of the cache file with the mapping between mint number and metadata so that the order can be verified when the mint is complete |
 | storage               |                   |                        | Storage type to upload images and metadata |
-|                       |                   | “arweave-sol”          | Uploads to arweave and payment are made in SOL (only works in mainnet) |
+|                       |                   | “arweave-sol”          | Uploads to arweave and payment are made in SOL (only works in mainnet, recommended option) |
 |                       |                   | “arweave-bundle”       | Uploads to arweave and payment are made in AR (only work in mainnet and requires an Arweave wallet) |
-|                       |                   | “arweave”              | Uploads to arweave |
+|                       |                   | “arweave”              | Uploads to arweave via Metaplex Google Cloud function (must use for devnet) |
 |                       |                   | “ipfs”                 | Uploads to IPFS (must specify either Infura Project ID or Secret Key) |
 |                       |                   | “aws”                  | Uploads to AWS (must specify AWS Bucket name) |
 | ipfsInfuraProjectId   |                   | String                 | Infura Project ID |
@@ -68,7 +68,7 @@ A minimal Candy Machine config settings looks like this:
     "endSettings": null,
     "whitelistMintSettings": null,
     "hiddenSettings": null,
-    "storage": "arweave",
+    "storage": "arweave-sol",
     "ipfsInfuraProjectId": null,
     "ipfsInfuraSecret": null,
     "awsS3Bucket": null,
