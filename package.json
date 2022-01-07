@@ -18,8 +18,8 @@
     "lint": "prettier src --check && eslint src"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-beta.13",
-    "@docusaurus/preset-classic": "^2.0.0-beta.13",
+    "@docusaurus/core": "^2.0.0-beta.14",
+    "@docusaurus/preset-classic": "^2.0.0-beta.14",
     "@mdx-js/react": "^1.6.21",
     "@metaplex/arweave-cost": "2",
     "@svgr/webpack": "^5.5.0",
