@@ -4,6 +4,7 @@ unlisted: true
 ---
 
 # Features Overview
+Our official list of products is found here [Products](https://docs.metaplex.com/products)
 
 ## Setting up a Storefront
 Before selling NFTs, you will need to have set up your storefront, which requires a basic understanding of development for most people. To set up your storefront, if you haven’t already done so, checkout Metaplex Doc’s [Create a Store](https://docs.metaplex.com/create-store/introduction). If you are not technical, see the build-a-team channel in the Metaplex Discord. Personally, it’s been a great resource for my own NFT projects. 
