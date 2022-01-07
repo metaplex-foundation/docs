@@ -38,8 +38,9 @@ Yes but only in a certain scenario. These things need to happen in order for a A
 
 1. The AuctionHouse instance must have `Can Change Sale Price` set to `true`
 2. You as the NFT seller must list your NFT for sale at a price of 0. 
-::: warning
+:::warning
 Don't worry not even the Auction House can sell it for 0 unless you sign the transaction with your key.
+:::
 3. The AuctionHouse now can use the `0` priced trade state you made in #2 to create new `sale` listings at different prices. 
 
 
