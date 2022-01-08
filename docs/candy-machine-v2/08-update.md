@@ -80,3 +80,5 @@ ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts show \
     -k ~/.config/solana/devnet.json \
     -c example
 ```
+
+This will get the candy machine settings and print them to the console.
