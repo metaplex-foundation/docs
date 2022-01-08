@@ -78,7 +78,7 @@ A minimal Candy Machine config settings looks like this:
 ```
 
 :::caution
-The `number` of items setting can only be updated after you create your `CMv2` if you are using `hiddentSettings`. When `hiddentSettings` are not used, the `number` value is used to allocate the space required by the `CMv2` account and therefore cannot be modified.
+The `number` of items setting can only be updated after you create your `CMv2` if you are using `hiddenSettings`. When `hiddenSettings` are not used, the `number` value is used to allocate the space required by the `CMv2` account and therefore cannot be modified.
 
 In case you require to change the `number` of items after creating a `CMv2` without `hiddenSettings`, you can withdraw rent of your current `CMv2` and then create a new one.
 :::
