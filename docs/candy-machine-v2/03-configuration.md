@@ -46,7 +46,7 @@ The table below provides an overview of the settings available:
 | arweaveJwk            |                   | String                 | Arweave JWK wallet file |
 | awsS3Bucket           |                   | String                 | AWS bucket name |
 | noRetainAuthority     |                   | boolean                | Indicates whether the candy machine authority has the update authority for each mint or not |
-| noMutable             |                   | boolean                | Indicated whether each mint is mutable or not |
+| noMutable             |                   | boolean                | Indicates whether the NFTs' metadata is mutable or not after having been minted |
 
 :::info
 Any setting that is not used must be set to null to avoid errors from the CLI.
