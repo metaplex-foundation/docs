@@ -92,7 +92,7 @@ Below are two simple examples of items in this collection:
 
 Notice that the difference in the metadata between each image is on:
 
-- `"name"` property: `"Number #0000"` in the first image and `"Number #0010"` in the last image
+- `"name"` property: `"Number #0001"` in the first image and `"Number #0010"` in the last image
 - `"description"` property: it shows `"number 1/10"` in the first image and `"number 10/10"` in the last image
 - `"image"` property: `"0.png"` in the first image and `"9.png"` in the last image
 - `"properties.files.uri"` property: `"0.png"` in the first image and `"9.png"` in the last image
