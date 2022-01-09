@@ -21,4 +21,4 @@ Coming Soon
 
 ### Program Instruction API
 
-Coming Soon
+See [Instruction API Documentation](https://metaplex-foundation.github.io/metaplex-program-library/mpl_auction_house/instruction/index.html)
