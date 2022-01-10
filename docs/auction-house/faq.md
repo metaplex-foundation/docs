@@ -6,12 +6,12 @@ sidebar_position: 3
 # AuctionHouse FAQ
 
 
-* Can I get fees when NFTs get sold-on my Auction House?
+## Can I get fees when NFTs get sold-on my Auction House?
 Yes, An AuctionHouse may be configured to take `seller fee basis points`. This is part of the create and update command; see the CLI use it.
 
 Fees are paid to Creators,Then the Auction house and the seller gets the remainder of the sale. This is easy to calculate on your UI by taking the NFT royalties, Sale price, Auction House fee and displaying to the buyer what their total gains will be.
 
-* Does the AuctionHouse restrict the user from selling their NFT on another Non-AuctionHouse marketplace?
+## Does the AuctionHouse restrict the user from selling their NFT on another Non-AuctionHouse marketplace?
 No, the AuctionHouse cannot stop users from sending their NFT even if they have a for-sale listing. If this happens, the `execute_sale` operation will fail and the buyer can get their finds back by canceling their bid.
 Marketplaces creating a AuctionHouse experience will need to track the Buy/Sell trade state accounts and watch the TokenAccounts of sellers so they can automatically cancel the listing and bids on that NFTs.
 
@@ -28,12 +28,12 @@ Specifically Marketplaces need to track these two events on Token Accounts:
 
 If these events happen the AuctionHouse Authority can call instructions to cancel the bids and listings without the seller or buyer needing to be present.
 
-* Can people view the settings of my AuctionHouse
+## Can people view the settings of my AuctionHouse
 Yes anyone can and should be able to verofy the settings of your AuctionHouse especially the `Can Change Sale Price` parameter.
 This can be done on the cli with the `show`
 
 
-* Can the AuctionHouse change the sale price on my NFT
+## Can the AuctionHouse change the sale price on my NFT
 Yes but only in a certain scenario. These things need to happen in order for a Auction House to be able to use this feature.
 
 1. The AuctionHouse instance must have `Can Change Sale Price` set to `true`
