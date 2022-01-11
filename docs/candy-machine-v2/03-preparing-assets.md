@@ -7,7 +7,7 @@ The Candy Machine is a distribution program and in order to use it to mint NFTs,
 
 Your assets consist of a collection of images (e.g., `.png`) and metadata (`.json`) files organized in a 1:1 mapping - i.e., each image has a corresponding metadata file.
 
-There are a multitude of unique ways to generate images and metadata, and in most scenarios, you will automate this process. In this guide we will cover the creation of a simple collection to illustrate the metadata requirements and Candy Machine distribution. You should familiarize yourself with the [Metaplex Token Metadata Standard](/nft-standard).
+There are a multitude of unique ways to generate images and metadata, and in most scenarios, you will automate this process. In this guide we will cover the creation of a simple collection to illustrate the metadata requirements and Candy Machine distribution. You should familiarize yourself with the [Token Metadata Standard](/token-metadata/v1.1.0/specification).
 
 ## Example NFT Collection
 
