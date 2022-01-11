@@ -19,7 +19,8 @@ Addition of Instructions: To support Collections
 - CreateMetadataAccountV2 -> Same as CreateMetadataAccount, But allows Collections and Use , also sets `TokenStandard`
 - UpdateMetadataAccountV2 -> Same as UpdateMetadataAccount, But allows Collections and Use , also sets `TokenStandard`
 - CreateMasterEditionV3 -> Same as CreateMasterEdition, but sets the `TokenStandard` on the NFT
-- VerifyCollection -> Allows a collection `verified` flag to become true on an NFT to represent a Certified Collection
+- VerifyCollection -> Allows a collection `verified` flag to become true on an NFT to represent a Certified Collection. Essentially this Officially Adds to a Collection.
+- UnVerifyCollection -> Allows a collection `verified` flag to become false on an NFT to represent a Certified Collection, Essentially this Officially Removes from a Collection.
 - Utilize -> Allows a limited "Use" semantic. Can be used to represent a ticket, pass, game item or physical item redemption.
 - ApproveUseAuthority -> Approve an authority to call `Utilize`
 - RevokeUseAuthority -> Remove a granted authority to call `Utilize`
