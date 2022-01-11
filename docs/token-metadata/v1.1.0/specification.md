@@ -10,37 +10,44 @@ On-chain collections are added to this version of the standard replacing the col
 
 ### **On-Chain Representation of a Collection**
 
-A collection is defined by a SPL token with a supply of 1 and decimals 0 decorated by a standard token metadata PDA and an additional PDA on it to represent that it is a collection. The collection metadata account is a program derived address generated from the seeds `["collection", mint]` where the `mint` is the SPL token mint account. The PDA contains the following fields:
+A collection is an NFT and has the same data layout on chain that a regular NFT has. And NFTs are linked to the collection in a belongs_to style where the NFT has a reference back to the collection:
 
-| Field            | Type      | Description                                                 |
+This is done by the addition of a new field in the Token Metadata (`mpl-token-metadata`) `Metadata` struct. The `collection` field maps to the Mint Address of the collection NFT  and is represented as the Rust type `Option<Collection>` where a value of `None` will be interpreted to mean that a NFT does not belong to any collection value of the type below will represent the link to the collection if `verified` is true.
+#### Code
+```Rust
+#[derive(BorshSerialize, BorshDeserialize, PartialEq, Debug, Clone)]
+pub struct Collection {
+pub verified: bool,
+pub key: Pubkey,
+}
+#### Table Format
+ | Field            | Type      | Description                                                 |
 | ---------------- | --------- | ----------------------------------------------------------- |
 | verified              | bool    | Whether the collection is verified or not. |
 | key             | Pubkey | The SPL token mint account          |
 
-with the following on-chain Rust representation:
-
-```Rust
-#[derive(BorshSerialize, BorshDeserialize, PartialEq, Debug, Clone)]
-    pub struct Collection {
-    pub verified: bool,
-    pub key: Pubkey,
-}
 ```
+:::warning
+EXTREMELY IMPORTANT: 
 
-A collection is linked to the collection member NFTs by a new `collection_id` field inside the on-chain metadata for the NFT where the `collection_id` is a Rust `Option<Pubkey>` where the `pubkey` is the public key of the PDA for the collection. If the `collection_id` is `None` then it does not belong to any collection.
+Explorers, Wallets and Marketplaces, MUST CHECK IF `verified` is true. Verified can only be set true if the Authority on the Collection NFT has run the `verify_collection` instruction over the NFT.
+
+This is the exact same pattern as the `Creators` field where `verified` must be true in order to validate the NFT.
+:::
+
 
 This has the following advantages:
 
 - Easy to identify which collection any given NFT belongs to without making any additional on-chain calls
 - Possible to find all NFTs that belong to a given collection by making a `getProgramAccounts` call
-- Simple and small, so adds minimal on-chain rent storage costs, adds
+- Simple and small, so adds no on-chain rent storage costs
 
 
 ### **Token Standards**
 
 As token usage has evolved on Solana, it has become clear that there are more types of tokens than simply "fungible" and "non-fungible" tokens. An example is something the community is calling a "semi-fungible token", a SPL token with a supply greater than 1 but which has typical NFT attributes such as an image and an attributes array in the JSON metadata. The consensus seems to be that these should be stored in wallets in the same view as standard NFTs, or in their own view but separate from "standard" fungible SPL tokens. These tokens are becoming popular in gaming contexts to support fungible items such as a kind of sword or a piece of wood, etc. but which are in a different league from typical fungible SPL tokens such as USDC.
 
-In order to support this particular use-case but also to make the standard broad enough to allow expansion to other token types in the future, we are proposing adding a `token_standard` field to the `Metadata`struct which will map to particular JSON metadata standards and will be used to objectively differentiate token types.
+In order to support this particular use-case but also to make the standard broad enough to allow expansion to other token types in the future, we are proposing adding a `token_standard` field to the `Metadata` struct which will map to particular JSON metadata standards and will be used to objectively differentiate token types.
 
 This solves a current pain-point for third parties such as wallets which are applying inconsistent and varying heuristics to determine what is and is not an "NFT".
 
@@ -50,13 +57,20 @@ Token Standards are defined by a Rust enum:
 
 pub enum TokenStandard {
     NonFungible, // This is a master edition
-    FungibleAsset, // A token with metadata that can also have attrributes
+    FungibleAsset, // A token with metadata that can also have attrributes, sometimes called Semi Fungible
     Fungible, // A token with simple metadata
     NonFungibleEdition, // This is a limited edition
 }
 ```
 
 A `token_standard` field is added to the `Metadata` struct representing what type of token each NFT is.
+
+The ``token_standard` field is set automatically by the contract corresponding to the following logic:
+
+If the token has a master edition it is a `NonFungible`.
+If the token has no master edition(ensuring its supply can be > 1) and decimals of 0 it is a `FungibleAsset`. 
+If the token has no master edition(ensuring its supply can be > 1) and decimals of > 0 it is a `Fungible`.
+If the token is a limited edition of a MasterEditon it is a `NonFungibleEdition`. 
 
 Each Token Standard type will have its own JSON schema which are defined below.
 
@@ -134,7 +148,7 @@ Example Fungible Asset JSON metadata:
   ]
 }
 ```
-**Non-Fungible Token**
+**Non-Fungible Token / Fungible Edition**
 
 These are the "standard" non-fungible tokens the community is already familiar with and have both a Metadata PDA and a Master Edition PDA. Examples of these are Solana Monkee Business, Stylish Studs and Thugbirdz.
 
@@ -156,6 +170,7 @@ These are the "standard" non-fungible tokens the community is already familiar w
 | value      | string | The attribute value.   |
 
 Example Non-Fungible Token JSON metadata:
+Note: Creators, Symbol
 
 ```json
 {
@@ -173,7 +188,37 @@ Example Non-Fungible Token JSON metadata:
       "trait_type": "trait2",
       "value": "value2"
     }
-  ]
+  ],
+  //@deprecated -> do not use - may be removed in a future release
+  "collection": {
+     "name": "Solflare X NFT",
+     "family": "Solflare"
+  },
+  "properties": {
+    "files": [
+      {
+        "uri": "https://www.arweave.net/abcd5678?ext=png",
+        "type": "image/png"
+      },
+      {
+        "uri": "https://watch.videodelivery.net/9876jkl",
+        "type": "unknown",
+        "cdn": true
+      },
+      {
+        "uri": "https://www.arweave.net/efgh1234?ext=mp4",
+        "type": "video/mp4"
+      }
+    ],
+    "category": "video",
+    //@deprecated -> do not use - may be removed in a future release
+    "creators": [
+      {
+        "address": "xEtQ9Fpv62qdc1GYfpNReMasVTe9YW5bHJwfVKqo72u",
+        "share": 100
+      }
+    ]
+  }
 }
 ```
 

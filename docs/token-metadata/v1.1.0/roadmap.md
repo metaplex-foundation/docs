@@ -22,4 +22,4 @@ Timeline:
 * Standard implementation finished -- Jan 10th
 * Deployed to devnet -- Jan 11th
 * Community evaluation and feedback -- Jan 12th - Jan 17th
-* Deployed to mainnet -- Jan 18th
+
