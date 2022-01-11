@@ -41,7 +41,16 @@ $ git clone https://github.com/metaplex-foundation/metaplex.git ~/metaplex
 
 This will create a directory `metaplex` in your home directory with the lastest code from the repository. If you decide to clone the repository to a different location, you will need to change the path in subsequent instructions.
 
-You will then need to install the dependencies:
+We recommend checking out the latest tagged version:
+
+```bash
+$ cd metaplex
+$ git checkout v1.1.0
+```
+
+However, you can also run the latest code on the `master` branch to immediately get bug fixes and new features.
+
+You will then need to install the dependencies. From outside the metaplex directory:
 
 ```bash
 $ yarn install --cwd ~/metaplex/js/
