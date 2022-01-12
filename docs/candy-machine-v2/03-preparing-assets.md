@@ -32,6 +32,10 @@ The content of the image files reflect the artwork you would like to display for
 
 > The first item in your collection must have the index `0`, the second `1` and so forth. In a `10000` NFT drop, will start with the pair `0.png` and `0.json`, and end with the pair `9999.png` and `9999.json`. The numbering must also be consecutive - i.e., should not have gaps in the numbering.
 
+:::warning
+It is important to double check that you do not skip any indices, e.g., `0.png`, `2.png`, `3.png` (missing `1.png`). Otherwhise you will experience problems when minting your collection.
+:::
+
 ## Sample Items of the Collection
 
 Below are two simple examples of items in this collection:

@@ -28,7 +28,12 @@ mint_one_token finished 3R9XADK91RWESj3FZdzB2QXHchpjwcS5khdwZVoSd3petHyqt2T6Mjnt
 You can check that the mint was successful by using the `spl-token` command to check the accounts available on your wallet:
 
 ```bash
-$ spl-token accounts
+spl-token accounts
+```
+
+If the mint was successful, you will see a new account in your wallet:
+
+```bash
 Token                                         Balance
 ---------------------------------------------------------------
 G1zDZMHjU6bs4ibrZdeaM85dHYtno1B1xUmZ1VR7XCsQ  1
@@ -36,7 +41,7 @@ G1zDZMHjU6bs4ibrZdeaM85dHYtno1B1xUmZ1VR7XCsQ  1
 
 ## Mint Multiple Tokens
 
-You can also mint multiple tokens using the command `mint_multiple_tokens` and specifying the number of tokens to be minted:
+You can also mint multiple tokens using the command `mint_multiple_tokens` and specifying the `number` of tokens to be minted:
 
 ```bash
 ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts mint_multiple_tokens \
