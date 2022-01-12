@@ -4,7 +4,7 @@ sidebar_position: 0
 ---
 # Overview
 
-The Metaplex Token Medtata Standard is an evolving standard for general token metadata on the Solana blockchain. This is the newest version of the standard and contains a number of improvements and additions to the standard while maintaining backwards compatibility.
+The Metaplex Token Metadata Standard is an evolving standard for general token metadata on the Solana blockchain. This is the newest version of the standard and contains a number of improvements and additions to the standard while maintaining backwards compatibility.
 
 ### **Summary of Changes from V1.1.0**
 
