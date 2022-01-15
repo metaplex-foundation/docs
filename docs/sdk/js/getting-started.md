@@ -93,7 +93,8 @@ For the fields that match the on-chain metadata, on-chain information has priori
 
 - `pubkey` - Account public key.
 - `info` -  Information describing an account as in **@solana/web3.js** [AccountInfo](https://solana-labs.github.io/solana-web3.js/modules.html#AccountInfo).
-- `data` - Metadata program related data as described in [Token Metadata Standard](../../nft-standard.md).
+- `data` - Metadata program related data as described in [Token Metadata Standard](/token-metadata/v1.1.0/specification).
+
 
 ### How to retrieve data by other programs?
 

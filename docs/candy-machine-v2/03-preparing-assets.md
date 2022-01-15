@@ -7,7 +7,7 @@ The Candy Machine is a distribution program and in order to use it to mint NFTs,
 
 Your assets consist of a collection of images (e.g., `.png`) and metadata (`.json`) files organized in a 1:1 mapping - i.e., each image has a corresponding metadata file.
 
-There are a multitude of unique ways to generate images and metadata, and in most scenarios, you will automate this process. In this guide we will cover the creation of a simple collection to illustrate the metadata requirements and Candy Machine distribution. You should familiarize yourself with the [Metaplex Token Metadata Standard](https://docs.metaplex.com/nft-standard).
+There are a multitude of unique ways to generate images and metadata, and in most scenarios, you will automate this process. In this guide we will cover the creation of a simple collection to illustrate the metadata requirements and Candy Machine distribution. You should familiarize yourself with the [Token Metadata Standard](/token-metadata/v1.1.0/specification).
 
 ## Example NFT Collection
 
@@ -28,9 +28,13 @@ A 10-item collection will have 20 files in total:
 
 Each pair `0.png` and `0.json` are combined to represent the first NFT in this example collection; `1.png` and `1.json` describe the second NFT and so forth. Theses files are typically grouped into a single folder, usually named `assets`, but that is not a hard requirement. Grouping them into a single folder simplifies next steps and is highly encouraged.
 
-The content of the image files reflect the artwork you would like to display for each NFT and the content of the metadata files describe each of these pieces of artwork using the schema defined in the [Metaplex Token Metadata Standard](https://docs.metaplex.com/nft-standard).
+The content of the image files reflect the artwork you would like to display for each NFT and the content of the metadata files describe each of these pieces of artwork using the schema defined in the [Token Metadata Standard](/token-metadata/v1.1.0/specification).
 
 > The first item in your collection must have the index `0`, the second `1` and so forth. In a `10000` NFT drop, will start with the pair `0.png` and `0.json`, and end with the pair `9999.png` and `9999.json`. The numbering must also be consecutive - i.e., should not have gaps in the numbering.
+
+:::warning
+It is important to double check that you do not skip any indices, e.g., `0.png`, `2.png`, `3.png` (missing `1.png`). Otherwhise you will experience problems when minting your collection.
+:::
 
 ## Sample Items of the Collection
 
@@ -92,7 +96,7 @@ Below are two simple examples of items in this collection:
 
 Notice that the difference in the metadata between each image is on:
 
-- `"name"` property: `"Number #0000"` in the first image and `"Number #0010"` in the last image
+- `"name"` property: `"Number #0001"` in the first image and `"Number #0010"` in the last image
 - `"description"` property: it shows `"number 1/10"` in the first image and `"number 10/10"` in the last image
 - `"image"` property: `"0.png"` in the first image and `"9.png"` in the last image
 - `"properties.files.uri"` property: `"0.png"` in the first image and `"9.png"` in the last image
