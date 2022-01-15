@@ -16,7 +16,7 @@ In order to get started with the AuctionHouse CLI please follow these steps.
 ```
 git clone https://github.com/metaplex-foundation/metaplex.git
 cd metaplex
-git checkout v1.1.0
+git checkout v1.1.1
 cd js && yarn install && yarn bootstrap
 cd packages/cli
 ```
