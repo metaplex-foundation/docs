@@ -13,20 +13,26 @@ On-chain collections are added to this version of the standard replacing the col
 A collection is an NFT and has the same data layout on chain that a regular NFT has. And NFTs are linked to the collection in a belongs_to style where the NFT has a reference back to the collection:
 
 This is done by the addition of a new field in the Token Metadata (`mpl-token-metadata`) `Metadata` struct. The `collection` field maps to the Mint Address of the collection NFT  and is represented as the Rust type `Option<Collection>` where a value of `None` will be interpreted to mean that a NFT does not belong to any collection value of the type below will represent the link to the collection if `verified` is true.
+
 #### Code
+
 ```Rust
 #[derive(BorshSerialize, BorshDeserialize, PartialEq, Debug, Clone)]
 pub struct Collection {
-pub verified: bool,
-pub key: Pubkey,
+    pub verified: bool,
+    pub key: Pubkey,
 }
+```
+
 #### Table Format
- | Field            | Type      | Description                                                 |
-| ---------------- | --------- | ----------------------------------------------------------- |
-| verified              | bool    | Whether the collection is verified or not. |
-| key             | Pubkey | The SPL token mint account          |
 
 ```
+| Field            | Type      | Description                                                 |
+| ---------------- | --------- | ----------------------------------------------------------- |
+| verified         | bool      | Whether the collection is verified or not.                  |
+| key              | Pubkey    | The SPL token mint account                                  |
+```
+
 :::warning
 EXTREMELY IMPORTANT: 
 
