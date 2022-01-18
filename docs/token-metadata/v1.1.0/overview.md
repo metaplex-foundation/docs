@@ -31,7 +31,7 @@ Deprecation:
 - Depreciation of V1 Instructions: These will now show a deprecation warning but will work fine
 - CreateMetadataAccount
 - UpdateMetadataAccount
-- CreateMasterEdition -> This may be confusing that there is no `V2` but for historical reasons this instruction is `V2`. The V1 had its name changed in abackward incompatible way see `DeprecatedCreateMasterEdition`
+- CreateMasterEdition -> This may be confusing that there is no `V2` but for historical reasons this instruction is `V2`. The V1 had its name changed in a backward incompatible way see `DeprecatedCreateMasterEdition`
 
 Removals:
 
