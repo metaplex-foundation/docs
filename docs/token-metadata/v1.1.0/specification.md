@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Specification"
-sidebar_position: 2
+sidebar_position: 1
 ---
 # Specification
 
@@ -12,21 +12,44 @@ On-chain collections are added to this version of the standard replacing the col
 
 A collection is an NFT and has the same data layout on chain that a regular NFT has. And NFTs are linked to the collection in a belongs_to style where the NFT has a reference back to the collection:
 
-This is done by the addition of a new field in the Token Metadata (`mpl-token-metadata`) `Metadata` struct. The `collection` field maps to the Mint Address of the collection NFT  and is represented as the Rust type `Option<Collection>` where a value of `None` will be interpreted to mean that a NFT does not belong to any collection value of the type below will represent the link to the collection if `verified` is true.
+This is done by the addition of a new field in the Token Metadata (`mpl-token-metadata`) `Metadata` struct. The `collection` field maps to the Mint Address of the collection NFT and is represented as the Rust type `Option<Collection>` where a value of `None` will be interpreted to mean that a NFT does not belong to any collection. The Collection struct has the fields `verified` denoting whether or not the collection is verified and `key` which points to mint account of the collection.
+
 #### Code
-```Rust
+
+```rust
+pub struct Metadata {
+    pub key: Key,
+    pub update_authority: Pubkey,
+    pub mint: Pubkey,
+    pub data: Data,
+    // Immutable, once flipped, all sales of this metadata are considered secondary.
+    pub primary_sale_happened: bool,
+    // Whether or not the data struct is mutable, default is not
+    pub is_mutable: bool,
+    /// nonce for easy calculation of editions, if present
+    pub edition_nonce: Option<u8>,
+    /// Since we cannot easily change Metadata, we add the new DataV2 fields here at the end.
+    /// Collection
+    pub collection: Option<Collection>,
+    . . .
+}
+```
+
+```rust
 #[derive(BorshSerialize, BorshDeserialize, PartialEq, Debug, Clone)]
 pub struct Collection {
-pub verified: bool,
-pub key: Pubkey,
+  pub verified: bool,
+  pub key: Pubkey,
 }
+```
+
 #### Table Format
  | Field            | Type      | Description                                                 |
 | ---------------- | --------- | ----------------------------------------------------------- |
 | verified              | bool    | Whether the collection is verified or not. |
 | key             | Pubkey | The SPL token mint account          |
 
-```
+
 :::warning
 EXTREMELY IMPORTANT: 
 
@@ -36,18 +59,18 @@ This is the exact same pattern as the `Creators` field where `verified` must be 
 :::
 
 
-This has the following advantages:
+This implementationhas the following advantages:
 
 - Easy to identify which collection any given NFT belongs to without making any additional on-chain calls
 - Possible to find all NFTs that belong to a given collection by making a `getProgramAccounts` call
-- Simple and small, so adds no on-chain rent storage costs
+- Uses existing padding at the end of `Metadata` so adds no on-chain rent storage costs
 
 
 ### **Token Standards**
 
 As token usage has evolved on Solana, it has become clear that there are more types of tokens than simply "fungible" and "non-fungible" tokens. An example is something the community is calling a "semi-fungible token", a SPL token with a supply greater than 1 but which has typical NFT attributes such as an image and an attributes array in the JSON metadata. The consensus seems to be that these should be stored in wallets in the same view as standard NFTs, or in their own view but separate from "standard" fungible SPL tokens. These tokens are becoming popular in gaming contexts to support fungible items such as a kind of sword or a piece of wood, etc. but which are in a different league from typical fungible SPL tokens such as USDC.
 
-In order to support this particular use-case but also to make the standard broad enough to allow expansion to other token types in the future, we are proposing adding a `token_standard` field to the `Metadata` struct which will map to particular JSON metadata standards and will be used to objectively differentiate token types.
+In order to support this particular use-case but also to make the standard broad enough to allow expansion to other token types in the future, we are adding a `token_standard` field to the `Metadata` struct which will map to particular JSON metadata standards and will be used to objectively differentiate token types.
 
 This solves a current pain-point for third parties such as wallets which are applying inconsistent and varying heuristics to determine what is and is not an "NFT".
 
@@ -65,7 +88,7 @@ pub enum TokenStandard {
 
 A `token_standard` field is added to the `Metadata` struct representing what type of token each NFT is.
 
-The ``token_standard` field is set automatically by the contract corresponding to the following logic:
+The `token_standard` field is set automatically by the contract corresponding to the following logic:
 
 If the token has a master edition it is a `NonFungible`.
 If the token has no master edition(ensuring its supply can be > 1) and decimals of 0 it is a `FungibleAsset`. 
@@ -100,16 +123,16 @@ Example Fungible token JSON metadata:
 
 These are fungible tokens with more extensive metadata and supply >= 0. An example of this kind of token is something the community has been calling "semi-fungible tokens" often used to represent a fungible but attribute-heavy in-game item such as a sword or a piece of wood.
 
-| Field         | Type   | Description                                                                    |     |
-| ------------- | ------ | ------------------------------------------------------------------------------ | --- |
-| name          | string | Name of the asset.                                                             |     |
-| symbol        | string | Symbol of the asset.                                                           |     |
-| description   | string | Description of the asset.                                                      |     |
-| image         | string | URI pointing to asset image.                                                   |     |
-| animation_url | string | URI pointing to asset animation.                                               |     |
-| external_url  | string | URI pointing to an external url defining the asset, the game's main site, etc. |     |
-| attributes    | array  | Array of attributes defining the characteristics of the asset.                 |     |
-|               |        |                                                                                |     |
+| Field         | Type   | Description                                                                    |
+| ------------- | ------ | ------------------------------------------------------------------------------ |
+| name          | string | Name of the asset.                                                             |
+| symbol        | string | Symbol of the asset.                                                           |
+| description   | string | Description of the asset.                                                      |
+| image         | string | URI pointing to asset image.                                                   |
+| animation_url | string | URI pointing to asset animation.                                               |
+| external_url  | string | URI pointing to an external url defining the asset, the game's main site, etc. |
+| attributes    | array  | Array of attributes defining the characteristics of the asset.                 |
+|               |        |                                                                                |
 
 **Attribute**
 
