@@ -28,7 +28,7 @@ The table below provides an overview of the settings available:
 |                       | mode              |                        | |
 |                       |                   | “burnEveryTime” : true | Whitelist token is burned after the mint |
 |                       |                   | “neverBurn” : true     | Whitelist token is returned to holder |
-|                       | mint              |                        | Mint address of the whitelist token |
+|                       | mint              | PublicKey              | Mint address of the whitelist token |
 |                       | presale           | boolean                | Indicates whether whitelist token holders can mint before goLiveDate (presale) |
 |                       | discountPrice     | Number                 | Price for whitelist token holders |
 | hiddenSettings        |                   |                        | |
@@ -37,8 +37,8 @@ The table below provides an overview of the settings available:
 |                       | hash              | String                 | 32 character hash – in most cases this is the hash of the cache file with the mapping between mint number and metadata so that the order can be verified when the mint is complete |
 | storage               |                   |                        | Storage type to upload images and metadata |
 |                       |                   | “arweave-sol”          | Uploads to arweave and payment are made in SOL (only works in mainnet, recommended option) |
-|                       |                   | “arweave-bundle”       | Uploads to arweave and payment are made in AR (only work in mainnet and requires an Arweave wallet) |
-|                       |                   | “arweave”              | Uploads to arweave via Metaplex Google Cloud function (must use for devnet) |
+|                       |                   | “arweave-bundle”       | Uploads to arweave and payment are made in AR (only works in mainnet and requires an Arweave wallet) |
+|                       |                   | “arweave”              | Uploads to arweave via Metaplex Google Cloud function (works on devnet and mainnet) |
 |                       |                   | “ipfs”                 | Uploads to IPFS (must specify either Infura Project ID or Secret Key) |
 |                       |                   | “aws”                  | Uploads to AWS (must specify AWS Bucket name) |
 | ipfsInfuraProjectId   |                   | String                 | Infura Project ID |
@@ -93,11 +93,15 @@ The settings that are specified in this example are:
 - noRetainAuthority
 - noMutable
 
-If this satisfies the requirement for your project, save these settings to a file (e.g., `config.json`) and you are ready to start uploading your items and create a Candy Machine. Below we will discuss other configuration examples that represent specific use-cases. These examples will use the settings above as a starting point.
+If this satisfies the requirement for your project, save these settings to a file (e.g., `config.json`) and you are ready to start uploading your items and create a Candy Machine. Below we will discuss other configuration examples that represent specific use-cases. These examples will use the settings above as a starting point and provide the settings section to be added/updated. 
 
-> It is important that the `number` setting value matches the number of items in your Candy Machine.
+:::info
+It is important that the `number` setting value matches the number of items in your Candy Machine.
+:::
 
-## Captcha Settings (Gateway)
+## Captcha Settings
+
+> By using captcha, you agree to [Civic’s Terms and Conditions](https://docs.civic.com/candy-machine-integration/adding-captcha-to-candy-machine-v2#terms-and-conditions).
 
 While the unpredictable mint index provides some protection against bots, bots are still able to mint directly from the Candy Machine. If you want to make sure that only humans can mint from your project, you can enable the gatekeeper settings in your `config.json` with the following values:
 
@@ -153,17 +157,19 @@ Stop a mint after a certain amount of item have been minted (e.g., 10 items mint
 }
 ```
 
+This can be used in combination with other settings to create specific use cases. For example, you can run a whitelist presale either for a limited time or for a limited number of items; you can specify your sale period to be between the `goLiveDate` and the `endSettings`'s `date`.
+
 ## Whitelist Settings
 
 Whitelist settings provide a variety of different use cases and revolve around the idea of using custom SPL tokens to offer special rights to token holders - how said SPL token is distributed is up to you. We will discuss a few scenarios below.
 
-> In all the examples below, you will need to change the `mint` settings address `"7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf"` with the mint address of your SPL token.
+> In all the examples below, you will need to change the `mint` settings address `7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf` with the mint address of your SPL token.
 
 :::info
-If you are using the whitelist settings with the `presale` option set to `true` in combination with the gateway settings, you will need to set your `goLiveDate` to `null` in order to allow whitelist users to mint. Once the presale period is over, update your `goLiveDate` to the start of your public mint.
+You can use the whitelist settings with the `presale` option set to `true` in combination with the gateway settings. This will restrict the mint to only whitelist users and require them to complete the captcha.
 :::
 
-- Creating a whitelist **only** for presale and burning the whitelist token each time. Once the sales begin, whitelist do not have any privileges.
+- Creating a whitelist **only** for presale (e.g., allow whitelist users to mint before the `goLiveDate`) and burning the whitelist token each time. Once the sales begin, whitelist users do not have any privileges.
 
     ```json
     "whitelistMintSettings": {
@@ -174,7 +180,7 @@ If you are using the whitelist settings with the `presale` option set to `true` 
     }
     ```
 
-- Creating a whitelist for presale, burning the whitelist token each time and provides users with a 0.5 SOL price tag instead. Once the sales begin (i.e., everyone can mint), the whitelist gets you only the discount.
+- Creating a whitelist for presale, burning the whitelist token each time and provide whitelist users with a 0.5 SOL price tag instead (specified by the `discountPrice`). Once the sales begin (i.e., everyone can mint), the whitelist gets you only the discount.
 
     ```json
     "whitelistMintSettings": {
@@ -185,7 +191,7 @@ If you are using the whitelist settings with the `presale` option set to `true` 
     }
     ```
 
-- Creating a whitelist for presale, not burning the whitelist token (you will be able to reuse it) and gives users a 0.5 SOL price tag instead. Once the sales begin (i.e., everyone can mint), the whitelist gets you only the discount.
+- Creating a whitelist for presale, not burning the whitelist token (you will be able to reuse it) and give whitelist users a 0.5 SOL price tag instead. Once the sales begin (i.e., everyone can mint), the whitelist gets you only the discount.
 
     ```json
     "whitelistMintSettings": {
@@ -196,7 +202,7 @@ If you are using the whitelist settings with the `presale` option set to `true` 
     }
     ```
 
-- Creating a whitelist, not burning the whitelist token (you will be able to reuse it) and gives users a 0.5 SOL price tag instead - i.e., the whitelist **only** gets you the discount.
+- Creating a whitelist, not burning the whitelist token (you will be able to reuse it) and gives whitelist users a 0.5 SOL price tag instead - i.e., the whitelist **only** gets you the discount.
 
     ```json
     "whitelistMintSettings": {
@@ -207,7 +213,7 @@ If you are using the whitelist settings with the `presale` option set to `true` 
     }
     ```
 
-- Creating a whitelist, burning the whitelist token each time, running the white list during the sale. This in effect restrict any user without the whitelist token from minting at all - this is why `presale` is set to `false` and `discountPrice` set to `null`. The only purpose of the whitelist is to restrict the mint.
+- Creating a whitelist, burning the whitelist token each time, running the white list during the sale. This in effect restrict any user without the whitelist token from minting at all - this is why `presale` is set to `false` and `discountPrice` set to `null`. The only purpose of the whitelist is to **restrict** the mint.
 
     ```json
     "whitelistMintSettings": {

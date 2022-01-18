@@ -75,9 +75,9 @@ The command above transfers the authority of the Candy Machine to the wallet `7i
 This operation is irreversible, once you change the authority of the Candy Machine, you will lose the right to operate it.
 :::
 
-## Show Candy Machine Settings
+## Show Settings
 
-To verify your updates were successful you can run the `show` command:
+To verify your updates were successful, you can run the `show` command:
 
 ```bash
 ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts show \
