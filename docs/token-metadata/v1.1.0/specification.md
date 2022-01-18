@@ -1,7 +1,8 @@
 ---
 sidebar_label: "Specification"
-sidebar_position: 1
+sidebar_position: 2
 ---
+
 # Specification
 
 ## **Collections**
@@ -44,20 +45,19 @@ pub struct Collection {
 ```
 
 #### Table Format
- | Field            | Type      | Description                                                 |
-| ---------------- | --------- | ----------------------------------------------------------- |
-| verified              | bool    | Whether the collection is verified or not. |
-| key             | Pubkey | The SPL token mint account          |
 
+| Field    | Type   | Description                                |
+| -------- | ------ | ------------------------------------------ |
+| verified | bool   | Whether the collection is verified or not. |
+| key      | Pubkey | The SPL token mint account                 |
 
 :::warning
-EXTREMELY IMPORTANT: 
+EXTREMELY IMPORTANT:
 
 Explorers, Wallets and Marketplaces, MUST CHECK IF `verified` is true. Verified can only be set true if the Authority on the Collection NFT has run the `verify_collection` instruction over the NFT.
 
 This is the exact same pattern as the `Creators` field where `verified` must be true in order to validate the NFT.
 :::
-
 
 This implementationhas the following advantages:
 
@@ -65,8 +65,12 @@ This implementationhas the following advantages:
 - Possible to find all NFTs that belong to a given collection by making a `getProgramAccounts` call
 - Uses existing padding at the end of `Metadata` so adds no on-chain rent storage costs
 
+### Delegate Collection Authority Record
 
-### **Token Standards**
+Update Authorities on a Collection NFT can delegate the authority to call the `verify_collection` instruction. This allows you to delegate the ability to add nfts to your collection to many parties. You can do this by calling the
+`approve_collection_authority` instruction, to revoke you can call the `revoke_collection_authority` instruction.
+
+## **Token Standards**
 
 As token usage has evolved on Solana, it has become clear that there are more types of tokens than simply "fungible" and "non-fungible" tokens. An example is something the community is calling a "semi-fungible token", a SPL token with a supply greater than 1 but which has typical NFT attributes such as an image and an attributes array in the JSON metadata. The consensus seems to be that these should be stored in wallets in the same view as standard NFTs, or in their own view but separate from "standard" fungible SPL tokens. These tokens are becoming popular in gaming contexts to support fungible items such as a kind of sword or a piece of wood, etc. but which are in a different league from typical fungible SPL tokens such as USDC.
 
@@ -91,15 +95,15 @@ A `token_standard` field is added to the `Metadata` struct representing what typ
 The `token_standard` field is set automatically by the contract corresponding to the following logic:
 
 If the token has a master edition it is a `NonFungible`.
-If the token has no master edition(ensuring its supply can be > 1) and decimals of 0 it is a `FungibleAsset`. 
+If the token has no master edition(ensuring its supply can be > 1) and decimals of 0 it is a `FungibleAsset`.
 If the token has no master edition(ensuring its supply can be > 1) and decimals of > 0 it is a `Fungible`.
-If the token is a limited edition of a MasterEditon it is a `NonFungibleEdition`. 
+If the token is a limited edition of a MasterEditon it is a `NonFungibleEdition`.
 
 Each Token Standard type will have its own JSON schema which are defined below.
 
 **Fungible**
 
-These are simple SPL tokens with limited metadata and supply >= 0. Examples are USDC, GBTC and RAY. 
+These are simple SPL tokens with limited metadata and supply >= 0. Examples are USDC, GBTC and RAY.
 
 | Field       | Type   | Description                 |
 | ----------- | ------ | --------------------------- |
@@ -171,6 +175,7 @@ Example Fungible Asset JSON metadata:
   ]
 }
 ```
+
 **Non-Fungible Token / Fungible Edition**
 
 These are the "standard" non-fungible tokens the community is already familiar with and have both a Metadata PDA and a Master Edition PDA. Examples of these are Solana Monkee Business, Stylish Studs and Thugbirdz.
@@ -214,8 +219,8 @@ Note: Creators, Symbol
   ],
   //@deprecated -> do not use - may be removed in a future release
   "collection": {
-     "name": "Solflare X NFT",
-     "family": "Solflare"
+    "name": "Solflare X NFT",
+    "family": "Solflare"
   },
   "properties": {
     "files": [
@@ -245,7 +250,7 @@ Note: Creators, Symbol
 }
 ```
 
-#### Token Use Settings
+## Token Use Settings
 
 To support gaming applications, the concept of "token usage" has been implemented, where a new `uses` field has been added to the token `Metadata` struct. This field is a Rust `Option<Uses>` where `Uses` is a Rust struct with a `UseMethod` enum:
 
@@ -265,7 +270,11 @@ pub enum UseMethod {
 
 This allows projects to set different limits on usage of gaming tokens: burn, single, and multiple use. Burn allows a token to be used once and then burned forever. Single allows a single use but does not burn the token. Multiple allows up to `u64` number of uses of the token.
 
-#### Metadata Struct
+### Delegate Use Authority
+
+Owners of NFTs can now allow a program to `Use` their token without them being online. This is available via the `approve_use_authority` instruction. It is very similar to the Collection Authority system but the party who can approve and revoke is the current holder of the NFT.
+
+### Full Metadata Struct
 
 The new metadata struct with the additional fields is defined below:
 
@@ -292,14 +301,20 @@ pub struct Metadata {
 }
 ```
 
+### New Instructions
 
-#### New Instructions
+The following instructions have been added to support the new token specification:
 
-The following instructions have been added to support the new token standard:
-
-- CreateMetadataAccountV2
-- UpdateMetadataAccountV2
-- UpgradeMetadata
+- CreateMetadataAccountV2 -> Same as CreateMetadataAccount, But allows Collections and Use , also sets `TokenStandard`
+- UpdateMetadataAccountV2 -> Same as UpdateMetadataAccount, But allows Collections and Use , also sets `TokenStandard`
+- CreateMasterEditionV3 -> Same as CreateMasterEdition, but sets the `TokenStandard` on the NFT
+- VerifyCollection -> Allows a collection `verified` flag to become true on an NFT to represent a Certified Collection. Essentially this Officially Adds to a Collection.
+- UnVerifyCollection -> Allows a collection `verified` flag to become false on an NFT to represent a Certified Collection, Essentially this Officially Removes from a Collection.
+- Utilize -> Allows a limited "Use" semantic. Can be used to represent a ticket, pass, game item or physical item redemption.
+- ApproveUseAuthority -> Approve an authority to call `Utilize`
+- RevokeUseAuthority -> Remove a granted authority to call `Utilize`
+- ApproveCollectionAuthority -> Approve an authority to call `VerifyCollection`
+- RevokeCollectionAuthority -> Remove a granted authority to call `VerifyCollection`
 
 The first two perform the same role as their v1 versions but with support for the extra fields. `UpgradeMetadata` allows existing NFTs to be upgraded to support these new standards by adding the extra fields to their token metadata account.
 
@@ -311,13 +326,14 @@ The following items and instructions have been deprecated in v1.1.0:
 - CreateMetadataAccount
 - UpdateMetadataAccount
 - JSON Deprecation:
-    * creators field
-    * collection field
+  - creators field
+  - collection field
 
 ### Removed Items
 
 Removal Of Deprecated Instructions
-* DeprecatedCreateMasterEdition
-* DeprecatedCreateReservationList
-* DeprecatedMintPrintingTokensViaToken
-* DeprecatedMintPrintingTokens
+
+- DeprecatedCreateMasterEdition
+- DeprecatedCreateReservationList
+- DeprecatedMintPrintingTokensViaToken
+- DeprecatedMintPrintingTokens
