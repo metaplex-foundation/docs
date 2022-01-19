@@ -316,7 +316,7 @@ The following instructions have been added to support the new token specificatio
 - ApproveCollectionAuthority -> Approve an authority to call `VerifyCollection`
 - RevokeCollectionAuthority -> Remove a granted authority to call `VerifyCollection`
 
-The first two perform the same role as their v1 versions but with support for the extra fields. `UpgradeMetadata` allows existing NFTs to be upgraded to support these new standards by adding the extra fields to their token metadata account.
+The first two perform the same role as their v1 versions but with support for the extra fields. `UpdateMetadataAccountV2` allows existing NFTs to be upgraded to support these new standards by adding the extra fields to their token metadata account.
 
 ### Deprecated Items
 
