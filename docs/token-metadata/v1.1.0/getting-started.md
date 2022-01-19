@@ -5,7 +5,10 @@ sidebar_position: 1
 
 # Getting Started with V1.1.0
 
-As a backward-compatible release, you are already using the 1.1.0 version of the specification. It is implemented in the most recent version of the TokenMetadata program. Metaplex is still working on implementing this specification in all our products such as:
+As a backward-compatible release, you are already using the 1.1.0 version of the
+specification. It is implemented in the most recent version of the [Token
+Metadata program][]. Metaplex is still working on implementing this
+specification in all our products such as:
 
 - Candy Machine
 - Auction House
@@ -68,3 +71,6 @@ The cli has great help text that can guide you through.
 Here is the code for the cli.
 
 https://github.com/metaplex-foundation/metaplex/blob/master/js/packages/cli/src/cli-nft.ts
+
+
+[Token Metadata program]: https://github.com/metaplex-foundation/metaplex-program-library/tree/master/token-metadata

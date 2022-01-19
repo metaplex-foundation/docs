@@ -5,41 +5,55 @@ sidebar_position: 0
 
 # Overview
 
-The Metaplex Token Metadata Standard is an evolving standard for general token metadata on the Solana blockchain. This is the newest version of the standard and contains a number of improvements and additions to the standard while maintaining backwards compatibility.
+The Metaplex Token Metadata Standard is an evolving standard for general token metadata on the [Solana][] blockchain. `v1.1.0` is the newest version of the standard and contains a number of improvements and additions while maintaining backwards compatibility with [v1.0.0](/token-metadata/v1.0.0/nft-standard).
 
-### **Summary of Changes from V1.1.0**
+### **Summary of Changes in v1.1.0**
 
-Additions:
+#### New Features
 
-- On-Chain Collections
-- Token Standards
-- Token Uses
+- [On-Chain Collections](/token-metadata/v1.1.0/specification#collections)
+- [Token Standards](/token-metadata/v1.1.0/specification#token-standards)
+- [Token Uses][uses]
 
-Addition of Instructions:
+#### New Instructions
 
-- CreateMetadataAccountV2 -> Same as CreateMetadataAccount, But allows Collections and Use , also sets `TokenStandard`
-- UpdateMetadataAccountV2 -> Same as UpdateMetadataAccount, But allows Collections and Use , also sets `TokenStandard`
-- CreateMasterEditionV3 -> Same as CreateMasterEdition, but sets the `TokenStandard` on the NFT
-- VerifyCollection -> Allows a collection `verified` flag to become true on an NFT to represent a Certified Collection. Essentially this Officially Adds to a Collection.
-- UnVerifyCollection -> Allows a collection `verified` flag to become false on an NFT to represent a Certified Collection, Essentially this Officially Removes from a Collection.
-- Utilize -> Allows a limited "Use" semantic. Can be used to represent a ticket, pass, game item or physical item redemption.
-- ApproveUseAuthority -> Approve an authority to call `Utilize`
-- RevokeUseAuthority -> Remove a granted authority to call `Utilize`
-- ApproveCollectionAuthority -> Approve an authority to call `VerifyCollection`
-- RevokeCollectionAuthority -> Remove a granted authority to call `VerifyCollection`
+- `CreateMetadataAccountV2`
+  - Same as `CreateMetadataAccount`, but supports `Collections`, `Use` and `TokenStandard`
+- `UpdateMetadataAccountV2`
+  - Same as `UpdateMetadataAccount`, but supports `Collections`, `Use` and `TokenStandard`
+- `CreateMasterEditionV3`
+  - Same as `CreateMasterEdition`, but supports `TokenStandard`
+- `VerifyCollection`
+  - Allows a collection `verified` flag to become `true` on an NFT to represent a Certified Collection. Essentially this officially adds to a Collection.
+- `UnVerifyCollection`
+  - Allows a collection `verified` flag to become `false` on an NFT to represent a Certified Collection. Essentially this officially removes from a Collection.
+- `Utilize`
+  - Allows a ["limited use" semantic][uses]. Can be used to represent a ticket, pass, game item or physical item redemption.
+- `ApproveUseAuthority`
+  - Approves an authority to call `Utilize`
+- `RevokeUseAuthority`
+  - Removes a granted authority to call `Utilize`
+- `ApproveCollectionAuthority`
+  - Approves an authority to call `VerifyCollection`
+- `RevokeCollectionAuthority`
+  - Removes a granted authority to call `VerifyCollection`
 
-Deprecation:
+#### Deprecations
 
-- Deprecation(not removal) of "collection" and "creators" field in the token metadata JSON
-- Depreciation of V1 Instructions: These will now show a deprecation warning but will work fine
-- CreateMetadataAccount
-- UpdateMetadataAccount
-- CreateMasterEdition -> This may be confusing that there is no `V2` but for historical reasons this instruction is `V2`. The V1 had its name changed in a backward incompatible way see `DeprecatedCreateMasterEdition`
+- Deprecation (not removal) of "collection" and "creators" field in the token metadata JSON
+- The following v1 instructions now show a deprecation warning when executed
+  - `CreateMetadataAccount` - _please use `CreateMetadataAccountV2` instead_
+  - `UpdateMetadataAccount` - _please use `UpdateMetadataAccountV2` instead_
+  - `CreateMasterEdition` - _please use `CreateMasterEditionV3` instead_
+    - It may be confusing that there is no `V2` but for historical reasons this instruction actually was `V2`. The V1 had its name changed in a backward incompatible way.
 
-Removals:
+#### Removals
 
-- Removal Of Deprecated Instructions
-- DeprecatedCreateMasterEdition
-- DeprecatedCreateReservationList
-- DeprecatedMintPrintingTokensViaToken
-- DeprecatedMintPrintingTokens
+Removal of previously deprecated instructions
+  - `DeprecatedCreateMasterEdition`
+  - `DeprecatedCreateReservationList`
+  - `DeprecatedMintPrintingTokensViaToken`
+  - `DeprecatedMintPrintingTokens`
+
+[Solana]: https://solana.com
+[uses]: /token-metadata/v1.1.0/specification#token-use-settings
