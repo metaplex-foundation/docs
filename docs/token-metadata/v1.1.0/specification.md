@@ -36,11 +36,11 @@ pub struct Metadata {
 }
 ```
 
-```rust
+```Rust
 #[derive(BorshSerialize, BorshDeserialize, PartialEq, Debug, Clone)]
 pub struct Collection {
-  pub verified: bool,
-  pub key: Pubkey,
+    pub verified: bool,
+    pub key: Pubkey,
 }
 ```
 
