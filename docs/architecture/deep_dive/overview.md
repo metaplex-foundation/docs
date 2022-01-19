@@ -44,9 +44,7 @@ pub struct Metadata {
 #[derive(Clone, Debug, PartialEq, BorshSerialize, BorshDeserialize)]
 pub struct MasterEdition {
     pub key: Key,
-
     pub supply: u64,
-
     pub max_supply: Option<u64>,
 }
 
@@ -84,7 +82,7 @@ pub struct EditionMarker {
 
 ```
 
-The instruction set for the token metadata contract can be found here: [https://github.com/metaplex-foundation/metaplex/blob/master/rust/token-metadata/program/src/instruction.rs](https://github.com/metaplex-foundation/metaplex/blob/master/rust/token-metadata/program/src/instruction.rs)
+The instruction set for the token metadata contract can be found [here](https://github.com/metaplex-foundation/metaplex-program-library/blob/master/token-metadata/program/src/instruction.rs).
 
 ### Types
 
