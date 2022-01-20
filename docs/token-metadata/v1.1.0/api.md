@@ -1,5 +1,5 @@
 ---
-sidebar_label: "Api"
+sidebar_label: "API"
 sidebar_position: 3
 ---
 

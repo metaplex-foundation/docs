@@ -2,9 +2,9 @@
 sidebar_position: 1
 ---
 
-# Getting started
+# Introduction
 
-Metaplex JS SDK is a library that allows you to:
+The [Metaplex JS SDK][docs] is a library that allows you to:
 
 - Load and Deserialize Accounts
 - Create transactions
@@ -18,9 +18,14 @@ It works both in NodeJS and browsers.
 
 This project is in development. **All** interfaces are _very likely_ to change very frequently. Please use caution when making use of this library. Bugs or behavior changes may surprise users when Experimental API modifications occur.
 
-### Getting started
+## References
 
-In order to get started with the Metaplex JS SDK, you'll need to install it and have a Solana wallet to work with.
+- [API documentation][docs]
+- [Source code][github]
+
+## Getting started
+
+In order to get started with the [Metaplex JS SDK][docs], you'll need to install it and have a Solana wallet to work with.
 
 ### Installation
 
@@ -38,8 +43,8 @@ npm install @metaplex/js
 The following code snippet is the most basic one you can use to get Metadata information with this library:
 
 ```ts
-import { Connection } from '@metaplex/js';
-import { Metadata } from "@metaplex-foundation/mpl-token-metadata";
+import { Connection, programs } from '@metaplex/js';
+const { metadata: { Metadata } } = programs;
 
 const connection = new Connection('devnet');
 const tokenPublicKey = 'Gz3vYbpsB2agTsAwedtvtTkQ1CG9vsioqLW3r9ecNpvZ';
@@ -105,7 +110,7 @@ await <AccountType>.load(connection, pubkey);
 ```
 
 ```ts
-import { Connection, Account, programs } from '@metaplex/js';
+import { Connection, programs } from '@metaplex/js';
 const { metaplex: { Store, AuctionManager }, metadata: { Metadata }, auction: { Auction }, vault: { Vault } } = programs;
 
 
@@ -121,3 +126,6 @@ const vault = await Vault.load(connection, '<pubkey>');
 const auctionManager = await AuctionManager.load(connection, '<pubkey>');
 const store = await Store.load(connection, '<pubkey>');
 ```
+
+[github]: https://github.com/metaplex-foundation/js
+[docs]: https://metaplex-foundation.github.io/js/
