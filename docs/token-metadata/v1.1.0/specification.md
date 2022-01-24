@@ -189,7 +189,7 @@ Example Fungible Asset JSON metadata:
 
 **Non-Fungible Token / Fungible Edition**
 
-These are the "standard" non-fungible tokens the community is already familiar with and have both a Metadata PDA and a Master Edition PDA. Examples of these are Solana Monkee Business, Stylish Studs and Thugbirdz.
+These are the "standard" non-fungible tokens the community is already familiar with and have both a Metadata PDA and a Master Edition PDA. Examples of these are Solana Monkey Business, Stylish Studs and Thugbirdz.
 
 | Field         | Type   | Description                                                                    |
 | ------------- | ------ | ------------------------------------------------------------------------------ |
