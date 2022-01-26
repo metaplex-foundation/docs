@@ -21,9 +21,9 @@ The table below provides an overview of the settings available:
 | splToken              |                   | PublicKey              | Mint address of the token accepted as payment |
 | goLiveDate            |                   | Datetime               | Timestamp when minting is allowed – the Candy Machine authority and whitelists can bypass this constraint |
 | endSettings           |                   |                        | |
-|                       | date              | boolean                | Enabled the use of a date to stop the mint |
-|                       | amount            | boolean                | Enable stopping the mint after a specific amount is minted |
-|                       | value             | String / Integer       | Either specify a date string (if date = true) or a integer value (if amount = true) |
+|                       | value             | Datetime or Integer    | Value to test the end condition. This will be either a date string (if `date` is set to `true`) or a integer amount value (if `amount` is set to `true`) |
+|                       | date              | boolean                | Enable the use of a date to stop the mint - when the date specified in the `value` option is reached, the mint stops |
+|                       | amount            | boolean                | Enable stopping the mint after a specific amount is minted - the amount is specified in the `value` option |
 | whitelistMintSettings |                   |                        | |
 |                       | mode              |                        | |
 |                       |                   | “burnEveryTime” : true | Whitelist token is burned after the mint |
