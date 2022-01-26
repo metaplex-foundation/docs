@@ -21,3 +21,14 @@ Below is a list of our Products and their stability levels. For more information
 | NFT Packs        | 1 (Experimental) |
 | Gum Drop         | 1 (Experimental) |
 | Membership Token Sale | 1 (Experimental) |
+
+
+# Rust Crates
+
+Below is a list of our official Rust crates.
+
+| Package        | Link                                                              | Version                                                                                                     |
+| -------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Candy Machine  | [mpl-candy-machine](https://crates.io/crates/mpl-candy-machine)   | [![Crate](https://img.shields.io/crates/v/mpl-candy-machine)](https://crates.io/crates/mpl-candy-machine)   |
+| Token Metadata | [mpl-token-metadata](https://crates.io/crates/mpl-token-metadata) | [![Crate](https://img.shields.io/crates/v/mpl-token-metadata)](https://crates.io/crates/mpl-token-metadata) |
+| Token Vault    | [mpl-token-vault](https://crates.io/crates/mpl-token-vault)       | [![Crate](https://img.shields.io/crates/v/mpl-token-vault)](https://crates.io/crates/mpl-token-vault)       |
