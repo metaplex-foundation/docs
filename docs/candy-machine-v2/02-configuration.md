@@ -38,7 +38,7 @@ The table below provides an overview of the settings available:
 | storage               |                   |                        | Storage type to upload images and metadata |
 |                       |                   | “arweave-sol”          | Uploads to arweave and payment are made in SOL (only works in mainnet, recommended option) |
 |                       |                   | “arweave-bundle”       | Uploads to arweave and payment are made in AR (only works in mainnet and requires an Arweave wallet) |
-|                       |                   | “arweave”              | Uploads to arweave via Metaplex Google Cloud function (works on devnet and mainnet) |
+|                       |                   | “arweave”              | Uploads to arweave via Metaplex Google Cloud function (works on devnet and mainnet, recommended option for devnet) |
 |                       |                   | “ipfs”                 | Uploads to IPFS (must specify either Infura Project ID or Secret Key) |
 |                       |                   | “aws”                  | Uploads to AWS (must specify AWS Bucket name) |
 | ipfsInfuraProjectId   |                   | String                 | Infura Project ID |
