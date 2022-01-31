@@ -45,6 +45,7 @@ Meaning the Public Key you set in the `authority` section of the `CreateAuctionH
 
 :::warning 
 `Can Change Sale Price` is only intended to be used with AuctionHouses that `Requires Sign Off`
+:::
 
 #### Requires Sign Off Feature
 This feature allows a marketplace to restrict which NFTs get sold on their platform. It is useful for more centralized marketplaces or a marketplace that has order matching algorithms that the user has allowed them to use (enabled by listing the NFT at the price of 0). 
