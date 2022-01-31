@@ -43,7 +43,7 @@ Meaning the Public Key you set in the `authority` section of the `CreateAuctionH
 - Can Change Sale Price - If the buyer intentionally lists their NFT for a price of 0 the Auction House can change the sale price to match a matching Bid that is greater than 0. This allows the Auction house to do complicated order matching to find the best price for the seller. 
 - Treasury Mint - The SPL token you accept as the purchase currency
 
-::: warning 
+:::warning 
 `Can Change Sale Price` is only intended to be used with AuctionHouses that `Requires Sign Off`
 
 #### Requires Sign Off Feature
