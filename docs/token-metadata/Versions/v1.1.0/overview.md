@@ -5,7 +5,7 @@ sidebar_position: 0
 
 # Overview
 
-The Metaplex Token Metadata Standard is an evolving standard for general token metadata on the [Solana](https://crypto-wikipedia.com/what-is-solana-sol/ blockchain. `v1.1.0` is the newest version of the standard and contains a number of improvements and additions while maintaining backwards compatibility with [v1.0.0](/token-metadata/v1.0.0/nft-standard).
+The Metaplex Token Metadata Standard is an evolving standard for general token metadata on the [Solana](https://crypto-wikipedia.com/what-is-solana-sol/ blockchain. `v1.1.0` is the newest version of the standard and contains a number of improvements and additions while maintaining backwards compatibility with [v1.0.0](/token-metadata/versions/v1.0.0/nft-standard).
 
 ### **Summary of Changes in v1.1.0**
 
@@ -50,10 +50,11 @@ The Metaplex Token Metadata Standard is an evolving standard for general token m
 #### Removals
 
 Removal of previously deprecated instructions
-  - `DeprecatedCreateMasterEdition`
-  - `DeprecatedCreateReservationList`
-  - `DeprecatedMintPrintingTokensViaToken`
-  - `DeprecatedMintPrintingTokens`
 
-[Solana]: https://solana.com
+- `DeprecatedCreateMasterEdition`
+- `DeprecatedCreateReservationList`
+- `DeprecatedMintPrintingTokensViaToken`
+- `DeprecatedMintPrintingTokens`
+
+[solana]: https://solana.com
 [uses]: /token-metadata/specification#token-use-settings
