@@ -1,11 +1,11 @@
 ---
 sidebar_label: "Getting Started"
-sidebar_position: 1
+sidebar_position: 0
 ---
 
 # Getting Started
 
-As a backward-compatible release, you are already using the 1.2.* version of the
+As a backward-compatible release, you are already using the 1.2.\* version of the
 specification. It is implemented in the most recent version of the Token
 Metadata program. Metaplex is still working on implementing this
 specification in all our products such as:
@@ -72,5 +72,4 @@ Here is the code for the cli.
 
 https://github.com/metaplex-foundation/metaplex/blob/master/js/packages/cli/src/cli-nft.ts
 
-
-[Token Metadata program]: https://github.com/metaplex-foundation/metaplex-program-library/tree/master/token-metadata
+[token metadata program]: https://github.com/metaplex-foundation/metaplex-program-library/tree/master/token-metadata

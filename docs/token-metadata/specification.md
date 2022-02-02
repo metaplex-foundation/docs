@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Specification"
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Specification
@@ -361,5 +361,4 @@ Removal of previously deprecated instructions
 - `DeprecatedMintPrintingTokensViaToken`
 - `DeprecatedMintPrintingTokens`
 
-
-[Token Metadata]: https://github.com/metaplex-foundation/metaplex-program-library/tree/master/token-metadata/program
+[token metadata]: https://github.com/metaplex-foundation/metaplex-program-library/tree/master/token-metadata/program
