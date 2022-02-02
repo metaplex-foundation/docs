@@ -5,7 +5,7 @@ sidebar_position: 0
 
 # Overview
 
-The Metaplex Token Metadata Standard is an evolving standard for general token metadata on the [Solana][] blockchain. `v1.1.0` is the newest version of the standard and contains a number of improvements and additions while maintaining backwards compatibility with [v1.1.0](/token-metadata/v1.0.0/nft-standard).
+The Metaplex Token Metadata Standard is an evolving standard for general token metadata on the [Solana][] blockchain. `v1.2.0` is the newest version of the standard and contains a number of improvements and additions while maintaining backwards compatibility with [v1.1.0](/token-metadata/v1.1.0/nft-standard).
 
 See the entire standard in the [Specification](/token-metadata/specification) version.
 
@@ -17,3 +17,4 @@ For the official and living release page and change log see the following:
 
 [1.2.* Release Page](https://github.com/metaplex-foundation/metaplex-program-library/discussions/178)
 
+[Solana]: https://solana.com
