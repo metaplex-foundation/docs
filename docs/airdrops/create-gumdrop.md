@@ -1,4 +1,17 @@
 # Gumdrop
+
+- [Gumdrop](#gumdrop)
+  - [Motivation](#motivation)
+  - [Setup](#setup)
+  - [Drop Types](#drop-types)
+    - [Token Airdrop](#token-airdrop)
+    - [NFT Candy Machine Pre-sale](#nft-candy-machine-pre-sale)
+    - [Edition Prints](#edition-prints)
+  - [Distribution Method](#distribution-method)
+  - [Whitelist](#whitelist)
+  - [Closing a Gumdrop](#closing-a-gumdrop)
+  - [Deploy Custom Gumdrop Site](#deploy-custom-gumdrop-site)
+
 Gumdrop is a new feature from the metaplex community. It is currently in BETA so use at your own risk.
 
 The Gumdrop program leverages the Solana blockchain and merkle trees to
@@ -54,18 +67,6 @@ used to later [close the gumdrop](#closing-a-gumdrop), so make sure to save it!
 There are multiple drop types supported by the gumdrop program. Each utilizes
 the same underlying mechanism of building a merkle tree from a whitelist and
 using some kind of off-chain distribution method to notify recipients.
-
-- [Gumdrop](#gumdrop)
-  - [Motivation](#motivation)
-  - [Setup](#setup)
-  - [Drop Types](#drop-types)
-    - [Token Airdrop](#token-airdrop)
-    - [NFT Candy Machine Pre-sale](#nft-candy-machine-pre-sale)
-    - [Edition Prints](#edition-prints)
-  - [Distribution Method](#distribution-method)
-  - [Whitelist](#whitelist)
-  - [Closing a Gumdrop](#closing-a-gumdrop)
-  - [Deploy Custom Gumdrop Site](#deploy-custom-gumdrop-site)
 
 The sections below give examples and explanations for CLI usage of the command
 line flags. A full list of options can be viewed with
