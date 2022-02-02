@@ -1,26 +1,14 @@
 ---
 sidebar_label: "Specification"
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Specification
+The Token Metadata program provides decorator structs to a token mint. Basic information about the token is provided with the `Metadata` struct, whose account address is a Program Derived Address (PDA) with a derived key of `['metadata', metadata_program_id, mint_id]`.
+Your NFT should have the following information as on-chain metadata:
 
-## **Collections**
-
-Introduced in v1.1.0 of the token metadata standard, _on-chain collections_
-replace the `collection` field previously defined in external JSON metadata.
-Gone are the ad-hoc community heuristics for determining a collection,
-superseded with an objective, easy-to-use on-chain implementation.
-
-### **On-Chain Representation of a Collection**
-
-:::info
-A `collection` is an NFT. It has the same data layout on-chain as any other NFT.
-:::
-
-An NFT is linked to a collection in a belongs_to style where the NFT has a
-reference back to the collection. This is implemented through the addition of
-a new `collection` field in the [Token Metadata][] struct.
+## Full Metadata Struct
+The below code snippet is the representation on chain of the full metadata struct.
 
 ```rust
 pub struct Metadata {
@@ -37,52 +25,20 @@ pub struct Metadata {
     /// Since we cannot easily change Metadata, we add the new DataV2 fields here at the end.
     /// Collection
     pub collection: Option<Collection>,
-    ...
-}
-
-#[derive(BorshSerialize, BorshDeserialize, PartialEq, Debug, Clone)]
-pub struct Collection {
-  pub verified: bool, // Whether or not the collection is verified
-  pub key: Pubkey,    // The SPL token mint account of the collection NFT
+    /// Uses
+    pub uses: Option<Uses>,
+    /// Token Standard is deterministic and will change from SemiFungible to NonFungible if
+    /// you call the create master edition call and it succeeds.
+    pub token_standard: Option<TokenStandard>,
 }
 ```
 
-The metadata `collection` field maps to the Mint Address of the collection NFT and is
-represented as the Rust type `Option<Collection>` where a value of `None` is
-interpreted to mean the NFT does not belong to any collection. The `Collection`
-struct has the fields `verified` denoting whether or not the collection is
-verified (see below) and `key` which points to the `mint` account of the collection NFT.
-
-#### Collection struct fields
-
-| Field    | Type   | Description                                |
-| -------- | ------ | ------------------------------------------ |
-| verified | bool   | Whether the collection is verified or not. |
-| key      | Pubkey | The SPL token mint account                 |
-
-:::warning
-EXTREMELY IMPORTANT:
-
-Explorers, Wallets and Marketplaces, MUST CHECK IF `verified` is true. Verified can only be set true if the Authority on the Collection NFT has run the `verify_collection` instruction over the NFT.
-
-This is the exact same pattern as the `Creators` field where `verified` must be true in order to validate the NFT.
+The URI filed contains a pointer to the rest of the metadata. This metadata is stored off chain in most cases and the URI is usually a `https:` link to some decentralized storage.
+This uri must point to a JSON file that conforms to one of our Token Standards.
+:::info
+NOTE: The below Token Standards were introduced in Token Metadata v1.1.0.
+Many tokens will still conform to the v1.0.0 `NonFungible` json standard [V1.0.0](/token-metadata/Versions/v1.0.0/nft-standard)
 :::
-
-This implementation has the following advantages:
-
-- Easy to identify which collection any given NFT belongs to without making additional on-chain calls
-- Possible to find all NFTs that belong to a given collection by making a `getProgramAccounts` call
-- Uses existing padding at the end of `Metadata` so adds no on-chain rent storage costs
-
-### Delegate Collection Authority Record
-
-Update Authorities on a Collection NFT can delegate the authority to call the
-`verify_collection` instruction. This allows you to delegate the ability to add
-NFTs to your collection to many parties. You can do this by calling the
-`approve_collection_authority` instruction. To revoke you can call the
-`revoke_collection_authority` instruction.
-
-To accomplish setting and verifying a collection with one instruction use the `set_and_verify_collection` instruction introduced in 1.2.0.
 
 ## **Token Standards**
 
@@ -263,6 +219,87 @@ Note: Creators, Symbol
 }
 ```
 
+
+
+## **Collections**
+
+Introduced in v1.1.0 of the token metadata standard, _on-chain collections_
+replace the `collection` field previously defined in external JSON metadata.
+Gone are the ad-hoc community heuristics for determining a collection,
+superseded with an objective, easy-to-use on-chain implementation.
+
+### **On-Chain Representation of a Collection**
+
+:::info
+A `collection` is an NFT. It has the same data layout on-chain as any other NFT.
+:::
+
+An NFT is linked to a collection in a belongs_to style where the NFT has a
+reference back to the collection. This is implemented through the addition of
+a new `collection` field in the [Token Metadata][] struct.
+
+```rust
+pub struct Metadata {
+    pub key: Key,
+    pub update_authority: Pubkey,
+    pub mint: Pubkey,
+    pub data: Data,
+    // Immutable, once flipped, all sales of this metadata are considered secondary.
+    pub primary_sale_happened: bool,
+    // Whether or not the data struct is mutable, default is not
+    pub is_mutable: bool,
+    /// nonce for easy calculation of editions, if present
+    pub edition_nonce: Option<u8>,
+    /// Since we cannot easily change Metadata, we add the new DataV2 fields here at the end.
+    /// Collection
+    pub collection: Option<Collection>,
+    ...
+}
+
+#[derive(BorshSerialize, BorshDeserialize, PartialEq, Debug, Clone)]
+pub struct Collection {
+  pub verified: bool, // Whether or not the collection is verified
+  pub key: Pubkey,    // The SPL token mint account of the collection NFT
+}
+```
+
+The metadata `collection` field maps to the Mint Address of the collection NFT and is
+represented as the Rust type `Option<Collection>` where a value of `None` is
+interpreted to mean the NFT does not belong to any collection. The `Collection`
+struct has the fields `verified` denoting whether or not the collection is
+verified (see below) and `key` which points to the `mint` account of the collection NFT.
+
+#### Collection struct fields
+
+| Field    | Type   | Description                                |
+| -------- | ------ | ------------------------------------------ |
+| verified | bool   | Whether the collection is verified or not. |
+| key      | Pubkey | The SPL token mint account                 |
+
+:::warning
+EXTREMELY IMPORTANT:
+
+Explorers, Wallets and Marketplaces, MUST CHECK IF `verified` is true. Verified can only be set true if the Authority on the Collection NFT has run the `verify_collection` instruction over the NFT.
+
+This is the exact same pattern as the `Creators` field where `verified` must be true in order to validate the NFT.
+:::
+
+This implementation has the following advantages:
+
+- Easy to identify which collection any given NFT belongs to without making additional on-chain calls
+- Possible to find all NFTs that belong to a given collection by making a `getProgramAccounts` call
+- Uses existing padding at the end of `Metadata` so adds no on-chain rent storage costs
+
+### Delegate Collection Authority Record
+
+Update Authorities on a Collection NFT can delegate the authority to call the
+`verify_collection` instruction. This allows you to delegate the ability to add
+NFTs to your collection to many parties. You can do this by calling the
+`approve_collection_authority` instruction. To revoke you can call the
+`revoke_collection_authority` instruction.
+
+To accomplish setting and verifying a collection with one instruction use the `set_and_verify_collection` instruction introduced in 1.2.0.
+
 ## Token Use Settings
 
 To support gaming applications, the concept of "token usage" has been implemented, where a new `uses` field has been added to the token `Metadata` struct. This field is a Rust `Option<Uses>` where `Uses` is a Rust struct with a `UseMethod` enum:
@@ -287,32 +324,7 @@ This allows projects to set different limits on usage of gaming tokens: burn, si
 
 Owners of NFTs can now allow a program to `Use` their token without them being online. This is available via the `approve_use_authority` instruction. It is very similar to the Collection Authority system but the party who can approve and revoke is the current holder of the NFT.
 
-### Full Metadata Struct
 
-The new metadata struct with the additional fields is defined below:
-
-```rust
-pub struct Metadata {
-    pub key: Key,
-    pub update_authority: Pubkey,
-    pub mint: Pubkey,
-    pub data: Data,
-    // Immutable, once flipped, all sales of this metadata are considered secondary.
-    pub primary_sale_happened: bool,
-    // Whether or not the data struct is mutable, default is not
-    pub is_mutable: bool,
-    /// nonce for easy calculation of editions, if present
-    pub edition_nonce: Option<u8>,
-    /// Since we cannot easily change Metadata, we add the new DataV2 fields here at the end.
-    /// Collection
-    pub collection: Option<Collection>,
-    /// Uses
-    pub uses: Option<Uses>,
-    /// Token Standard is deterministic and will change from SemiFungible to NonFungible if
-    /// you call the create master edition call and it succeeds.
-    pub token_standard: Option<TokenStandard>,
-}
-```
 
 ### New Instructions
 
@@ -361,4 +373,5 @@ Removal of previously deprecated instructions
 - `DeprecatedMintPrintingTokensViaToken`
 - `DeprecatedMintPrintingTokens`
 
-[token metadata]: https://github.com/metaplex-foundation/metaplex-program-library/tree/master/token-metadata/program
+
+[Token Metadata]: https://github.com/metaplex-foundation/metaplex-program-library/tree/master/token-metadata/program
