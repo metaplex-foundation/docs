@@ -326,10 +326,8 @@ Owners of NFTs can now allow a program to `Use` their token without them being o
 
 
 
-### New Instructions
-
+### 1.1.0 New Instructions
 The following instructions have been added to support the new token specification:
-
 - `CreateMetadataAccountV2`
   - Same as `CreateMetadataAccount`, but supports `Collections`, `Use` and `TokenStandard`
 - `UpdateMetadataAccountV2`
@@ -354,9 +352,7 @@ The following instructions have been added to support the new token specificatio
 The first two perform the same role as their v1 versions but with support for the extra fields. `UpdateMetadataAccountV2` allows existing NFTs to be upgraded to support these new standards by adding the extra fields to their token metadata account.
 
 ### Deprecated Items
-
 The following items and instructions have been deprecated in v1.1.0:
-
 - Deprecation (not removal) of "collection" and "creators" field in the token metadata JSON
 - The following v1 instructions now show a deprecation warning when executed
   - `CreateMetadataAccount` - _please use `CreateMetadataAccountV2` instead_
