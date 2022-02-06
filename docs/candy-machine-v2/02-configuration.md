@@ -21,9 +21,9 @@ The table below provides an overview of the settings available:
 | splToken              |                   | PublicKey              | Mint address of the token accepted as payment |
 | goLiveDate            |                   | Datetime               | Timestamp when minting is allowed – the Candy Machine authority and whitelists can bypass this constraint |
 | endSettings           |                   |                        | |
-|                       | date              | boolean                | Enabled the use of a date to stop the mint |
-|                       | amount            | boolean                | Enable stopping the mint after a specific amount is minted |
-|                       | value             | String / Integer       | Either specify a date string (if date = true) or a integer value (if amount = true) |
+|                       | value             | Datetime or Integer    | Value to test the end condition. This will be either a date string (if `date` is set to `true`) or a integer amount value (if `amount` is set to `true`) |
+|                       | date              | boolean                | Enable the use of a date to stop the mint - when the date specified in the `value` option is reached, the mint stops |
+|                       | amount            | boolean                | Enable stopping the mint after a specific amount is minted - the amount is specified in the `value` option |
 | whitelistMintSettings |                   |                        | |
 |                       | mode              |                        | |
 |                       |                   | “burnEveryTime” : true | Whitelist token is burned after the mint |
@@ -38,7 +38,7 @@ The table below provides an overview of the settings available:
 | storage               |                   |                        | Storage type to upload images and metadata |
 |                       |                   | “arweave-sol”          | Uploads to arweave and payment are made in SOL (only works in mainnet, recommended option) |
 |                       |                   | “arweave-bundle”       | Uploads to arweave and payment are made in AR (only works in mainnet and requires an Arweave wallet) |
-|                       |                   | “arweave”              | Uploads to arweave via Metaplex Google Cloud function (works on devnet and mainnet) |
+|                       |                   | “arweave”              | Uploads to arweave via Metaplex Google Cloud function (works on devnet and mainnet, recommended option for devnet) |
 |                       |                   | “ipfs”                 | Uploads to IPFS (must specify either Infura Project ID or Secret Key) |
 |                       |                   | “aws”                  | Uploads to AWS (must specify AWS Bucket name) |
 | ipfsInfuraProjectId   |                   | String                 | Infura Project ID |
@@ -46,7 +46,7 @@ The table below provides an overview of the settings available:
 | arweaveJwk            |                   | String                 | Arweave JWK wallet file |
 | awsS3Bucket           |                   | String                 | AWS bucket name |
 | noRetainAuthority     |                   | boolean                | Indicates whether the candy machine authority has the update authority for each mint or not |
-| noMutable             |                   | boolean                | Indicated whether each mint is mutable or not |
+| noMutable             |                   | boolean                | Indicates whether the NFTs' metadata is mutable or not after having been minted |
 
 :::info
 Any setting that is not used must be set to null to avoid errors from the CLI.
