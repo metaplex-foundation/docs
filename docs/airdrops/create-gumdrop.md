@@ -93,7 +93,7 @@ The workflow for a Candy Machine pre-sale through the Gumdrop program is as
 follows:
 
 1. Create a Gumdrop [Token Airdrop](#token-airdrop)
-2. Create a Candy Machine V2 with a whitelist mint ([Candy Machine Docs](/candy-machine-v2/introduction)). Use the token from step 1.
+2. Create a Candy Machine V2 with a whitelist mint ([Candy Machine Docs](./candy-machine-v2/introduction)). Use the token from step 1.
 
 ### Edition Prints
 
@@ -186,8 +186,7 @@ recipients will fail to claim their allocation.
 
 ## Closing a Gumdrop
 
-When the gumdrop is finished, the candy machine authority or the master
-edition can be reclaimed by closing the gumdrop. Currently, the small portion
+When the gumdrop is finished, the master edition can be reclaimed by closing the gumdrop. Currently, the small portion
 of rent used to store the Gumdrop state is also redeemed but please do not rely
 on this behavior!
 
