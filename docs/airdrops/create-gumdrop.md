@@ -5,7 +5,6 @@
   - [Setup](#setup)
   - [Drop Types](#drop-types)
     - [Token Airdrop](#token-airdrop)
-    - [NFT Candy Machine Pre-sale](#nft-candy-machine-pre-sale)
     - [Edition Prints](#edition-prints)
   - [Distribution Method](#distribution-method)
   - [Whitelist](#whitelist)
@@ -36,7 +35,7 @@ can choose to claim their portion or leave it for general adoption.
 The approach, originally pioneered for token airdrops by
 [Uniswap](https://github.com/Uniswap/merkle-distributor) and ported to Solana
 by [Saber](https://github.com/saber-hq/merkle-distributor), is extended to
-allow pre-minting a Candy Machine or printing editions of a master copy.
+allow printing editions of a master copy.
 Moreover, Gumdrop allows creators to directly send whitelisted users a drop
 reclamation link by building the tree with off-chain handles (e.g email,
 discord, etc) and allowing the user to redeem into any wallet.
@@ -93,30 +92,8 @@ $ ts-node src/gumdrop-cli.ts create \
 The workflow for a Candy Machine pre-sale through the Gumdrop program is as
 follows:
 
-1. Create a Candy Machine with at least as many assets as are to be distributed
-   through the Gumdrop. [See instructions to create a Candy
-   Machine here](./candy-machine-v1/introduction)
-2. Set the Candy Machine start date to after the pre-sale ends (i.e when the
-   mint should be open to all participants) or leave it None (so only
-   whitelisted participants may ever mint).
-3. Create the Gumdrop with the whitelist.
-4. Transfer authority to the Gumdrop state which allows the Gumdrop program to
-   mint for whitelisted participants on behalf of the creator _before_ the
-   go-live date.
-
-```
-$ ts-node src/gumdrop-cli.ts create \
---claim-integration candy \
---candy-config 47X2tVJ15rLnyDY2vUpYJzUQNYUBZcdFVd94D6zAtnkc
---candy-uuid 47X2tV
-```
-
-The Gumdrop CLI and web interface will handle steps 3 and 4. The Candy Config
-and Candy UUID uniquely identify a Candy Machine and are specified on creation.
-With the Metaplex `candy-machine-cli.ts`, you can find the values used in the
-directory `.cache/{ENV}-temp`.
-
-Closing the Gumdrop will reclaim the Candy Machine authority.
+1. Create a Gumdrop [Token Airdrop](#token-airdrop)
+2. Create a Candy Machine V2 with a whitelist mint ([Candy Machine Docs](/candy-machine-v2/introduction)). Use the token from step 1.
 
 ### Edition Prints
 
