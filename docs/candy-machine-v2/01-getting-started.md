@@ -140,7 +140,7 @@ solana config set --keypair ~/.config/solana/devnet.json
 and make sure we are on the `devnet`:
 
 ```bash
-solana config set --url https://api.devnet.solana.com
+solana config set --url https://metaplex.devnet.rpcpool.com/
 ```
 
 If all the above steps are successfull, your configuration be similar to:
@@ -154,8 +154,8 @@ solana config get
 
 ```
 Config File: ~/.config/solana/cli/config.yml
-RPC URL: https://api.devnet.solana.com 
-WebSocket URL: wss://api.devnet.solana.com/ (computed)
+RPC URL: https://metaplex.devnet.rpcpool.com/ 
+WebSocket URL: wss://metaplex.devnet.rpcpool.com/ (computed)
 Keypair Path: ~/.config/solana/devnet.json 
 Commitment: confirmed 
 ```
