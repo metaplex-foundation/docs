@@ -12,7 +12,7 @@ You will need recent version of the following tools:
 - [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git): to clone the repository
 - [node](https://nodejs.org/en/download/): JavaScript runtime
 - [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable): package manager to install the required dependencies
-- [ts-node](https://www.npmjs.com/package/ts-node#installation): TypeScript execution environament
+- [ts-node](https://www.npmjs.com/package/ts-node#installation): TypeScript execution environment
 
 ```bash
 git version
