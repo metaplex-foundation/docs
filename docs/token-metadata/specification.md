@@ -219,7 +219,67 @@ Note: Creators, Symbol
 }
 ```
 
+For the fields that match the on-chain metadata, on-chain information has priority.
 
+- <code>description</code> - Human readable description of the asset.
+- <code>image</code> - URL to the image of the asset. PNG, GIF and JPG file formats are supported. You may use the <code>?ext={file_extension}</code> query to provide information on the file type.
+- <code>animation_url</code> - URL to a multi-media attachment of the asset. The supported file formats are MP4 and MOV for video, MP3, FLAC and WAV for audio, GLB for AR/3D assets, and HTML for HTML pages. You may use the <code>?ext={file_extension}</code> query to provide information on the file type.
+- <code>external_url</code> - URL to an external application or website where users can also view the asset.
+- <code>properties.category</code> - Supported categories:
+  - <code>"image"</code> - PNG, GIF, JPG
+  - <code>"video"</code> - MP4, MOV
+  - <code>"audio"</code> - MP3, FLAC, WAV
+  - <code>"vr"</code> - 3D models; GLB, GLTF
+  - <code>"html"</code> - HTML pages; scripts and relative paths within the HTML page are also supported
+- <code>properties.files</code> - Object array, where an object should contain the <code>uri</code> and <code>type</code> of the file that is part of the asset. The type should match the file extension. The array should also include files specified in <code>image</code> and <code>animation_url</code> fields, and any other that are associated with the asset. You may use the <code>?ext={file_extension}</code> query to provide information on the file type.
+- <code>attributes</code> - Object array, where an object should contain <code>trait_type</code> and <code>value</code> fields. <code>value</code> can be a string or a number.
+
+## **Additonal Suggestions**
+
+### **CDN hosted files**
+
+In addition to hosting your assets on a permanent service, you can also host your assets on a CDN (to provide faster loading times). Just use the cdn boolean flag within the objects inside the properties.files array.
+```json
+  "properties": {
+    "files": [
+        ...
+        {
+          "uri": "https://watch.videodelivery.net/52a52c4a261c88f19d267931426c9be6",
+          "type": "unknown",
+          "cdn": true
+        },
+        ...
+    ]
+}
+```
+If such a flag exists, that file is the primary option when selecting the multimedia-attachment (video, audio or 3D) that will be displayed to owners. If that file is no longer available, wallets should default to it using the URL in <code>animation_url</code> field.
+
+### **The Render Network from OTOY**
+
+NFTs can also be powered by [The Render Network](https://rendertoken.com/), an application streaming service from OTOY. Streaming through X.IO is a well tested process that has been active for many years (see [this page](https://demo.x.io/blender.html) for an example). This example shows a fully interactive stream of Blender that allows the viewer to create and render objects within their browser. This can be tokenized into an NFT. 
+
+<!-- <iframe src="https://demo.x.io/blender.html" width="500px" style="height: 500px;"></iframe> -->
+
+To leverage The Render Network's application streaming service, place the X.IO domain inside of the properties.
+
+```json
+  // You should include a picture or video for the preview
+  "image": "https://www.arweave.net/abcd5678?ext=png",
+  "animation_url": "https://www.arweave.net/efgh1234?ext=mp4",
+  "properties": {
+    "files": [
+        ...
+        {
+          "uri": "https://demo.x.io/blender.html",
+          "type": "x.io",
+        },
+        ...
+    ]
+  // The Render Network can be rendered using the HTML category
+  "category": "HTML",
+}
+```
+For the NFT to render properly in a wallet, secondary marketplace, or app the "x.io" domain would need to be allowed by the provider. 
 
 ## **Collections**
 
