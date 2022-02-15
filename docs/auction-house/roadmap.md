@@ -14,7 +14,7 @@ The AuctionHouse work board is located on Github here:
 [AuctionHouse work board](https://github.com/orgs/metaplex-foundation/projects/1/views/22)
 
 In general the items with the label "Committed" are things we as a team and community have decided we want to support, while there will be many more items here they will most likley be ideas and bug reports. 
-Items with a "Reviewing" commitment level are things we are in active dialogue with the community about supporting.
+Items with a "Discuss" label are things we are in active dialogue with the community about supporting.
 Items with a "Community" label are items that we would like to happen, but arent activley working on but would love a community member to pick up.
 
 ## Roadmap Board
