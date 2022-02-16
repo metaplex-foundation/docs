@@ -16,7 +16,11 @@ The AuctionHouse CLI resides in the Metaplex monorepo here:
 
 https://github.com/metaplex-foundation/metaplex/blob/master/js/packages/cli/src/auction-house-cli.ts
 
-The Javascript SDK (coming soon) which has highlevel Auction House functions resides here:
+The MPL Js SDK (low level web3 sdk) lives here and is a great starting point for advanced web3 devs
+
+https://www.npmjs.com/package/@metaplex-foundation/mpl-auction-house
+
+The High Level Javascript SDK (coming soon) which has highlevel Auction House functions resides here:
 
 https://github.com/metaplex-foundation/js
 :::
