@@ -22,14 +22,14 @@ pub struct Metadata {
     pub is_mutable: bool,
     /// nonce for easy calculation of editions, if present
     pub edition_nonce: Option<u8>,
+    /// Token Standard is deterministic and will change from SemiFungible to NonFungible if
+    /// you call the create master edition call and it succeeds.
+    pub token_standard: Option<TokenStandard>,
     /// Since we cannot easily change Metadata, we add the new DataV2 fields here at the end.
     /// Collection
     pub collection: Option<Collection>,
     /// Uses
-    pub uses: Option<Uses>,
-    /// Token Standard is deterministic and will change from SemiFungible to NonFungible if
-    /// you call the create master edition call and it succeeds.
-    pub token_standard: Option<TokenStandard>,
+    pub uses: Option<Uses>,   
 }
 ```
 
@@ -250,6 +250,9 @@ pub struct Metadata {
     pub is_mutable: bool,
     /// nonce for easy calculation of editions, if present
     pub edition_nonce: Option<u8>,
+    /// Token Standard is deterministic and will change from SemiFungible to NonFungible if
+    /// you call the create master edition call and it succeeds.
+    pub token_standard: Option<TokenStandard>,
     /// Since we cannot easily change Metadata, we add the new DataV2 fields here at the end.
     /// Collection
     pub collection: Option<Collection>,
