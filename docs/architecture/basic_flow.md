@@ -33,7 +33,7 @@ sequenceDiagram
 > NOTE: This approach is more centralized than many would prefer, Metaplex hopes to improve this and make it more decentralized, and remember there is nothing stopping you from hosting your NFT content differently. Metaplex is open source so change it and make it better for everyone.
 
 #### Creating the Token Mint
-A token mint is how you make tokens, a mint that has a supply of 1 only allows you to make one token. When we make the mint, we are not actually making the token, but a container that can make tokens. In Solana, accounts are like containers for data, like a file. To create a mint you need to creat an account in Solana that "holds" the mint.
+A token mint is how you make tokens, a mint that has a supply of 1 only allows you to make one token. When we make the mint, we are not actually making the token, but a container that can make tokens. In Solana, accounts are like containers for data, like a file. To create a mint you need to create an account in Solana that "holds" the mint.
 
 Adding to our diagram we see the Mint created.
 ```mermaid
