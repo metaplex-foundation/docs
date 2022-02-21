@@ -5,7 +5,7 @@ sidebar_label: "7. Minting Website"
 
 While the Candy Machine is ready to mint, in most cases you will want to provide a front end experience to allow your community the chance to mint, too.
 
-You can use the Candy Machine v2 front end experience, which is already in the Metaplex repository and downloaded when you executed the `git clone` command.
+You can use the Candy Machine v2 UI, which is already in the Metaplex repository and downloaded when you executed the `git clone` command.
 
 ## Setting up
 
@@ -25,3 +25,46 @@ After these changes are made, run the command `yarn install && yarn start` insid
 
 :::warning
 We **strongly** recommend that you keep the standard implementation for the mint button functionality when using captcha (`gatekeeper`) settings. This will guarantee that the captcha tokens are issued at the correct time (e.g., after the mint begins). The `CMv2` is designed to reject captcha tokens that are created before the mint is live to avoid bots pre-solving captchas - your transaction will fail if the token is created at the wrong time.
+:::
+
+## User Interface
+
+The UI supports all different configurations of your Candy Machine v2, including whitelist (presale + discount) and end settings&mdash;e.g., it automatically adapts the UI components depending on whether the whitelist token is detected or not, discount for whitelist users is set and displays a countdown to the end of mint when end settings `"date"=true` is used.
+
+### Default Mint
+
+Before `goLiveDate` is reached:
+
+![Mint Countdown](ui/Mint-1.png)
+
+When mint is live:
+
+![Mint Live](ui/Mint-2.png)
+
+### Whitelist Mint
+
+Whitelist token not detected, mint is not active before `goLiveDate`:
+
+![Whitelist + No Token](ui/Whitelist-1.png)
+
+Whitelist token detected and whitelist settings set to presale and discount price:
+
+![Whitelist Presale + Discount](ui/Whitelist-2.png)
+
+Whitelist only mint:
+
+![Whitelist Only](ui/Whitelist-3.png)
+
+Whitelist + presale and `goLiveDate` set to `null`:
+
+![Whitelist + No Token](ui/Whitelist-4.png)
+
+### End Settings Mint
+
+Countdown to the end of the mint:
+
+![End Settings](ui/EndSettings-1.png)
+
+End settings `date` reached, mint stopped:
+
+![End Settings Complete](ui/EndSettings-2.png)
