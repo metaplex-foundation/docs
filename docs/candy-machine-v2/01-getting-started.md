@@ -12,7 +12,7 @@ You will need recent version of the following tools:
 - [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git): to clone the repository
 - [node](https://nodejs.org/en/download/): JavaScript runtime
 - [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable): package manager to install the required dependencies
-- [ts-node](https://www.npmjs.com/package/ts-node#installation): TypeScript execution environament
+- [ts-node](https://www.npmjs.com/package/ts-node#installation): TypeScript execution environment
 
 ```bash
 git version
@@ -140,7 +140,7 @@ solana config set --keypair ~/.config/solana/devnet.json
 and make sure we are on the `devnet`:
 
 ```bash
-solana config set --url https://api.devnet.solana.com
+solana config set --url https://metaplex.devnet.rpcpool.com/
 ```
 
 If all the above steps are successfull, your configuration be similar to:
@@ -154,8 +154,8 @@ solana config get
 
 ```
 Config File: ~/.config/solana/cli/config.yml
-RPC URL: https://api.devnet.solana.com 
-WebSocket URL: wss://api.devnet.solana.com/ (computed)
+RPC URL: https://metaplex.devnet.rpcpool.com/ 
+WebSocket URL: wss://metaplex.devnet.rpcpool.com/ (computed)
 Keypair Path: ~/.config/solana/devnet.json 
 Commitment: confirmed 
 ```
