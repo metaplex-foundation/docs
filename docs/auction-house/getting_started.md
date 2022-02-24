@@ -13,7 +13,7 @@ See [CLI](/auction-house/cli) for how to setup and use the CLI.
 
 ### JS SDK
 
-Coming Soon
+MPL SDK (low level web3 focused sdk) https://www.npmjs.com/package/@metaplex-foundation/mpl-auction-house
 
 ### UI Reference Implementation
 
@@ -21,4 +21,4 @@ Coming Soon
 
 ### Program API
 
-See [Account/Instruction API Documentation](https://metaplex-foundation.github.io/metaplex-program-library/mpl_auction_house)
+See https://docs.rs/mpl-auction-house/latest/mpl_auction_house/
