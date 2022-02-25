@@ -1,6 +1,10 @@
+---
+sidebar_label: "10. Signing Your NFTs"
+---
+
 # Sign NFTs
 
-Once you have finished minting, you'll want to proceed to this step. Signing your NFTs allows you to verify the creator. Being verified means that the creator with that wallet address has signed the nft.
+Once you have finished minting, you'll want to proceed to this step. Signing your NFTs allows you to verify the creator. This is important since anyone can list an arbitrary address as a creator. Being verified means that the creator with that wallet address has signed the NFT, proving that they are the actual creator. 
 It is also suggested to use a custom RPC for this step because it is a heavy command.
 
 ### Sign
