@@ -25,7 +25,7 @@ ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts sign_all \
 
 ### Verified
 
-Once verified, the verified value for the second creator will be changed from `0` to `1` as shown below. Remember that in the lsist of creators the fitst creator is the candy machine. If needed, you can specify the batch size using `-b`.
+Once verified, the verified value for the second creator will be changed from `0` to `1` as shown below. Remember that in the list of creators the first creator is the Candy Machine. If needed, you can specify the batch size using `-b`.
 
 ```bash
 "address": //address of the Candy Machine
