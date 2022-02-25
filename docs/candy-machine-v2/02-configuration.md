@@ -40,11 +40,11 @@ The table below provides an overview of the settings available:
 |                       |                   | “arweave-bundle”       | Uploads to arweave and payment are made in AR (only works in mainnet and requires an Arweave wallet) |
 |                       |                   | “arweave”              | Uploads to arweave via Metaplex Google Cloud function (works on devnet and mainnet, recommended option for devnet) |
 |                       |                   | “ipfs”                 | Uploads to IPFS (must specify either Infura Project ID or Secret Key) |
-|                       |                   | “nft-storage”                 | Uploads to [NFT.Storage](https://nft.storage) (works on all networks, must provide `nftStorageKey`) |
+|                       |                   | “nft-storage”                 | Uploads to [NFT.Storage](https://nft.storage) (no payment required, works on all networks) |
 |                       |                   | “aws”                  | Uploads to AWS (must specify AWS Bucket name) |
 | ipfsInfuraProjectId   |                   | String                 | Infura Project ID |
 | ipfsInfuraSecret      |                   | String                 | Infure Project Secret |
-| nftStorageKey         |                   | String                 | NFT.Storage API Key |
+| nftStorageKey         |                   | String                 | NFT.Storage API Key (optional) |
 | arweaveJwk            |                   | String                 | Arweave JWK wallet file |
 | awsS3Bucket           |                   | String                 | AWS bucket name |
 | noRetainAuthority     |                   | boolean                | Indicates whether the candy machine authority has the update authority for each mint or not |
@@ -73,6 +73,7 @@ A minimal Candy Machine config settings looks like this:
     "storage": "arweave-sol",
     "ipfsInfuraProjectId": null,
     "ipfsInfuraSecret": null,
+    "nftStorageKey": null,
     "awsS3Bucket": null,
     "noRetainAuthority": false,
     "noMutable": false

@@ -51,6 +51,21 @@ import ArweaveCostCalc from '../../src/arweave-cost-calc.jsx'
 
 <ArweaveCostCalc />
 
+### NFT.Storage
+
+[NFT.Storage](https://nft.storage) is a free service that provides long-term NFT data storage on the decentralized [Filecoin](https://filecoin.io) network with fast retrieval through [IPFS][IPFS].
+
+NFT.Storage currently supports files up to 31 Gib and does not charge for storage.
+
+#### Using NFT.Storage
+
+NFT.Storage is currently only supported within the CandyMachine `upload` command. Please see the [configuration guide][cmv2 config guide] for details about the configuration settings to use.
+
+Note that when using the `nft-storage` configuration setting, you can optionally also set an `nftStorageKey` to an NFT.Storage API token. Setting an `nftStorageKey` will allow you to view uploads in your NFT.Storage account's file listing. 
+
+If you do not provide an API key, the Solana keypair used for the `upload` command will be used to sign an upload request message, which is used to authenticate the upload with NFT.Storage. This allows you to upload without an NFT.Storage account, but you will not be able to manage the upload using the NFT.Storage service afterwards.
+
+For more information about using NFT.Storage with CandyMachine, see the [NFT.Storage documentation on Metaplex][nft.storage metaplex doc]
 
 ### IPFS
 
@@ -106,3 +121,5 @@ page](https://github.com/metaplex/docs/edit/main/docs/overview/storage_overview.
 [winstons]: https://docs.arweave.org/developers/server/http-api#ar-and-winston
 [S3]: https://aws.amazon.com/s3/
 [arweave path manifest]: https://github.com/ArweaveTeam/arweave/wiki/Path-Manifests
+[cmv2 config guide]: ../candy-machine-v2/02-configuration.md
+[nft.storage metaplex doc]: https://nft.storage/docs/how-to/mint-solana
