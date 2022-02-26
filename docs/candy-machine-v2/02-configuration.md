@@ -51,7 +51,9 @@ The table below provides an overview of the settings available:
 | noMutable             |                   | boolean                | Indicates whether the NFTs' metadata is mutable or not after having been minted |
 
 :::info
+
 Any setting that is not used must be set to null to avoid errors from the CLI.
+
 :::
 
 ## Minimal Configuration
@@ -81,9 +83,11 @@ A minimal Candy Machine config settings looks like this:
 ```
 
 :::caution
+
 The `number` of items setting can only be updated after you create your `CMv2` if you are using `hiddenSettings`. When `hiddenSettings` are not used, the `number` value is used to allocate the space required by the `CMv2` account and therefore cannot be modified.
 
 In case you require to change the `number` of items after creating a `CMv2` without `hiddenSettings`, you can withdraw rent of your current `CMv2` and then create a new one.
+
 :::
 
 The above settings will configure a `CMv2` to operate in a similar way as a `CMv1` – although the mint order will be unpredictable. In other words, even the most simple v2 configuration provides an improvement over v1. You can view this as the minimum set of settings required to create a Candy Machine. Many projects will be using a similar set of settings, as this already provides a fully-working on-chain distribution mechanism.
@@ -99,7 +103,9 @@ The settings that are specified in this example are:
 If this satisfies the requirement for your project, save these settings to a file (e.g., `config.json`) and you are ready to start uploading your items and create a Candy Machine. Below we will discuss other configuration examples that represent specific use-cases. These examples will use the settings above as a starting point and provide the settings section to be added/updated. 
 
 :::info
+
 It is important that the `number` setting value matches the number of items in your Candy Machine.
+
 :::
 
 ## Captcha Settings
@@ -119,7 +125,9 @@ This will enable a captcha challenge once the mint button is clicked - only afte
 When you use a captcha, you will not be able to mint from the CLI command `mint_one_token`. If you want to pre-mint from a `CMv2` and are planning to use a captcha, you should set the `goLiveDate` to `null` and turn captcha (temporarily) off. This will allow you to mint from the command line, but only **you** as the `CMv2` authority. Once you complete the pre-mint, turn captch on and set the correct `goLiveDate`.
 
 :::warning
+
 If your Candy Machine is **live** and it has **no captcha**, it is open to bots attacks. The unpredictable mint index only prevents knowing which item to mint, but bots can still snipe a large volume of items.
+
 :::
 
 ## Hidden Settings
@@ -169,7 +177,9 @@ Whitelist settings provide a variety of different use cases and revolve around t
 > In all the examples below, you will need to change the `mint` settings address `7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf` with the mint address of your SPL token.
 
 :::info
+
 You can use the whitelist settings with the `presale` option set to `true` in combination with the gateway settings. This will restrict the mint to only whitelist users and require them to complete the captcha.
+
 :::
 
 - Creating a whitelist **only** for presale (e.g., allow whitelist users to mint before the `goLiveDate`) and burning the whitelist token each time. Once the sales begin, whitelist users do not have any privileges.

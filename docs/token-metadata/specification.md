@@ -35,9 +35,12 @@ pub struct Metadata {
 
 The URI filed contains a pointer to the rest of the metadata. This metadata is stored off chain in most cases and the URI is usually a `https:` link to some decentralized storage.
 This uri must point to a JSON file that conforms to one of our Token Standards.
+
 :::info
+
 NOTE: The below Token Standards were introduced in Token Metadata v1.1.0.
 Many tokens will still conform to the v1.0.0 `NonFungible` json standard [V1.0.0](/token-metadata/Versions/v1.0.0/nft-standard)
+
 :::
 
 ## **Token Standards**
@@ -231,7 +234,9 @@ superseded with an objective, easy-to-use on-chain implementation.
 ### **On-Chain Representation of a Collection**
 
 :::info
+
 A `collection` is an NFT. It has the same data layout on-chain as any other NFT.
+
 :::
 
 An NFT is linked to a collection in a belongs_to style where the NFT has a
@@ -280,11 +285,13 @@ verified (see below) and `key` which points to the `mint` account of the collect
 | key      | Pubkey | The SPL token mint account                 |
 
 :::warning
+
 EXTREMELY IMPORTANT:
 
 Explorers, Wallets and Marketplaces, MUST CHECK IF `verified` is true. Verified can only be set true if the Authority on the Collection NFT has run the `verify_collection` instruction over the NFT.
 
 This is the exact same pattern as the `Creators` field where `verified` must be true in order to validate the NFT.
+
 :::
 
 This implementation has the following advantages:

@@ -8,6 +8,7 @@ sidebar_position: 1
 AuctionHouse is a protocol for marketplaces to implement a decentralized sales contract. It is simple, fast and very cheap. AuctionHouse is a Solana program available on Mainnet Beta and Devnet. Anyone can create an AuctionHouse and accept any SPL token they wish. 
 
 :::info
+
 The AuctionHouse Solana program resides within the Metaplex Program Library here:
 
 https://github.com/metaplex-foundation/metaplex-program-library
@@ -23,15 +24,17 @@ https://www.npmjs.com/package/@metaplex-foundation/mpl-auction-house
 The High Level Javascript SDK (coming soon) which has highlevel Auction House functions resides here:
 
 https://github.com/metaplex-foundation/js
+
 :::
-
-
-
 
 Let's dive into AuctionHouse's main features.
+
 :::info
-    AuctionHouse is a completely separate program than the storefront Auction program.
+
+AuctionHouse is a completely separate program than the storefront Auction program.
+
 :::
+
 ### Escrowless
 For the NFT Seller the NFT doesn't leave their wallet until the sale completes. This is due to the use of Solana Token Delegates, and it allows them to list their NFT on other Marketplaces that implement the AuctionHouse protocol. The AuctionHouse program is the delegate, so whichever marketplace has a matching bid can execute the sale, and they get their fee, the buyer gets the NFT and the seller gets the money. This is all done in the execution of the sale. The buyer and seller never need to claim anything like in our other auction system.
 
@@ -48,7 +51,9 @@ Meaning the Public Key you set in the `authority` section of the `CreateAuctionH
 - Treasury Mint - The SPL token you accept as the purchase currency
 
 :::warning 
+
 `Can Change Sale Price` is only intended to be used with AuctionHouses that `Requires Sign Off`
+
 :::
 
 #### Requires Sign Off Feature

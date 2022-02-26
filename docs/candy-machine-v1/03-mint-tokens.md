@@ -5,11 +5,15 @@ sidebar_label: "2. Mint Tokens"
 # Mint Tokens
 
 :::warning
+
 Candy Machine v1 has been deprecated. Creating a new instance of Candy Machine v1 is no longer possible. Please use [Candy Machine v2](../candy-machine-v2/introduction) instead.
+
 :::
 
 :::info
+
 For now, only the owner of the `CMv1` can mint tokens
+
 :::
 
 ## Preparation

@@ -24,7 +24,9 @@ Open the file `.env.example` located in the folder `~/metaplex/js/packages/candy
 After these changes are made, run the command `yarn install && yarn start` inside the folder `~/metaplex/js/packages/candy-machine-ui`. This will start a local server with a front end experience.  From here, you should customize the mint page and deploy it in your host service. 
 
 :::warning
+
 We **strongly** recommend that you keep the standard implementation for the mint button functionality when using captcha (`gatekeeper`) settings. This will guarantee that the captcha tokens are issued at the correct time (e.g., after the mint begins). The `CMv2` is designed to reject captcha tokens that are created before the mint is live to avoid bots pre-solving captchas - your transaction will fail if the token is created at the wrong time.
+
 :::
 
 ## User Interface

@@ -12,7 +12,9 @@ sidebar_label: "8. Update the Candy Machine"
 In case you require to change the `number` of items after creating a `CMv2` without `hiddenSettings`, you can withdraw rent of your current `CMv2` and then create a new one. 
 
 :::warning
+
 You need to be careful when updating a live Candy Machine, since setting a wrong value will immediately affect its functionality.
+
 :::
 
 ## Update Settings
@@ -72,7 +74,9 @@ ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts update_candy_mach
 The command above transfers the authority of the Candy Machine to the wallet `7idYCnwadSG8quKNr2qqtt2WVTGy8xwTF5uFvAuHyY1g`. After this point, only the owner of that wallet can operate the Candy Machine.
 
 :::warning
+
 This operation is irreversible, once you change the authority of the Candy Machine, you will lose the right to operate it.
+
 :::
 
 ## Show Settings

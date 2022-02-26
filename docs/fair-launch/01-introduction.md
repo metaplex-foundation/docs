@@ -3,7 +3,9 @@
 Fair launch is a protocol by which minters/prospective buyers can bid on the price of an NFT they are willing to pay in a range that is determined by the creator.
 
 :::warning
+
 The Fair Launch Protocol is being deprecated and will be receiving no updates/support moving forward.
+
 :::
 
 ## Prerequisites
@@ -81,15 +83,19 @@ To get started, we recommend you begin by:
 The Solana devnet serves as a playground for anyone who wants to take Solana for a test drive, as a user, token holder, app developer, or NFT publisher. NFT publishers should target devnet before going for mainnet.
 
 :::info
+
 We highly recommend making devnet your default Solana url
 `solana config set --url https://api.devnet.solana.com`
+
 :::
 
 #### Create devnet wallet (for testing)
 
 :::info
+
 Read the fine manual
 `solana-keygen help new`
+
 :::
 
 If you're me, you'll redact your mnemonic, store it somewhere safe and take advantage of the `--outfile` flag.
@@ -115,18 +121,22 @@ Save this seed phrase and your BIP39 passphrase to recover your new keypair:
 ```
 
 :::info
+
 We also recommend making devnet your default keypair:
 
 `solana config set --keypair ~/.config/solana/devnet.json`
+
 :::
 
 #### Fund devnet wallet
 
 :::info
+
 To get started, read the fine manuals in the help system
 `solana help config`,
 `solana help balance` and
 `solana help airdrop`
+
 :::
 
 If you're me, you're confirming your config right now to ensure you're on devnet, because we're going to rely on this to make subsequent command line invocations simpler from here forward. Here's how you check it:
