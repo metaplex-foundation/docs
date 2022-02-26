@@ -6,11 +6,13 @@ sidebar_position: 4
 # AuctionHouse CLI
 
 ### Prerequisites
-* `ts-node`
-* `git`
-* `yarn`
+
+- `ts-node`
+- `git`
+- `yarn`
 
 ### Setup
+
 In order to get started with the AuctionHouse CLI please follow these steps.
 
 ```
@@ -23,15 +25,16 @@ cd packages/cli
 
 Once you have cloned the repo and installed packages, make sure you have a local `Keypair` setup. If you need help with that see these guides.
 
-* https://docs.solana.com/cli/install-solana-cli-tools
-* https://docs.solana.com/wallet-guide/file-system-wallet
-
+- https://docs.solana.com/cli/install-solana-cli-tools
+- https://docs.solana.com/wallet-guide/file-system-wallet
 
 ### Running Commands
- To run commands you will use 
- `ts-node src/ts-node src/auction-house-cli.ts`
+
+To run commands you will use
+`ts-node src/ts-node src/auction-house-cli.ts`
 
 #### _Help_
+
 ```
 ts-node src/ts-node src/auction-house-cli.ts
 Usage: auction-house-cli [options] [command]
@@ -54,52 +57,63 @@ show [options]
 create_auction_house [options]
 update_auction_house [options]
 help [command]                    display help for command
-  
+
 ```
 
 #### _Create_
+
 Creates an Auction House
 
 See the command help with
+
 ```
 ts-node src/auction-house-cli.ts help create_auction_house
 ```
 
 Find your current Keypair, lets say it lives at `~/mywallet.key` or on windows `C:\Users\windowsuser\mywallet.key`. To create an Auction house you will run.
+
 ```
 ts-node src/auction-house-cli.ts create_auction_house --keypair ~/mywallet.key -e devnet -sfbp 1000 -ccsp false -rso false
 ```
-In this case we dont need to require signoff because we want to make a fully decentralized auctionhouse. Since we did not specify ```-tm, --treasury-mint <string>``` The currency for payment will be SOL. 
+
+In this case we dont need to require signoff because we want to make a fully decentralized auctionhouse. Since we did not specify `-tm, --treasury-mint <string>` The currency for payment will be SOL.
 Also the options below will default to being set as the public key of `~/mywallet.key`
+
 ```
--twd, --treasury-withdrawal-destination <string>  
+-twd, --treasury-withdrawal-destination <string>
 -fwd, --fee-withdrawal-destination <string>
 ```
 
-IF all goes well you will see 
+IF all goes well you will see
+
 ```
 wallet public key: Gsv13oph2i6nkJvNkVfuzkcbHWchz6viUtEg2vsxQMtM
 No treasury withdrawal dest detected, using keypair
 No fee withdrawal dest detected, using keypair
 No treasury mint detected, using SOL.
-Created auction house HsKwc8dQtm8KLxshw67dwsNePkH6wMXo5Lwn1FuKjVYVS <--- Your auction house key will be different 
+Created auction house HsKwc8dQtm8KLxshw67dwsNePkH6wMXo5Lwn1FuKjVYVS <--- Your auction house key will be different
 ```
 
 Save this key `HsKwc8dQtm8KLxshw67dwsNePkH6wMXo5Lwn1FuKjVYVS` since it is the public key of the solana account that holds your AuctionHouse. In all subsequent commands you will pass this key with the `-ah` option.
 
 ### _Show_
+
 Prints the balances of the fee and treasury wallets configured for the auction house and its current settings options.
 
 See the command help with
+
 ```
 ts-node src/auction-house-cli.ts help show
 ```
 
-Notice I switched ```--keypair``` for ```-k``` this is shorthand but works just the same.
+Notice I switched `--keypair` for `-k` this is shorthand but works just the same.
+
 ```
 ts-node src/auction-house-cli.ts show -k ~/mywallet.key -ah HsKwc8dQtm8KLxshw67dwsNePkH6wMXo5Lwn1FuKjVYVS
 ```
+
 The output will differ but similar to the following.
+
 ```
 No treasury mint detected, using SOL.
 -----
@@ -121,9 +135,9 @@ AH Fee Bump: 252
 AH Treasury Bump: 254
 ```
 
-
 #### Fee Account
-In the above Show command you see a Fee Payer account. 
+
+In the above Show command you see a Fee Payer account.
 This account can be used to pay the fees on chain for sales execution, transfers and account creation. For this excercise we will teach you how to fund that account by aridropping some SOL on devnet. Your Auction House fee account is used only when the Auction House authority is signing the transaction. This is usually only in the case of `Requires Sign Off`
 
 ```
@@ -133,16 +147,24 @@ Signature: 4qYFoD8GN6TZLDjLsqyyt6mhjYEjwKF36LJCDLtL88nTD3y3bFzXmVFHP6Nczf5Dn4Gnm
 2 SOL
 ```
 
+:::caution
+
+The `solana airdrop` command is sometimes unreliable. If the command doesn't work, you can use the airdrop tool at https://solfaucet.com.
+
+:::
 
 ### _Sell_
+
 Place and NFT UP for sale.
 
 See the command help with
+
 ```
 ts-node src/auction-house-cli.ts help sell
 ```
 
 Place an NFT for sale by its mint address with the auction house for 1 SOL.
+
 ```
 ts-node src/auction-house-cli.ts sell \
   -k ~/mywallet.key \
@@ -151,7 +173,9 @@ ts-node src/auction-house-cli.ts sell \
   --mint F7fejo7cT1fRyJxj1W2aWy3aeJz8iqLU9YvbBAzwJGh2 \
   --token-size 1
 ```
+
 Output
+
 ```
 wallet public key: CCJC2s8FDGAs8GqmngE9gviusEuNnkdUwchcYMZ8ZmHB
 wallet public key: DCDcpZaJUghstQNMHy9VAPnwQe1cGsHq7fbeqkti4kM3
@@ -159,25 +183,30 @@ Set 1 F7fejo7cT1fRyJxj1W2aWy3aeJz8iqLU9YvbBAzwJGh2 for sale for 1 from your acco
 ```
 
 #### Require Signoff
+
 If the auction house is setup to require sign off its wallet, as well as the seller are provided to the command.
-Do this using the ```-ak``` option.
+Do this using the `-ak` option.
 
 See the command help with
+
 ```
 ts-node src/auction-house-cli.ts help sell
 ```
 
 In a production scenerio where the keypair for the auction house is stored on a sever managed by the organization hosting the auction house the transaction should be partial signed by the seller from the client then passed to the server for signing by the auction house before submitting to Solana.
 
-
 ### _Buy_
-Place an offer on an NFT by its mint address at some price in SOL when using native SOL as the mint. 
+
+Place an offer on an NFT by its mint address at some price in SOL when using native SOL as the mint.
 
 See the command help with
+
 ```
 ts-node src/auction-house-cli.ts help buy
 ```
+
 The buy command is an offer on the NFT and will not result in a sale until the `execute_sale` action is triggered. This command offers 2 SOL for the NFT.
+
 ```
 ts-node src/auction-house-cli.ts buy \
   -k ~/mywallet.key \
@@ -195,10 +224,10 @@ Made offer for  2
 Sell an NFT to a buyer at the price set by the seller.
 
 ::: info
-If your AuctionHouse does not require signoff then this action is `permissionless` meaning anyone can call this instruction with two matching (price must match) orders (bid/sell). This is great because you can program your UI to execute the sale once an order matches on the client side or have a backend process or bot finish the process. 
+If your AuctionHouse does not require signoff then this action is `permissionless` meaning anyone can call this instruction with two matching (price must match) orders (bid/sell). This is great because you can program your UI to execute the sale once an order matches on the client side or have a backend process or bot finish the process.
 
 ```
-$ ts-node src/auction-house-cli.ts execute_sale 
+$ ts-node src/auction-house-cli.ts execute_sale
   -k ~/mywallet.key \
   -ah HsKwc8dQtm8KLxshw67dwsNePkH6wMXo5Lwn1FuKjVYVS \
   --buy-price 2 \
@@ -212,6 +241,7 @@ Accepted 1 DCqt9QQ3ot3qv53EhWrYAWFuh4XgSvFJvLRjgsDnhLTp sale from wallet CCJC2s8
 ```
 
 ### Other Actions
+
 Other actions are documented in the CLI and can be found using the `help` and `<command> help` subcommand:
 
 - _Cancel_ - Potential buyer revokes their offer.

@@ -1,4 +1,5 @@
 # Introduction
+
 Fair launch is a protocol by which minters/prospective buyers can bid on the price of an NFT they are willing to pay in a range that is determined by the creator.
 
 :::warning
@@ -13,10 +14,10 @@ Before starting this journey, you'll need to install and understand how to opera
 
 Ensure you have recent versions of `git`, `node`, `yarn` and `ts-node` installed:
 
-* [`git` Installation](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-* [`node` Installation](https://nodejs.org/en/download/)
-* [`yarn` Installation](https://classic.yarnpkg.com/lang/en/docs/install)
-* [`ts-node` Installation](https://www.npmjs.com/package/ts-node#installation)
+- [`git` Installation](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- [`node` Installation](https://nodejs.org/en/download/)
+- [`yarn` Installation](https://classic.yarnpkg.com/lang/en/docs/install)
+- [`ts-node` Installation](https://www.npmjs.com/package/ts-node#installation)
 
 We recommend confirming these tools are working before proceeding further. Some sensible tests are running the following commands:
 
@@ -57,6 +58,7 @@ $ yarn install --cwd ~/metaplex-foundation/metaplex/js/
 Future versions of this tooling will be "npx runnable". For now though, `ts-node` is recommended for most users.
 
 After ensuring `ts-node` is installed and cloning the repo run the following commands to confirm the command line tool is operating correctly:
+
 ```
 $ ts-node ~/metaplex-foundation/metaplex/js/packages/cli/src/candy-machine-cli.ts --version
 0.0.2
@@ -70,9 +72,9 @@ To work with it effectively you will need to understand tools and practices from
 
 To get started, we recommend you begin by:
 
-* Reading the [Solana Command-line Guide](https://docs.solana.com/cli)
-* [Installing the Solana Command-line Tools](https://docs.solana.com/cli/install-solana-cli-tools)
-* And practice with the examples they provide in their documents.
+- Reading the [Solana Command-line Guide](https://docs.solana.com/cli)
+- [Installing the Solana Command-line Tools](https://docs.solana.com/cli/install-solana-cli-tools)
+- And practice with the examples they provide in their documents.
 
 #### devnet for the win
 
@@ -115,9 +117,8 @@ Save this seed phrase and your BIP39 passphrase to recover your new keypair:
 :::info
 We also recommend making devnet your default keypair:
 
-`solana config set  --keypair ~/.config/solana/devnet.json`
+`solana config set --keypair ~/.config/solana/devnet.json`
 :::
-
 
 #### Fund devnet wallet
 
@@ -155,3 +156,9 @@ Signature: 2s8FE29f2fAaAoWphbiyb5b4iSKYWznLG64w93Jzx8k2DAbFGsmbyXhe3Uix8f5X6m9HR
 $ solana balance # confirm your balance
 2 SOL
 ```
+
+:::caution
+
+The `solana airdrop` command is sometimes unreliable. If the command doesn't work, you can use the airdrop tool at https://solfaucet.com.
+
+:::
