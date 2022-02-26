@@ -52,7 +52,9 @@ git clone -b v1.1.1 https://github.com/metaplex-foundation/metaplex.git ~/metapl
 This will create a directory `metaplex` in your home directory with the lastest code from the repository. If you decide to clone the repository to a different location, you will need to change the path in subsequent instructions.
 
 :::info
+
 You can also run the latest code on the `master` branch to immediately get bug fixes and new features. In order to do that, just run the command above without the `-b v1.1.1` option.
+
 :::
 
 You will then need to install the dependencies. From outside the metaplex directory:
@@ -70,7 +72,9 @@ ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts --version
 > **output:** _0.0.2_
 
 :::warning
+
 Make sure you are using the `candy-machine-v2-cli.ts` script.
+
 :::
 
 ## Solana Wallet
@@ -100,9 +104,11 @@ solana balance
 > **output:** _4 SOL_
 
 :::info
+
 We highly recommend trying to first deploy a Candy Machine on Solana `devnet`, before moving to the `mainnet-beta` environment. This way you can freely test different settings without having to move SOL to your wallet.
 
 In this guide we will use `devnet`, although all commands presented will work in a similar fashion once you are in `mainnet-beta`.
+
 :::
 
 ### Setting up a devnet wallet (for testing)
@@ -182,12 +188,6 @@ In order to add SOL to your `devnet` wallet, you can request funds from a faucet
 solana airdrop 2
 ```
 
-:::caution
-
-The `solana airdrop` command is sometimes unreliable. If the command doesn't work, you can use the airdrop tool at https://solfaucet.com.
-
-:::
-
 <details>
 <summary>Output</summary>
 <p>
@@ -205,6 +205,14 @@ Signature: 41ZEZqpyNMLUy3kQahWSy349PeDz3Q82dNDHKiA7QcsrAzHs3f7YiDEZWjnFi434DoiiD
 
 If the command is successful, you will see the updated balance at the end.
 
+:::caution
+
+The `solana airdrop` command is sometimes unreliable. If the command doesn't work, you can use the airdrop tool at https://solfaucet.com.
+
+:::
+
 :::warning
+
 Do not send **real** SOL to a `devnet` wallet.
+
 :::

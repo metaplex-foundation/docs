@@ -8,11 +8,15 @@ Candy Machines use an account to store configuration and a (potentially) large l
 To drain the account of a Candy Machine and recover the rent SOL, you can use the `withdraw` command.
 
 :::info
+
 The `withdraw` command is also useful in cases where you made mistakes in the creation of the `CMv2` as it provides a way to retrieve the SOL used in the set up of the Candy Machine.
+
 :::
 
 :::warning
+
 You should not withdraw the rent of a live Candy Machine, as the Candy Machine will stop working when you drain its account.
+
 :::
 
 ## Requirements

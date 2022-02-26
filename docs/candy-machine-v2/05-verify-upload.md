@@ -4,7 +4,9 @@ sidebar_label: "5. Verify Upload"
 # Verify Upload
 
 :::info
+
 We strongly recommend you do not skip this step.
+
 :::
 
 The Candy Machine provides a command to verify if the metadata URI on chain has been successfully uploaded.

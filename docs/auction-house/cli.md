@@ -33,7 +33,7 @@ Once you have cloned the repo and installed packages, make sure you have a local
 To run commands you will use
 `ts-node src/ts-node src/auction-house-cli.ts`
 
-#### _Help_
+#### Help
 
 ```
 ts-node src/ts-node src/auction-house-cli.ts
@@ -60,7 +60,7 @@ help [command]                    display help for command
 
 ```
 
-#### _Create_
+#### Create
 
 Creates an Auction House
 
@@ -96,7 +96,7 @@ Created auction house HsKwc8dQtm8KLxshw67dwsNePkH6wMXo5Lwn1FuKjVYVS <--- Your au
 
 Save this key `HsKwc8dQtm8KLxshw67dwsNePkH6wMXo5Lwn1FuKjVYVS` since it is the public key of the solana account that holds your AuctionHouse. In all subsequent commands you will pass this key with the `-ah` option.
 
-### _Show_
+### Show
 
 Prints the balances of the fee and treasury wallets configured for the auction house and its current settings options.
 
@@ -153,7 +153,7 @@ The `solana airdrop` command is sometimes unreliable. If the command doesn't wor
 
 :::
 
-### _Sell_
+### Sell
 
 Place and NFT UP for sale.
 
@@ -195,7 +195,7 @@ ts-node src/auction-house-cli.ts help sell
 
 In a production scenerio where the keypair for the auction house is stored on a sever managed by the organization hosting the auction house the transaction should be partial signed by the seller from the client then passed to the server for signing by the auction house before submitting to Solana.
 
-### _Buy_
+### Buy
 
 Place an offer on an NFT by its mint address at some price in SOL when using native SOL as the mint.
 
@@ -219,12 +219,15 @@ wallet public key: DCDcpZaJUghstQNMHy9VAPnwQe1cGsHq7fbeqkti4kM3
 Made offer for  2
 ```
 
-### _Execute Sale_
+### Execute Sale
 
 Sell an NFT to a buyer at the price set by the seller.
 
-::: info
+:::info
+
 If your AuctionHouse does not require signoff then this action is `permissionless` meaning anyone can call this instruction with two matching (price must match) orders (bid/sell). This is great because you can program your UI to execute the sale once an order matches on the client side or have a backend process or bot finish the process.
+
+:::
 
 ```
 $ ts-node src/auction-house-cli.ts execute_sale
