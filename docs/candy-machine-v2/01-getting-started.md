@@ -1,6 +1,7 @@
 ---
 sidebar_label: "1. Getting Started"
 ---
+
 # Getting Started
 
 Before we can create a Candy Machine, you will need to install and operate a handful of developer tools.
@@ -17,23 +18,28 @@ You will need recent version of the following tools:
 ```bash
 git version
 ```
-> **output:** *git version 2.32.0*
+
+> **output:** _git version 2.32.0_
 
 The latest LTS version of node is recommended:
+
 ```bash
 node --version
 ```
-> **output:** *v16.13.0*
+
+> **output:** _v16.13.0_
 
 ```bash
 yarn --version
 ```
-> **output:** *1.22.17*
+
+> **output:** _1.22.17_
 
 ```bash
 ts-node --version
 ```
-> **output:** *v10.4.0*
+
+> **output:** _v10.4.0_
 
 ## Clone and Install Metaplex
 
@@ -60,7 +66,8 @@ You can check that everything is working by running the Candy Machine CLI comman
 ```typescript
 ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts --version
 ```
-> **output:** *0.0.2*
+
+> **output:** _0.0.2_
 
 :::warning
 Make sure you are using the `candy-machine-v2-cli.ts` script.
@@ -73,21 +80,24 @@ The Candy Machine operates on the Solana blockchain. You will need a wallet with
 ```bash
 solana --version
 ```
-> **output:** *solana-cli 1.9.1*
+
+> **output:** _solana-cli 1.9.1_
 
 You can check your wallet address:
 
 ```bash
 solana address
 ```
-> **output:** *6j4nNrozTJkk1zatiXHezSLZArnRUq3WkGKHACThXGpZ*
+
+> **output:** _6j4nNrozTJkk1zatiXHezSLZArnRUq3WkGKHACThXGpZ_
 
 and your balance:
 
 ```bash
 solana balance
 ```
-> **output:** *4 SOL*
+
+> **output:** _4 SOL_
 
 :::info
 We highly recommend trying to first deploy a Candy Machine on Solana `devnet`, before moving to the `mainnet-beta` environment. This way you can freely test different settings without having to move SOL to your wallet.
@@ -102,7 +112,7 @@ The steps described here will create a wallet to be used in the Solana `devnet` 
 To create a new wallet, we will use the `solana-keygen` commnand:
 
 ```bash
-solana-keygen new --outfile ~/.config/solana/devnet.json  
+solana-keygen new --outfile ~/.config/solana/devnet.json
 ```
 
 <details>
@@ -117,7 +127,7 @@ For added security, enter a BIP39 passphrase
 NOTE! This passphrase improves security of the recovery seed phrase NOT the
 keypair file itself, which is stored as insecure plain text
 
-BIP39 Passphrase (empty for none): 
+BIP39 Passphrase (empty for none):
 
 Wrote new keypair to /Users/febo/.config/solana/devnet.json
 =======================================================================
@@ -148,16 +158,17 @@ If all the above steps are successfull, your configuration be similar to:
 ```bash
 solana config get
 ```
+
 <details>
 <summary>Output</summary>
 <p>
 
 ```
 Config File: ~/.config/solana/cli/config.yml
-RPC URL: https://metaplex.devnet.rpcpool.com/ 
+RPC URL: https://metaplex.devnet.rpcpool.com/
 WebSocket URL: wss://metaplex.devnet.rpcpool.com/ (computed)
-Keypair Path: ~/.config/solana/devnet.json 
-Commitment: confirmed 
+Keypair Path: ~/.config/solana/devnet.json
+Commitment: confirmed
 ```
 
 </p>
@@ -170,6 +181,12 @@ In order to add SOL to your `devnet` wallet, you can request funds from a faucet
 ```bash
 solana airdrop 2
 ```
+
+:::caution
+
+The `solana airdrop` command is sometimes unreliable. If the command doesn't work, you can use the airdrop tool at https://solfaucet.com.
+
+:::
 
 <details>
 <summary>Output</summary>
