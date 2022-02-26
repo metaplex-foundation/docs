@@ -1,7 +1,7 @@
 ---
 sidebar_label: "7. Minting Website"
 ---
-# A Front End Experience for Candy Machine v2
+# A Front End Minting Experience
 
 While the Candy Machine is ready to mint, in most cases you will want to provide a front end experience to allow your community the chance to mint, too.
 
@@ -17,9 +17,15 @@ Open the file `.env.example` located in the folder `~/metaplex/js/packages/candy
     REACT_APP_CANDY_MACHINE_ID=<YOUR CANDY MACHINE PROGRAM ID>
 
     REACT_APP_SOLANA_NETWORK=devnet
-    REACT_APP_SOLANA_RPC_HOST=https://api.devnet.solana.com
+    REACT_APP_SOLANA_RPC_HOST=https://metaplex.devnet.rpcpool.com/
     ```
 - Once your `REACT_APP_CANDY_MACHINE_ID` has been updated. Rename `.env.example` to `.env`
+
+:::warning
+
+The public RPC endpoints (`https://api.mainnet-beta.solana.com` and `https://api.devnet.solana.com`) are not suitable for Candy Machine mints and may cause significant issues to your minting site. We **strongly** recommend that you use a custom RPC endpoint for your mint. You can find more information about the custom RPC solutions in the RPC section of our [community docs](../community.md#rpc).
+
+:::
 
 After these changes are made, run the command `yarn install && yarn start` inside the folder `~/metaplex/js/packages/candy-machine-ui`. This will start a local server with a front end experience.  From here, you should customize the mint page and deploy it in your host service. 
 
