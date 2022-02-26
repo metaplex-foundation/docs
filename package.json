@@ -15,7 +15,8 @@
     "fix:lint": "eslint src --fix",
     "fix:prettier": "prettier src --write",
     "fix": "yarn fix:prettier && yarn fix:lint",
-    "lint": "prettier src --check && eslint src"
+    "lint": "prettier src --check && eslint src",
+    "check:links": "find . -type f -name '*.md' ! -path './node_modules/*' | xargs -L1 npx markdown-link-check --quiet -c linkcheck.config.json "
   },
   "dependencies": {
     "@docusaurus/core": "^2.0.0-beta.13",
@@ -50,6 +51,7 @@
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-react": "7.25.2",
+    "markdown-link-check": "^3.9.3",
     "prettier": "2.4.1"
   }
 }
