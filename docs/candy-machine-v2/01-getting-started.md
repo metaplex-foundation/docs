@@ -41,6 +41,19 @@ ts-node --version
 
 > **output:** _v10.4.0_
 
+### Apple M1 Chip
+
+If you have Mac OS with the Apple M1 Chip, you'll need to install some additional dependencies.
+
+- [brew](https://brew.sh/)
+
+After installing brew, run the following: 
+
+```bash
+brew install pkg-config cairo pango libpng jpeg giflib librsvg
+```
+See additional information: https://github.com/Automattic/node-canvas/wiki/Installation%3A-Mac-OS-X
+
 ## Clone and Install Metaplex
 
 Creating and controlling a Candy Machine is done through the Metaplex command line tool, currently distributed in the Metaplex GitHub repository. We recommend checking out the latest ([v1.1.1](https://github.com/metaplex-foundation/metaplex/releases/tag/v1.1.1)) tagged version:
