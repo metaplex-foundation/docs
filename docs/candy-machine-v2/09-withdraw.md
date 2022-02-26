@@ -70,6 +70,12 @@ ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts withdraw_all \
     -k ~/.config/solana/devnet.json
 ```
 
+:::tip
+
+The example commands are directed at devnet with the `-e devnet` option. To target your withdraw command to Mainnet Beta, replace that option with `-e mainnet-beta`.
+
+:::
+
 If there are Candy Machine accounts to be drained, you will see an output similar to:
 
 ```
