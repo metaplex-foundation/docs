@@ -3,7 +3,6 @@ sidebar_position: 6
 unlisted: true
 Audience: people who know nothing about nfts
 Goal: people understand how data is stored, where it is stored, why decentralized storage is preferred, cost of storage
-TODO: Metaplex needs to be trademarked. Also, let's buy metaplex.edu and nft.edu
 ---
 
 # NFT Storage Overview
@@ -78,9 +77,9 @@ therefore not the default storage option.
 
 #### Using IPFS
 
-IPFS storage is currently only supported within the CandyMachine `upload` command.
+IPFS storage is currently only supported within the Candy Machine `upload` command.
 
-Please run `./build/candy-machine-cli.js upload --help` for details about the command line flags you'll need to set.
+Please run `ts-node candy-machine-v2-cli.ts upload --help` from the `js/packages/cli/src` directory for details about the command line flags you'll need to set.
 
 #### IPFS storage fees
 
@@ -101,7 +100,7 @@ needs may be what you need.
 
 AWS S3 storage is currently only supported within the CandyMachine `upload` command.
 
-Please run `./build/candy-machine-cli.js upload --help` for details about the command line flags you'll need to set.
+Please run `ts-node candy-machine-v2-cli.ts upload --help` from the `js/packages/cli/src` directory for details about the command line flags you'll need to set.
 
 #### S3 storage fees
 
