@@ -72,7 +72,7 @@ ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts withdraw_all \
 
 :::tip
 
-The example commands are directed at devnet with the `-e devnet` option. To target your withdraw command to Mainnet Beta, replace that option with `-e mainnet-beta`
+The example commands are directed at devnet with the `-e devnet` option. To target your withdraw command to Mainnet Beta, replace that option with `-e mainnet-beta`.
 
 :::
 
