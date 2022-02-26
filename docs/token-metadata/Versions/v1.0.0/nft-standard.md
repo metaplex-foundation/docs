@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Token Metadata Standard
 
-[Wallets](https://docs.solana.com/terminology#wallet) should support the display of metadata associated with [tokens](https://docs.solana.com/terminology#token), in accordance with the standards described by the [Metaplex Token Metadata contract](https://github.com/metaplex-foundation/metaplex/tree/master/rust/token-metadata/program). Wallets should pull both the on-chain data and the external JSON provided by the metadata's uri field and use them to display all relevant data.
+[Wallets](https://docs.solana.com/terminology#wallet) should support the display of metadata associated with [tokens](https://docs.solana.com/terminology#token), in accordance with the standards described by the [Metaplex Token Metadata contract](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/token-metadata/program). Wallets should pull both the on-chain data and the external JSON provided by the metadata's uri field and use them to display all relevant data.
 
 Follow the standards defined in this document to ensure your NFTs will be correctly displayed in most wallets and to allow usage of all functionalities related to NFTs.
 

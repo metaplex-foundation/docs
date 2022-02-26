@@ -93,7 +93,7 @@ pub struct ExternalPriceAccount {
 
 ```
 
-The instruction set for the vault can be found here: [https://github.com/metaplex-foundation/metaplex/blob/master/rust/token-vault/program/src/instruction.rs](https://github.com/metaplex-foundation/metaplex/blob/master/rust/token-vault/program/src/instruction.rs)
+The instruction set for the vault can be found here: [https://github.com/metaplex-foundation/metaplex-program-library/blob/master/token-vault/program/src/instruction.rs](https://github.com/metaplex-foundation/metaplex-program-library/blob/master/token-vault/program/src/instruction.rs)
 
 ## Types
 

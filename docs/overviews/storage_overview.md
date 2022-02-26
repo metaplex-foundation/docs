@@ -111,7 +111,7 @@ Please visit https://aws.amazon.com/s3/pricing/ for details.
 
 Please open a Pull Request on the [metaplex-foundation/metaplex][repo] repository
 and then add documentation to [this
-page](https://github.com/metaplex/docs/edit/main/docs/overview/storage_overview.md).
+page](https://github.com/metaplex-foundation/docs/blob/main/docs/overviews/storage_overview.md).
 
 
 [Arweave]: https://arweave.org
