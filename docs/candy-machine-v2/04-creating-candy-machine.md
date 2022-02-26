@@ -11,6 +11,12 @@ Before you can proceed, you need to check that:
 - You have funds in your wallet - the command `solana balance` will tell your current balance
 - You have created your Candy Machine configuration file (e.g., `config.json`)
 
+:::caution
+
+To create a Candy Machine, space is allocated on chain to temporarily store the names and URI links (mirroring what is in your `.json` file in the `.cache` directory). To store this data on chain, you are required to pay on chain rent costs. After your mint (or whenever you want to end it), you can run the `withdraw` command to **reclaim all of the rent costs**. Check the [withdraw section](./09-withdraw.md) for more details. For a 10k collection, the rent costs are approximately **16.7 SOL**. This scales linearly with the number of items in your collection. Thus, you can get an approximate on chain rent cost estimate by multiplying the number of items in your collection by **0.00167 SOL**.  
+
+:::
+
 To proceed, you will execute the `upload` command:
 
 ```bash
@@ -22,7 +28,7 @@ ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts upload \
     ./assets
 ```
 
-:::caution
+:::warning
 
 The upload is a network-intensive command, in particular when dealing with larger collections. We highly recommend using a custom RPC, which can be specified by the switch `--rpc-url <string>` in the `upload` command. You can find a list of custom RPC services in our [community docs](../community.md#RPC).
 
