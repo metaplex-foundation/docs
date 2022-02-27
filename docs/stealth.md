@@ -13,6 +13,9 @@ Since assets can be large, these assets are encrypted with a [block
 cipher](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation) like
 192-AES-CBC.
 
+The code for stealth NFTs exists at a fork of metaplex-program-library:
+[`lwus/stealth`](https://github.com/lwus/stealth/blob/a73efe439c93fbd65a613cf129b998b2cf06dba4/stealth/).
+
 ## Schema
 
 Stealth metadata extends [Token Metadata](./token-metadata/getting-started.md)
@@ -112,6 +115,13 @@ is sent to the network but dropped, the recipient can theoretically decrypt the
 corresponding information! This means that a sale process needs to be
 escrow-based where the buyer (recipient) commits the funds and the seller has
 some amount of time to complete the transfer.
+
+### JS
+
+There are WASM bindings for various utilities to interact with the stealth
+program e.g transfer transaction formatting, ciphertext decryption, etc. These
+can be found at `/stealth/js/` and use
+[`wasm-bindgen`](https://rustwasm.github.io/wasm-bindgen/).
 
 ## Architecture notes
 
