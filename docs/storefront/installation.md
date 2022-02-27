@@ -31,9 +31,14 @@ See additional information: https://github.com/Automattic/node-canvas/wiki/Insta
 Clone the repo and install its dependencies.
 
 ```bash
-git clone --branch v1.1.1 https://github.com/metaplex-foundation/metaplex.git
+git clone https://github.com/metaplex-foundation/metaplex.git
 cd metaplex/js && yarn install && yarn bootstrap
 ```
+
+<!-- ```bash
+git clone --branch v1.1.1 https://github.com/metaplex-foundation/metaplex.git
+cd metaplex/js && yarn install && yarn bootstrap
+``` -->
 
 Now run your store web server locally.
 

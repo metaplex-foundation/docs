@@ -27,10 +27,17 @@ This is not an exhaustive list. But you can get started using collections right 
 
 In order to get started with the NFT CLI please follow these steps.
 
-```
+<!-- ```
 git clone https://github.com/metaplex-foundation/metaplex.git
 cd metaplex
 git checkout v1.1.1
+cd js && yarn install && yarn bootstrap
+cd packages/cli
+``` -->
+
+```
+git clone https://github.com/metaplex-foundation/metaplex.git
+cd metaplex
 cd js && yarn install && yarn bootstrap
 cd packages/cli
 ```
