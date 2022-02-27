@@ -56,19 +56,25 @@ See additional information: https://github.com/Automattic/node-canvas/wiki/Insta
 
 ## Clone and Install Metaplex
 
-Creating and controlling a Candy Machine is done through the Metaplex command line tool, currently distributed in the Metaplex GitHub repository. We recommend checking out the latest ([v1.1.1](https://github.com/metaplex-foundation/metaplex/releases/tag/v1.1.1)) tagged version:
+Creating and controlling a Candy Machine is done through the Metaplex command line tool, currently distributed in the Metaplex GitHub repository. For now, recommend pulling the latest code from the [master branch](https://github.com/metaplex-foundation/metaplex/tree/master):
 
 ```bash
-git clone -b v1.1.1 https://github.com/metaplex-foundation/metaplex.git ~/metaplex
+git clone https://github.com/metaplex-foundation/metaplex.git ~/metaplex
 ```
+
+<!-- Creating and controlling a Candy Machine is done through the Metaplex command line tool, currently distributed in the Metaplex GitHub repository. We recommend checking out the latest ([v1.1.1](https://github.com/metaplex-foundation/metaplex/releases/tag/v1.1.1)) tagged version: -->
+
+<!-- ```bash
+git clone -b v1.1.1 https://github.com/metaplex-foundation/metaplex.git ~/metaplex
+``` -->
 
 This will create a directory `metaplex` in your home directory with the lastest code from the repository. If you decide to clone the repository to a different location, you will need to change the path in subsequent instructions.
 
-:::info
+<!-- :::info
 
 You can also run the latest code on the `master` branch to immediately get bug fixes and new features. In order to do that, just run the command above without the `-b v1.1.1` option.
 
-:::
+::: -->
 
 You will then need to install the dependencies. From outside the metaplex directory:
 
