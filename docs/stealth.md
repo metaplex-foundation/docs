@@ -23,7 +23,7 @@ and adds another PDA structure specifying similar fields.
 
 Specifically, it adds a PDA at
 
-```
+```rust
 solana_program::declare_id!("privzjrXhtea8kKt3uE94X34AHaiLj2Vbwd51y3aUSi");
 
 Pubkey::find_program_address(&[b"metadata", mint.as_ref()], &ID)
@@ -31,7 +31,7 @@ Pubkey::find_program_address(&[b"metadata", mint.as_ref()], &ID)
 
 that contains the following information:
 
-```
+```rust
 pub struct StealthAccount {
     ...
 
@@ -56,7 +56,41 @@ pub struct StealthAccount {
 
 The largest difference is that the stealth metadata points to an encrypted
 asset and it holds the cipher key for said encrypted asset under public key
-encryption (see [notes](#architecture-notes).
+encryption (see [notes](#architecture-notes)).
+
+The JSON metadata at `uri`  has the following possible fields
+
+| Field            | Type   | Description                                   |
+| ---------------- | ------ | --------------------------------------------- |
+| name             | string | Name of the asset                             |
+| cover_image      | asset  | Struct pointing to preview / cover image      |
+| encrypted_assets | array  | Array of Structs pointing to encrypted assets |
+| encrypted_blob   | string | Encrypted blob of data                        |
+
+**Asset**
+
+| Field         | Type   | Description               |
+| ------------- | ------ | ------------------------- |
+| uri           | string | URI pointing to the asset |
+| type          | string | Type of the asset         |
+
+For example,
+```json
+{
+  "name": "professor ape cyborg",
+  "cover_image": {
+    "uri": "https://www.arweave.net/3IjJJr3nAH1k7JRu0F8GkI2kPpjDs7J8uFZDUV1zumc?ext=png",
+    "type": "image/png"
+  },
+  "encrypted_assets": [
+    {
+      "uri": "https://www.arweave.net/KeS0w8s58LTy_otECcR6xlHtSYu9lYSvRvbLBQhI4ik?ext=mp4",
+      "type": "video/mp4"
+    }
+  ],
+  "encrypted_blob": ""
+}
+```
 
 ### Configuration
 
@@ -116,12 +150,27 @@ corresponding information! This means that a sale process needs to be
 escrow-based where the buyer (recipient) commits the funds and the seller has
 some amount of time to complete the transfer.
 
-### JS
+### Utilities
+
+#### CLI
+
+The rust CLI at `/stealth/cli` exposes most interactions with the stealth
+program. The command implementations can be used as reference for external
+programs. New instructions and functionality will probably be exposed here
+first.
+
+#### JS
 
 There are WASM bindings for various utilities to interact with the stealth
 program e.g transfer transaction formatting, ciphertext decryption, etc. These
 can be found at `/stealth/js/` and use
 [`wasm-bindgen`](https://rustwasm.github.io/wasm-bindgen/).
+
+#### Sale
+
+A sample escrow- and slot- based sale contract that implements a sale workflow
+(where the seller must take some additional action to complete the sale) can be
+found at `/stealth/escrow`.
 
 ## Architecture notes
 
