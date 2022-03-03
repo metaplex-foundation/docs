@@ -140,7 +140,7 @@ The available gatekeeper services are:
 
 
 #### Civic Pass
-Civic Pass uses a familiar captcha challenge and additional user-transparent, web3 specific heuristics to protect your mint from malicious clients.
+Civic Pass combines a familiar captcha challenge with user-transparent heuristics to protect your mint from bots.
 - Give Civic Pass a try [here](https://getpass.civic.com).
 - Learn more about Civic Pass [here](https://docs.civic.com/candy-machine-integration/adding-captcha-to-candy-machine-v2).
 - By using Civic Pass, you agree to [Civic’s Terms and Conditions](https://docs.civic.com/candy-machine-integration/adding-captcha-to-candy-machine-v2#terms-and-conditions).
