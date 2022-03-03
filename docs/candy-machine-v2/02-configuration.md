@@ -14,7 +14,9 @@ The table below provides an overview of the settings available:
 | price                 |                   | Number                 | The amount in SOL or SPL token for a mint |
 | number                |                   | Integer                | The number of items in the Candy Machine |
 | gatekeeper            |                   |                        | |
-|                       | gatekeeperNetwork | Address                | Captcha provider address |
+|                       | gatekeeperNetwork |                 |Gatekeeper network address  |
+|                       |                   |"tibePmPaoTgrs929rWpu755EXaxC7M3SthVCf6GzjZt"                        |VERFIY gatekeeper network address                          |
+|                       |                   |"ignREusXmGrscGNUesoU9mxfds9AiYTezUKex2PsZV6"                        |CAPTCHA gatekeeper network address                           |
 |                       | expireOnUse       | boolean                | Requires a new captcha after a use |
 | solTreasuryAccount    |                   | PublicKey              | SOL wallet to receive proceedings SOL payments |
 | splTokenAccount       |                   | PublicKey              | SPL token wallet to receive proceedings from SPL token payments |
@@ -108,26 +110,38 @@ It is important that the `number` setting value matches the number of items in y
 
 :::
 
-## Captcha Settings
+## Bot Protection Settings
 
+While the unpredictable mint index provides some protection against bots, bots are still able to mint directly from the Candy Machine. If you want to make sure that only humans can mint from your project, you can enable the gatekeeper settings in your config.json. Currently there are two options for gatekeeper, VERIFY and CAPTCHA.
+
+####VERIFY:
+
+VERIFY, by Encore, is a web3 alternative to captcha. Since captcha has been around for 15+ years there are various tools to beat it. Verify was built for Solana and designed to be a better experience for users.
+>[See an example of the VERIFY experience here](https://docs.civic.com/candy-machine-integration/adding-captcha-to-candy-machine-v2#terms-and-conditions). 
+
+>[Learn more about VERIFY here](https://docs.civic.com/candy-machine-integration/adding-captcha-to-candy-machine-v2#terms-and-conditions).
+
+>[By using VERIFY, you agree to Encore’s Term and Conditions](https://docs.civic.com/candy-machine-integration/adding-captcha-to-candy-machine-v2#terms-and-conditions).
+
+####CAPTCHA:
 > By using captcha, you agree to [Civic’s Terms and Conditions](https://docs.civic.com/candy-machine-integration/adding-captcha-to-candy-machine-v2#terms-and-conditions).
 
-While the unpredictable mint index provides some protection against bots, bots are still able to mint directly from the Candy Machine. If you want to make sure that only humans can mint from your project, you can enable the gatekeeper settings in your `config.json` with the following values:
+Encore (VERIFY) gatekeeper network address: `"tibePmPaoTgrs929rWpu755EXaxC7M3SthVCf6GzjZt"`
 
+Civic gatekeeper network address: `"ignREusXmGrscGNUesoU9mxfds9AiYTezUKex2PsZV6"`
 ```json
 "gatekeeper": {
-    "gatekeeperNetwork" : "ignREusXmGrscGNUesoU9mxfds9AiYTezUKex2PsZV6",
-   	"expireOnUse" : true
+    "gatekeeperNetwork" : <GATEKEEPER NETWORK ADDRESS>,
+    "expireOnUse" : true
 }
 ```
 This will enable a captcha challenge once the mint button is clicked - only after passing the captcha you will be allowed to mint.
 
-When you use a captcha, you will not be able to mint from the CLI command `mint_one_token`. If you want to pre-mint from a `CMv2` and are planning to use a captcha, you should set the `goLiveDate` to `null` and turn captcha (temporarily) off. This will allow you to mint from the command line, but only **you** as the `CMv2` authority. Once you complete the pre-mint, turn captch on and set the correct `goLiveDate`.
+When you use a gatekeeper service, you will not be able to mint from the CLI command `mint_one_token`. If you want to pre-mint from a `CMv2` and are planning to use a gatekeeper service, you should set the `goLiveDate` to `null` and turn gatekeeper service (temporarily) off. This will allow you to mint from the command line, but only you as the `CMv2` authority. Once you complete the pre-mint, turn the gatekeeper service on and set the correct `goLiveDate`.
 
 :::warning
 
-If your Candy Machine is **live** and it has **no captcha**, it is open to bots attacks. The unpredictable mint index only prevents knowing which item to mint, but bots can still snipe a large volume of items.
-
+If your Candy Machine is **live** and it has **no gatekeeper service**, it is open to bots attacks. The unpredictable mint index only prevents knowing which item to mint, but bots can still snipe a large volume of items.
 :::
 
 ## Hidden Settings
