@@ -15,7 +15,7 @@ The table below provides an overview of the settings available:
 | number                |                   | Integer                | The number of items in the Candy Machine |
 | gatekeeper            |                   |                        | |
 |                       | gatekeeperNetwork |                 |Gatekeeper network address  |
-|                       |                   |"tibePmPaoTgrs929rWpu755EXaxC7M3SthVCf6GzjZt"                        |VERFIY gatekeeper network address                          |
+|                       |                   |"tibePmPaoTgrs929rWpu755EXaxC7M3SthVCf6GzjZt"                        |Verify gatekeeper network address                          |
 |                       |                   |"ignREusXmGrscGNUesoU9mxfds9AiYTezUKex2PsZV6"                        |CAPTCHA gatekeeper network address                           |
 |                       | expireOnUse       | boolean                | Requires a new captcha after a use |
 | solTreasuryAccount    |                   | PublicKey              | SOL wallet to receive proceedings SOL payments |
@@ -112,21 +112,21 @@ It is important that the `number` setting value matches the number of items in y
 
 ## Bot Protection Settings
 
-While the unpredictable mint index provides some protection against bots, bots are still able to mint directly from the Candy Machine. If you want to make sure that only humans can mint from your project, you can enable the gatekeeper settings in your config.json. Currently there are two options for gatekeeper, VERIFY and CAPTCHA.
+While the unpredictable mint index provides some protection against bots, bots are still able to mint directly from the Candy Machine. If you want to make sure that only humans can mint from your project, you can enable the gatekeeper settings in your `config.json`. Currently there are two options for gatekeeper, Verify and CAPTCHA.
 
 ####VERIFY:
 
-VERIFY, by Encore, is a web3 alternative to captcha. Since captcha has been around for 15+ years there are various tools to beat it. Verify was built for Solana and designed to be a better experience for users.
->[See an example of the VERIFY experience here](https://docs.civic.com/candy-machine-integration/adding-captcha-to-candy-machine-v2#terms-and-conditions). 
+Verify, by Encore, is a web3 alternative to captcha. Since captcha has been around for 15+ years there are various tools to beat it. Verify was built for Solana and designed to be a better experience for users.
+>Try an example of the Verify experience on Devnet [here](https://verify.encore.fans/?endpoint=https://api.devnet.solana.com&gkNetwork=ttib7tuX8PTWPqFsmUFQTj78MbRhUmqxidJRDv4hRRE). 
 
->[Learn more about VERIFY here](https://docs.civic.com/candy-machine-integration/adding-captcha-to-candy-machine-v2#terms-and-conditions).
+>Learn more about Verify [here](https://encorefans.notion.site/Encore-Docs-42f2bb6a2d5b445fbddd40e197ce0994).
 
->[By using VERIFY, you agree to Encore’s Term and Conditions](https://docs.civic.com/candy-machine-integration/adding-captcha-to-candy-machine-v2#terms-and-conditions).
+>By using Verify, you agree to [Encore’s Term and Conditions](https://encorefans.notion.site/Verify-Terms-Conditions-b6fcd56fb18149138da46e939e341365).
 
 ####CAPTCHA:
 > By using captcha, you agree to [Civic’s Terms and Conditions](https://docs.civic.com/candy-machine-integration/adding-captcha-to-candy-machine-v2#terms-and-conditions).
 
-Encore (VERIFY) gatekeeper network address: `"tibePmPaoTgrs929rWpu755EXaxC7M3SthVCf6GzjZt"`
+Encore (Verify) gatekeeper network address: `"tibePmPaoTgrs929rWpu755EXaxC7M3SthVCf6GzjZt"`
 
 Civic gatekeeper network address: `"ignREusXmGrscGNUesoU9mxfds9AiYTezUKex2PsZV6"`
 ```json
