@@ -117,7 +117,7 @@ While the unpredictable mint index provides some protection against bots, bots a
 ####VERIFY:
 
 Verify, by Encore, is a web3 alternative to captcha. Since captcha has been around for 15+ years there are various tools to beat it. Verify was built for Solana and designed to be a better experience for users.
->Try an example of the Verify experience on Devnet [here](https://verify.encore.fans/?endpoint=https://api.devnet.solana.com&gkNetwork=ttib7tuX8PTWPqFsmUFQTj78MbRhUmqxidJRDv4hRRE). 
+>Try an example of the Verify experience on Devnet [here](https://verify.encore.fans/?endpoint=https://api.devnet.solana.com&gkNetwork=ttib7tuX8PTWPqFsmUFQTj78MbRhUmqxidJRDv4hRRE&demo=true). 
 
 >Learn more about Verify [here](https://encorefans.notion.site/Verify-0af40ff4b3324694abf336f185c9fad2).
 
