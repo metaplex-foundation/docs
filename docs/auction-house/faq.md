@@ -20,6 +20,7 @@ Specifically Marketplaces should currently store:
 1. Trade Stade Account Keys
 2. Trade State Token Size and Price parts of the seed
 3. Token Account Keys that are stored in the trade state
+4. Auction House Receipts (Listing Receipts, Bid Receipts, and Purchase Receipts)
 
 Specifically Marketplaces need to track these two events on Token Accounts:
 
