@@ -115,9 +115,8 @@ It is important that the `number` setting value matches the number of items in y
 While the unpredictable mint index provides some protection against bots, bots are still able to mint directly from the Candy Machine. If you want to make sure that only humans can mint from your project, you can enable the gatekeeper settings in your `config.json`. Currently there are two options for gatekeeper, Verify and CAPTCHA.
 
 ####VERIFY:
-
-Verify, by Encore, is a web3 alternative to captcha. Since captcha has been around for 15+ years there are various tools to beat it. Verify was built for Solana and designed to be a better experience for users.
->Try an example of the Verify experience on Devnet [here](https://verify.encore.fans/?endpoint=https://api.devnet.solana.com&gkNetwork=ttib7tuX8PTWPqFsmUFQTj78MbRhUmqxidJRDv4hRRE&demo=true). 
+Verify, by Encore, is a web3 alternative to captcha that uses randomized challenge-response tests to filter out bots. Encore built this tool for Solana and designed Verify to offer a new experience for users.
+>Try an example of a Verify challenge-response test on Devnet [here](https://verify.encore.fans/?endpoint=https://api.devnet.solana.com&gkNetwork=ttib7tuX8PTWPqFsmUFQTj78MbRhUmqxidJRDv4hRRE&demo=true). 
 
 >Learn more about Verify [here](https://encorefans.notion.site/Verify-0af40ff4b3324694abf336f185c9fad2).
 
