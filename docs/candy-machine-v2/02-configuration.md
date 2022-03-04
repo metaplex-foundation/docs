@@ -128,7 +128,7 @@ If your Candy Machine is **live** and it has **no Gatekeeper**, it is open to bo
 
 :::
 
-[Learn more about the Identity Gateway Protocol](https://docs.identity.com/docs/gateway-protocol/)
+[Learn more about the Identity Gateway Protocol](https://docs.identity.com/docs/overview)
 
 ### Gatekeepers
 
