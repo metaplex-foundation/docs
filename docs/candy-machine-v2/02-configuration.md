@@ -146,7 +146,7 @@ Civic Pass combines a familiar captcha challenge with user-transparent heuristic
 - By using Civic Pass, you agree to [Civic’s Terms and Conditions](https://docs.civic.com/candy-machine-integration/adding-captcha-to-candy-machine-v2#terms-and-conditions).
 
 #### Verify
-Verify, by Encore, is a web3 alternative to captcha that uses randomized challenge-response tests to filter out bots. Encore built this tool for Solana and designed Verify to offer a new experience for users.
+Verify, by Encore, is a web3 alternative to captcha that uses randomized challenge-response tests to filter out bots.
 - Try an example of a Verify challenge-response test on Devnet [here](https://verify.encore.fans/?endpoint=https://api.devnet.solana.com&gkNetwork=ttib7tuX8PTWPqFsmUFQTj78MbRhUmqxidJRDv4hRRE&demo=true).
 - Learn more about Verify [here](https://encorefans.notion.site/Verify-0af40ff4b3324694abf336f185c9fad2).
 - By using Verify, you agree to [Encore’s Term and Conditions](https://encorefans.notion.site/Verify-Terms-Conditions-b6fcd56fb18149138da46e939e341365).
