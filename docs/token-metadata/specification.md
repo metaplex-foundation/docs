@@ -241,7 +241,7 @@ A `collection` is an NFT. It has the same data layout on-chain as any other NFT.
 
 An NFT is linked to a collection in a belongs_to style where the NFT has a
 reference back to the collection. This is implemented through the addition of
-a new `collection` field in the [Token Metadata][] struct.
+a new `collection` field in the token `Metadata` struct.
 
 ```rust
 pub struct Metadata {
