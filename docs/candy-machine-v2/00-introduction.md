@@ -2,7 +2,7 @@
 
 The second iteration of the well-known Candy Machine, a fully on-chain generative NFT distribution program, provides many improvements over its predecessor. The new version also allows you to create a whole new set of distribution scenarios and offers protection from bot attacks, while providing the same easy-to-use experience.
 
-:::info
+:::Info
 
  Throughout this guide, we will refer to the Candy Machine v1 as `CMv1` and the newer Candy Machine v2 as `CMv2`
 
