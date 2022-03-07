@@ -65,3 +65,10 @@ Marketplaces who want to stay decentralized and not require signoff may restrict
 AuctionHouse allows you to accept any SPL token as the tender that the buyer deposits into their Buyer Escrow in order to accomplish a sale. 
 
 Now that you know what the AuctionHouse is, take a look at our [Getting Started](/auction-house/getting_started) guide.
+
+### Auction House Receipts
+To aid transaction tracking, Auction House supports the generation of receipts for listings, bids, and sales. To generate these receipts, the receipt printing function should be called immediately after the corresponding transaction (`PrintListingReceipt`, `PrintBidReceipt`, and `PrintPurchaseReceipt`). Additionally, the `CancelListingReceipt` and `CancelBidReceipt` instructions should be called in the case of canceled listing add bids. Calling these two instructions will fill the `canceled_at` fields of the `ListingReceipt` and `BidReceipt` accounts.
+
+:::info
+
+While the receipts can be retrieved using the standard getProgramAccounts data flow, the official recommendation is to use Solana's [AccountsDB](https://docs.solana.com/developing/plugins/accountsdb_plugin) plug-in to index and track the generated receipts.
