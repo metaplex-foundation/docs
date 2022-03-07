@@ -35,10 +35,10 @@ This can be done on the CLI with the `show` command.
 
 
 ## Can the AuctionHouse change the sale price on my NFT
-Yes but only in a certain scenario. The following conditions are required in order for an Auction House to be able to use this feature:
+Yes, but only in a certain scenario. The following conditions are required in order for an Auction House to be able to use this feature:
 
 1. The AuctionHouse instance must have `Can Change Sale Price` set to `true`
-2. You as the NFT seller must list your NFT for sale at a price of 0. 
+2. The NFT seller must list the NFT for sale at a price of 0. 
 
 :::warning
 
