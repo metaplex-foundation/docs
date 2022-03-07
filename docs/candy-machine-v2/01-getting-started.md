@@ -222,7 +222,7 @@ Signature: 41ZEZqpyNMLUy3kQahWSy349PeDz3Q82dNDHKiA7QcsrAzHs3f7YiDEZWjnFi434DoiiD
 </p>
 </details>
 
-If the command is successful, you will see the updated balance at the end.
+If the command is successful, you will see the updated balance at the end. Make sure you are entering the airdrop amount that is within the airdrop limit. Currently the maximum airdrop limit is 2 SOL. 
 
 :::caution
 
