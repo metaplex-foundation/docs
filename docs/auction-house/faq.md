@@ -42,7 +42,7 @@ Yes but only in a certain scenario. The following conditions are required in ord
 
 :::warning
 
-The Auction House can only sell it for 0 if you sign the transaction with your key, but currently it can sell it for an arbitarily low price, e.g. 1 lamport. It is important to only list of with Auction Houses you trust.
+The Auction House can only sell it for 0 if you sign the transaction with your key, but currently it can sell it for an arbitarily low price, e.g. 1 lamport. It is important to only list with Auction Houses you trust.
 
 :::
 
