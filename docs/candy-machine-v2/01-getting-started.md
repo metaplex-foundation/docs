@@ -226,7 +226,8 @@ If the command is successful, you will see the updated balance at the end.
 
 :::caution
 
-The `solana airdrop` command is sometimes unreliable. If the command doesn't work, you can use the airdrop tool at https://solfaucet.com.
+The `solana airdrop` command is sometimes unreliable. If the command doesn't work, you can use the airdrop tool at https://solfaucet.com. 
+Make sure you are entering the right amount of SOL for airdrop request. It must reside inside the airdrop limit that is 2 SOL for now.
 
 :::
 
