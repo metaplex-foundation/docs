@@ -78,15 +78,21 @@ $ ts-node src/gumdrop-cli.ts help create
 ### Token Airdrop
 
 All a token airdrop requires is approval to move the relevant tokens from the
-Gumdrop creators' token account. The Gumdrop state will be approved as a
-[delegate](https://spl.solana.com/token#authority-delegation) for the sum of
-tokens specified.
+Gumdrop creators' token account.
 
 ```
 $ ts-node src/gumdrop-cli.ts create \
 --claim-integration transfer \
 --transfer-mint So11111111111111111111111111111111111111112
 ```
+
+However, by default, `gumdrop-cli.ts` will instead transfer the tokens to the
+generated throwaway `Keypair` so that multiple gumdrops can be created more
+intuitively. These will be transferred back on [close](#close)
+
+Alternatively, by passing `--delegate-only`, Gumdrop state will be approved as
+a [delegate](https://spl.solana.com/token#authority-delegation) for the sum of
+tokens specified.
 
 ### NFT Candy Machine Pre-sale
 
@@ -119,10 +125,11 @@ follows:
    ```
 
    `gumdrop-cli.ts` will parse the on-chain candy machine account and look for
-   the corresponding `whitelistMintSettings`, and then under-the-hood it
+   the corresponding `whitelistMintSettings`. Then under-the-hood it
    initializes a token-airdrop for `WLIST` but adds extra information in the
    claim URL so that frontends can find the corresponding candy crank in
-   addition to the whitelist token account.
+   addition to the whitelist token account. In the produced `urls.json`, this
+   will look somethign like
 
    ```
    ...
@@ -228,14 +235,23 @@ recipients will fail to claim their allocation.
 
 ## Closing a Gumdrop
 
-When the gumdrop is finished, the master edition can be reclaimed by closing the gumdrop. Currently, the small portion
-of rent used to store the Gumdrop state is also redeemed but please do not rely
-on this behavior!
+When the gumdrop is finished, the master edition can be reclaimed by closing
+the gumdrop. Currently, the small portion of rent used to store the Gumdrop
+state is also redeemed but please do not rely on this behavior!
 
 The command to close it is:
+
 ```
-ts-node gumdrop-cli.ts close -e devnet --base <keypair that was created on gumdrop create> --keypair <your initial keypair>
+ts-node gumdrop-cli.ts close \
+  --base <keypair that was created on gumdrop create> \
+  --keypair <your initial keypair> \
+  --claim-integration <creation --claim-integration> \
+  --<corresponding claim integration flag>
 ```
+
+We pass additional information about the claim integration to revoke authority
+or transfer back tokens, etc.
+
 NB: somewhat obviously, recipients will no longer be able to redeem the Gumdrop
 after it is closed.
 
