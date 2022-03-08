@@ -284,6 +284,8 @@ verified (see below) and `key` which points to the `mint` account of the collect
 | verified | bool   | Whether the collection is verified or not. |
 | key      | Pubkey | The SPL token mint account                 |
 
+### Verifying A Collection
+
 :::warning
 
 EXTREMELY IMPORTANT:
@@ -291,6 +293,13 @@ EXTREMELY IMPORTANT:
 Explorers, Wallets and Marketplaces, MUST CHECK IF `verified` is true. Verified can only be set true if the Authority on the Collection NFT has run the `verify_collection` instruction over the NFT.
 
 This is the exact same pattern as the `Creators` field where `verified` must be true in order to validate the NFT.
+
+In Order to check if a collection is valid on an NFT you MUST
+1. Check that the Collection struct is set
+2. That the pubkey in the collection struct is owned on chain by the spl-token program
+3. That verified is true
+
+If those 3 steps are not followed you could be exposing fradulent NFTs on real collections
 
 :::
 
