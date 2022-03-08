@@ -5,6 +5,7 @@
   - [Setup](#setup)
   - [Drop Types](#drop-types)
     - [Token Airdrop](#token-airdrop)
+    - [Candy Machine Pre-sale](#nft-candy-machine-pre-sale)
     - [Edition Prints](#edition-prints)
   - [Distribution Method](#distribution-method)
   - [Whitelist](#whitelist)
@@ -92,8 +93,49 @@ $ ts-node src/gumdrop-cli.ts create \
 The workflow for a Candy Machine pre-sale through the Gumdrop program is as
 follows:
 
-1. Create a Gumdrop [Token Airdrop](#token-airdrop)
-2. Create a Candy Machine V2 with a whitelist mint ([Candy Machine Docs](./candy-machine-v2/introduction)). Use the token from step 1.
+1. Create a whitelist mint token `WLIST` with the SPL token program
+2. Create a Candy Machine V2 with whitelist mint settings with mint `WLIST`
+   ([Candy Machine Docs](./candy-machine-v2/introduction)). For example,
+
+  ```
+  {
+    "whitelistMintSettings": {
+      "mode": { "burnEveryTime": true },
+      "mint": <WLIST>,
+      "presale": true,
+      "discountPrice": null
+    },
+    ...
+  }
+  ```
+
+3. Create a Gumdrop with `--claim-integration candy` and the corresponding
+   `--candy-machine`.
+
+   ```
+   $ ts-node src/gumdrop-cli.ts create \
+   --claim-integration candy \
+   --candy-machine FuxMhU34GPggi1yzk8tQwhsLQFR52iiutM5B9nzzeRPa  \
+   ```
+
+   `gumdrop-cli.ts` will parse the on-chain candy machine account and look for
+   the corresponding `whitelistMintSettings`, and then under-the-hood it
+   initializes a token-airdrop for `WLIST` but adds extra information in the
+   claim URL so that frontends can find the corresponding candy crank in
+   addition to the whitelist token account.
+
+   ```
+   ...
+   ?distributor=9zXd1NddYbZejacgd92XMQsAQKhXC4Yj9rhUspRyR1ud\
+   &candy=FuxMhU34GPggi1yzk8tQwhsLQFR52iiutM5B9nzzeRPa\
+   &tokenAcc=93fQV4RnstogfFqMstV9b8uAvZ5KsRFjgJUagJhpX2Wa\
+   ...
+   ```
+
+4. On the frontend, users click a button that formats 2 transactions. The first
+   claims the whitelist token gumdrop, and the second uses that token to crank
+   the candy machine. For example, [the Astrals mint
+   UI](https://github.com/lwus/astrals-ui/blob/master/src%2Fviews%2FMintView.tsx#L367)
 
 ### Edition Prints
 
