@@ -21,19 +21,56 @@ You can also easily transfer ownership of these PDA records with the `updateAuth
 
 ## Token Vault
 
-Token Vault acts like a corporation or safe escrow for arbitrary token allotments. You can create a vault object, and insert any number of tokens from any number of mints into safety deposit boxes, and then activate the vault. It has a few different states, but the important ones are **Activated**, which is when it's locked and nobody can access its contents, and **Combined,** when the vault has essentially been opened and the vault authority can withdraw the contents.
+A token vault is a collection of arbitrary token allotments. It acts like a safe-escrow for these tokens.
 
-Going from **Activated** to **Combined** has only one restraint - that there are no outstanding fractional shares in circulation. You can in principle go straight from **Activated** to **Combined** immediately if you issue 0 fractional shares (which is what the Metaplex front-end contract does during Auction creation).
+You can create a vault object and insert any number of tokens from any number of mints into safety deposit boxes and then activate the vault. 
 
-Once the vault is **Activated**, you can then mint treasury shares that represent fractional ownership of the tokens inside the vault. The treasury shares are valued based on an external price indicator account that does not need to be owned by the vault and is considered the vault's price oracle, and these shares can then be sold on a dex or in an AMM or whatever you desire. This allows you, as the vault owner, to take your NFT(s) and turn them into a sort of corporation and sell partial ownership to other parties. If the external price oracle has its price driven by a proper third party such as a dex or other price discovery mechanism, then the entire system is balanced.
+The vault has a few different states, the most important ones being **Activated** and **Combined**.
 
-When there are outstanding shares, you cannot, as the vault owner, **Combine** the vault, and retrieve your tokens, until you buy out the shares in circulation. You have to provide the number_of_shares_outstanding\*price_from_oracle in the token_mint of the vault to the vault to unlock it. Then shareholders can return at their leisure to trade in shares for their winnings.
+Activated - When the vault is locked and nobody can access its contents.
+
+Combined - when the vault has essentially been opened and the vault authority can withdraw the contents.
+
+You can switch from an Activated state to a Combined state as long as there are no outstanding fractional shares in circulation.
+
+If you issue 0 fractional shares, then you can go straight from Activated to Combined. This what the Metaplex front-end contract does during Auction creation.
+
+Once the vault is Activated, you can then mint treasury shares that represent fractional ownership of the tokens inside the vault. 
+
+The treasury shares are valued based on the vault's price oracle. This oracle is an external price indicator account and does not need to be owned by the vault.
+
+Shares can be sold in a DEX or in an AMM based on the prices identified by this oracle.
+
+This allows you, as the vault owner, to take your NFT(s) and turn them into a sort of corporation and sell partial ownership to other parties. 
+
+If the external price oracle has its price driven by a proper third party such as a DEX or other price discovery mechanism, then the entire system is balanced.
+
+When there are outstanding shares, you cannot, as the vault owner, **Combine** the vault, and retrieve your tokens, until you buy out the shares in circulation. 
+
+To unlock the vault, you have to deposit the buy-out amount. This amount is calculated as follows:
+
+Buyout amount = number_of_shares_outstanding * price_from_oracle
+
+This amount will allow unlocking vault. Then shareholders can return at their leisure to trade in shares for their winnings.
 
 ## Auction
 
-The Auction Contract represents an auction primitive, and it knows nothing about NFTs, or Metadata, or anything else in the Metaplex ecosystem. All it cares about is that it has a resource address, it has auction mechanics, and it is using those auction mechanics to auction off that resource. It currently supports English Auctions and Open Edition Auctions (no winners but bids are tracked.) Its only purpose is to track who won what place in an auction and to collect money for those wins. When you place bids, or cancel them, you are interacting with this contract. However, when you redeem bids, you are not interacting with this contract, but Metaplex, because while it can provide proof that you did indeed win 4th place, it has no opinion on how the resource being auctioned off is divvied up between 1st, 2nd, 3rd, and 4th place winners, for example.
+The auction contract allows performing auctions on any assets that are identified by a resource address. The auction doesn't need to know anything else about the resource it is trying to auction.
 
-This contract will be expanded in the future to include other auction types, and better guarantees between that the auctioneer claiming the bid actually has provided the prize by having the winner sign a PDA saying that they received the prize. Right now this primitive contract should _not_ be used in isolation, but in companionship with another contract (like Metaplex in our case) that makes such guarantees that prizes are delivered if prizes are won.
+It currently supports English and Open Edition Auctions. An Open Edition Auction is one where each bid is tracked but no winners are announced.
+
+The auction contract is only concerned with identifying the auction rankings for bids and collecting the wins.
+
+Anytime you place a bid or cancel it, it is the auction contract you're interacting with.
+
+Redemption is not a part of the auction contract. As far as the auction contract is concerned, it only recognizes your position in the bid.
+
+The Metaplex contract allows redemption because it can identify how the resource being auctioned off is divided up between winners.
+
+The auction contract will be expanded in the future to include other auction types. It will also contain better guarantees between the provider and the winner. For e.g. it will ensure that the winner can sign a PDA asserting that they have received the prize. 
+
+Right now this primitive contract should _not_ be used in isolation, but in companionship with another contract such as Metaplex in our case, because it makes such guarantees that prizes are delivered if prizes are won.
+
 
 ## Metaplex
 
