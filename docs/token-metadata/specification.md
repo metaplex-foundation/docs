@@ -241,7 +241,7 @@ A `collection` is an NFT. It has the same data layout on-chain as any other NFT.
 
 An NFT is linked to a collection in a belongs_to style where the NFT has a
 reference back to the collection. This is implemented through the addition of
-a new `collection` field in the token `Metadata` struct.
+a new `collection` field in the `Metadata` struct.
 
 ```rust
 pub struct Metadata {
@@ -312,7 +312,7 @@ To accomplish setting and verifying a collection with one instruction use the `s
 
 ## Token Use Settings
 
-To support gaming applications, the concept of "token usage" has been implemented, where a new `uses` field has been added to the token `Metadata` struct. This field is a Rust `Option<Uses>` where `Uses` is a Rust struct with a `UseMethod` enum:
+To support gaming applications, the concept of "token usage" has been implemented, where a new `uses` field has been added to the `Metadata` struct. This field is a Rust `Option<Uses>` where `Uses` is a Rust struct with a `UseMethod` enum:
 
 ```rust
 pub struct Uses {
