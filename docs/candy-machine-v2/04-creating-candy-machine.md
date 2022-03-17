@@ -158,6 +158,6 @@ remove collection finished {
 ```
 :::caution
 
-While it's not possible for a user to set the NFTs to a separate collection, as of today it is possible for users to avoid setting the collection by using alternate UIs/CLIs. Since you will have update authority on your NFTs, you can add the collection after the fact if NFTs were not minted from the Candy Machine with the collection (likely from bots). You can do this easily using https://collections.metaplex.com. We suggest you use this tool after your Candy Machine has minted out, although you can do it earlier if you want. 
+While it's not possible for the user minting to set the NFTs to a separate collection, as of today it is possible for minters to avoid setting the collection by using alternate UIs/CLIs (likely from bots). Since you will have update authority on your NFTs, you can add the collection after the fact if NFTs were not minted from the Candy Machine with the collection. You can do this easily using https://collections.metaplex.com. We suggest you use this tool after your Candy Machine has minted out, although you can do it earlier if you want. 
 
 :::
