@@ -47,8 +47,14 @@ The table below provides an overview of the settings available:
 | nftStorageKey         |                   | String                 | NFT.Storage API Key (optional)                                                                                                                                                     |
 | arweaveJwk            |                   | String                 | Arweave JWK wallet file                                                                                                                                                            |
 | awsS3Bucket           |                   | String                 | AWS bucket name                                                                                                                                                                    |
-| noRetainAuthority     |                   | boolean                | Indicates whether the candy machine authority has the update authority for each mint or not                                                                                        |
+| noRetainAuthority     |                   | boolean                | Indicates whether the candy machine authority has the update authority for each mint or if it is transferred to the minter. This should be kept as `false` for the vast majority of cases. Leave this as `false` if you are unsure which to pick.                                                                                         |
 | noMutable             |                   | boolean                | Indicates whether the NFTs' metadata is mutable or not after having been minted                                                                                                    |
+
+:::danger
+
+If you set noMutable to true, you **WILL NOT** be able to update your NFTs at any point in the future.
+
+:::
 
 :::info
 
