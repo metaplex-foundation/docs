@@ -114,9 +114,9 @@ You can download the complete [sample collection](assets.zip) for testing and ex
 
 ## Verifying Assets
 
-Once you completed your project's artwork and metadata preparation, it is important to verify if there are no issues with them. The Candy Machine CLI provides the `verify_assets` command to check that the files in the assets folder are in the correct format. This involves verifying that:
+Once you completed your project's artwork and metadata preparation, it is important to verify that the files are ready to be uploaded. The Candy Machine CLI provides the `verify_assets` command to check that the files in the assets folder are in the correct format. This involves verifying that:
 
-1. Files types are supported (e.g., png, jpg, mp4). Note that the command does not verify the content of the files, it does a lightweight verification that the extension of the files are from a supported type.
+1. Files types are supported (e.g., png, jpg, mp4). Note that the command does not verify the content of the files; it does a lightweight verification that the extension of the files are from a supported type.
 2. For each image/audio/video file, there is a correspondent `json` metadata file using the correct index naming in the `image` and `animation_url` properties.
 3. Creators have been consistently added to all metadata files. The command expects that all assets have the same creators.
 
@@ -167,4 +167,4 @@ Checking manifest file: ~/metaplex/js/packages/cli/test/assets/9.json
 ended at: Thu Mar 10 2022 15:33:36 GMT+0000 (Greenwich Mean Time). time taken: 00:00:00
 ```
 
-As soon as your assets are verifyed, you are ready to create your Candy Machine.
+As soon as your assets are verified, you are ready to create your Candy Machine.
