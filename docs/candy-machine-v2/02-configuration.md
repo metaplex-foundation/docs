@@ -108,7 +108,7 @@ It is important that the `number` setting value matches the number of items in y
 
 :::
 
-## Identity Gateway Settings
+## Gatekeeper Settings
 
 While the unpredictable mint index provides some protection against bots, bots are still able to mint directly from the Candy Machine. If you want to make sure that only humans can mint from your project, you can enable the gatekeeper settings in your `config.json` with the following values:
 
@@ -118,30 +118,43 @@ While the unpredictable mint index provides some protection against bots, bots a
    	"expireOnUse" : true
 }
 ```
-This will enable a Gatekeeper challenge once the mint button is clicked - only after passing the challenge you will be allowed to mint.
+This will enable a gatekeeper challenge once the mint button is clicked&mdash;only after passing the challenge you will be allowed to mint.
 
-When you use a Gatekeeper, you will not be able to mint from the CLI command `mint_one_token`. If you want to pre-mint from a `CMv2` and are planning to use a Gatekeeper, you should set the `goLiveDate` to `null` and turn Gatekeeper (temporarily) off. This will allow you to mint from the command line, but only **you** as the `CMv2` authority. Once you complete the pre-mint, turn `gatekeeper` on and set the correct `goLiveDate`.
+When you use a gatekeeper, you will not be able to mint from the CLI command `mint_one_token`. If you want to pre-mint from a `CMv2` and are planning to use a gatekeeper, you should set the `goLiveDate` to `null` and turn `gatekeeper` (temporarily) off. This will allow you to mint from the command line, but only **you** as the `CMv2` authority. Once you complete the pre-mint, turn `gatekeeper` on and set the correct `goLiveDate`.
 
 :::warning
 
-If your Candy Machine is **live** and it has **no Gatekeeper**, it is open to bots attacks. The unpredictable mint index only prevents knowing which item to mint, but bots can still snipe a large volume of items.
+If your Candy Machine is **live** and it has **no gatekeeper**, it is open to bots attacks. The unpredictable mint index only prevents knowing which item to mint, but bots can still snipe a large volume of items.
 
 :::
 
-[Learn more about the Identity Gateway Protocol](https://docs.identity.com/docs/overview)
+### Provider Networks
 
-### Gatekeepers
+There are currently two supported gatekeepers (details below). If you want to become a supported gatekeeper please email [contact@identity.org](mailto:contact@identity.org).
+> [Learn more about the Identity Gateway Protocol](https://docs.identity.com/docs/overview)
 
-The supported Gatekeepers are:
+#### Civic Pass
 
-| Provider Network Address                        | Gatekeeper           | Description                                                                                                                   | Link                                                                                              | Terms and Conditions                                                                                                    |
-|-------------------------------------------------|----------------------|-------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| `"ignREusXmGrscGNUesoU9mxfds9AiYTezUKex2PsZV6"` | **Civic Pass**       | Brings the familiar captcha challenge to web3 and combines it with user-transparent heuristics to protect your mint from bots | [Learn More](https://docs.civic.com/candy-machine-integration/adding-captcha-to-candy-machine-v2) | [Civic Ts&Cs](https://docs.civic.com/candy-machine-integration/adding-captcha-to-candy-machine-v2#terms-and-conditions) |
-| `"tibePmPaoTgrs929rWpu755EXaxC7M3SthVCf6GzjZt"` | **Verify by Encore** | A web3 alternative to captcha that uses randomized challenge-response tests to filter out bots                                | [Learn More](https://encorefans.notion.site/Verify-0af40ff4b3324694abf336f185c9fad2)              | [Encore Ts&Cs](https://encorefans.notion.site/Verify-Terms-Conditions-b6fcd56fb18149138da46e939e341365)                 |
+> Address: `ignREusXmGrscGNUesoU9mxfds9AiYTezUKex2PsZV6`
 
-If you want to become a supported Gatekeeper please email [contact@identity.org](mailto:contact@identity.org)
+Brings the familiar captcha challenge to web3 and combines it with user-transparent heuristics to protect your mint from bots.
+- [Learn More](https://docs.civic.com/candy-machine-integration/adding-captcha-to-candy-machine-v2)
+- [Civic Ts&Cs](https://docs.civic.com/candy-machine-integration/adding-captcha-to-candy-machine-v2#terms-and-conditions)
 
-> By using a Gatekeeper, you agree to their terms and conditions.
+#### Verify by Encore
+
+> Address: `tibePmPaoTgrs929rWpu755EXaxC7M3SthVCf6GzjZt`
+
+A web3 alternative to captcha that uses randomized challenge-response tests to filter out bots.
+- [Learn More](https://encorefans.notion.site/Verify-0af40ff4b3324694abf336f185c9fad2)
+- [Encore Ts&Cs](https://encorefans.notion.site/Verify-Terms-Conditions-b6fcd56fb18149138da46e939e341365)
+
+
+:::info
+
+By using a gatekeeper, you agree to their terms and conditions.
+
+:::
 
 ## Hidden Settings
 
