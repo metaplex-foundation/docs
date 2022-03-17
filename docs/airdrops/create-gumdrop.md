@@ -141,8 +141,7 @@ follows:
 
 4. On the frontend, users click a button that formats 2 transactions. The first
    claims the whitelist token gumdrop, and the second uses that token to crank
-   the candy machine. For example, [the Astrals mint
-   UI](https://github.com/lwus/astrals-ui/blob/master/src%2Fviews%2FMintView.tsx#L367)
+   the candy machine.
 
 ### Edition Prints
 

@@ -6,6 +6,12 @@ sidebar_label: "1. Getting Started"
 
 Before we can create a Candy Machine, you will need to install and operate a handful of developer tools.
 
+:::warning
+
+During this guide, we will use `\` within example commands prior to new lines. On most shells (such as the shells on MacOS and Linux), this symbol means a new line. However, on Windows Command Prompt, it does not. If you are on Windows and are using the Command Prompt, enter the commands in a single line and remove the `\` characters that we use in our examples. 
+
+:::
+
 ## Tooling required
 
 You will need recent version of the following tools:

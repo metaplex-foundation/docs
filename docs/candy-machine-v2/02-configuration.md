@@ -36,9 +36,9 @@ The table below provides an overview of the settings available:
 |                       | uri               | String                 | Single URI to all mints                                                                                                                                                            |
 |                       | hash              | String                 | 32 character hash – in most cases this is the hash of the cache file with the mapping between mint number and metadata so that the order can be verified when the mint is complete |
 | storage               |                   |                        | Storage type to upload images and metadata                                                                                                                                         |
-|                       |                   | “arweave-sol”          | Uploads to arweave and payment are made in SOL (only works in mainnet, recommended option)                                                                                         |
-|                       |                   | “arweave-bundle”       | Uploads to arweave and payment are made in AR (only works in mainnet and requires an Arweave wallet)                                                                               |
-|                       |                   | “arweave”              | Uploads to arweave via Metaplex Google Cloud function (works on devnet and mainnet, recommended option for devnet)                                                                 |
+|                       |                   | “arweave-sol”          | Uploads to arweave using [Bundlr](https://bundlr.network) and payments are made in SOL (Recommended option. Works on mainnet and devnet. **Files are only stored for 7 days on devnet.**)                                                                                         |
+|                       |                   | “arweave-bundle”       | Uploads to arweave and payments are made in AR (only works in mainnet and requires an Arweave wallet)                                                                               |
+|                       |                   | “arweave”              | Uploads to arweave via Metaplex Google Cloud function (works on devnet and mainnet)                                                                 |
 |                       |                   | “ipfs”                 | Uploads to IPFS (must specify either Infura Project ID or Secret Key)                                                                                                              |
 |                       |                   | “nft-storage”          | Uploads to [NFT.Storage](https://nft.storage) (no payment required, works on all networks)                                                                                         |
 |                       |                   | “aws”                  | Uploads to AWS (must specify AWS Bucket name)                                                                                                                                      |
@@ -47,8 +47,14 @@ The table below provides an overview of the settings available:
 | nftStorageKey         |                   | String                 | NFT.Storage API Key (optional)                                                                                                                                                     |
 | arweaveJwk            |                   | String                 | Arweave JWK wallet file                                                                                                                                                            |
 | awsS3Bucket           |                   | String                 | AWS bucket name                                                                                                                                                                    |
-| noRetainAuthority     |                   | boolean                | Indicates whether the candy machine authority has the update authority for each mint or not                                                                                        |
+| noRetainAuthority     |                   | boolean                | Indicates whether the candy machine authority has the update authority for each mint or if it is transferred to the minter. This should be kept as `false` for the vast majority of cases. Leave this as `false` if you are unsure which to pick.                                                                                         |
 | noMutable             |                   | boolean                | Indicates whether the NFTs' metadata is mutable or not after having been minted                                                                                                    |
+
+:::danger
+
+If you set noMutable to true, you **WILL NOT** be able to update your NFTs at any point in the future.
+
+:::
 
 :::info
 
@@ -147,7 +153,7 @@ Brings the familiar captcha challenge to web3 and combines it with user-transpar
 
 A web3 alternative to captcha that uses randomized challenge-response tests to filter out bots.
 - [Learn More](https://encorefans.notion.site/Verify-0af40ff4b3324694abf336f185c9fad2)
-- [Encore Ts&Cs](https://encorefans.notion.site/Verify-Terms-Conditions-b6fcd56fb18149138da46e939e341365)
+- [Encore Ts&Cs](https://www.encore.fans/terms-conditions)
 
 
 :::info
