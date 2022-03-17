@@ -147,7 +147,7 @@ Brings the familiar captcha challenge to web3 and combines it with user-transpar
 
 A web3 alternative to captcha that uses randomized challenge-response tests to filter out bots.
 - [Learn More](https://encorefans.notion.site/Verify-0af40ff4b3324694abf336f185c9fad2)
-- [Encore Ts&Cs](https://encorefans.notion.site/Verify-Terms-Conditions-b6fcd56fb18149138da46e939e341365)
+- [Encore Ts&Cs](https://www.encore.fans/terms-conditions)
 
 
 :::info

@@ -71,4 +71,4 @@ To aid transaction tracking, Auction House supports the generation of receipts f
 
 :::info
 
-While the receipts can be retrieved using the standard getProgramAccounts data flow, the official recommendation is to use Solana's [AccountsDB](https://docs.solana.com/developing/plugins/accountsdb_plugin) plug-in to index and track the generated receipts.
+While the receipts can be retrieved using the standard getProgramAccounts data flow, the official recommendation is to use Solana's [AccountsDB](https://docs.solana.com/developing/plugins/geyser-plugins) plug-in to index and track the generated receipts.
