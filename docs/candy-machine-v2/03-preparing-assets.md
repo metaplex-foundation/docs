@@ -111,3 +111,60 @@ It is also important to make sure that you set royalties percentage awarded to c
 You can download the complete [sample collection](assets.zip) for testing and experimentation. Subsequent steps in this walkthrough will assume it's the collection in use.
 
 :::
+
+## Verifying Assets
+
+Once you completed your project's artwork and metadata preparation, it is important to verify that the files are ready to be uploaded. The Candy Machine CLI provides the `verify_assets` command to check that the files in the assets folder are in the correct format. This involves verifying that:
+
+1. Files types are supported (e.g., png, jpg, mp4). Note that the command does not verify the content of the files; it does a lightweight verification that the extension of the files are from a supported type.
+2. For each image/audio/video file, there is a correspondent `json` metadata file using the correct index naming in the `image` and `animation_url` properties.
+3. Creators have been consistently added to all metadata files. The command expects that all assets have the same creators.
+
+To proceed with the verification process, you will execute the `verify_assets` command:
+
+```bash
+ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts verify_assets ./assets
+```
+
+The only required parameter is the directory of the assets&mdash;in this example, ```./assets``` is the name of the directory. Executing the command using the sample collection will produce the following output:
+
+```bash
+started at: 1646926416415
+Verifying token metadata for 10 (img+json) pairs
+Checking manifest file: ~/metaplex/js/packages/cli/test/assets/0.json
+Checking manifest file: ~/metaplex/js/packages/cli/test/assets/1.json
+Checking manifest file: ~/metaplex/js/packages/cli/test/assets/2.json
+Checking manifest file: ~/metaplex/js/packages/cli/test/assets/3.json
+Checking manifest file: ~/metaplex/js/packages/cli/test/assets/4.json
+Checking manifest file: ~/metaplex/js/packages/cli/test/assets/5.json
+Checking manifest file: ~/metaplex/js/packages/cli/test/assets/6.json
+Checking manifest file: ~/metaplex/js/packages/cli/test/assets/7.json
+Checking manifest file: ~/metaplex/js/packages/cli/test/assets/8.json
+Checking manifest file: ~/metaplex/js/packages/cli/test/assets/9.json
+ended at: Thu Mar 10 2022 15:33:36 GMT+0000 (Greenwich Mean Time). time taken: 00:00:00
+```
+
+The above represents an example of a successful verification. When the command finds any inconsistency, it will report an error under the filename (`0.json` in this case) where the error occurred, as shown below:
+
+```bash
+started at: 1646926416415
+Verifying token metadata for 10 (img+json) pairs
+Checking manifest file: ~/metaplex/js/packages/cli/test/assets/0.json
+We expected the `image` property in ~/metaplex/js/packages/cli/test/assets/0.json to be 0.jpg.
+This will still work properly (assuming the URL is valid!), however, this image will not get uploaded to Arweave through the `metaplex upload` command.
+If you want us to take care of getting this into Arweave, make sure to set `image`: "0.jpg"
+The `metaplex upload` command will automatically substitute this URL with the Arweave URL location.
+
+Checking manifest file: ~/metaplex/js/packages/cli/test/assets/1.json
+Checking manifest file: ~/metaplex/js/packages/cli/test/assets/2.json
+Checking manifest file: ~/metaplex/js/packages/cli/test/assets/3.json
+Checking manifest file: ~/metaplex/js/packages/cli/test/assets/4.json
+Checking manifest file: ~/metaplex/js/packages/cli/test/assets/5.json
+Checking manifest file: ~/metaplex/js/packages/cli/test/assets/6.json
+Checking manifest file: ~/metaplex/js/packages/cli/test/assets/7.json
+Checking manifest file: ~/metaplex/js/packages/cli/test/assets/8.json
+Checking manifest file: ~/metaplex/js/packages/cli/test/assets/9.json
+ended at: Thu Mar 10 2022 15:33:36 GMT+0000 (Greenwich Mean Time). time taken: 00:00:00
+```
+
+As soon as your assets are verified, you are ready to create your Candy Machine.
