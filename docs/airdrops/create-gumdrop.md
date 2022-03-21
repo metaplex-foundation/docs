@@ -164,7 +164,7 @@ to the wallet.
 
 NB: the merkle hash generated with `--candy-freeze` is different to ensure
 users whitelist accounts are frozen. The multisig accounts must also be passed
-in to gumdrop and candy machine whe using this functionality as well (see
+in to gumdrop and candy machine when using this functionality as well (see
 example frontend).
 
 
@@ -209,7 +209,7 @@ with the `--otp-auth` flag. Enable and disable with `--otp-auth enable` and
 same distribution method will be used to verify the OTP.
 
 Alternatively, creators can also choose to build the Gumdrop from public keys
-which allows the only the owner of said public key to claim the Gumdrop.  In
+which allows the only the owner of said public key to claim the Gumdrop. In
 this case, the full list of URLs is expected to be uploaded by the creator
 somewhere.
 
