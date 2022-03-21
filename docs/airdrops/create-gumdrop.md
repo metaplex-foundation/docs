@@ -96,6 +96,8 @@ tokens specified.
 
 ### NFT Candy Machine Pre-sale
 
+NB: See the note about [freezing whitelist tokens](#frozen-whitelist-tokens)
+
 The workflow for a Candy Machine pre-sale through the Gumdrop program is as
 follows:
 
@@ -122,6 +124,7 @@ follows:
    $ ts-node src/gumdrop-cli.ts create \
    --claim-integration candy \
    --candy-machine FuxMhU34GPggi1yzk8tQwhsLQFR52iiutM5B9nzzeRPa  \
+   # OPTIONAL: --candy-freeze. See frozen-whitelist-tokens
    ```
 
    `gumdrop-cli.ts` will parse the on-chain candy machine account and look for
@@ -142,6 +145,28 @@ follows:
 4. On the frontend, users click a button that formats 2 transactions. The first
    claims the whitelist token gumdrop, and the second uses that token to crank
    the candy machine.
+
+#### Frozen Whitelist Tokens
+
+If we want to ensure whitelist tokens cannot be traded, we must freeze the
+users whitelist token account in between gumdrop and candy machine. This steps
+are:
+
+1. Ensure that the `WLIST` freeze-authority is populated (not null so we can
+   reassign it later)
+2. Create a token multisig account with the gumdrop distributor, candy machine
+   creator, and your wallet key as signers
+3. Set `WLIST` freeze-authority to the multisig
+
+Passing `--candy-freeze` to `create` will do these 3 steps for you.
+Symmetrically, passing `--candy-freeze` to `close` will transfer authority back
+to the wallet.
+
+NB: the merkle hash generated with `--candy-freeze` is different to ensure
+users whitelist accounts are frozen. The multisig accounts must also be passed
+in to gumdrop and candy machine whe using this functionality as well (see
+example frontend).
+
 
 ### Edition Prints
 
