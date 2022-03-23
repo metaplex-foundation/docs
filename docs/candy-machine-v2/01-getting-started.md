@@ -25,7 +25,7 @@ You will need recent version of the following tools:
 git version
 ```
 
-> **output:** _git version 2.32.0_
+> **output:** _git version 2.35.1_
 
 The latest LTS version of node is recommended:
 
@@ -33,13 +33,13 @@ The latest LTS version of node is recommended:
 node --version
 ```
 
-> **output:** _v16.13.0_
+> **output:** _v16.14.2_
 
 ```bash
 yarn --version
 ```
 
-> **output:** _1.22.17_
+> **output:** _1.22.18_
 
 ```bash
 ts-node --version
