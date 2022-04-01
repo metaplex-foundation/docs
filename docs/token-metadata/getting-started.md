@@ -50,7 +50,7 @@ Once you have cloned the repo and installed packages, make sure you have a local
 ### Running Commands
 
 To run commands you will use
-`ts-node src/ts-node src/cli-nft.ts`
+`ts-node src/cli-nft.ts`
 
 #### _Help_
 
