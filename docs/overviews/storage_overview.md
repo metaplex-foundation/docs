@@ -102,6 +102,8 @@ AWS S3 storage is currently only supported within the CandyMachine `upload` comm
 
 Please run `ts-node candy-machine-v2-cli.ts upload --help` from the `js/packages/cli/src` directory for details about the command line flags you'll need to set.
 
+If the console logs a successful upload, but no assets are actually uploaded to your bucket you must configure your [ACL settings](https://docs.aws.amazon.com/AmazonS3/latest/userguide/managing-acls.html) to enable it. 
+
 #### S3 storage fees
 
 Please visit https://aws.amazon.com/s3/pricing/ for details.
