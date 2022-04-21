@@ -199,7 +199,7 @@ The whitelist is used to specify the recipients of the Gumdrop. Both frontends
 expect the whitelist to be a JSON list of recipients, each with a `handle`
 identifying the user, an `amount` which determines the number of tokens, mints,
 or prints that can be claimed, and in the case of [edition
-prints](#edition-p[rints), an `edition` number.
+prints](#edition-prints), an `edition` number.
 
 More concretely, the frontends expect the list format to be
 
