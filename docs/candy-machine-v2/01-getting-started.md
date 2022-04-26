@@ -140,7 +140,7 @@ In this guide we will use `devnet`, although all commands presented will work in
 
 The steps described here will create a wallet to be used in the Solana `devnet` environment. In normal circumstances you would redact your mnemonic, store it somewhere safe and take advantage of the `--outfile` flag.
 
-To create a new wallet, we will use the `solana-keygen` commnand:
+To create a new wallet, we will use the `solana-keygen` command:
 
 ```bash
 solana-keygen new --outfile ~/.config/solana/devnet.json
