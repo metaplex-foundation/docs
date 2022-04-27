@@ -74,7 +74,7 @@ git clone https://github.com/metaplex-foundation/metaplex.git ~/metaplex
 git clone -b v1.1.1 https://github.com/metaplex-foundation/metaplex.git ~/metaplex
 ``` -->
 
-This will create a directory `metaplex` in your home directory with the lastest code from the repository. If you decide to clone the repository to a different location, you will need to change the path in subsequent instructions.
+This will create a directory `metaplex` in your home directory with the latest code from the repository. If you decide to clone the repository to a different location, you will need to change the path in subsequent instructions.
 
 <!-- :::info
 
