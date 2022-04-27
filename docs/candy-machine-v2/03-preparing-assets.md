@@ -34,7 +34,7 @@ The content of the image files reflect the artwork you would like to display for
 
 :::warning
 
-It is important to double check that you do not skip any indices, e.g., `0.png`, `2.png`, `3.png` (missing `1.png`). Otherwhise you will experience problems when minting your collection.
+It is important to double check that you do not skip any indices, e.g., `0.png`, `2.png`, `3.png` (missing `1.png`). Otherwise you will experience problems when minting your collection.
 
 :::
 
