@@ -26,7 +26,7 @@ A 10-item collection will have 20 files in total:
 |`8.png` | `8.json`|
 |`9.png` | `9.json`|
 
-Each pair `0.png` and `0.json` are combined to represent the first NFT in this example collection; `1.png` and `1.json` describe the second NFT and so forth. Theses files are typically grouped into a single folder, usually named `assets`, but that is not a hard requirement. Grouping them into a single folder simplifies next steps and is highly encouraged.
+Each pair `0.png` and `0.json` are combined to represent the first NFT in this example collection; `1.png` and `1.json` describe the second NFT and so forth. These files are typically grouped into a single folder, usually named `assets`, but that is not a hard requirement. Grouping them into a single folder simplifies next steps and is highly encouraged.
 
 The content of the image files reflect the artwork you would like to display for each NFT and the content of the metadata files describe each of these pieces of artwork using the schema defined in the [Token Metadata Standard](/token-metadata/specification).
 
