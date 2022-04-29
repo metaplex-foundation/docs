@@ -7,6 +7,11 @@ In this section we will cover the commands involved in deploying a Candy Machine
 
 The preparation of the assets is similar to the instructions provided in the [Candy Machine v2 documentation](http://docs.metaplex.com/candy-machine-v2/preparing-assets). By default, Sugar loads media/metadata files from an `assets` folder in the directory where the command has been executed, but the name of the folder can be specified as a command-line parameter.
 
+![Screen Shot 2022-04-29 at 10 50 00 AM](https://user-images.githubusercontent.com/26067212/165969928-992c3c7e-8069-4590-97f0-e6c19cd37d74.png)
+
+Example image of how your asset folder should look. 
+
+
 ### 1. `create-config`
 
 By default, Sugar looks for a `config.json` file in the current directory to load the Candy Machine configuration &mdash; the configuration file name can be specified with a `-c` or `--config` option.
