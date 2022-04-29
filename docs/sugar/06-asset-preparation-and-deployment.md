@@ -1,7 +1,7 @@
 # Deploying a Candy Machine
 Apart from the `launch` command, discussed in the `Quick Start` section above, Sugar provide commands to manage the whole process of deployment of a Candy Machine, from the validation of assets to withdrawing funds and closing a Candy Machine account.
 
-In this section we will cover the commands involved in deploying a Candy Machine in the oder that they should be executed.
+In this section we will cover the commands involved in deploying a Candy Machine in the order that they should be executed.
 
 ## Preparing Your Assets
 
