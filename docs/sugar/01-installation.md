@@ -1,5 +1,7 @@
 # Installation
 
+To install, either download a binary or install from source. Non-technical users will typically find using a pre-built binary to be simpler.
+
 ## Binaries
 
 Binaries for the supported OS can be found at:

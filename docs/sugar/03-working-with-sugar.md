@@ -1,10 +1,8 @@
 # Working with Sugar
 
+![Sugar Tutorial](ui/Sugar-Tutorial.gif)
 
-
-https://user-images.githubusercontent.com/26067212/165967904-0a551b6e-dc7e-4d8c-9348-3093e0d93883.mp4
-
-
+[Full Sugar Video Tutorial](https://user-images.githubusercontent.com/26067212/165967904-0a551b6e-dc7e-4d8c-9348-3093e0d93883.mp4)
 
 Sugar contains a collection of commands for creating and managing Metaplex Candy Machines. The complete list of commands can be viewed by running:
 
