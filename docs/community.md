@@ -43,6 +43,7 @@ Send a tweet to [@metaplex](https://twitter.com/metaplex) or [edit this page on 
 - [Hash Table tool](https://aiphotos.art/hash-table) for listing your Candy Machine NFT Collection on Secondary Market places
 - [Candy Machine V2 Guide](https://hackmd.io/@MarkSackerberg/candyV2)
 - [HashLips](https://github.com/HashLips/hashlips_art_engine) for creating generative art
+- [Candy Machine v2. Mint solana UI](https://github.com/chmerev/candy-machine-v2-mint-solana-ui) for free and quick creation of a mint page
 
 ## Fair Launch
 
