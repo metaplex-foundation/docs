@@ -4,10 +4,12 @@ sidebar_position: 2
 ---
 
 # Specification
+
 The Token Metadata program provides decorator structs to a token mint. Basic information about the token is provided with the `Metadata` struct, whose account address is a Program Derived Address (PDA) with a derived key of `['metadata', metadata_program_id, mint_id]`.
 Your NFT should have the following information as on-chain metadata:
 
 ## Full Metadata Struct
+
 The below code snippet is the representation on chain of the full metadata struct.
 
 ```rust
@@ -29,7 +31,7 @@ pub struct Metadata {
     /// Collection
     pub collection: Option<Collection>,
     /// Uses
-    pub uses: Option<Uses>,   
+    pub uses: Option<Uses>,
 }
 ```
 
@@ -222,7 +224,70 @@ Note: Creators, Symbol
 }
 ```
 
+For the fields that match the on-chain metadata, on-chain information has priority.
 
+- `description` - Human readable description of the asset.
+- `image` - URL to the image of the asset. PNG, GIF and JPG file formats are supported. You may use the `?ext={file_extension}` query to provide information on the file type.
+- `animation_url` - URL to a multi-media attachment of the asset. The supported file formats are MP4 and MOV for video, MP3, FLAC and WAV for audio, GLB for AR/3D assets, and HTML for HTML pages. You may use the `?ext={file_extension}` query to provide information on the file type.
+- `external_url` - URL to an external application or website where users can also view the asset.
+- `properties.category` - Supported categories:
+  - `"image"` - PNG, GIF, JPG
+  - `"video"` - MP4, MOV
+  - `"audio"` - MP3, FLAC, WAV
+  - `"vr"` - 3D models; GLB, GLTF
+  - `"html"` - HTML pages; scripts and relative paths within the HTML page are also supported
+- `properties.files` - Object array, where an object should contain the `uri` and `type` of the file that is part of the asset. The type should match the file extension. The array should also include files specified in `image` and `animation_url` fields, and any other that are associated with the asset. You may use the `?ext={file_extension}` query to provide information on the file type.
+- `attributes` - Object array, where an object should contain `trait_type` and `value` fields. `value` can be a string or a number.
+
+## **Additonal Suggestions**
+
+### **CDN hosted files**
+
+In addition to hosting your assets on a permanent service, you can also host your assets on a CDN (to provide faster loading times). Just use the cdn boolean flag within the objects inside the properties.files array.
+
+```json
+  "properties": {
+    "files": [
+        ...
+        {
+          "uri": "https://watch.videodelivery.net/52a52c4a261c88f19d267931426c9be6",
+          "type": "unknown",
+          "cdn": true
+        },
+        ...
+    ]
+}
+```
+
+If such a flag exists, that file is the primary option when selecting the multimedia-attachment (video, audio or 3D) that will be displayed to owners. If that file is no longer available, wallets should default to it using the URL in `animation_url` field.
+
+### **The Render Network from OTOY**
+
+NFTs can also be powered by [The Render Network](https://rendertoken.com/), an application streaming service from OTOY. Streaming through X.IO is a well tested process that has been active for many years (see [this page](https://demo.x.io/blender.html) for an example). This example shows a fully interactive stream of Blender that allows the viewer to create and render objects within their browser. This can be tokenized into an NFT.
+
+<!-- <iframe src="https://demo.x.io/blender.html" width="500px" style="height: 500px;"></iframe> -->
+
+To leverage The Render Network's application streaming service, place the X.IO domain inside of the properties.
+
+```json
+  // You should include a picture or video for the preview
+  "image": "https://www.arweave.net/abcd5678?ext=png",
+  "animation_url": "https://www.arweave.net/efgh1234?ext=mp4",
+  "properties": {
+    "files": [
+        ...
+        {
+          "uri": "https://demo.x.io/blender.html",
+          "type": "x.io",
+        },
+        ...
+    ]
+  // The Render Network can be rendered using the HTML category
+  "category": "HTML",
+}
+```
+
+For the NFT to render properly in a wallet, secondary marketplace, or app the "x.io" domain would need to be allowed by the provider.
 
 ## **Collections**
 
