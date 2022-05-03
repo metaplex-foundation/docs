@@ -12,7 +12,7 @@ To use one of the binaries, download the version for your OS and unzip the binar
 It is recommended to rename the downloaded binary (e.g., `sugar-ubuntu-latest` or `sugar-macos-latest`) to `sugar` for simplicitly &mdash; the remainder of this guide assumes that the binary is called `sugar`.
 
 :::info
-When installing from crates.io or from source on Ubuntu or WSL (Windows Subsystem Linux) you made need to install some additional dependencies:
+When installing from crates.io or from source on Ubuntu or WSL (Windows Subsystem Linux) you may need to install some additional dependencies:
 ```
 sudo apt install libssl-dev libudev-dev pkg-config
 ```
