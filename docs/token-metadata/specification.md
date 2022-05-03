@@ -284,11 +284,6 @@ verified (see below) and `key` which points to the `mint` account of the collect
 | verified | bool   | Whether the collection is verified or not. |
 | key      | Pubkey | The SPL token mint account                 |
 
-Here's a diagram illustrating how a "Collection NFT" is attached to the NFTs itside the collection. Notice how the Collection NFT points to itself and is marked as `verified`.
-
-[![A diagram showing the structure of two NFTs by representing all of their accounts: Mint Account, Token Account, "Wallet" Account, Metadata Account, Master Edition Account (Or Standard Edition Account) and Edition Marker Account. The first NFT is displayed on the left and represents the "Collection NFT" whereas the second NFT on the right represents the "Normal NFT" which should be part of that collection. Each account display a list of their attributes. The "Collection" attribute in both Metadata Accounts is expanded to show the sub-attributes "Key" and "Verified". There is an arrow pointing from the "Key" sub-attribute of the Normal NFT's Metadata Account to the Mint Account of the Collection NFT. "Verified" is marked as "True or False". On the "Collection NFT", an arrow also points from the "Key" sub-attribute towards its own Mint Account. "Verified is marked as "True". ](https://user-images.githubusercontent.com/3642397/165532571-5491aa17-f444-4359-9f49-5286138f2ede.png)](https://user-images.githubusercontent.com/3642397/165532571-5491aa17-f444-4359-9f49-5286138f2ede.png)
-
-
 ### Verifying A Collection
 
 :::warning
