@@ -1,6 +1,6 @@
 ---
 sidebar_label: Security Policy
-sidebar_position: 14
+sidebar_position: 16
 ---
 
 # Security Policy

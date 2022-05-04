@@ -1,6 +1,6 @@
 ---
 sidebar_label: Stability
-sidebar_position: 13
+sidebar_position: 15
 ---
 
 # Stability Index
