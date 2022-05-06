@@ -342,3 +342,35 @@ This allows projects to set different limits on usage of gaming tokens: burn, si
 ### Delegate Use Authority
 
 Owners of NFTs can now allow a program to `Use` their token without them being online. This is available via the `approve_use_authority` instruction. It is very similar to the Collection Authority system but the party who can approve and revoke is the current holder of the NFT.
+
+
+### Verify a collection using collections.metaplex.com
+
+1. Visit collections.metaplex.com[https://collections.metaplex.com/]
+2. Connect your wallet, but first verify this wallet is the upgrade authority. 
+3. Select the cluster you want to work on devnet, mainnet, etc. 
+4. Click on create "Create a Collection" 
+5. Put in the name, symbol, logo, and description of your nft collection.
+6. Choosing between the three options: 
+   1. "Individual NFTs" -> insert the mint address of your NFT
+   2. "First verified creator" -> locate the candy machine address and insert this
+   3. "CSV file" -> upload a csv file that contains the list of mint addresses
+7. Then click "Create Collection" and two transactions approvals will be required. The first transaction approval will allow Metaplex to be the delegate to make the migration. The second transaction will be the crete the Parent NFT
+8. After the Parent NFT is created the migration will start to begin. You can then close the tab and come back to it later with the same wallet to see the status. 
+
+:::warning
+
+   Always check Solana's Network before you start up a migration. You can check here https://solscan.io/
+
+   If a "Retry" button appears it could be due to a network congestion, so click retry and monitor the network. 
+
+   If a "Fail to Migrate Collection" appears this is typically due to the wrong Upgrade Authority. 
+
+   All other issues please visit our discord for further support.
+
+:::
+
+
+![Verified Collections Tutorial](ui/verifiedcollections.gif)
+
+[Full Verified Collections Tutorial](https://drive.google.com/file/d/1VU4xL_yF6LCe0UogVn4As5PMAzUV__8C/view?usp=sharing)
