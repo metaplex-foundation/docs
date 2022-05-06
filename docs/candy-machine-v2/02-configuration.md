@@ -13,7 +13,7 @@ The table below provides an overview of the settings available:
 |-----------------------|-------------------|------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | price                 |                   | Number                 | The amount in SOL or SPL token for a mint                                                                                                                                          |
 | number                |                   | Integer                | The number of items in the Candy Machine                                                                                                                                           |
-| gatekeeper            |                   |                        |                                                                                                                                                                                    |
+| gatekeeper            |                   |                        | Enables captcha verification for users prior to minting                                                                                                                             |
 |                       | gatekeeperNetwork | Address                | Gateway provider address                                                                                                                                                           |
 |                       | expireOnUse       | boolean                | Requires a new gateway challenge after a use                                                                                                                                       |
 | solTreasuryAccount    |                   | PublicKey              | SOL wallet to receive proceedings SOL payments                                                                                                                                     |
@@ -143,11 +143,18 @@ If your Candy Machine is **live** and it has **no gatekeeper**, it is open to bo
 There are currently two supported gatekeepers (details below). If you want to become a supported gatekeeper please email [contact@identity.org](mailto:contact@identity.org).
 > [Learn more about the Identity Gateway Protocol](https://docs.identity.com/docs/overview)
 
-#### Civic Pass
+#### Civic Captcha Pass
 
 > Address: `ignREusXmGrscGNUesoU9mxfds9AiYTezUKex2PsZV6`
 
+**Recommended**: maintain `expireOnUse: true`. Changing this setting increases the susceptibility of your project to bots.
+
 Brings the familiar captcha challenge to web3 and combines it with user-transparent heuristics to protect your mint from bots.
+
+With captcha enabled, a user will be issued a Civic Captcha Pass after successfully completing the captcha challenge and automatically checked by the Candy Machine prior to minting. 
+
+A Civic Captcha Pass remains active only for 10 minutes and for one mint to limit the options of malicious botters verifying multiple wallets. If a user tries to use an inactive pass, it will automatically prompt them to refresh it.
+
 - [Learn More](https://docs.civic.com/candy-machine-integration/adding-captcha-to-candy-machine-v2)
 - [Civic Ts&Cs](https://docs.civic.com/candy-machine-integration/adding-captcha-to-candy-machine-v2#terms-and-conditions)
 
