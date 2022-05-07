@@ -2,22 +2,33 @@
 
 To install, either download a binary, install from Crates.io, or install from source. Non-technical users will typically find using a pre-built binary to be simpler.
 
-## Binaries
-
-Binaries for the supported OS can be found at:
-- [Sugar Releases](https://github.com/metaplex-foundation/sugar/releases)
-
-To use one of the binaries, download the version for your OS and unzip the binary. Copy the binary file to a folder in your file system (preferably a folder in your `PATH` environment variable). If you have Rust installed we recommend putting it in `~/.cargo/bin`, otherwise `/usr/local/bin` is a good place for it on Linux and macOS. Once the binary is at that location your OS will find it automatically and you will be able to run the `sugar` binary from any directory in your file system as a normal command line application.
-
-It is recommended to rename the downloaded binary (e.g., `sugar-ubuntu-latest` or `sugar-macos-latest`) to `sugar` for simplicitly &mdash; the remainder of this guide assumes that the binary is called `sugar`.
-
 :::info
+The current version supports only systems running **macOS**, **Linux**, or another **Unix-like OS**.
+
 When installing from crates.io or from source on Ubuntu or WSL (Windows Subsystem Linux) you may need to install some additional dependencies:
 ```
 sudo apt install libssl-dev libudev-dev pkg-config
 ```
 :::
-### Using Crates.io
+
+## Binaries
+
+Binaries for the supported OS can be found at:
+- [Sugar Releases](https://github.com/metaplex-foundation/sugar/releases)
+
+To install Sugar pre-built binary on a supported OS, run the following in your terminal:
+
+```bash
+bash <(curl -sSf https://raw.githubusercontent.com/metaplex-foundation/sugar/main/script/sugar-install.sh) 
+``` 
+
+This will download the latest binary version, unzip the binary and copy it to a folder in your `PATH` environment. If you have Rust, the binary will be copied to `~/.cargo/bin`, otherwise `~/bin`. Once the binary is at that location, your OS will find it automatically and you will be able to run the sugar binary from any directory in your file system as a normal command-line application.
+
+:::caution
+The modifications to your `PATH` variable may not take effect until the terminal is restarted. Follow the instructions of the installation script to see whether the terminal needs to be restarted or not.
+:::
+
+## Using Crates.io
 
 In order to install sugar from Crates.io, you will need to have [Rust](https://www.rust-lang.org/tools/install) installed in your system. It is recommended to install Rust using `rustup`:
 
@@ -38,10 +49,9 @@ The next step is to install Sugar from Crates.io:
 ```bash
 cargo install sugar-cli --locked
 ```
-This will download the Sugar code from Crates.io and automatically install it for you!
+This will download the Sugar code from Crates.io and automatically install it for you.
 
-
-### Build From Source
+## Build From Source
 
 In order to build Sugar from the source code, you will need to have [Rust](https://www.rust-lang.org/tools/install) installed in your system. It is recommended to install Rust using `rustup`:
 
