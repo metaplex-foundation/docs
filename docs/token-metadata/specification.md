@@ -346,7 +346,7 @@ Owners of NFTs can now allow a program to `Use` their token without them being o
 
 ### Verify a collection using collections.metaplex.com
 
-1. Visit collections.metaplex.com[https://collections.metaplex.com/]
+1. Visit [collections.metaplex.com](https://collections.metaplex.com/)
 2. Connect your wallet, but first verify this wallet is the upgrade authority. 
 3. Select the cluster you want to work on devnet, mainnet, etc. 
 4. Click on create "Create a Collection" 
@@ -354,7 +354,7 @@ Owners of NFTs can now allow a program to `Use` their token without them being o
 6. Choosing between the three options: 
    1. "Individual NFTs" -> insert the mint address of your NFT
    2. "First verified creator" -> locate the candy machine address and insert this
-   3. "CSV file" -> upload a csv file that contains the list of mint addresses
+   3. "CSV file" -> upload a csv file that contains the list of mint addresses. The csv file should contain all the mint ids, separated by commas with no spaces. 
 7. Then click "Create Collection" and two transactions approvals will be required. The first transaction approval will allow Metaplex to be the delegate to make the migration. The second transaction will be the crete the Parent NFT
 8. After the Parent NFT is created the migration will start to begin. You can then close the tab and come back to it later with the same wallet to see the status. 
 
@@ -371,6 +371,6 @@ Owners of NFTs can now allow a program to `Use` their token without them being o
 :::
 
 
-![Verified Collections Tutorial](ui/verifiedcollections.gif)
+![Verified Collections Tutorial](ui/verified-collections.gif)
 
 [Full Verified Collections Tutorial](https://drive.google.com/file/d/1VU4xL_yF6LCe0UogVn4As5PMAzUV__8C/view?usp=sharing)
