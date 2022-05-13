@@ -117,3 +117,105 @@ html[data-theme="dark"] .DocSearch {
     var(--ifm-color-emphasis-100) 100%
   );
 }
+
+html .accordion {
+  --accordion-background-color: #f1f5f9;
+  --accordion-background-color-hover: #e2e8f0;
+  --accordion-border-color: #cbd5e1;
+  --accordion-title-color: #475569;
+  --accordion-caret-color: #64748b;
+  --accordion-radius: 10px;
+  background-color: var(--accordion-background-color);
+  border: 1px solid var(--accordion-border-color);
+  border-radius: var(--accordion-radius);
+}
+
+html[data-theme="dark"] .accordion {
+  --accordion-background-color: #1f2937;
+  --accordion-background-color-hover: #374151;
+  --accordion-border-color: #6b7280;
+  --accordion-title-color: #e2e8f0;
+  --accordion-caret-color: #cbd5e1;
+}
+
+.accordion-item-header {
+  padding: 1rem;
+  margin: 0;
+  cursor: pointer;
+}
+
+.accordion-item-header:hover {
+  background-color: var(--accordion-background-color-hover);
+}
+
+.accordion-item-header > h3 {
+  color: var(--accordion-title-color);
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.accordion-item-header > h3 > svg {
+  color: var(--accordion-caret-color);
+  margin-right: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.accordion-item:first-child .accordion-item-header {
+  border-radius: var(--accordion-radius) var(--accordion-radius) 0 0;
+}
+
+.accordion-item:last-child.closed .accordion-item-header {
+  border-radius: 0 0 var(--accordion-radius) var(--accordion-radius);
+}
+
+.accordion .accordion-item + .accordion-item {
+  border-top: 1px solid var(--accordion-border-color);
+}
+
+.accordion-item-content {
+  padding: 0;
+  margin: 1rem;
+}
+
+.accordion-item-content img {
+  border-radius: var(--accordion-radius);
+}
+
+.accordion-table-overflow {
+  overflow-x: auto;
+}
+
+.accordion-table-header {
+  display: flex;
+  align-items: center;
+}
+
+.accordion-table-header > div {
+  color: #334155;
+  background-color: #e2e8f0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  flex-shrink: 0;
+}
+
+.accordion-table-row {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.accordion-table-row + .accordion-table-row {
+  border-top: 1px solid var(--accordion-border-color);
+}
+
+.accordion-table-row > div {
+  text-align: left;
+  padding: 0.5rem 1rem;
+  flex-shrink: 0;
+}

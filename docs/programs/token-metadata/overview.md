@@ -2,6 +2,8 @@
 sidebar_position: 1
 ---
 
+import ProgramAccount from '../../../src/program-account.jsx';
+
 # Overview
 
 The Token Metadata program is one of the most important program when dealing with NFTs on the Solana blockchain. Its main goal is to **attach additional data to Tokens** handled by [Solana’s Token program](https://spl.solana.com/token).
@@ -33,6 +35,14 @@ There is a lot more that you can do with the Token Metadata program but this int
 ## Accounts
 
 ### Metadata
+
+<ProgramAccount>
+
+![Diagram showing a Metadata Account derived from a Mint Account with a list of data field under the Metadata Account that we are about to list below.](./assets/Token-Metadata-Account-Metadata.png)
+
+The Metadata Account is responsible for storing the additional data attached to tokens. As every account in the Token Metadata program, it derives from the Mint Account using a PDA. Let’s take a look at all the different fields it contains.
+
+</ProgramAccount>
 
 ![Diagram showing a Metadata Account derived from a Mint Account with a list of data field under the Metadata Account that we are about to list below.](./assets/Token-Metadata-Account-Metadata.png)
 
