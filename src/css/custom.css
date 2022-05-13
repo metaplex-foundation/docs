@@ -119,11 +119,12 @@ html[data-theme="dark"] .DocSearch {
 }
 
 html .accordion {
-  --accordion-background-color: #f1f5f9;
-  --accordion-background-color-hover: #e2e8f0;
-  --accordion-border-color: #cbd5e1;
+  --accordion-background-color: #fafafa;
+  --accordion-background-color-hover: #f1f1f2;
+  --accordion-border-color: #e4e4e7;
   --accordion-title-color: #475569;
   --accordion-caret-color: #64748b;
+  --accordion-table-header-color: #334155;
   --accordion-radius: 10px;
   background-color: var(--accordion-background-color);
   border: 1px solid var(--accordion-border-color);
@@ -131,11 +132,12 @@ html .accordion {
 }
 
 html[data-theme="dark"] .accordion {
-  --accordion-background-color: #1f2937;
-  --accordion-background-color-hover: #374151;
+  --accordion-background-color: #27272a;
+  --accordion-background-color-hover: #3f3f46;
   --accordion-border-color: #6b7280;
   --accordion-title-color: #e2e8f0;
   --accordion-caret-color: #cbd5e1;
+  --accordion-table-header-color: #d4d4d8;
 }
 
 .accordion-item-header {
@@ -194,8 +196,8 @@ html[data-theme="dark"] .accordion {
 }
 
 .accordion-table-header > div {
-  color: #334155;
-  background-color: #e2e8f0;
+  color: var(--accordion-table-header-color);
+  background-color: var(--accordion-background-color-hover);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.1em;
