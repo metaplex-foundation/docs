@@ -52,7 +52,34 @@ export default function ProgramAccount({ children }) {
       },
       {
         name: "creators",
-        description: "TODO",
+        description:
+          "An array of creators and their share of the royalties. " +
+          "This array is limited to 5 creators. Note that, because the " +
+          "<code>Creators</code> field is an array of variable length, we cannot " +
+          "guarantee the byte position of any field that follows (Notice the tilde " +
+          "<code>~</code> in the diagram). Each creator contains the following fields.",
+        fields: [
+          {
+            name: "address",
+            size: 32,
+            description: "The public key of the creator",
+          },
+          {
+            name: "verified",
+            size: 1,
+            description:
+              "A boolean indicating if the creator signed the NFT. " +
+              "It is important to check this field to ensure the authenticity of the creator.",
+          },
+          {
+            name: "share",
+            size: 1,
+            indicative: true,
+            description:
+              "The creator's shares of the royalties in percentage (1 byte) — i.e. <code>55</code> means <code>55%</code>. " +
+              "Similarly to the <code>Seller Fee Basis Points</code> field, this is used by marketplaces but not enforced by the Token Metadata program.",
+          },
+        ],
       },
       {
         name: "primary_sale_happened",
@@ -89,7 +116,23 @@ export default function ProgramAccount({ children }) {
         name: "collection",
         size: 34,
         optional: true,
-        description: "TODO",
+        description:
+          "This field optionally links to the Mint address of another NFT that " +
+          "acts as a Collection NFT. It contains the following sub-fields.",
+        fields: [
+          {
+            name: "key",
+            size: 32,
+            description: "The public key of the Collection NFT’s Mint Account",
+          },
+          {
+            name: "verified",
+            size: 1,
+            description:
+              "A boolean indicating if the owner of the Collection NFT signed this NFT. " +
+              "It is important to check this field to ensure the authenticity of the collection.",
+          },
+        ],
       },
       {
         name: "uses",
@@ -119,34 +162,17 @@ export default function ProgramAccount({ children }) {
         {json.fields.map((field) => {
           const fieldOffset = offset;
           if (typeof offset === "number" && typeof field.size === "number") {
-            offset += field.size;
+            offset += offset + field.size;
           } else {
             offset = "~";
           }
 
-          const types = [];
-          if (field.optional) {
-            types.push("Optional");
-          }
-          if (field.indicative) {
-            types.push("Indicative");
-          }
-
           return (
-            <div className="accordion-table-row" key={field.name}>
-              <div style={{ width: "10rem", fontWeight: "700" }}>
-                {startCase(field.name)}
-              </div>
-              <div style={{ width: "5rem" }}>{fieldOffset}</div>
-              <div style={{ width: "5rem" }}>{field.size ?? "~"}</div>
-              <div style={{ flex: "1", minWidth: "25rem" }}>
-                <i>{types.length > 0 ? `(${types.join(", ")}) ` : ""}</i>
-                <div
-                  style={{ display: "inline" }}
-                  dangerouslySetInnerHTML={{ __html: field.description }}
-                />
-              </div>
-            </div>
+            <ProgramAccountField
+              key={field.name}
+              field={field}
+              offset={fieldOffset}
+            ></ProgramAccountField>
           );
         })}
       </div>
@@ -158,6 +184,38 @@ export default function ProgramAccount({ children }) {
 
 ProgramAccount.propTypes = {
   children: PropTypes.array,
+};
+
+function ProgramAccountField({ field, offset }) {
+  const types = [];
+  if (field.optional) {
+    types.push("Optional");
+  }
+  if (field.indicative) {
+    types.push("Indicative");
+  }
+
+  return (
+    <div className="accordion-table-row" key={field.name}>
+      <div style={{ width: "10rem", fontWeight: "700" }}>
+        {startCase(field.name)}
+      </div>
+      <div style={{ width: "5rem" }}>{offset}</div>
+      <div style={{ width: "5rem" }}>{field.size ?? "~"}</div>
+      <div style={{ flex: "1", minWidth: "25rem" }}>
+        <i>{types.length > 0 ? `(${types.join(", ")}) ` : ""}</i>
+        <div
+          style={{ display: "inline" }}
+          dangerouslySetInnerHTML={{ __html: field.description }}
+        />
+      </div>
+    </div>
+  );
+}
+
+ProgramAccountField.propTypes = {
+  field: PropTypes.object,
+  offset: PropTypes.any,
 };
 
 function Accordion({ items }) {
