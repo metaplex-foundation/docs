@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@docusaurus/core": "^2.0.0-beta.13",
+    "@docusaurus/plugin-client-redirects": "^2.0.0-beta.20",
     "@docusaurus/preset-classic": "^2.0.0-beta.13",
     "@mdx-js/react": "^1.6.21",
     "@metaplex/arweave-cost": "2",
