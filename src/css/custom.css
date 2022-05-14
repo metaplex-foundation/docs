@@ -188,16 +188,19 @@ html[data-theme="dark"] .accordion {
 
 .accordion-table-overflow {
   overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .accordion-table-header {
   display: flex;
   align-items: center;
+  background-color: var(--accordion-background-color-hover);
 }
 
 .accordion-table-header > div {
   color: var(--accordion-table-header-color);
-  background-color: var(--accordion-background-color-hover);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -233,5 +236,10 @@ html[data-theme="dark"] .accordion {
 }
 
 .accordion-table-nested-row {
-  background-color: #f1f1f2;
+  color: #52525b;
+  padding-top: 2rem;
+}
+
+.accordion-table-nested-row + .accordion-table-nested-row {
+  padding-top: 0;
 }
