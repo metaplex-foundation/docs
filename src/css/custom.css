@@ -219,5 +219,19 @@ html[data-theme="dark"] .accordion {
 .accordion-table-row > div {
   text-align: left;
   padding: 0.5rem 1rem;
+  margin: 0;
   flex-shrink: 0;
+}
+
+.accordion-table-row > .accordion-table-row-indent {
+  padding: 0;
+  flex-grow: 0;
+}
+
+.accordion-table-row + .accordion-table-nested-row {
+  border: none;
+}
+
+.accordion-table-nested-row {
+  background-color: #f1f1f2;
 }

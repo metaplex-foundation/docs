@@ -209,10 +209,22 @@ function ProgramAccountField({ field, offset = 0, indent = 0 }) {
   }
   const typesAsString = types.length > 0 ? `<i>(${types.join(", ")})<i> ` : "";
 
+  const indentWidth = 2 * indent;
+  const titleWidth = 10 - indentWidth;
+  const classes = ["accordion-table-row"];
+
+  if (indent > 0) {
+    classes.push("accordion-table-nested-row");
+  }
+
   return (
     <>
-      <div className="accordion-table-row" key={field.name}>
-        <div style={{ width: "10rem", fontWeight: "700" }}>
+      <div className={classes.join(" ")} key={field.name}>
+        <div
+          className="accordion-table-row-indent"
+          style={{ width: `${indentWidth}rem` }}
+        ></div>
+        <div style={{ width: `${titleWidth}rem`, fontWeight: "700" }}>
           {startCase(field.name)}
         </div>
         <div style={{ width: "5rem" }}>{offset}</div>
