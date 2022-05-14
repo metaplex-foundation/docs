@@ -34,9 +34,11 @@ There is a lot more that you can do with the Token Metadata program but this int
 
 ## Accounts
 
+import accounts from './accounts.js';
+
 ### Metadata
 
-<ProgramAccount>
+<ProgramAccount account={accounts.metadata}>
 
 ![Diagram showing a Metadata Account derived from a Mint Account with a list of data field under the Metadata Account that we are about to list below.](./assets/Token-Metadata-Account-Metadata.png)
 
