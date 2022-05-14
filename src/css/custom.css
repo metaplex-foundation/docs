@@ -125,6 +125,7 @@ html .accordion {
   --accordion-title-color: #475569;
   --accordion-caret-color: #64748b;
   --accordion-table-header-color: #334155;
+  --accordion-nested-row-color: #52525b;
   --accordion-radius: 10px;
   background-color: var(--accordion-background-color);
   border: 1px solid var(--accordion-border-color);
@@ -138,6 +139,7 @@ html[data-theme="dark"] .accordion {
   --accordion-title-color: #e2e8f0;
   --accordion-caret-color: #cbd5e1;
   --accordion-table-header-color: #d4d4d8;
+  --accordion-nested-row-color: #a1a1aa;
 }
 
 .accordion-item-header {
@@ -236,7 +238,7 @@ html[data-theme="dark"] .accordion {
 }
 
 .accordion-table-nested-row {
-  color: #52525b;
+  color: var(--accordion-nested-row-color);
   padding-top: 2rem;
 }
 
