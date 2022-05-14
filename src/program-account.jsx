@@ -57,15 +57,17 @@ export default function ProgramAccount({ children }) {
           "This array is limited to 5 creators. Note that, because the " +
           "<code>Creators</code> field is an array of variable length, we cannot " +
           "guarantee the byte position of any field that follows (Notice the tilde " +
-          "<code>~</code> in the diagram). Each creator contains the following fields.",
+          "<code>~</code> in the fields below). Each creator contains the following fields.",
         fields: [
           {
             name: "address",
+            offset: "~",
             size: 32,
             description: "The public key of the creator",
           },
           {
             name: "verified",
+            offset: "~",
             size: 1,
             description:
               "A boolean indicating if the creator signed the NFT. " +
@@ -73,6 +75,7 @@ export default function ProgramAccount({ children }) {
           },
           {
             name: "share",
+            offset: "~",
             size: 1,
             indicative: true,
             description:
@@ -227,7 +230,7 @@ function ProgramAccountField({ field, offset = 0, indent = 0 }) {
         <div style={{ width: `${titleWidth}rem`, fontWeight: "700" }}>
           {startCase(field.name)}
         </div>
-        <div style={{ width: "5rem" }}>{offset}</div>
+        <div style={{ width: "5rem" }}>{field.offset ?? offset}</div>
         <div style={{ width: "5rem" }}>{field.size ?? "~"}</div>
         <div style={{ flex: "1", minWidth: "25rem" }}>
           <div
