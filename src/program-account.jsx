@@ -145,8 +145,6 @@ export default function ProgramAccount({ children }) {
     ],
   };
 
-  let offset = 0;
-
   const items = [
     <AccordionItem key="description" title="Description" open={true}>
       <div className="accordion-item-content">{children}</div>
@@ -159,22 +157,7 @@ export default function ProgramAccount({ children }) {
           <div style={{ width: "5rem" }}>Size</div>
           <div style={{ flex: "1", minWidth: "25rem" }}>Description</div>
         </div>
-        {json.fields.map((field) => {
-          const fieldOffset = offset;
-          if (typeof offset === "number" && typeof field.size === "number") {
-            offset += offset + field.size;
-          } else {
-            offset = "~";
-          }
-
-          return (
-            <ProgramAccountField
-              key={field.name}
-              field={field}
-              offset={fieldOffset}
-            ></ProgramAccountField>
-          );
-        })}
+        <ProgramAccountFields fields={json.fields}></ProgramAccountFields>
       </div>
     </AccordionItem>,
   ];
@@ -186,36 +169,78 @@ ProgramAccount.propTypes = {
   children: PropTypes.array,
 };
 
-function ProgramAccountField({ field, offset }) {
+function ProgramAccountFields({ fields, offset = 0, indent = 0 }) {
+  return fields.map((field) => {
+    const fieldOffset = offset;
+    if (typeof offset === "number" && typeof field.size === "number") {
+      offset += field.size;
+    } else {
+      offset = "~";
+    }
+
+    return (
+      <ProgramAccountField
+        key={field.name}
+        field={field}
+        offset={fieldOffset}
+        indent={indent}
+      ></ProgramAccountField>
+    );
+  });
+}
+
+ProgramAccountFields.propTypes = {
+  fields: PropTypes.array,
+  offset: PropTypes.any,
+  indent: PropTypes.number,
+};
+
+function ProgramAccountField({ field, offset = 0, indent = 0 }) {
   const types = [];
   if (field.optional) {
-    types.push("Optional");
+    types.push(
+      '<a href="/programs/understanding-programs#optional-fields">Optional</a>'
+    );
   }
   if (field.indicative) {
-    types.push("Indicative");
+    types.push(
+      '<a href="/programs/understanding-programs#indicative-fields">Indicative</a>'
+    );
   }
+  const typesAsString = types.length > 0 ? `<i>(${types.join(", ")})<i> ` : "";
 
   return (
-    <div className="accordion-table-row" key={field.name}>
-      <div style={{ width: "10rem", fontWeight: "700" }}>
-        {startCase(field.name)}
+    <>
+      <div className="accordion-table-row" key={field.name}>
+        <div style={{ width: "10rem", fontWeight: "700" }}>
+          {startCase(field.name)}
+        </div>
+        <div style={{ width: "5rem" }}>{offset}</div>
+        <div style={{ width: "5rem" }}>{field.size ?? "~"}</div>
+        <div style={{ flex: "1", minWidth: "25rem" }}>
+          <div
+            style={{ display: "inline" }}
+            dangerouslySetInnerHTML={{
+              __html: typesAsString + field.description,
+            }}
+          />
+        </div>
       </div>
-      <div style={{ width: "5rem" }}>{offset}</div>
-      <div style={{ width: "5rem" }}>{field.size ?? "~"}</div>
-      <div style={{ flex: "1", minWidth: "25rem" }}>
-        <i>{types.length > 0 ? `(${types.join(", ")}) ` : ""}</i>
-        <div
-          style={{ display: "inline" }}
-          dangerouslySetInnerHTML={{ __html: field.description }}
-        />
-      </div>
-    </div>
+      {field.fields && (
+        <ProgramAccountFields
+          fields={field.fields}
+          offset={offset}
+          indent={indent + 1}
+        ></ProgramAccountFields>
+      )}
+    </>
   );
 }
 
 ProgramAccountField.propTypes = {
   field: PropTypes.object,
   offset: PropTypes.any,
+  indent: PropTypes.number,
 };
 
 function Accordion({ items }) {
