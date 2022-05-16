@@ -35,8 +35,7 @@ export default {
         name: "key",
         size: 1,
         description:
-          "The discriminator of the account. The Token Metadata program uses an enum to differentiate the accounts it provides. " +
-          "For Metadata accounts, it is equal to: <code>MetadataV1</code>.",
+          "The discriminator of the account as an enum. Equals to <code>MetadataV1(4)</code>.",
       },
       {
         name: "update_authority",
@@ -183,8 +182,8 @@ export default {
         name: "key",
         size: 1,
         description:
-          "The discriminator of the account. For Master Edition accounts, it is equal to: <code>MasterEditionV2</code> " +
-          "(or, for previous versions: <code>MasterEditionV1</code>).",
+          "The discriminator of the account as an enum. Equals to: <code>MasterEditionV2(6)</code> " +
+          "(or, for previous versions: <code>MasterEditionV1(2)</code>).",
       },
       {
         name: "supply",
@@ -209,21 +208,49 @@ export default {
   edition: {
     title: "Edition",
     seeds: editionSeeds,
-    fields: [],
+    fields: [
+      {
+        name: "key",
+        size: 1,
+        description:
+          "The discriminator of the account as an enum. Equals to: <code>EditionV1(1)</code>.",
+      },
+    ],
   },
 
   edition_marker: {
     title: "Edition Marker",
-    fields: [],
+    fields: [
+      {
+        name: "key",
+        size: 1,
+        description:
+          "The discriminator of the account as an enum. Equals to: <code>EditionMarker(7)</code>.",
+      },
+    ],
   },
 
   collection_authority_record: {
     title: "Collection Authority Record",
-    fields: [],
+    fields: [
+      {
+        name: "key",
+        size: 1,
+        description:
+          "The discriminator of the account as an enum. Equals to: <code>CollectionAuthorityRecord(9)</code>.",
+      },
+    ],
   },
 
   use_authority_record: {
     title: "Use Authority Record",
-    fields: [],
+    fields: [
+      {
+        name: "key",
+        size: 1,
+        description:
+          "The discriminator of the account as an enum. Equals to: <code>UseAuthorityRecord(8)</code>.",
+      },
+    ],
   },
 };
