@@ -1,6 +1,35 @@
+const sharedSeeds = [
+  {
+    name: "metadata",
+    type: "literal",
+    value: "metadata",
+    description: "The program's prefix for PDA seeds.",
+  },
+  {
+    name: "token_metadata_program",
+    type: "program",
+  },
+  {
+    name: "mint",
+    type: "variable",
+    description: "The public key of the Mint Account to derive from.",
+  },
+];
+
+const editionSeeds = [
+  ...sharedSeeds,
+  {
+    name: "edition",
+    type: "literal",
+    value: "edition",
+    description: "A literal to differentiate the Edition accounts.",
+  },
+];
+
 export default {
   metadata: {
     title: "Metadata",
+    seeds: sharedSeeds,
     fields: [
       {
         name: "key",
@@ -148,6 +177,7 @@ export default {
 
   master_edition: {
     title: "Master Edition",
+    seeds: editionSeeds,
     fields: [
       {
         name: "key",
@@ -178,6 +208,7 @@ export default {
 
   edition: {
     title: "Edition",
+    seeds: editionSeeds,
     fields: [],
   },
 

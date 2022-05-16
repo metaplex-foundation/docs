@@ -7,6 +7,14 @@ export default function ProgramAccount({ account, children }) {
     <AccordionItem key="description" title="Description" open={true}>
       <div className="accordion-item-padding">{children}</div>
     </AccordionItem>,
+    ...(account.seeds
+      ? [
+          <ProgramAccountSeeds
+            key="seeds"
+            seeds={account.seeds}
+          ></ProgramAccountSeeds>,
+        ]
+      : []),
     <AccordionItem key="fields" title="Fields">
       <div className="accordion-table-overflow">
         <div className="accordion-table-header">
@@ -26,6 +34,59 @@ export default function ProgramAccount({ account, children }) {
 ProgramAccount.propTypes = {
   account: PropTypes.object.isRequired,
   children: PropTypes.array,
+};
+
+function ProgramAccountSeeds({ seeds }) {
+  const renderType = (seed) => {
+    switch (seed.type) {
+      case "literal":
+        return "Literal: <code>" + seed.value + "</code>";
+      case "program":
+        return "Program ID";
+      default:
+        return startCase(seed.type);
+    }
+  };
+
+  const renderDescription = (seed) => {
+    switch (seed.type) {
+      case "program":
+        return seed.description ?? "The public key of the program.";
+      default:
+        return seed.description;
+    }
+  };
+
+  return (
+    <AccordionItem title="Seeds">
+      <div className="accordion-table-overflow">
+        <div className="accordion-table-header">
+          <div style={{ width: "13rem" }}>Seed</div>
+          <div style={{ width: "10rem" }}>Type</div>
+          <div style={{ flex: "1", minWidth: "25rem" }}>Description</div>
+        </div>
+        {seeds.map((seed) => (
+          <div className="accordion-table-row" key={seed.name}>
+            <div style={{ width: "13rem", fontWeight: "700" }}>
+              {startCase(seed.name)}
+            </div>
+            <div style={{ width: "10rem" }}>
+              <div dangerouslySetInnerHTML={{ __html: renderType(seed) }} />
+            </div>
+            <div style={{ flex: "1", minWidth: "25rem" }}>
+              <div
+                dangerouslySetInnerHTML={{ __html: renderDescription(seed) }}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </AccordionItem>
+  );
+}
+
+ProgramAccountSeeds.propTypes = {
+  seeds: PropTypes.array.isRequired,
 };
 
 function ProgramAccountFields({ fields, offset = 0, indent = 0 }) {
