@@ -261,6 +261,22 @@ export default {
 
   collection_authority_record: {
     title: "Collection Authority Record",
+    seeds: [
+      ...sharedSeeds,
+      {
+        name: "collection_authority_prefix",
+        type: "literal",
+        value: "collection_authority",
+        description:
+          "A literal to differentiate the Collection Authority Record accounts.",
+      },
+      {
+        name: "collection_authority",
+        type: "variable",
+        description:
+          "The public key of the authority that is now allowed to verify collections on that NFT.",
+      },
+    ],
     fields: [
       {
         name: "key",
@@ -269,15 +285,32 @@ export default {
           "The discriminator of the account as an enum. Equals to: <code>CollectionAuthorityRecord(9)</code>.",
       },
       {
-        name: "todo",
+        name: "bump",
         size: 1,
-        description: "TODO",
+        description:
+          "The bump that was used to create the PDA of this account.",
       },
     ],
   },
 
   use_authority_record: {
     title: "Use Authority Record",
+    seeds: [
+      ...sharedSeeds,
+      {
+        name: "user_prefix",
+        type: "literal",
+        value: "user",
+        description:
+          "A literal to differentiate the Use Authority Record accounts.",
+      },
+      {
+        name: "user",
+        type: "variable",
+        description:
+          "The public key of the authority that is now allowed to use that NFT.",
+      },
+    ],
     fields: [
       {
         name: "key",
@@ -286,9 +319,16 @@ export default {
           "The discriminator of the account as an enum. Equals to: <code>UseAuthorityRecord(8)</code>.",
       },
       {
-        name: "todo",
+        name: "allowed_uses",
+        size: 8,
+        description:
+          "The amount of <code>uses</code> this authority is allowed to use.",
+      },
+      {
+        name: "bump",
         size: 1,
-        description: "TODO",
+        description:
+          "The bump that was used to create the PDA of this account.",
       },
     ],
   },
