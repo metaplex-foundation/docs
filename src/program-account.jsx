@@ -5,7 +5,7 @@ import { startCase } from "lodash";
 export default function ProgramAccount({ account, children }) {
   const items = [
     <AccordionItem key="description" title="Description" open={true}>
-      <div className="accordion-item-content">{children}</div>
+      <div className="accordion-item-padding">{children}</div>
     </AccordionItem>,
     <AccordionItem key="fields" title="Fields">
       <div className="accordion-table-overflow">
@@ -122,11 +122,17 @@ Accordion.propTypes = {
   items: PropTypes.array,
 };
 
-function AccordionItem({ open, title, actions, children }) {
+function AccordionItem({ open, title, actions, keepAlive = true, children }) {
   const [opened, setOpened] = useState(open);
+  const shouldRenderChildren = opened || keepAlive;
 
   return (
-    <div className={["accordion-item", opened ? "opened" : "closed"].join(" ")}>
+    <div
+      className={[
+        "accordion-item",
+        opened ? "accordion-item-opened" : "accordion-item-closed",
+      ].join(" ")}
+    >
       <div className="accordion-item-header" onClick={() => setOpened(!opened)}>
         <h3>
           <Caret opened={opened}></Caret>
@@ -134,7 +140,9 @@ function AccordionItem({ open, title, actions, children }) {
         </h3>
         {actions}
       </div>
-      {opened && children}
+      <div className="accordion-item-content">
+        {shouldRenderChildren && children}
+      </div>
     </div>
   );
 }
@@ -144,6 +152,7 @@ AccordionItem.propTypes = {
   title: PropTypes.string,
   children: PropTypes.any,
   actions: PropTypes.any,
+  keepAlive: PropTypes.bool,
 };
 
 function Caret({ opened }) {

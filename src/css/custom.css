@@ -171,7 +171,7 @@ html[data-theme="dark"] .accordion {
   border-radius: var(--accordion-radius) var(--accordion-radius) 0 0;
 }
 
-.accordion-item:last-child.closed .accordion-item-header {
+.accordion-item:last-child.accordion-item-closed .accordion-item-header {
   border-radius: 0 0 var(--accordion-radius) var(--accordion-radius);
 }
 
@@ -181,11 +181,20 @@ html[data-theme="dark"] .accordion {
 
 .accordion-item-content {
   padding: 0;
-  margin: 1rem;
+  margin: 0;
+}
+
+.accordion-item-closed .accordion-item-content {
+  display: none;
 }
 
 .accordion-item-content img {
   border-radius: var(--accordion-radius);
+}
+
+.accordion-item-padding {
+  padding: 0;
+  margin: 1rem;
 }
 
 .accordion-table-overflow {
