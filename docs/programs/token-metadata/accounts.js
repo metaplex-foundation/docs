@@ -1,7 +1,6 @@
 export default {
   metadata: {
     title: "Metadata",
-    description: "",
     fields: [
       {
         name: "key",
@@ -144,5 +143,30 @@ export default {
           "and use it until it has run out. You can [learn more about using NFTs here](TODO).",
       },
     ],
+  },
+
+  master_edition: {
+    title: "Master Edition",
+    fields: [],
+  },
+
+  edition: {
+    title: "Edition",
+    fields: [],
+  },
+
+  edition_marker: {
+    title: "Edition Marker",
+    fields: [],
+  },
+
+  collection_authority_record: {
+    title: "Collection Authority Record",
+    fields: [],
+  },
+
+  use_authority_record: {
+    title: "Use Authority Record",
+    fields: [],
   },
 };
