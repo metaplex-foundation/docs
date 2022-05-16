@@ -61,13 +61,13 @@ function ProgramAccountSeeds({ seeds }) {
     <AccordionItem title="Seeds">
       <div className="accordion-table-overflow">
         <div className="accordion-table-header">
-          <div style={{ width: "13rem" }}>Seed</div>
+          <div style={{ width: "10rem" }}>Seed</div>
           <div style={{ width: "10rem" }}>Type</div>
           <div style={{ flex: "1", minWidth: "25rem" }}>Description</div>
         </div>
         {seeds.map((seed) => (
           <div className="accordion-table-row" key={seed.name}>
-            <div style={{ width: "13rem", fontWeight: "700" }}>
+            <div style={{ width: "10rem", fontWeight: "700" }}>
               {startCase(seed.name)}
             </div>
             <div style={{ width: "10rem" }}>

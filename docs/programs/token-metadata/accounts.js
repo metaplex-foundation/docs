@@ -215,17 +215,46 @@ export default {
         description:
           "The discriminator of the account as an enum. Equals to: <code>EditionV1(1)</code>.",
       },
+      {
+        name: "parent",
+        size: 32,
+        description:
+          "The public key of the Master Edition account that printed this edition.",
+      },
+      {
+        name: "edition",
+        size: 8,
+        description:
+          "The edition number of this printed edition. For instance, the 10th printed NFT " +
+          "will have <code>Edition = 10</code>.",
+      },
     ],
   },
 
   edition_marker: {
     title: "Edition Marker",
+    seeds: [
+      ...editionSeeds,
+      {
+        name: "edition_marker",
+        type: "variable",
+        description:
+          "The edition number divided by <code>248</code> rounded down.",
+      },
+    ],
     fields: [
       {
         name: "key",
         size: 1,
         description:
           "The discriminator of the account as an enum. Equals to: <code>EditionMarker(7)</code>.",
+      },
+      {
+        name: "ledger",
+        size: 31,
+        description:
+          "An array of 31 bytes keeping track of the editions that have been printed within the marker's range. " +
+          "With 31 bytes, each marker keep track of 248 editions using a bitmask.",
       },
     ],
   },
@@ -239,6 +268,11 @@ export default {
         description:
           "The discriminator of the account as an enum. Equals to: <code>CollectionAuthorityRecord(9)</code>.",
       },
+      {
+        name: "todo",
+        size: 1,
+        description: "TODO",
+      },
     ],
   },
 
@@ -250,6 +284,11 @@ export default {
         size: 1,
         description:
           "The discriminator of the account as an enum. Equals to: <code>UseAuthorityRecord(8)</code>.",
+      },
+      {
+        name: "todo",
+        size: 1,
+        description: "TODO",
       },
     ],
   },
