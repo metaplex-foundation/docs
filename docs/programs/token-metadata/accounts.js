@@ -6,7 +6,8 @@ export default {
         name: "key",
         size: 1,
         description:
-          "The discriminator of the account. The Token Metadata program uses an enum to differentiate the accounts it provides.",
+          "The discriminator of the account. The Token Metadata program uses an enum to differentiate the accounts it provides. " +
+          "For Metadata accounts, it is equal to: <code>MetadataV1</code>.",
       },
       {
         name: "update_authority",
@@ -147,7 +148,32 @@ export default {
 
   master_edition: {
     title: "Master Edition",
-    fields: [],
+    fields: [
+      {
+        name: "key",
+        size: 1,
+        description:
+          "The discriminator of the account. For Master Edition accounts, it is equal to: <code>MasterEditionV2</code> " +
+          "(or, for previous versions: <code>MasterEditionV1</code>).",
+      },
+      {
+        name: "supply",
+        size: 8,
+        description:
+          "The amount of NFTs printed from this Master Edition. This field is automatically computed " +
+          "by the program and cannot be manually updated. Once the <code>Supply</code> reaches the " +
+          "<code>Max Supply</code>, no more prints can be made from this Master Edition.",
+      },
+      {
+        name: "max_supply",
+        optional: true,
+        size: 9,
+        description:
+          "The maximum number of times NFTs can be printed from this Master Edition. " +
+          "When set to <code>None</code>, the program will enable unlimited prints. " +
+          "You can disable NFT printing by setting the <code>Max Supply</code> to <code>0</code>.",
+      },
+    ],
   },
 
   edition: {
