@@ -6,6 +6,7 @@ import { resolveAccount } from "./program-utils";
 
 export default function ProgramAccount({ idl, account, children }) {
   account = resolveAccount(idl, account);
+  console.log(account);
 
   return (
     <Accordion>
