@@ -2,8 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { startCase } from "lodash";
 import { Accordion, AccordionItem } from "./accordion";
+import { resolveAccount } from "./program-utils";
 
-export default function ProgramAccount({ account, children }) {
+export default function ProgramAccount({ idl, account, children }) {
+  account = resolveAccount(idl, account);
+
   return (
     <Accordion>
       <AccordionItem key="description" title="Description" open={true}>
@@ -39,7 +42,8 @@ export default function ProgramAccount({ account, children }) {
 }
 
 ProgramAccount.propTypes = {
-  account: PropTypes.object.isRequired,
+  idl: PropTypes.object.isRequired,
+  account: PropTypes.string.isRequired,
   children: PropTypes.any,
 };
 
