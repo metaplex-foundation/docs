@@ -40,7 +40,7 @@ export default function ProgramAccount({ account, children }) {
 
 ProgramAccount.propTypes = {
   account: PropTypes.object.isRequired,
-  children: PropTypes.array,
+  children: PropTypes.any,
 };
 
 function ProgramAccountSeeds({ seeds }) {

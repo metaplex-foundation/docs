@@ -7,7 +7,12 @@ export default function ProgramInstruction({ instruction, children }) {
   return (
     <Accordion>
       <AccordionItem key="description" title="Description" open={true}>
-        <div className="accordion-item-padding">{children}</div>
+        <div className="accordion-item-padding">
+          {children}
+          <ProgramInstructionDetails
+            instruction={instruction}
+          ></ProgramInstructionDetails>
+        </div>
       </AccordionItem>
       <ProgramInstructionAccounts
         key="accounts"
@@ -19,7 +24,28 @@ export default function ProgramInstruction({ instruction, children }) {
 
 ProgramInstruction.propTypes = {
   instruction: PropTypes.object.isRequired,
-  children: PropTypes.array,
+  children: PropTypes.any,
+};
+
+function ProgramInstructionDetails({ instruction }) {
+  return (
+    <div className="program-instruction-details">
+      <ul>
+        <li>
+          <strong>Name</strong>: <code>{instruction.name}</code>
+        </li>
+        <li>
+          <strong>Discriminator</strong>:{" "}
+          <code>{instruction.discriminant.value}</code> (
+          {instruction.discriminant.type})
+        </li>
+      </ul>
+    </div>
+  );
+}
+
+ProgramInstructionDetails.propTypes = {
+  instruction: PropTypes.object.isRequired,
 };
 
 function ProgramInstructionAccounts({ accounts }) {

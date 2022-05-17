@@ -9,8 +9,6 @@ import instructions from './instructions.js';
 
 ## Create a Metadata account
 
-`CreateMetadataAccountV2`
-
 <ProgramInstruction instruction={instructions.CreateMetadataAccountV2}>
 
 ![](./assets/Token-Metadata-Instruction-Create-Metadata.png)
@@ -21,53 +19,65 @@ TODO
 
 ## Update a Metadata account
 
-`UpdateMetadataAccountV2`
+<ProgramInstruction instruction={instructions.UpdateMetadataAccountV2}>
 
 ![](./assets/Token-Metadata-Instruction-Update-Metadata.png)
 
 TODO
 
+</ProgramInstruction>
+
 ## Indicate the primary sale has happened
 
-`UpdatePrimarySaleHappenedViaToken`
+<ProgramInstruction instruction={instructions.UpdatePrimarySaleHappenedViaToken}>
 
 ![](./assets/Token-Metadata-Instruction-Update-Primary-Sale-Flag.png)
 
 TODO
 
+</ProgramInstruction>
+
 ## Verify a creator
 
-`SignMetadata`
+<ProgramInstruction instruction={instructions.SignMetadata}>
 
 ![](./assets/Token-Metadata-Instruction-Verify-Creators.png)
 
 TODO
+
+</ProgramInstruction>
 
 ## Unverify a creator
 
-`RemoveCreatorVerification`
+<ProgramInstruction instruction={instructions.RemoveCreatorVerification}>
 
 ![](./assets/Token-Metadata-Instruction-Verify-Creators.png)
 
 TODO
 
+</ProgramInstruction>
+
 ## Create a Master Edition account
 
-`CreateMasterEditionV3`
+<ProgramInstruction instruction={instructions.CreateMasterEditionV3}>
 
 ![](./assets/Token-Metadata-Instruction-Create-Master-Edition.png)
 
 TODO
 
+</ProgramInstruction>
+
 ## Print a new Edition from a Master Edition
 
 ### Via owning the token
 
-`MintNewEditionFromMasterEditionViaToken`
+<ProgramInstruction instruction={instructions.MintNewEditionFromMasterEditionViaToken}>
 
 ![](./assets/Token-Metadata-Instruction-Mint-New-Edition.png)
 
 TODO
+
+</ProgramInstruction>
 
 ### Via a Vault proxy
 
@@ -77,19 +87,23 @@ TODO
 
 ## Verify the collection
 
-`VerifyCollection`
+<ProgramInstruction instruction={instructions.VerifyCollection}>
 
 ![](./assets/Token-Metadata-Instruction-Verify-Collection.png)
 
 TODO
+
+</ProgramInstruction>
 
 ## Unverify the collection
 
-`UnverifyCollection`
+<ProgramInstruction instruction={instructions.UnverifyCollection}>
 
 ![](./assets/Token-Metadata-Instruction-Verify-Collection.png)
 
 TODO
+
+</ProgramInstruction>
 
 ## Set and verify the collection
 
@@ -99,64 +113,82 @@ TODO
 
 ## Approve a new Collection Authority
 
-`ApproveCollectionAuthority`
+<ProgramInstruction instruction={instructions.ApproveCollectionAuthority}>
 
 ![](./assets/Token-Metadata-Instruction-Approve-Collection-Authority.png)
 
 TODO
 
+</ProgramInstruction>
+
 ## Revoke an existing Collection Authority
 
-`RevokeCollectionAuthority`
+<ProgramInstruction instruction={instructions.RevokeCollectionAuthority}>
 
 ![](./assets/Token-Metadata-Instruction-Revoke-Collection-Authority.png)
 
 TODO
 
+</ProgramInstruction>
+
 ## Reduce the number of uses
 
-`Utilize`
+<ProgramInstruction instruction={instructions.Utilize}>
 
 ![](./assets/Token-Metadata-Instruction-Utilize.png)
 
 TODO
 
+</ProgramInstruction>
+
 ## Approve a new Use Authority
 
-`ApproveUseAuthority`
+<ProgramInstruction instruction={instructions.ApproveUseAuthority}>
 
 ![](./assets/Token-Metadata-Instruction-Approve-Use-Authority.png)
 
 TODO
 
+</ProgramInstruction>
+
 ## Revoke an existing Use Authority
 
-`RevokeUseAuthority`
+<ProgramInstruction instruction={instructions.RevokeUseAuthority}>
 
 ![](./assets/Token-Metadata-Instruction-Revoke-Use-Authority.png)
 
 TODO
 
+</ProgramInstruction>
+
 ## Freeze the token account as a delegate
 
-`FreezeDelegatedAccount`
+<ProgramInstruction instruction={instructions.FreezeDelegatedAccount}>
 
 TODO: Freezes a token account that has been fully delegated.
 
+</ProgramInstruction>
+
 ## Thaw the token account as a delegate
 
-`ThawDelegatedAccount`
+<ProgramInstruction instruction={instructions.ThawDelegatedAccount}>
 
 TODO: Thaws a token account that has been fully delegated.
 
+</ProgramInstruction>
+
 ## Add padding to Metadata account fields
 
-`PuffMetadata`
+<ProgramInstruction instruction={instructions.PuffMetadata}>
 
 TODO
+
+</ProgramInstruction>
 
 ## Upgrade Master Edition from V1 to V2
 
-`ConvertMasterEditionV1ToV2`
+<ProgramInstruction instruction={instructions.ConvertMasterEditionV1ToV2}>
 
 TODO
+
+</ProgramInstruction>

@@ -262,6 +262,9 @@ html[data-theme="dark"] .accordion {
   padding-top: 0;
 }
 
+.program-instruction-details {
+  font-size: 14px;
+}
 
 html .program-instruction-account-icon {
   --program-instruction-account-icon-color: #d1d5db;
