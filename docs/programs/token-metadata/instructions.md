@@ -2,15 +2,22 @@
 sidebar_position: 4
 ---
 
+import ProgramInstruction from '../../../src/program-instruction.jsx';
+import instructions from './instructions.js';
+
 # Instructions
 
 ## Create a Metadata account
 
 `CreateMetadataAccountV2`
 
+<ProgramInstruction instruction={instructions.CreateMetadataAccountV2}>
+
 ![](./assets/Token-Metadata-Instruction-Create-Metadata.png)
 
 TODO
+
+</ProgramInstruction>
 
 ## Update a Metadata account
 

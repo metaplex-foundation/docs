@@ -261,3 +261,43 @@ html[data-theme="dark"] .accordion {
 .accordion-table tbody tr.accordion-table-nested-row + .accordion-table-nested-row td {
   padding-top: 0;
 }
+
+
+html .program-instruction-account-icon {
+  --program-instruction-account-icon-color: #d1d5db;
+  --program-instruction-account-icon-color-hover: #9ca3af;
+  --program-instruction-account-icon-active-color: #14b8a6;
+  --program-instruction-account-icon-active-color-hover: #0f766e;
+}
+
+html[data-theme="dark"] .program-instruction-account-icon {
+  --program-instruction-account-icon-color: #6b7280;
+  --program-instruction-account-icon-color-hover: #9ca3af;
+  --program-instruction-account-icon-active-color: #14b8a6;
+  --program-instruction-account-icon-active-color-hover: #5eead4;
+}
+
+a.program-instruction-account-icon {
+  display: block;
+  color: var(--program-instruction-account-icon-color);
+}
+
+a.program-instruction-account-icon:hover {
+  color: var(--program-instruction-account-icon-color-hover);
+}
+
+a.program-instruction-account-icon.active {
+  color: var(--program-instruction-account-icon-active-color);
+}
+
+a.program-instruction-account-icon.active:hover {
+  color: var(--program-instruction-account-icon-active-color-hover);
+}
+
+a.program-instruction-account-icon > svg {
+  display: block;
+}
+
+a.program-instruction-account-icon + a.program-instruction-account-icon {
+  margin-left: 0.5rem;
+}
