@@ -145,7 +145,7 @@ function ProgramAccountField({ field, offset = 0, indent = 0 }) {
       '<a href="/programs/understanding-programs#indicative-fields">Indicative</a>'
     );
   }
-  const typesAsString = types.length > 0 ? `<i>(${types.join(", ")})<i> ` : "";
+  const typesAsString = types.length > 0 ? `<i>(${types.join(", ")})</i> ` : "";
 
   return (
     <>

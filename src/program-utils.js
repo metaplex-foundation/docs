@@ -34,7 +34,8 @@ export const resolveFields = (idl, idlAccount) => {
     if (type.kind === "struct") {
       return type.fields.map((field) => {
         const nextField = next(field);
-        return { ...nextField.docs, ...nextField };
+        const optional = isOptional(nextField);
+        return { optional, ...nextField.docs, ...nextField };
       });
     }
 
@@ -105,6 +106,30 @@ export const resolveTypes = (idl, type) => {
     }
 
     return type;
+  };
+
+  return next(type);
+};
+
+export const isOptional = (type) => {
+  const next = (type) => {
+    if (type.name && type.type) {
+      return next(type.type);
+    }
+
+    if (type.kind === "struct") {
+      return type.fields.some((field) => next(field));
+    }
+
+    if (type.option) {
+      return true;
+    }
+
+    if (type.vec) {
+      return next(type.vec);
+    }
+
+    return false;
   };
 
   return next(type);
