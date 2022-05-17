@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-export function Accordion({ items }) {
-  return <div className="accordion">{items}</div>;
+export function Accordion({ children }) {
+  return <div className="accordion">{children}</div>;
 }
 
 Accordion.propTypes = {
-  items: PropTypes.array,
+  children: PropTypes.array,
 };
 
 export function AccordionItem({

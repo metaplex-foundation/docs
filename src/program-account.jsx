@@ -4,40 +4,38 @@ import { startCase } from "lodash";
 import { Accordion, AccordionItem } from "./accordion";
 
 export default function ProgramAccount({ account, children }) {
-  const items = [
-    <AccordionItem key="description" title="Description" open={true}>
-      <div className="accordion-item-padding">{children}</div>
-    </AccordionItem>,
-    ...(account.seeds
-      ? [
-          <ProgramAccountSeeds
-            key="seeds"
-            seeds={account.seeds}
-          ></ProgramAccountSeeds>,
-        ]
-      : []),
-    <AccordionItem key="fields" title="Fields">
-      <div className="accordion-table-overflow">
-        <table className="accordion-table">
-          <thead>
-            <tr>
-              <th style={{ minWidth: "10rem" }}>Field</th>
-              <th>Offset</th>
-              <th>Size</th>
-              <th style={{ minWidth: "25rem" }}>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <ProgramAccountFields
-              fields={account.fields}
-            ></ProgramAccountFields>
-          </tbody>
-        </table>
-      </div>
-    </AccordionItem>,
-  ];
-
-  return <Accordion items={items}></Accordion>;
+  return (
+    <Accordion>
+      <AccordionItem key="description" title="Description" open={true}>
+        <div className="accordion-item-padding">{children}</div>
+      </AccordionItem>
+      {account.seeds && (
+        <ProgramAccountSeeds
+          key="seeds"
+          seeds={account.seeds}
+        ></ProgramAccountSeeds>
+      )}
+      <AccordionItem key="fields" title="Fields">
+        <div className="accordion-table-overflow">
+          <table className="accordion-table">
+            <thead>
+              <tr>
+                <th style={{ minWidth: "10rem" }}>Field</th>
+                <th>Offset</th>
+                <th>Size</th>
+                <th style={{ minWidth: "25rem" }}>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ProgramAccountFields
+                fields={account.fields}
+              ></ProgramAccountFields>
+            </tbody>
+          </table>
+        </div>
+      </AccordionItem>
+    </Accordion>
+  );
 }
 
 ProgramAccount.propTypes = {
