@@ -18,13 +18,21 @@ export default function ProgramAccount({ account, children }) {
       : []),
     <AccordionItem key="fields" title="Fields">
       <div className="accordion-table-overflow">
-        <div className="accordion-table-header">
-          <div style={{ width: "10rem" }}>Field</div>
-          <div style={{ width: "5rem" }}>Offset</div>
-          <div style={{ width: "5rem" }}>Size</div>
-          <div style={{ flex: "1", minWidth: "25rem" }}>Description</div>
-        </div>
-        <ProgramAccountFields fields={account.fields}></ProgramAccountFields>
+        <table className="accordion-table">
+          <thead>
+            <tr>
+              <th style={{ minWidth: "10rem" }}>Field</th>
+              <th>Offset</th>
+              <th>Size</th>
+              <th style={{ minWidth: "25rem" }}>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ProgramAccountFields
+              fields={account.fields}
+            ></ProgramAccountFields>
+          </tbody>
+        </table>
       </div>
     </AccordionItem>,
   ];
@@ -61,26 +69,32 @@ function ProgramAccountSeeds({ seeds }) {
   return (
     <AccordionItem title="Seeds">
       <div className="accordion-table-overflow">
-        <div className="accordion-table-header">
-          <div style={{ width: "10rem" }}>Seed</div>
-          <div style={{ width: "10rem" }}>Type</div>
-          <div style={{ flex: "1", minWidth: "25rem" }}>Description</div>
-        </div>
-        {seeds.map((seed) => (
-          <div className="accordion-table-row" key={seed.name}>
-            <div style={{ width: "10rem", fontWeight: "700" }}>
-              {startCase(seed.name)}
-            </div>
-            <div style={{ width: "10rem" }}>
-              <div dangerouslySetInnerHTML={{ __html: renderType(seed) }} />
-            </div>
-            <div style={{ flex: "1", minWidth: "25rem" }}>
-              <div
-                dangerouslySetInnerHTML={{ __html: renderDescription(seed) }}
-              />
-            </div>
-          </div>
-        ))}
+        <table className="accordion-table">
+          <thead>
+            <tr>
+              <th style={{ minWidth: "10rem" }}>Seed</th>
+              <th style={{ minWidth: "10rem" }}>Type</th>
+              <th style={{ minWidth: "25rem" }}>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {seeds.map((seed) => (
+              <tr key={seed.name}>
+                <th>{startCase(seed.name)}</th>
+                <td>
+                  <div dangerouslySetInnerHTML={{ __html: renderType(seed) }} />
+                </td>
+                <td>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: renderDescription(seed),
+                    }}
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </AccordionItem>
   );
@@ -130,35 +144,28 @@ function ProgramAccountField({ field, offset = 0, indent = 0 }) {
   }
   const typesAsString = types.length > 0 ? `<i>(${types.join(", ")})<i> ` : "";
 
-  const indentWidth = 2 * indent;
-  const titleWidth = 10 - indentWidth;
-  const classes = ["accordion-table-row"];
-
-  if (indent > 0) {
-    classes.push("accordion-table-nested-row");
-  }
-
   return (
     <>
-      <div className={classes.join(" ")} key={field.name}>
-        <div
-          className="accordion-table-row-indent"
-          style={{ width: `${indentWidth}rem` }}
-        ></div>
-        <div style={{ width: `${titleWidth}rem`, fontWeight: "700" }}>
-          {startCase(field.name)}
-        </div>
-        <div style={{ width: "5rem" }}>{field.offset ?? offset}</div>
-        <div style={{ width: "5rem" }}>{field.size ?? "~"}</div>
-        <div style={{ flex: "1", minWidth: "25rem" }}>
+      <tr
+        className={indent > 0 ? "accordion-table-nested-row" : ""}
+        key={field.name}
+      >
+        <th>
+          <div style={{ marginLeft: `${2 * indent}rem` }}>
+            {startCase(field.name)}
+          </div>
+        </th>
+        <td>{field.offset ?? offset}</td>
+        <td>{field.size ?? "~"}</td>
+        <td>
           <div
             style={{ display: "inline" }}
             dangerouslySetInnerHTML={{
               __html: typesAsString + field.description,
             }}
           />
-        </div>
-      </div>
+        </td>
+      </tr>
       {field.fields && (
         <ProgramAccountFields
           fields={field.fields}

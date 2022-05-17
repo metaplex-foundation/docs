@@ -204,53 +204,60 @@ html[data-theme="dark"] .accordion {
   flex-wrap: wrap;
 }
 
-.accordion-table-header {
-  display: flex;
-  align-items: center;
+.accordion-table {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.accordion-table thead tr, 
+.accordion-table th, 
+.accordion-table td {
+  border: none;
+}
+
+.accordion-table thead {
   background-color: var(--accordion-background-color-hover);
 }
 
-.accordion-table-header > div {
+.accordion-table thead th {
   color: var(--accordion-table-header-color);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-align: left;
   padding: 0.5rem 1rem;
-  flex-shrink: 0;
 }
 
-.accordion-table-row {
-  display: flex;
-  align-items: center;
+.accordion-table tr:nth-child(2n) {
+  background-color: inherit;
+ }
+
+.accordion-table tbody tr {
+  border-top: 1px solid var(--accordion-border-color);
   font-size: 14px;
 }
 
-.accordion-table-row + .accordion-table-row {
-  border-top: 1px solid var(--accordion-border-color);
-}
-
-.accordion-table-row > div {
+.accordion-table tbody th,
+.accordion-table tbody td {
   text-align: left;
   padding: 0.5rem 1rem;
   margin: 0;
-  flex-shrink: 0;
 }
 
-.accordion-table-row > .accordion-table-row-indent {
-  padding: 0;
-  flex-grow: 0;
+.accordion-table tbody th {
+  font-weight: 700;
 }
 
-.accordion-table-row + .accordion-table-nested-row {
+.accordion-table tbody tr + .accordion-table-nested-row {
   border: none;
 }
 
-.accordion-table-nested-row {
+.accordion-table tbody tr.accordion-table-nested-row td {
   color: var(--accordion-nested-row-color);
   padding-top: 2rem;
 }
 
-.accordion-table-nested-row + .accordion-table-nested-row {
+.accordion-table tbody tr.accordion-table-nested-row + .accordion-table-nested-row td {
   padding-top: 0;
 }
