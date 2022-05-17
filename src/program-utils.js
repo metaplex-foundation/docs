@@ -33,22 +33,19 @@ export const resolveFields = (idl, idlAccount) => {
 
     if (type.kind === "struct") {
       return type.fields.map((field) => {
-        const nextField = next(field);
-        const optional = isOptional(nextField);
-        return { optional, ...nextField.docs, ...nextField };
+        const optional = isOptional(field);
+        const { type, docs, ...rest } = next(field);
+        const nestedFields = Array.isArray(type) ? { fields: type } : { type };
+        return { optional, ...nestedFields, ...docs, ...rest };
       });
     }
 
-    if (type.defined) {
-      return { ...type, defined: next(type.defined) };
-    }
-
     if (type.option) {
-      return { ...type, option: next(type.option) };
+      return next(type.option);
     }
 
     if (type.vec) {
-      return { ...type, vec: next(type.vec) };
+      return next(type.vec);
     }
 
     return type;
