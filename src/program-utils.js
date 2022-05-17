@@ -1,15 +1,3 @@
-export const findAccount = (idl, account) => {
-  return idl.accounts.find(({ name }) => name === account);
-};
-
-export const findInstruction = (idl, instruction) => {
-  return idl.instructions.find(({ name }) => name === instruction);
-};
-
-export const findType = (idl, type) => {
-  return idl.types.find(({ name }) => name === type);
-};
-
 export const resolveAccount = (idl, account) => {
   const idlAccount = idl.accounts.find(({ name }) => name === account);
   const docsAccount = idl.docs.accounts[account] ?? {};
@@ -98,7 +86,8 @@ export const resolveTypes = (idl, type) => {
 
     if (type.defined) {
       const docs = idl.docs.types?.[type.defined] ?? {};
-      const nextType = next(findType(idl, type.defined).type, { docs });
+      const definedType = idl.types.find(({ name }) => name === type.defined);
+      const nextType = next(definedType.type, { docs });
 
       return {
         ...nextType,
