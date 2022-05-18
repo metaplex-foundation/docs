@@ -16,22 +16,21 @@ export const resolveInstruction = (idl, instruction) => {
   const idlInstruction = idl.instructions.find(
     ({ name }) => name === instruction
   );
-  // const docsInstruction = idl.docs.instructions[instruction] ?? {};
+  const docsInstruction = idl.docs.instructions[instruction] ?? {};
 
   if (!idlInstruction) {
     throw new Error(`Instruction [${instruction}] not found in IDL`);
   }
 
-  const resolvedArguments = (idlInstruction.args ?? []).map((arg) => {
-    return resolveFields(arg);
+  const resolvedArgs = (idlInstruction.args ?? []).map((arg) => {
+    return resolveFields(idl, arg);
   });
-  console.log(resolvedArguments);
 
-  return { ...idlInstruction };
+  return { ...idlInstruction, resolvedArgs, ...docsInstruction };
 };
 
-export const resolveFields = (idl, idlAccount) => {
-  const type = resolveTypes(idl, idlAccount);
+export const resolveFields = (idl, structType) => {
+  const type = resolveTypes(idl, structType);
 
   if (type.type.kind !== "struct") {
     throw new Error("Can only resolve fields of struct types");
