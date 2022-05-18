@@ -22,16 +22,9 @@ export const resolveInstruction = (idl, instruction) => {
     throw new Error(`Instruction [${instruction}] not found in IDL`);
   }
 
-  // const resolvedArgs = (idlInstruction.args ?? []).map((arg) => {
-  //   return resolveFields(idl, arg);
-  // });
-
   const resolvedArgs = resolveFields(idl, {
-    name: instruction,
-    type: {
-      kind: "struct",
-      fields: idlInstruction.args,
-    },
+    kind: "struct",
+    fields: idlInstruction.args,
   });
 
   return { ...idlInstruction, resolvedArgs, ...docsInstruction };
@@ -40,22 +33,11 @@ export const resolveInstruction = (idl, instruction) => {
 export const resolveFields = (idl, structType) => {
   const type = resolveTypes(idl, structType);
 
-  if (type.type.kind !== "struct") {
+  if (type?.kind !== "struct" && type?.type?.kind !== "struct") {
     throw new Error("Can only resolve fields of struct types");
   }
 
   const next = (type) => {
-    if (type.name && type.type) {
-      if (type.type.kind === "struct") {
-        return next(type.type);
-      }
-
-      return {
-        ...type,
-        type: next(type.type),
-      };
-    }
-
     if (type.kind === "struct") {
       return type.fields.map((field) => {
         const optional = isOptional(field);
@@ -63,6 +45,10 @@ export const resolveFields = (idl, structType) => {
         const nestedFields = Array.isArray(type) ? { fields: type } : { type };
         return { optional, ...nestedFields, ...docs, ...rest };
       });
+    }
+
+    if (type.name && type.type) {
+      return { ...type, type: next(type.type) };
     }
 
     if (type.option) {
@@ -76,7 +62,11 @@ export const resolveFields = (idl, structType) => {
     return type;
   };
 
-  return next(type);
+  const resolvedFields = next(type);
+
+  return Array.isArray(resolvedFields)
+    ? resolvedFields
+    : resolvedFields.type ?? [];
 };
 
 export const resolveTypes = (idl, type) => {
