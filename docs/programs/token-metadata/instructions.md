@@ -81,9 +81,11 @@ TODO
 
 ### Via a Vault proxy
 
-`MintNewEditionFromMasterEditionViaVaultProxy`
+<ProgramInstruction idl={idl} instruction="MintNewEditionFromMasterEditionViaVaultProxy">
 
 TODO
+
+</ProgramInstruction>
 
 ## Verify the collection
 
@@ -107,9 +109,11 @@ TODO
 
 ## Set and verify the collection
 
-`SetAndVerifyCollection`
+<ProgramInstruction idl={idl} instruction="SetAndVerifyCollection">
 
 TODO
+
+</ProgramInstruction>
 
 ## Approve a new Collection Authority
 

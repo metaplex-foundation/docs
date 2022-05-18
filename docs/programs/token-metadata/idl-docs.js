@@ -45,6 +45,19 @@ const sharedFields = {
       "A boolean indicating if the Metadata Account can be updated. " +
       "Once flipped to <code>False</code>, it cannot ever be <code>True</code> again.",
   },
+  maxSupply: {
+    size: 9,
+    description:
+      "The maximum number of times NFTs can be printed from this Master Edition. " +
+      "When set to <code>None</code>, the program will enable unlimited prints. " +
+      "You can disable NFT printing by setting the <code>Max Supply</code> to <code>0</code>.",
+  },
+  edition: {
+    size: 8,
+    description:
+      "The edition number of this printed edition. For instance, the 10th printed NFT " +
+      "will have <code>Edition = 10</code>.",
+  },
 };
 
 export default {
@@ -149,18 +162,53 @@ export default {
     },
     CreateMetadataAccountArgsV2: {
       description:
-        "An object containing all the arguments for the CreateMetadataAccountArgsV2 instruction.",
+        "An object containing all the arguments for the <code>CreateMetadataAccountV2</code> instruction.",
       fields: {
         isMutable: sharedFields.isMutable,
       },
     },
     UpdateMetadataAccountArgsV2: {
       description:
-        "An object containing all the arguments for the CreateMetadataAccountArgsV2 instruction.",
+        "An object containing all the arguments for the <code>UpdateMetadataAccountV2</code> instruction.",
       fields: {
         updateAuthority: sharedFields.updateAuthority,
         primarySaleHappened: sharedFields.primarySaleHappened,
         isMutable: sharedFields.isMutable,
+      },
+    },
+    CreateMasterEditionArgs: {
+      description:
+        "An object containing all the arguments for the <code>CreateMasterEditionV3</code> instruction.",
+      fields: {
+        maxSupply: sharedFields.maxSupply,
+      },
+    },
+    MintNewEditionFromMasterEditionViaTokenArgs: {
+      description:
+        "An object containing all the arguments necessary to print a new edition.",
+      fields: {
+        edition: sharedFields.edition,
+      },
+    },
+    UtilizeArgs: {
+      description:
+        "An object containing all the arguments necessary to utilize the NFT",
+      fields: {
+        numberOfUses: {
+          size: 8,
+          description: "The number of uses to reduce.",
+        },
+      },
+    },
+    ApproveUseAuthorityArgs: {
+      description:
+        "An object containing all the arguments necessary to approve a new Use Authority.",
+      fields: {
+        numberOfUses: {
+          size: 8,
+          description:
+            "The total number of uses allowed for the new authority.",
+        },
       },
     },
   },
@@ -224,13 +272,7 @@ export default {
             "by the program and cannot be manually updated. Once the <code>Supply</code> reaches the " +
             "<code>Max Supply</code>, no more prints can be made from this Master Edition.",
         },
-        maxSupply: {
-          size: 9,
-          description:
-            "The maximum number of times NFTs can be printed from this Master Edition. " +
-            "When set to <code>None</code>, the program will enable unlimited prints. " +
-            "You can disable NFT printing by setting the <code>Max Supply</code> to <code>0</code>.",
-        },
+        maxSupply: sharedFields.maxSupply,
       },
     },
     Edition: {
@@ -246,12 +288,7 @@ export default {
           description:
             "The public key of the Master Edition account that printed this edition.",
         },
-        edition: {
-          size: 8,
-          description:
-            "The edition number of this printed edition. For instance, the 10th printed NFT " +
-            "will have <code>Edition = 10</code>.",
-        },
+        edition: sharedFields.edition,
       },
     },
     EditionMarker: {

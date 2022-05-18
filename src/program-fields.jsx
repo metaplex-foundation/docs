@@ -92,7 +92,7 @@ function ProgramField({ field, offset = 0, indent = 0 }) {
           <div
             style={{ display: "inline" }}
             dangerouslySetInnerHTML={{
-              __html: typesAsString + field.description,
+              __html: typesAsString + (field.description ?? ""),
             }}
           />
         </td>
