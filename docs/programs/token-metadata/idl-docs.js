@@ -182,62 +182,52 @@ export default {
         },
       },
     },
-
-    MasterEdition: {
+    MasterEditionV2: {
       seeds: editionSeeds,
-      fields: [
-        {
-          name: "key",
+      fields: {
+        key: {
           size: 1,
           description:
             "The discriminator of the account as an enum. Equals to: <code>MasterEditionV2(6)</code> " +
             "(or, for previous versions: <code>MasterEditionV1(2)</code>).",
         },
-        {
-          name: "supply",
+        supply: {
           size: 8,
           description:
             "The amount of NFTs printed from this Master Edition. This field is automatically computed " +
             "by the program and cannot be manually updated. Once the <code>Supply</code> reaches the " +
             "<code>Max Supply</code>, no more prints can be made from this Master Edition.",
         },
-        {
-          name: "max_supply",
-          optional: true,
+        maxSupply: {
           size: 9,
           description:
             "The maximum number of times NFTs can be printed from this Master Edition. " +
             "When set to <code>None</code>, the program will enable unlimited prints. " +
             "You can disable NFT printing by setting the <code>Max Supply</code> to <code>0</code>.",
         },
-      ],
+      },
     },
-
     Edition: {
       seeds: editionSeeds,
-      fields: [
-        {
-          name: "key",
+      fields: {
+        key: {
           size: 1,
           description:
             "The discriminator of the account as an enum. Equals to: <code>EditionV1(1)</code>.",
         },
-        {
-          name: "parent",
+        parent: {
           size: 32,
           description:
             "The public key of the Master Edition account that printed this edition.",
         },
-        {
-          name: "edition",
+        edition: {
           size: 8,
           description:
             "The edition number of this printed edition. For instance, the 10th printed NFT " +
             "will have <code>Edition = 10</code>.",
         },
-      ],
+      },
     },
-
     EditionMarker: {
       seeds: [
         ...editionSeeds,
@@ -248,23 +238,20 @@ export default {
             "The edition number divided by <code>248</code> rounded down.",
         },
       ],
-      fields: [
-        {
-          name: "key",
+      fields: {
+        key: {
           size: 1,
           description:
             "The discriminator of the account as an enum. Equals to: <code>EditionMarker(7)</code>.",
         },
-        {
-          name: "ledger",
+        ledger: {
           size: 31,
           description:
             "An array of 31 bytes keeping track of the editions that have been printed within the marker's range. " +
             "With 31 bytes, each marker keep track of 248 editions using a bitmask.",
         },
-      ],
+      },
     },
-
     CollectionAuthorityRecord: {
       seeds: [
         ...sharedSeeds,
@@ -282,22 +269,19 @@ export default {
             "The public key of the authority that is now allowed to verify collections on that NFT.",
         },
       ],
-      fields: [
-        {
-          name: "key",
+      fields: {
+        key: {
           size: 1,
           description:
             "The discriminator of the account as an enum. Equals to: <code>CollectionAuthorityRecord(9)</code>.",
         },
-        {
-          name: "bump",
+        bump: {
           size: 1,
           description:
             "The bump that was used to create the PDA of this account.",
         },
-      ],
+      },
     },
-
     UseAuthorityRecord: {
       seeds: [
         ...sharedSeeds,
@@ -315,26 +299,23 @@ export default {
             "The public key of the authority that is now allowed to use that NFT.",
         },
       ],
-      fields: [
-        {
-          name: "key",
+      fields: {
+        key: {
           size: 1,
           description:
             "The discriminator of the account as an enum. Equals to: <code>UseAuthorityRecord(8)</code>.",
         },
-        {
-          name: "allowed_uses",
+        allowedUses: {
           size: 8,
           description:
             "The amount of <code>uses</code> this authority is allowed to use.",
         },
-        {
-          name: "bump",
+        bump: {
           size: 1,
           description:
             "The bump that was used to create the PDA of this account.",
         },
-      ],
+      },
     },
   },
   instructions: {
