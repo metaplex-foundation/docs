@@ -7,7 +7,6 @@ import { ProgramFields } from "./program-fields";
 
 export default function ProgramInstruction({ idl, instruction, children }) {
   instruction = resolveInstruction(idl, instruction);
-  console.log(instruction);
 
   return (
     <Accordion>
@@ -23,11 +22,13 @@ export default function ProgramInstruction({ idl, instruction, children }) {
         key="accounts"
         accounts={instruction.accounts}
       ></ProgramInstructionAccounts>
-      <ProgramFields
-        fields={instruction.resolvedArgs}
-        title="Arguments"
-        firstColumn="Argument"
-      ></ProgramFields>
+      {instruction.resolvedArgs.length > 0 && (
+        <ProgramFields
+          fields={instruction.resolvedArgs}
+          title="Arguments"
+          firstColumn="Argument"
+        ></ProgramFields>
+      )}
     </Accordion>
   );
 }
