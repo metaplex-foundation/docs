@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { startCase } from "lodash";
 import { Accordion, AccordionItem } from "./accordion";
 import { resolveInstruction } from "./program-utils";
+import { ProgramFields } from "./program-fields";
 
 export default function ProgramInstruction({ idl, instruction, children }) {
   instruction = resolveInstruction(idl, instruction);
@@ -22,6 +23,11 @@ export default function ProgramInstruction({ idl, instruction, children }) {
         key="accounts"
         accounts={instruction.accounts}
       ></ProgramInstructionAccounts>
+      <ProgramFields
+        fields={instruction.resolvedArgs}
+        title="Arguments"
+        firstColumn="Argument"
+      ></ProgramFields>
     </Accordion>
   );
 }

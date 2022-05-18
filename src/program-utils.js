@@ -22,8 +22,16 @@ export const resolveInstruction = (idl, instruction) => {
     throw new Error(`Instruction [${instruction}] not found in IDL`);
   }
 
-  const resolvedArgs = (idlInstruction.args ?? []).map((arg) => {
-    return resolveFields(idl, arg);
+  // const resolvedArgs = (idlInstruction.args ?? []).map((arg) => {
+  //   return resolveFields(idl, arg);
+  // });
+
+  const resolvedArgs = resolveFields(idl, {
+    name: instruction,
+    type: {
+      kind: "struct",
+      fields: idlInstruction.args,
+    },
   });
 
   return { ...idlInstruction, resolvedArgs, ...docsInstruction };
@@ -74,7 +82,10 @@ export const resolveFields = (idl, structType) => {
 export const resolveTypes = (idl, type) => {
   const next = (type, context = {}) => {
     if (type.name && type.type) {
-      const docs = idl.docs.accounts[type.name] ?? undefined;
+      const docs =
+        idl.docs.accounts?.[type.name] ??
+        idl.docs.types?.[type.name] ??
+        undefined;
 
       return {
         ...type,
