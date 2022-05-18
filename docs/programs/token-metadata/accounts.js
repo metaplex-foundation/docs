@@ -32,22 +32,6 @@ export default {
     seeds: sharedSeeds,
     fields: [
       {
-        name: "key",
-        size: 1,
-        description:
-          "The discriminator of the account as an enum. Equals to <code>MetadataV1(4)</code>.",
-      },
-      {
-        name: "update_authority",
-        size: 32,
-        description: "The public key that is allowed to update this account.",
-      },
-      {
-        name: "mint",
-        size: 32,
-        description: "The public key of the Mint Account it derives from.",
-      },
-      {
         name: "name",
         size: 36,
         description:
@@ -106,7 +90,8 @@ export default {
             indicative: true,
             description:
               "The creator's shares of the royalties in percentage (1 byte) — i.e. <code>55</code> means <code>55%</code>. " +
-              "Similarly to the <code>Seller Fee Basis Points</code> field, this is used by marketplaces but not enforced by the Token Metadata program.",
+              "Similarly to the <code>Seller Fee Basis Points</code> field, this is used by marketplaces " +
+              "but not enforced by the Token Metadata program.",
           },
         ],
       },
@@ -152,7 +137,7 @@ export default {
           {
             name: "key",
             size: 32,
-            description: "The public key of the Collection NFT’s Mint Account",
+            description: "The public key of the Collection NFT's Mint Account",
           },
           {
             name: "verified",

@@ -253,12 +253,12 @@ html[data-theme="dark"] .accordion {
   border: none;
 }
 
-.accordion-table tbody tr.accordion-table-nested-row td {
+.accordion-table tbody tr.accordion-table-nested-row > * {
   color: var(--accordion-nested-row-color);
   padding-top: 2rem;
 }
 
-.accordion-table tbody tr.accordion-table-nested-row + .accordion-table-nested-row td {
+.accordion-table tbody tr.accordion-table-nested-row + .accordion-table-nested-row > * {
   padding-top: 0;
 }
 

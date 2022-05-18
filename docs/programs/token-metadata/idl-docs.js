@@ -31,7 +31,94 @@ export default {
     Data: {
       fields: {
         name: {
-          description: "TODO",
+          size: 36,
+          description:
+            'The on-chain name of the token, limited to 32 bytes. For instance "Degen Ape #1 ".',
+        },
+        symbol: {
+          size: 14,
+          description:
+            'The on-chain symbol of the token, limited to 10 bytes. For instance "DAPE".',
+        },
+        uri: {
+          size: 204,
+          description:
+            "The URI of the token, limited to 200 bytes. " +
+            "<strong>This URI points to an off-chain JSON file that contains additional data following a certain standard.</strong> " +
+            "You can learn more about this JSON standard here. The JSON file can either be stored in a traditional server " +
+            "(e.g. using AWS) or using a permanent storage solution such as using Arweave.",
+        },
+        sellerFeeBasisPoints: {
+          size: 2,
+          indicative: true,
+          description:
+            "The royalties shared by the creators in basis points — i.e. <code>550</code> means <code>5.5%</code>. " +
+            "Whilst this field is used by virtually all NFT marketplaces, it is not enforced by the Token Metadata program itself.",
+        },
+        creators: {
+          description:
+            "An array of creators and their share of the royalties. " +
+            "This array is limited to 5 creators. Note that, because the " +
+            "<code>Creators</code> field is an array of variable length, we cannot " +
+            "guarantee the byte position of any field that follows (Notice the tilde " +
+            "<code>~</code> in the fields below). Each creator contains the following fields.",
+        },
+      },
+    },
+    Creator: {
+      fields: {
+        address: {
+          offset: "~",
+          size: 32,
+          description: "The public key of the creator",
+        },
+        verified: {
+          offset: "~",
+          size: 1,
+          description:
+            "A boolean indicating if the creator signed the NFT. " +
+            "It is important to check this field to ensure the authenticity of the creator.",
+        },
+        share: {
+          offset: "~",
+          size: 1,
+          indicative: true,
+          description:
+            "The creator's shares of the royalties in percentage (1 byte) — i.e. <code>55</code> means <code>55%</code>. " +
+            "Similarly to the <code>Seller Fee Basis Points</code> field, this is used by marketplaces " +
+            "but not enforced by the Token Metadata program.",
+        },
+      },
+    },
+    Collection: {
+      fields: {
+        key: {
+          size: 32,
+          description: "The public key of the Collection NFT's Mint Account",
+        },
+        verified: {
+          size: 1,
+          description:
+            "A boolean indicating if the owner of the Collection NFT signed this NFT. " +
+            "It is important to check this field to ensure the authenticity of the collection.",
+        },
+      },
+    },
+    Uses: {
+      fields: {
+        useMethod: {
+          size: 1,
+          description:
+            "An enum defining the use behaviour for the NFT. It can be one of the following: " +
+            "<code>Burn</code>, <code>Multiple</code> or <code>Single</code>. ",
+        },
+        remaining: {
+          size: 8,
+          description: "The remaining amount of uses.",
+        },
+        total: {
+          size: 8,
+          description: "The total amount of uses allowed in the first place.",
         },
       },
     },
@@ -56,89 +143,7 @@ export default {
         data: {
           flatten: true,
         },
-      },
-      oldFields: [
-        {
-          name: "key",
-          size: 1,
-          description:
-            "The discriminator of the account as an enum. Equals to <code>MetadataV1(4)</code>.",
-        },
-        {
-          name: "update_authority",
-          size: 32,
-          description: "The public key that is allowed to update this account.",
-        },
-        {
-          name: "mint",
-          size: 32,
-          description: "The public key of the Mint Account it derives from.",
-        },
-        {
-          name: "name",
-          size: 36,
-          description:
-            'The on-chain name of the token, limited to 32 bytes. For instance "Degen Ape #1 ".',
-        },
-        {
-          name: "symbol",
-          size: 14,
-          description:
-            'The on-chain symbol of the token, limited to 10 bytes. For instance "DAPE".',
-        },
-        {
-          name: "uri",
-          size: 204,
-          description:
-            "The URI of the token, limited to 200 bytes. " +
-            "<strong>This URI points to an off-chain JSON file that contains additional data following a certain standard.</strong> " +
-            "You can learn more about this JSON standard here. The JSON file can either be stored in a traditional server " +
-            "(e.g. using AWS) or using a permanent storage solution such as using Arweave.",
-        },
-        {
-          name: "seller_fee_basis_points",
-          size: 2,
-          indicative: true,
-          description:
-            "The royalties shared by the creators in basis points — i.e. <code>550</code> means <code>5.5%</code>. " +
-            "Whilst this field is used by virtually all NFT marketplaces, it is not enforced by the Token Metadata program itself.",
-        },
-        {
-          name: "creators",
-          description:
-            "An array of creators and their share of the royalties. " +
-            "This array is limited to 5 creators. Note that, because the " +
-            "<code>Creators</code> field is an array of variable length, we cannot " +
-            "guarantee the byte position of any field that follows (Notice the tilde " +
-            "<code>~</code> in the fields below). Each creator contains the following fields.",
-          fields: [
-            {
-              name: "address",
-              offset: "~",
-              size: 32,
-              description: "The public key of the creator",
-            },
-            {
-              name: "verified",
-              offset: "~",
-              size: 1,
-              description:
-                "A boolean indicating if the creator signed the NFT. " +
-                "It is important to check this field to ensure the authenticity of the creator.",
-            },
-            {
-              name: "share",
-              offset: "~",
-              size: 1,
-              indicative: true,
-              description:
-                "The creator's shares of the royalties in percentage (1 byte) — i.e. <code>55</code> means <code>55%</code>. " +
-                "Similarly to the <code>Seller Fee Basis Points</code> field, this is used by marketplaces but not enforced by the Token Metadata program.",
-            },
-          ],
-        },
-        {
-          name: "primary_sale_happened",
+        primarySaleHappened: {
           size: 1,
           indicative: true,
           description:
@@ -146,60 +151,36 @@ export default {
             "Once flipped to <code>True</code>, it cannot ever be <code>False</code> again. " +
             "This field can affect the way royalties are distributed.",
         },
-        {
-          name: "is_mutable",
+        isMutable: {
           size: 1,
           description:
             "A boolean indicating if the Metadata Account can be updated. " +
             "Once flipped to <code>False</code>, it cannot ever be <code>True</code> again.",
         },
-        {
-          name: "edition_nonce",
+        editionNonce: {
           size: 2,
-          optional: true,
           description:
             "A nonce used to verify the edition number of printed NFTs. " +
             "It will only be set on Edition NFTs and not Master Edition NFTs.",
         },
-        {
-          name: "token_standard",
+        tokenStandard: {
           size: 2,
-          optional: true,
           description:
-            "This enum captures the fungibility of the token. You can [learn more about the token standard here](TODO).",
+            'This enum captures the fungibility of the token. You can <a href="#TODO">learn more about the token standard here</a>.',
         },
-        {
-          name: "collection",
+        collection: {
           size: 34,
-          optional: true,
           description:
             "This field optionally links to the Mint address of another NFT that " +
             "acts as a Collection NFT. It contains the following sub-fields.",
-          fields: [
-            {
-              name: "key",
-              size: 32,
-              description:
-                "The public key of the Collection NFT’s Mint Account",
-            },
-            {
-              name: "verified",
-              size: 1,
-              description:
-                "A boolean indicating if the owner of the Collection NFT signed this NFT. " +
-                "It is important to check this field to ensure the authenticity of the collection.",
-            },
-          ],
         },
-        {
-          name: "uses",
+        uses: {
           size: 18,
-          optional: true,
           description:
             'This field can make NFTs usable. Meaning you can load it with a certain amount of "uses" ' +
-            "and use it until it has run out. You can [learn more about using NFTs here](TODO).",
+            'and use it until it has run out. You can <a href="#TODO">learn more about using NFTs here</a>.',
         },
-      ],
+      },
     },
 
     MasterEdition: {
