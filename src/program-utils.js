@@ -132,10 +132,6 @@ export const isOptional = (type) => {
       return next(type.type);
     }
 
-    if (type.kind === "struct") {
-      return type.fields.some((field) => next(field));
-    }
-
     if (type.option) {
       return true;
     }
