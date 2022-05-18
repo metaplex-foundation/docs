@@ -65,6 +65,9 @@ export default {
         },
       },
     },
+    get DataV2() {
+      return this.Data;
+    },
     Creator: {
       fields: {
         address: {
@@ -119,6 +122,21 @@ export default {
         total: {
           size: 8,
           description: "The total amount of uses allowed in the first place.",
+        },
+      },
+    },
+    CreateMetadataAccountArgsV2: {
+      description:
+        "An object containing all the arguments for the CreateMetadataAccountArgsV2 instruction.",
+      fields: {
+        data: {
+          description: "A data object containing the following attributes.",
+        },
+        isMutable: {
+          size: 1,
+          description:
+            "A boolean indicating if the Metadata Account can be updated. " +
+            "Once flipped to <code>False</code>, it cannot ever be <code>True</code> again.",
         },
       },
     },
