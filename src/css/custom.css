@@ -244,6 +244,7 @@ html[data-theme="dark"] .accordion {
   text-align: left;
   padding: 0.5rem 1rem;
   margin: 0;
+  vertical-align: top;
 }
 
 .accordion-table tbody th {
@@ -260,7 +261,7 @@ html[data-theme="dark"] .accordion {
 }
 
 .accordion-table tbody tr.accordion-table-nested-row + .accordion-table-nested-row > * {
-  padding-top: 0;
+  padding-top: 0.5rem;
 }
 
 .program-instruction-details {

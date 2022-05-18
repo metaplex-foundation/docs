@@ -26,6 +26,27 @@ const editionSeeds = [
   },
 ];
 
+const sharedFields = {
+  updateAuthority: {
+    size: 32,
+    description: "The public key that is allowed to update this account.",
+  },
+  primarySaleHappened: {
+    size: 1,
+    indicative: true,
+    description:
+      "A boolean indicating if the token has already been sold at least once. " +
+      "Once flipped to <code>True</code>, it cannot ever be <code>False</code> again. " +
+      "This field can affect the way royalties are distributed.",
+  },
+  isMutable: {
+    size: 1,
+    description:
+      "A boolean indicating if the Metadata Account can be updated. " +
+      "Once flipped to <code>False</code>, it cannot ever be <code>True</code> again.",
+  },
+};
+
 export default {
   types: {
     Data: {
@@ -130,12 +151,16 @@ export default {
       description:
         "An object containing all the arguments for the CreateMetadataAccountArgsV2 instruction.",
       fields: {
-        isMutable: {
-          size: 1,
-          description:
-            "A boolean indicating if the Metadata Account can be updated. " +
-            "Once flipped to <code>False</code>, it cannot ever be <code>True</code> again.",
-        },
+        isMutable: sharedFields.isMutable,
+      },
+    },
+    UpdateMetadataAccountArgsV2: {
+      description:
+        "An object containing all the arguments for the CreateMetadataAccountArgsV2 instruction.",
+      fields: {
+        updateAuthority: sharedFields.updateAuthority,
+        primarySaleHappened: sharedFields.primarySaleHappened,
+        isMutable: sharedFields.isMutable,
       },
     },
   },
@@ -148,10 +173,7 @@ export default {
           description:
             "The discriminator of the account as an enum. Equals to <code>MetadataV1(4)</code>.",
         },
-        updateAuthority: {
-          size: 32,
-          description: "The public key that is allowed to update this account.",
-        },
+        updateAuthority: sharedFields.updateAuthority,
         mint: {
           size: 32,
           description: "The public key of the Mint Account it derives from.",
@@ -159,20 +181,8 @@ export default {
         data: {
           flatten: true,
         },
-        primarySaleHappened: {
-          size: 1,
-          indicative: true,
-          description:
-            "A boolean indicating if the token has already been sold at least once. " +
-            "Once flipped to <code>True</code>, it cannot ever be <code>False</code> again. " +
-            "This field can affect the way royalties are distributed.",
-        },
-        isMutable: {
-          size: 1,
-          description:
-            "A boolean indicating if the Metadata Account can be updated. " +
-            "Once flipped to <code>False</code>, it cannot ever be <code>True</code> again.",
-        },
+        primarySaleHappened: sharedFields.primarySaleHappened,
+        isMutable: sharedFields.isMutable,
         editionNonce: {
           size: 2,
           description:
