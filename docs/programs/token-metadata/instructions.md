@@ -13,7 +13,7 @@ import idl from './idl.js';
 
 ![](./assets/Token-Metadata-Instruction-Create-Metadata.png)
 
-TODO
+This instruction creates and initializes a new [Metadata](/programs/token-metadata/accounts#metadata) account for a given Mint account. It is required that the Mint account has been created and initialized by the Token Program before executing this instruction.
 
 </ProgramInstruction>
 
@@ -23,7 +23,7 @@ TODO
 
 ![](./assets/Token-Metadata-Instruction-Update-Metadata.png)
 
-TODO
+This instruction enables us to update parts of the Metadata account. Note that some fields have constraints limiting how they can be updated. For instance, once the `Is Mutable` field is set to `False`, it cannot be changed back to `True`.
 
 </ProgramInstruction>
 
@@ -33,7 +33,7 @@ TODO
 
 ![](./assets/Token-Metadata-Instruction-Update-Primary-Sale-Flag.png)
 
-TODO
+This instruction flips the `Primary Sale Happened` flag to `True`, indicating that the first sale has happened. Note that this field is [indicative](/programs/understanding-programs#indicative-fields) and typically used by marketplaces to calculate royalties.
 
 </ProgramInstruction>
 
@@ -43,7 +43,7 @@ TODO
 
 ![](./assets/Token-Metadata-Instruction-Verify-Creators.png)
 
-TODO
+This instruction verifies one creator on the Metadata account. As long as the provided `Creator` account signs the transaction, the `Verified` boolean will be set to `True` on the appropriate creator of the `Creators` array.
 
 </ProgramInstruction>
 
@@ -53,7 +53,7 @@ TODO
 
 ![](./assets/Token-Metadata-Instruction-Verify-Creators.png)
 
-TODO
+This instruction unverifies one creator on the Metadata account. As long as the provided `Creator` account signs the transaction, the `Verified` boolean will be set to `False` on the appropriate creator of the `Creators` array.
 
 </ProgramInstruction>
 
@@ -63,7 +63,13 @@ TODO
 
 ![](./assets/Token-Metadata-Instruction-Create-Master-Edition.png)
 
-TODO
+This instruction creates and initializes a new [Master Edition](/programs/token-metadata/accounts#master-edition) account for a given Mint account. It requires the following conditions to be met:
+
+- The Mint account has been created and initialized by the Token Program.
+- The Mint account has zero decimals.
+- The Mint account has a supply of exactly 1 token.
+
+If these conditions are met, **it will transfer the Mint Authority and the Freeze Authority from the Mint account** to the Master Edition PDA ([Check the FAQ to understand why](#TODO)).
 
 </ProgramInstruction>
 
@@ -75,7 +81,11 @@ TODO
 
 ![](./assets/Token-Metadata-Instruction-Mint-New-Edition.png)
 
-TODO
+Given a Masted Edition, this instruction creates a new Edition derived from a new Mint account.
+
+It requires the owner of the Master Edition's Token account to sign the transaction, to prove they are allow to print new editions from it.
+
+It requires the same conditions as the Master Edition account regarding the Mint account and it will also **transfer the Mint Authority and the Freeze Authority from the Mint account** to the new Edition PDA ([Check the FAQ to understand why](#TODO)).
 
 </ProgramInstruction>
 
@@ -83,7 +93,9 @@ TODO
 
 <ProgramInstruction idl={idl} instruction="MintNewEditionFromMasterEditionViaVaultProxy">
 
-TODO
+This instruction is very similar to the one above but it uses a Vault proxy instead of a Token account to prove we are allowed to print new editions from the given Master Edition.
+
+It requires the same conditions as the Master Edition account regarding the Mint account and it will also **transfer the Mint Authority and the Freeze Authority from the Mint account** to the new Edition PDA ([Check the FAQ to understand why](#TODO)).
 
 </ProgramInstruction>
 
@@ -93,7 +105,7 @@ TODO
 
 ![](./assets/Token-Metadata-Instruction-Verify-Collection.png)
 
-TODO
+This instruction verifies the collection of a Metadata account. As long as the provided `Collection Authority` is allowed to update the parent collection and signs the transaction, the `Verified` boolean will be set to `True` on the `Collection` field.
 
 </ProgramInstruction>
 
@@ -103,7 +115,7 @@ TODO
 
 ![](./assets/Token-Metadata-Instruction-Verify-Collection.png)
 
-TODO
+This instruction unverifies the collection of a Metadata account. As long as the provided `Collection Authority` is allowed to update the parent collection and signs the transaction, the `Verified` boolean will be set to `False` on the `Collection` field.
 
 </ProgramInstruction>
 
@@ -111,7 +123,7 @@ TODO
 
 <ProgramInstruction idl={idl} instruction="SetAndVerifyCollection">
 
-TODO
+This instruction updated the `Collection` field of a Metadata account using the provided `Collection Mint` account as long as its `Collection Authority` signs the transaction.
 
 </ProgramInstruction>
 
