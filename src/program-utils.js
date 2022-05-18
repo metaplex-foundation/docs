@@ -42,18 +42,16 @@ export const resolveFields = (idl, structType) => {
       return type.fields.map((field) => {
         const optional = isOptional(field);
         const { type, docs, ...rest } = next(field);
+        const sanitizedDocs = { ...docs };
+        delete sanitizedDocs.fields;
+        delete sanitizedDocs.type;
         const nestedFields = Array.isArray(type) ? { fields: type } : { type };
-        return { optional, ...nestedFields, ...docs, ...rest };
+        return { optional, ...nestedFields, ...sanitizedDocs, ...rest };
       });
     }
 
     if (type.name && type.type) {
-      const docs = type.docs ?? {};
-      const subDocs = type.type.docs ?? {};
-      const mergedDocs = { ...docs, ...subDocs };
-      delete mergedDocs.fields;
-
-      return { ...type, ...mergedDocs, type: next(type.type) };
+      return { ...type, type: next(type.type) };
     }
 
     if (type.option) {
@@ -82,10 +80,10 @@ export const resolveTypes = (idl, type) => {
         idl.docs.types?.[type.name] ??
         undefined;
 
-      return {
-        ...type,
-        type: next(type.type, { docs }),
-      };
+      const subType = next(type.type, { docs });
+      const mergedDocs = { ...subType.docs, ...docs };
+
+      return { ...type, docs: mergedDocs, type: subType };
     }
 
     if (type.kind === "struct") {
@@ -108,17 +106,18 @@ export const resolveTypes = (idl, type) => {
     if (type.defined) {
       const docs = idl.docs.types?.[type.defined] ?? {};
       const definedType = idl.types.find(({ name }) => name === type.defined);
-      const nextType = next(definedType.type, { docs });
+      const subType = next(definedType.type, { docs });
 
       return {
-        ...nextType,
+        ...subType,
         typeName: type.defined,
         docs,
       };
     }
 
     if (type.option) {
-      return { ...type, option: next(type.option, context) };
+      const subType = next(type.option, context);
+      return { ...type, docs: subType.docs, option: subType };
     }
 
     if (type.vec) {
