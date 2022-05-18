@@ -48,7 +48,12 @@ export const resolveFields = (idl, structType) => {
     }
 
     if (type.name && type.type) {
-      return { ...type, type: next(type.type) };
+      const docs = type.docs ?? {};
+      const subDocs = type.type.docs ?? {};
+      const mergedDocs = { ...docs, ...subDocs };
+      delete mergedDocs.fields;
+
+      return { ...type, ...mergedDocs, type: next(type.type) };
     }
 
     if (type.option) {

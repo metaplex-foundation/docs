@@ -29,6 +29,7 @@ const editionSeeds = [
 export default {
   types: {
     Data: {
+      description: "A data object containing the following attributes.",
       fields: {
         name: {
           size: 36,
@@ -129,9 +130,6 @@ export default {
       description:
         "An object containing all the arguments for the CreateMetadataAccountArgsV2 instruction.",
       fields: {
-        data: {
-          description: "A data object containing the following attributes.",
-        },
         isMutable: {
           size: 1,
           description:
