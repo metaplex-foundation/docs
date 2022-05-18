@@ -133,7 +133,9 @@ This instruction updated the `Collection` field of a Metadata account using the 
 
 ![](./assets/Token-Metadata-Instruction-Approve-Collection-Authority.png)
 
-TODO
+This instruction allows the provided `New Collection Authority` account to update the `Collection` field of a Metadata account.
+
+The program keeps track of all the collection authorities that have been approved using [Collection Authority Record](/programs/token-metadata/accounts#collection-authority-record) PDAs.
 
 </ProgramInstruction>
 
@@ -143,7 +145,9 @@ TODO
 
 ![](./assets/Token-Metadata-Instruction-Revoke-Collection-Authority.png)
 
-TODO
+This instruction revokes an existing collection authority, meaning they will no longer be able to update the `Collection` field of the Metadata account associated with that Mint account.
+
+It does this by deleting the provided `Collection Authority Record` PDA.
 
 </ProgramInstruction>
 
@@ -153,7 +157,9 @@ TODO
 
 ![](./assets/Token-Metadata-Instruction-Utilize.png)
 
-TODO
+This instruction reduces the number of uses of a Metadata account.
+
+This can either be done by the `Update Authority` of the Metadata account or by an approved `Use Authority`.
 
 </ProgramInstruction>
 
@@ -163,7 +169,9 @@ TODO
 
 ![](./assets/Token-Metadata-Instruction-Approve-Use-Authority.png)
 
-TODO
+This instruction allows the provided `User` account to utilize a Metadata account.
+
+The program keeps track of all the use authorities that have been approved via [Use Authority Record](/programs/token-metadata/accounts#use-authority-record) PDAs.
 
 </ProgramInstruction>
 
@@ -173,7 +181,9 @@ TODO
 
 ![](./assets/Token-Metadata-Instruction-Revoke-Use-Authority.png)
 
-TODO
+This instruction revokes an existing use authority, meaning they will no longer be able to reduce the uses of the Metadata account associated with that Mint account.
+
+It does this by deleting the provided `Use Authority Record` PDA.
 
 </ProgramInstruction>
 
@@ -181,7 +191,11 @@ TODO
 
 <ProgramInstruction idl={idl} instruction="FreezeDelegatedAccount">
 
-TODO: Freezes a token account that has been fully delegated.
+This instruction freezes a Token account but only if you are the Delegate Authority of the Token account.
+
+Because Mint Authority and Freeze Authority of NFTs are transfered to the Master Edition / Edition PDA, this instruction is the only why for a delegate to prevent the owner of an NFT to transfer it.
+
+This enables a variety of uses-cases such as preventing someone to sell its NFT whilst being listed in an escrowless marketplace.
 
 </ProgramInstruction>
 
@@ -189,7 +203,7 @@ TODO: Freezes a token account that has been fully delegated.
 
 <ProgramInstruction idl={idl} instruction="ThawDelegatedAccount">
 
-TODO: Thaws a token account that has been fully delegated.
+This instruction reverts the instruction above by unfreezing a Token account, only if you are the Delegate Authority of the Token account.
 
 </ProgramInstruction>
 
@@ -197,7 +211,9 @@ TODO: Thaws a token account that has been fully delegated.
 
 <ProgramInstruction idl={idl} instruction="PuffMetadata">
 
-TODO
+This instruction adds padding to the `Name`, `Symbol` and `URI` strings of the provided Metadata account. As a result, these fields will have a fixed size and will be easier to filter.
+
+Note that, this is automatically done by the Token Metadata program when creating and updating Metadata accounts. This instruction serves as a migration tool for old NFTs that do not have that padding.
 
 </ProgramInstruction>
 
@@ -205,6 +221,6 @@ TODO
 
 <ProgramInstruction idl={idl} instruction="ConvertMasterEditionV1ToV2">
 
-TODO
+This instruction serves as a migration tool that upgrades a Master Edition account of an NFT from V1 to V2.
 
 </ProgramInstruction>
