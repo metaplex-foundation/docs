@@ -12,6 +12,24 @@ export const resolveAccount = (idl, account) => {
   };
 };
 
+export const resolveInstruction = (idl, instruction) => {
+  const idlInstruction = idl.instructions.find(
+    ({ name }) => name === instruction
+  );
+  // const docsInstruction = idl.docs.instructions[instruction] ?? {};
+
+  if (!idlInstruction) {
+    throw new Error(`Instruction [${instruction}] not found in IDL`);
+  }
+
+  const resolvedArguments = (idlInstruction.args ?? []).map((arg) => {
+    return resolveFields(arg);
+  });
+  console.log(resolvedArguments);
+
+  return { ...idlInstruction };
+};
+
 export const resolveFields = (idl, idlAccount) => {
   const type = resolveTypes(idl, idlAccount);
 

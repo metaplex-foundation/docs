@@ -3,13 +3,13 @@ sidebar_position: 4
 ---
 
 import ProgramInstruction from '../../../src/program-instruction.jsx';
-import instructions from './instructions.js';
+import idl from './idl.js';
 
 # Instructions
 
 ## Create a Metadata account
 
-<ProgramInstruction instruction={instructions.CreateMetadataAccountV2}>
+<ProgramInstruction idl={idl} instruction="CreateMetadataAccountV2">
 
 ![](./assets/Token-Metadata-Instruction-Create-Metadata.png)
 
@@ -19,7 +19,7 @@ TODO
 
 ## Update a Metadata account
 
-<ProgramInstruction instruction={instructions.UpdateMetadataAccountV2}>
+<ProgramInstruction idl={idl} instruction="UpdateMetadataAccountV2">
 
 ![](./assets/Token-Metadata-Instruction-Update-Metadata.png)
 
@@ -29,7 +29,7 @@ TODO
 
 ## Indicate the primary sale has happened
 
-<ProgramInstruction instruction={instructions.UpdatePrimarySaleHappenedViaToken}>
+<ProgramInstruction idl={idl} instruction="UpdatePrimarySaleHappenedViaToken">
 
 ![](./assets/Token-Metadata-Instruction-Update-Primary-Sale-Flag.png)
 
@@ -39,7 +39,7 @@ TODO
 
 ## Verify a creator
 
-<ProgramInstruction instruction={instructions.SignMetadata}>
+<ProgramInstruction idl={idl} instruction="SignMetadata">
 
 ![](./assets/Token-Metadata-Instruction-Verify-Creators.png)
 
@@ -49,7 +49,7 @@ TODO
 
 ## Unverify a creator
 
-<ProgramInstruction instruction={instructions.RemoveCreatorVerification}>
+<ProgramInstruction idl={idl} instruction="RemoveCreatorVerification">
 
 ![](./assets/Token-Metadata-Instruction-Verify-Creators.png)
 
@@ -59,7 +59,7 @@ TODO
 
 ## Create a Master Edition account
 
-<ProgramInstruction instruction={instructions.CreateMasterEditionV3}>
+<ProgramInstruction idl={idl} instruction="CreateMasterEditionV3">
 
 ![](./assets/Token-Metadata-Instruction-Create-Master-Edition.png)
 
@@ -71,7 +71,7 @@ TODO
 
 ### Via owning the token
 
-<ProgramInstruction instruction={instructions.MintNewEditionFromMasterEditionViaToken}>
+<ProgramInstruction idl={idl} instruction="MintNewEditionFromMasterEditionViaToken">
 
 ![](./assets/Token-Metadata-Instruction-Mint-New-Edition.png)
 
@@ -87,7 +87,7 @@ TODO
 
 ## Verify the collection
 
-<ProgramInstruction instruction={instructions.VerifyCollection}>
+<ProgramInstruction idl={idl} instruction="VerifyCollection">
 
 ![](./assets/Token-Metadata-Instruction-Verify-Collection.png)
 
@@ -97,7 +97,7 @@ TODO
 
 ## Unverify the collection
 
-<ProgramInstruction instruction={instructions.UnverifyCollection}>
+<ProgramInstruction idl={idl} instruction="UnverifyCollection">
 
 ![](./assets/Token-Metadata-Instruction-Verify-Collection.png)
 
@@ -113,7 +113,7 @@ TODO
 
 ## Approve a new Collection Authority
 
-<ProgramInstruction instruction={instructions.ApproveCollectionAuthority}>
+<ProgramInstruction idl={idl} instruction="ApproveCollectionAuthority">
 
 ![](./assets/Token-Metadata-Instruction-Approve-Collection-Authority.png)
 
@@ -123,7 +123,7 @@ TODO
 
 ## Revoke an existing Collection Authority
 
-<ProgramInstruction instruction={instructions.RevokeCollectionAuthority}>
+<ProgramInstruction idl={idl} instruction="RevokeCollectionAuthority">
 
 ![](./assets/Token-Metadata-Instruction-Revoke-Collection-Authority.png)
 
@@ -133,7 +133,7 @@ TODO
 
 ## Reduce the number of uses
 
-<ProgramInstruction instruction={instructions.Utilize}>
+<ProgramInstruction idl={idl} instruction="Utilize">
 
 ![](./assets/Token-Metadata-Instruction-Utilize.png)
 
@@ -143,7 +143,7 @@ TODO
 
 ## Approve a new Use Authority
 
-<ProgramInstruction instruction={instructions.ApproveUseAuthority}>
+<ProgramInstruction idl={idl} instruction="ApproveUseAuthority">
 
 ![](./assets/Token-Metadata-Instruction-Approve-Use-Authority.png)
 
@@ -153,7 +153,7 @@ TODO
 
 ## Revoke an existing Use Authority
 
-<ProgramInstruction instruction={instructions.RevokeUseAuthority}>
+<ProgramInstruction idl={idl} instruction="RevokeUseAuthority">
 
 ![](./assets/Token-Metadata-Instruction-Revoke-Use-Authority.png)
 
@@ -163,7 +163,7 @@ TODO
 
 ## Freeze the token account as a delegate
 
-<ProgramInstruction instruction={instructions.FreezeDelegatedAccount}>
+<ProgramInstruction idl={idl} instruction="FreezeDelegatedAccount">
 
 TODO: Freezes a token account that has been fully delegated.
 
@@ -171,7 +171,7 @@ TODO: Freezes a token account that has been fully delegated.
 
 ## Thaw the token account as a delegate
 
-<ProgramInstruction instruction={instructions.ThawDelegatedAccount}>
+<ProgramInstruction idl={idl} instruction="ThawDelegatedAccount">
 
 TODO: Thaws a token account that has been fully delegated.
 
@@ -179,7 +179,7 @@ TODO: Thaws a token account that has been fully delegated.
 
 ## Add padding to Metadata account fields
 
-<ProgramInstruction instruction={instructions.PuffMetadata}>
+<ProgramInstruction idl={idl} instruction="PuffMetadata">
 
 TODO
 
@@ -187,7 +187,7 @@ TODO
 
 ## Upgrade Master Edition from V1 to V2
 
-<ProgramInstruction instruction={instructions.ConvertMasterEditionV1ToV2}>
+<ProgramInstruction idl={idl} instruction="ConvertMasterEditionV1ToV2">
 
 TODO
 

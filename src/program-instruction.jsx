@@ -2,8 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { startCase } from "lodash";
 import { Accordion, AccordionItem } from "./accordion";
+import { resolveInstruction } from "./program-utils";
 
-export default function ProgramInstruction({ instruction, children }) {
+export default function ProgramInstruction({ idl, instruction, children }) {
+  instruction = resolveInstruction(idl, instruction);
+  console.log(instruction);
+
   return (
     <Accordion>
       <AccordionItem key="description" title="Description" open={true}>
@@ -23,7 +27,8 @@ export default function ProgramInstruction({ instruction, children }) {
 }
 
 ProgramInstruction.propTypes = {
-  instruction: PropTypes.object.isRequired,
+  idl: PropTypes.object.isRequired,
+  instruction: PropTypes.string.isRequired,
   children: PropTypes.any,
 };
 
