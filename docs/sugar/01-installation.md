@@ -20,6 +20,10 @@ brew install openssl@3
 Binaries for the supported OS can be found at:
 - [Sugar Releases](https://github.com/metaplex-foundation/sugar/releases)
 
+:::info
+Recommended Installation Method - Try This First
+:::
+
 To install Sugar pre-built binary on a supported OS, run the following in your terminal:
 
 ```bash
