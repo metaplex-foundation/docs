@@ -103,7 +103,6 @@ The next pages act as in-depth guides on certain features offered by the program
 - [Token Standard](/programs/token-metadata/token-standard)
 - [Printing Limited Editions](/programs/token-metadata/printing-editions)
 - [Certified Collections](/programs/token-metadata/certified-collections)
-- [Semi-Fungible Tokens](/programs/token-metadata/semi-fungible)
 - [Using NFTs](/programs/token-metadata/using-nfts)
 
 Finally, the last two pages answers frequently asked questions and document version updates.
