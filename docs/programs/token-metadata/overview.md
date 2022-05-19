@@ -24,7 +24,7 @@ By attaching more data to the Mint Account, **the Token Metadata program is able
 
 ## A JSON standard
 
-One important attribute of the Metadata Account is the `URI` attribute that points to a JSON file off-chain. This is used to safely provide additional data whilst not being constrained by the fees involved in storing on-chain data. That JSON file [follows a certain standard](/programs/token-metadata/token-standard) that anyone can use to find useful information on tokens.
+One important attribute of the Metadata Account is the `URI` attribute that points to a JSON file off-chain. This is used to safely provide additional data whilst not being constrained by the fees involved in storing on-chain data. That JSON file [follows a certain standard](./token-standard) that anyone can use to find useful information on tokens.
 
 ![Same diagram as the previous one with an arrow pointing out of the "URI" attribute of the Metadata Account, towards a cloud labelled "Off-chain JSON Object". A list of example attributes is displayed below that cloud: "Name, Description, Image, Animation URL, Attributes, etc.".](./assets/Token-Metadata-Overview-3.png)
 
@@ -48,7 +48,7 @@ In this particular yet popular case, the goal of the Metadata Account is to prov
 
 Additionally, the Token Metadata program offers another account specifically for NFTs called the **Master Edition Account**. This account is also a PDA derived from the Mint Account.
 
-Before creating this account, the Token Metadata program will ensure the special characteristics of Non-Fungible Tokens listed above are met. However, it is worth noting that, instead of voiding the Mint Authority, it will transfer both the Mint Authority and the Freeze Authority to the Master Edition PDA to ensure no one can mint or freeze tokens without going through the Token Metadata program. You can [read more about why this decision was made in the FAQ](/programs/token-metadata/faq#TODO).
+Before creating this account, the Token Metadata program will ensure the special characteristics of Non-Fungible Tokens listed above are met. However, it is worth noting that, instead of voiding the Mint Authority, it will transfer both the Mint Authority and the Freeze Authority to the Master Edition PDA to ensure no one can mint or freeze tokens without going through the Token Metadata program. You can [read more about why this decision was made in the FAQ](./faq#TODO).
 
 Thus, **the existence of the Master Edition account acts as proof of Non-Fungibility** for that Mint Account.
 
@@ -82,7 +82,7 @@ To safely identify the fungibility of a token — and, thus, the standard that w
 - `FungibleAsset`: The Mint account is Fungible but has zero decimal places. Having zero decimals means we can treat the token as an asset whose supply is not limited to one. For instance, Fungible Assets can be used in the gaming industry to store resources such as “Wood” or “Iron”.
 - `Fungible`: The Mint account is Fungible and has more than one decimal place. This is more likely going to be a token used as a decentralised currency.
 
-You can [read more about these standards here](/programs/token-metadata/token-standard).
+You can [read more about these standards here](./token-standard).
 
 ![This image shows three diagrams representing all three fungibility standards. From top to bottom. "NonFungible": Shows a Mint Account with the following attributes "Mint Authority = Edition", "Supply = 1", "Decimals = 0" and "Freeze Authority = Edition". It points to two PDAs, one pointing to a Metadata Account and one pointing to both a Master Edition Account and an Edition Account with a big OR in the middle. "FungibleAsset": Shows a Mint Account with the following attribute: "Decimals = 0". It points to a single PDA which points to a Metadata Account. "Fungible": Shows the same diagram as the "FungibleAsset" diagram but instead of "Decimals = 0", it displays "Decimals > 0" under the Mint Account.](./assets/Token-Metadata-Overview-7.png)
 
@@ -94,18 +94,18 @@ The other pages of the “Token Metadata” section aim to document it further a
 
 The next three pages focus on helping you get started with the Token Metadata program and provide detailed information on the accounts and instructions it provides so you get the full picture and can refer back to them in the future.
 
-- [Getting started](/programs/token-metadata/getting-started)
-- [Accounts](/programs/token-metadata/accounts)
-- [Instructions](/programs/token-metadata/instructions)
+- [Getting started](./getting-started)
+- [Accounts](./accounts)
+- [Instructions](./instructions)
 
 The next pages act as in-depth guides on certain features offered by the program.
 
-- [Token Standard](/programs/token-metadata/token-standard)
-- [Printing Limited Editions](/programs/token-metadata/printing-editions)
-- [Certified Collections](/programs/token-metadata/certified-collections)
-- [Using NFTs](/programs/token-metadata/using-nfts)
+- [Token Standard](./token-standard)
+- [Printing Limited Editions](./printing-editions)
+- [Certified Collections](./certified-collections)
+- [Using NFTs](./using-nfts)
 
 Finally, the last two pages answer frequently asked questions and document version updates.
 
-- [FAQ](/programs/token-metadata/faq)
-- [Changelog](/programs/token-metadata/changelog)
+- [FAQ](./faq)
+- [Changelog](./changelog)

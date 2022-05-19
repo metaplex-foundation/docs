@@ -13,7 +13,7 @@ import idl from './idl.js';
 
 ![](./assets/Token-Metadata-Instruction-Create-Metadata.png)
 
-This instruction creates and initializes a new [Metadata](/programs/token-metadata/accounts#metadata) account for a given Mint account. It is required that the Mint account has been created and initialized by the Token Program before executing this instruction.
+This instruction creates and initializes a new [Metadata](./accounts#metadata) account for a given Mint account. It is required that the Mint account has been created and initialized by the Token Program before executing this instruction.
 
 </ProgramInstruction>
 
@@ -33,7 +33,7 @@ This instruction enables us to update parts of the Metadata account. Note that s
 
 ![](./assets/Token-Metadata-Instruction-Update-Primary-Sale-Flag.png)
 
-This instruction flips the `Primary Sale Happened` flag to `True`, indicating that the first sale has happened. Note that this field is [indicative](/programs/understanding-programs#indicative-fields) and typically used by marketplaces to calculate royalties.
+This instruction flips the `Primary Sale Happened` flag to `True`, indicating that the first sale has happened. Note that this field is [indicative](/programs/understanding-programs#indicative-fields) and is typically used by marketplaces to calculate royalties.
 
 </ProgramInstruction>
 
@@ -63,7 +63,7 @@ This instruction unverifies one creator on the Metadata account. As long as the 
 
 ![](./assets/Token-Metadata-Instruction-Create-Master-Edition.png)
 
-This instruction creates and initializes a new [Master Edition](/programs/token-metadata/accounts#master-edition) account for a given Mint account. It requires the following conditions to be met:
+This instruction creates and initializes a new [Master Edition](./accounts#master-edition) account for a given Mint account. It requires the following conditions to be met:
 
 - The Mint account has been created and initialized by the Token Program.
 - The Mint account has zero decimals.
@@ -83,7 +83,7 @@ If these conditions are met, **it will transfer the Mint Authority and the Freez
 
 Given a Masted Edition, this instruction creates a new Edition derived from a new Mint account.
 
-It requires the owner of the Master Edition's Token account to sign the transaction, to prove they are allow to print new editions from it.
+It requires the owner of the Master Edition's Token account to sign the transaction, to prove they are allowed to print new editions from it.
 
 It requires the same conditions as the Master Edition account regarding the Mint account and it will also **transfer the Mint Authority and the Freeze Authority from the Mint account** to the new Edition PDA ([Check the FAQ to understand why](#TODO)).
 
@@ -135,7 +135,7 @@ This instruction updated the `Collection` field of a Metadata account using the 
 
 This instruction allows the provided `New Collection Authority` account to update the `Collection` field of a Metadata account.
 
-The program keeps track of all the collection authorities that have been approved using [Collection Authority Record](/programs/token-metadata/accounts#collection-authority-record) PDAs.
+The program keeps track of all the collection authorities that have been approved using [Collection Authority Record](./accounts#collection-authority-record) PDAs.
 
 </ProgramInstruction>
 
@@ -171,7 +171,7 @@ This can either be done by the `Update Authority` of the Metadata account or by 
 
 This instruction allows the provided `User` account to utilize a Metadata account.
 
-The program keeps track of all the use authorities that have been approved via [Use Authority Record](/programs/token-metadata/accounts#use-authority-record) PDAs.
+The program keeps track of all the use authorities that have been approved via [Use Authority Record](./accounts#use-authority-record) PDAs.
 
 </ProgramInstruction>
 
@@ -193,9 +193,9 @@ It does this by deleting the provided `Use Authority Record` PDA.
 
 This instruction freezes a Token account but only if you are the Delegate Authority of the Token account.
 
-Because Mint Authority and Freeze Authority of NFTs are transfered to the Master Edition / Edition PDA, this instruction is the only why for a delegate to prevent the owner of an NFT to transfer it.
+Because Mint Authority and Freeze Authority of NFTs are transferred to the Master Edition / Edition PDA, this instruction is the only way for a delegate to prevent the owner of an NFT to transfer it.
 
-This enables a variety of uses-cases such as preventing someone to sell its NFT whilst being listed in an escrowless marketplace.
+This enables a variety of use-cases such as preventing someone to sell its NFT whilst being listed in an escrowless marketplace.
 
 </ProgramInstruction>
 
