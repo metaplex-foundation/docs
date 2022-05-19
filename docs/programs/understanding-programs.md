@@ -96,17 +96,24 @@ On the other hand, the `Is Mutable` property is not indicative because the Token
 
 ## Instructions
 
-TODO
+One can interact with a Program using the **Instructions** it provides. Multiple Instructions can be packed into a single **Transaction** that will be sent to the blockchain. Each Transaction is atomic meaning if any of its instructions fails, the whole Transaction will be reverted.
 
-- Accounts
-- Arguments
-- Signers
+Similarly to Accounts, Instructions must be serialized into an array of bytes before they can be sent to the network. The data to be serialized must contain the following information for the Program to execute it.
+
+- **Discriminator**: Similarly to Accounts, Instructions are usually prefixed with a discriminator so the Program can identify which Instruction is being executed.
+- **Accounts**: An array of Account addresses that are affected by this instruction. This can either be because the Account will be read, mutated or both. Note that the order of this array is important since Programs will identify the type of Account provided based on its position.
+- **Arguments**: An array of data fields required by the instruction. It is not uncommon for this array to be empty since Instructions can get most of their information directly from the Accounts. Note that these arguments are comparable to the fields of an Account and, therefore, they can have the same properties mentioned above such as "[optional](#optional-fields)" and "[indicative](#indicative-fields)".
+- **Signers**: An array of signatures for a sub-set of the Accounts provided. This is only needed for Accounts that are required to sign the Instruction. The next section explains this in a bit more details.
 
 📚 **Addional reading**:
 
 - [Solana Documentation — Transactions](https://docs.solana.com/developing/programming-model/transactions)
 - [Solana Documentation — Instructions](https://docs.solana.com/developing/programming-model/transactions#instructions)
 - [Solana Cookbook — Transactions](https://solanacookbook.com/core-concepts/transactions.html)
+
+### Signer and/or Writable Accounts
+
+TODO
 
 ### Cross-Program Invokations (CPI)
 
