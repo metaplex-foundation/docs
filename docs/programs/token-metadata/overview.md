@@ -10,13 +10,13 @@ The Token Metadata program is one of the most important program when dealing wit
 
 It achieves this using [Program Derived Addresses](https://docs.solana.com/developing/programming-model/calling-between-programs#program-derived-addresses) (PDAs) that are _derived_ from the address of Mint Accounts. If you’re not familiar with Solana’s Token program, _Mint Accounts_ are responsible for storing the global information of a Token and _Token Accounts_ store the relationship between a wallet and a Mint Account.
 
-![A simple diagram showing a user icon followed by three blue rectangles in a straight line. From left to right, the rectangles are labeled: “Wallet Account”, “Token Account” and “Mint Account”. The user icon points to the “Wallet Account”, the “Wallet Account” points to the “Token Account” and the “Mint Account” points to the “Token Account”. Under the “Wallet Account” reads “Someone’s wallet”. Under the “Token Account” reads “Stores the amount of tokens owned by the wallet”. Under the “Mint Account” reads “Stores information about the token itself. E.g. its current supply and its authorities.”.](./assets/Token-Metadata-Intro-1.png)
+![A simple diagram showing a user icon followed by three blue rectangles in a straight line. From left to right, the rectangles are labeled: “Wallet Account”, “Token Account” and “Mint Account”. The user icon points to the “Wallet Account”, the “Wallet Account” points to the “Token Account” and the “Mint Account” points to the “Token Account”. Under the “Wallet Account” reads “Someone’s wallet”. Under the “Token Account” reads “Stores the amount of tokens owned by the wallet”. Under the “Mint Account” reads “Stores information about the token itself. E.g. its current supply and its authorities.”.](./assets/Token-Metadata-Overview-1.png)
 
 Whilst Mint Accounts contain a few data attributes such as its current supply, it doesn’t offer the ability to inject standardized data that can be understood by apps and marketplaces.
 
 This is why the Token Metadata program offers a **Metadata Account** that attaches itself to a Mint Account via a PDA.
 
-![Same as previous diagram but with a new “Metadata Account” brown rectangle and a new “PDA” brown pill. The “Mint Account” points upwards to the “PDA” pill which also points upwards to the “Metadata Account” rectangle. Above “Metadata Account” reads “Store additional data on the token such as its name, its symbol, its creators, etc.”.](./assets/Token-Metadata-Intro-2.png)
+![](./assets/Token-Metadata-Overview-2.png)
 
 That Metadata Account holds a lot valuable information that can be used throughout the ecosystem. For instance, it maintains a list of creators for the token. Each creator has a `Verified` attribute that, when `True`, guarantees the token was signed by that creator. Each creator also has a `Share` attribute that can be used by marketplaces to distribute royalties.
 
@@ -26,7 +26,7 @@ By attaching more data to the Mint Account, **the Token Metadata program is able
 
 One important attribute of the Metadata Account is the `URI` attribute that points to a JSON file off-chain. This is used to safely provide additional data whilst not being constraint by the fees involved in storing on-chain data. That JSON file [follows a certain standard](/programs/token-metadata/token-standard) that anyone can use to find useful information on tokens.
 
-IMAGE: metadata with json. Redo image below.
+![](./assets/Token-Metadata-Overview-3.png)
 
 Note that, this JSON file can be stored using a permanent storage solution such as Arweave to ensure it cannot be updated. Additionally, one can use the `Is Mutable` attribute of the Metadata Account to make it immutable and, therefore, forbid the `URI` attribute to ever be changed. Using this combination, we can guarantee the immutability of the off-chain JSON file.
 
@@ -42,7 +42,7 @@ More precisely, NFTs in Solana are Mint Accounts with the following characterist
 
 What we end up with is a token that cannot be traded with something of the same kind, which is the definition of a Non-Fungible Token (NFT).
 
-![Same as previous diagram but without the subtexts next to the Rectangles. Instead, we add small white rectangles under the blue rectangles to represent their data. Under the “Token Account” rectangle, we have the following data: “Amount = 1”. Under the “Mint Account” rectangle, we have the following data: “Mint Authority = None”, “Supply = 1” and “Decimals = 0”.](./assets/Token-Metadata-Intro-3.png)
+![](./assets/Token-Metadata-Overview-4.png)
 
 In this particular yet popular case, the goal of the Metadata Account is to provide the actual data of that NFT in order to make it a useful Digital Asset.
 
@@ -52,7 +52,7 @@ Before creating this account, the Token Metadata program will ensure the special
 
 Thus, **the existence of the Master Edition account acts as a proof of Non-Fungibility** for that Mint Account.
 
-IMAGE: ME PDA
+![](./assets/Token-Metadata-Overview-5.png)
 
 ## Printing Editions
 
@@ -68,7 +68,7 @@ Each Print NFT is made of its own Mint Account and its own Metadata Account whos
 
 Note that the Master Edition account and the Edition account share the same seeds for their PDA. That means, an NFT can be one or the other but not both.
 
-IMAGE: ME + E PDAs
+![](./assets/Token-Metadata-Overview-6.png)
 
 ## Semi-Fungible Tokens
 
@@ -84,7 +84,7 @@ To safely identify the fungibility of a token — and, thus, the standard that w
 
 You can [read more about these standards here](/programs/token-metadata/token-standard).
 
-IMAGE: recap of all three standards
+![](./assets/Token-Metadata-Overview-7.png)
 
 ## And a lot more
 

@@ -51,7 +51,7 @@ This instruction verifies one creator on the Metadata account. As long as the pr
 
 <ProgramInstruction idl={idl} instruction="RemoveCreatorVerification">
 
-![](./assets/Token-Metadata-Instruction-Verify-Creators.png)
+![](./assets/Token-Metadata-Instruction-Unverify-Creators.png)
 
 This instruction unverifies one creator on the Metadata account. As long as the provided `Creator` account signs the transaction, the `Verified` boolean will be set to `False` on the appropriate creator of the `Creators` array.
 
@@ -113,7 +113,7 @@ This instruction verifies the collection of a Metadata account. As long as the p
 
 <ProgramInstruction idl={idl} instruction="UnverifyCollection">
 
-![](./assets/Token-Metadata-Instruction-Verify-Collection.png)
+![](./assets/Token-Metadata-Instruction-Unverify-Collection.png)
 
 This instruction unverifies the collection of a Metadata account. As long as the provided `Collection Authority` is allowed to update the parent collection and signs the transaction, the `Verified` boolean will be set to `False` on the `Collection` field.
 
