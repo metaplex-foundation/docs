@@ -36,27 +36,57 @@ Once an Account is created, it is usually immeditely initialized by a Program wh
 
 📚 **Addional reading**:
 
-- TODO
-
 - [Solana Documentation — Accounts](https://docs.solana.com/developing/programming-model/accounts)
 - [Solana Cookbook — Accounts](https://solanacookbook.com/core-concepts/accounts.html)
 
 ### Program Derived Addresses (PDA)
 
-TODO
+There exist another type of Account, called **Program Derived Account**, whose address is not the public key of a cryptographic key pair but instead is algorithmically derived from the public key of the Program that owns the Account. We call that address a **Program Derived Address** or **PDA** for short.
+
+Since the address is always derived from the public key of the Program, no other Program can algoritmically derive the same address. On top of that, additional **Seeds** can be provided to the algorithm add more context to the address.
+
+This has a variety of use cases such as enabling programs to sign [Cross-Program Invokations](#cross-program-invokations) or enabling the creation of accounts within an address that can be derived deterministically.
+
+Note that, by design, Program Derived Addresses will never conflict with cryptographically generated public keys. All cryptographic public keys are part of what we call an [Elliptic-curve](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography). If, when generating a PDA, the algorithm generated a key that falls on that curve, a **Bump** is added to the address and is incremented by one until the generated address no longer falls on the curve.
 
 📚 **Addional reading**:
 
 - [Solana Documentation — PDAs](https://docs.solana.com/developing/programming-model/calling-between-programs#program-derived-addresses)
 - [Solana Cookbook — PDAs](https://solanacookbook.com/core-concepts/pdas.html)
 
+### Account data
+
+Whether we are dealing with a regular Account or a Program Derived Account, Accounts store data as a serialized array of bytes. Therefore, it is the reponsibility of the Program to defined a data structure for each of the Accounts it manages as well as providing a way of differenciating these Accounts so we know which data structure to apply to them.
+
+### Discriminators
+
+Discriminators are used to differentiate between different types of Accounts within a Program. They can be implemented in many ways but here are the three most common ones:
+
+- **Use a shared Enum as the first byte of every account**. By prefixing every Account with a shared Enum, we can use the first byte of the serialized data to indentify the Account. This is a simple and efficient way to implement discriminators. Most of the programs maintained by Metaplex use this approach.
+- **Use a deterministic hash as the first byte of every account**. This is very similar to the previous point but it uses a hash instead of an Enum. Programs created using the Anchor framework end up using this approach implicitely because Anchor will automatically generate that hash baseed on the Account's name.
+- **No discriminator, use the size of the Account**. If all of the accounts managed by a Program are of fixed size and if they all have different sizes, then we can examine the lenght of that array of bytes to determine which Account we are dealing with. This is a performant approach since we don't need to add extra bytes to the data but it limits how flexible a Program can be with its Accounts. The [SPL Token Program](https://spl.solana.com/token) by Solana uses this approach since it only maintains two accounts of different fixed sizes.
+
+### Field types, sizes and offsets
+
+Each Account defines its own data structure by using fields of different types. These types will affect the number of bytes required to store the field. For instance, a `i8` is a 8-bit integer that will require 1 byte to store whereas a `i64` is a 64-bit integer which will require 8 bytes to store.
+
+Since, in the blockchain, Accounts are just arrays of bytes, it is important to understand the size of each field and where they start in this array, i.e. their offset. This can be useful when fetching multiple accounts from a given program [using a `memcpm` filter](https://solanacookbook.com/guides/get-program-accounts.html#memcmp).
+
+Note that not all fields have a fixed size. For instance, a `Vec<i8>` is a vector of 8-bit integers that may contain none, one or many items. As such, it becomes a lot more complicated to filter accounts based on fields that are located after the first field of variable size.
+
 ### Optional fields
 
-An “optional” field means that there exists a scenario where that field can be empty. Concretely, the value `None` will be assigned and the program will act accordingly when using that field.
+A field can also be defined as **optional**, meaning there exists a scenario where that field can be empty.
+
+This field will use an additional byte as a prefix to indicate whether the field is empty or not.
+
+Concretely, the value `None` will be assigned and the program will act accordingly when using that field.
 
 ### Indicative fields
 
-An “Indicative” field means that the information provided by the field is not used by the program itself. Instead, it _indicates_ a certain information to third-parties. Note that the program will still enforce the integrity of the data but it will simply not use that information internally.
+Whilst this is not something that is explicitly defined in the data structure, the documentation will mark certain fields as **indicative**.
+
+An indicative field means that the information provided by the field is not used by the program itself. Instead, it _indicates_ a certain information to third-parties. Note that the program will still enforce the integrity of the data but it will simply not use that information internally.
 
 Let’s take the Metadata Account as an example.
 
@@ -67,6 +97,12 @@ On the other hand, the `Is Mutable` property is not indicative because the Token
 ## Instructions
 
 TODO
+
+- Accounts
+- Arguments
+- Signers
+
+📚 **Addional reading**:
 
 - [Solana Documentation — Transactions](https://docs.solana.com/developing/programming-model/transactions)
 - [Solana Documentation — Instructions](https://docs.solana.com/developing/programming-model/transactions#instructions)
