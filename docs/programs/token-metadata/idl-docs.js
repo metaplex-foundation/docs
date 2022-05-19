@@ -240,7 +240,7 @@ export default {
         tokenStandard: {
           size: 2,
           description:
-            'This enum captures the fungibility of the token. You can <a href="#TODO">learn more about the token standard here</a>.',
+            'This enum captures the fungibility of the token. You can <a href="/programs/token-metadata/token-standard">learn more about the token standard here</a>.',
         },
         collection: {
           size: 34,
@@ -252,7 +252,7 @@ export default {
           size: 18,
           description:
             'This field can make NFTs usable. Meaning you can load it with a certain amount of "uses" ' +
-            'and use it until it has run out. You can <a href="#TODO">learn more about using NFTs here</a>.',
+            'and use it until it has run out. You can <a href="/programs/token-metadata/using-nfts">learn more about using NFTs here</a>.',
         },
       },
     },
