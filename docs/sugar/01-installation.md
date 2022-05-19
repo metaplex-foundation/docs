@@ -22,7 +22,6 @@ Binaries for the supported OS can be found at:
 
 :::info
 Recommended Installation Method - Try This First
-:::
 
 To install Sugar pre-built binary on a supported OS, run the following in your terminal:
 
@@ -31,6 +30,7 @@ bash <(curl -sSf https://raw.githubusercontent.com/metaplex-foundation/sugar/mai
 ``` 
 
 This will download the latest binary version, unzip the binary and copy it to a folder in your `PATH` environment. If you have Rust, the binary will be copied to `~/.cargo/bin`, otherwise `~/bin`. Once the binary is at that location, your OS will find it automatically and you will be able to run the sugar binary from any directory in your file system as a normal command-line application.
+:::
 
 :::caution
 The modifications to your `PATH` variable may not take effect until the terminal is restarted. Follow the instructions of the installation script to see whether the terminal needs to be restarted or not.
