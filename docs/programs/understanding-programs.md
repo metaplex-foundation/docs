@@ -155,20 +155,29 @@ We try our best to provide a consistent visual language that is documented below
 - The Account that stores the relationship — by keeping track of the other Acccount's address – has a little triangle at the end of the gray line.
 - When Accounts are represented with their data attributes, a dashed gray line is used instead to link the data attribute with the Account it points to.
 
-![TODO](./assets/Understanding-Programs-Diagrams-Relationships.png)
+![](./assets/Understanding-Programs-Diagrams-Relationships.png)
 
 ### PDAs
 
-![TODO](./assets/Understanding-Programs-Diagrams-PDA.png)
+- **PDA Accounts are represented with brown rectangles** and PDA Addresses are displayed as brown rounded rectangles.
+- PDA Addresses point to the PDA Account that exist at their address.
+- Accounts used to derive a PDA Address point that PDA Address.
+- PDA Addresses sometimes list their seeds next to them. PID referes to the Program ID or public key. Seeds that are wrapped in double quotes are literal seeds.
 
-![TODO](./assets/Understanding-Programs-Diagrams-PDA-Complex.png)
+![](./assets/Understanding-Programs-Diagrams-PDA.png)
 
-TODO
+Note that PDA Addresses can sometime host different types of Account. For instance, the Edition PDA of an NFT can either host a Master Edition Account or an Edition Account based on whether the NFT is the original or not. In this case, PDA Addresses in diagrams can point to more than one PDA Account to show either Account can live at this address.
+
+![](./assets/Understanding-Programs-Diagrams-PDA-Complex.png)
 
 ### Instructions
 
-![TODO](./assets/Understanding-Programs-Diagrams-Instructions.png)
+- **Instructions are represented with pink skewed rectangles** and point to the Accounts that they change.
+- Arrows pointing out of Instructions usually explain in what way the Instruction affects the Account.
+- Arrows can also point to data attributes inside Account to be slighly more specific.
 
-![TODO](./assets/Understanding-Programs-Diagrams-Instructions-Complex.png)
+![](./assets/Understanding-Programs-Diagrams-Instructions.png)
 
-TODO
+Showing all Accounts required for an Instruction to be executed in a diagram would make the visual representation too messy and complicated to understand. However, certain diagrams will use arrows from Accounts to Instructions to highlight a subset of the Instruction's required Accounts.
+
+![](./assets/Understanding-Programs-Diagrams-Instructions-Complex.png)
