@@ -136,4 +136,10 @@ Cross-Program Invokations allow Program to execute nested Instructions within th
 
 ## Understanding diagrams
 
+Each Program's documentation contains its fair share of diagrams to provide a visual representation of how their Accounts are structured and how they are affected by Instructions.
+
+We try our best to provide a consistent visual language that is documented below.
+
+### Accounts
+
 TODO
