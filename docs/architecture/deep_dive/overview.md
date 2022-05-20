@@ -90,7 +90,7 @@ The instruction set for the token metadata contract can be found [here](https://
 
 This object can be used to provide basic info about SPL tokens on Solana, which include the name, symbol, URI and seller fees, as well as whether or not the sale of this metadata has happened yet. Anybody carrying a token from this mint can mark this primary sale as having happened via the `update_primary_sale_happened_via_token` command. There is obviously no incentive for a primary owner to do this as it precludes them from getting full royalties on the first sale, but a secondary owner must do this if they ever want to see fees from selling!
 
-Metadata accounts are simply PDA addresses with derived key of `['metaplex', metaplex_program_id, mint_id]`.
+Metadata accounts are simply PDA addresses with derived key of `['metadata', token_metadata_program_id, mint_id]`.
 
 ### Master Edition
 
@@ -98,7 +98,7 @@ In addition to simple metadata, a Master Edition object can be created. Master E
 
 The creator can set the maximum supply of the master edition just like a regular mint on Solana, with the main difference being that each print is a numbered edition created from it. To mint a new limited edition, this master edition token must be presented, along with a new mint + token, to the `mint_new_edition_from_master_edition_via_token` endpoint.
 
-Master Edition accounts are PDA addresses of `['metaplex', metaplex_program_id, mint_id, 'edition']`.
+Master Edition accounts are PDA addresses of `['metadata', token_metadata_program_id, mint_id, 'edition']`.
 
 ### Edition
 
@@ -106,7 +106,7 @@ An edition represents a copy of an NFT, and is created from a Master Edition. Ea
 
 Editions are created by presenting the Master Edition token, along with a new mint that lacks a Metadata account and a token account containing one token from that mint to the `mint_new_edition_from_master_edition_via_token` endpoint. This endpoint will create both an immutable Metadata based on the parent Metadata and a special Edition struct based on the parent Master Edition struct.
 
-The Edition has the same PDA as a Master Edition to force collision and prevent a user from having a mint with both, `['metaplex', metaplex_program_id, mint_id, 'edition']`.
+The Edition has the same PDA as a Master Edition to force collision and prevent a user from having a mint with both, `['metadata', token_metadata_program_id, mint_id, 'edition']`.
 
 ## Concepts
 
@@ -118,7 +118,7 @@ This is important to internalize, because it means you as a Rust developer can t
 
 ### Co-Creators
 
-The SPL Metadata program supports storing up to five co-creators that share potential future profits from sales for the items as defined by `seller_fee_basis_points` . Each creator needs to be added as part of the minting process and is required to approve metadata that was used in his name using the `sign_metadata` endpoint. Unverified artwork cannot be sold with Metaplex.
+The Token Metadata program supports storing up to five co-creators that share potential future profits from sales for the items as defined by `seller_fee_basis_points` . Each creator needs to be added as part of the minting process and is required to approve metadata that was used in his name using the `sign_metadata` endpoint. Unverified artwork cannot be sold with Metaplex.
 
 During the first sale, creators share in 100% of the proceeds, while in follow up sales, they share in proceeds as a percentage determined by `seller_fee_basis_points`. Whether or not a metadata is considered in second sale or not is determined by the `primary_sale_happened` boolean on the Metadata account.
 
