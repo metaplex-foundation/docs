@@ -142,4 +142,33 @@ We try our best to provide a consistent visual language that is documented below
 
 ### Accounts
 
+- **Accounts are represented with blue rectangles**. Each Account has a smaller gray rectangle below them to indicate which Program owns that Account.
+- Accounts belonging to the System Program are represented in purple to differentiate them from other Accounts more easily. These are typically "Wallet Accounts" or Accounts that have not yet been initialized by a Program.
+- Underneath the "Owner" rectangle, additional white rectangles can be used to display the data within the Account.
+- **Optional data attributes** in these "Data" rectangles are written in **italic**.
+- In certain situations, we may use an equal sign `=` to **show the value assigned** to a data attribute.
+- In certain situations, we may **highlight a data attribute in bold** to bring more attention to it.
+
+![TODO](./assets/Understanding-Programs-Diagrams-Accounts.png)
+
+- Relationships between Accounts are **represented with solid grey lines**.
+- The Account that stores the relationship — by keeping track of the other Acccount's address – has a little triangle at the end of the gray line.
+- When Accounts are represented with their data attributes, a dashed gray line is used instead to link the data attribute with the Account it points to.
+
+![TODO](./assets/Understanding-Programs-Diagrams-Relationships.png)
+
+### PDAs
+
+![TODO](./assets/Understanding-Programs-Diagrams-PDA.png)
+
+![TODO](./assets/Understanding-Programs-Diagrams-PDA-Complex.png)
+
+TODO
+
+### Instructions
+
+![TODO](./assets/Understanding-Programs-Diagrams-Instructions.png)
+
+![TODO](./assets/Understanding-Programs-Diagrams-Instructions-Complex.png)
+
 TODO
