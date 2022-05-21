@@ -27,6 +27,11 @@ ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts upload \
     -c example \
     ./assets
 ```
+:::caution
+
+The `-e` flag specifies the environment and is comprised of the following options: `mainnet-beta`, `testnet` & `devnet`. Please make sure you do not have any typos before executing the above command as all your funds may be irretrievably drained if you ran it the command with a typo in the `-e` flag.
+
+:::
 
 :::warning
 
