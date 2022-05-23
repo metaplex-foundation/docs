@@ -7,7 +7,7 @@ The current version supports only systems running **macOS**, **Linux**, or anoth
 
 When installing from crates.io or from source on Ubuntu or WSL (Windows Subsystem Linux) you may need to install some additional dependencies:
 ```bash
-sudo apt install libssl-dev libudev-dev pkg-config
+sudo apt install libssl-dev libudev-dev pkg-config unzip
 ```
 macOS users may need to install the OpenSSL library, which can be done using [Homebrew](https://brew.sh):
 ```bash
