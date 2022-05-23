@@ -8,17 +8,17 @@ sidebar_position: 9
 
 When using [the `getProgramAccounts` method from the RPC API](https://docs.solana.com/developing/clients/jsonrpc-api#getprogramaccounts), it is common to want to filter accounts by fields using `memcmp` filters.
 
-Since the `memcmp` filter compares arrays of bytes, this approach requires us to know the data structure of the account. Additionally, it requires that data structure to be of fixed length so we can find the position of the field we're looking for, for every single account.
+Since the `memcmp` filter compares arrays of bytes, this approach requires us to know the data structure of the account. Additionally, it requires the length of that data structure to be fixed so we can find the position of the field we're looking for, for every single account.
 
-Unfortunately, the `creators` field of the Metadata Account is a vector that can contains between one to five creators. This means, the position of every field after it will depend on how many creators the account has.
+Unfortunately, the `creators` field of the Metadata Account is a vector that can contain between one to five creators. This means, the position of every field after it will depend on how many creators the account has.
 
-Note that adding new fields to an account without adding breaking change requires to append optional fields to the accounts. This unfortunately means that any new features we add to the Metadata Account will be after the `creators` field and therefore will be challenging to filter via `getProgramAccounts`.
+Note that adding new fields to an account without adding breaking change requires appending optional fields to the accounts. This unfortunately means that any new features we add to the Metadata Account will be after the `creators` field and therefore will be challenging to filter via `getProgramAccounts`.
 
 There are several ways to solve this problem.
 
 - If every single account we are trying to filter has **the same number of creators**, then we can figure out the offset of the next field. We can do this by adding `4 + 34 * n` to the `creators` offset, where `n` is the fixed number of creators and `4` is because 4 bytes are used to store the length of the vector. This unblocks us for every field of fixed length present after the `creators` field. Unfortunately, the problem reoccurs as soon as we reach another field of variable size such as another vector or an optional field. Therefore, this solution is only valid if we know the exact length of all variable fields before the field we are trying to filter with.
 - Another solution is to **crawl transactions to find the accounts we're looking for**. This approach is a bit more complex and requires us to implement a custom procedure that fits our needs. For instance, we can use `getSignaturesForAddress` to get all transactions associated with an account and then use `getTransaction` on each of them to access their transaction data before filtering the ones that matter for our use case. It is also worth considering that this approach might not be the most future-proof solution since we might end up relying on instructions that could be deprecated in favour of new ones.
-- Finally, **the most robust solution is to index the data we're looking for using a [Geyser Plugin](https://docs.solana.com/developing/plugins/geyser-plugins)**. This currently requires a significant setup but we end up with a reliable data store that mirrors the data in the Solana blockchain. Not only it fixes our filtering issue but it also provides a much more convenient and performant way to access our data.
+- Finally, **the most robust solution is to index the data we're looking for using a [Geyser Plugin](https://docs.solana.com/developing/plugins/geyser-plugins)**. This currently requires a significant setup but we end up with a reliable data store that mirrors the data in the Solana blockchain. Not only does it fix our filtering issue but it also provides a much more convenient and performant way to access our data.
 
 ### How can I filter Metadata accounts by collection using `getProgramAccounts`?
 
@@ -30,7 +30,7 @@ The solutions listed above apply here too but, because this is a common problem,
 
 ### Why are the mint and freeze authorities transferred to the Edition PDA?
 
-One question we get asked a lot is: Why does the Token Metadata program transfer the `Mint Authority` and the `Freeze Authority` of the Mint Account to the Edition PDA when creating NFTs? Why not just voiding them by setting them to `None`?
+One question we get asked a lot is: Why does the Token Metadata program transfer the `Mint Authority` and the `Freeze Authority` of the Mint Account to the Edition PDA when creating NFTs? Why not just void them by setting them to `None`?
 
 Let's take a look at why this is the case for both of these authorities separately.
 
@@ -40,19 +40,19 @@ Controlling the Mint Authority is a crucial step for ensuring the non-fungibilit
 
 One way to prevent this from happening is to set the Mint Authority to `None` to ensure no one will ever be able to mint any more tokens for that NFT. However, the Token Metadata program sets that authority to the Edition PDA — which links to a Master Edition account or an Edition account.
 
-**But Why?** The short answer is: **it enable us to make changes to the Token Metadata program at a much lower cost**.
+**But Why?** The short answer is: **it enables us to make changes to the Token Metadata program at a much lower cost**.
 
-Loosing the Mint Authority is an irreversible action which means we could never leverage it to migrate NFTs to newer versions. For instance, say we wanted to change the way we Original and Printed NFTs are structured and, instead of using a Edition accounts, we wanted to leverage tokens. Without the Mint Authority, migrating NFTs to the new version would simply be impossible.
+Losing the Mint Authority is an irreversible action which means we could never leverage it to migrate NFTs to newer versions. For instance, say we wanted to change the way we Original and Printed NFTs are structured and, instead of using Edition accounts, we wanted to leverage tokens. Without the Mint Authority, migrating NFTs to the new version would simply be impossible.
 
-**Loosing this authority would limit the scope of features and changes we could implement in the future** and that's why we're not setting it to `None`.
+**Losing this authority would limit the scope of features and changes we could implement in the future** and that's why we're not setting it to `None`.
 
-However, that doesn't mean someone can use that Mint Authority to mint more tokens on your NFT. The Mint Authority isn't transfered to someone's public key, it is transfered to a PDA that belongs to the Token Metadata program. Therefore, only an instruction provided by the program could make use of it and such instruction does not exist on the program. It is important to note that the Token Metadata program is completely open source and, thus, anyone can inspect it to ensure the Mint Authority is not used to mint more tokens.
+However, that doesn't mean someone can use that Mint Authority to mint more tokens on your NFT. The Mint Authority isn't transferred to someone's public key, it is transferred to a PDA that belongs to the Token Metadata program. Therefore, only an instruction provided by the program could make use of it and such instruction does not exist on the program. It is important to note that the Token Metadata program is completely open-source and, thus, anyone can inspect it to ensure the Mint Authority is not used to mint more tokens.
 
 #### Freeze Authority
 
 Controlling the Freeze Authority allows someone to freeze a Token account, making that account immutable until it is thawed.
 
-One of the reasons this authority is transfered to the Edition PDA of the Token Metadata program is, similarly to the Mint Authority, it increases the scope of features and changes we can provide in the future.
+One of the reasons this authority is transferred to the Edition PDA of the Token Metadata program is, similarly to the Mint Authority, it increases the scope of features and changes we can provide in the future.
 
 However, contrary to the Mint Authority, we actually make use of that authority in the program.
 
@@ -60,7 +60,7 @@ The `FreezeDelegatedAccount` and `ThawDelegatedAccount` instructions are the onl
 
 ### Why does the Metadata account have both on-chain and off-chain data?
 
-The Metadata account contains on-chain data yet it also has a `URI` attribute which points to an off-chain JSON file which provide addtionnal data. so why is that? Can't we just store everything on-chain? There are several issues with that.
+The Metadata account contains on-chain data yet it also has a `URI` attribute which points to an off-chain JSON file which provides additional data. so why is that? Can't we just store everything on-chain? There are several issues with that.
 
 - We have to pay rent to store data on-chain. If we had to store everything within the Metadata account, which may include long texts such as the description of an NFT, it would require a lot more bytes and minting an NFT would suddenly be a lot more expensive.
 - On-chain data is much less flexible. Once an account is created using a certain structure, it cannot easily be changed. Therefore, if we had to store everything on-chain, the NFT standard would be a lot harder to evolve with the demands of the ecosystem.
