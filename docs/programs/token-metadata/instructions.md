@@ -197,6 +197,8 @@ Because Mint Authority and Freeze Authority of NFTs are transferred to the Maste
 
 This enables a variety of use-cases such as preventing someone to sell its NFT whilst being listed in an escrowless marketplace.
 
+Here's a small guide on [how to freeze a Token account using this instruction](https://github.com/metaplex-foundation/metaplex-program-library/issues/470#issuecomment-1132700105).
+
 </ProgramInstruction>
 
 ## Thaw the token account as a delegate
