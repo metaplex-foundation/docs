@@ -2,6 +2,11 @@
 sidebar_position: 5
 ---
 
+import { Accordion, AccordionItem } from '../../../src/accordion.jsx';
+import { AccordionTokenStandard } from '../../../src/accordion-token-standard.jsx';
+import { AccordionCode } from '../../../src/accordion-code.jsx';
+import tokenStandard from './token-standard';
+
 # Token Standard
 
 ## Introduction
@@ -46,14 +51,12 @@ Each Token Standard type has its own JSON schema which are defined below.
 
 These are simple SPL tokens with limited metadata and supply >= 0. Examples are USDC, GBTC and RAY.
 
-| Field       | Type   | Description                 |
-| ----------- | ------ | --------------------------- |
-| name        | string | Name of the token.          |
-| symbol      | string | Symbol of the token.        |
-| description | string | Description of the token.   |
-| image       | string | URI pointing to token logo. |
-
-Example Fungible token JSON metadata:
+<Accordion>
+<AccordionTokenStandard
+    fields={tokenStandard.fungible}
+    open={true}
+></AccordionTokenStandard>
+<AccordionCode title="Example">
 
 ```json
 {
@@ -64,29 +67,19 @@ Example Fungible token JSON metadata:
 }
 ```
 
+</AccordionCode>
+</Accordion>
+
 ## The Fungible Asset Standard
 
 These are fungible tokens with more extensive metadata and supply >= 0. An example of this kind of token is something the community has been calling "semi-fungible tokens" often used to represent a fungible but attribute-heavy in-game item such as a sword or a piece of wood.
 
-| Field         | Type   | Description                                                                    |
-| ------------- | ------ | ------------------------------------------------------------------------------ |
-| name          | string | Name of the asset.                                                             |
-| symbol        | string | Symbol of the asset.                                                           |
-| description   | string | Description of the asset.                                                      |
-| image         | string | URI pointing to asset image.                                                   |
-| animation_url | string | URI pointing to asset animation.                                               |
-| external_url  | string | URI pointing to an external url defining the asset, the game's main site, etc. |
-| attributes    | array  | Array of attributes defining the characteristics of the asset.                 |
-|               |        |                                                                                |
-
-**Attribute**
-
-| Field      | Type   | Description            |
-| ---------- | ------ | ---------------------- |
-| trait_type | string | The type of attribute. |
-| value      | string | The attribute value.   |
-
-Example Fungible Asset JSON metadata:
+<Accordion>
+<AccordionTokenStandard
+    fields={tokenStandard.fungibleAsset}
+    open={true}
+></AccordionTokenStandard>
+<AccordionCode title="Example">
 
 ```json
 {
@@ -117,29 +110,19 @@ Example Fungible Asset JSON metadata:
 }
 ```
 
+</AccordionCode>
+</Accordion>
+
 ## The Non-Fungible Standard
 
-These are the "standard" non-fungible tokens the community is already familiar with and have both a Metadata PDA and a Master Edition PDA. Examples of these are Solana Monkey Business, Stylish Studs and Thugbirdz.
+These are the "standard" non-fungible tokens the community is already familiar with and have both a Metadata PDA and a Master Edition (or Edition) PDA. Examples of these are Solana Monkey Business, Stylish Studs and Thugbirdz.
 
-| Field         | Type   | Description                                                                    |
-| ------------- | ------ | ------------------------------------------------------------------------------ |
-| name          | string | Name of the asset.                                                             |
-| symbol        | string | Symbol of the asset.                                                           |
-| description   | string | Description of the asset.                                                      |
-| image         | string | URI pointing to asset image.                                                   |
-| animation_url | string | URI pointing to asset animation.                                               |
-| external_url  | string | URI pointing to an external url defining the asset, the game's main site, etc. |
-| attributes    | array  | Array of attributes defining the characteristics of the asset.                 |
-
-**Attribute**
-
-| Field      | Type   | Description            |
-| ---------- | ------ | ---------------------- |
-| trait_type | string | The type of attribute. |
-| value      | string | The attribute value.   |
-
-Example Non-Fungible Token JSON metadata:
-Note: Creators, Symbol
+<Accordion>
+<AccordionTokenStandard
+    fields={tokenStandard.nonFungible}
+    open={true}
+></AccordionTokenStandard>
+<AccordionCode title="Example">
 
 ```json
 {
@@ -158,11 +141,6 @@ Note: Creators, Symbol
       "value": "value2"
     }
   ],
-  //@deprecated -> do not use - may be removed in a future release
-  "collection": {
-    "name": "Solflare X NFT",
-    "family": "Solflare"
-  },
   "properties": {
     "files": [
       {
@@ -180,7 +158,18 @@ Note: Creators, Symbol
       }
     ],
     "category": "video",
-    //@deprecated -> do not use - may be removed in a future release
+
+    // @deprecated
+    // Do not use - may be removed in a future release.
+    // Use on-chain data instead.
+    "collection": {
+      "name": "Solflare X NFT",
+      "family": "Solflare"
+    },
+
+    // @deprecated
+    // Do not use - may be removed in a future release.
+    // Use on-chain data instead.
     "creators": [
       {
         "address": "xEtQ9Fpv62qdc1GYfpNReMasVTe9YW5bHJwfVKqo72u",
@@ -190,3 +179,6 @@ Note: Creators, Symbol
   }
 }
 ```
+
+</AccordionCode>
+</Accordion>
