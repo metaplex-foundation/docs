@@ -30,15 +30,33 @@ The solutions listed above apply here too but, because this is a common problem,
 
 ### Why are the mint and freeze authorities transferred to the Edition PDA?
 
-TODO
+One question we get asked a lot is: Why does the Token Metadata program transfer the `Mint Authority` and the `Freeze Authority` of the Mint Account to the Edition PDA when creating NFTs? Why not just voiding them by setting them to `None`?
+
+Let's take a look at why this is the case for both of these authorities separately.
 
 #### Mint Authority
 
-TODO
+Controlling the Mint Authority is a crucial step for ensuring the non-fungibility of a token. Without this protection, someone could then mint more tokens for a given NFT and therefore make the NFT fungible.
+
+One way to prevent this from happening is to set the Mint Authority to `None` to ensure no one will ever be able to mint any more tokens for that NFT. However, the Token Metadata program sets that authority to the Edition PDA — which links to a Master Edition account or an Edition account.
+
+**But Why?** The short answer is: **it enable us to make changes to the Token Metadata program at a much lower cost**.
+
+Loosing the Mint Authority is an irreversible action which means we could never leverage it to migrate NFTs to newer versions. For instance, say we wanted to change the way we Original and Printed NFTs are structured and, instead of using a Edition accounts, we wanted to leverage tokens. Without the Mint Authority, migrating NFTs to the new version would simply be impossible.
+
+**Loosing this authority would limit the scope of features and changes we could implement in the future** and that's why we're not setting it to `None`.
+
+However, that doesn't mean someone can use that Mint Authority to mint more tokens on your NFT. The Mint Authority isn't transfered to someone's public key, it is transfered to a PDA that belongs to the Token Metadata program. Therefore, only an instruction provided by the program could make use of it and such instruction does not exist on the program. It is important to note that the Token Metadata program is completely open source and, thus, anyone can inspect it to ensure the Mint Authority is not used to mint more tokens.
 
 #### Freeze Authority
 
-TODO
+Controlling the Freeze Authority allows someone to freeze a Token account, making that account immutable until it is thawed.
+
+One of the reasons this authority is transfered to the Edition PDA of the Token Metadata program is, similarly to the Mint Authority, it increases the scope of features and changes we can provide in the future.
+
+However, contrary to the Mint Authority, we actually make use of that authority in the program.
+
+The `FreezeDelegatedAccount` and `ThawDelegatedAccount` instructions are the only instructions that make use of the Freeze Authority. They allow the Delegate of a Token account to freeze (and thaw) that Token account to make them what we call "**Non-Transferable NFTs**". This enables a variety of use-cases such as preventing someone to sell its NFT whilst being listed in an escrowless marketplace.
 
 ### Why does the Metadata account have both on-chain and off-chain data?
 
