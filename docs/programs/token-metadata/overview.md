@@ -101,7 +101,6 @@ The next three pages focus on helping you get started with the Token Metadata pr
 The next pages act as in-depth guides on certain features offered by the program.
 
 - [Token Standard](./token-standard)
-- [Printing Limited Editions](./printing-editions)
 - [Certified Collections](./certified-collections)
 - [Using NFTs](./using-nfts)
 
