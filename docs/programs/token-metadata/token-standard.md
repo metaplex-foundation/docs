@@ -13,7 +13,7 @@ import tokenStandard from './token-standard';
 
 As token usage has evolved on Solana, it has become clear that there are more types of tokens than simply "fungible" and "non-fungible" tokens.
 
-An example is something the community is calling a "semi-fungible token", a SPL token with a supply greater than 1 but which has typical NFT attributes such as an image and an attributes array in the JSON metadata.
+An example is something the community is calling a "semi-fungible token", an SPL token with a supply greater than 1 but which has typical NFT attributes such as an image and an attributes array in the JSON metadata.
 
 The consensus seems to be that these should be stored in wallets in the same view as standard NFTs, or in their own view but separate from "standard" fungible SPL tokens. These tokens are becoming popular in gaming contexts to support fungible items such as a kind of sword or a piece of wood, etc. but which are in a different league from typical fungible SPL tokens such as USDC.
 
@@ -21,7 +21,7 @@ The consensus seems to be that these should be stored in wallets in the same vie
 
 :::info
 
-The below Token Standard were introduced in Token Metadata **v1.1.0**.
+The below Token Standard was introduced in Token Metadata **v1.1.0**.
 
 Many tokens may still conform to the [v1.0 JSON Standard](/programs/token-metadata/changelog/v1-0).
 
@@ -29,7 +29,7 @@ Many tokens may still conform to the [v1.0 JSON Standard](/programs/token-metada
 
 In order to support this particular use-case but also to make the standard broad enough to allow expansion to other token types in the future, we keep track of the token's fungibility using the `Token Standard` enum on the Metadata account. This field maps to a particular JSON standard and is used to objectively differentiate token types.
 
-This solves a pain-point for third parties such as wallets which, prior to this field, had to apply inconsistent heuristics to determine what is and is not an "NFT".
+This solves a pain point for third parties such as wallets which, before this field, had to apply inconsistent heuristics to determine what is and is not an "NFT".
 
 The Token Standard field can have the following values:
 
@@ -45,7 +45,7 @@ It is important to note that the Token Standard is set automatically by the Toke
 - If the token has no (Master) Edition account (ensuring its supply can be > 1) and **uses zero decimals places**, it is a `FungibleAsset`.
 - If the token has no (Master) Edition account (ensuring its supply can be > 1) and **uses at least one decimal place**, it is a `Fungible`.
 
-Each Token Standard type has its own JSON schema which are defined below.
+Each Token Standard type has its own JSON schema which is defined below.
 
 ## The Fungible Standard
 
