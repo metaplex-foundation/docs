@@ -6,89 +6,81 @@ sidebar_position: 6
 
 ## Introduction
 
-Introduced in v1.1.0 of the token metadata standard, _on-chain collections_
-replace the `collection` field previously defined in external JSON metadata.
-Gone are the ad-hoc community heuristics for determining a collection,
-superseded with an objective, easy-to-use on-chain implementation.
+Certified Collections enables NFTs – and tokens in general — **to be grouped together** and for that information to be **verified on-chain**. Additionally, it makes it easier to manage these collections by allocating data for them on-chain.
 
-### **On-Chain Representation of a Collection**
+This feature provides the following advantages:
+
+- Easy to identify which collection any given NFT belongs to without making additional on-chain calls.
+- Possible to find all NFTs that belong to a given collection ([Check the FAQ to see how](./faq#how-can-i-filter-metadata-accounts-by-collection-using-getprogramaccounts)).
+- Easy to manage the collection metadata such as its name, description and image.
 
 :::info
 
-A `collection` is an NFT. It has the same data layout on-chain as any other NFT.
+The on-chain Certified Collection feature has been added to the Token Metadata program in [version 1.1](./changelog/v1-1).
+
+It replaces the `collection` field previously defined in external JSON metadata.
 
 :::
 
-An NFT is linked to a collection in a belongs_to style where the NFT has a
-reference back to the collection. This is implemented through the addition of
-a new `collection` field in the `Metadata` struct.
+## Collection NFTs
 
-```rust
-pub struct Metadata {
-    pub key: Key,
-    pub update_authority: Pubkey,
-    pub mint: Pubkey,
-    pub data: Data,
-    // Immutable, once flipped, all sales of this metadata are considered secondary.
-    pub primary_sale_happened: bool,
-    // Whether or not the data struct is mutable, default is not
-    pub is_mutable: bool,
-    /// nonce for easy calculation of editions, if present
-    pub edition_nonce: Option<u8>,
-    /// Token Standard is deterministic and will change from SemiFungible to NonFungible if
-    /// you call the create master edition call and it succeeds.
-    pub token_standard: Option<TokenStandard>,
-    /// Since we cannot easily change Metadata, we add the new DataV2 fields here at the end.
-    /// Collection
-    pub collection: Option<Collection>,
-    ...
-}
+In order to group NFTs — or any token — together, we must first create a Collection NFT whose purpose is to store any metadata related to that collection. That's right, **a collection of NFT is, itself, an NFT**. It has the same data layout on-chain as any other NFT.
 
-#[derive(BorshSerialize, BorshDeserialize, PartialEq, Debug, Clone)]
-pub struct Collection {
-  pub verified: bool, // Whether or not the collection is verified
-  pub key: Pubkey,    // The SPL token mint account of the collection NFT
-}
-```
+The difference between a Collection NFT and a Regular NFT is that the information provided by the former will be used to define the group of NFTs it contains whereas the latter will be used to define the NFT itself.
 
-The metadata `collection` field maps to the Mint Address of the collection NFT and is
-represented as the Rust type `Option<Collection>` where a value of `None` is
-interpreted to mean the NFT does not belong to any collection. The `Collection`
-struct has the fields `verified` denoting whether or not the collection is
-verified (see below) and `key` which points to the `mint` account of the collection NFT.
+Collection NFTs and Regular NFTs are **linked together using a "Belong To" relationship** on the Metadata account. The optional `Collection` field on the Metadata account has been created for that purpose.
 
-#### Collection struct fields
+- If the `Collection` field is set to `None`, it means the NFT is not part of a collection.
+- If the `Collection` field is set, it means the NFT is part of the collection specified within that field.
 
-| Field    | Type   | Description                                |
-| -------- | ------ | ------------------------------------------ |
-| verified | bool   | Whether the collection is verified or not. |
-| key      | Pubkey | The SPL token mint account                 |
+As such, the `Collection` field contains two nested fields:
 
-### Verifying A Collection
+- `Key`: This fields points to the Collection NFT the NFT belongs to. More precisely, it points to **the public key of the Mint Account** of the Collection NFT. This Mint Account must be owned by the SPL Token program.
+- `Verified`: This boolean is very important as it is used to verify that the NFT is truly part of the collection it points to.
+
+![](./assets/Token-Metadata-Collections-Collection-NFT.png)
+
+Notice that, because Collections and NFTs are linked together via a "Belong To" relationship, it is possible by design to define nested collections.
+
+Also note that there is currently no way to distinguish between a Collection NFT and a Regular NFT that is part of a Collection. This is a limitation we are currently working on as part of [version 1.3](https://github.com/metaplex-foundation/metaplex-program-library/discussions/444).
+
+## Verifying NFTs in Collections
+
+As mentioned above, the `Collection` field contains a `Verified` boolean which is used to **determine if the NFT is truly part of the collection it points to**. Without this field, anyone could pretend their NFT to be part of any collection.
+
+![](./assets/Token-Metadata-Collections-Verified-Collection.png)
+
+In order to flip that `Verified` boolean to `True`, the Authority of the Collection NFT must sign the NFT to prove that it is allowed to be part of the collection.
 
 :::warning
 
-EXTREMELY IMPORTANT:
+**EXTREMELY IMPORTANT** 🚨
 
-Explorers, Wallets and Marketplaces, MUST CHECK IF `verified` is true. Verified can only be set true if the Authority on the Collection NFT has run the `verify_collection` instruction over the NFT.
+Explorers, Wallets and Marketplaces, **MUST CHECK** that `Verified` is true. `Verified` can only be set true if the Authority on the Collection NFT has run the `VerifyCollection` instruction over the NFT.
 
-This is the exact same pattern as the `Creators` field where `verified` must be true in order to validate the NFT.
+This is the exact same pattern as the `Creators` field where `Verified` must be true in order to validate the NFT.
 
-In Order to check if a collection is valid on an NFT you MUST
+In Order to check if a collection is valid on an NFT you **MUST**:
 
-1. Check that the Collection struct is set
-2. That the pubkey in the collection struct is owned on chain by the spl-token program
-3. That verified is true
+1. Check that the `Collection` struct is set.
+2. Check that the `Key` in the `Collection` struct is owned on chain by the SPL Token program.
+3. Check that `Verified` is true.
 
-If those 3 steps are not followed you could be exposing fradulent NFTs on real collections
+If those 3 steps are not followed you could be exposing fradulent NFTs on real collections.
 
 :::
 
-This implementation has the following advantages:
+The following instruction are available to use to set, verified or unverified a NFT as part of a collection:
 
-- Easy to identify which collection any given NFT belongs to without making additional on-chain calls
-- Possible to find all NFTs that belong to a given collection by making a `getProgramAccounts` call
-- Uses existing padding at the end of `Metadata` so adds no on-chain rent storage costs
+- [Verify the collection](./instructions#verify-the-collection)
+- [Unverify the collection](./instructions#unverify-the-collection)
+- [Set and verify the collection](./instructions#set-and-verify-the-collection)
+
+## Delegating the Collection Authority
+
+TODO
+
+## Old doc
 
 ### Delegate Collection Authority Record
 

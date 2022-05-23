@@ -6,6 +6,10 @@ sidebar_position: 7
 
 ## Introduction
 
+TODO
+
+## Old docs
+
 To support gaming applications, the concept of "token usage" has been implemented, where a new `uses` field has been added to the `Metadata` struct. This field is a Rust `Option<Uses>` where `Uses` is a Rust struct with a `UseMethod` enum:
 
 ```rust
