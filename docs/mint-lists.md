@@ -1,6 +1,6 @@
 ---
 sidebar_label: "NFT Hash Lists"
-sidebar_position: 12
+sidebar_position: 14
 ---
 # Mint Account List ("Hash List")
 
