@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/token-metadata/getting-started",
+      "destination": "/programs/token-metadata/getting-started",
+      "permanent": true
+    }
+  ]
+}
