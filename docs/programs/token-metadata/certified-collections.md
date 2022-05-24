@@ -109,16 +109,20 @@ You may use the following step to get started with that tool:
 
 :::warning
 
-Always check Solana's Network before you start up a migration. You can check here https://solscan.io/
+For a smoother experience, please consider the following points when using this tool:
 
-If a "Retry" button appears it could be due to a network congestion, so click retry and monitor the network.
+- Always check Solana's network before you start up a migration. You can check here https://solscan.io.
+- If a "Retry" button appears it could be due to a network congestion, so click retry and monitor the network.
+- If a "Fail to Migrate Collection" appears, it is likely because a wrong Update Authority was provided.
 
-If a "Fail to Migrate Collection" appears this is typically due to the wrong Upgrade Authority.
-
-All other issues please visit our discord for further support.
+For all other issues regarding this tool, please visit our discord for further support.
 
 :::
 
+Note that the Metaplex team has recorded a video tutorial on how Verified Collections work and how to use the web tool mentioned above. You can [watch it here](https://drive.google.com/file/d/1VU4xL_yF6LCe0UogVn4As5PMAzUV__8C/view?usp=sharing):
+
+<div style={{textAlign: 'center'}}>
+
 [![Verified Collections Tutorial](./assets/verified-collections.gif)](https://drive.google.com/file/d/1VU4xL_yF6LCe0UogVn4As5PMAzUV__8C/view?usp=sharing)
 
-[Full Verified Collections Tutorial](https://drive.google.com/file/d/1VU4xL_yF6LCe0UogVn4As5PMAzUV__8C/view?usp=sharing)
+</div>
