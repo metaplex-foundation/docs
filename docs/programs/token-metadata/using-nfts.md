@@ -6,28 +6,36 @@ sidebar_position: 7
 
 ## Introduction
 
-TODO
+To better support gaming applications, the Token Metadata program supports the concept of "token usage". That means, any token — fungible or not — can be loaded with a certain amount of uses that will decrease over time until it has no uses left.
 
-## Old docs
+:::info
 
-To support gaming applications, the concept of "token usage" has been implemented, where a new `uses` field has been added to the `Metadata` struct. This field is a Rust `Option<Uses>` where `Uses` is a Rust struct with a `UseMethod` enum:
+This feature has been added to the Token Metadata program in [version 1.1](./changelog/v1-1).
 
-```rust
-pub struct Uses {
-    pub use_method: UseMethod,
-    pub remaining: u64,
-    pub available: u64,
-}
+:::
 
-pub enum UseMethod {
-    Burn,
-    Single,
-    Multiple(u64)
-}
-```
+## The Uses field
 
-This allows projects to set different limits on usage of gaming tokens: burn, single, and multiple use. Burn allows a token to be used once and then burned forever. Single allows a single use but does not burn the token. Multiple allows up to `u64` number of uses of the token.
+To support this feature, the Metadata account contains an optional `Uses` field. When this field is set to `None`, it means the token is not leveragin this feature. When this field is set, it contains further nested fields that define the token's usage. Namely, it contains the following fields:
 
-### Delegate Use Authority
+- `Use Method`: This field is an enum that defines a "token usage" strategy. It can be one of the following:
+  - `Burn`: This strategy allows a token to be used once and then burned forever.
+  - `Single`: This strategy allows a single use but does not burn the token.
+  - `Multiple(u64)`: This strategy allows a pre-defined amount of uses of the token. The specific amount of uses is stored using a `u64` Rust type.
+- `Remaining`: This field holds the number of uses remaining for the token.
+- `Available`: This field holds the number of uses initially available for the token.
 
-Owners of NFTs can now allow a program to `Use` their token without them being online. This is available via the `approve_use_authority` instruction. It is very similar to the Collection Authority system but the party who can approve and revoke is the current holder of the NFT.
+Once the `Uses` field is set up, we may "use the token" by calling the following instruction:
+
+- [Reduce the number of uses](./instructions#reduce-the-number-of-uses)
+
+## Delegating the Use Authority
+
+By default, only the owner of the NFT is allowed to reduce the number of uses of a token. However, it is possible to delegate this responsibility to other trusted authorities. These delegated "Use Authorities" can then reduce the number of uses via the instruction mentioned in the previous section.
+
+The following instructions enable us to approve and reject a Use Authority:
+
+- [Approve a new Use Authority](./instructions#approve-a-new-use-authority)
+- [Revoke an existing Use Authority](./instructions#revoke-an-existing-use-authority)
+
+Note that this is very similar to the [Collection Authority system](./certified-collections#delegating-the-collection-authority) but the party who can approve and revoke authorities is the current token holder of the NFT, as opposed to the Update Authority for collections.
