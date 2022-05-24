@@ -225,8 +225,8 @@ html[data-theme="dark"] .accordion {
   padding: 0;
 }
 
-.accordion-table thead tr, 
-.accordion-table th, 
+.accordion-table thead tr,
+.accordion-table th,
 .accordion-table td {
   border: none;
 }
@@ -246,7 +246,7 @@ html[data-theme="dark"] .accordion {
 
 .accordion-table tr:nth-child(2n) {
   background-color: inherit;
- }
+}
 
 .accordion-table tbody tr {
   border-top: 1px solid var(--accordion-border-color);
@@ -274,7 +274,11 @@ html[data-theme="dark"] .accordion {
   padding-top: 2rem;
 }
 
-.accordion-table tbody tr.accordion-table-nested-row + .accordion-table-nested-row > * {
+.accordion-table
+  tbody
+  tr.accordion-table-nested-row
+  + .accordion-table-nested-row
+  > * {
   padding-top: 0.5rem;
 }
 
