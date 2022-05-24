@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { startCase } from "lodash";
+import { startCase, flatMap } from "lodash";
+import Link from "@docusaurus/Link";
 import { AccordionItem } from "./accordion";
 
 export function ProgramFields({
@@ -62,18 +63,23 @@ ProgramFieldRows.propTypes = {
 };
 
 function ProgramField({ field, offset = 0, indent = 0 }) {
-  const types = [];
+  let types = [];
   if (field.optional) {
     types.push(
-      '<a href="/programs/understanding-programs#optional-fields">Optional</a>'
+      <Link href="/programs/understanding-programs#optional-fields">
+        Optional
+      </Link>
     );
   }
   if (field.indicative) {
     types.push(
-      '<a href="/programs/understanding-programs#indicative-fields">Indicative</a>'
+      <Link href="/programs/understanding-programs#indicative-fields">
+        Indicative
+      </Link>
     );
   }
-  const typesAsString = types.length > 0 ? `<i>(${types.join(", ")})</i> ` : "";
+
+  types = flatMap(types, (type) => [type, ", "]).slice(0, -1);
 
   return (
     <>
@@ -89,12 +95,10 @@ function ProgramField({ field, offset = 0, indent = 0 }) {
         <td>{field.offset ?? offset}</td>
         <td>{field.size ?? "~"}</td>
         <td>
-          <div
-            style={{ display: "inline" }}
-            dangerouslySetInnerHTML={{
-              __html: typesAsString + (field.description ?? ""),
-            }}
-          />
+          {types.length > 0 && (
+            <span style={{ fontStyle: "italic" }}>({types}) </span>
+          )}
+          <span dangerouslySetInnerHTML={{ __html: field.description ?? "" }} />
         </td>
       </tr>
       {field.fields && (
