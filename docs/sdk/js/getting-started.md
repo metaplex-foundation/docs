@@ -43,18 +43,20 @@ npm install @metaplex/js
 The following code snippet is the most basic one you can use to get Metadata information with this library:
 
 ```ts
-import { Connection, programs } from '@metaplex/js';
-const { metadata: { Metadata } } = programs;
+import { Connection, programs } from "@metaplex/js";
+const {
+  metadata: { Metadata },
+} = programs;
 
-const connection = new Connection('devnet');
-const tokenPublicKey = 'Gz3vYbpsB2agTsAwedtvtTkQ1CG9vsioqLW3r9ecNpvZ';
+const connection = new Connection("devnet");
+const tokenPublicKey = "Gz3vYbpsB2agTsAwedtvtTkQ1CG9vsioqLW3r9ecNpvZ";
 
 const run = async () => {
   try {
     const ownedMetadata = await Metadata.load(connection, tokenPublicKey);
     console.log(ownedMetadata);
   } catch {
-    console.log('Failed to fetch metadata');
+    console.log("Failed to fetch metadata");
   }
 };
 
@@ -97,9 +99,8 @@ Metadata {
 For the fields that match the on-chain metadata, on-chain information has priority.
 
 - `pubkey` - Account public key.
-- `info` -  Information describing an account as in **@solana/web3.js** [AccountInfo](https://solana-labs.github.io/solana-web3.js/modules.html#AccountInfo).
-- `data` - Metadata program related data as described in [Token Metadata Standard](/token-metadata/specification).
-
+- `info` - Information describing an account as in **@solana/web3.js** [AccountInfo](https://solana-labs.github.io/solana-web3.js/modules.html#AccountInfo).
+- `data` - Metadata program related data as described in [Token Metadata Standard](/programs/token-metadata/token-standard).
 
 ### How to retrieve data by other programs?
 
@@ -110,21 +111,25 @@ await <AccountType>.load(connection, pubkey);
 ```
 
 ```ts
-import { Connection, programs } from '@metaplex/js';
-const { metaplex: { Store, AuctionManager }, metadata: { Metadata }, auction: { Auction }, vault: { Vault } } = programs;
+import { Connection, programs } from "@metaplex/js";
+const {
+  metaplex: { Store, AuctionManager },
+  metadata: { Metadata },
+  auction: { Auction },
+  vault: { Vault },
+} = programs;
 
-
-const connection = new Connection('devnet');
+const connection = new Connection("devnet");
 
 // Metadata
-const metadata = await Metadata.load(connection, '<pubkey>');
+const metadata = await Metadata.load(connection, "<pubkey>");
 // Auction
-const auction = await Auction.load(connection, '<pubkey>');
+const auction = await Auction.load(connection, "<pubkey>");
 // Vault
-const vault = await Vault.load(connection, '<pubkey>');
+const vault = await Vault.load(connection, "<pubkey>");
 // Metaplex
-const auctionManager = await AuctionManager.load(connection, '<pubkey>');
-const store = await Store.load(connection, '<pubkey>');
+const auctionManager = await AuctionManager.load(connection, "<pubkey>");
+const store = await Store.load(connection, "<pubkey>");
 ```
 
 [github]: https://github.com/metaplex-foundation/js
