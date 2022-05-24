@@ -74,37 +74,38 @@ The following instruction are available to use to set, verified or unverified a 
 
 - [Verify the collection](./instructions#verify-the-collection)
 - [Unverify the collection](./instructions#unverify-the-collection)
-- [Set and verify the collection](./instructions#set-and-verify-the-collection)
+- [Set and verify the collection](./instructions#set-and-verify-the-collection) (Introduced in version 1.2)
 
 ## Delegating the Collection Authority
 
-TODO
+By default, only **the Update Authority of the Collection NFT can verify** that an NFT is part of that collection.
 
-## Old doc
+However, the Update Authority can also **delegate this responsibility** to other authorities. This allows us to delegate the ability to add NFTs to our collection to one or several trusted parties. These delegated Collection Authorities can then set, verify and/or unverify NFTs from this collection using the instructions listed in the previous section.
 
-### Delegate Collection Authority Record
+The following instructions enable us to approve and reject a Collection Authority:
 
-Update Authorities on a Collection NFT can delegate the authority to call the
-`verify_collection` instruction. This allows you to delegate the ability to add
-NFTs to your collection to many parties. You can do this by calling the
-`approve_collection_authority` instruction. To revoke you can call the
-`revoke_collection_authority` instruction.
+- [Approve a new Collection Authority](./instructions#approve-a-new-collection-authority)
+- [Revoke an existing Collection Authority](./instructions#revoke-an-existing-collection-authority)
 
-To accomplish setting and verifying a collection with one instruction use the `set_and_verify_collection` instruction introduced in 1.2.0.
+## Set and verify a collection using collections.metaplex.com
 
-### Verify a collection using collections.metaplex.com
+Metaplex provides a helpful [web tool](https://collections.metaplex.com/) that allows us to create Collection NFTs and add verified NFTs to them.
+
+You may use the following step to get started with that tool:
 
 1. Visit [collections.metaplex.com](https://collections.metaplex.com/)
-2. Connect your wallet, but first verify this wallet is the upgrade authority.
-3. Select the cluster you want to work on devnet, mainnet, etc.
-4. Click on create "Create a Collection"
-5. Put in the name, symbol, logo, and description of your nft collection.
-6. Choosing between the three options:
-   1. "Individual NFTs" -> insert the mint address of your NFT
-   2. "First verified creator" -> locate the candy machine address and insert this
-   3. "CSV file" -> upload a csv file that contains the list of mint addresses. The csv file should contain all the mint ids, separated by commas with no spaces.
-7. Then click "Create Collection" and two transactions approvals will be required. The first transaction approval will allow Metaplex to be the delegate to make the migration. The second transaction will be the crete the Parent NFT
-8. After the Parent NFT is created the migration will start to begin. You can then close the tab and come back to it later with the same wallet to see the status.
+2. Connect your wallet, but first verify this wallet is the Update Authority.
+3. Select the cluster you want to work on — e.g. devnet, mainnet, etc.
+4. Click on "**Create a Collection**".
+5. Enter the name, symbol, logo, and description of your Collection NFT.
+6. Choose between these three options:
+   1. **Individual NFTs**: Insert the mint address of your NFTs.
+   2. **First verified creator**: Insert the public key of the first creator defined in your NFTs. This can help with Candy Machines has the the first creator address is derived from their public key.
+   3. **CSV file**: Upload a CSV file that contains the list of mint addresses. The CSV file should contain all the public keys, separated by commas with no spaces.
+7. Click "**Create Collection**" and two transactions approvals will be required.
+   1. The first transaction approval will allow Metaplex to be the delegate to make the migration.
+   2. The second transaction will create the parent Collection NFT.
+8. After the parent Collection NFT is created, **the migration will start** on the background. You may close the tab and come back to it later with the same wallet to see the status.
 
 :::warning
 
