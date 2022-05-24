@@ -10,7 +10,7 @@ To better support gaming applications, the Token Metadata program supports the c
 
 :::info
 
-This feature has been added to the Token Metadata program in [version 1.1](./changelog/v1-1).
+This feature has been added to the Token Metadata program in [version 1.1](./changelog/v1.1).
 
 :::
 

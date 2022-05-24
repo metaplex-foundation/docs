@@ -23,7 +23,7 @@ The consensus seems to be that these should be stored in wallets in the same vie
 
 The below Token Standard was introduced in Token Metadata **v1.1.0**.
 
-Many tokens may still conform to the [v1.0 JSON Standard](/programs/token-metadata/changelog/v1-0).
+Many tokens may still conform to the [v1.0 JSON Standard](/programs/token-metadata/changelog/v1.0).
 
 :::
 

@@ -16,7 +16,7 @@ This feature provides the following advantages:
 
 :::info
 
-The on-chain Certified Collection feature has been added to the Token Metadata program in [version 1.1](./changelog/v1-1).
+The on-chain Certified Collection feature has been added to the Token Metadata program in [version 1.1](./changelog/v1.1).
 
 It replaces the `collection` field previously defined in external JSON metadata.
 
