@@ -107,4 +107,4 @@ The next pages act as in-depth guides on certain features offered by the program
 Finally, the last two pages answer frequently asked questions and document version updates.
 
 - [FAQ](./faq)
-- [Changelog](./changelog)
+- [Changelog](./changelog/overview)
