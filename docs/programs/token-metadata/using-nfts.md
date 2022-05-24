@@ -16,7 +16,7 @@ This feature has been added to the Token Metadata program in [version 1.1](./cha
 
 ## The Uses field
 
-To support this feature, the Metadata account contains an optional `Uses` field. When this field is set to `None`, it means the token is not leveragin this feature. When this field is set, it contains further nested fields that define the token's usage. Namely, it contains the following fields:
+To support this feature, the Metadata account contains an optional `Uses` field. When this field is set to `None`, it means the token is not leveraging this feature. When this field is set, it contains further nested fields that define the token's usage. Namely, it contains the following fields:
 
 - `Use Method`: This field is an enum that defines a "token usage" strategy. It can be one of the following:
   - `Burn`: This strategy allows a token to be used once and then burned forever.
