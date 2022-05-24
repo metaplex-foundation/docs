@@ -16,7 +16,7 @@
       "permanent": true
     },
     {
-      "source": "/token-metadata/Versions/v1.2.*/overview",
+      "source": "/token-metadata/Versions/v1.2.\\*/overview",
       "destination": "/programs/token-metadata/changelog/overview",
       "permanent": true
     },
