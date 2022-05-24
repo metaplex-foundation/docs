@@ -17,7 +17,7 @@ The Metadata Account is responsible **for storing additional data attached to to
 
 It stores a variety of information for different use-cases and, thus, the reader might benefit from reading the "fields" table below to learn more about them. Additionally, dedicated feature pages have been written to provide more documentation on what can be done with these fields. Their description will contain a link to the appropriate page when available.
 
-One particular field to notice is the `Uri` field that points to an off-chain JSON file which, itself, contains more data. [That data is standardized](./token-standard) so applications and marketplaces can reliably find information on a given token. If you're wondering why the Metadata account provides two data stores — one off-chain and one on-chain — you might want to [take a look at the FAQ here](./faq#TODO).
+One particular field to notice is the `Uri` field that points to an off-chain JSON file which, itself, contains more data. [That data is standardized](./token-standard) so applications and marketplaces can reliably find information on a given token. If you're wondering why the Metadata account provides two data stores — one off-chain and one on-chain — you might want to [take a look at the FAQ here](./faq#why-does-the-metadata-account-have-both-on-chain-and-off-chain-data).
 
 </ProgramAccount>
 
@@ -27,14 +27,14 @@ One particular field to notice is the `Uri` field that points to an off-chain JS
 
 ![Diagram showing a Master Edition Account derived from a Mint Account with a list of data fields under the Master Edition Account that is listed on the fields table below.](./assets/Token-Metadata-Account-Master-Edition.png)
 
-The Master Edition account, derived from a Mint Account, is an important component of NFTs because **its existence is proof of the [Non-Fungibility](TODO) of the token**.
+The Master Edition account, derived from a Mint Account, is an important component of NFTs because **its existence is proof of the Non-Fungibility of the token**.
 
 When creating a Master Edition account, the Token Metadata program will check for the following conditions:
 
 - The Mint Account has **zero decimals**, i.e. `Decimals = 0`.
 - The Mint Account minted **exactly one token** to a wallet, i.e. `Supply = 1`.
 
-Additionally, it will transfer the `Mint Authority` and the `Freeze Authority` to the Master Edition account to prevent anyone from being able to mint additional tokens. You can read more about [why these authorities are transferred instead of being voided in the FAQ](./faq#TODO).
+Additionally, it will transfer the `Mint Authority` and the `Freeze Authority` to the Master Edition account to prevent anyone from being able to mint additional tokens. You can read more about [why these authorities are transferred instead of being voided in the FAQ](./faq#why-are-the-mint-and-freeze-authorities-transferred-to-the-edition-pda).
 
 Therefore, what we end up with is a Mint Account whose supply will never go above one and whose token cannot be shared or divided. As such, we end up with a Non-Fungible Token (NFT).
 

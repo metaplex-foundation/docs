@@ -149,7 +149,7 @@ We try our best to provide a consistent visual language that is documented below
 - In certain situations, we may use an equal sign `=` to **show the value assigned** to a data attribute.
 - In certain situations, we may **highlight a data attribute in bold** to bring more attention to it.
 
-![TODO](./assets/Understanding-Programs-Diagrams-Accounts.png)
+![](./assets/Understanding-Programs-Diagrams-Accounts.png)
 
 - Relationships between Accounts are **represented with solid grey lines**.
 - The Account that stores the relationship — by keeping track of the other Account's address – has a little triangle at the end of the grey line.

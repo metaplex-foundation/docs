@@ -32,7 +32,7 @@ Note that, this JSON file can be stored using a permanent storage solution such 
 
 ## NFTs
 
-You might be wondering: what has this got to do with NFTs? Well, NFTs are special tokens that are [Non-Fungible](TODO).
+You might be wondering: what has this got to do with NFTs? Well, NFTs are special tokens that are Non-Fungible.
 
 More precisely, NFTs in Solana are Mint Accounts with the following characteristics:
 
@@ -48,7 +48,7 @@ In this particular yet popular case, the goal of the Metadata Account is to prov
 
 Additionally, the Token Metadata program offers another account specifically for NFTs called the **Master Edition Account**. This account is also a PDA derived from the Mint Account.
 
-Before creating this account, the Token Metadata program will ensure the special characteristics of Non-Fungible Tokens listed above are met. However, it is worth noting that, instead of voiding the Mint Authority, it will transfer both the Mint Authority and the Freeze Authority to the Master Edition PDA to ensure no one can mint or freeze tokens without going through the Token Metadata program. You can [read more about why this decision was made in the FAQ](./faq#TODO).
+Before creating this account, the Token Metadata program will ensure the special characteristics of Non-Fungible Tokens listed above are met. However, it is worth noting that, instead of voiding the Mint Authority, it will transfer both the Mint Authority and the Freeze Authority to the Master Edition PDA to ensure no one can mint or freeze tokens without going through the Token Metadata program. You can [read more about why this decision was made in the FAQ](./faq#why-are-the-mint-and-freeze-authorities-transferred-to-the-edition-pda).
 
 Thus, **the existence of the Master Edition account acts as proof of Non-Fungibility** for that Mint Account.
 

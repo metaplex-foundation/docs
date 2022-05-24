@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { startCase } from "lodash";
+import Link from "@docusaurus/Link";
 import { Accordion, AccordionItem } from "./accordion";
 import { resolveInstruction } from "./program-utils";
 import { ProgramFields } from "./program-fields";
@@ -78,8 +79,8 @@ function ProgramInstructionAccounts({ accounts }) {
                 <th>{startCase(account.name)}</th>
                 <td>
                   <div style={{ display: "flex" }}>
-                    <a
-                      href="#todo"
+                    <Link
+                      href="/programs/understanding-programs#signer-andor-writable-accounts"
                       className={[
                         "program-instruction-account-icon",
                         account.isMut ? "active" : "",
@@ -87,9 +88,9 @@ function ProgramInstructionAccounts({ accounts }) {
                       title={account.isMut ? "Writable" : "Not Writable"}
                     >
                       <WritableIcon></WritableIcon>
-                    </a>
-                    <a
-                      href="#todo"
+                    </Link>
+                    <Link
+                      href="/programs/understanding-programs#signer-andor-writable-accounts"
                       className={[
                         "program-instruction-account-icon",
                         account.isSigner ? "active" : "",
@@ -97,7 +98,7 @@ function ProgramInstructionAccounts({ accounts }) {
                       title={account.isSigner ? "Signer" : "Not a Signer"}
                     >
                       <SignerIcon></SignerIcon>
-                    </a>
+                    </Link>
                   </div>
                 </td>
                 <td>
