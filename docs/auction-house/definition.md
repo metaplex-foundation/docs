@@ -39,7 +39,7 @@ AuctionHouse is a completely separate program than the storefront Auction progra
 For the NFT Seller the NFT doesn't leave their wallet until the sale completes. This is due to the use of Solana Token Delegates, and it allows them to list their NFT on other Marketplaces that implement the AuctionHouse protocol. The AuctionHouse program is the delegate, so whichever marketplace has a matching bid can execute the sale, and they get their fee, the buyer gets the NFT and the seller gets the money. This is all done in the execution of the sale. The buyer and seller never need to claim anything like in our other auction system.
 
 ### AuctionHouse Authority Features
-When you create an AuctionHouse a new `Instance` of an AuctionHouse is made. This `Instance` is owned and oprated by an `Authority`. 
+When you create an AuctionHouse a new `Instance` of an AuctionHouse is made. This `Instance` is owned and operated by an `Authority`. 
 Meaning the Public Key you set in the `authority` section of the `CreateAuctionHouse` instruction is the `Authority` that can update the auction house. Metaplex uses this `Authority` pattern in many contracts to create `Access Control` on certain features and functions. When you create an auction house, you can set the following parameters:
 
 
