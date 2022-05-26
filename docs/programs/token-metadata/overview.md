@@ -28,7 +28,7 @@ One important attribute of the Metadata Account is the `URI` attribute that poin
 
 ![Same diagram as the previous one with an arrow pointing out of the "URI" attribute of the Metadata Account, towards a cloud labelled "Off-chain JSON Object". A list of example attributes is displayed below that cloud: "Name, Description, Image, Animation URL, Attributes, etc.".](./assets/Token-Metadata-Overview-3.png)
 
-Note that, this JSON file can be stored using a permanent storage solution such as Arweave to ensure it cannot be updated. Additionally, one can use the `Is Mutable` attribute of the Metadata Account to make it immutable and, therefore, forbid the `URI` attribute to ever be changed. Using this combination, we can guarantee the immutability of the off-chain JSON file.
+Note that, this JSON file can be stored using a permanent storage solution such as Arweave to ensure it cannot be updated. Additionally, one can use the `Is Mutable` attribute of the Metadata Account to make it immutable and, therefore, forbid the `URI` attribute — and other attributes such as `Name` and `Creators` — to ever be changed. Using this combination, we can guarantee the immutability of the off-chain JSON file.
 
 ## NFTs
 
@@ -78,7 +78,8 @@ At the end of the day, the Metadata account helps attach data to tokens regardle
 
 To safely identify the fungibility of a token — and, thus, the standard that we should use — the Metadata account keeps track of that information in its `Token Standard` attribute. This attribute is automatically computed by the program and cannot be manually updated. It can take the following values.
 
-- `NonFungible`: The Mint account is associated with a Master Edition or Edition account and, therefore, is Non-Fungible. This is your typical NFT standard.
+- `NonFungible`: The Mint account is associated with a Master Edition account and, therefore, is Non-Fungible. This is your typical NFT standard.
+- `NonFungibleEdition`: This is the same as `NonFungible` but the NFT was printed from an Original NFT and, thus, is associated with an Edition account insteand of a Master Edition account.
 - `FungibleAsset`: The Mint account is Fungible but has zero decimal places. Having zero decimals means we can treat the token as an asset whose supply is not limited to one. For instance, Fungible Assets can be used in the gaming industry to store resources such as “Wood” or “Iron”.
 - `Fungible`: The Mint account is Fungible and has more than one decimal place. This is more likely going to be a token used as a decentralised currency.
 
