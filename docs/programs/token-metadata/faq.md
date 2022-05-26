@@ -10,7 +10,7 @@ When using [the `getProgramAccounts` method from the RPC API](https://docs.solan
 
 Since the `memcmp` filter compares arrays of bytes, this approach requires us to know the data structure of the account. Additionally, it requires the length of that data structure to be fixed so we can find the position of the field we're looking for, for every single account.
 
-Unfortunately, the `creators` field of the Metadata Account is a vector that can contain between one to five creators. This means, the position of every field after it will depend on how many creators the account has.
+Unfortunately, the `creators` field of the [Metadata Account](./accounts#metadata) is a vector that can contain between one to five creators. This means, the position of every field after it will depend on how many creators the account has.
 
 Note that adding new fields to an account without adding breaking change requires appending optional fields to the accounts. This unfortunately means that any new features we add to the Metadata Account will be after the `creators` field and therefore will be challenging to filter via `getProgramAccounts`.
 
@@ -24,7 +24,7 @@ There are several ways to solve this problem.
 
 As mentioned in the question above, filtering by fields present after the `creators` array is a challenging task because it is not a field of fixed size.
 
-Since **the `collection` field is located after the `creators` field**, this makes filtering Metadata accounts by collection harder than it should be.
+Since **the `collection` field is located after the `creators` field**, this makes filtering [Metadata accounts](./accounts#metadata) by collection harder than it should be.
 
 The solutions listed above apply here too but, because this is a common problem, we have written a more detailed guide on how to use transaction crawling to access Metadata accounts of a given collection: **[Get Collection Methods](https://metaplex.notion.site/Get-Collection-Methods-1ff0b118e4ce4605971df60e753a8559)**.
 
@@ -42,7 +42,7 @@ One way to prevent this from happening is to set the Mint Authority to `None` to
 
 **But Why?** The short answer is: **it enables us to make changes to the Token Metadata program at a much lower cost**.
 
-Losing the Mint Authority is an irreversible action which means we could never leverage it to migrate NFTs to newer versions. For instance, say we wanted to change the way we Original and Printed NFTs are structured and, instead of using Edition accounts, we wanted to leverage tokens. Without the Mint Authority, migrating NFTs to the new version would simply be impossible.
+Losing the Mint Authority is an irreversible action which means we could never leverage it to migrate NFTs to newer versions. For instance, say we wanted to change the way Original and Printed NFTs are structured and, instead of using Edition accounts, we wanted to leverage tokens. Without the Mint Authority, migrating NFTs to the new version would simply be impossible.
 
 **Losing this authority would limit the scope of features and changes we could implement in the future** and that's why we're not setting it to `None`.
 
@@ -56,11 +56,11 @@ One of the reasons this authority is transferred to the Edition PDA of the Token
 
 However, contrary to the Mint Authority, we actually make use of that authority in the program.
 
-The `FreezeDelegatedAccount` and `ThawDelegatedAccount` instructions are the only instructions that make use of the Freeze Authority. They allow the Delegate of a Token account to freeze (and thaw) that Token account to make them what we call "**Non-Transferable NFTs**". This enables a variety of use-cases such as preventing someone to sell its NFT whilst being listed in an escrowless marketplace.
+The [`FreezeDelegatedAccount`](./instructions#freeze-the-token-account-as-a-delegate) and [`ThawDelegatedAccount`](./instructions#thaw-the-token-account-as-a-delegate) instructions are the only instructions that make use of the Freeze Authority. They allow the Delegate of a Token account to freeze (and thaw) that Token account to make them what we call "**Non-Transferable NFTs**". This enables a variety of use-cases such as preventing someone to sell its NFT whilst being listed in an escrowless marketplace.
 
 ### Why does the Metadata account have both on-chain and off-chain data?
 
-The Metadata account contains on-chain data yet it also has a `URI` attribute which points to an off-chain JSON file which provides additional data. so why is that? Can't we just store everything on-chain? There are several issues with that.
+The [Metadata account](./accounts#metadata) contains on-chain data yet it also has a `URI` attribute which points to an off-chain JSON file which provides additional data. so why is that? Can't we just store everything on-chain? There are several issues with that.
 
 - We have to pay rent to store data on-chain. If we had to store everything within the Metadata account, which may include long texts such as the description of an NFT, it would require a lot more bytes and minting an NFT would suddenly be a lot more expensive.
 - On-chain data is much less flexible. Once an account is created using a certain structure, it cannot easily be changed. Therefore, if we had to store everything on-chain, the NFT standard would be a lot harder to evolve with the demands of the ecosystem.
