@@ -66,14 +66,20 @@ function ProgramField({ field, offset = 0, indent = 0 }) {
   let types = [];
   if (field.optional) {
     types.push(
-      <Link href="/programs/understanding-programs#optional-fields">
+      <Link
+        href="/programs/understanding-programs#optional-fields"
+        key="optional"
+      >
         Optional
       </Link>
     );
   }
   if (field.indicative) {
     types.push(
-      <Link href="/programs/understanding-programs#indicative-fields">
+      <Link
+        href="/programs/understanding-programs#indicative-fields"
+        key="indicative"
+      >
         Indicative
       </Link>
     );
