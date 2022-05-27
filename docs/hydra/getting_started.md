@@ -1,7 +1,3 @@
----
-sidebar_position: 2
----
-
 # Getting Started
 
 To get started with Hydra, you'll need the package for your programming environment.
