@@ -22,7 +22,7 @@ You can either create this file manually, following the instructions above, or u
 sugar create-config
 ```
 
-Executing the command starts an interative process consisting in a sequence of prompts to gather information about all configuration options. At the end of it, a configuration file is saved (default to `config.json`) or its content is displayed on screen. To specify a custom file name, use the option `-c`:
+Executing the command starts an interactive process consisting in a sequence of prompts to gather information about all configuration options. At the end of it, a configuration file is saved (default to `config.json`) or its content is displayed on screen. To specify a custom file name, use the option `-c`:
 
 ```bash
 sugar create-config -c my-config.json
@@ -36,7 +36,7 @@ The `validate` command is used to check that all files in the assets folder are 
 sugar validate
 ```
 
-if your assest are in a folder named `assets` or:
+if your assets are in a folder named `assets` or:
 
 ```bash
 sugar validate <ASSETS_DIR>
@@ -54,7 +54,7 @@ The `upload` command uploads assets to the specified storage and creates the cac
 sugar upload
 ```
 
-if your assest are in a folder named `assets` or:
+if your assets are in a folder named `assets` or:
 
 ```bash
 sugar upload <ASSETS DIR>
@@ -72,10 +72,10 @@ Once all assets are uploaded and the cache file is successfully created, you are
 sugar deploy
 ```
 
-The `deploy` command will write the information of your cache file to the Candy Machine account on-chain. This effectively creates the Cancy Machine and displays its on-chain ID &mdash; use this ID to query its information on-chain using an [explorer](https://explorer.solana.com/). You can specify the path for the configuration file with the `-c` option (default `config.json`) and the name of the cache file with the option `--cache` (default `cache.json`) in case you are not using the default names.
+The `deploy` command will write the information of your cache file to the Candy Machine account on-chain. This effectively creates the Candy Machine and displays its on-chain ID &mdash; use this ID to query its information on-chain using an [explorer](https://explorer.solana.com/). You can specify the path for the configuration file with the `-c` option (default `config.json`) and the name of the cache file with the option `--cache` (default `cache.json`) in case you are not using the default names.
 
 
-After a succesful deploy, the Candy Machine is ready to be minted according to its `goLiveDate` and `whitelistMintSettings`.
+After a successful deploy, the Candy Machine is ready to be minted according to its `goLiveDate` and `whitelistMintSettings`.
 
 > **Note:** The authority wallet (the one used to create the Candy Machine) can mint bypassing the `goLiveDate` setting.
 
@@ -93,7 +93,7 @@ if you are using the default cache file name (`cache.json`) or:
 sugar verify --cache <CACHE>
 ```
 
-to specify a different cache file path. If you deploy has been succesfully, the verification return no errors. At this point, you can set up your [minting webpage](http://docs.metaplex.com/candy-machine-v2/mint-frontend) to allow your community the chance to mint.
+to specify a different cache file path. If you deploy has been successfully, the verification return no errors. At this point, you can set up your [minting webpage](http://docs.metaplex.com/candy-machine-v2/mint-frontend) to allow your community the chance to mint.
 
 ## Other Commands
 
@@ -176,6 +176,22 @@ sugar withdraw --list
 ```
 
 > You should not withdraw the rent of a live Candy Machine, as the Candy Machine will stop working when you drain its account.
+
+### `bundlr`
+
+When you use `bundlr` as your upload method, Sugar automatically funds your account on the Bundlr Network to cover the storage costs. Once the upload in completed, there could be left over funds in your Bundlr account. You can verify your balance on the Bundlr Network with the following command:
+
+```bash
+sugar bundlr balance
+```
+
+This will retrieve the balance for the current keypair. You can specify an alternative keypair using the option `--keypair`. The remaining balance (if there is any) can be withdraw:
+
+```bash
+sugar bundlr withdraw
+```
+
+At the end of the withdraw, the funds available on the Bundlr Network will be transferred to your Solana address.
 
 ## Further Reading
 
