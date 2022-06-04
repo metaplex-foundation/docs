@@ -179,13 +179,13 @@ sugar withdraw --list
 
 ### `bundlr`
 
-When you use `bundlr` as your upload method, Sugar automatically funds your account on the Bundlr Network to cover the storage costs. Once the upload in completed, there could be left over funds in your Bundlr account. You can verify your balance on the Bundlr Network with the following command:
+When you use `bundlr` as your upload method, Sugar automatically funds your account on the Bundlr Network to cover the storage costs. Once the upload is completed, there could be left over funds in your Bundlr account. You can verify your balance on the Bundlr Network with the following command:
 
 ```bash
 sugar bundlr balance
 ```
 
-This will retrieve the balance for the current keypair. You can specify an alternative keypair using the option `--keypair`. The remaining balance (if there is any) can be withdraw:
+This will retrieve the balance for the current keypair. You can specify an alternative keypair using the option `--keypair`. The remaining balance (if there is any) can be withdrawn:
 
 ```bash
 sugar bundlr withdraw
