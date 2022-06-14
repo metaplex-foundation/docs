@@ -10,7 +10,7 @@ With 21% of America owning crypto currencies and 4% now owning NFTs, people ever
 15,000 instances of Metaplex's latest feature Candy Machine™
 $1B in transaction volume over the last 30 days
 
-Initally a Solana initative, we were spun out in order to better align with our goals of creating a best in class NFT creator experience. Because the Metaplex Protocol's architecture leverages Solana, Metaplex is faster and cheaper over other NFT platforms that are Ethereum based, like OpenSea. Selling and minting a NFT on Metaplex is ~$3 USDC vs ~$40 USDC on OpenSea. Further more, on Metaplex, the creator is the platform. Creators on Metaplex are able to direct their communities to their own branded storefront vs directing users to a shop page on an aggregator site, like OpenSea.
+Initally a Solana initiative, we were spun out in order to better align with our goals of creating a best in class NFT creator experience. Because the Metaplex Protocol's architecture leverages Solana, Metaplex is faster and cheaper over other NFT platforms that are Ethereum based, like OpenSea. Selling and minting a NFT on Metaplex is ~$3 USDC vs ~$40 USDC on OpenSea. Further more, on Metaplex, the creator is the platform. Creators on Metaplex are able to direct their communities to their own branded storefront vs directing users to a shop page on an aggregator site, like OpenSea.
 
 For background of Solana, please check out Solana's [documentation](https://docs.solana.com/history).
 
