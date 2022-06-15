@@ -1,0 +1,34 @@
+{
+  "redirects": [
+    {
+      "source": "/token-metadata/getting-started",
+      "destination": "/programs/token-metadata/overview",
+      "permanent": true
+    },
+    {
+      "source": "/token-metadata/api",
+      "destination": "/programs/token-metadata/getting-started",
+      "permanent": true
+    },
+    {
+      "source": "/token-metadata/specification",
+      "destination": "/programs/token-metadata/token-standard",
+      "permanent": true
+    },
+    {
+      "source": "/token-metadata/Versions/v1.2.\\*/overview",
+      "destination": "/programs/token-metadata/changelog/overview",
+      "permanent": true
+    },
+    {
+      "source": "/token-metadata/Versions/v1.1.0/overview",
+      "destination": "/programs/token-metadata/changelog/v1.1",
+      "permanent": true
+    },
+    {
+      "source": "/token-metadata/Versions/v1.0.0/nft-standard",
+      "destination": "/programs/token-metadata/changelog/v1.0",
+      "permanent": true
+    }
+  ]
+}

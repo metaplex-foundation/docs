@@ -1,6 +1,7 @@
 ---
 sidebar_label: "4. Creating the Candy Machine"
 ---
+
 # Creating the Candy Machine
 
 Once you have your collection prepared, the next step is to upload your assets and create a Candy Machine. This step is completed by a single command via the Candy Machine CLI.
@@ -13,7 +14,7 @@ Before you can proceed, you need to check that:
 
 :::caution
 
-To create a Candy Machine, space is allocated on chain to temporarily store the names and URI links (mirroring what is in your `.json` file in the `.cache` directory). To store this data on chain, you are required to pay on chain rent costs. After your mint (or whenever you want to end it), you can run the `withdraw` command to **reclaim all of the rent costs**. Check the [withdraw section](./09-withdraw.md) for more details. For a 10k collection, the rent costs are approximately **16.7 SOL**. This scales linearly with the number of items in your collection. Thus, you can get an approximate on chain rent cost estimate by multiplying the number of items in your collection by **0.00167 SOL**.  
+To create a Candy Machine, space is allocated on chain to temporarily store the names and URI links (mirroring what is in your `.json` file in the `.cache` directory). To store this data on chain, you are required to pay on chain rent costs. After your mint (or whenever you want to end it), you can run the `withdraw` command to **reclaim all of the rent costs**. Check the [withdraw section](./09-withdraw.md) for more details. For a 10k collection, the rent costs are approximately **16.7 SOL**. This scales linearly with the number of items in your collection. Thus, you can get an approximate on chain rent cost estimate by multiplying the number of items in your collection by **0.00167 SOL**.
 
 :::
 
@@ -69,6 +70,7 @@ Writing indices 0-9
 Done. Successful = true.
 ended at: 2021-12-22T16:44:38.446Z. time taken: 00:01:11
 ```
+
 Any execution that does not complete an upload successfully will have an output `Successful = false`. In this case, re-run the upload command until a successful execution is achieved.
 
 :::info
@@ -87,10 +89,9 @@ The example uses the `"arweave"` storage option as we are running it on the `dev
 
 :::
 
-
 ## Candy Machine Collections
 
-Candy Machine now allows you to set an on-chain collection which will be set during mint, following the on-chain collections specification for [Token Metadata](../token-metadata/specification.md#collections).
+Candy Machine now allows you to set an on-chain collection which will be set during mint, following the [on-chain collections specification](/programs/token-metadata/certified-collections) of the Token Metadata program.
 
 :::info
 
@@ -109,6 +110,7 @@ ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts set_collection \
 ```
 
 Successful output example:
+
 ```
 wallet public key: bob1upX2AoA7HAHzDTPMcYhWWnYJeMJturpswReqqP4
 (node:7714) ExperimentalWarning: stream/web is an experimental feature. This feature could change at any time
@@ -138,7 +140,9 @@ ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts remove_collection
     -k ~/.config/solana/devnet.json \
     -c example
 ```
+
 Successful output example:
+
 ```
 wallet public key: bob1upX2AoA7HAHzDTPMcYhWWnYJeMJturpswReqqP4
 (node:14972) ExperimentalWarning: stream/web is an experimental feature. This feature could change at any time
@@ -156,8 +160,9 @@ remove collection finished {
   txId: '32EseQPvZzcyVtpj4Sse2RoeAsU5akwbLL2v36W6CBEx6Jh9okmH4yR4XyfRAQKujmt7aKvYJ4GjNhp7ddnowm7D'
 }
 ```
+
 :::caution
 
-While it's not possible for the user minting to set the NFTs to a separate collection, as of today it is possible for minters to avoid setting the collection by using alternate UIs/CLIs (likely from bots). Since you will have update authority on your NFTs, you can add the collection after the fact if NFTs were not minted from the Candy Machine with the collection. You can do this easily using https://collections.metaplex.com. We suggest you use this tool after your Candy Machine has minted out, although you can do it earlier if you want. 
+While it's not possible for the user minting to set the NFTs to a separate collection, as of today it is possible for minters to avoid setting the collection by using alternate UIs/CLIs (likely from bots). Since you will have update authority on your NFTs, you can add the collection after the fact if NFTs were not minted from the Candy Machine with the collection. You can do this easily using https://collections.metaplex.com. We suggest you use this tool after your Candy Machine has minted out, although you can do it earlier if you want.
 
 :::
