@@ -27,6 +27,21 @@ This instruction enables us to update parts of the Metadata account. Note that s
 
 </ProgramInstruction>
 
+## Burn a NFT
+
+<ProgramInstruction idl={idl} instruction="BurnNft">
+
+This instruction enables the owner of the NFT to completely burn it:
+
+* burning the SPL token and closing the token account
+* closing the metadata and edition accounts
+* giving the owner the reclaimed funds from closing these accounts
+
+This handler checks if the NFT is a member of a verified collection, and if it is, requires the collection metadata account be passed in so the size can be decremented.
+
+
+</ProgramInstruction>
+
 ## Indicate the primary sale has happened
 
 <ProgramInstruction idl={idl} instruction="UpdatePrimarySaleHappenedViaToken">
@@ -255,5 +270,23 @@ Note that, this is automatically done by the Token Metadata program when creatin
 <ProgramInstruction idl={idl} instruction="ConvertMasterEditionV1ToV2">
 
 This instruction serves as a migration tool that upgrades a Master Edition account of an NFT from V1 to V2.
+
+</ProgramInstruction>
+
+## Set collection size
+
+<ProgramInstruction idl={idl} instruction="SetCollectionSize">
+
+This instruction allows the update authority of a colleciton parent NFT to set the size of the collection in order to allow existing unsized collections to be updated to track size. Once a collection is sized it can only be verified and unverified by the sized handlers and can't be changed back to unsized. 
+
+</ProgramInstruction>
+
+
+## Set token standard
+
+<ProgramInstruction idl={idl} instruction="SetTokenStandard">
+
+This instruction allows an update authority to pass in a metadata account with an optional edition account and then it determines what the correct TokenStandard type is and writes it to the metadata. See [Token Standard](./program/token-metadata/token_standard) for more information.
+
 
 </ProgramInstruction>
