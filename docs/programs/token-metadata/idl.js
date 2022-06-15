@@ -1947,8 +1947,10 @@ export default {
       ],
       args: [
         {
-          name: "instructionArgs",
-          type: "u64",
+          name: "setCollectionSizeArgs",
+          type: {
+            defined: "SetCollectionSizeArgs",
+          },
         },
       ],
       discriminant: {
@@ -2490,6 +2492,18 @@ export default {
         fields: [
           {
             name: "numberOfUses",
+            type: "u64",
+          },
+        ],
+      },
+    },
+    {
+      name: "SetCollectionSizeArgs",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "size",
             type: "u64",
           },
         ],
