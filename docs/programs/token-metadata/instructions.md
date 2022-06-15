@@ -9,7 +9,7 @@ import idl from './idl.js';
 
 ## Create a Metadata account
 
-<ProgramInstruction idl={idl} instruction="CreateMetadataAccountV2">
+<ProgramInstruction idl={idl} instruction="CreateMetadataAccountV3">
 
 ![](./assets/Token-Metadata-Instruction-Create-Metadata.png)
 
@@ -99,43 +99,64 @@ It requires the same conditions as the Master Edition account regarding the Mint
 
 </ProgramInstruction>
 
-## Verify the collection
+## Verify a collection item
 
 <ProgramInstruction idl={idl} instruction="VerifyCollection">
 
 ![](./assets/Token-Metadata-Instruction-Verify-Collection.png)
 
-This instruction verifies the collection of a Metadata account. As long as the provided `Collection Authority` is allowed to update the parent collection and signs the transaction, the `Verified` boolean will be set to `True` on the `Collection` field.
+This instruction verifies the collection of a Metadata account for unsized parent NFTs, by setting the `Verified` boolean to `True` on the `Collection` field. Calling it on a collection whose parent NFT has a size field will throw an error.
+
 
 </ProgramInstruction>
 
-## Verify an Item from a Sized Collection
+## Verify an item from a sized collection
 <ProgramInstruction idl={idl} instruction="VerifySizedCollectionItem">
 
-![](./assets/Token-Metadata-Instruction-Verify-Collection.png)
+![](./assets/Token-Metadata-Instruction-Verify-Sized-Collection-Item.png)
 
 This instruction verifies the collection of a Metadata account, by setting the `Verified` boolean to `True` on the `Collection` field, and increments the size field of the parent NFT. Calling it on a collection whose parent NFT does not have a size field will throw an error. 
 
 </ProgramInstruction>
 
 
-## Unverify the collection
+## Unverify a collection item
 
 <ProgramInstruction idl={idl} instruction="UnverifyCollection">
 
 ![](./assets/Token-Metadata-Instruction-Unverify-Collection.png)
 
-This instruction unverifies the collection of a Metadata account. As long as the provided `Collection Authority` is allowed to update the parent collection and signs the transaction, the `Verified` boolean will be set to `False` on the `Collection` field.
+This instruction unverifies the collection of a Metadata account for unsized parent NFTs, by setting the `Verified` boolean to `False` on the `Collection` field. Calling it on a collection whose parent NFT has a size field will throw an error.
 
 </ProgramInstruction>
+
+## Unverify an item from a sized collection
+
+<ProgramInstruction idl={idl} instruction="UnerifySizedCollectionItem">
+
+![](./assets/Token-Metadata-Instruction-Unverify-Sized-Collection-Item.png)
+
+This instruction unverifies the collection of a Metadata account, by setting the `Verified` boolean to `False` on the `Collection` field, and increments the size field of the parent NFT. Calling it on a collection whose parent NFT does not have a size field will throw an error.
+
+</ProgramInstruction>
+
 
 ## Set and verify the collection
 
 <ProgramInstruction idl={idl} instruction="SetAndVerifyCollection">
 
-This instruction updated the `Collection` field of a Metadata account using the provided `Collection Mint` account as long as its `Collection Authority` signs the transaction.
+This instruction updates the `Collection` field of a Metadata account using the provided `Collection Mint` account as long as its `Collection Authority` signs the transaction and the parent NFT does not have the collection details field populated (unsized).
 
 </ProgramInstruction>
+
+## Set and verify a sized collection item
+
+<ProgramInstruction idl={idl} instruction="SetAndVerifySizedCollectionItem">
+
+This instruction updates the `Collection` field of a Metadata account for sized collections using the provided `Collection Mint` account as long as its `Collection Authority` signs the transaction and the parent NFT has the collection details field populated (sized).
+
+</ProgramInstruction>
+
 
 ## Approve a new Collection Authority
 
