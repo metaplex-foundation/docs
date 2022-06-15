@@ -109,6 +109,16 @@ This instruction verifies the collection of a Metadata account. As long as the p
 
 </ProgramInstruction>
 
+## Verify an Item from a Sized Collection
+<ProgramInstruction idl={idl} instruction="VerifySizedCollectionItem">
+
+![](./assets/Token-Metadata-Instruction-Verify-Collection.png)
+
+This instruction verifies the collection of a Metadata account, by setting the `Verified` boolean to `True` on the `Collection` field, and increments the size field of the parent NFT. Calling it on a collection whose parent NFT does not have a size field will throw an error. 
+
+</ProgramInstruction>
+
+
 ## Unverify the collection
 
 <ProgramInstruction idl={idl} instruction="UnverifyCollection">
