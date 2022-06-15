@@ -33,7 +33,7 @@ pub struct Metadata {
 }
 ```
 
-The URI field contains a pointer to the rest of the metadata. This metadata is stored off chain in most cases and the URI is usually a `https:` link to some decentralized storage.
+The URI filed contains a pointer to the rest of the metadata. This metadata is stored off chain in most cases and the URI is usually a `https:` link to some decentralized storage.
 This uri must point to a JSON file that conforms to one of our Token Standards.
 
 :::info
