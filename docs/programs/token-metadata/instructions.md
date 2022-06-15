@@ -147,7 +147,7 @@ This instruction unverifies the collection of a Metadata account for unsized par
 
 ## Unverify an item from a sized collection
 
-<ProgramInstruction idl={idl} instruction="UnerifySizedCollectionItem">
+<ProgramInstruction idl={idl} instruction="UnverifySizedCollectionItem">
 
 ![](./assets/Token-Metadata-Instruction-Unverify-Sized-Collection-Item.png)
 
@@ -286,7 +286,7 @@ This instruction allows the update authority of a colleciton parent NFT to set t
 
 <ProgramInstruction idl={idl} instruction="SetTokenStandard">
 
-This instruction allows an update authority to pass in a metadata account with an optional edition account and then it determines what the correct TokenStandard type is and writes it to the metadata. See [Token Standard](./program/token-metadata/token_standard) for more information.
+This instruction allows an update authority to pass in a metadata account with an optional edition account and then it determines what the correct TokenStandard type is and writes it to the metadata. See [Token Standard](./token-standard) for more information.
 
 
 </ProgramInstruction>
