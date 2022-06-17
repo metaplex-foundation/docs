@@ -16,6 +16,9 @@ Send a tweet to [@metaplex](https://twitter.com/metaplex) or [edit this page on 
 
 - [Solana and Metaplex FAQ](https://hackmd.io/@archaeopteryx/By4bpbA4F#Solana-and-Metaplex-FAQ)
 
+## Token Metadata
+- [Mint NFTs on Solana Using Rust and Metaplex Token Metadata](https://betterprogramming.pub/how-to-mint-nfts-on-solana-using-rust-and-metaplex-f66bac717cb8)
+
 ## Storefronts
 
 - [Setting up a Solana Metaplex NFT Storefront in the Cloud](https://artifact-staking.medium.com/setting-up-a-solana-metaplex-nft-storefront-in-the-cloud-a10ea2490ed9)
