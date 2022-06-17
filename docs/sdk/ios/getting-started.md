@@ -178,5 +178,14 @@ This will use URLShared networking. Which is the default iOS networking implment
 
 This will use return Empty Data object with 0 size. 
 
+## Sample app
+
+The SDK cames with a [sample app][sample]. Please clone it run it on your phone and take what is can help you. 
+
+![Sample App](app.gif "Sample App")
+
 [github]: https://github.com/metaplex-foundation/metaplex-ios
 [docs]: https://metaplex-foundation.github.io/ios/
+[sample]: https://github.com/metaplex-foundation/metaplex-ios/tree/main/Sample
+
+
