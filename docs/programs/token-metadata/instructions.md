@@ -277,7 +277,9 @@ This instruction serves as a migration tool that upgrades a Master Edition accou
 
 <ProgramInstruction idl={idl} instruction="SetCollectionSize">
 
-This instruction allows the update authority of a colleciton parent NFT to set the size of the collection in order to allow existing unsized collections to be updated to track size. Once a collection is sized it can only be verified and unverified by the sized handlers and can't be changed back to unsized. 
+![](./assets/Token-Metadata-Instruction-Set-Collection-Size.png)
+
+This instruction allows the update authority of a collection parent NFT to set the size of the collection in order to allow existing unsized collections to be updated to track size. Once a collection is sized it can only be verified and unverified by the sized handlers and can't be changed back to unsized. 
 
 </ProgramInstruction>
 
@@ -285,6 +287,9 @@ This instruction allows the update authority of a colleciton parent NFT to set t
 ## Set token standard
 
 <ProgramInstruction idl={idl} instruction="SetTokenStandard">
+
+![](./assets/Token-Metadata-Instruction-Set-Token-Standard.png)
+
 
 This instruction allows an update authority to pass in a metadata account with an optional edition account and then it determines what the correct TokenStandard type is and writes it to the metadata. See [Token Standard](./token-standard) for more information.
 
