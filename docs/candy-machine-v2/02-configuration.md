@@ -5,50 +5,60 @@ sidebar_label: "2. Configuration"
 
 The configuration in `CMv2` is now specified in a single JSON file. This allows you to save and reuse the configuration across multiple drops. Additionally, there is a single account on-chain that holds all the configuration of a Candy Machine and the values can be updated at any point. The way the Candy Machine operates depends on the settings used, and therefore it is the **most important part in setting up your Candy Machine**. It is crucial to understand how the settings work to decide which ones to use for your project.
 
-We will discuss a few examples on how to setup a Candy Machine, starting with the settings to configure a `CMv2` to operate in a similar way as a `CMv1`.
+We will discuss a few examples on how to set up a Candy Machine, starting with the settings to configure a `CMv2` to operate in a similar way as a `CMv1`.
 
 The table below provides an overview of the settings available:
 
-| Setting               | Options           | Accepted Values        | Description |
-| --------------------- | ----------------- | ---------------------- | ----------------------------------------- |
-| price                 |                   | Number                 | The amount in SOL or SPL token for a mint |
-| number                |                   | Integer                | The number of items in the Candy Machine |
-| gatekeeper            |                   |                        | |
-|                       | gatekeeperNetwork | Address                | Captcha provider address |
-|                       | expireOnUse       | boolean                | Requires a new captcha after a use |
-| solTreasuryAccount    |                   | PublicKey              | SOL wallet to receive proceedings SOL payments |
-| splTokenAccount       |                   | PublicKey              | SPL token wallet to receive proceedings from SPL token payments |
-| splToken              |                   | PublicKey              | Mint address of the token accepted as payment |
-| goLiveDate            |                   | Datetime               | Timestamp when minting is allowed – the Candy Machine authority and whitelists can bypass this constraint |
-| endSettings           |                   |                        | |
-|                       | value             | Datetime or Integer    | Value to test the end condition. This will be either a date string (if `date` is set to `true`) or a integer amount value (if `amount` is set to `true`) |
-|                       | date              | boolean                | Enable the use of a date to stop the mint - when the date specified in the `value` option is reached, the mint stops |
-|                       | amount            | boolean                | Enable stopping the mint after a specific amount is minted - the amount is specified in the `value` option |
-| whitelistMintSettings |                   |                        | |
-|                       | mode              |                        | |
-|                       |                   | “burnEveryTime” : true | Whitelist token is burned after the mint |
-|                       |                   | “neverBurn” : true     | Whitelist token is returned to holder |
-|                       | mint              | PublicKey              | Mint address of the whitelist token |
-|                       | presale           | boolean                | Indicates whether whitelist token holders can mint before goLiveDate (presale) |
-|                       | discountPrice     | Number                 | Price for whitelist token holders |
-| hiddenSettings        |                   |                        | |
-|                       | name              | String                 | Name of the mint. The number of the mint will be appended to the name|
-|                       | uri               | String                 | Single URI to all mints|
+| Setting               | Options           | Accepted Values        | Description                                                                                                                                                                        |
+|-----------------------|-------------------|------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| price                 |                   | Number                 | The amount in SOL or SPL token for a mint                                                                                                                                          |
+| number                |                   | Integer                | The number of items in the Candy Machine                                                                                                                                           |
+| gatekeeper            |                   |                        | Enables captcha verification for users prior to minting                                                                                                                             |
+|                       | gatekeeperNetwork | Address                | Gateway provider address                                                                                                                                                           |
+|                       | expireOnUse       | boolean                | Requires a new gateway challenge after a use                                                                                                                                       |
+| solTreasuryAccount    |                   | PublicKey              | SOL wallet to receive proceedings SOL payments                                                                                                                                     |
+| splTokenAccount       |                   | PublicKey              | SPL token wallet to receive proceedings from SPL token payments                                                                                                                    |
+| splToken              |                   | PublicKey              | Mint address of the token accepted as payment                                                                                                                                      |
+| goLiveDate            |                   | Datetime               | Timestamp when minting is allowed – the Candy Machine authority and whitelists can bypass this constraint                                                                          |
+| endSettings           |                   |                        |                                                                                                                                                                                    |
+|                       | endSettingType    |                        |                                                                                                                                                                                    |
+|                       |                   | “date“: true           | Enable the use of a date to stop the mint - when the date specified in the `value` option is reached, the mint stops                                                               |
+|                       |                   | “amount“: true         | Enable stopping the mint after a specific amount is minted - the amount is specified in the `value` option                                                                         |
+|                       | value             | Datetime or Integer    | Value to test the end condition. This will be either a date string (if `date` is set to `true`) or a integer amount value (if `amount` is set to `true`)                           |
+| whitelistMintSettings |                   |                        |                                                                                                                                                                                    |
+|                       | mode              |                        |                                                                                                                                                                                    |
+|                       |                   | “burnEveryTime” : true | Whitelist token is burned after the mint                                                                                                                                           |
+|                       |                   | “neverBurn” : true     | Whitelist token is returned to holder                                                                                                                                              |
+|                       | mint              | PublicKey              | Mint address of the whitelist token                                                                                                                                                |
+|                       | presale           | boolean                | Indicates whether whitelist token holders can mint before goLiveDate (presale)                                                                                                     |
+|                       | discountPrice     | Number                 | Price for whitelist token holders                                                                                                                                                  |
+| hiddenSettings        |                   |                        |                                                                                                                                                                                    |
+|                       | name              | String                 | Name of the mint. The number of the mint will be appended to the name                                                                                                              |
+|                       | uri               | String                 | Single URI to all mints                                                                                                                                                            |
 |                       | hash              | String                 | 32 character hash – in most cases this is the hash of the cache file with the mapping between mint number and metadata so that the order can be verified when the mint is complete |
-| storage               |                   |                        | Storage type to upload images and metadata |
-|                       |                   | “arweave-sol”          | Uploads to arweave and payment are made in SOL (only works in mainnet, recommended option) |
-|                       |                   | “arweave-bundle”       | Uploads to arweave and payment are made in AR (only works in mainnet and requires an Arweave wallet) |
-|                       |                   | “arweave”              | Uploads to arweave via Metaplex Google Cloud function (works on devnet and mainnet, recommended option for devnet) |
-|                       |                   | “ipfs”                 | Uploads to IPFS (must specify either Infura Project ID or Secret Key) |
-|                       |                   | “nft-storage”                 | Uploads to [NFT.Storage](https://nft.storage) (no payment required, works on all networks) |
-|                       |                   | “aws”                  | Uploads to AWS (must specify AWS Bucket name) |
-| ipfsInfuraProjectId   |                   | String                 | Infura Project ID |
-| ipfsInfuraSecret      |                   | String                 | Infure Project Secret |
-| nftStorageKey         |                   | String                 | NFT.Storage API Key (optional) |
-| arweaveJwk            |                   | String                 | Arweave JWK wallet file |
-| awsS3Bucket           |                   | String                 | AWS bucket name |
-| noRetainAuthority     |                   | boolean                | Indicates whether the candy machine authority has the update authority for each mint or not |
-| noMutable             |                   | boolean                | Indicates whether the NFTs' metadata is mutable or not after having been minted |
+| storage               |                   |                        | Storage type to upload images and metadata                                                                                                                                         |
+|                       |                   | “arweave-sol”          | Uploads to arweave using [Bundlr](https://bundlr.network) and payments are made in SOL (Recommended option. Works on mainnet and devnet. **Files are only stored for 7 days on devnet.**)                                                                                         |
+|                       |                   | “arweave-bundle”       | Uploads to arweave and payments are made in AR (only works in mainnet and requires an Arweave wallet)                                                                               |
+|                       |                   | “arweave”              | Uploads to arweave via Metaplex Google Cloud function (works on devnet and mainnet)                                                                 |
+|                       |                   | “ipfs”                 | Uploads to IPFS (must specify either Infura Project ID or Secret Key)                                                                                                              |
+|                       |                   | “pinata”               | Uploads to [Pinata](https://pinata.cloud) using your Pinata account API keys                                                                                                       |
+|                       |                   | “nft-storage”          | Uploads to [NFT.Storage](https://nft.storage) (no payment required, works on all networks)                                                                                         |
+|                       |                   | “aws”                  | Uploads to AWS (must specify AWS Bucket name)                                                                                                                                      |
+| ipfsInfuraProjectId   |                   | String                 | Infura Project ID                                                                                                                                                                  |
+| ipfsInfuraSecret      |                   | String                 | Infura Project Secret                                                                                                                                                              |
+| pinataJwt             |                   | String                 | Pinata API Key JWT                                                                                                                                                                 |
+| pinataGateway         |                   | String                 | Pinata Dedicated Gateway URL (e.g. https://myname.mypinata.cloud)                                                                                                                  |
+| nftStorageKey         |                   | String                 | NFT.Storage API Key (optional)                                                                                                                                                     |
+| arweaveJwk            |                   | String                 | Arweave JWK wallet file                                                                                                                                                            |
+| awsS3Bucket           |                   | String                 | AWS bucket name                                                                                                                                                                    |
+| noRetainAuthority     |                   | boolean                | Indicates whether the candy machine authority has the update authority for each mint or if it is transferred to the minter. This should be kept as `false` for the vast majority of cases. Leave this as `false` if you are unsure which to pick.                                                                                         |
+| noMutable             |                   | boolean                | Indicates whether the NFTs' metadata is mutable or not after having been minted                                                                                                    |
+
+:::danger
+
+If you set noMutable to true, you **WILL NOT** be able to update your NFTs at any point in the future.
+
+:::
 
 :::info
 
@@ -108,25 +118,58 @@ It is important that the `number` setting value matches the number of items in y
 
 :::
 
-## Captcha Settings
-
-> By using captcha, you agree to [Civic’s Terms and Conditions](https://docs.civic.com/candy-machine-integration/adding-captcha-to-candy-machine-v2#terms-and-conditions).
+## Gatekeeper Settings
 
 While the unpredictable mint index provides some protection against bots, bots are still able to mint directly from the Candy Machine. If you want to make sure that only humans can mint from your project, you can enable the gatekeeper settings in your `config.json` with the following values:
 
 ```json
 "gatekeeper": {
-    "gatekeeperNetwork" : "ignREusXmGrscGNUesoU9mxfds9AiYTezUKex2PsZV6",
+    "gatekeeperNetwork" : "<PROVIDER NETWORK ADDRESS>",
    	"expireOnUse" : true
 }
 ```
-This will enable a captcha challenge once the mint button is clicked - only after passing the captcha you will be allowed to mint.
+This will enable a gatekeeper challenge once the mint button is clicked&mdash;only after passing the challenge you will be allowed to mint.
 
-When you use a captcha, you will not be able to mint from the CLI command `mint_one_token`. If you want to pre-mint from a `CMv2` and are planning to use a captcha, you should set the `goLiveDate` to `null` and turn captcha (temporarily) off. This will allow you to mint from the command line, but only **you** as the `CMv2` authority. Once you complete the pre-mint, turn captch on and set the correct `goLiveDate`.
+When you use a gatekeeper, you will not be able to mint from the CLI command `mint_one_token`. If you want to pre-mint from a `CMv2` and are planning to use a gatekeeper, you should set the `goLiveDate` to `null` and turn `gatekeeper` (temporarily) off. This will allow you to mint from the command line, but only **you** as the `CMv2` authority. Once you complete the pre-mint, turn `gatekeeper` on and set the correct `goLiveDate`.
 
 :::warning
 
-If your Candy Machine is **live** and it has **no captcha**, it is open to bots attacks. The unpredictable mint index only prevents knowing which item to mint, but bots can still snipe a large volume of items.
+If your Candy Machine is **live** and it has **no gatekeeper**, it is open to bots attacks. The unpredictable mint index only prevents knowing which item to mint, but bots can still snipe a large volume of items.
+
+:::
+
+### Provider Networks
+
+There are currently two supported gatekeepers (details below). If you want to become a supported gatekeeper please email [contact@identity.org](mailto:contact@identity.org).
+> [Learn more about the Identity Gateway Protocol](https://docs.identity.com/docs/overview)
+
+#### Civic Captcha Pass
+
+> Address: `ignREusXmGrscGNUesoU9mxfds9AiYTezUKex2PsZV6`
+
+**Recommended**: maintain `expireOnUse: true`. Changing this setting increases the susceptibility of your project to bots.
+
+Brings the familiar captcha challenge to web3 and combines it with user-transparent heuristics to protect your mint from bots.
+
+With captcha enabled, a user will be issued a Civic Captcha Pass after successfully completing the captcha challenge and automatically checked by the Candy Machine prior to minting. 
+
+A Civic Captcha Pass remains active only for 10 minutes and for one mint to limit the options of malicious botters verifying multiple wallets. If a user tries to use an inactive pass, it will automatically prompt them to refresh it.
+
+- [Learn More](https://docs.civic.com/candy-machine-integration/adding-captcha-to-candy-machine-v2)
+- [Civic Ts&Cs](https://docs.civic.com/candy-machine-integration/adding-captcha-to-candy-machine-v2#terms-and-conditions)
+
+#### Verify by Encore
+
+> Address: `tibePmPaoTgrs929rWpu755EXaxC7M3SthVCf6GzjZt`
+
+A web3 alternative to captcha that uses randomized challenge-response tests to filter out bots.
+- [Learn More](https://encorefans.notion.site/Verify-0af40ff4b3324694abf336f185c9fad2)
+- [Encore Ts&Cs](https://www.encore.fans/terms-conditions)
+
+
+:::info
+
+By using a gatekeeper, you agree to their terms and conditions.
 
 :::
 
@@ -178,7 +221,7 @@ Whitelist settings provide a variety of different use cases and revolve around t
 
 :::info
 
-You can use the whitelist settings with the `presale` option set to `true` in combination with the gateway settings. This will restrict the mint to only whitelist users and require them to complete the captcha.
+You can use the whitelist settings with the `presale` option set to `true` in combination with the gateway settings. This will restrict the mint to only whitelist users and require them to complete the Gatekeeper's challenge.
 
 :::
 

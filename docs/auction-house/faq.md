@@ -12,8 +12,8 @@ Yes, An AuctionHouse may be configured to take `seller fee basis points`. This i
 Fees are paid to Creators,Then the Auction house and the seller gets the remainder of the sale. This is easy to calculate on your UI by taking the NFT royalties, Sale price, Auction House fee and displaying to the buyer what their total gains will be.
 
 ## Does the AuctionHouse restrict the user from selling their NFT on another Non-AuctionHouse marketplace?
-No, the AuctionHouse cannot stop users from sending their NFT even if they have a for-sale listing. If this happens, the `execute_sale` operation will fail and the buyer can get their finds back by canceling their bid.
-Marketplaces creating a AuctionHouse experience will need to track the Buy/Sell trade state accounts and watch the TokenAccounts of sellers so they can automatically cancel the listing and bids on that NFTs.
+No, the AuctionHouse cannot stop users from sending their NFT even if they have a for-sale listing. If this happens, the `execute_sale` operation will fail and the buyer can get their funds back by canceling their bid.
+Marketplaces creating a AuctionHouse experience will need to track the Buy/Sell trade state accounts and watch the TokenAccounts of sellers so they can automatically cancel the listing and bids on NFTs that have been transferred from the original seller.
 
 Specifically Marketplaces should currently store:
 
@@ -30,19 +30,23 @@ Specifically Marketplaces need to track these two events on Token Accounts:
 If these events happen the AuctionHouse Authority can call instructions to cancel the bids and listings without the seller or buyer needing to be present.
 
 ## Can people view the settings of my AuctionHouse
-Yes anyone can and should be able to verofy the settings of your AuctionHouse especially the `Can Change Sale Price` parameter.
-This can be done on the cli with the `show`
+Yes anyone can and should be able to verify the settings of your AuctionHouse especially the `Can Change Sale Price` parameter.
+This can be done on the CLI with the `show` command.
 
 
 ## Can the AuctionHouse change the sale price on my NFT
-Yes but only in a certain scenario. These things need to happen in order for a Auction House to be able to use this feature.
+Yes, but only in a certain scenario. The following conditions are required in order for an Auction House to be able to use this feature:
 
 1. The AuctionHouse instance must have `Can Change Sale Price` set to `true`
+<<<<<<< HEAD
 2. You as the NFT seller must list your NFT for sale at a price of 0. 
+=======
+2. The NFT seller must list the NFT for sale at a price of 0. 
+>>>>>>> 4e76975865c545e6c9f89f2726da088622a83df0
 
 :::warning
 
-Don't worry not even the Auction House can sell it for 0 unless you sign the transaction with your key.
+The Auction House can only sell it for 0 if you sign the transaction with your key, but currently it can sell it for an arbitarily low price, e.g. 1 lamport. It is important to only list with Auction Houses you trust.
 
 :::
 

@@ -117,3 +117,210 @@ html[data-theme="dark"] .DocSearch {
     var(--ifm-color-emphasis-100) 100%
   );
 }
+
+html .accordion {
+  --accordion-background-color: #fafafa;
+  --accordion-background-color-hover: #f1f1f2;
+  --accordion-border-color: #e4e4e7;
+  --accordion-title-color: #475569;
+  --accordion-caret-color: #64748b;
+  --accordion-table-header-color: #334155;
+  --accordion-nested-row-color: #52525b;
+  --accordion-radius: 10px;
+  background-color: var(--accordion-background-color);
+  border: 1px solid var(--accordion-border-color);
+  border-radius: var(--accordion-radius);
+}
+
+html[data-theme="dark"] .accordion {
+  --accordion-background-color: #27272a;
+  --accordion-background-color-hover: #3f3f46;
+  --accordion-border-color: #6b7280;
+  --accordion-title-color: #e2e8f0;
+  --accordion-caret-color: #cbd5e1;
+  --accordion-table-header-color: #d4d4d8;
+  --accordion-nested-row-color: #a1a1aa;
+}
+
+.accordion-item-header {
+  padding: 1rem;
+  margin: 0;
+  cursor: pointer;
+}
+
+.accordion-item-header:hover {
+  background-color: var(--accordion-background-color-hover);
+}
+
+.accordion-item-header > h3 {
+  color: var(--accordion-title-color);
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.accordion-item-header > h3 > svg {
+  color: var(--accordion-caret-color);
+  margin-right: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.accordion-item:first-child .accordion-item-header {
+  border-radius: var(--accordion-radius) var(--accordion-radius) 0 0;
+}
+
+.accordion-item:last-child.accordion-item-closed .accordion-item-header {
+  border-radius: 0 0 var(--accordion-radius) var(--accordion-radius);
+}
+
+.accordion .accordion-item + .accordion-item {
+  border-top: 1px solid var(--accordion-border-color);
+}
+
+.accordion-item-content {
+  padding: 0;
+  margin: 0;
+}
+
+.accordion-item-closed .accordion-item-content {
+  display: none;
+}
+
+.accordion-item-content img {
+  border-radius: var(--accordion-radius);
+}
+
+.accordion-item-content pre {
+  background-color: var(--accordion-background-color) !important;
+}
+
+.accordion-item-padding {
+  padding: 0;
+  margin: 1rem;
+}
+
+.accordion-item-no-padding {
+  padding: 0;
+  margin: 0;
+}
+
+.accordion-item-no-padding > *:last-child {
+  padding: 0;
+  margin: 0;
+}
+
+.accordion-table-overflow {
+  overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.accordion-table {
+  display: table;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.accordion-table thead tr,
+.accordion-table th,
+.accordion-table td {
+  border: none;
+}
+
+.accordion-table thead {
+  background-color: var(--accordion-background-color-hover);
+}
+
+.accordion-table thead th {
+  color: var(--accordion-table-header-color);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-align: left;
+  padding: 0.5rem 1rem;
+}
+
+.accordion-table tr:nth-child(2n) {
+  background-color: inherit;
+}
+
+.accordion-table tbody tr {
+  border-top: 1px solid var(--accordion-border-color);
+  font-size: 14px;
+}
+
+.accordion-table tbody th,
+.accordion-table tbody td {
+  text-align: left;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  vertical-align: top;
+}
+
+.accordion-table tbody th {
+  font-weight: 700;
+}
+
+.accordion-table tbody tr + .accordion-table-nested-row {
+  border: none;
+}
+
+.accordion-table tbody tr.accordion-table-nested-row > * {
+  color: var(--accordion-nested-row-color);
+  padding-top: 2rem;
+}
+
+.accordion-table
+  tbody
+  tr.accordion-table-nested-row
+  + .accordion-table-nested-row
+  > * {
+  padding-top: 0.5rem;
+}
+
+.program-instruction-details {
+  font-size: 14px;
+}
+
+html .program-instruction-account-icon {
+  --program-instruction-account-icon-color: #d1d5db;
+  --program-instruction-account-icon-color-hover: #9ca3af;
+  --program-instruction-account-icon-active-color: #14b8a6;
+  --program-instruction-account-icon-active-color-hover: #0f766e;
+}
+
+html[data-theme="dark"] .program-instruction-account-icon {
+  --program-instruction-account-icon-color: #6b7280;
+  --program-instruction-account-icon-color-hover: #9ca3af;
+  --program-instruction-account-icon-active-color: #14b8a6;
+  --program-instruction-account-icon-active-color-hover: #5eead4;
+}
+
+a.program-instruction-account-icon {
+  display: block;
+  color: var(--program-instruction-account-icon-color);
+}
+
+a.program-instruction-account-icon:hover {
+  color: var(--program-instruction-account-icon-color-hover);
+}
+
+a.program-instruction-account-icon.active {
+  color: var(--program-instruction-account-icon-active-color);
+}
+
+a.program-instruction-account-icon.active:hover {
+  color: var(--program-instruction-account-icon-active-color-hover);
+}
+
+a.program-instruction-account-icon > svg {
+  display: block;
+}
+
+a.program-instruction-account-icon + a.program-instruction-account-icon {
+  margin-left: 0.5rem;
+}

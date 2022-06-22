@@ -10,10 +10,10 @@ It is also suggested to use a custom RPC for this step because it is a heavy com
 ### Sign
 
 ```bash
-ts-node~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts sign \
+ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts sign \
     -e devnet \
     -k ~/.config/solana/devnet.json \
-    -c example
+    -m <metadata Address>
 ```
 
 ### Sign All
@@ -33,7 +33,7 @@ Once verified, the verified value for the second creator will be changed from `0
 
 ```bash
 "address": //address of the Candy Machine
-"verfied":1
+"verfied": 1
 "share": 0
 
 "address": //Adress of the creator

@@ -14,6 +14,7 @@ Below is a list of our Products and their stability levels. For more information
 | Auctions         | 2 (Stable)       |
 | Candy Machine    | 0 (Deprecated)       |
 | Candy Machine v2 | 2 (Stable) |
+| Sugar            | 1 (Experimental) |
 | Fair Launch      | 2 (Stable)       |
 | Token Entangler  | 1 (Experimental) |
 | Fireball         | 1 (Experimental) |

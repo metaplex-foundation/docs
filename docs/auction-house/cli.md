@@ -18,7 +18,11 @@ In order to get started with the AuctionHouse CLI please follow these steps.
 ```
 git clone https://github.com/metaplex-foundation/metaplex.git
 cd metaplex
-git checkout v1.1.1
+```
+Note: By default you will be using the latest code on the tip of the `master` branch.  If instead you want to use a specific release, you check it out now (for example, `git checkout v1.1.1`).
+
+Then:
+```
 cd js && yarn install && yarn bootstrap
 cd packages/cli
 ```
@@ -221,11 +225,11 @@ Made offer for  2
 
 ### Execute Sale
 
-Sell an NFT to a buyer at the price set by the seller.
+Sell an NFT to a buyer at the price set by the seller.  Note that this currently requires the auction house authority, the buyer, or the seller to be the fee payer and thus sign the transaction.
 
 :::info
 
-If your AuctionHouse does not require signoff then this action is `permissionless` meaning anyone can call this instruction with two matching (price must match) orders (bid/sell). This is great because you can program your UI to execute the sale once an order matches on the client side or have a backend process or bot finish the process.
+In a future version of the AuctionHouse, this action will become `permissionless`, meaning anyone will be able to call this instruction with two matching (price must match) orders (bid/sell). This will allow your UI to execute the sale once an order matches on the client side or have a backend process or bot finish the process.
 
 :::
 
@@ -259,4 +263,4 @@ Other actions are documented in the CLI and can be found using the `help` and `<
 
 - _Widthraw from Treasury_ - Transfer funds from the auction house treasury wallet to the auction house authority.
 
-- _Update Auction House_ - Update any of the auction house settings including it's authority or saller fee.
+- _Update Auction House_ - Update any of the auction house settings including it's authority or seller fee.

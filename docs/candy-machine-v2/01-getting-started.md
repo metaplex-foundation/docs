@@ -6,6 +6,12 @@ sidebar_label: "1. Getting Started"
 
 Before we can create a Candy Machine, you will need to install and operate a handful of developer tools.
 
+:::warning
+
+During this guide, we will use `\` within example commands prior to new lines. On most shells (such as the shells on MacOS and Linux), this symbol means a new line. However, on Windows Command Prompt, it does not. If you are on Windows and are using the Command Prompt, enter the commands in a single line and remove the `\` characters that we use in our examples. 
+
+:::
+
 ## Tooling required
 
 You will need recent version of the following tools:
@@ -19,7 +25,7 @@ You will need recent version of the following tools:
 git version
 ```
 
-> **output:** _git version 2.32.0_
+> **output:** _git version 2.35.1_
 
 The latest LTS version of node is recommended:
 
@@ -27,13 +33,13 @@ The latest LTS version of node is recommended:
 node --version
 ```
 
-> **output:** _v16.13.0_
+> **output:** _v16.14.2_
 
 ```bash
 yarn --version
 ```
 
-> **output:** _1.22.17_
+> **output:** _1.22.18_
 
 ```bash
 ts-node --version
@@ -68,7 +74,7 @@ git clone https://github.com/metaplex-foundation/metaplex.git ~/metaplex
 git clone -b v1.1.1 https://github.com/metaplex-foundation/metaplex.git ~/metaplex
 ``` -->
 
-This will create a directory `metaplex` in your home directory with the lastest code from the repository. If you decide to clone the repository to a different location, you will need to change the path in subsequent instructions.
+This will create a directory `metaplex` in your home directory with the latest code from the repository. If you decide to clone the repository to a different location, you will need to change the path in subsequent instructions.
 
 <!-- :::info
 
@@ -134,7 +140,7 @@ In this guide we will use `devnet`, although all commands presented will work in
 
 The steps described here will create a wallet to be used in the Solana `devnet` environment. In normal circumstances you would redact your mnemonic, store it somewhere safe and take advantage of the `--outfile` flag.
 
-To create a new wallet, we will use the `solana-keygen` commnand:
+To create a new wallet, we will use the `solana-keygen` command:
 
 ```bash
 solana-keygen new --outfile ~/.config/solana/devnet.json
@@ -222,7 +228,7 @@ Signature: 41ZEZqpyNMLUy3kQahWSy349PeDz3Q82dNDHKiA7QcsrAzHs3f7YiDEZWjnFi434DoiiD
 </p>
 </details>
 
-If the command is successful, you will see the updated balance at the end.
+If the command is successful, you will see the updated balance at the end. Make sure you are entering the airdrop amount that is within the airdrop limit. Currently the maximum airdrop request limit is **2 SOL** and there is a daily total limit of **24 SOL**.
 
 :::caution
 

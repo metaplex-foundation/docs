@@ -5,6 +5,7 @@
   - [Setup](#setup)
   - [Drop Types](#drop-types)
     - [Token Airdrop](#token-airdrop)
+    - [Candy Machine Pre-sale](#nft-candy-machine-pre-sale)
     - [Edition Prints](#edition-prints)
   - [Distribution Method](#distribution-method)
   - [Whitelist](#whitelist)
@@ -46,13 +47,13 @@ Gumdrop creators can use either the Gumdrop CLI or the [web
 UI](https://lwus.github.io/metaplex). Additional options are available through
 the CLI. To execute the Gumdrop CLI or deploy a local version of the web UI,
 please follow the same [prerequisite steps of Candy Machine
-creation](/candy-machine-v1/introduction#prerequisites).
+creation](/candy-machine-v2/getting-started#tooling-required). 
 
 - The CLI can be found in the [Metaplex
-  repo](https://github.com/metaplex-foundation/metaplex/) at
-  `js/packages/cli/src/gumdrop-cli.ts` and will also be run with `ts-node`.
-- The web interface can be run locally from the Metaplex
-  repo at `js/packages/gumdrop` with `yarn start`.
+  repo](https://github.com/metaplex-foundation/gumdrop/) at
+  `packages/cli/src/gumdrop-cli.ts` and will also be run with `ts-node`.
+- The web interface can be run locally from the Gumdrop
+  repo at `packages/gumdrop` with `yarn start`.
   (You can also use an [example deployment](https://lwus.github.io/metaplex), but this site may not exist for long.)
 
 To create a drop, you must specify the [drop type](#drop-types), the
@@ -77,9 +78,7 @@ $ ts-node src/gumdrop-cli.ts help create
 ### Token Airdrop
 
 All a token airdrop requires is approval to move the relevant tokens from the
-Gumdrop creators' token account. The Gumdrop state will be approved as a
-[delegate](https://spl.solana.com/token#authority-delegation) for the sum of
-tokens specified.
+Gumdrop creators' token account.
 
 ```
 $ ts-node src/gumdrop-cli.ts create \
@@ -87,13 +86,62 @@ $ ts-node src/gumdrop-cli.ts create \
 --transfer-mint So11111111111111111111111111111111111111112
 ```
 
+However, by default, `gumdrop-cli.ts` will instead transfer the tokens to the
+generated throwaway `Keypair` so that multiple gumdrops can be created more
+intuitively. These will be transferred back on [close](#close)
+
+Alternatively, by passing `--delegate-only`, Gumdrop state will be approved as
+a [delegate](https://spl.solana.com/token#authority-delegation) for the sum of
+tokens specified.
+
 ### NFT Candy Machine Pre-sale
 
 The workflow for a Candy Machine pre-sale through the Gumdrop program is as
 follows:
 
-1. Create a Gumdrop [Token Airdrop](#token-airdrop)
-2. Create a Candy Machine V2 with a whitelist mint ([Candy Machine Docs](./candy-machine-v2/introduction)). Use the token from step 1.
+1. Create a whitelist mint token `WLIST` with the SPL token program
+2. Create a Candy Machine V2 with whitelist mint settings with mint `WLIST`
+   ([Candy Machine Docs](../candy-machine-v2/introduction)). For example,
+
+  ```
+  {
+    "whitelistMintSettings": {
+      "mode": { "burnEveryTime": true },
+      "mint": <WLIST>,
+      "presale": true,
+      "discountPrice": null
+    },
+    ...
+  }
+  ```
+
+3. Create a Gumdrop with `--claim-integration candy` and the corresponding
+   `--candy-machine`.
+
+   ```
+   $ ts-node src/gumdrop-cli.ts create \
+   --claim-integration candy \
+   --candy-machine FuxMhU34GPggi1yzk8tQwhsLQFR52iiutM5B9nzzeRPa  \
+   ```
+
+   `gumdrop-cli.ts` will parse the on-chain candy machine account and look for
+   the corresponding `whitelistMintSettings`. Then under-the-hood it
+   initializes a token-airdrop for `WLIST` but adds extra information in the
+   claim URL so that frontends can find the corresponding candy crank in
+   addition to the whitelist token account. In the produced `urls.json`, this
+   will look somethign like
+
+   ```
+   ...
+   ?distributor=9zXd1NddYbZejacgd92XMQsAQKhXC4Yj9rhUspRyR1ud\
+   &candy=FuxMhU34GPggi1yzk8tQwhsLQFR52iiutM5B9nzzeRPa\
+   &tokenAcc=93fQV4RnstogfFqMstV9b8uAvZ5KsRFjgJUagJhpX2Wa\
+   ...
+   ```
+
+4. On the frontend, users click a button that formats 2 transactions. The first
+   claims the whitelist token gumdrop, and the second uses that token to crank
+   the candy machine.
 
 ### Edition Prints
 
@@ -151,7 +199,7 @@ The whitelist is used to specify the recipients of the Gumdrop. Both frontends
 expect the whitelist to be a JSON list of recipients, each with a `handle`
 identifying the user, an `amount` which determines the number of tokens, mints,
 or prints that can be claimed, and in the case of [edition
-prints](#edition-p[rints), an `edition` number.
+prints](#edition-prints), an `edition` number.
 
 More concretely, the frontends expect the list format to be
 
@@ -186,14 +234,23 @@ recipients will fail to claim their allocation.
 
 ## Closing a Gumdrop
 
-When the gumdrop is finished, the master edition can be reclaimed by closing the gumdrop. Currently, the small portion
-of rent used to store the Gumdrop state is also redeemed but please do not rely
-on this behavior!
+When the gumdrop is finished, the master edition can be reclaimed by closing
+the gumdrop. Currently, the small portion of rent used to store the Gumdrop
+state is also redeemed but please do not rely on this behavior!
 
 The command to close it is:
+
 ```
-ts-node gumdrop-cli.ts close -e devnet --base <keypair that was created on gumdrop create> --keypair <your initial keypair>
+ts-node gumdrop-cli.ts close \
+  --base <keypair that was created on gumdrop create> \
+  --keypair <your initial keypair> \
+  --claim-integration <creation --claim-integration> \
+  --<corresponding claim integration flag>
 ```
+
+We pass additional information about the claim integration to revoke authority
+or transfer back tokens, etc.
+
 NB: somewhat obviously, recipients will no longer be able to redeem the Gumdrop
 after it is closed.
 
