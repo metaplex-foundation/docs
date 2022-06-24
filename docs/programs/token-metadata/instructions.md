@@ -39,6 +39,8 @@ This instruction enables the owner of the NFT to completely burn it:
 
 This handler checks if the NFT is a member of a verified collection, and if it is, requires the collection metadata account be passed in so the size can be decremented.
 
+This handler will not close metadata and edition accounts where the token has already been burned and the mint has a supply of 0. At that point there is no official "owner" of the NFT.
+
 
 </ProgramInstruction>
 
@@ -122,6 +124,7 @@ It requires the same conditions as the Master Edition account regarding the Mint
 
 This instruction verifies the collection of a Metadata account for unsized parent NFTs, by setting the `Verified` boolean to `True` on the `Collection` field. Calling it on a collection whose parent NFT has a size field will throw an error.
 
+Clients should detect if a NFT is part of a sized collection or not and call the appropriate handler for the user to abstract away this detail.
 
 </ProgramInstruction>
 
@@ -131,6 +134,8 @@ This instruction verifies the collection of a Metadata account for unsized paren
 ![](./assets/Token-Metadata-Instruction-Verify-Sized-Collection-Item.png)
 
 This instruction verifies the collection of a Metadata account, by setting the `Verified` boolean to `True` on the `Collection` field, and increments the size field of the parent NFT. Calling it on a collection whose parent NFT does not have a size field will throw an error. 
+
+Clients should detect if a NFT is part of a sized collection or not and call the appropriate handler for the user to abstract away this detail.
 
 </ProgramInstruction>
 
@@ -143,6 +148,8 @@ This instruction verifies the collection of a Metadata account, by setting the `
 
 This instruction unverifies the collection of a Metadata account for unsized parent NFTs, by setting the `Verified` boolean to `False` on the `Collection` field. Calling it on a collection whose parent NFT has a size field will throw an error.
 
+Clients should detect if a NFT is part of a sized collection or not and call the appropriate handler for the user to abstract away this detail.
+
 </ProgramInstruction>
 
 ## Unverify an item from a sized collection
@@ -153,6 +160,9 @@ This instruction unverifies the collection of a Metadata account for unsized par
 
 This instruction unverifies the collection of a Metadata account, by setting the `Verified` boolean to `False` on the `Collection` field, and increments the size field of the parent NFT. Calling it on a collection whose parent NFT does not have a size field will throw an error.
 
+Clients should detect if a NFT is part of a sized collection or not and call the appropriate handler for the user to abstract away this detail.
+
+
 </ProgramInstruction>
 
 
@@ -162,6 +172,8 @@ This instruction unverifies the collection of a Metadata account, by setting the
 
 This instruction updates the `Collection` field of a Metadata account using the provided `Collection Mint` account as long as its `Collection Authority` signs the transaction and the parent NFT does not have the collection details field populated (unsized).
 
+Clients should detect if a NFT is part of a sized collection or not and call the appropriate handler for the user to abstract away this detail.
+
 </ProgramInstruction>
 
 ## Set and verify a sized collection item
@@ -169,6 +181,8 @@ This instruction updates the `Collection` field of a Metadata account using the 
 <ProgramInstruction idl={idl} instruction="SetAndVerifySizedCollectionItem">
 
 This instruction updates the `Collection` field of a Metadata account for sized collections using the provided `Collection Mint` account as long as its `Collection Authority` signs the transaction and the parent NFT has the collection details field populated (sized).
+
+Clients should detect if a NFT is part of a sized collection or not and call the appropriate handler for the user to abstract away this detail.
 
 </ProgramInstruction>
 

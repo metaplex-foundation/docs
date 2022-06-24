@@ -2,7 +2,7 @@ import docs from "./idl-docs";
 
 export default {
   docs, // <- Injects additional data to the IDL.
-  version: "1.3.0",
+  version: "1.3.1",
   name: "mpl_token_metadata",
   instructions: [
     {
@@ -1674,10 +1674,10 @@ export default {
           desc: "Token account to close",
         },
         {
-          name: "editionAccount",
+          name: "masterEditionAccount",
           isMut: true,
           isSigner: false,
-          desc: "MasterEdition2 or Edition Account of the NFT",
+          desc: "MasterEdition2 of the NFT",
         },
         {
           name: "splTokenProgram",
@@ -1943,6 +1943,13 @@ export default {
           isMut: false,
           isSigner: false,
           desc: "Mint of the Collection",
+        },
+        {
+          name: "collectionAuthorityRecord",
+          isMut: false,
+          isSigner: false,
+          desc: "Collection Authority Record PDA",
+          optional: true,
         },
       ],
       args: [
@@ -3324,6 +3331,16 @@ export default {
       code: 108,
       name: "MissingEditionAccount",
       msg: "This mint account has an edition but none was provided.",
+    },
+    {
+      code: 109,
+      name: "NotAMasterEdition",
+      msg: "This edition is not a Master Edition",
+    },
+    {
+      code: 110,
+      name: "MasterEditionHasPrints",
+      msg: "This Master Edition has existing prints",
     },
   ],
   metadata: {
