@@ -18,6 +18,8 @@ This feature provides the following advantages:
 
 The on-chain Certified Collection feature has been added to the Token Metadata program in [version 1.1](./changelog/v1.1).
 
+The additional CollectionDetails field has been added in [version 1.3](./changelog/v1.3).
+
 It replaces the `collection` field previously defined in external JSON metadata.
 
 :::
@@ -38,11 +40,11 @@ As such, the `Collection` field contains two nested fields:
 - `Key`: This field points to the Collection NFT the NFT belongs to. More precisely, it points to **the public key of the Mint Account** of the Collection NFT. This Mint Account must be owned by the SPL Token program.
 - `Verified`: This boolean is very important as it is used to verify that the NFT is truly part of the collection it points to.
 
+In addition, as of v1.3+ there is an additional field, `CollectionDetails` which contains a `size` value that stores how many items are in the collection. In addition to storing the size, this field is used to definitively differentiate a Collection NFT from a Regular NFT. Given this is a new field, not all existing collections will use it but new collections are encouraged to use it, both to allow sizing their collections and provide an on-chain way to determine a Collection NFT from a Regular one. 
+
 ![](./assets/Token-Metadata-Collections-Collection-NFT.png)
 
 Notice that, because Collections and NFTs are linked together via a "Belong To" relationship, it is possible by design to define nested collections.
-
-Also note that there is currently no way to distinguish between a Collection NFT and a Regular NFT that is part of a Collection. This is a limitation we are currently working on as part of [version 1.3](https://github.com/metaplex-foundation/metaplex-program-library/discussions/444).
 
 ## Verifying NFTs in Collections
 
@@ -126,3 +128,53 @@ Note that the Metaplex team has recorded a video tutorial on how Verified Collec
 [![Verified Collections Tutorial](./assets/verified-collections.gif)](https://drive.google.com/file/d/1VU4xL_yF6LCe0UogVn4As5PMAzUV__8C/view?usp=sharing)
 
 </div>
+
+## Sized Collections
+
+NFT metadata now have an optional `CollectionDetails` field which is an enum with a size field containing the number of items in the collection. The presence of the `CollectionDetails` enum indicates if that particular NFT is definitively a Collection NFT. However, the inverse is not necessarily true, as NFTs without the field that were created prior to v1.3 could still be parent NFTs as we need to maintain backwards compatibility.
+
+```rust
+   pub struct Metadata {
+   pub key: Key,
+   pub update_authority: Pubkey,
+   pub mint: Pubkey,
+   pub data: Data,
+   // Immutable, once flipped, all sales of this metadata are considered secondary.
+   pub primary_sale_happened: bool,
+   // Whether or not the data struct is mutable, default is not
+   pub is_mutable: bool,
+   /// nonce for easy calculation of editions, if present
+   pub edition_nonce: Option<u8>,
+   /// Since we cannot easily change Metadata, we add the new DataV2 fields here at the end.
+   pub token_standard: Option<TokenStandard>,
+   /// Collection
+   pub collection: Option<Collection>,
+   /// Uses
+   pub uses: Option<Uses>,
+   pub collection_details: Option<CollectionDetails>, // <--- New in v1.3
+}
+
+pub enum CollectionDetails {
+   V1 { size: u64 },
+}
+```
+
+Sized collections have new handlers for verifying, unverifying and set-and-verifying:
+
+- verify_sized_collection_item
+- unverify_sized_collection_item
+- set_and_verify_sized_collection_item
+
+These handlers only work on sized collections as they increment or decrement the collection size as appropriate.
+
+The previous handlers:
+
+- verify_collection
+- unverify_collection
+- set_and_verify_collection
+
+still work—but only on unsized collections, collections where the Parent NFT does not have the field populated or has it set to `None`. Using the wrong handler on the wrong collection type will fail.
+
+There is a `set_collection_size` handler that allows existing collections to set their collection size field _once_, where-after it gets tracked on-chain.
+
+Finally, the `burn_nft` handler checks if a NFT is verified part of a collection, and if it is, requires the collection metadata account to be passed in so the collection size can be decremented.
