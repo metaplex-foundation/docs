@@ -16,11 +16,9 @@ This feature provides the following advantages:
 
 :::info
 
-The on-chain Certified Collection feature has been added to the Token Metadata program in [version 1.1](./changelog/v1.1).
+The on-chain Certified Collection feature has been added to the Token Metadata program in [version 1.1](./changelog/v1.1). It replaces the `collection` field previously defined in external JSON metadata.
 
 The additional CollectionDetails field has been added in [version 1.3](./changelog/v1.3).
-
-It replaces the `collection` field previously defined in external JSON metadata.
 
 :::
 
@@ -30,6 +28,9 @@ In order to group NFTs — or any token — together, we must first create a Col
 
 The difference between a Collection NFT and a Regular NFT is that the information provided by the former will be used to define the group of NFTs it contains whereas the latter will be used to define the NFT itself.
 
+
+### Linking Regular NFTs to Collection NFTs.
+
 Collection NFTs and Regular NFTs are **linked together using a "Belong To" relationship** on the Metadata account. The optional `Collection` field on the Metadata account has been created for that purpose.
 
 - If the `Collection` field is set to `None`, it means the NFT is not part of a collection.
@@ -38,13 +39,28 @@ Collection NFTs and Regular NFTs are **linked together using a "Belong To" relat
 As such, the `Collection` field contains two nested fields:
 
 - `Key`: This field points to the Collection NFT the NFT belongs to. More precisely, it points to **the public key of the Mint Account** of the Collection NFT. This Mint Account must be owned by the SPL Token program.
-- `Verified`: This boolean is very important as it is used to verify that the NFT is truly part of the collection it points to.
+- `Verified`: This boolean is very important as it is used to verify that the NFT is truly part of the collection it points to. More on that below.
 
-In addition, as of v1.3+ there is an additional field, `CollectionDetails` which contains a `size` value that stores how many items are in the collection. In addition to storing the size, this field is used to definitively differentiate a Collection NFT from a Regular NFT. Given this is a new field, not all existing collections will use it but new collections are encouraged to use it, both to allow sizing their collections and provide an on-chain way to determine a Collection NFT from a Regular one. 
+### Differentiating Regular NFTs from Collection NFTs.
+
+The `Collection` field alone allows us to link NFTs and Collections together but it doesn't help us identify if a given NFT is a Regular NFT or a Collection NFT. That's why the `CollectionDetails` field was created. It provides additional context on Collection NFTs and differentiate them from Regular NFTs.
+
+- If the `CollectionDetails` field is set to `None`, it means the NFT is a **Regular NFT**.
+- If the `CollectionDetails` field is set, it means the NFT is a **Collection NFT** and additional attributes can be found inside this field.
+
+The `CollectionDetails` is an optional enum which currently contains only one option `V1`. This option is a struct that contains the following field:
+
+- `Size`: The size of the collection, i.e. the number of NFTs that are directly linked to this Collection NFT. This number is automatically computed by the Token Metadata program but can also be set manually to facilitate the migration process.
+
+Note that, because `CollectionDetails` is a new field, not all existing collections will use it yet. However, we encourage new collections to use it both to allow sizing their collections and provide an on-chain way to determine a Collection NFT from a Regular one.
 
 ![](./assets/Token-Metadata-Collections-Collection-NFT.png)
 
-Notice that, because Collections and NFTs are linked together via a "Belong To" relationship, it is possible by design to define nested collections.
+### Nested Collections
+
+Because Collections and NFTs are linked together via a "Belong To" relationship, it is possible by design to define nested collections. In this scenario, the `Collection` and `CollectionDetails` fields can be used together to differentiate Root and Nested Collection NFTs.
+
+![](./assets/Token-Metadata-Collections-Nested-Collection.png)
 
 ## Verifying NFTs in Collections
 
