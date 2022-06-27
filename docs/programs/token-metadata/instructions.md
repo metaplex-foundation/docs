@@ -131,7 +131,7 @@ Clients should detect if a NFT is part of a sized collection or not and call the
 ## Verify an item from a sized collection
 <ProgramInstruction idl={idl} instruction="VerifySizedCollectionItem">
 
-![](./assets/Token-Metadata-Instruction-Verify-Sized-Collection-Item.png)
+![](./assets/Token-Metadata-Instruction-Verify-Sized-Collection.png)
 
 This instruction verifies the collection of a Metadata account, by setting the `Verified` boolean to `True` on the `Collection` field, and increments the size field of the parent NFT. Calling it on a collection whose parent NFT does not have a size field will throw an error. 
 
@@ -156,7 +156,7 @@ Clients should detect if a NFT is part of a sized collection or not and call the
 
 <ProgramInstruction idl={idl} instruction="UnverifySizedCollectionItem">
 
-![](./assets/Token-Metadata-Instruction-Unverify-Sized-Collection-Item.png)
+![](./assets/Token-Metadata-Instruction-Unverify-Sized-Collection.png)
 
 This instruction unverifies the collection of a Metadata account, by setting the `Verified` boolean to `False` on the `Collection` field, and increments the size field of the parent NFT. Calling it on a collection whose parent NFT does not have a size field will throw an error.
 
