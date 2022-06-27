@@ -128,7 +128,8 @@ Clients should detect if a NFT is part of a sized collection or not and call the
 
 </ProgramInstruction>
 
-## Verify an item from a sized collection
+## Verify a sized collection item
+
 <ProgramInstruction idl={idl} instruction="VerifySizedCollectionItem">
 
 ![](./assets/Token-Metadata-Instruction-Verify-Sized-Collection.png)
@@ -138,7 +139,6 @@ This instruction verifies the collection of a Metadata account, by setting the `
 Clients should detect if a NFT is part of a sized collection or not and call the appropriate handler for the user to abstract away this detail.
 
 </ProgramInstruction>
-
 
 ## Unverify a collection item
 
@@ -152,7 +152,7 @@ Clients should detect if a NFT is part of a sized collection or not and call the
 
 </ProgramInstruction>
 
-## Unverify an item from a sized collection
+## Unverify a sized collection item
 
 <ProgramInstruction idl={idl} instruction="UnverifySizedCollectionItem">
 
@@ -162,9 +162,7 @@ This instruction unverifies the collection of a Metadata account, by setting the
 
 Clients should detect if a NFT is part of a sized collection or not and call the appropriate handler for the user to abstract away this detail.
 
-
 </ProgramInstruction>
-
 
 ## Set and verify the collection
 
@@ -185,7 +183,6 @@ This instruction updates the `Collection` field of a Metadata account for sized 
 Clients should detect if a NFT is part of a sized collection or not and call the appropriate handler for the user to abstract away this detail.
 
 </ProgramInstruction>
-
 
 ## Approve a new Collection Authority
 
@@ -293,7 +290,7 @@ This instruction serves as a migration tool that upgrades a Master Edition accou
 
 ![](./assets/Token-Metadata-Instruction-Set-Collection-Size.png)
 
-This instruction allows the update authority of a collection parent NFT to set the size of the collection in order to allow existing unsized collections to be updated to track size. Once a collection is sized it can only be verified and unverified by the sized handlers and can't be changed back to unsized. 
+This instruction allows the update authority of a collection parent NFT to set the size of the collection **once** in order to allow existing unsized collections to be updated to track size. Once a collection is sized it can only be verified and unverified by the sized handlers and can't be changed back to unsized. 
 
 </ProgramInstruction>
 

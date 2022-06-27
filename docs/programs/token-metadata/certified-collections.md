@@ -52,7 +52,10 @@ The `CollectionDetails` is an optional enum which currently contains only one op
 
 - `Size`: The size of the collection, i.e. the number of NFTs that are directly linked to this Collection NFT. This number is automatically computed by the Token Metadata program but can also be set manually to facilitate the migration process.
 
-Note that, because `CollectionDetails` is a new field, not all existing collections will use it yet. However, we encourage new collections to use it both to allow sizing their collections and provide an on-chain way to determine a Collection NFT from a Regular one.
+Note that, because `CollectionDetails` is a new field, not all existing collections will use it yet. This means, **it is possible for a Collection NFT created before version 1.3, to have `CollectionDetails` set to `None` but to still be a Collection NFT**.
+
+That being said, we encourage new collections to use it both to allow sizing their collections and provide an on-chain way to determine a Collection NFT from a Regular one. We also encourage existing collections to [migrate their Collection NFT](#migrating-to-sized-collections).
+
 
 ![](./assets/Token-Metadata-Collections-Collection-NFT.png)
 
@@ -88,11 +91,19 @@ If those 3 steps are not followed you could be exposing fraudulent NFTs on real 
 
 :::
 
-The following instructions are available to set, verify or unverify an NFT as part of a collection:
+The following instructions are available to set, verify or unverify an NFT as part of a sized collection:
 
-- [Verify the collection](./instructions#verify-the-collection)
-- [Unverify the collection](./instructions#unverify-the-collection)
-- [Set and verify the collection](./instructions#set-and-verify-the-collection) (Introduced in version 1.2)
+- [Verify a sized collection item](./instructions#verify-a-sized-collection-item) (Introduced in version 1.3)
+- [Unverify a sized collection item](./instructions#unverify-a-sized-collection-item) (Introduced in version 1.3)
+- [Set and verify a sized collection item](./instructions#set-and-verify-a-sized-collection-item) (Introduced in version 1.3)
+
+If you're Collection NFT does not yet have its `CollectionDetails` field setup, you must use the following instructions instead:
+
+- [Verify a collection item](./instructions#verify-a-collection-item)
+- [Unverify a collection item](./instructions#unverify-a-collection-item)
+- [Set and verify a collection item](./instructions#set-and-verify-a-collection-item) (Introduced in version 1.2)
+
+You may consider [migrating your Collection NFT](#migrating-to-sized-collections) instead.
 
 ## Delegating the Collection Authority
 
@@ -145,52 +156,8 @@ Note that the Metaplex team has recorded a video tutorial on how Verified Collec
 
 </div>
 
-## Sized Collections
+## Migrating to Sized Collections
 
-NFT metadata now have an optional `CollectionDetails` field which is an enum with a size field containing the number of items in the collection. The presence of the `CollectionDetails` enum indicates if that particular NFT is definitively a Collection NFT. However, the inverse is not necessarily true, as NFTs without the field that were created prior to v1.3 could still be parent NFTs as we need to maintain backwards compatibility.
+If your Collection NFT was created before version 1.3, its `CollectionDetails` field will not be set. That means, wallets and applications will not be able to differentiate it with Regular NFTs and we won't know how many items are attached to the Collection NFT.
 
-```rust
-   pub struct Metadata {
-   pub key: Key,
-   pub update_authority: Pubkey,
-   pub mint: Pubkey,
-   pub data: Data,
-   // Immutable, once flipped, all sales of this metadata are considered secondary.
-   pub primary_sale_happened: bool,
-   // Whether or not the data struct is mutable, default is not
-   pub is_mutable: bool,
-   /// nonce for easy calculation of editions, if present
-   pub edition_nonce: Option<u8>,
-   /// Since we cannot easily change Metadata, we add the new DataV2 fields here at the end.
-   pub token_standard: Option<TokenStandard>,
-   /// Collection
-   pub collection: Option<Collection>,
-   /// Uses
-   pub uses: Option<Uses>,
-   pub collection_details: Option<CollectionDetails>, // <--- New in v1.3
-}
-
-pub enum CollectionDetails {
-   V1 { size: u64 },
-}
-```
-
-Sized collections have new handlers for verifying, unverifying and set-and-verifying:
-
-- verify_sized_collection_item
-- unverify_sized_collection_item
-- set_and_verify_sized_collection_item
-
-These handlers only work on sized collections as they increment or decrement the collection size as appropriate.
-
-The previous handlers:
-
-- verify_collection
-- unverify_collection
-- set_and_verify_collection
-
-still work—but only on unsized collections, collections where the Parent NFT does not have the field populated or has it set to `None`. Using the wrong handler on the wrong collection type will fail.
-
-There is a `set_collection_size` handler that allows existing collections to set their collection size field _once_, where-after it gets tracked on-chain.
-
-Finally, the `burn_nft` handler checks if a NFT is verified part of a collection, and if it is, requires the collection metadata account to be passed in so the collection size can be decremented.
+In order to facilitate the migration of your Collection NFT to a Sized Collection NFT, there is a new instruction available: [Set a collection size](./instructions#set-collection-size). This instruction allows you to set the number of items that are currently attached to the Collection NFT **once**. Afterwards, this information will only be tracked on-chain.
