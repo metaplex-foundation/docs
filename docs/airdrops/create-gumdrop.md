@@ -221,10 +221,17 @@ The distribution method handles are as follows:
 | Email    | local-part@domain | john.smith@example.com |
 | SMS      | E.164             | +18005550100           |
 | Discord  | User ID           | 898959704573759608     |
+| Wallets  | wallet public key | 8mTVkib7TwUSsZRTHDQy9EQbw7ZR7xLrvKeyPgkFPgZB |
 
 At the moment, Discord handles are the hardest to programmatically create. One
 option is to query for members in a Discord Guild and filter for the relevant
 users by display-name there.
+
+The distribution list has to be referenced in the create command like this:
+```
+$ ts-node src/gumdrop-cli.ts create \
+--distribution-list <PATH TO WHITELIST JSON>
+```
 
 NB: The frontends do some verification that the Gumdrop being created is
 sufficient to satisfy all the recipients specified. However, these checks are
@@ -242,7 +249,7 @@ The command to close it is:
 
 ```
 ts-node gumdrop-cli.ts close \
-  --base <keypair that was created on gumdrop create> \
+  --base <id.json keypair that was created on gumdrop create> \
   --keypair <your initial keypair> \
   --claim-integration <creation --claim-integration> \
   --<corresponding claim integration flag>
