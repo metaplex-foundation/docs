@@ -16,7 +16,7 @@ Gumdrop is a new feature from the metaplex community. It is currently in BETA so
 
 The Gumdrop program leverages the Solana blockchain and merkle trees to
 facilitate airdrops to a large number of whitelisted users at a low cost to
-creators.
+creators. Users have to redeem the airdrop, it will not automatically appear in their wallet.
 
 ## Motivation
 
