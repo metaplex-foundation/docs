@@ -64,6 +64,7 @@ Send a tweet to [@metaplex](https://twitter.com/metaplex) or [edit this page on 
 
 _In no particular order_
 
+- [Alchemy](https://alchemy.com/?a=metaplex)
 - [GenesysGo](https://genesysgo.com/)
 - [RunNode](https://runnode.com/)
 - [Triton One | RPC Pool](https://www.triton.one/)
