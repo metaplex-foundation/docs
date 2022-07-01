@@ -60,6 +60,7 @@
   - 📝 Candy Machine V2
   - 📝 Community Guides
   - ⏳ Archived
+    - 📝 Create a Storefront
     - 📝 Candy Machine V1
 - ⏳ Proposals
 - ✅ Security Policy
