@@ -13,7 +13,6 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   favicon: 'img/favicon.png',
   organizationName: 'metaplex',
   projectName: 'docs',
-  trailingSlash: false,
 
   presets: [
     [
