@@ -70,7 +70,7 @@ Discriminators are used to differentiating between different types of Accounts w
 
 Each Account defines its own data structure by using fields of different types. These types will affect the number of bytes required to store the field. For instance, an `i8` is an 8-bit integer that will require 1 byte to store whereas an `i64` is a 64-bit integer which will require 8 bytes to store.
 
-Since, in the blockchain, Accounts are just arrays of bytes, it is important to understand the size of each field and where they start in this array, i.e. their offset. This can be useful when fetching multiple accounts from a given program [using a `memcpm` filter](https://solanacookbook.com/guides/get-program-accounts.html#memcmp).
+Since, in the blockchain, Accounts are just arrays of bytes, it is important to understand the size of each field and where they start in this array, i.e. their offset. This can be useful when fetching multiple accounts from a given program [using a `memcmp` filter](https://solanacookbook.com/guides/get-program-accounts.html#memcmp).
 
 Note that not all fields have a fixed size. For instance, a `Vec<i8>` is a vector of 8-bit integers that may contain none, one or many items. As such, it becomes a lot more complicated to filter accounts based on fields that are located after the first field of variable size.
 
