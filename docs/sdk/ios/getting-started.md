@@ -185,7 +185,7 @@ The SDK cames with a [sample app][sample]. Please clone it run it on your phone 
 ![Sample App](app.gif "Sample App")
 
 [github]: https://github.com/metaplex-foundation/metaplex-ios
-[docs]: https://metaplex-foundation.github.io/ios/
+[docs]: https://github.com/metaplex-foundation/metaplex-ios#metaplex-ios-sdk
 [sample]: https://github.com/metaplex-foundation/metaplex-ios/tree/main/Sample
 
 
