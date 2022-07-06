@@ -12,7 +12,7 @@ The mission of Metaplex Studios and the Metaplex community is to create the worl
 * Funding your innovation: Through our Grants and Creator Fund programs, we're seeing the community drive towards building more smart contracts and tools for all. 
 
 ## Coming Soon
-* More documentation and support for your project. We're experiencing growing pains and a tenant of our community is to develop simple NFT resources for people everywhere to create their NFT project. 
+* More documentation and support for your project. We're experiencing growing pains and a tenet of our community is to develop simple NFT resources for people everywhere to create their NFT project. 
 * Customer experience updates including better performance and more ways to sell. Stay tuned! 
 
 ## Our Commitment to Decentralization 
