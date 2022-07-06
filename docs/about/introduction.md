@@ -15,12 +15,13 @@ Metaplex is built on [Solana](https://crypto-wikipedia.com/what-is-solana-sol/) 
 ## What is Metaplex?
 Metaplex is a collection of tools, smart contracts, and more designed to make the process of creating and launching NFTs easier. While initially focused on supporting the needs of the arts and entertainment industry our plans extend far beyond that to all use cases where an NFT may add value.
 
-Currently our two major projects are:
-- [Metaplex Storefront](./storefront/introduction)  - a generalizable NFT selling standard
+Currently our three major projects are:
+- [Token Metadata](./programs/token-metadata/overview)  - the NFT standard for Solana
 - [The Candy Machine v2™](./candy-machine-v2/introduction)  - a Profile Picture (PFP) focused tool that works like the gumball-style candy machines of old
+- [Auction House](./auction-house/definition) - a decentralized sales protocol for NFT marketplaces
 
 ## What's next for Metaplex?
-We have big plans. Based on the response from the Metaplex Community, we see a bright future and lots of demand for the tools and services that help people everywhere create awesome NFT projects. Currently, we're remaining hyper focused on building great experiences for NFT creators and developers starting with creator storefronts and helping creators distribute NFTs to their communities via auctions, instant sales, NFTs, and even more. If you want to help us on our mission, we're [hiring](https://apply.workable.com/metaplex-studios/). Or, if you have ideas for your own project that furthers the capabilities of the Metaplex Ecosystem through smart contracts and beyond, we're providing grants. [Apply here](https://docs.google.com/forms/d/e/1FAIpQLScu3uXN-mLGbwZZhHYDsWepcE3XzFvnujm1qc7442UKtskpDA/viewform?usp=send_form).
+The Metaplex ecosystem just celebrated its first year exploring the incredible possibilities of NFTs in partnership with the community: 15M NFTs minted, and $3B in value to creators across primary and secondary sales. We are dedicated to enhancing the protocol as a continued source of support, respect and opportunity to garner value for independent builders. If you want to help us on our mission, [join the team](https://apply.workable.com/metaplex-studios/).
 
 ## Thank you and stay in touch!
 This project wouldn't exist without you. We are thankful you're using Metaplex tools and want to make them better for you! Please reach out on [discord](https://discord.com/invite/metaplex) if you have any questions, or better yet, [open a pull request](https://github.com/metaplex-foundation/metaplex/)!
