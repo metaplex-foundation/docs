@@ -41,16 +41,6 @@
       "permanent": true
     },
     {
-      "source": "/fair-launch/:path*",
-      "destination": "/guides/archived/fair-launch/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/airdrops/create-gumdrop",
-      "destination": "/guides/gumdrop",
-      "permanent": true
-    },
-    {
       "source": "/architecture/:path*",
       "destination": "/guides/archived/architecture/:path*",
       "permanent": true
@@ -61,28 +51,18 @@
       "permanent": true
     },
     {
-      "source": "/candy-machine-v2/:path*",
-      "destination": "/guides/archived/candy-machine-v2/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/candy-machine-v2/mint-frontend",
-      "destination": "/guides/candy-machine/frontend",
-      "permanent": true
-    },
-    {
-      "source": "/auction-house/getting_started",
-      "destination": "/guides/auction-house/getting-started",
-      "permanent": true
-    },
-    {
-      "source": "/auction-house/auctioneer/timed_auction/:path*",
-      "destination": "/guides/auction-house/auctioneer/timed-auction/:path*",
+      "source": "/airdrops/create-gumdrop",
+      "destination": "/guides/gumdrop",
       "permanent": true
     },
     {
       "source": "/auction-house/:path*",
       "destination": "/guides/auction-house/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/auctioneers/:path*",
+      "destination": "/guides/auction-house/auctioneers/:path*",
       "permanent": true
     },
     {
@@ -97,7 +77,7 @@
     },
     {
       "source": "/sdk/:path*",
-      "destination": "/tools/sdk/:path*",
+      "destination": "/tools/:path*",
       "permanent": true
     },
     {
@@ -108,6 +88,11 @@
     {
       "source": "/about/terminology",
       "destination": "/terminology",
+      "permanent": true
+    },
+    {
+      "source": "/candy-machine-v2/:path*",
+      "destination": "/guides/archived/candy-machine-v2/:path*",
       "permanent": true
     }
   ]

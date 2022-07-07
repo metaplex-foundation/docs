@@ -1,3 +1,7 @@
+---
+sidebar_label: "Auctioneer Interface"
+---
+
 # What is Auctioneer
 :::warning
 Auctioneer and the Auction House Auctioneer Interface are currently experimental. This means that the API, SDK, and IDL are subject to change.

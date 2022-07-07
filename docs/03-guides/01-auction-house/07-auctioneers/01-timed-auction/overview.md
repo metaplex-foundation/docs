@@ -1,7 +1,3 @@
----
-sidebar_label: "Overview"
----
-
 # Overview
 
 The Timed Auction Auctioneer is an Auctioneer implementation that adds English-style auction rules built on top of Auction House.

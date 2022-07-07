@@ -1,8 +1,0 @@
-{
-  "label": "SDKs",
-  "link": {
-    "type": "generated-index",
-    "title": "Metaplex SDKs",
-    "description": "Learn how to use our SDKs to integrate Solana NFTs into your apps."
-  }
-}
