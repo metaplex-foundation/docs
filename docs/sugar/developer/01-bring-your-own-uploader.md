@@ -18,7 +18,7 @@ pub struct AssetInfo {
     /// Name (file name) of the asset.
     pub name: String,
     /// Content of the asset - either a file path or the string
-    /// representation fo its content.
+    /// representation of its content.
     pub content: String,
     /// Type of the asset.
     pub data_type: DataType,
@@ -59,9 +59,9 @@ where:
 * `progress` - Reference to the progress bar to provide feedback to the console
 * `interrupted` - Reference to the shared interruption handler flag to receive notifications
 
-This function will be called to upload each type of asset separately&mdash;e.g., once for your images, once for your metadata and, if present, once for your animation assets. After uploading an asset, its information need to be updated in the `cache` object and the cache saved to the file system using the `sync_file` function. Syncing the cache to the file system might be slow for large collections, therefore it should be done as frequent as practical to avoid slowing down the upload process and, at the same time, minimizing the chances of information loss in case the user aborts the upload.
+This function will be called to upload each type of asset separately&mdash;e.g., once for your images, once for your metadata and, if present, once for your animation assets. After uploading an asset, its information needs to be updated in the `cache` object and the cache saved to the file system using the `sync_file` function. Syncing the cache to the file system might be slow for large collections, therefore it should be done as frequent as practical to avoid slowing down the upload process and, at the same time, minimizing the chances of information loss in case the user aborts the upload.
 
-Implementations are expected to use the `interrupted` to control when the user aborts the upload process by pressing `Ctrl+C`&mdash;this is useful for large uploads. Any information saved in the cache will not be re-uploaded. The `upload` command will filter out the assets already uploaded and they will not be included in the vector of assets. The `progress` is a reference to the progress bar displayed on the console and should be used to provide a visual feedback of the progress of the upload by calling its `progress.inc(1)` function to indicate that `1` asset was uploaded.
+Implementations are expected to use the `interrupted` parameter to control when the user aborts the upload process by pressing `Ctrl+C`&mdash;this is useful for large uploads. Any information saved in the cache will not be re-uploaded. The `upload` command will filter out the assets already uploaded and they will not be included in the vector of assets. The `progress` is a reference to the progress bar displayed on the console and should be used to provide a visual feedback of the progress of the upload by calling its `progress.inc(1)` function to indicate that `1` asset was uploaded.
 
 When all files are uploaded successfully, the `upload` method will return an empty `Vec`; in case of errors, the `Vec` will contain a list of `UploadError`s that will be displayed to the user.
 
