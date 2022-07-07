@@ -12,6 +12,31 @@ The preparation of the assets is similar to the instructions provided in the [Ca
 Example image of how your asset folder should look. 
 
 
+### Collection Assets
+
+In addition, if you want a collection NFT to be created and set automatically, you will need to additionally include a `collection.json` and a `collection.png/jpg` in your `assets` folder. They should be in the same format as the other assets. An example of a `collection.json` file is below:
+
+```json
+{
+  "name": "Your Collection Name",
+  "symbol": "SYMBOL",
+  "description": "A description of your collection",
+  "image": "collection.png",
+  "attributes": [],
+  "properties": {
+    "files": [
+      {
+        "uri": "collection.png",
+        "type": "image/png"
+      }
+    ]
+  }
+}
+```
+
+If you have a preexisting collection NFT and want to use it for your new Candy Machine, skip this step and use the `collection set` command after deploying the Candy Machine as shown [here](#collection). 
+
+
 ### 1. `create-config`
 
 By default, Sugar looks for a `config.json` file in the current directory to load the Candy Machine configuration &mdash; the configuration file name can be specified with a `-c` or `--config` option.
@@ -123,6 +148,25 @@ The above command will mint 10 NFTs from the Candy Machine.
 
 > **Note:** It is not possible to mint tokens from the command line if you have `gatekeeper` settings enabled. If you would like to mint tokens, update the `goLiveDate` to `null` and temporarily disable the `gatekeeper` settings.
 
+
+### `collection`
+
+You can use the `collection` commands to manually set or remove the collection NFT. You can only modify the collection on your Candy Machine before any NFTs have been minted from it. 
+
+You can set a preexisting collection NFT on your candy machine with the following command:
+
+```bash
+sugar collection set <COLLECTION MINT ID>
+```
+
+where the `<COLLECTION MINT ID>` is the mint ID of the collection NFT, which is the address you use to view the NFT in explorers.
+
+To remove the collection NFT: 
+
+```bash
+sugar collection remove
+```
+
 ### `show`
 
 The `show` command displays the on-chain config of an existing candy machine:
@@ -179,13 +223,13 @@ sugar withdraw --list
 
 ### `bundlr`
 
-When you use `bundlr` as your upload method, Sugar automatically funds your account on the Bundlr Network to cover the storage costs. Once the upload in completed, there could be left over funds in your Bundlr account. You can verify your balance on the Bundlr Network with the following command:
+When you use `bundlr` as your upload method, Sugar automatically funds your account on the Bundlr Network to cover the storage costs. Once the upload is completed, there could be left over funds in your Bundlr account. You can verify your balance on the Bundlr Network with the following command:
 
 ```bash
 sugar bundlr balance
 ```
 
-This will retrieve the balance for the current keypair. You can specify an alternative keypair using the option `--keypair`. The remaining balance (if there is any) can be withdraw:
+This will retrieve the balance for the current keypair. You can specify an alternative keypair using the option `--keypair`. The remaining balance (if there is any) can be withdrawn:
 
 ```bash
 sugar bundlr withdraw

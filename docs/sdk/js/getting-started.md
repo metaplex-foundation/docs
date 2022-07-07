@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Introduction
 
-The [Metaplex JS SDK][docs] is a library that allows you to:
+The Metaplex JS SDK is a library that allows you to:
 
 - Load and Deserialize Accounts
 - Create transactions
@@ -20,12 +20,11 @@ This project is in development. **All** interfaces are _very likely_ to change v
 
 ## References
 
-- [API documentation][docs]
 - [Source code][github]
 
 ## Getting started
 
-In order to get started with the [Metaplex JS SDK][docs], you'll need to install it and have a Solana wallet to work with.
+In order to get started with the Metaplex JS SDK, you'll need to install it and have a Solana wallet to work with.
 
 ### Installation
 
@@ -133,4 +132,3 @@ const store = await Store.load(connection, "<pubkey>");
 ```
 
 [github]: https://github.com/metaplex-foundation/js
-[docs]: https://metaplex-foundation.github.io/js/

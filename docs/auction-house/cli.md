@@ -261,6 +261,6 @@ Other actions are documented in the CLI and can be found using the `help` and `<
 
 - _Withdraw from Fee_ - Transfer funds from auction house fee wallet to the auction house authority.
 
-- _Widthraw from Treasury_ - Transfer funds from the auction house treasury wallet to the auction house authority.
+- _Withdraw from Treasury_ - Transfer funds from the auction house treasury wallet to the auction house authority.
 
 - _Update Auction House_ - Update any of the auction house settings including it's authority or seller fee.

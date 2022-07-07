@@ -13,7 +13,7 @@ It is also suggested to use a custom RPC for this step because it is a heavy com
 ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts sign \
     -e devnet \
     -k ~/.config/solana/devnet.json \
-    -c example
+    -m <metadata Address>
 ```
 
 ### Sign All

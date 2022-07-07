@@ -49,7 +49,7 @@ The Auction House can only sell it for 0 if you sign the transaction with your k
 3. The AuctionHouse now can use the `0` priced trade state you made in #2 to create new `sale` listings at different prices. 
 
 
-## What's the difference between and public and private bids
+## What's the difference between public and private bids
 A standard bid, also called a private bid, refers to a bid made that's specific to an auction. When the auction is complete the bid can be canceled and the funds in escrow returned to the bidder. However, Auction House also supports public bids which are specific to the token itself and not to any specific auction. This means that a bid can stay active beyond the end of an auction and be resolved if it meets the criteria for subsequent auctions of that token.
 
 :::info
