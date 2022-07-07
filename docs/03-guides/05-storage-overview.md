@@ -51,7 +51,7 @@ NFT.Storage currently supports files up to 31 Gib and does not charge for storag
 
 #### Using NFT.Storage
 
-NFT.Storage is currently only supported within the CandyMachine `upload` command. Please see the [configuration guide][cmv2 config guide] for details about the configuration settings to use.
+NFT.Storage is currently supported in [Sugar][sugar]. Please see the [configuration guide][cmv2 config guide] for details about the configuration settings to use.
 
 Note that when using the `nft-storage` configuration setting, you can optionally also set an `nftStorageKey` to an NFT.Storage API token. Setting an `nftStorageKey` will allow you to view uploads in your NFT.Storage account's file listing. 
 
@@ -115,5 +115,6 @@ page](https://github.com/metaplex-foundation/docs/blob/main/docs/overviews/stora
 [winstons]: https://docs.arweave.org/developers/server/http-api#ar-and-winston
 [S3]: https://aws.amazon.com/s3/
 [arweave path manifest]: https://github.com/ArweaveTeam/arweave/wiki/Path-Manifests
-[cmv2 config guide]: ../candy-machine-v2/02-configuration.md
+[cmv2 config guide]: /guides/archived/candy-machine-v2/configuration
 [nft.storage metaplex doc]: https://nft.storage/docs/how-to/mint-solana
+[sugar]: /tools/sugar/introduction

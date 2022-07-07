@@ -37,7 +37,7 @@ Next you'll add your image **Title**, **Description**, **Maximum Supply** and **
 
 :::tip
 
-You can read more about Master Edition and Maximum Supply in our [Architecture](../architecture/deep_dive/overview.md) docs.
+You can read more about Master Edition and Maximum Supply in our [Architecture](/guides/archived/architecture/deep_dive/overview) docs.
 
 :::
 

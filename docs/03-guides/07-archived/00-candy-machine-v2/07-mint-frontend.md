@@ -23,7 +23,7 @@ Open the file `.env.example` located in the folder `~/metaplex/js/packages/candy
 
 :::warning
 
-The public RPC endpoints (`https://api.mainnet-beta.solana.com` and `https://api.devnet.solana.com`) are not suitable for Candy Machine mints and may cause significant issues to your minting site. We **strongly** recommend that you use a custom RPC endpoint for your mint. You can find more information about the custom RPC solutions in the RPC section of our [community docs](../community.md#rpc).
+The public RPC endpoints (`https://api.mainnet-beta.solana.com` and `https://api.devnet.solana.com`) are not suitable for Candy Machine mints and may cause significant issues to your minting site. We **strongly** recommend that you use a custom RPC endpoint for your mint. You can find more information about the custom RPC solutions in the RPC section of our [community docs](/guides/community#rpc).
 
 :::
 

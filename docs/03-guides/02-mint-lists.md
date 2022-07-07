@@ -42,6 +42,6 @@ Usage: see https://metaboss.rs.
 
 :::info
 
-Metaplex does not maintain the tools listed above. If you have issues with them please create issues in the appropriate Github repository, or ask in a general channel on the Discord to get help from community members.
+Metaplex does not maintain the tools listed above. If you have issues with them please create issues in the appropriate GitHub repository, or ask in a general channel on the Discord to get help from community members.
 
 :::

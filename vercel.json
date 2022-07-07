@@ -62,12 +62,22 @@
     },
     {
       "source": "/candy-machine-v2/:path*",
-      "destination": "/guides/archived/candy-js-cli/:path*",
+      "destination": "/guides/archived/candy-machine-v2/:path*",
       "permanent": true
     },
     {
       "source": "/candy-machine-v2/mint-frontend",
       "destination": "/guides/candy-machine/frontend",
+      "permanent": true
+    },
+    {
+      "source": "/auction-house/getting_started",
+      "destination": "/guides/auction-house/getting-started",
+      "permanent": true
+    },
+    {
+      "source": "/auction-house/auctioneer/timed_auction/:path*",
+      "destination": "/guides/auction-house/auctioneer/timed-auction/:path*",
       "permanent": true
     },
     {

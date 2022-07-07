@@ -1,18 +1,18 @@
 ---
-sidebar_label: "What is AuctionHouse"
+sidebar_label: "What is Auction House"
 ---
 
 # What is Auction House
 
-AuctionHouse is a protocol for marketplaces to implement a decentralized sales contract. It is simple, fast and very cheap. AuctionHouse is a Solana program available on Mainnet Beta and Devnet. Anyone can create an AuctionHouse and accept any SPL token they wish.
+Auction House is a protocol for marketplaces to implement a decentralized sales contract. It is simple, fast and very cheap. Auction House is a Solana program available on Mainnet Beta and Devnet. Anyone can create an Auction House and accept any SPL token they wish.
 
 :::info
 
-The AuctionHouse Solana program resides within the Metaplex Program Library here:
+The Auction House Solana program resides within the Metaplex Program Library here:
 
 https://github.com/metaplex-foundation/metaplex-program-library
 
-The AuctionHouse CLI resides in the Metaplex monorepo here:
+The Auction House CLI resides in the Metaplex monorepo here:
 
 https://github.com/metaplex-foundation/metaplex/blob/master/js/packages/cli/src/auction-house-cli.ts
 
@@ -26,24 +26,24 @@ https://github.com/metaplex-foundation/js
 
 :::
 
-Let's dive into AuctionHouse's main features.
+Let's dive into Auction House's main features.
 
 :::info
 
-AuctionHouse is a completely separate program than the storefront Auction program.
+Auction House is a completely separate program than the storefront Auction program.
 
 :::
 
 ### Escrowless
 
-For the NFT Seller the NFT doesn't leave their wallet until the sale completes. This is due to the use of Solana Token Delegates, and it allows them to list their NFT on other Marketplaces that implement the AuctionHouse protocol. The AuctionHouse program is the delegate, so whichever marketplace has a matching bid can execute the sale, and they get their fee, the buyer gets the NFT and the seller gets the money. This is all done in the execution of the sale. The buyer and seller never need to claim anything like in our other auction system.
+For the NFT Seller the NFT doesn't leave their wallet until the sale completes. This is due to the use of Solana Token Delegates, and it allows them to list their NFT on other Marketplaces that implement the Auction House protocol. The Auction House program is the delegate, so whichever marketplace has a matching bid can execute the sale, and they get their fee, the buyer gets the NFT and the seller gets the money. This is all done in the execution of the sale. The buyer and seller never need to claim anything like in our other auction system.
 
-### AuctionHouse Authority Features
+### Auction House Authority Features
 
-When you create an AuctionHouse a new `Instance` of an AuctionHouse is made. This `Instance` is owned and operated by an `Authority`.
-Meaning the Public Key you set in the `authority` section of the `CreateAuctionHouse` instruction is the `Authority` that can update the auction house. Metaplex uses this `Authority` pattern in many contracts to create `Access Control` on certain features and functions. When you create an auction house, you can set the following parameters:
+When you create an Auction House a new `Instance` of an Auction House is made. This `Instance` is owned and operated by an `Authority`.
+Meaning the Public Key you set in the `authority` section of the `CreateAuction House` instruction is the `Authority` that can update the auction house. Metaplex uses this `Authority` pattern in many contracts to create `Access Control` on certain features and functions. When you create an auction house, you can set the following parameters:
 
-- Treasury Withdraw Destination - The wallet that receives the AuctionHouse fees.
+- Treasury Withdraw Destination - The wallet that receives the Auction House fees.
 - Fee Withdraw Destination - A wallet that is used to pay for Solana fees for the seller and buyer if the marketplace choses to execute the sale in the background.
 - Seller Fee Basis Points - The share of the sale the auction house takes on all NFTs.
 - Requires Sign Off - The auction house must sign all sales orders.
@@ -52,7 +52,7 @@ Meaning the Public Key you set in the `authority` section of the `CreateAuctionH
 
 :::warning
 
-`Can Change Sale Price` is only intended to be used with AuctionHouses that `Requires Sign Off`
+`Can Change Sale Price` is only intended to be used with Auction Houses that `Requires Sign Off`
 
 :::
 
@@ -64,9 +64,9 @@ Marketplaces who want to stay decentralized and not require signoff may restrict
 
 ### Any SPL Token
 
-AuctionHouse allows you to accept any SPL token as the tender that the buyer deposits into their Buyer Escrow in order to accomplish a sale.
+Auction House allows you to accept any SPL token as the tender that the buyer deposits into their Buyer Escrow in order to accomplish a sale.
 
-Now that you know what the AuctionHouse is, take a look at our [Getting Started](/auction-house/getting_started) guide.
+Now that you know what the Auction House is, take a look at our [Getting Started](./getting-started) guide.
 
 ### Auction House Receipts
 

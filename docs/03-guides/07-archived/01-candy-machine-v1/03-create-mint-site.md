@@ -44,7 +44,7 @@ You can also add your custom rpc after the "REACT_APP_SOLANA_RPC_HOST" value.
 
 :::caution
 
-A Candy Machine mint can be network intensive, and may become rate limited on the default RPC if there is enough traffic. We **highly** recommend using a custom RPC. You can find a list of custom RPC services in our [community docs](../community.md#rpc).
+A Candy Machine mint can be network intensive, and may become rate limited on the default RPC if there is enough traffic. We **highly** recommend using a custom RPC. You can find a list of custom RPC services in our [community docs](/guides/community#rpc).
 
 :::
 

@@ -12,4 +12,4 @@ Metaplex is comprised of two core components: an on-chain program, and a self-ho
 
 ## In Depth Developer's Guide
 
-If you want to deep dive on the Architecture, you can do so here: [Architecture](../architecture/overview.md)
+If you want to deep dive on the Architecture, you can do so here: [Architecture](/guides/archived/architecture/overview)

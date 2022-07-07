@@ -4,7 +4,7 @@ _A collection of articles/projects from Metaplex Community_
 
 :::tip
 
-Send a tweet to [@metaplex](https://twitter.com/metaplex) or [edit this page on Github](https://github.com/metaplex/docs/edit/main/docs/community.md) to suggest additions.
+Send a tweet to [@metaplex](https://twitter.com/metaplex) or [edit this page on GitHub](https://github.com/metaplex/docs/edit/main/docs/community.md) to suggest additions.
 
 :::
 

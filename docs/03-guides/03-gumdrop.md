@@ -47,7 +47,7 @@ Gumdrop creators can use either the Gumdrop CLI or the [web
 UI](https://lwus.github.io/metaplex). Additional options are available through
 the CLI. To execute the Gumdrop CLI or deploy a local version of the web UI,
 please follow the same [prerequisite steps of Candy Machine
-creation](/candy-machine-v2/getting-started#tooling-required). 
+creation](/guides/archived/candy-machine-v2/getting-started#tooling-required). 
 
 - The CLI can be found in the [Metaplex
   repo](https://github.com/metaplex-foundation/gumdrop/) at
@@ -101,7 +101,7 @@ follows:
 
 1. Create a whitelist mint token `WLIST` with the SPL token program
 2. Create a Candy Machine V2 with whitelist mint settings with mint `WLIST`
-   ([Candy Machine Docs](../candy-machine-v2/introduction)). For example,
+   ([Candy Machine Docs](/guides/candy-machine/introduction)). For example,
 
   ```
   {
@@ -216,12 +216,12 @@ More concretely, the frontends expect the list format to be
 
 The distribution method handles are as follows:
 
-| Type     | Format            | Example                |
-| -------- | ----------------- | ---------------------- |
-| Email    | local-part@domain | john.smith@example.com |
-| SMS      | E.164             | +18005550100           |
-| Discord  | User ID           | 898959704573759608     |
-| Wallets  | wallet public key | 8mTVkib7TwUSsZRTHDQy9EQbw7ZR7xLrvKeyPgkFPgZB |
+| Type    | Format            | Example                                      |
+|---------|-------------------|----------------------------------------------|
+| Email   | local-part@domain | john.smith@example.com                       |
+| SMS     | E.164             | +18005550100                                 |
+| Discord | User ID           | 898959704573759608                           |
+| Wallets | wallet public key | 8mTVkib7TwUSsZRTHDQy9EQbw7ZR7xLrvKeyPgkFPgZB |
 
 At the moment, Discord handles are the hardest to programmatically create. One
 option is to query for members in a Discord Guild and filter for the relevant

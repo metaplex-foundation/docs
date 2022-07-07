@@ -8,7 +8,7 @@ sidebar_label: Contact Us
 
 - [Discord][]
 - [Twitter][]
-- [Github][]
+- [GitHub][]
 
 ## Security issues
 
