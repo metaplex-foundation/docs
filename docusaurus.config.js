@@ -8,12 +8,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   tagline: 'Documentation for the Metaplex frontend and NFT standard.',
   url: 'https://docs.metaplex.com',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  // onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
   organizationName: 'metaplex',
   projectName: 'docs',
-
   presets: [
     [
       '@docusaurus/preset-classic',

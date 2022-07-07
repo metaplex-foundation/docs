@@ -29,6 +29,77 @@
       "source": "/token-metadata/Versions/v1.0.0/nft-standard",
       "destination": "/programs/token-metadata/changelog/v1.0",
       "permanent": true
+    },
+    {
+      "source": "/storefront/:path*",
+      "destination": "/guides/archived/storefront/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/fair-launch/:path*",
+      "destination": "/guides/archived/fair-launch/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/fair-launch/:path*",
+      "destination": "/guides/archived/fair-launch/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/airdrops/create-gumdrop",
+      "destination": "/guides/gumdrop",
+      "permanent": true
+    },
+    {
+      "source": "/architecture/:path*",
+      "destination": "/guides/archived/architecture/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/candy-machine-v1/:path*",
+      "destination": "/guides/archived/candy-machine-v1/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/candy-machine-v2/:path*",
+      "destination": "/guides/archived/candy-js-cli/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/candy-machine-v2/mint-frontend",
+      "destination": "/guides/candy-machine/frontend",
+      "permanent": true
+    },
+    {
+      "source": "/auction-house/:path*",
+      "destination": "/guides/auction-house/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/overviews/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/overviews/storage_overview",
+      "destination": "/guides/storage-overview",
+      "permanent": true
+    },
+    {
+      "source": "/sdk/:path*",
+      "destination": "/tools/sdk/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/sugar/:path*",
+      "destination": "/tools/sugar/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/about/terminology",
+      "destination": "/terminology",
+      "permanent": true
     }
   ]
 }
+

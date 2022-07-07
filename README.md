@@ -52,16 +52,18 @@
   - ⏳ Shank
   - ⏳ Solita
   - ⏳ Amman
-  - 📝 Candy Machine CLI (Needs to be moved inside the "Tools" section)
 - ⏳ Guides
-  - 📝 Managing a Fair Launch
   - 📝 How to Burn Tokens
   - 📝 NFT hash lists
   - 📝 Candy Machine V2
+  - 📝 NFT Storage Options
   - 📝 Community Guides
   - ⏳ Archived
     - 📝 Create a Storefront
     - 📝 Candy Machine V1
+    - 📝 Candy Machine v2 JS CLI
+    - 📝 Fair launch
+    - 📝 Architecture section
 - ⏳ Proposals
 - ✅ Security Policy
 - 📝 Contact Us

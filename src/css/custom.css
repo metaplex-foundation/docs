@@ -46,10 +46,6 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
   transform: translate(0px, -5px);
 }
 
-.col {
-  margin-top: 32px;
-}
-
 .api_stability {
   color: white;
   margin: 0 0 1rem;
