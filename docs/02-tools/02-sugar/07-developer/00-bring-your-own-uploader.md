@@ -61,7 +61,7 @@ where:
 
 This function will be called to upload each type of asset separately&mdash;e.g., once for your images, once for your metadata and, if present, once for your animation assets. After uploading an asset, its information needs to be updated in the `cache` object and the cache saved to the file system using the `sync_file` function. Syncing the cache to the file system might be slow for large collections, therefore it should be done as frequent as practical to avoid slowing down the upload process and, at the same time, minimizing the chances of information loss in case the user aborts the upload.
 
-Implementations are expected to use the `interrupted` parameter to control when the user aborts the upload process by pressing `Ctrl+C`&mdash;this is useful for large uploads. Any information saved in the cache will not be re-uploaded. The `upload` command will filter out the assets already uploaded and they will not be included in the vector of assets. The `progress` is a reference to the progress bar displayed on the console and should be used to provide a visual feedback of the progress of the upload by calling its `progress.inc(1)` function to indicate that `1` asset was uploaded.
+Implementations are expected to use the `interrupted` parameter to control when the user aborts the upload process by pressing `Ctrl+C`&mdash;this is useful for large uploads. Any information saved in the cache will not be re-uploaded. The `upload` command will filter out the assets already uploaded, and they will not be included in the vector of assets. The `progress` is a reference to the progress bar displayed on the console and should be used to provide a visual feedback of the progress of the upload by calling its `progress.inc(1)` function to indicate that `1` asset was uploaded.
 
 When all files are uploaded successfully, the `upload` method will return an empty `Vec`; in case of errors, the `Vec` will contain a list of `UploadError`s that will be displayed to the user.
 
@@ -98,7 +98,7 @@ async fn prepare(
 where:
 * `sugar_config` - The current sugar configuration
 * `asset_pairs` - Mapping of `index` to an `AssetPair`
-* `asset_indices` - Vector with the information of which asset pair indices will be upload grouped by type.
+* `asset_indices` - Vector with the information of which asset pair indices will be uploaded, grouped by type.
 
 The `asset_pairs` contain the complete information of the assets, but only the assets specified in the `asset_indices` will be uploaded&mdash;e.g., if index `1` is only present in the `DataType::Image` indices' array, only the image of asset `1` will the uploaded.
 
