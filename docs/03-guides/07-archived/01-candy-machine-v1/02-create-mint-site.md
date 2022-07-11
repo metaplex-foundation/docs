@@ -37,7 +37,7 @@ We will replace the four "__PLACEHOLDER__" values with the following in this ord
 1. candy machine with publickey number
 2. candy machine pubkey
 3. pubkey (this is the address of the wallet you made)
-4. timestamp number(time from setting a mintdate)
+4. timestamp number(time from setting a mint date)
 
 The network depends on whether you use mainnet-beta or devnet.
 You can also add your custom rpc after the "REACT_APP_SOLANA_RPC_HOST" value.
