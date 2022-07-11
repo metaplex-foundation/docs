@@ -33,7 +33,7 @@ For example, for image files, the `content` contains the path of the file on the
 
 ## Traits
 
-> More details of the traits implementation can be found on Sugar's [source code](https://github.com/metaplex-foundation/sugar/blob/main/src/upload/uploader.rs).
+> More details of the traits' implementations can be found on Sugar's [source code](https://github.com/metaplex-foundation/sugar/blob/main/src/upload/uploader.rs).
 
 ### Uploader
 
