@@ -16,8 +16,7 @@ feature may emit warnings. Backward compatibility is not guaranteed.</div>
 <br/>
 
 <div class="api_stability api_stability_1">Stability: 1 - Experimental. The
-feature may emit warnings. The feature is not subject to <a
-href="https://semver.org/">Semantic Versioning</a> rules. Non-backward
+feature may emit warnings. The feature is not subject to <a href="https://semver.org/">Semantic Versioning</a> rules. Non-backward
 compatible changes or removal may occur in any future release. Use of the
 feature is not recommended in production or mainnet environments.</div>
 
