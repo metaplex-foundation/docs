@@ -10,13 +10,13 @@ The Token Metadata program is one of the most important programs when dealing wi
 
 It achieves this using [Program Derived Addresses](../understanding-programs#program-derived-addresses-pda) (PDAs) that are _derived_ from the address of Mint Accounts. If you’re not familiar with [Solana’s Token program](https://spl.solana.com/token), _Mint Accounts_ are responsible for storing the global information of a Token and _Token Accounts_ store the relationship between a wallet and a Mint Account.
 
-![A simple diagram showing a user icon followed by three blue rectangles in a straight line. From left to right, the rectangles are labelled: “Wallet Account”, “Token Account” and “Mint Account”. The user icon points to the “Wallet Account”, the “Wallet Account” points to the “Token Account” and the “Mint Account” points to the “Token Account”. Above the “Wallet Account” reads “Someone’s wallet”. Above the “Token Account” reads “Stores the number of tokens owned by the wallet”. Above the “Mint Account” reads “Stores information about the token itself. E.g. its current supply and its authorities.”.](./assets/Token-Metadata-Overview-1.png)
+![A simple diagram showing a user icon followed by three blue rectangles in a straight line. From left to right, the rectangles are labelled: “Wallet Account”, “Token Account” and “Mint Account”. The user icon points to the “Wallet Account”, the “Wallet Account” points to the “Token Account” and the “Mint Account” points to the “Token Account”. Above the “Wallet Account” reads “Someone’s wallet”. Above the “Token Account” reads “Stores the number of tokens owned by the wallet”. Above the “Mint Account” reads “Stores information about the token itself. E.g. its current supply and its authorities.”.](./assets/Token-Metadata-Overview-1.png#radius)
 
 Whilst Mint Accounts contain a few data attributes such as its current supply, it doesn't offer the ability to inject standardized data that can be understood by apps and marketplaces.
 
 This is why the Token Metadata program offers a **Metadata Account** that attaches itself to a Mint Account via a PDA.
 
-![Same diagram as the previous one but this time, the Mint Account points towards a brown pill labelled "PDA" which itself points toward a brown rectangle labelled "Metadata Account". Below the Metadata Account is displayed a list of its attributes.](./assets/Token-Metadata-Overview-2.png)
+![Same diagram as the previous one but this time, the Mint Account points towards a brown pill labelled "PDA" which itself points toward a brown rectangle labelled "Metadata Account". Below the Metadata Account is displayed a list of its attributes.](./assets/Token-Metadata-Overview-2.png#radius)
 
 That Metadata Account holds a lot of valuable information that can be used throughout the ecosystem. For instance, it maintains a list of creators for the token. Each creator has a `Verified` attribute that, when `True`, guarantees the token was signed by that creator. Each creator also has a `Share` attribute that can be used by marketplaces to distribute royalties.
 
@@ -26,7 +26,7 @@ By attaching more data to the Mint Account, **the Token Metadata program is able
 
 One important attribute of the Metadata Account is the `URI` attribute that points to a JSON file off-chain. This is used to safely provide additional data whilst not being constrained by the fees involved in storing on-chain data. That JSON file [follows a certain standard](./token-standard) that anyone can use to find useful information on tokens.
 
-![Same diagram as the previous one with an arrow pointing out of the "URI" attribute of the Metadata Account, towards a cloud labelled "Off-chain JSON Object". A list of example attributes is displayed below that cloud: "Name, Description, Image, Animation URL, Attributes, etc.".](./assets/Token-Metadata-Overview-3.png)
+![Same diagram as the previous one with an arrow pointing out of the "URI" attribute of the Metadata Account, towards a cloud labelled "Off-chain JSON Object". A list of example attributes is displayed below that cloud: "Name, Description, Image, Animation URL, Attributes, etc.".](./assets/Token-Metadata-Overview-3.png#radius)
 
 Note that, this JSON file can be stored using a permanent storage solution such as Arweave to ensure it cannot be updated. Additionally, one can use the `Is Mutable` attribute of the Metadata Account to make it immutable and, therefore, forbid the `URI` attribute — and other attributes such as `Name` and `Creators` — to ever be changed. Using this combination, we can guarantee the immutability of the off-chain JSON file.
 
@@ -42,7 +42,7 @@ More precisely, NFTs in Solana are Mint Accounts with the following characterist
 
 What we end up with is a token that cannot be traded with something of the same kind, which is the definition of a Non-Fungible Token (NFT).
 
-![A simplified version of the previous diagram: no data attributes on the Metadata Account nor JSON Object cloud displayed. Instead the Mint Account displays the following attributes: "Mint Authority = None", "Supply = 1" and "Decimals = 0". The Token Account displays only one attribute: "Amount = 1".](./assets/Token-Metadata-Overview-4.png)
+![A simplified version of the previous diagram: no data attributes on the Metadata Account nor JSON Object cloud displayed. Instead the Mint Account displays the following attributes: "Mint Authority = None", "Supply = 1" and "Decimals = 0". The Token Account displays only one attribute: "Amount = 1".](./assets/Token-Metadata-Overview-4.png#radius)
 
 In this particular yet popular case, the goal of the Metadata Account is to provide the actual data of that NFT to make it a useful Digital Asset.
 
@@ -52,7 +52,7 @@ Before creating this account, the Token Metadata program will ensure the special
 
 Thus, **the existence of the Master Edition account acts as proof of Non-Fungibility** for that Mint Account.
 
-![Same diagram as the previous one but the Mint Account points to an additional "PDA" pill which itself points to a new brown rectangle labelled "Master Edition Account". The Mint account also displays the following updated data attributes: "Mint Authority = Edition" and "Freeze Authority = Edition" where both of these attributes point to the new PDA.](./assets/Token-Metadata-Overview-5.png)
+![Same diagram as the previous one but the Mint Account points to an additional "PDA" pill which itself points to a new brown rectangle labelled "Master Edition Account". The Mint account also displays the following updated data attributes: "Mint Authority = Edition" and "Freeze Authority = Edition" where both of these attributes point to the new PDA.](./assets/Token-Metadata-Overview-5.png#radius)
 
 ## Printing Editions
 
@@ -68,7 +68,7 @@ Each Print NFT is made of its own Mint Account and its own Metadata Account whos
 
 Note that the Master Edition account and the Edition account share the same seeds for their PDA. That means an NFT can be one or the other but not both.
 
-![Same diagram as the previous one but with a new brown rectangle labelled "Edition Account". The "PDA" pill pointing to the Master Edition Account now also points to the new Edition Account with a big "OR" written on the arrow to show it points to one or the other.](./assets/Token-Metadata-Overview-6.png)
+![Same diagram as the previous one but with a new brown rectangle labelled "Edition Account". The "PDA" pill pointing to the Master Edition Account now also points to the new Edition Account with a big "OR" written on the arrow to show it points to one or the other.](./assets/Token-Metadata-Overview-6.png#radius)
 
 ## Semi-Fungible Tokens
 
@@ -85,7 +85,7 @@ To safely identify the fungibility of a token — and, thus, the standard that w
 
 You can [read more about these standards here](./token-standard).
 
-![This image shows three diagrams representing all three fungibility standards. From top to bottom. "NonFungible": Shows a Mint Account with the following attributes "Mint Authority = Edition", "Supply = 1", "Decimals = 0" and "Freeze Authority = Edition". It points to two PDAs, one pointing to a Metadata Account and one pointing to both a Master Edition Account and an Edition Account with a big OR in the middle. "FungibleAsset": Shows a Mint Account with the following attribute: "Decimals = 0". It points to a single PDA which points to a Metadata Account. "Fungible": Shows the same diagram as the "FungibleAsset" diagram but instead of "Decimals = 0", it displays "Decimals > 0" under the Mint Account.](./assets/Token-Metadata-Overview-7.png)
+![This image shows three diagrams representing all three fungibility standards. From top to bottom. "NonFungible": Shows a Mint Account with the following attributes "Mint Authority = Edition", "Supply = 1", "Decimals = 0" and "Freeze Authority = Edition". It points to two PDAs, one pointing to a Metadata Account and one pointing to both a Master Edition Account and an Edition Account with a big OR in the middle. "FungibleAsset": Shows a Mint Account with the following attribute: "Decimals = 0". It points to a single PDA which points to a Metadata Account. "Fungible": Shows the same diagram as the "FungibleAsset" diagram but instead of "Decimals = 0", it displays "Decimals > 0" under the Mint Account.](./assets/Token-Metadata-Overview-7.png#radius)
 
 ## And a lot more
 

@@ -8,7 +8,7 @@ Components in the project have two ways for customization:
 
 ## Logo and Left menu 
 
-![Init store](/img/customize/left-menu.png)
+![Init store](/img/customize/left-menu.png#radius)
 
 You can change logo in `Notifications` component with path:
 ```bash
@@ -79,7 +79,7 @@ https://ant.design/components/button/
 
 ## Right menu 
 
-![Init store](/img/customize/right-menu.png)
+![Init store](/img/customize/right-menu.png#radius)
 
 For customizing right menu items you need open `AppBar` component with path:
 ```bash
@@ -100,7 +100,7 @@ And edit this code:
 
 ## Auction View
 
-![Init store](/img/customize/auction-view.png)
+![Init store](/img/customize/auction-view.png#radius)
 
 You can change `PreSaleBanner` component with path:
 

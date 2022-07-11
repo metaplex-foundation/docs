@@ -17,6 +17,19 @@
   --ifm-code-font-size: 95%;
 }
 
+html[data-theme="dark"] img[src*="#shadow"] {
+  filter: drop-shadow(0 0 0.5rem black);
+}
+
+html[data-theme="light"] img[src*="#shadow"] {
+  filter: drop-shadow(0 0 0.5rem rgba(169, 169, 169, 0.58));
+}
+
+img[src*="#radius"] {
+  border-radius: 10px;
+}
+
+
 .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.1);
   display: block;

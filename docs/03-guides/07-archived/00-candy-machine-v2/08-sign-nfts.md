@@ -1,5 +1,5 @@
 ---
-sidebar_label: "10. Signing Your NFTs"
+sidebar_label: "9. Signing Your NFTs"
 ---
 
 # Signing Your NFTs

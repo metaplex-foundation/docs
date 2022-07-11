@@ -1,11 +1,17 @@
 ---
-sidebar_label: "7. Minting Website"
+sidebar_label: "Candy Machine Minting UI"
 ---
+
 # A Front End Minting Experience
 
 While the Candy Machine is ready to mint, in most cases you will want to provide a front end experience to allow your community the chance to mint, too.
 
-You can use the Candy Machine v2 UI, which is already in the Metaplex repository and downloaded when you executed the `git clone` command.
+You can use the Candy Machine UI, which is in the [metaplex-foundation/candy-machine-ui](https://github.com/metaplex-foundation/candy-machine-ui) repository.
+
+To download, run 
+```bash
+git clone https://github.com/metaplex-foundation/candy-machine-ui ~/candy-machine-ui/
+```
 
 ## Setting up
 
@@ -43,36 +49,37 @@ The UI supports all different configurations of your Candy Machine v2, including
 
 Before `goLiveDate` is reached:
 
-![Mint Countdown](ui/Mint-1.png)
+![Mint Countdown](ui/Mint-1.png#radius)
 
 When mint is live:
 
-![Mint Live](ui/Mint-2.png)
+![Mint Live](ui/Mint-2.png#radius)
 
 ### Whitelist Mint
 
 Whitelist token not detected, mint is not active before `goLiveDate`:
 
-![Whitelist + No Token](ui/Whitelist-1.png)
+![Whitelist + No Token](ui/Whitelist-1.png#radius)
 
 Whitelist token detected and whitelist settings set to presale and discount price:
 
-![Whitelist Presale + Discount](ui/Whitelist-2.png)
+![Whitelist Presale + Discount](ui/Whitelist-2.png#radius)
 
 Whitelist only mint:
 
-![Whitelist Only](ui/Whitelist-3.png)
+![Whitelist Only](ui/Whitelist-3.png#radius)
 
 Whitelist + presale and `goLiveDate` set to `null`:
 
-![Whitelist + No Token](ui/Whitelist-4.png)
+![Whitelist + No Token](ui/Whitelist-4.png#radius)
 
 ### End Settings Mint
 
 Countdown to the end of the mint:
 
-![End Settings](ui/EndSettings-1.png)
+![End Settings](ui/EndSettings-1.png#radius)
 
 End settings `date` reached, mint stopped:
 
-![End Settings Complete](ui/EndSettings-2.png)
+![End Settings Complete](ui/EndSettings-2.png#radius)
+

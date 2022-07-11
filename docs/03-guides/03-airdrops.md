@@ -265,6 +265,6 @@ after it is closed.
 
 This method applies to _only_ [Vercel](https://vercel.com/).  In the `gumdrop` directory, remove `homepage` key-value entirely.  Connect your GitHub to Vercel and create a new project.  In the project setup, make sure these settings are set.
 
-![Build and Development Settings](/img/gumdrop/build-and-development-settings.png)
+![Build and Development Settings](/img/gumdrop/build-and-development-settings.png#radius)
 
-![Root Directory Settings](/img/gumdrop/root-directory.png)
+![Root Directory Settings](/img/gumdrop/root-directory.png#radius)

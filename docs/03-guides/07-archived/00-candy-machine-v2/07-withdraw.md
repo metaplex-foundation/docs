@@ -1,5 +1,5 @@
 ---
-sidebar_label: "9. Withdraw Rent"
+sidebar_label: "8. Withdraw Rent"
 ---
 # Withdraw Rent
 

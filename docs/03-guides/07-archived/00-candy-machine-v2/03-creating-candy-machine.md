@@ -39,7 +39,7 @@ In this command we are specifying that we will run the upload in the `devnet` en
 
 :::info
 
-By default, the Candy Machine will automatically generate a collection NFT that will be set during minting if you use a UI that supports this feature (such as the [frontend](./mint-frontend) provided by Metaplex). As long as your NFTs are mutable and you retain update authority, you will be able to change or remove the collection at any point in the future should you so desire. More details in [Candy Machine Collections](#candy-machine-collections).
+By default, the Candy Machine will automatically generate a collection NFT that will be set during minting if you use a UI that supports this feature (such as the [frontend](/guides/candy-machine-ui) provided by Metaplex). As long as your NFTs are mutable and you retain update authority, you will be able to change or remove the collection at any point in the future should you so desire. More details in [Candy Machine Collections](#candy-machine-collections).
 
 :::
 
@@ -81,7 +81,7 @@ It is common to receive `signatureUnsubscribe error: Invalid subscription id.` m
 
 The command also outputs the Candy Machine PublicKey, which you can verify on the [Solana Explorer](https://explorer.solana.com):
 
-![Solana Explorer](./solana-explorer.png)
+![Solana Explorer](./solana-explorer.png#radius#shadow)
 
 :::info
 

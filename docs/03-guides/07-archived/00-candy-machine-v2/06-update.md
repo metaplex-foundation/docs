@@ -1,5 +1,5 @@
 ---
-sidebar_label: "8. Update the Candy Machine"
+sidebar_label: "7. Update the Candy Machine"
 ---
 # Update the Candy Machine
 
