@@ -6,7 +6,7 @@ Like any Solana program, one can interact with the Token Metadata program by sen
 
 When developing for the web or using [Node.js](https://nodejs.org/en/), one of the easiest ways to interact with the Token Metadata program — and other Metaplex programs — is to use our new JavaScript SDK.
 
-It not only provides a great API to interact with programs but also abstracts away some of the pain points we have to deal with when interacting with the Solana blockchain. For instance, it encapsulates who is using the SDK via Identity Drivers and which storage provider we should use via Storage Drivers. On top of that, the SDK was built with modularity in mind so one can easily inject plugins and modules to extend its feature set.
+It not only provides a great API to interact with programs but also abstracts away some pain points we have to deal with when interacting with the Solana blockchain. For instance, it encapsulates who is using the SDK via Identity Drivers and which storage provider we should use via Storage Drivers. On top of that, the SDK was built with modularity in mind so one can easily inject plugins and modules to extend its feature set.
 
 **The main module that interacts with the Token Metadata program is the [NFT module](https://github.com/metaplex-foundation/js-next#nfts)**. It is composed of several methods that focus on real use cases to make our life easier. Here are some of them.
 
@@ -22,7 +22,7 @@ metaplex.nfts().update(nft, onChainData);
 metaplex.nfts().printNewEdition(originalMint, params);
 ```
 
-Note that this SDK is fairly new and we are planning on adding more methods, modules and plugins in the future. For now, the entire documentation is written in the README of the GitHub repository. We will be writing more content as we go until the SDK is mature enough to have its own folder in this documentation.
+Note that this SDK is fairly new, and we are planning on adding more methods, modules, and plugins in the future. For now, the entire documentation is written in the README of the GitHub repository. We will be writing more content as we go until the SDK is mature enough to have its own folder in this documentation.
 
 🔗 **Helpful links:**
 
@@ -44,7 +44,7 @@ Therefore, these auto-generated libraries can be used by more advanced developer
 
 ## Rust crate
 
-If you are a Rust developer, you can also use a Rust crate to interact with the Token Metadata program. Since the program is written in Rust, this crate contains all of the program's logic, including helper methods that prepare instructions for us.
+If you are a Rust developer, you can also use a Rust crate to interact with the Token Metadata program. Since the program is written in Rust, this crate contains all the program's logic, including helper methods that prepare instructions for us.
 
 This can be helpful if you are developing a Rust client or if you want to make [CPI calls](https://solanacookbook.com/references/programs.html#how-to-do-cross-program-invocation) to the Token Metadata program within your program.
 

@@ -93,7 +93,7 @@ Whilst this provides a good overview of the Token Metadata program and what it h
 
 The other pages of the “Token Metadata” section aim to document it further and explain significant features in their own individual pages.
 
-The next three pages focus on helping you get started with the Token Metadata program and provide detailed information on the accounts and instructions it provides so you get the full picture and can refer back to them in the future.
+The next three pages focus on helping you get started with the Token Metadata program and provide detailed information on the accounts and instructions it provides, so you get the full picture and can refer back to them in the future.
 
 - [Getting started](./getting-started)
 - [Accounts](./accounts)

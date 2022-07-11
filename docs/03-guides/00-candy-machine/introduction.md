@@ -13,7 +13,7 @@ The second iteration of the well-known Candy Machine, a fully on-chain generativ
 
     The `CMv2` eliminates this possibility by using an unpredictable (sort of random) mint index, which it is not possible to determine in advance - a guarantee of a level playing field when it comes to minting rarer items.
 
-- ***Whitelist:*** You now have the possibility to create several different configurations for whitelists. You can allow whitelist users to mint before the start date, mint at a discounted price, or restrict the mint entirely to only whitelist users. Any SPL Token can be used to create whitelists and you choose how they are distributed.
+- ***Whitelist:*** You now have the possibility to create several different configurations for whitelists. You can allow whitelist users to mint before the start date, mint at a discounted price, or restrict the mint entirely to only whitelist users. Any SPL Token can be used to create whitelists, and you choose how they are distributed.
 
 - ***Captcha Settings:*** Integration with captcha to limit the mint to humans - sorry, bots no more!
 

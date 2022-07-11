@@ -81,7 +81,7 @@ Given a Masted Edition, this instruction creates a new Edition derived from a ne
 
 It requires the owner of the Master Edition's Token account to sign the transaction, to prove they are allowed to print new editions from it.
 
-It requires the same conditions as the Master Edition account regarding the Mint account and it will also **transfer the Mint Authority and the Freeze Authority from the Mint account** to the new Edition PDA ([Check the FAQ to understand why](./faq#why-are-the-mint-and-freeze-authorities-transferred-to-the-edition-pda)).
+It requires the same conditions as the Master Edition account regarding the Mint account, and it will also **transfer the Mint Authority and the Freeze Authority from the Mint account** to the new Edition PDA ([Check the FAQ to understand why](./faq#why-are-the-mint-and-freeze-authorities-transferred-to-the-edition-pda)).
 
 </ProgramInstruction>
 
@@ -89,9 +89,9 @@ It requires the same conditions as the Master Edition account regarding the Mint
 
 <ProgramInstruction idl={idl} instruction="MintNewEditionFromMasterEditionViaVaultProxy">
 
-This instruction is very similar to the one above but it uses a Vault proxy instead of a Token account to prove we are allowed to print new editions from the given Master Edition.
+This instruction is very similar to the one above, but it uses a Vault proxy instead of a Token account to prove we are allowed to print new editions from the given Master Edition.
 
-It requires the same conditions as the Master Edition account regarding the Mint account and it will also **transfer the Mint Authority and the Freeze Authority from the Mint account** to the new Edition PDA ([Check the FAQ to understand why](./faq#why-are-the-mint-and-freeze-authorities-transferred-to-the-edition-pda)).
+It requires the same conditions as the Master Edition account regarding the Mint account, and it will also **transfer the Mint Authority and the Freeze Authority from the Mint account** to the new Edition PDA ([Check the FAQ to understand why](./faq#why-are-the-mint-and-freeze-authorities-transferred-to-the-edition-pda)).
 
 </ProgramInstruction>
 
