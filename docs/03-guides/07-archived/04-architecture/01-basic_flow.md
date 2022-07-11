@@ -4,7 +4,7 @@ Now that we've gone over the contracts, let's run through an example of how the 
 
 ### 1. Minting an NFT
 
-On the Solana network an NFT is represented as a Token with only 1 in circulation and further minting is disabled, but that's not very useful. A token contains very little data about itself. In fact it doesn't even know its own name. Solana tokens are a primitive construct that we build on top of. That's where Metaplex comes in. As we mentioned on our [Terminology Page](/terminology#non-fungible-tokens) Metaplex is the standard way to add metadata to tokens. This metadata allows the tokens to secure Images, Audio, Video and anything else you can dream up. In order to create an NFT using metaplex we will follow these steps:
+On the Solana network an NFT is represented as a Token with only 1 in circulation and further minting is disabled, but that's not very useful. A token contains very little data about itself. In fact, it doesn't even know its own name. Solana tokens are a primitive construct that we build on top of. That's where Metaplex comes in. As we mentioned on our [Terminology Page](/terminology#non-fungible-tokens) Metaplex is the standard way to add metadata to tokens. This metadata allows the tokens to secure Images, Audio, Video and anything else you can dream up. In order to create an NFT using metaplex we will follow these steps:
 
 1. Optional: Pay for the Upload
 2. Creating a Token Mint
@@ -14,7 +14,7 @@ On the Solana network an NFT is represented as a Token with only 1 in circulatio
 6. Mint one Token
 7. Create Master Edition
 
-We are breaking these steps down to make it easier to follow. Steps 1-4 happen as one Transaction on the Solana network, and Steps 6-7 are also just one transaction. Lets dive into each step.
+We are breaking these steps down to make it easier to follow. Steps 1-4 happen as one Transaction on the Solana network, and Steps 6-7 are also just one transaction. Let's dive into each step.
 
 #### Pay For the Upload
 
@@ -70,10 +70,10 @@ As we said above the steps we have gone through thus far are represented as one 
 
 1. The Data - this is a blob of data that conforms to the [Token Metadata Standard](/programs/token-metadata/token-standard).
 2. Your Public Key
-3. A Metadata program Derived account Address - Read more about PDAs here. This is a uninitialized address that the account will be stored at. We do this so we can deterministically find this address again in the future.
+3. A Metadata program Derived account Address - Read more about PDAs here. This is an uninitialized address that the account will be stored at. We do this so we can deterministically find this address again in the future.
 4. The mint account public key
 
-Lets look at an in depth diagram of the CreateAccountMetadata program and what it does.
+Let's look at an in depth diagram of the CreateAccountMetadata program and what it does.
 
 ```mermaid
 sequenceDiagram
@@ -85,7 +85,7 @@ sequenceDiagram
    METAPLEX_TOKEN_METADATA_PROGRAM-->-SYSTEM_PROGRAM: Assign Ownership of the Account to Metadata Program
 ```
 
-This adds to our ever growing diagram to complete Transaction 1.
+This adds to our ever-growing diagram to complete Transaction 1.
 
 ```mermaid
 sequenceDiagram
@@ -138,7 +138,7 @@ sequenceDiagram
 
 In Metaplex, you can make an NFT that is a true one-of-a-kind token, but you can also use the `MasterEdition` construct to create `Prints` of the master edition, just like a painting. You now want to label this token account as a MasterEdition NFT that has a limited supply of 10 possible Limited Edition Prints. Cool! Remember that the point of Metadata is to label mints - not just NFTs. To do this you call the `create_master_edition` endpoint on the Token Metadata Program. By doing this, minting authority is taken away from you, and it creates a new Master Edition PDA that contains information about how large a supply you want to have.
 
-Lets do a deep dive on this Program.
+Let's do a deep dive on this Program.
 
 ```mermaid
 sequenceDiagram
@@ -153,7 +153,7 @@ sequenceDiagram
 
 When you want to mint Editions now, you'll need to present a token account containing the token from this Master Edition mint as proof of ownership and authority to do so. This is why we will later hand this token over to the Auction Manager, so that it can do the same to print off Editions for winners!
 
-Lets take a look at our transaction diagram now.
+Let's take a look at our transaction diagram now.
 
 ```mermaid
 sequenceDiagram
@@ -162,15 +162,15 @@ sequenceDiagram
     Client->>+METAPLEX_TOKEN_METADATA_PROGRAM: Create Master Edition
 ```
 
-The above instructions will get bundled up into one instruction and sent to the Solana network. Once successful your token account has a bonafide NFT Master Edition in it, we can run an auction where we auction off Limited Edition prints! Let's say we want to auction off three such prints.
+The above instructions will get bundled up into one instruction and sent to the Solana network. Once successful your token account has a bona-fide NFT Master Edition in it, we can run an auction where we auction off Limited Edition prints! Let's say we want to auction off three such prints.
 
 ### 2. The Auction
 
-5. Next, we create a token vault using the `init_vault` endpoint of the token vault contract. We'll store our master edition token in it by adding it to the vault using the `add_token_to_inactive_vault` endpoint. This will create a safety deposit box in the vault that contains the the token.
+5. Next, we create a token vault using the `init_vault` endpoint of the token vault contract. We'll store our master edition token in it by adding it to the vault using the `add_token_to_inactive_vault` endpoint. This will create a safety deposit box in the vault that contains the token.
 6. Then we will call the `activate_vault` command which **Activates** the vault, locking everything inside.
 7. We now **Combine** the vault using `combine_vault`, which is to say, we "open it," so the current authority could, if they wanted, withdraw the tokens inside it. The Auction Manager can only work with vaults in this state, which is why we have to go through the **Activation** phase to get here even though it seems a little nonsensical. [See the in depth guide](./deep_dive/token_vault) for more color on why these different states exist.
 8. Next up, we create the auction, and we say its resource is this vault. The auction has not yet been started, but it has the right resource (the vault). We do this via the `create_auction` command on the Auction contract.
-9. Now that we have an auction and a vault, we can go and call the `init_auction_manager` endpoint on the Metaplex contract with both of these accounts among a few others to create an AuctionManager, which ties them both together. Note that `init_auction_manager` takes a special struct called AuctionManagerSettings that allows one to specify how many winners there are and what winners get which items from which safety deposit box. At this point, we can't yet start the auction. The AuctionManager is in an invalidated state and we need to validate it. We do this by validating that the safety deposit boxes we provided to it in the vault have actually what we said are in them when we provided the AuctionManager with it's settings struct.
+9. Now that we have an auction and a vault, we can go and call the `init_auction_manager` endpoint on the Metaplex contract with both of these accounts among a few others to create an AuctionManager, which ties them both together. Note that `init_auction_manager` takes a special struct called AuctionManagerSettings that allows one to specify how many winners there are and what winners get which items from which safety deposit box. At this point, we can't yet start the auction. The AuctionManager is in an invalidated state, and we need to validate it. We do this by validating that the safety deposit boxes we provided to it in the vault have actually what we said are in them when we provided the AuctionManager with its settings struct.
 10. Before we begin validation, we call `set_authority` on both the vault and auction to change its authority to the auction manager, so that it has control over both of those structs. This is a requirement for the validation phase and the rest of the contract lifecycle. **Now you no longer have control over your items.**
 11. We call the `validate_safety_deposit_box` endpoint on the Metaplex contract with the one safety deposit box in the vault, and the logic in this endpoint checks that there are exactly 3 printing tokens from the right mint in this box, matching the 3 printing tokens we promised it would have in our AuctionManagerSettings. Once we do this, and because this is the only safety deposit box in the vault, the AuctionManager is now validated.
 12. We now call `start_auction` on the Metaplex contract, which, because the AuctionManager has authority over the Auction, calls `start_auction` on the Auction contract, and the auction begins!
@@ -182,6 +182,6 @@ The above instructions will get bundled up into one instruction and sent to the 
 
     Note that our front end reference implementation uses SOL as the "token type." This has some special caveats, namely that SOL isn't really an "spl token." It instead has a work-around called the "Wrapped SOL mint." This is a special mint that is often used in a transient account. What this means is that when we place a bid, we actually make a one-off system account, transfer lamports to it of your bid amount + rent, then label it an spl-token account of the wrapped sol type, use it to place the bid, then close it all in one transaction.
 
-    Special machinations in the spl token program then make this wrapped sol token account have a number of tokens with the proper decimals that map to the amount of SOL you transferred to it. We do a similar operation with cancelling, where we make a transient wrapped sol account, transfer cancelled bid funds to it, and then close the account, transferring funds out all in a single transaction. This is all done for ease of use. With settlements, when funds are disbursed to artists, we actually make a WSOL account for them and they have to close it by hand via a dropdown menu.
+    Special machinations in the spl token program then make this wrapped sol token account have a number of tokens with the proper decimals that map to the amount of SOL you transferred to it. We do a similar operation with cancelling, where we make a transient wrapped sol account, transfer cancelled bid funds to it, and then close the account, transferring funds out all in a single transaction. This is all done for ease of use. With settlements, when funds are disbursed to artists, we actually make a wSOL account for them, and they have to close it by hand via a dropdown menu.
 
-    The protocol operates off of generic spl tokens and has no opinions about WSOL specifically, but the front end reference implementation does. So take careful note!
+    The protocol operates off of generic spl tokens and has no opinions about wSOL specifically, but the front end reference implementation does. So take careful note!

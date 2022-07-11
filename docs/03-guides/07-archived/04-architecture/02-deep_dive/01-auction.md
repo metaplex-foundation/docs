@@ -4,7 +4,7 @@
 
 The Auction contract is a primitive that is meant to be used in conjunction with another smart contract that understands the context of the resource for which the auction is being held. It contains mechanics for collecting payment from bidders, for keeping track of a winners list, and handling bid placement and cancellation, but it has no opinions on what the resource being bid on should be, or how it gets divided.
 
-While it currently has support for English Auctions and Open Edition Auctions, it will in the future support other types of auctions such as Vickrey and Dutch Auctions. The state for the contract is reproduced here:
+It currently has support for English Auctions and Open Edition Auctions. The state for the contract is reproduced here:
 
 ```rust
 /// Structure with pricing floor data.
@@ -28,7 +28,7 @@ pub struct AuctionData {
     pub authority: Pubkey,
     /// Pubkey of the resource being bid on.
     /// TODO try to bring this back some day. Had to remove this due to a stack access violation bug
-    /// interactin that happens in metaplex during redemptions due to some low level rust error
+    /// interacting that happens in metaplex during redemptions due to some low level rust error
     /// that happens when AuctionData has too many fields. This field was the least used.
     ///pub resource: Pubkey,
     /// Token mint for the SPL token being used to bid
@@ -133,7 +133,7 @@ The instruction set for auction can be found here: [https://github.com/metaplex-
 
 ### AuctionData
 
-This is the core data representing an auction in this program. It contains (almost) all of the configuration representing an auction. You'll notice that it has a `token_mint` field which means any spl_token can be used as the base mint for an auction, so you can bid in any currency! It also keeps track of a few other goodies, so let's break them down one by one:
+This is the core data representing an auction in this program. It contains (almost) all the configuration representing an auction. You'll notice that it has a `token_mint` field which means any spl_token can be used as the base mint for an auction, so you can bid in any currency! It also keeps track of a few other goodies, so let's break them down one by one:
 
 `last_bid`: Every time someone bids, this is set. Useful for doing math with the gap time feature.
 
@@ -141,7 +141,7 @@ This is the core data representing an auction in this program. It contains (almo
 
 `end_auction_at` : This is actually a duration and is a little confusing. If you're planning to start your auction at a later point in time, you can set this as a duration, and when you finally start your auction, ended_at will be set to now + this duration. Useful, right? Maybe poorly named. Our bad.
 
-`end_auction_gap` : Used in conjunction with `last_bid` - if this is set to 1 minute, then let's say someone makes a bid in the last 5 seconds of an auction. The auction is then extended by 55 seconds from it's original end time (+ 1 minute from the last bid.) If someone then makes another bid within that time period, it's another + 1 minute from that bid. And so on.
+`end_auction_gap` : Used in conjunction with `last_bid` - if this is set to 1 minute, then let's say someone makes a bid in the last 5 seconds of an auction. The auction is then extended by 55 seconds from its original end time (+ 1 minute from the last bid.) If someone then makes another bid within that time period, it's another + 1 minute from that bid. And so on.
 
 `price_floor` : Various options for price floor, but essentially you can use this to set no price floor, a minimum price floor, or a blind price floor on the auction. See the enum for more.
 
@@ -165,13 +165,13 @@ BidderMetadata always has a PDA of `['auction', auction_program_id, auction_id, 
 
 ### BidderPot
 
-This ended up being a bit of a redundant struct, but this serves as a join table between the actual token account containing the funds collected by the auction for a given bidder, the bidder's sol wallet, and an auction. In the future we may merge this struct into BidderMetadata. There is also an `emptied` boolean on it to track whether or not the bidder pot has been claimed by the auctioneer for easy lookup.
+This ended up being a bit of a redundant struct, but this serves as a join table between the actual token account containing the funds collected by the auction for a given bidder, the bidder's sol wallet, and an auction. In the future we may merge this struct into BidderMetadata. There is also an `emptied` boolean on it to track whether the bidder pot has been claimed by the auctioneer for easy lookup.
 
 BidderPot always has a PDA of `['auction', auction_program_id, auction_id, bidder_key]`where `auction_program_id` is the program id of the auction contract, `auction_id` is the key of the auction, and `bidder_key` is the wallet making the bid.
 
 ### AuctionDataExtended
 
-If you've read this far, you now get to witness my personal shame. So as it turns out, if you build a complex enough program with enough structs flying around, there is some kind of weird interaction in the Metaplex contract that causes it to blow out with an access violation if you add more than a certain number of keys to one particular struct (AuctionData), and _only_ during the redemption endpoint calls. We were unable to discern why this was across 3 days of debugging. We had a theory it was due to some issue with borsh but it is not 100% certain, as we're not experts with that library's internals.
+If you've read this far, you now get to witness my personal shame. So as it turns out, if you build a complex enough program with enough structs flying around, there is some kind of weird interaction in the Metaplex contract that causes it to blow out with an access violation if you add more than a certain number of keys to one particular struct (AuctionData), and _only_ during the redemption endpoint calls. We were unable to discern why this was across 3 days of debugging. We had a theory it was due to some issue with borsh, but it is not 100% certain, as we're not experts with that library's internals.
 
 Instead, our work-around was to introduce AuctionDataExtended to add new fields that we needed to AuctionData without breaking this hidden bug that seems to exist. What is odd about the whole thing is adding fields to _other_ structs doesn't cause any issues. In the future I'd love to have someone who knows way more than me about these subjects weigh in and tell me what I did wrong here to resolve this split-brain problem! We also don't have reverse lookup capability (Resource key on AuctionData) because of this bug - adding it would cause the blow out I mentioned.
 
@@ -183,13 +183,13 @@ AuctionDataExtended accounts always have PDA addresses of `['auction', auction_p
 
 ### Incompleteness
 
-The contract currently has a deficiency in it's implementation where an auctioneer can claim the funds for a winning bid without the winner having signed off on having received some sort of prize for that bid - which is why we mention the "conjunction" above in the Overview. Metaplex guarantees through the interaction with the Metaplex contract that all users of Metaplex + Auction combination get a prize, but use of Auction by itself does not guarantee a winner gets a prize for a bid, because this functionality does not exist in this contract alone yet. A future version of this contract will require the winning bidders to create a PDA admitting they have received a prize before the auctioneer can withdraw funds, making this a complete primitive that can be used without any other contract making guarantees.
+The contract currently has a deficiency in its implementation where an auctioneer can claim the funds for a winning bid without the winner having signed off on having received some sort of prize for that bid - which is why we mention the "conjunction" above in the Overview. Metaplex guarantees through the interaction with the Metaplex contract that all users of Metaplex + Auction combination get a prize, but use of Auction by itself does not guarantee a winner gets a prize for a bid, because this functionality does not exist in this contract alone yet. A future version of this contract will require the winning bidders to create a PDA admitting they have received a prize before the auctioneer can withdraw funds, making this a complete primitive that can be used without any other contract making guarantees.
 
 The way Metaplex makes such a guarantee is that it controls the Vault resource being bid on, and if you present the Metaplex contract with a BidderMetadata account from the Auction that represents a winning bid, it will disburse the proper NFT to you from the Vault. You can do the same with your own custom implementation.
 
 ### Cancelling before Placing a Bid
 
-Currently you cannot change or place a new bid until you cancel the old one. Just keep that in mind - it makes for easier logic all around. This may change in the future as we add support for bidders not being able to cancel once a bid is placed, or not being able to bid less than they previously bid.
+Currently, you cannot change or place a new bid until you cancel the old one. Just keep that in mind - it makes for easier logic all around. This may change in the future as we add support for bidders not being able to cancel once a bid is placed, or not being able to bid less than they previously bid.
 
 ### Claiming bids
 
@@ -201,4 +201,4 @@ Refunds work by cancelling bids. Currently, any bidder can cancel any time durin
 
 ### Turning the Crank
 
-The `place_bid` will turn the state of the auction to **Ended** if someone places a bid after the auction's `ended_at` date passes. It will then return `Ok(())` in a kind of silent pass without actually placing a bid. Once the auction is in the **Ended** state, bid funds can be claimed by the auctioneer. This is actually how an auction is really ended - it does not end on it's own accord, someone has to turn the crank! In theory, an auction will remain open for all eternity, past its own end date, if nobody touches it, but nobody can do any invalid things to it. It's kind of like Schrodinger's Cat. However, even if an auction is not officially in **Ended** state but it is past its `ended_at`, winners will not be allowed to cancel bids.
+The `place_bid` will turn the state of the auction to **Ended** if someone places a bid after the auction's `ended_at` date passes. It will then return `Ok(())` in a kind of silent pass without actually placing a bid. Once the auction is in the **Ended** state, bid funds can be claimed by the auctioneer. This is actually how an auction is really ended - it does not end on its own accord, someone has to turn the crank! In theory, an auction will remain open for all eternity, past its own end date, if nobody touches it, but nobody can do any invalid things to it. It's kind of like Schrödinger's Cat. However, even if an auction is not officially in **Ended** state, but it is past its `ended_at`, winners will not be allowed to cancel bids.

@@ -2,9 +2,9 @@
 
 ## Overview
 
-The Metaplex is the contract that knows how the others tie together and understands what an NFT truly is, how to auction it off and how to redeem it for others. It also understands the concept of royalties and how to pay them out. It's job is to act is the orchestrator between a Vault full of tokens, an Auction primitive, a bunch of winners, creators, and an auctioneer, and make sure everybody gets what is deserved, whether it be monies or tokens (though in the end they are all tokens).
+The Metaplex is the contract that knows how the others tie together and understands what an NFT truly is, how to auction it off and how to redeem it for others. It also understands the concept of royalties and how to pay them out. Its job is to act is the orchestrator between a Vault full of tokens, an Auction primitive, a bunch of winners, creators, and an auctioneer, and make sure everybody gets what is deserved, whether it be monies or tokens (though in the end they are all tokens).
 
-It's state is reproduced here:
+Its state is reproduced here:
 
 ```rust
 #[repr(C)]
@@ -74,7 +74,7 @@ pub struct ParticipationState {
     /// We have this variable below to keep track in the case of the participation NFTs, whose
     /// income will trickle in over time, how much the artists have in the escrow account and
     /// how much would/should be owed to them if they try to claim it relative to the winning bids.
-    /// It's  abit tougher than a straightforward bid which has a price attached to it, because
+    /// It's a bit tougher than a straightforward bid which has a price attached to it, because
     /// there are many bids of differing amounts (in the case of GivenForBidPrice) and they dont all
     /// come in at one time, so this little ledger here keeps track.
     pub collected_to_accept_payment: u64,
@@ -281,19 +281,19 @@ AuctionManagers always have PDAs of seed `['metaplex', metaplex_program_id, auct
 
 ### AuctionManagerSettings
 
-AuctionManagerSettings is an embedded struct inside AuctionManager but is deserving of it's own section. This struct is actually provided by the user in the `init_auction_manager` call to parameterize the AuctionManager with who is winning what and whether or not there is a participation NFT. It is fairly straightforward - for each entry in the WinningConfig vec, it stands for a given winning place in the Auction. The 0th entry is the WinningConfig for the 1st place winner. A WinningConfig has many WinningConfigItems. For each WinningConfigItem in the 0th WinningConfig, it is a mapping to a Vault SafetyDepositBox that the 1st place winner gets items from. You can therefore configure quite arbitrary Auctions this way.
+AuctionManagerSettings is an embedded struct inside AuctionManager but is deserving of its own section. This struct is actually provided by the user in the `init_auction_manager` call to parameterize the AuctionManager with who is winning what and whether there is a participation NFT. It is fairly straightforward - for each entry in the WinningConfig vec, it stands for a given winning place in the Auction. The 0th entry is the WinningConfig for the 1st place winner. A WinningConfig has many WinningConfigItems. For each WinningConfigItem in the 0th WinningConfig, it is a mapping to a Vault SafetyDepositBox that the 1st place winner gets items from. You can therefore configure quite arbitrary Auctions this way.
 
-This setup is actually quite redundant and will likely change in the future to a setup where a WinningConfigItem is the top level structure and it simply declares which winners will receive it, because if you wish for multiple winners to receive prints from the same Master Edition, the WinningConfigItem must right now be duplicated across each WinningConfig.
+This setup is actually quite redundant and will likely change in the future to a setup where a WinningConfigItem is the top level structure, and it simply declares which winners will receive it, because if you wish for multiple winners to receive prints from the same Master Edition, the WinningConfigItem must right now be duplicated across each WinningConfig.
 
-The Participation Config is optional, but has enums describing how it will behave for winners and for non-winners, whether or not it has a price associated with it, and what safety deposit box contains its printing tokens.
+The Participation Config is optional, but has enums describing how it will behave for winners and for non-winners, whether it has a price associated with it, and what safety deposit box contains its printing tokens.
 
 Notice that AuctionManagerSettings really doesn't contain settings about the auction. It really only breaks down how to divvy up the Vault. This is the separation of concerns in action - the Auction is parameterized with auction settings, while the AuctionManager understands how to divvy up rewards to winners and is parameterized that way. The Auction does not understand how to divvy up rewards, and the Metaplex contract does not understand how to do Auctions, only how to read winners off of it.
 
 ### AuctionManagerState
 
-I consciously made the decision to keep AuctionManagerSettings identical to what you send up when you initialize AuctionManager. However, other things related to WinningConfigs, WinningConfigItems, etc change as the AuctionManager moves through its motions. These changes are recorded in AuctionManagerState, a kind of mirror object that is instantiated during the `init_auction_manager` action.
+I consciously made the decision to keep AuctionManagerSettings identical to what you send up when you initialize AuctionManager. However, other things related to WinningConfigs, WinningConfigItems, etc. change as the AuctionManager moves through its motions. These changes are recorded in AuctionManagerState, a kind of mirror object that is instantiated during the `init_auction_manager` action.
 
-Specifically, for each WinningConfigItem, we need to record at the time of creation whether the primary sale had happened for later royalties measurement (because this could be changed during auction) and we need to record whether or not this particular WinningConfigItem has been claimed by the winner yet. We do similar things for Participation prize in it's own config.
+Specifically, for each WinningConfigItem, we need to record at the time of creation whether the primary sale had happened for later royalties measurement (because this could be changed during auction) and we need to record whether this particular WinningConfigItem has been claimed by the winner yet. We do similar things for Participation prize in its own config.
 
 ### BidRedemptionTicket
 
@@ -311,13 +311,13 @@ PayoutTickets always have PDAs of `['metaplex', auction_manager_id, winning_conf
 
 ### Store
 
-Every person who forks the repository to make their own storefront should have a unique store struct that is seeded by their own administrative wallet. These are created and updated by the idempotent `set_store` endpoint. Each store can choose to use it's own token, token-metadata, token-vault and auction programs if it so chooses, though right now we've got a hard check that the token program is actually the global spl-token program. The store also can be either public or private, which determines whether or not AuctionManagers can sell items that have all non-whitelisted creators on them or not. We take a "bouncer-knows-your-friend-and-lets-you-in" approach to selling items in whitelist-only stores - if an item has at least one _verified_ Whitelisted Creator, then it can be sold.
+Every person who forks the repository to make their own storefront should have a unique store struct that is seeded by their own administrative wallet. These are created and updated by the idempotent `set_store` endpoint. Each store can choose to use its own token, token-metadata, token-vault and auction programs if it so chooses, though right now we've got a hard check that the token program is actually the global spl-token program. The store also can be either public or private, which determines whether AuctionManagers can sell items that have all non-whitelisted creators on them or not. We take a "bouncer-knows-your-friend-and-lets-you-in" approach to selling items in whitelist-only stores - if an item has at least one _verified_ Whitelisted Creator, then it can be sold.
 
 Store PDAs are always a PDA seed of `['metaplex', metaplex_program_id, admin_wallet]` where `metaplex_program_id` is the address of the Metaplex contract and `admin_wallet` is the wallet that is administering this store.
 
 ### WhitelistedCreator
 
-A cousin of the simple Creator struct from the Metadata program, this is a foreign key connector between a creator address and a store. It denotes whether or not this creator is currently active in the store and if they are, allows items from them to be sold in it.
+A cousin of the simple Creator struct from the Metadata program, this is a foreign key connector between a creator address and a store. It denotes whether this creator is currently active in the store and if they are, allows items from them to be sold in it.
 
 WhitelistedCreator PDAs are always a PDA seed of `['metaplex', metaplex_program_id, store_key, creator_key]` where `metaplex_program_id` is the address of the Metaplex contract, `store_key` is the address of the storefront, and `creator_key` is obviously the address of the creator's wallet you are whitelisting.
 
@@ -329,7 +329,7 @@ SafetyDepositValidationTickets are always PDAs with seed of `['metaplex', metapl
 
 ### OriginalAuthorityLookup
 
-These are created during FullRightsTransfers. When a FullRightsTransfer is happening, the Metadata `updateAuthority` is shifted from the Auctioneer to the AuctionManager so that it can grant it in turn to the winner, and this record is created to keep track of who the original `updateAuthority` was to return it later if the item is not sold. That functionality (returns) is not implemented as of this writing but will be in the near future.
+These are created during FullRightsTransfers. When a FullRightsTransfer is happening, the Metadata `updateAuthority` is shifted from the Auctioneer to the AuctionManager so that it can grant it in turn to the winner, and this record is created to keep track of whom the original `updateAuthority` was to return it later if the item is not sold. That functionality (returns) is not implemented as of this writing but will be in the near future.
 
 OriginalAuthorityLookups always have PDAs with seed of `['metaplex', auction_id, metadata_key]` where `auction_id` is the address of the Auction and `metadata_key` is the address of the actual Metadata struct.
 
@@ -357,11 +357,11 @@ Note that owning the token itself is the _only_ requirement for using the `updat
 
 ### Royalties
 
-Metadata come locked and stocked with arrays of creators, each with their own `share` and all guaranteed to sum to 100. The Metadata itself has a `seller_fee_basis_points` field that represents the share creators get out of the proceeds in any secondary sale and a `primary_sale_happened` boolean that distinguishes to the world whether or not this particular Metadata has experienced it's first sale or not. With all of this, Metaplex is able to do complete Royalty calculations after an Auction is over. It was mentioned above that on initialization, the Metaplex contract snapshots for each Metadata being sold the `primary_sale_happened` just in case the boolean is flipped during the auction so that royalties are calculated as-of initiation - this is important to note.
+Metadata come locked and stocked with arrays of creators, each with their own `share` and all guaranteed to sum to 100. The Metadata itself has a `seller_fee_basis_points` field that represents the share creators get out of the proceeds in any secondary sale and a `primary_sale_happened` boolean that distinguishes to the world whether this particular Metadata has experienced its first sale or not. With all of this, Metaplex is able to do complete Royalty calculations after an Auction is over. It was mentioned above that on initialization, the Metaplex contract snapshots for each Metadata being sold the `primary_sale_happened` just in case the boolean is flipped during the auction so that royalties are calculated as-of initiation - this is important to note.
 
 At the end of the auction, anybody (permissionless) can cycle through each winning bid in the contract and ask the Metaplex contract to use its authority to call the Auction contract and pump the winning bid monies into the `accept_payment` escrow account via `claim_bid`. Once all winning bids have been settled into here, royalties are eligible to be paid out. We'll cover payouts of fixed price Participation NFTs separately.
 
-Now, anybody (permissionless) can cycle through each creator PLUS the auctioneer on each item in each winning bid and call `empty_payment_account` with an Associated Token Account that is owned by that creator or auctioneer and that action will calculate, using the creator's share or auctioneer's share of that item's metadata, and the fractional percentage of that item of the overall winning basket, to payout the creator or auctioneer from the escrow.
+Now, anybody (permissionless) can cycle through each creator PLUS the auctioneer on each item in each winning bid and call `empty_payment_account` with an Associated Token Account that is owned by that creator or auctioneer and that action will calculate, using the creator's share or auctioneer's share of that item's metadata, and the fractional percentage of that item of the overall winning basket, to pay out the creator or auctioneer from the escrow.
 
 Our front end implementation immediately calls the `update_primary_sale_happened` endpoint on token metadata for any token once redeemed for users so that if they re-sell, the `primary_sale_happened` boolean is taken into account in the `empty_payment_account` logic and only the basis points given in `seller_fee_basis_points` goes to the creators instead of the whole pie. The remaining part of the pie goes to the auctioneer doing the reselling.
 
@@ -369,7 +369,7 @@ We don't do weighted items in winning baskets right now - if a winning basket ha
 
 Things get a little complex when participation NFTs come into play. When a participation NFT has a fixed price, it is only paid in the case of non-winners. What they first do is cancel their bid, getting a refund, and then they redeem their participation bid with the `redeem_participation_bid` endpoint. This charges them the fixed price and dumps those funds into the `accept_payment` account. At intervals, someone must come and turn the crank to dump the proceeds to the creators of the Participation NFT from the latest redeemers of that NFT because they will only receive proceeds as people come and redeem and pay for them.
 
-Note because our front end implementation chooses to use SOL instead of a generic SPL token, we use a Wrapped SOL ATA account for creators. They are then forced to use a drop down menu to liquidate and close the Wrapped SOL ATA account when they next login, absorbing the Wrapped SOL back into their normal SOL wallets. If you choose not to use SOL in your implementation, you will not have this difficulty.
+Note because our front end implementation chooses to use SOL instead of a generic SPL token, we use a Wrapped SOL ATA account for creators. They are then forced to use a drop-down menu to liquidate and close the Wrapped SOL ATA account when they next log in, absorbing the Wrapped SOL back into their normal SOL wallets. If you choose not to use SOL in your implementation, you will not have this difficulty.
 
 ### Validation
 
