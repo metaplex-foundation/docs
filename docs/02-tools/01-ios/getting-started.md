@@ -6,13 +6,13 @@ The [Metaplex iOS SDK][docs] is a library that allows you to:
 - Create transactions
 - Run Actions (mint NFT, create an auction, and so on)
 
-It works both in iOS and other Apple platforms that support swift.
+It works both in iOS and other Apple platforms that support Swift.
 
 ## Stability
 
 [Stability 1 - Experimental](/stability)
 
-This project is in development. **All** interfaces are _very likely_ to change very frequently. Please use caution when making use of this library. Bugs or behavior changes may surprise users when Experimental API modifications occur.
+This project is in active development. **All** interfaces are _very likely_ to change very frequently. Please use caution when making use of this library. Bugs or behavior changes may surprise users when Experimental API modifications occur.
 
 ## References
 
@@ -31,15 +31,15 @@ From Xcode 11, you can use [Swift Package Manager](https://swift.org/package-man
 
 - File > Swift Packages > Add Package Dependency
 - Add `https://github.com/metaplex-foundation/metaplex-ios`
-- Select "brach" with "master"
+- Select "branch" with "master"
 - Select Metaplex
 
-If you encounter any problem or have a question on adding the package to an Xcode project, I suggest reading the [Adding Package Dependencies to Your App](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app)  guide article from Apple.
+If you encounter any problems or have a question on adding the package to an Xcode project, I suggest reading the [Adding Package Dependencies to Your App](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app) guide article from Apple.
 
 ### Setup
 The entry point to the Swift SDK is a `Metaplex` instance that will give you access to its API.
 
-Set the `SolanaConnectionDriver` and setup your enviroment. Provide a `StorageDriver` and `IdentityDriver`. You can also use the concrete implementations URLSharedStorageDriver for URLShared and GuestIdentityDriver for a guest Indentity Driver. 
+Set the `SolanaConnectionDriver` and set up your environment. Provide a `StorageDriver` and `IdentityDriver`. You can also use the concrete implementations URLSharedStorageDriver for URLShared and GuestIdentityDriver for a guest Identity Driver. 
 
 You can customise who the SDK should interact on behalf of and which storage provider to use when uploading assets. We might provide a default and simple implementation in the future.
 
@@ -54,7 +54,7 @@ let metaplex Metaplex(connection: solana, identityDriver: identityDriver, storag
 Once properly configured, that `Metaplex` instance can be used to access modules providing different sets of features. Currently, there is only one NFT module that can be accessed via the `nfts()` method. From that module, you will be able to find, create and update NFTs with more features to come.
 
 ## NFTs
-The NFT module can be accessed via `Metaplex.nfts()` and provide the following methods. Currently we only support readding methods. Writing and creating NFTs will be suported on the future.
+The NFT module can be accessed via `Metaplex.nfts()` and provide the following methods. Currently, we only support reading methods. Writing and creating NFTs will be supported in the future.
 
 - findNftByMint(mint, callback)
 - findNftByMintList(mints, callback)
@@ -62,11 +62,11 @@ The NFT module can be accessed via `Metaplex.nfts()` and provide the following m
 - findNftsByCreator(creator, position = 1, callback)
 - findNftsByCandyMachine(candyMachine, version = 2, callback)
 
-All the methods return a callback. Its also posible to wrap them inside either RX, and async Result or Combine. We only provide this interface since is the most compatible without forcing any specific framework. 
+All the methods return a callback. It's also possible to wrap them inside either RX, and async Result or Combine. We only provide this interface since is the most compatible without forcing any specific framework. 
 
 ### Your first request
 
-The following code snippet is the a basic one you can use to get NFTs from a publicKey. This use case maybe very common for a Wallet:
+The following code snippet is a basic one you can use to get NFTs from a publicKey. This use case maybe very common for a wallet:
 
 ```swift
 let ownerPublicKey = PublicKey(string: "5LeMDmNW6bQFWQjMhcTZnp6LVHTQQfUpY9jn6YH6RpyE")!
@@ -84,7 +84,7 @@ This will return an array of NFTs owned by that specific public key.
 
 ### The `Nft` model
 
-All of the methods above either return or interact with an `Nft` object. The `Nft` object is a read-only data representation of your NFT that contains all the information you need at the top level.
+All the methods above either return or interact with an `Nft` object. The `Nft` object is a read-only data representation of your NFT that contains all the information you need at the top level.
 
 You can see its full data representation by checking the code but here is an overview of the properties that are available on the `Nft` object.
 
@@ -107,7 +107,7 @@ public let editionNonce: UInt8?
 public let masterEditionAccount: MasterEditionAccount?
 ```
 
-As you can see, some of the properties are loaded on demand. This is because they are not always needed and/or can be expensive to load.
+As you can see, some properties are loaded on demand. This is because they are not always needed and/or can be expensive to load.
 
 In order to load these properties, you may run the `metadata` properties of the `Nft` object.
 
@@ -136,13 +136,13 @@ public protocol IdentityDriver {
 }
 ```
 
-The implementation of these methods depends on the concrete identity driver being used. For example use a KeypairIdentity or a Guest(no publickey added)
+The implementation of these methods depends on the concrete identity driver being used. For example, using a KeypairIdentity or a Guest (no publickey added).
 
 Let’s have a quick look at the concrete identity drivers available to us.
 
 ### GuestIdentityDriver
 
-The `GuestIdentityDriver` driver is the simpliest identity driver. It is essentially a `null` driver that can be useful when we don’t need to send any signed transactions. It will return failure if you use `signTransaction` methods.
+The `GuestIdentityDriver` driver is the simplest identity driver. It is essentially a `null` driver that can be useful when we don’t need to send any signed transactions. It will return failure if you use `signTransaction` methods.
 
 
 ### KeypairIdentityDriver
@@ -152,7 +152,7 @@ The `KeypairIdentityDriver` driver accepts a `Account` object as a parameter.
 
 ### ReadOnlyIdentityDriver
 
-The `KeypairIdentityDriver` driver accepts a `PublicKey` object as a parameter. Its a read only similar to the GUestIdentity but it has a the provided `PublicKey`. It will return failure if you use `signTransaction` methods.
+The `KeypairIdentityDriver` driver accepts a `PublicKey` object as a parameter. It's a read only similar to the GuestIdentity, but it has a provided `PublicKey`. It will return failure if you use `signTransaction` methods.
 
 ## Storage
 
@@ -164,11 +164,11 @@ public protocol StorageDriver {
 }
 ```
 
-Curently its only used to retrive json data off-chain. 
+Currently, it's only used to retrieve json data off-chain. 
 
 ### URLSharedStorageDriver
 
-This will use URLShared networking. Which is the default iOS networking implmentation. This maybe the most useful call.
+This will use URLShared networking. Which is the default iOS networking implementation. This maybe the most useful call.
 
 ### MemoryStorageDriver
 
@@ -176,7 +176,7 @@ This will use return Empty Data object with 0 size.
 
 ## Sample app
 
-The SDK cames with a [sample app][sample]. Please clone it run it on your phone and take what is can help you. 
+The SDK comes with a [sample app][sample]. Please clone it run it on your phone and take what is can help you. 
 
 ![Sample App](app.gif "Sample App")
 

@@ -100,7 +100,7 @@ sugar deploy
 The `deploy` command will write the information of your cache file to the Candy Machine account on-chain. This effectively creates the Candy Machine and displays its on-chain ID &mdash; use this ID to query its information on-chain using an [explorer](https://explorer.solana.com/). You can specify the path for the configuration file with the `-c` option (default `config.json`) and the name of the cache file with the option `--cache` (default `cache.json`) in case you are not using the default names.
 
 
-After a successful deploy, the Candy Machine is ready to be minted according to its `goLiveDate` and `whitelistMintSettings`.
+After a successful 'deploy', the Candy Machine is ready to be minted according to its `goLiveDate` and `whitelistMintSettings`.
 
 > **Note:** The authority wallet (the one used to create the Candy Machine) can mint bypassing the `goLiveDate` setting.
 
@@ -179,7 +179,7 @@ where the `<CANDY MACHINE>` is the Candy Machine ID &mdash; the ID given by the 
 
 ### `update`
 
-The `update` command is used to modify the current configuration of a Candy Machine. Most configuration settings can be updated in a CMv2 with a single command, with the exception of:
+The `update` command is used to modify the current configuration of a Candy Machine. Most configuration settings can be updated in a CMv2 with a single command, except:
 - `number` of items in the Candy Machine can only be updated when `hiddenSettings` are being used;
 - switching to use `hiddenSettings` is only possible if the `number` of items is equal to `0`. After the switch, you will be able to update the `number` of items.
 
