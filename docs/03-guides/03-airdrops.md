@@ -1,6 +1,6 @@
-# Gumdrop
+# Token Airdrops
 
-- [Gumdrop](#gumdrop)
+- [Gumdrop](#)
   - [Motivation](#motivation)
   - [Setup](#setup)
   - [Drop Types](#drop-types)
@@ -49,7 +49,7 @@ the CLI. To execute the Gumdrop CLI or deploy a local version of the web UI,
 please follow the same [prerequisite steps of Candy Machine
 creation](/guides/archived/candy-machine-v2/getting-started#tooling-required). 
 
-- The CLI can be found in the [Metaplex
+- The CLI can be found in the [Gumdrop
   repo](https://github.com/metaplex-foundation/gumdrop/) at
   `packages/cli/src/gumdrop-cli.ts` and will also be run with `ts-node`.
 - The web interface can be run locally from the Gumdrop
@@ -88,7 +88,7 @@ $ ts-node src/gumdrop-cli.ts create \
 
 However, by default, `gumdrop-cli.ts` will instead transfer the tokens to the
 generated throwaway `Keypair` so that multiple gumdrops can be created more
-intuitively. These will be transferred back on [close](#close)
+intuitively. These will be transferred back on [close](#closing-a-gumdrop)
 
 Alternatively, by passing `--delegate-only`, Gumdrop state will be approved as
 a [delegate](https://spl.solana.com/token#authority-delegation) for the sum of
@@ -129,7 +129,7 @@ follows:
    initializes a token-airdrop for `WLIST` but adds extra information in the
    claim URL so that frontends can find the corresponding candy crank in
    addition to the whitelist token account. In the produced `urls.json`, this
-   will look somethign like
+   will look something like
 
    ```
    ...
@@ -184,7 +184,7 @@ with the `--otp-auth` flag. Enable and disable with `--otp-auth enable` and
 same distribution method will be used to verify the OTP.
 
 Alternatively, creators can also choose to build the Gumdrop from public keys
-which allows the only the owner of said public key to claim the Gumdrop.  In
+which allows only the owner of said public key to claim the Gumdrop.  In
 this case, the full list of URLs is expected to be uploaded by the creator
 somewhere.
 
@@ -263,7 +263,7 @@ after it is closed.
 
 ## Deploy Custom Gumdrop Site
 
-This method applies to _only_ [Vercel](https://vercel.com/).  In the `gumdrop` directory, remove `homepage` key-value entirely.  Connect your github to Vercel and create a new project.  In the project setup, make sure these settings are set.
+This method applies to _only_ [Vercel](https://vercel.com/).  In the `gumdrop` directory, remove `homepage` key-value entirely.  Connect your GitHub to Vercel and create a new project.  In the project setup, make sure these settings are set.
 
 ![Build and Development Settings](/img/gumdrop/build-and-development-settings.png)
 

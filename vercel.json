@@ -52,7 +52,7 @@
     },
     {
       "source": "/airdrops/create-gumdrop",
-      "destination": "/guides/gumdrop",
+      "destination": "/guides/airdrops",
       "permanent": true
     },
     {
@@ -81,18 +81,8 @@
       "permanent": true
     },
     {
-      "source": "/sugar/:path*",
-      "destination": "/tools/sugar/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/about/terminology",
-      "destination": "/terminology",
-      "permanent": true
-    },
-    {
-      "source": "/candy-machine-v2/:path*",
-      "destination": "/guides/archived/candy-machine-v2/:path*",
+      "source": "/sugar/introduction",
+      "destination": "/tools/sugar/introduction",
       "permanent": true
     }
   ]
