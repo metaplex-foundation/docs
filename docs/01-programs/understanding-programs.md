@@ -41,7 +41,7 @@ There exist another type of Account, called **Program Derived Account**, whose a
 
 Since the address is always derived from the public key of the Program, no other Program can algorithmically derive the same address. On top of that, additional **Seeds** can be provided to the algorithm to add more context to the address.
 
-This has a variety of use cases such as enabling programs to sign [Cross-Program Invokations](#cross-program-invokations) or enabling the creation of accounts within an address that can be derived deterministically.
+This has a variety of use cases such as enabling programs to sign [Cross-Program Invocations](#cross-program-invokations) or enabling the creation of accounts within an address that can be derived deterministically.
 
 Note that, by design, Program Derived Addresses will never conflict with cryptographically generated public keys. All cryptographic public keys are part of what we call an [Elliptic-curve](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography). If, when generating a PDA, the algorithm generated a key that falls on that curve, a **Bump** is added to the address and is incremented by one until the generated address no longer falls on the curve.
 
@@ -52,15 +52,15 @@ Note that, by design, Program Derived Addresses will never conflict with cryptog
 
 ### Account data
 
-Whether we are dealing with a regular Account or a Program Derived Account, Accounts store data as a serialized array of bytes. Therefore, it is the responsibility of the Program to define a data structure for each of the Accounts it manages as well as provide a way of differentiating these Accounts so we know which data structure to apply to them.
+Whether we are dealing with a regular Account or a Program Derived Account, Accounts store data as a serialized array of bytes. Therefore, it is the responsibility of the Program to define a data structure for each of the Accounts it manages as well as provide a way of differentiating these Accounts, so we know which data structure to apply to them.
 
 ### Discriminators
 
 Discriminators are used to differentiating between different types of Accounts within a Program. They can be implemented in many ways but here are the three most common ones:
 
 - **Use a shared Enum as the first byte of every account**. By prefixing every Account with a shared Enum, we can use the first byte of the serialized data to identify the Account. This is a simple and efficient way to implement discriminators. Most of the programs maintained by Metaplex use this approach.
-- **Use a deterministic hash as the first byte of every account**. This is very similar to the previous point but it uses a hash instead of an Enum. Programs created using the Anchor framework end up using this approach implicitly because Anchor will automatically generate that hash based on the Account's name.
-- **No discriminator, use the size of the Account**. If all of the accounts managed by a Program are of fixed size and if they all have different sizes, then we can examine the length of that array of bytes to determine which Account we are dealing with. This is a performant approach since we don't need to add extra bytes to the data but it limits how flexible a Program can be with its Accounts. The [SPL Token Program](https://spl.solana.com/token) by Solana uses this approach since it only maintains two accounts of different fixed sizes.
+- **Use a deterministic hash as the first byte of every account**. This is very similar to the previous point, but it uses a hash instead of an Enum. Programs created using the Anchor framework end up using this approach implicitly because Anchor will automatically generate that hash based on the Account's name.
+- **No discriminator, use the size of the Account**. If all the accounts managed by a Program are of fixed size and if they all have different sizes, then we can examine the length of that array of bytes to determine which Account we are dealing with. This is a performant approach since we don't need to add extra bytes to the data, but it limits how flexible a Program can be with its Accounts. The [SPL Token Program](https://spl.solana.com/token) by Solana uses this approach since it only maintains two accounts of different fixed sizes.
 
 ### Field types, sizes and offsets
 
@@ -82,11 +82,11 @@ Concretely, the value `None` will be assigned and the program will act according
 
 Whilst this is not something that is explicitly defined in the data structure, the documentation will mark certain fields as **indicative**.
 
-An indicative field means that the information provided by the field is not used by the program itself. Instead, it _indicates_ a piece of information to third parties. The program will still enforce the integrity of the data but it will simply not use that information internally.
+An indicative field means that the information provided by the field is not used by the program itself. Instead, it _indicates_ a piece of information to third parties. The program will still enforce the integrity of the data, but it will simply not use that information internally.
 
 Let’s take the Metadata Account as an example.
 
-The `Share` property of each creator in the `Creators` array is indicative. The Token Metadata program will ensure that the `Share` values of all creators add up to 100% but it will not do anything with that information. Instead, it expects NFT marketplaces to use this information when distributing royalties.
+The `Share` property of each creator in the `Creators` array is indicative. The Token Metadata program will ensure that the `Share` values of all creators add up to 100%, but it will not do anything with that information. Instead, it expects NFT marketplaces to use this information when distributing royalties.
 
 On the other hand, the `Is Mutable` property is not indicative because the Token Metadata program will use that information internally to prevent immutable Metadata Accounts to be updated.
 
@@ -117,9 +117,9 @@ A Program may require that the Accounts provided within an Instruction are **Sig
 Therefore, with these two booleans, we end up with the following four possible scenarios:
 
 - **Non-Signer and Non-Writable**: This Account is only used to read data. We cannot mutate it and we cannot make any assumption about its ownership.
-- **Signer and Non-Writable**: This Account can also not be mutated but we know that the user who sent the Transaction owns its private key. This enables Programs to grant or deny access to certain actions.
+- **Signer and Non-Writable**: This Account can also not be mutated, but we know that the user who sent the Transaction owns its private key. This enables Programs to grant or deny access to certain actions.
 - **Signer and Writable**: This Account has both signed the Transaction _and_ it can be mutated by the Instruction. This combination is pretty common since Programs will usually require the owner of an Account to prove who they are before mutating that account. Otherwise, anyone could mutate any Account they don't own.
-- **Non-Signer and Writable**: This Account can be mutated but we can't make any assumption about its ownership. That usually means that the Program is using other Signer Accounts to prove they can mutate that one. This is also the case for PDA Accounts since they are owned by the Program and, as such, they require the Program to keep track of Authorities that can mutate them. Also, note that certain actions like crediting lamports to an Account do not require the Account to sign the Transaction.
+- **Non-Signer and Writable**: This Account can be mutated, but we can't make any assumption about its ownership. That usually means that the Program is using other Signer Accounts to prove they can mutate that one. This is also the case for PDA Accounts since they are owned by the Program and, as such, they require the Program to keep track of Authorities that can mutate them. Also, note that certain actions like crediting lamports to an Account do not require the Account to sign the Transaction.
 
 ### Cross-Program Invocations (CPI)
 

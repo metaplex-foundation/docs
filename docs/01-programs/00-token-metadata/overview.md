@@ -12,7 +12,7 @@ It achieves this using [Program Derived Addresses](../understanding-programs#pro
 
 ![A simple diagram showing a user icon followed by three blue rectangles in a straight line. From left to right, the rectangles are labelled: “Wallet Account”, “Token Account” and “Mint Account”. The user icon points to the “Wallet Account”, the “Wallet Account” points to the “Token Account” and the “Mint Account” points to the “Token Account”. Above the “Wallet Account” reads “Someone’s wallet”. Above the “Token Account” reads “Stores the number of tokens owned by the wallet”. Above the “Mint Account” reads “Stores information about the token itself. E.g. its current supply and its authorities.”.](./assets/Token-Metadata-Overview-1.png)
 
-Whilst Mint Accounts contain a few data attributes such as its current supply, it doesn’t offer the ability to inject standardized data that can be understood by apps and marketplaces.
+Whilst Mint Accounts contain a few data attributes such as its current supply, it doesn't offer the ability to inject standardized data that can be understood by apps and marketplaces.
 
 This is why the Token Metadata program offers a **Metadata Account** that attaches itself to a Mint Account via a PDA.
 
@@ -79,7 +79,7 @@ At the end of the day, the Metadata account helps attach data to tokens regardle
 To safely identify the fungibility of a token — and, thus, the standard that we should use — the Metadata account keeps track of that information in its `Token Standard` attribute. This attribute is automatically computed by the program and cannot be manually updated. It can take the following values.
 
 - `NonFungible`: The Mint account is associated with a Master Edition account and, therefore, is Non-Fungible. This is your typical NFT standard.
-- `NonFungibleEdition`: This is the same as `NonFungible` but the NFT was printed from an Original NFT and, thus, is associated with an Edition account insteand of a Master Edition account.
+- `NonFungibleEdition`: This is the same as `NonFungible` but the NFT was printed from an Original NFT and, thus, is associated with an Edition account instead of a Master Edition account.
 - `FungibleAsset`: The Mint account is Fungible but has zero decimal places. Having zero decimals means we can treat the token as an asset whose supply is not limited to one. For instance, Fungible Assets can be used in the gaming industry to store resources such as “Wood” or “Iron”.
 - `Fungible`: The Mint account is Fungible and has more than one decimal place. This is more likely going to be a token used as a decentralised currency.
 

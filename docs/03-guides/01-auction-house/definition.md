@@ -30,7 +30,7 @@ Auction House is a completely separate program than the storefront Auction progr
 
 :::
 
-### Escrow-less
+### Escrowless
 
 For the NFT Seller the NFT doesn't leave their wallet until the sale completes. This is due to the use of Solana Token Delegates, and it allows them to list their NFT on other Marketplaces that implement the Auction House protocol. The Auction House program is the delegate, so whichever marketplace has a matching bid can execute the sale, and they get their fee, the buyer gets the NFT and the seller gets the money. This is all done in the execution of the sale. The buyer and seller never need to claim anything like in our other auction system.
 
