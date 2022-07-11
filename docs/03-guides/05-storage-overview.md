@@ -41,7 +41,7 @@ Here's a calculator to help you estimate your NFT creation costs:
 
 import ArweaveCostCalc from '../../src/arweave-cost-calc.jsx'
 
-<ArweaveCostCalc />
+<ArweaveCostCalc></ArweaveCostCalc>
 
 ### NFT.Storage
 
@@ -61,7 +61,7 @@ For more information about using NFT.Storage with CandyMachine, see the [NFT.Sto
 
 ### IPFS
 
-The [InterPlantetary File System][IPFS], or IPFS, is a decentralized,
+The [InterPlanetary File System][IPFS], or IPFS, is a decentralized,
 trust-minimized, censorship-resistant, peer-to-peer hypermedia protocol designed
 to preserve and grow humanity's knowledge by making the web upgradeable,
 resilient, and more open. It's P2P design allows for file deduplication and

@@ -19,7 +19,7 @@ If you minted through the storefront or modified your NFTs to accommodate Phanto
 
 :::warning
 
-Metaplex recommends only using tools that check for a *verified* creator, otherwise fake NFTs could end up on your list. The tools below are the ones we know of currently that check for a verified creator. If you have a tool that supports this, contact us and we'll add it to the list.
+Metaplex recommends only using tools that check for a *verified* creator, otherwise fake NFTs could end up on your list. The tools below are the ones we know of currently that check for a verified creator. If you have a tool that supports this, contact us, and we'll add it to the list.
 
 :::
 

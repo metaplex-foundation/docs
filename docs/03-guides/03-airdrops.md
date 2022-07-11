@@ -39,7 +39,7 @@ by [Saber](https://github.com/saber-hq/merkle-distributor), is extended to
 allow printing editions of a master copy.
 Moreover, Gumdrop allows creators to directly send whitelisted users a drop
 reclamation link by building the tree with off-chain handles (e.g email,
-discord, etc) and allowing the user to redeem into any wallet.
+discord, etc.) and allowing the user to redeem into any wallet.
 
 ## Setup
 
