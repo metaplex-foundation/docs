@@ -81,6 +81,16 @@
       "permanent": true
     },
     {
+      "source": "/about/terminology",
+      "destination": "/terminology",
+      "permanent": true
+    },
+    {
+      "source": "/candy-machine-v2/:path*",
+      "destination": "/guides/archived/candy-machine-v2/:path*",
+      "permanent": true
+    },
+    {
       "source": "/sugar/introduction",
       "destination": "/tools/sugar/introduction",
       "permanent": true
