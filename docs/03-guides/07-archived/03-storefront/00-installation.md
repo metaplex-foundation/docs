@@ -10,7 +10,7 @@ steps you need to take to create your store.
 
 ### Apple M1 Chip
 
-If you have Mac OS with the Apple M1 Chip, you'll need to install some additional dependencies.
+If you have macOS with the Apple M1 Chip, you'll need to install some additional dependencies.
 
 - [brew](https://brew.sh/)
 

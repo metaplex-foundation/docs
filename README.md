@@ -63,7 +63,7 @@
     - 📝 Candy Machine (v2) JS CLI
     - ✅ Candy Machine V1
     - ✅ Fair launch
-    - 📝 Storefront
+    - ✅ Storefront
     - ✅ Architecture section
 - ⏳ Proposals
 - ✅ Security Policy

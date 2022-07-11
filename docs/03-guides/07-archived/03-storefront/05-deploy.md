@@ -56,7 +56,7 @@ If you have a custom domain linked to the GitHub Pages in your repo, then the in
 "deploy": "yarn build && yarn deploy:gh",
 ```
 
-Prepare github pages for deploying - select branch in repository then continue:
+Prepare GitHub pages for deploying - select branch in repository then continue:
 
 ![Init store](/img/deploy/github-pages-selecting.png)
 
@@ -69,7 +69,7 @@ yarn deploy
 
 ## Vercel
 
-To publish the Metaplex app to Vercel, you first need to visit [https://vercel.com/](https://vercel.com/) and create a new project linked to your github repo.
+To publish the Metaplex app to Vercel, you first need to visit [https://vercel.com/](https://vercel.com/) and create a new project linked to your GitHub repo.
 
 After that, configure this project with the following settings:
 

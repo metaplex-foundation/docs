@@ -41,7 +41,7 @@ You can read more about Master Edition and Maximum Supply in our [Architecture](
 
 :::
 
-**Attributes** allow you to define custom properties (key/value pairs) that describe your asset. These attributes are later displayed when viewing the NFT in your wallet or marketplace of choice. For `display_type`, the default is `string` but you can also set this to `date` to hint to downstream tools to format this approprately.
+**Attributes** allow you to define custom properties (key/value pairs) that describe your asset. These attributes are later displayed when viewing the NFT in your wallet or marketplace of choice. For `display_type`, the default is `string` but you can also set this to `date` to hint to downstream tools to format this appropriately.
 
 When you are finished describing your item, click on **Continue to royalties**.
 

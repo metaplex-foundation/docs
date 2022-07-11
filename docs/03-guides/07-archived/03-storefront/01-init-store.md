@@ -28,5 +28,5 @@ After store initialization completes, you must save your new store addresses. In
 
 ![Set env](/img/installation/set-env.png)
 
-Now restart your webserver (_Ctrl + C_ + `yarn start`) for the `.env` changes to take affect.
+Now restart your webserver (_Ctrl + C_ + `yarn start`) for the `.env` changes to take effect.
 
