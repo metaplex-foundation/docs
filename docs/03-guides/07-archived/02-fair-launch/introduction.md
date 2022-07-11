@@ -46,7 +46,7 @@ Creating and controlling a Fair Launch is typically done through the Metaplex co
 You can clone this repository anywhere you like, but the recommended practice is:
 
 ```
-git clone --branch v1.0.0 https://github.com/metaplex-foundation/metaplex.git ~/metaplex-foundation/metaplex
+git clone https://github.com/metaplex-foundation/deprecated-clis.git ~/metaplex-foundation/deprecated-clis
 ```
 
 If you use a different location, you'll need to adjust for it in subsequent instructions.
@@ -54,7 +54,7 @@ If you use a different location, you'll need to adjust for it in subsequent inst
 You also need to install the project's node/npm dependencies. The recommended way of doing this is:
 
 ```
-$ yarn install --cwd ~/metaplex-foundation/metaplex/js/
+$ yarn install --cwd ~/metaplex-foundation/deprecated-clis/
 ```
 
 Future versions of this tooling will be "npx runnable". For now though, `ts-node` is recommended for most users.
@@ -62,7 +62,7 @@ Future versions of this tooling will be "npx runnable". For now though, `ts-node
 After ensuring `ts-node` is installed and cloning the repo run the following commands to confirm the command line tool is operating correctly:
 
 ```
-$ ts-node ~/metaplex-foundation/metaplex/js/packages/cli/src/candy-machine-cli.ts --version
+$ ts-node ~/metaplex-foundation/deprecated-clis/src/candy-machine-cli.ts --version
 0.0.2
 ```
 

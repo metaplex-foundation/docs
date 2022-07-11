@@ -6,7 +6,7 @@ sidebar_label: "2. Display Fair Launch"
 
 You can get info of created Fair Launch by running this command:
 ```
-ts-node ~/metaplex-foundation/metaplex/js/packages/cli/src/fair-launch-cli.ts show --env devnet --keypair ~/.config/solana/devnet.json --fair-launch FPnv9xr4r7vMNNBgvLVzLsvmQFYh1YmhuRWRGdRFecmb
+ts-node ~/metaplex-foundation/deprecated-clis/src/fair-launch-cli.ts show --env devnet --keypair ~/.config/solana/devnet.json --fair-launch FPnv9xr4r7vMNNBgvLVzLsvmQFYh1YmhuRWRGdRFecmb
 ```
 
 expected output: 
