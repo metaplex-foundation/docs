@@ -17,7 +17,7 @@ sidebar_label: "1. Create Fair Launch"
 - `-ld, --lottery-duration`: Duration of lottery.
 - `-arbp, --anti-rug-reserve-bp`: Anti-rug treasury reserve, the percent of the treasury that will be locked to pay refunds (50% = 5000) .
 - `-atc, --anti-rug-token-requirement`: Anti-rug token requirement, when the total remaining tokens is equal or lower than this number, the treasury will be unlocked and not more refunds will be issued.
-- `-sd, --self-destruct-date`: Anti-rug self destruct date, if the NFTs were not provided by this date the users can start getting refunds.
+- `-sd, --self-destruct-date`: Anti-rug self-destruct date, if the NFTs were not provided by this date the users can start getting refunds.
 
 You can create Fair Launch by running this command: 
 ```

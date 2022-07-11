@@ -51,7 +51,7 @@ git clone --branch v1.0.0 https://github.com/metaplex-foundation/metaplex.git ~/
 
 If you use a different location, you'll need to adjust for it in subsequent instructions.
 
-You also need to install the projects node/npm dependencies. The recommended way of doing this is:
+You also need to install the project's node/npm dependencies. The recommended way of doing this is:
 
 ```
 $ yarn install --cwd ~/metaplex-foundation/metaplex/js/
