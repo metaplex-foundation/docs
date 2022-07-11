@@ -62,36 +62,24 @@ See additional information: https://github.com/Automattic/node-canvas/wiki/Insta
 
 ## Clone and Install Metaplex
 
-Creating and controlling a Candy Machine is done through the Metaplex command line tool, currently distributed in the Metaplex GitHub repository. For now, recommend pulling the latest code from the [master branch](https://github.com/metaplex-foundation/metaplex/tree/master):
+Creating and controlling a Candy Machine is done through the Metaplex command line tool, currently distributed in the deprecated-clis GitHub repository. For now, recommend pulling the latest code from the [main branch](https://github.com/metaplex-foundation/deprecated-clis/tree/main):
 
 ```bash
-git clone https://github.com/metaplex-foundation/metaplex.git ~/metaplex
+git clone https://github.com/metaplex-foundation/deprecated-clis.git ~/deprecated-clis
 ```
 
-<!-- Creating and controlling a Candy Machine is done through the Metaplex command line tool, currently distributed in the Metaplex GitHub repository. We recommend checking out the latest ([v1.1.1](https://github.com/metaplex-foundation/metaplex/releases/tag/v1.1.1)) tagged version: -->
-
-<!-- ```bash
-git clone -b v1.1.1 https://github.com/metaplex-foundation/metaplex.git ~/metaplex
-``` -->
-
-This will create a directory `metaplex` in your home directory with the latest code from the repository. If you decide to clone the repository to a different location, you will need to change the path in subsequent instructions.
-
-<!-- :::info
-
-You can also run the latest code on the `master` branch to immediately get bug fixes and new features. In order to do that, just run the command above without the `-b v1.1.1` option.
-
-::: -->
+This will create a directory `deprecated-clis` in your home directory with the latest code from the repository. If you decide to clone the repository to a different location, you will need to change the path in subsequent instructions.
 
 You will then need to install the dependencies. From outside the metaplex directory:
 
 ```bash
-yarn install --cwd ~/metaplex/js/
+yarn install
 ```
 
 You can check that everything is working by running the Candy Machine CLI command:
 
-```typescript
-ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts --version
+```bash
+ts-node src/candy-machine-v2-cli.ts --version
 ```
 
 > **output:** _0.0.2_

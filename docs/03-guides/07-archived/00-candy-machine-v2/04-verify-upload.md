@@ -12,7 +12,7 @@ We strongly recommend you do not skip this step.
 The Candy Machine provides a command to verify if the metadata URI on chain has been successfully uploaded.
 
 ```bash
-ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts verify_upload \
+ts-node ~/deprecated-clis/src/candy-machine-v2-cli.ts verify_upload \
     -e devnet \
     -k ~/.config/solana/devnet.json \
     -c example

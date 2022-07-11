@@ -10,7 +10,7 @@ It is also suggested to use a custom RPC for this step because it is a heavy com
 ### Sign
 
 ```bash
-ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts sign \
+ts-node ~/deprecated-clis/src/candy-machine-v2-cli.ts sign \
     -e devnet \
     -k ~/.config/solana/devnet.json \
     -m <metadata Address>
@@ -21,7 +21,7 @@ ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts sign \
 The command that uses `sign_all` can be used to sign an entire collection with the specified keypair.
 
 ```bash
-ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts sign_all \
+ts-node ~/deprecated-clis/src/candy-machine-v2-cli.ts sign_all \
     -e devnet \
     -k ~/.config/solana/devnet.json \
     -c example
@@ -44,5 +44,5 @@ While the collection hasn't been signed, the verified creator will be the Candy 
 
 For more information about this command use `-h` or `--help`:
 ```bash
-ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts sign_all -h
+ts-node ~/deprecated-clis/src/candy-machine-v2-cli.ts sign_all -h
 ```

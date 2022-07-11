@@ -57,7 +57,7 @@ You can also donate a percentage of the retrieved SOL to charity. But **BE CAREF
 To start the withdraw process, execute the `withdraw` command:
 
 ```bash
-ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts withdraw <candy_machine_id> \
+ts-node ~/deprecated-clis/src/candy-machine-v2-cli.ts withdraw <candy_machine_id> \
     -e devnet \
     -k ~/.config/solana/devnet.json
 ```
@@ -65,7 +65,7 @@ ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts withdraw <candy_m
 To start the withdraw_all process, execute the `withdraw_all` command:
 
 ```bash
-ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts withdraw_all \
+ts-node ~/deprecated-clis/src/candy-machine-v2-cli.ts withdraw_all \
     -e devnet \
     -k ~/.config/solana/devnet.json
 ```

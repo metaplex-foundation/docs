@@ -8,11 +8,11 @@ The Auction House Solana program resides within the Metaplex Program Library her
 
 https://github.com/metaplex-foundation/metaplex-program-library
 
-The Auction House CLI resides in the Metaplex monorepo here:
+The Auction House CLI resides in the deprecated-clis monorepo here:
 
-https://github.com/metaplex-foundation/metaplex/blob/master/js/packages/cli/src/auction-house-cli.ts
+https://github.com/metaplex-foundation/deprecated-clis/blob/main/src/auction-house-cli.ts
 
-The MPL Js SDK (low level web3 sdk) lives here and is a great starting point for advanced web3 devs
+The MPL JS SDK (low level web3 sdk) lives here and is a great starting point for advanced web3 devs
 
 https://www.npmjs.com/package/@metaplex-foundation/mpl-auction-house
 

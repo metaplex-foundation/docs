@@ -15,15 +15,15 @@ sidebar_label: "CLI"
 In order to get started with the Auction House CLI please follow these steps.
 
 ```
-git clone https://github.com/metaplex-foundation/metaplex.git
-cd metaplex
+git clone https://github.com/metaplex-foundation/deprecated-clis.git
+cd deprecated-clis
 ```
-Note: By default you will be using the latest code on the tip of the `master` branch.  If instead you want to use a specific release, you check it out now (for example, `git checkout v1.1.1`).
+Note: By default you will be using the latest code on the tip of the `main` branch.
 
 Then:
 ```
 cd js && yarn install && yarn bootstrap
-cd packages/cli
+cd src
 ```
 
 Once you have cloned the repo and installed packages, make sure you have a local `Keypair` setup. If you need help with that see these guides.
@@ -34,12 +34,12 @@ Once you have cloned the repo and installed packages, make sure you have a local
 ### Running Commands
 
 To run commands you will use
-`ts-node src/ts-node src/auction-house-cli.ts`
+`ts-node auction-house-cli.ts`
 
 #### Help
 
 ```
-ts-node src/ts-node src/auction-house-cli.ts
+ts-node auction-house-cli.ts
 Usage: auction-house-cli [options] [command]
 
 Options:
@@ -70,13 +70,13 @@ Creates an Auction House
 See the command help with
 
 ```
-ts-node src/auction-house-cli.ts help create_auction_house
+ts-node auction-house-cli.ts help create_auction_house
 ```
 
 Find your current Keypair, lets say it lives at `~/mywallet.key` or on Windows `C:\Users\windowsuser\mywallet.key`. To create an Auction House you will run.
 
 ```
-ts-node src/auction-house-cli.ts create_auction_house --keypair ~/mywallet.key -e devnet -sfbp 1000 -ccsp false -rso false
+ts-node auction-house-cli.ts create_auction_house --keypair ~/mywallet.key -e devnet -sfbp 1000 -ccsp false -rso false
 ```
 
 In this case we don't need to require sign-off because we want to make a fully decentralized auction house. Since we did not specify `-tm, --treasury-mint <string>` The currency for payment will be SOL.
@@ -106,13 +106,13 @@ Prints the balances of the fee and treasury wallets configured for the auction h
 See the command help with
 
 ```
-ts-node src/auction-house-cli.ts help show
+ts-node auction-house-cli.ts help show
 ```
 
 Notice I switched `--keypair` for `-k` this is shorthand but works just the same.
 
 ```
-ts-node src/auction-house-cli.ts show -k ~/mywallet.key -ah HsKwc8dQtm8KLxshw67dwsNePkH6wMXo5Lwn1FuKjVYVS
+ts-node auction-house-cli.ts show -k ~/mywallet.key -ah HsKwc8dQtm8KLxshw67dwsNePkH6wMXo5Lwn1FuKjVYVS
 ```
 
 The output will differ but similar to the following.
@@ -163,13 +163,13 @@ Place and NFT UP for sale.
 See the command help with
 
 ```
-ts-node src/auction-house-cli.ts help sell
+ts-node auction-house-cli.ts help sell
 ```
 
 Place an NFT for sale by its mint address with the auction house for 1 SOL.
 
 ```
-ts-node src/auction-house-cli.ts sell \
+ts-node auction-house-cli.ts sell \
   -k ~/mywallet.key \
   -ah HsKwc8dQtm8KLxshw67dwsNePkH6wMXo5Lwn1FuKjVYVS \
   --buy-price 1 \
@@ -193,7 +193,7 @@ Do this using the `-ak` option.
 See the command help with
 
 ```
-ts-node src/auction-house-cli.ts help sell
+ts-node auction-house-cli.ts help sell
 ```
 
 In a production scenario where the keypair for the auction house is stored on a sever managed by the organization hosting the auction house the transaction should be partially signed by the seller from the client then passed to the server for signing by the auction house before submitting to Solana.
@@ -205,13 +205,13 @@ Place an offer on an NFT by its mint address at some price in SOL when using nat
 See the command help with
 
 ```
-ts-node src/auction-house-cli.ts help buy
+ts-node auction-house-cli.ts help buy
 ```
 
 The buy command is an offer on the NFT and will not result in a sale until the `execute_sale` action is triggered. This command offers 2 SOL for the NFT.
 
 ```
-ts-node src/auction-house-cli.ts buy \
+ts-node auction-house-cli.ts buy \
   -k ~/mywallet.key \
   -ah HsKwc8dQtm8KLxshw67dwsNePkH6wMXo5Lwn1FuKjVYVS \
   --buy-price 2 \
@@ -233,7 +233,7 @@ In a future version of the Auction House, this action will become `permissionles
 :::
 
 ```
-$ ts-node src/auction-house-cli.ts execute_sale
+$ ts-node auction-house-cli.ts execute_sale
   -k ~/mywallet.key \
   -ah HsKwc8dQtm8KLxshw67dwsNePkH6wMXo5Lwn1FuKjVYVS \
   --buy-price 2 \

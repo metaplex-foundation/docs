@@ -21,7 +21,7 @@ To create a Candy Machine, space is allocated on chain to temporarily store the 
 To proceed, you will execute the `upload` command:
 
 ```bash
-ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts upload \
+ts-node ~/deprecated-clis/src/candy-machine-v2-cli.ts upload \
     -e devnet \
     -k ~/.config/solana/devnet.json \
     -cp config.json \
@@ -102,7 +102,7 @@ Setting or removing a collection for a Candy Machine will **only** impact NFTs t
 To set the collection for your Candy Machine, run the `set_collection` command:
 
 ```bash
-ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts set_collection \
+ts-node ~/deprecated-clis/src/candy-machine-v2-cli.ts set_collection \
     -e devnet \
     -k ~/.config/solana/devnet.json \
     -c example \
@@ -135,7 +135,7 @@ The `-m` option is the mint account of the collection NFT you want to set for yo
 If you have already set a collection for your Candy Machine, you can also remove it with the `remove_collection` command:
 
 ```bash
-ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts remove_collection \
+ts-node ~/deprecated-clis/src/candy-machine-v2-cli.ts remove_collection \
     -e devnet \
     -k ~/.config/solana/devnet.json \
     -c example

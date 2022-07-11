@@ -12,7 +12,7 @@ At this point, your Candy Machine is ready to mint tokens. Depending on your con
 Minting one token can be done using the command `mint_one_token`:
 
 ```bash
-ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts mint_one_token \
+ts-node ~/deprecated-clis/src/candy-machine-v2-cli.ts mint_one_token \
     -e devnet \
     -k ~/.config/solana/devnet.json \
     -c example
@@ -44,7 +44,7 @@ G1zDZMHjU6bs4ibrZdeaM85dHYtno1B1xUmZ1VR7XCsQ  1
 You can also mint multiple tokens using the command `mint_multiple_tokens` and specifying the `number` of tokens to be minted:
 
 ```bash
-ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts mint_multiple_tokens \
+ts-node ~/deprecated-clis/src/candy-machine-v2-cli.ts mint_multiple_tokens \
     -e devnet \
     -k ~/.config/solana/devnet.json \
     -c example \

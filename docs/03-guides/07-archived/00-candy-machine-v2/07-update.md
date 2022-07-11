@@ -45,7 +45,7 @@ You will need to prepare a config file with the updated setting values. For exam
 With the updated config file, we need to run the `update_candy_machine` command:
 
 ```bash
-ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts update_candy_machine \
+ts-node ~/deprecated-clis/src/candy-machine-v2-cli.ts update_candy_machine \
     -e devnet \
     -k ~/.config/solana/devnet.json \
     -cp config.json \
@@ -63,7 +63,7 @@ update_candy_machine finished 2zT344ZjS5FSJFsZRYE7Yu7Fg9sBtDQESSzPv1kNGezP7Mx8vD
 You can also update the authority of the Candy Machine, which is equivalent to giving away the control of the Candy Machine.
 
 ```bash
-ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts update_candy_machine \
+ts-node ~/deprecated-clis/src/candy-machine-v2-cli.ts update_candy_machine \
     -e devnet \
     -k ~/.config/solana/devnet.json \
     -cp config.json \
@@ -84,7 +84,7 @@ This operation is irreversible, once you change the authority of the Candy Machi
 To verify your updates were successful, you can run the `show` command:
 
 ```bash
-ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts show \
+ts-node ~/deprecated-clis/src/candy-machine-v2-cli.ts show \
     -e devnet \
     -k ~/.config/solana/devnet.json \
     -c example
