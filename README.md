@@ -64,7 +64,7 @@
     - ✅ Candy Machine V1
     - ✅ Fair launch
     - 📝 Storefront
-    - 📝 Architecture section
+    - ✅ Architecture section
 - ⏳ Proposals
 - ✅ Security Policy
 - 📝 Contact Us
