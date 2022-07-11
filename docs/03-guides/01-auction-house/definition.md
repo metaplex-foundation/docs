@@ -16,7 +16,7 @@ The MPL Js SDK (low level web3 sdk) lives here and is a great starting point for
 
 https://www.npmjs.com/package/@metaplex-foundation/mpl-auction-house
 
-The High Level Javascript SDK (coming soon) which has highlevel Auction House functions resides here:
+The High Level Javascript SDK (coming soon) which has high level Auction House functions resides here:
 
 https://github.com/metaplex-foundation/js
 
@@ -30,7 +30,7 @@ Auction House is a completely separate program than the storefront Auction progr
 
 :::
 
-### Escrowless
+### Escrow-less
 
 For the NFT Seller the NFT doesn't leave their wallet until the sale completes. This is due to the use of Solana Token Delegates, and it allows them to list their NFT on other Marketplaces that implement the Auction House protocol. The Auction House program is the delegate, so whichever marketplace has a matching bid can execute the sale, and they get their fee, the buyer gets the NFT and the seller gets the money. This is all done in the execution of the sale. The buyer and seller never need to claim anything like in our other auction system.
 
@@ -40,7 +40,7 @@ When you create an Auction House a new `Instance` of an Auction House is made. T
 Meaning the Public Key you set in the `authority` section of the `CreateAuction House` instruction is the `Authority` that can update the auction house. Metaplex uses this `Authority` pattern in many contracts to create `Access Control` on certain features and functions. When you create an auction house, you can set the following parameters:
 
 - Treasury Withdraw Destination - The wallet that receives the Auction House fees.
-- Fee Withdraw Destination - A wallet that is used to pay for Solana fees for the seller and buyer if the marketplace choses to execute the sale in the background.
+- Fee Withdraw Destination - A wallet that is used to pay for Solana fees for the seller and buyer if the marketplace chooses to execute the sale in the background.
 - Seller Fee Basis Points - The share of the sale the auction house takes on all NFTs.
 - Requires Sign Off - The auction house must sign all sales orders.
 - Can Change Sale Price - If the buyer intentionally lists their NFT for a price of 0 the Auction House can change the sale price to match a matching Bid that is greater than 0. This allows the Auction house to do complicated order matching to find the best price for the seller.
@@ -56,7 +56,7 @@ Meaning the Public Key you set in the `authority` section of the `CreateAuction 
 
 This feature allows a marketplace to restrict which NFTs get sold on their platform. It is useful for more centralized marketplaces or a marketplace that has order matching algorithms that the user has allowed them to use (enabled by listing the NFT at the price of 0).
 
-Marketplaces who want to stay decentralized and not require signoff may restrict what their user interfaces show via other means, but behind the scenes, someone can still list an NFT on your Auction House. You may in this scenario build Allow Lists using merkele trees or chose to restrict what your UI shows via other means.
+Marketplaces who want to stay decentralized and not require sign-off may restrict what their user interfaces show via other means, but behind the scenes, someone can still list an NFT on your Auction House. You may in this scenario build Allow Lists using merkle trees or chose to restrict what your UI shows via other means.
 
 ### Any SPL Token
 

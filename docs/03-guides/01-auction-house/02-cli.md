@@ -2,7 +2,7 @@
 sidebar_label: "CLI"
 ---
 
-# AuctionHouse CLI
+# Auction House CLI
 
 ### Prerequisites
 
@@ -12,7 +12,7 @@ sidebar_label: "CLI"
 
 ### Setup
 
-In order to get started with the AuctionHouse CLI please follow these steps.
+In order to get started with the Auction House CLI please follow these steps.
 
 ```
 git clone https://github.com/metaplex-foundation/metaplex.git
@@ -73,21 +73,21 @@ See the command help with
 ts-node src/auction-house-cli.ts help create_auction_house
 ```
 
-Find your current Keypair, lets say it lives at `~/mywallet.key` or on windows `C:\Users\windowsuser\mywallet.key`. To create an Auction house you will run.
+Find your current Keypair, lets say it lives at `~/mywallet.key` or on Windows `C:\Users\windowsuser\mywallet.key`. To create an Auction House you will run.
 
 ```
 ts-node src/auction-house-cli.ts create_auction_house --keypair ~/mywallet.key -e devnet -sfbp 1000 -ccsp false -rso false
 ```
 
-In this case we dont need to require signoff because we want to make a fully decentralized auctionhouse. Since we did not specify `-tm, --treasury-mint <string>` The currency for payment will be SOL.
-Also the options below will default to being set as the public key of `~/mywallet.key`
+In this case we don't need to require sign-off because we want to make a fully decentralized auction house. Since we did not specify `-tm, --treasury-mint <string>` The currency for payment will be SOL.
+Also, the options below will default to being set as the public key of `~/mywallet.key`
 
 ```
 -twd, --treasury-withdrawal-destination <string>
 -fwd, --fee-withdrawal-destination <string>
 ```
 
-IF all goes well you will see
+If all goes well you will see
 
 ```
 wallet public key: Gsv13oph2i6nkJvNkVfuzkcbHWchz6viUtEg2vsxQMtM
@@ -97,7 +97,7 @@ No treasury mint detected, using SOL.
 Created auction house HsKwc8dQtm8KLxshw67dwsNePkH6wMXo5Lwn1FuKjVYVS <--- Your auction house key will be different
 ```
 
-Save this key `HsKwc8dQtm8KLxshw67dwsNePkH6wMXo5Lwn1FuKjVYVS` since it is the public key of the solana account that holds your AuctionHouse. In all subsequent commands you will pass this key with the `-ah` option.
+Save this key `HsKwc8dQtm8KLxshw67dwsNePkH6wMXo5Lwn1FuKjVYVS` since it is the public key of the solana account that holds your Auction House. In all subsequent commands you will pass this key with the `-ah` option.
 
 ### Show
 
@@ -141,7 +141,7 @@ AH Treasury Bump: 254
 #### Fee Account
 
 In the above Show command you see a Fee Payer account.
-This account can be used to pay the fees on chain for sales execution, transfers and account creation. For this excercise we will teach you how to fund that account by aridropping some SOL on devnet. Your Auction House fee account is used only when the Auction House authority is signing the transaction. This is usually only in the case of `Requires Sign Off`
+This account can be used to pay the fees on chain for sales execution, transfers and account creation. For this exercise we will teach you how to fund that account by airdropping some SOL on devnet. Your Auction House fee account is used only when the Auction House authority is signing the transaction. This is usually only in the case of `Requires Sign Off`
 
 ```
 $ solana airdrop 2 AcWpR41NPMq73FZUspCiXxoLrJnW7zytgHKY5xqtETkU
@@ -185,9 +185,9 @@ wallet public key: DCDcpZaJUghstQNMHy9VAPnwQe1cGsHq7fbeqkti4kM3
 Set 1 F7fejo7cT1fRyJxj1W2aWy3aeJz8iqLU9YvbBAzwJGh2 for sale for 1 from your account with Auction House Ee53kiwLVw5XG98gSLNHoQRi4J22XEhz3zsKYY2ttsb7
 ```
 
-#### Require Signoff
+#### Require Sign-off
 
-If the auction house is setup to require sign off its wallet, as well as the seller are provided to the command.
+If the auction house is set up to require sign off its wallet, as well as the seller are provided to the command.
 Do this using the `-ak` option.
 
 See the command help with
@@ -196,7 +196,7 @@ See the command help with
 ts-node src/auction-house-cli.ts help sell
 ```
 
-In a production scenerio where the keypair for the auction house is stored on a sever managed by the organization hosting the auction house the transaction should be partial signed by the seller from the client then passed to the server for signing by the auction house before submitting to Solana.
+In a production scenario where the keypair for the auction house is stored on a sever managed by the organization hosting the auction house the transaction should be partially signed by the seller from the client then passed to the server for signing by the auction house before submitting to Solana.
 
 ### Buy
 
@@ -228,7 +228,7 @@ Sell an NFT to a buyer at the price set by the seller.  Note that this currently
 
 :::info
 
-In a future version of the AuctionHouse, this action will become `permissionless`, meaning anyone will be able to call this instruction with two matching (price must match) orders (bid/sell). This will allow your UI to execute the sale once an order matches on the client side or have a backend process or bot finish the process.
+In a future version of the Auction House, this action will become `permissionless`, meaning anyone will be able to call this instruction with two matching (price must match) orders (bid/sell). This will allow your UI to execute the sale once an order matches on the client side or have a backend process or bot finish the process.
 
 :::
 
@@ -262,4 +262,4 @@ Other actions are documented in the CLI and can be found using the `help` and `<
 
 - _Withdraw from Treasury_ - Transfer funds from the auction house treasury wallet to the auction house authority.
 
-- _Update Auction House_ - Update any of the auction house settings including it's authority or seller fee.
+- _Update Auction House_ - Update any of the auction house settings including its authority or seller fee.

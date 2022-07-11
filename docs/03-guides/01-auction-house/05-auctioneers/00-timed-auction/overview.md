@@ -13,4 +13,4 @@ The listing config struct is used to store all feature-related parameters attach
 * Automatic Time Extension - Bids made close to the end of an auction (this period is customizable) will extend the auction end date a configurable amount
 * Prevent Highest Bidder cancellation - The highest bidder won't be able to cancel their bid and are required to purchase the NFT if they win*
 :::warning
-*Due to Auction House's escrowless nature, it is unable to prevent users from transferring listed tokens from their wallets and nullifying their bids at this time.
+*Due to Auction House's escrow-less nature, it is unable to prevent users from transferring listed tokens from their wallets and nullifying their bids at this time.

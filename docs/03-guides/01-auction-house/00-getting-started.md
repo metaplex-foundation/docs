@@ -9,7 +9,7 @@ The Auction House is a Solana program running on Mainnet Beta and Devnet. While 
 
 ### CLI
 
-See [CLI](./cli) for how to setup and use the CLI.
+See [CLI](./cli) for how to set up and use the CLI.
 
 ### JS SDK
 
