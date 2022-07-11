@@ -60,7 +60,7 @@
   - 📝 NFT Storage Options
   - 📝 Community Guides
   - ⏳ Archived
-    - 📝 Candy Machine (v2) JS CLI
+    - ✅ Candy Machine (v2) JS CLI
     - ✅ Candy Machine V1
     - ✅ Fair launch
     - ✅ Storefront

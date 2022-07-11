@@ -9,7 +9,7 @@ To drain the account of a Candy Machine and recover the rent SOL, you can use th
 
 :::info
 
-The `withdraw` command is also useful in cases where you made mistakes in the creation of the `CMv2` as it provides a way to retrieve the SOL used in the set up of the Candy Machine.
+The `withdraw` command is also useful in cases where you made mistakes in the creation of the `CMv2` as it provides a way to retrieve the SOL used in the set-up of the Candy Machine.
 
 :::
 
@@ -23,12 +23,12 @@ You should not withdraw the rent of a live Candy Machine, as the Candy Machine w
 
 The `withdraw` command must be executed with the keypair that created the Candy Machine and the Candy Machine ID you want to drain. Below is the argument and options for the `withdraw` command:
 
-| argument                         | description                                               |
-| -------------------------------- | --------------------------------------------------------- |
-| `<candy_machine_id>`             | The Candy Machine ID you want to drain                    |
+| argument             | description                            |
+|----------------------|----------------------------------------|
+| `<candy_machine_id>` | The Candy Machine ID you want to drain |
 
 | option                           | description                                               |
-| -------------------------------- | --------------------------------------------------------- |
+|----------------------------------|-----------------------------------------------------------|
 | `-k, --keypair <PublicKey>`      | SOL wallet that created the Candy Machine                 |
 | `-e, --env <string>`             | Solana cluster environment (default: `devnet`)            |
 | `-d, --dry`                      | Show the withdraw amount without withdrawing the rent     |
@@ -39,7 +39,7 @@ The `withdraw` command must be executed with the keypair that created the Candy 
 The `withdraw_all` command will find all Candy Machines accounts made by this keypair and attempt to drain them. Below are the options used in most cases for the `withdraw_all` command:
 
 | option                           | description                                               |
-| -------------------------------- | --------------------------------------------------------- |
+|----------------------------------|-----------------------------------------------------------|
 | `-k, --keypair <PublicKey>`      | SOL wallet that created the Candy Machine                 |
 | `-e, --env <string>`             | Solana cluster environment (default: `devnet`)            |
 | `-d, --dry`                      | Show the withdraw amount without withdrawing the rent     |
@@ -72,7 +72,7 @@ ts-node ~/metaplex/js/packages/cli/src/candy-machine-v2-cli.ts withdraw_all \
 
 :::tip
 
-The example commands are directed at devnet with the `-e devnet` option. To target your withdraw command to Mainnet Beta, replace that option with `-e mainnet-beta`.
+The example commands are directed at devnet with the `-e devnet` option. To target your 'withdraw' command to Mainnet Beta, replace that option with `-e mainnet-beta`.
 
 :::
 

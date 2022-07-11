@@ -33,14 +33,14 @@ Once verified, the verified value for the second creator will be changed from `0
 
 ```bash
 "address": //address of the Candy Machine
-"verfied": 1
+"verified": 1
 "share": 0
 
 "address": //Adress of the creator
-"verfied": 1 //This creator has been verified.
+"verified": 1 //This creator has been verified.
 "share": 100 //Share of the creator. If you added multiple creators this may be different
 ```
-While the collection hasn't been signed, the verified creator will be the Candy Machine by default. This has the benefit of allowing allowing storefronts, marketplaces, and CLIs to query for NFTs that were minted by a Candy Machine.
+While the collection hasn't been signed, the verified creator will be the Candy Machine by default. This has the benefit of allowing storefronts, marketplaces, and CLIs to query for NFTs that were minted by a Candy Machine.
 
 For more information about this command use `-h` or `--help`:
 ```bash

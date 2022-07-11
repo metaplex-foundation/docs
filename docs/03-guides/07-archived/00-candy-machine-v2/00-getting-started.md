@@ -8,7 +8,7 @@ Before we can create a Candy Machine, you will need to install and operate a han
 
 :::warning
 
-During this guide, we will use `\` within example commands prior to new lines. On most shells (such as the shells on MacOS and Linux), this symbol means a new line. However, on Windows Command Prompt, it does not. If you are on Windows and are using the Command Prompt, enter the commands in a single line and remove the `\` characters that we use in our examples. 
+During this guide, we will use `\` within example commands prior to new lines. On most shells (such as the shells on macOS and Linux), this symbol means a new line. However, on Windows Command Prompt, it does not. If you are on Windows and are using the Command Prompt, enter the commands in a single line and remove the `\` characters that we use in our examples. 
 
 :::
 
@@ -49,7 +49,7 @@ ts-node --version
 
 ### Apple M1 Chip
 
-If you have Mac OS with the Apple M1 Chip, you'll need to install some additional dependencies.
+If you have macOS with the Apple M1 Chip, you'll need to install some additional dependencies.
 
 - [brew](https://brew.sh/)
 
@@ -228,7 +228,7 @@ Signature: 41ZEZqpyNMLUy3kQahWSy349PeDz3Q82dNDHKiA7QcsrAzHs3f7YiDEZWjnFi434DoiiD
 </p>
 </details>
 
-If the command is successful, you will see the updated balance at the end. Make sure you are entering the airdrop amount that is within the airdrop limit. Currently the maximum airdrop request limit is **2 SOL** and there is a daily total limit of **24 SOL**.
+If the command is successful, you will see the updated balance at the end. Make sure you are entering the airdrop amount that is within the airdrop limit. Currently, the maximum airdrop request limit is **2 SOL** and there is a daily total limit of **24 SOL**.
 
 :::caution
 
