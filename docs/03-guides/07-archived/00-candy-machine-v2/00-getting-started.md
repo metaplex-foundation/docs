@@ -184,7 +184,7 @@ and make sure we are on the `devnet`:
 solana config set --url https://metaplex.devnet.rpcpool.com/
 ```
 
-If all the above steps are successfull, your configuration be similar to:
+If all the above steps are successful, your configuration be similar to:
 
 ```bash
 solana config get
