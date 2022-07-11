@@ -53,7 +53,7 @@ This will install the binary to your machine and add it to your PATH.
 
 
 :::info
-This installer binary downloads the latest Sugar binary version, unzips it and copies it to a folder in your `PATH` environment. If you have Rust, the binary will be copied to `~/.cargo/bin`, otherwise it creates a `SugarCLI` folder in your `%LOCALAPPDATA%` directory. Once the binary is at that location, your OS will find it automatically and you will be able to run the sugar binary from any directory in your file system as a normal command-line application.
+This installer binary downloads the latest Sugar binary version, unzips it and copies it to a folder in your `PATH` environment. If you have Rust, the binary will be copied to `~/.cargo/bin`, otherwise it creates a `SugarCLI` folder in your `%LOCALAPPDATA%` directory. Once the binary is at that location, your OS will find it automatically, and you will be able to run the sugar binary from any directory in your file system as a normal command-line application.
 :::
 
 :::caution
@@ -107,7 +107,7 @@ The next step is to clone Sugar repository:
 git clone https://github.com/metaplex-foundation/sugar.git
 ```
 
-This will create a directory `sugar` with the lastest code from the repository. Switch to the newly created directory:
+This will create a directory `sugar` with the latest code from the repository. Switch to the newly created directory:
 
 ```bash
 cd sugar
@@ -121,4 +121,4 @@ cargo install --locked --path ./
 
 As long as `./cargo/bin` is in your `PATH` environment variable, you will be able to execute `sugar` from any directory in your file system.
 
-> **Note:** You need to execute `cargo install` from Sugar souce code root directory &mdash; the directory where the `Cargo.toml` is located.
+> **Note:** You need to execute `cargo install` from Sugar source code root directory &mdash; the directory where the `Cargo.toml` is located.

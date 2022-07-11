@@ -52,7 +52,7 @@ Uploads to [Arweave](https://www.arweave.org/) using [Bundlr Network](https://bu
 > - `uploadMethod="shdw"`
 > - `shdwStorageAccount="<STORAGE PUBKEY>"`
 
-[Shadow Drive](https://shdw.genesysgo.com/shadow-infrastructure-overview/shadow-drive-overview) is a decentralized storage network built specifically for the Solana blockchain. In order to upload data to the Shadow Drive you will need to first create an storage account. This can be done using the [Shadow Drive CLI](https://shdw.genesysgo.com/using-shadow-drive/the-shadow-drive-platform/shadow-drive-cli). After creating an storage account, specify its pubkey address in the configuration file using the property `"shdwStorageAccount"`.
+[Shadow Drive](https://shdw.genesysgo.com/shadow-infrastructure-overview/shadow-drive-overview) is a decentralized storage network built specifically for the Solana blockchain. In order to upload data to the Shadow Drive you will need to first create a storage account. This can be done using the [Shadow Drive CLI](https://shdw.genesysgo.com/using-shadow-drive/the-shadow-drive-platform/shadow-drive-cli). After creating a storage account, specify its pubkey address in the configuration file using the property `"shdwStorageAccount"`.
 
 :::info
 The Shadow Drive upload method is only available on `mainnet`.
