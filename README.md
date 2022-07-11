@@ -41,7 +41,7 @@
     - ⏳ Writing Your Own Plugin
     - ⏳ Contributing
     - ⏳ FAQ
-  - 📝 Sugar (Needs to be moved inside the "Tools" section)
+  - 📝 Sugar (Needs to be moved inside the "Tools" section and/or guide section)
     - ✅ Overview
     - ✅ Installation
     - ✅ Getting Started
@@ -53,16 +53,17 @@
   - ⏳ Solita
   - ⏳ Amman
 - ⏳ Guides
-  - 📝 How to Burn Tokens
+  - 📝 Candy Machine
+  - 📝 Auction House
   - 📝 NFT hash lists
-  - 📝 Candy Machine V2
+  - 📝 How to Burn Tokens
   - 📝 NFT Storage Options
   - 📝 Community Guides
   - ⏳ Archived
-    - 📝 Create a Storefront
-    - 📝 Candy Machine V1
-    - 📝 Candy Machine v2 JS CLI
-    - 📝 Fair launch
+    - 📝 Candy Machine (v2) JS CLI
+    - ✅ Candy Machine V1
+    - ✅ Fair launch
+    - 📝 Storefront
     - 📝 Architecture section
 - ⏳ Proposals
 - ✅ Security Policy
