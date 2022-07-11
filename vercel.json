@@ -76,8 +76,13 @@
       "permanent": true
     },
     {
-      "source": "/sdk/:path*",
-      "destination": "/tools/:path*",
+      "source": "/sdk/ios/:path*",
+      "destination": "/tools/ios/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/sdk/js/:path*",
+      "destination": "/tools/js/getting-started",
       "permanent": true
     },
     {
