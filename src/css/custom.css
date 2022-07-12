@@ -29,7 +29,6 @@ img[src*="#radius"] {
   border-radius: 8px;
 }
 
-
 .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.1);
   display: block;
