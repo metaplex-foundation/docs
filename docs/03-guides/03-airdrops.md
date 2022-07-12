@@ -71,7 +71,7 @@ using some kind of off-chain distribution method to notify recipients.
 The sections below give examples and explanations for CLI usage of the command
 line flags. A full list of options can be viewed with
 
-```
+```bash
 $ ts-node src/gumdrop-cli.ts help create
 ```
 
@@ -80,7 +80,7 @@ $ ts-node src/gumdrop-cli.ts help create
 All a token airdrop requires is approval to move the relevant tokens from the
 Gumdrop creators' token account.
 
-```
+```bash
 $ ts-node src/gumdrop-cli.ts create \
 --claim-integration transfer \
 --transfer-mint So11111111111111111111111111111111111111112
@@ -103,7 +103,7 @@ follows:
 2. Create a Candy Machine V2 with whitelist mint settings with mint `WLIST`
    ([Candy Machine Docs](/tools/sugar/introduction)). For example,
 
-  ```
+  ```json
   {
     "whitelistMintSettings": {
       "mode": { "burnEveryTime": true },
@@ -118,7 +118,7 @@ follows:
 3. Create a Gumdrop with `--claim-integration candy` and the corresponding
    `--candy-machine`.
 
-   ```
+   ```bash
    $ ts-node src/gumdrop-cli.ts create \
    --claim-integration candy \
    --candy-machine FuxMhU34GPggi1yzk8tQwhsLQFR52iiutM5B9nzzeRPa  \
@@ -149,7 +149,7 @@ Similarly, the Gumdrop will act as a proxy for the owner of the master edition
 and allow minting of limited editions. Ownership of the master edition will be
 transferred to the Gumdrop state for the duration of the Gumdrop!
 
-```
+```bash
 $ ts-node src/gumdrop-cli.ts create \
 --claim-integration edition \
 --edition-mint 7Hy3FqSQYiXyg4fyobZnSJhMvAqMmraBLaTq9QSFF9ip
@@ -164,7 +164,7 @@ Gumdrop. Currently, the Gumdrop frontends support email, SMS, and discord
 notifications.
 
 For email and SMS,
-```
+```bash
 $ ts-node src/gumdrop-cli.ts create \
 --distribution-method aws-email|aws-sms \
 --aws-access-key-id "$AWS_ACCESS_KEY_ID" \
@@ -172,7 +172,7 @@ $ ts-node src/gumdrop-cli.ts create \
 ```
 
 For Discord,
-```
+```bash
 $ ts-node src/gumdrop-cli.ts create \
 --distribution-method discord \
 --discord-token "$DISCORD_TOKEN"
@@ -188,7 +188,7 @@ which allows only the owner of said public key to claim the Gumdrop.  In
 this case, the full list of URLs is expected to be uploaded by the creator
 somewhere.
 
-```
+```bash
 $ ts-node src/gumdrop-cli.ts create \
 --distribution-method wallets
 ```
@@ -203,7 +203,7 @@ prints](#edition-prints), an `edition` number.
 
 More concretely, the frontends expect the list format to be
 
-```
+```json
 [
   {
     "handle": "<DISTRIBUTION-METHOD-SPECIFIC-HANDLE>",
@@ -228,7 +228,7 @@ option is to query for members in a Discord Guild and filter for the relevant
 users by display-name there.
 
 The distribution list has to be referenced in the create command like this:
-```
+```bash
 $ ts-node src/gumdrop-cli.ts create \
 --distribution-list <PATH TO WHITELIST JSON>
 ```
@@ -247,7 +247,7 @@ state is also redeemed but please do not rely on this behavior!
 
 The command to close it is:
 
-```
+```bash
 ts-node gumdrop-cli.ts close \
   --base <id.json keypair that was created on gumdrop create> \
   --keypair <your initial keypair> \
@@ -265,6 +265,6 @@ after it is closed.
 
 This method applies to _only_ [Vercel](https://vercel.com/).  In the `gumdrop` directory, remove `homepage` key-value entirely.  Connect your GitHub to Vercel and create a new project.  In the project setup, make sure these settings are set.
 
-![Build and Development Settings](/img/gumdrop/build-and-development-settings.png#radius#shadow)
+![Build and Development Settings](/assets/gumdrop/build-and-development-settings.png#radius#shadow)
 
-![Root Directory Settings](/img/gumdrop/root-directory.png#radius#shadow)
+![Root Directory Settings](/assets/gumdrop/root-directory.png#radius#shadow)
