@@ -8,7 +8,7 @@ This does not remove the token mint account or delete the metadata or master edi
 
 First, using the `spl-token accounts` command, list the account data in your wallet. You'll see your NFT (in this case `9w9Qe8GxkrFnSJYKfQMJug9k8ufpfzxW6o7kXTFKpXrK`) as well as it's token `Account` address.
 
-```
+```bash
 spl-token accounts
 Token                                         Account                                       Balance
 ----------------------------------------------------------------------------------------------------------
@@ -76,7 +76,7 @@ ARGS:
 
 Example
 
-```
+```bash
 > spl-token burn -v wZj7agA6CWN99A5GEsTsitAqfPUfGhvJgLKdXBpxHDN 1
 
 Burn 1 tokens
@@ -87,7 +87,7 @@ Signature: 4hAbU8NcXNF9XGtfqkLKY2hqpuF2EDqWSNFrrydKeQNH74ufBcG8JLnNCuKZJ8w66wWRh
 
 That's it. To confirm, rerun the `spl-token accounts` command to show the Balance is now zero.
 
-```
+```bash
 spl-token accounts -v
 Token                                         Account                                       Balance
 ----------------------------------------------------------------------------------------------------------

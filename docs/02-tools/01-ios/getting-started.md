@@ -111,7 +111,7 @@ As you can see, some properties are loaded on demand. This is because they are n
 
 In order to load these properties, you may run the `metadata` properties of the `Nft` object.
 
-```ts
+```swift
 nft.metadata(metaplex: self.metaplex) { result in
     switch result {
     case .success(let metadata):
@@ -127,7 +127,7 @@ The current identity of a `Metaplex` instance can be accessed via `metaplex.iden
 
 This method returns an identity object with the following interface. All the methods required a solana api instance
 
-```ts
+```swift
 public protocol IdentityDriver {
     var publicKey: PublicKey { get }
     func sendTransaction(serializedTransaction: String, onComplete: @escaping(Result<TransactionID, IdentityDriverError>) -> Void)
@@ -178,7 +178,7 @@ This will use return Empty Data object with 0 size.
 
 The SDK comes with a [sample app][sample]. Please clone it run it on your phone and take what is can help you. 
 
-![Sample App](app.gif#radius#shadow "Sample App")
+![Sample App](/assets/ios/app.gif#radius#shadow "Sample App")
 
 [github]: https://github.com/metaplex-foundation/metaplex-ios
 [docs]: https://github.com/metaplex-foundation/metaplex-ios#metaplex-ios-sdk
