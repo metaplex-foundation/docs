@@ -4,7 +4,14 @@ sidebar_label: "Candy Machine Minting UI"
 
 # A Front End Minting Experience
 
-While the Candy Machine is ready to mint, in most cases you will want to provide a front end experience to allow your
+:::info
+
+This guide assumes you have already uploaded and deployed your Candy Machine. 
+If you haven't yet done this, check out [Sugar CLI](/tools/sugar/introduction) to get started!
+
+:::
+
+While the Candy Machine is ready to mint after being deployed, in most cases you will want to provide a front end experience to allow your
 community the chance to mint, too.
 
 You can use the Candy Machine UI, which is in
@@ -18,11 +25,11 @@ git clone https://github.com/metaplex-foundation/candy-machine-ui ~/candy-machin
 
 ## Setting up
 
-Open the file `.env.example` located in the folder `~/metaplex/js/packages/candy-machine-ui` and modify the following:
+Open the file `.env.example` located at the root of the new folder `~/candy-machine-ui` and modify the following:
 
 - Set the value of `REACT_APP_CANDY_MACHINE_ID` to match the `ID` of your Candy Machine. The `ID` was in the output of
-  the `upload` command and can also be found inside your Candy Machine cache file - this is located in the same
-  directory that you executed the `upload` command (e.g., `.cache/devnet-example`)
+  the `sugar deploy` command and can also be found by running `sugar show` in the same directory that you made your Candy Machine in.
+
 - Specify the intended network you wish to use. In this example we are using the `devnet`:
     ```bash
     REACT_APP_CANDY_MACHINE_ID=<YOUR CANDY MACHINE PROGRAM ID>

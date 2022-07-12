@@ -63,15 +63,15 @@ This will install the binary to your machine and add it to your PATH.
 
 9. Report any errors to the `#sugar` channel on the [Metaplex Discord](https://discord.gg/metaplex).
    
-</TabItem>
-
-</Tabs>
-
 :::info
 
 This installer binary downloads the latest Sugar binary version, unzips it and copies it to a folder in your `PATH` environment. If you have Rust, the binary will be copied to `~/.cargo/bin`, otherwise it creates a `SugarCLI` folder in your `%LOCALAPPDATA%` directory. Once the binary is at that location, your OS will find it automatically, and you will be able to run the sugar binary from any directory in your file system as a normal command-line application.
 
 :::
+
+</TabItem>
+
+</Tabs>
 
 :::caution
 

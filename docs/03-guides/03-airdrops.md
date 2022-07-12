@@ -101,7 +101,7 @@ follows:
 
 1. Create a whitelist mint token `WLIST` with the SPL token program
 2. Create a Candy Machine V2 with whitelist mint settings with mint `WLIST`
-   ([Candy Machine Docs](/guides/candy-machine/introduction)). For example,
+   ([Candy Machine Docs](/tools/sugar/introduction)). For example,
 
   ```
   {

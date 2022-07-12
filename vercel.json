@@ -66,16 +66,6 @@
       "permanent": true
     },
     {
-      "source": "/overviews/:path*",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/overviews/storage_overview",
-      "destination": "/guides/storage-overview",
-      "permanent": true
-    },
-    {
       "source": "/sdk/ios/:path*",
       "destination": "/tools/ios/:path*",
       "permanent": true
@@ -91,15 +81,31 @@
       "permanent": true
     },
     {
-      "source": "/candy-machine-v2/:path*",
-      "destination": "/guides/archived/candy-machine-v2/:path*",
+      "source": "/sugar/:path*",
+      "destination": "/tools/sugar/:path*",
       "permanent": true
     },
     {
-      "source": "/sugar/introduction",
-      "destination": "/tools/sugar/introduction",
+      "source": "/overviews/storage_overview",
+      "destination": "/guides/storage-overview",
+      "permanent": true
+    },
+    {
+      "source": "/overviews/(candy_machine_overview|burn_NFTS|features_overview|metadata_overview|metaplex_overview|stores_overview)",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/candy-machine-v2/:path(configuration|creating-candy-machine|getting-started|introduction|mint-tokens|preparing-assets|sign-nfts|update|verify-upload|withdraw)",
+      "destination": "/guides/archived/candy-machine-v2/:path",
+      "permanent": true
+    },
+    {
+      "source": "/candy-machine-v2/mint-frontend",
+      "destination": "/guides/candy-machine-ui",
       "permanent": true
     }
   ]
 }
+
 
