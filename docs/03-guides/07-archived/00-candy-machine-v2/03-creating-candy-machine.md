@@ -81,7 +81,7 @@ It is common to receive `signatureUnsubscribe error: Invalid subscription id.` m
 
 The command also outputs the Candy Machine PublicKey, which you can verify on the [Solana Explorer](https://explorer.solana.com):
 
-![Solana Explorer](./solana-explorer.png#radius#shadow)
+![Solana Explorer](/assets/candy-machine/solana-explorer.png#radius#shadow)
 
 :::info
 

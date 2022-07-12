@@ -57,7 +57,7 @@ Below are two simple examples of items in this collection:
 
 #### • Image: `0.png`
 
-![0.png](0.png#radius#shadow)
+![0.png](/assets/candy-machine/0.png#radius#shadow)
 
 #### • Metadata: `0.json`
 
@@ -109,7 +109,7 @@ Below are two simple examples of items in this collection:
 
 #### • Image: `9.png`
 
-![9.png](9.png#radius#shadow)
+![9.png](/assets/candy-machine/9.png#radius#shadow)
 
 #### • Metadata: `9.json`
 
@@ -173,7 +173,7 @@ property) is set and each creators' wallet is listed in the `"properties.creator
 
 :::info
 
-You can download the complete [sample collection](assets.zip) for testing and experimentation. Subsequent steps in this
+You can download the complete [sample collection](/assets/candy-machine/assets.zip) for testing and experimentation. Subsequent steps in this
 walk through will assume it's the collection in use.
 
 :::

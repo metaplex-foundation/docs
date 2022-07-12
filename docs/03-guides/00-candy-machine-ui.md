@@ -72,37 +72,37 @@ used.
 
 Before `goLiveDate` is reached:
 
-![Mint Countdown](ui/Mint-1.png#radius#shadow)
+![Mint Countdown](/assets/candy-machine-ui/Mint-1.png#radius#shadow)
 
 When mint is live:
 
-![Mint Live](ui/Mint-2.png#radius#shadow)
+![Mint Live](/assets/candy-machine-ui/Mint-2.png#radius#shadow)
 
 ### Whitelist Mint
 
 Whitelist token not detected, mint is not active before `goLiveDate`:
 
-![Whitelist + No Token](ui/Whitelist-1.png#radius#shadow)
+![Whitelist + No Token](/assets/candy-machine-ui/Whitelist-1.png#radius#shadow)
 
 Whitelist token detected and whitelist settings set to presale and discount price:
 
-![Whitelist Presale + Discount](ui/Whitelist-2.png#radius#shadow)
+![Whitelist Presale + Discount](/assets/candy-machine-ui/Whitelist-2.png#radius#shadow)
 
 Whitelist only mint:
 
-![Whitelist Only](ui/Whitelist-3.png#radius#shadow)
+![Whitelist Only](/assets/candy-machine-ui/Whitelist-3.png#radius#shadow)
 
 Whitelist + presale and `goLiveDate` set to `null`:
 
-![Whitelist + No Token](ui/Whitelist-4.png#radius#shadow)
+![Whitelist + No Token](/assets/candy-machine-ui/Whitelist-4.png#radius#shadow)
 
 ### End Settings Mint
 
 Countdown to the end of the mint:
 
-![End Settings](ui/EndSettings-1.png#radius#shadow)
+![End Settings](/assets/candy-machine-ui/EndSettings-1.png#radius#shadow)
 
 End settings `date` reached, mint stopped:
 
-![End Settings Complete](ui/EndSettings-2.png#radius#shadow)
+![End Settings Complete](/assets/candy-machine-ui/EndSettings-2.png#radius#shadow)
 

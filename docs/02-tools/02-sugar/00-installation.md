@@ -6,7 +6,7 @@ To install, either download a binary, install from Crates.io, or install from so
 
 When installing from crates.io or from source on Ubuntu or WSL (Windows Subsystem for Linux) you may need to install some additional dependencies:
 ```bash
-sudo apt install libssl-dev libudev-dev pkg-config unzip
+sudo apt install libudev-dev pkg-config unzip
 ``` 
 
 :::
@@ -24,8 +24,6 @@ import TabItem from '@theme/TabItem';
 <Tabs>
 <TabItem value="unix" label="MacOS, Linux, WSL">
 
-[//]: # (### MacOS, Linux, Windows Subsystem for Linux &#40;WSL&#41;)
-
 Run this install script in your terminal:
 ```bash
 bash <(curl -sSf https://sugar.metaplex.com/install.sh)
@@ -37,19 +35,17 @@ This will install the binary to your machine and add it to your PATH.
 
 <TabItem value="windows" label="Windows">
 
-[//]: # (### Windows)
-
 1. Download the Winstaller executable from [here](https://github.com/metaplex-foundation/winstaller/releases/latest/download/winstaller.exe).
 
 2. Try to run the binary by double-clicking on it. If you get a pop-up message warning about an untrusted binary try clicking `More Info` and then `Run Anyway`. If you do not have this option, follow steps 3 - 6. 
 
 3. Right-click on the executable file and go to `Properties`.
 
-   ![Properties.PNG](./assets/Properties.png#radius#shadow)
+   ![Properties.PNG](/assets/sugar/Properties.png#radius#shadow)
 
 4. If you trust the Metaplex developer team, check the `Unblock` button as show in the image below. This will allow you to run this binary on your computer since Microsoft does not trust it automatically.
 
-   ![Unblock.PNG](./assets/Unblock.png#radius#shadow)
+   ![Unblock.PNG](/assets/sugar/Unblock.png#radius#shadow)
 
 5. Click `Apply` and `Ok`.
 
@@ -57,7 +53,7 @@ This will install the binary to your machine and add it to your PATH.
 
 7. If everything completed successfully you will get a message saying so.
 
-   ![installed.PNG](./assets/installed.png#radius#shadow)
+   ![installed.PNG](/assets/sugar/installed.png#radius#shadow)
 
 8. Try running `sugar` in your terminal and see if it prints a list of commands you can use. If so you're good to go!
 

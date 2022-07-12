@@ -1,18 +1,18 @@
 # Working with Sugar
 
-![Sugar Tutorial](ui/Sugar-Tutorial.gif#radius#shadow)
+![Sugar Tutorial](/assets/sugar/Sugar-Tutorial.gif#radius#shadow)
 
 [Full Sugar Video Tutorial](https://user-images.githubusercontent.com/26067212/165967904-0a551b6e-dc7e-4d8c-9348-3093e0d93883.mp4)
 
 Sugar contains a collection of commands for creating and managing Metaplex Candy Machines. The complete list of commands can be viewed by running:
 
-```bash
+```
 sugar
 ```
 
 This will display a list of commands and their short description:
 
-```bash
+```
 USAGE:
     sugar [OPTIONS] <SUBCOMMAND>
 
@@ -37,13 +37,13 @@ SUBCOMMANDS:
 
 To get more information about a particular command (e.g., `deploy`), use the `help` command:
 
-```bash
+```
 sugar help deploy
 ```
 
 The list of options together with a short description will be displayed:
  
-```bash
+```
 Deploy cache items into candy machine config on-chain
 
 USAGE:
