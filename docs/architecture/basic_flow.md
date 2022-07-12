@@ -8,7 +8,7 @@ Now that we've gone over the contracts, let's run through an example of how the 
 
 ### 1. Minting an NFT
 
-On the Solana network an NFT is represented as a Token with only 1 in circulation and further minting is disabled, but that's not very useful. A token contains very little data about itself. In fact it doesn't even know its own name. Solana tokens are a primitive construct that we build on top of. That's where Metaplex comes in. As we mentioned on our [Terminology Page](/about/terminology#non-fungible-tokens) Metaplex is the standard way to add metadata to tokens. This metadata allows the tokens to secure Images, Audio, Video and anything else you can dream up. In order to create an NFT using metaplex we will follow these steps:
+On the Solana network an NFT is represented as a Token with only 1 in circulation and further minting is disabled, but that's not very useful. A token contains very little data about itself. In fact, it doesn't even know its own name. Solana tokens are a primitive construct that we build on top of. That's where Metaplex comes in. As we mentioned on our [Terminology Page](/about/terminology#non-fungible-tokens) Metaplex is the standard way to add metadata to tokens. This metadata allows the tokens to secure Images, Audio, Video and anything else you can dream up. In order to create an NFT using metaplex we will follow these steps:
 
 1. Optional: Pay for the Upload
 2. Creating a Token Mint
@@ -18,11 +18,11 @@ On the Solana network an NFT is represented as a Token with only 1 in circulatio
 6. Mint one Token
 7. Create Master Edition
 
-We are breaking these steps down to make it easier to follow. Steps 1-4 happen as one Transaction on the Solana network, and Steps 6-7 are also just one transaction. Lets dive into each step.
+We are breaking these steps down to make it easier to follow. Steps 1-4 happen as one Transaction on the Solana network, and Steps 6-7 are also just one transaction. Let's dive into each step.
 
 #### Pay For the Upload
 
-Ironically, the actual file upload is one of the last things to happen. Nothing is free, and uploading NFT content is no exception, so we currently need a way to pay for the file(s) to be store on Arweave. To do this we need to transfer lamports(tiny fractions of a SOL token) to a specific wallet address. This wallet address is connected to a Web2 web application that handles the file upload and the payment to Arweave. This step is only needed in the frontend, as you can specify the URI without going through Arweave
+Ironically, the actual file upload is one of the last things to happen. Nothing is free, and uploading NFT content is no exception, so we currently need a way to pay for the file(s) to be stored on Arweave. To do this we need to transfer lamports(tiny fractions of a SOL token) to a specific wallet address. This wallet address is connected to a Web2 web application that handles the file upload and the payment to Arweave. This step is only needed in the frontend, as you can specify the URI without going through Arweave
 
 Here is a visual representation of what happened
 
@@ -54,7 +54,7 @@ sequenceDiagram
 
 #### Optional: Creating A Token Associated Account
 
-This step is necessary only when your wallet will need to hold the Token after the first MasterEdition( We will get to this later) or Prints become minted. On the Metaplex frontend, currently this is needed when you are manually uploading and creating an NFT. Without this Account your wallet could not receive the Token.
+This step is necessary only when your wallet will need to hold the Token after the first MasterEdition (We will get to this later) or Prints become minted. On the Metaplex frontend, currently this is needed when you are manually uploading and creating an NFT. Without this Account your wallet could not receive the Token.
 We keep adding to our diagram to show the Token Associated Account creation.
 
 ```mermaid
@@ -77,7 +77,7 @@ As we said above the steps we have gone through thus far are represented as one 
 3. A Metadata program Derived account Address - Read more about PDAs here. This is a uninitialized address that the account will be stored at. We do this so we can deterministically find this address again in the future.
 4. The mint account public key
 
-Lets look at an in depth diagram of the CreateAccountMetadata program and what it does.
+Let's look at an in depth diagram of the CreateAccountMetadata program and what it does.
 
 ```mermaid
 sequenceDiagram
@@ -89,7 +89,7 @@ sequenceDiagram
    METAPLEX_TOKEN_METADATA_PROGRAM-->-SYSTEM_PROGRAM: Assign Ownership of the Account to Metadata Program
 ```
 
-This adds to our ever growing diagram to complete Transaction 1.
+This adds to our ever-growing diagram to complete Transaction 1.
 
 ```mermaid
 sequenceDiagram
@@ -142,7 +142,7 @@ sequenceDiagram
 
 In Metaplex, you can make an NFT that is a true one-of-a-kind token, but you can also use the `MasterEdition` construct to create `Prints` of the master edition, just like a painting. You now want to label this token account as a MasterEdition NFT that has a limited supply of 10 possible Limited Edition Prints. Cool! Remember that the point of Metadata is to label mints - not just NFTs. To do this you call the `create_master_edition` endpoint on the Token Metadata Program. By doing this, minting authority is taken away from you, and it creates a new Master Edition PDA that contains information about how large a supply you want to have.
 
-Lets do a deep dive on this Program.
+Let's do a deep dive on this Program.
 
 ```mermaid
 sequenceDiagram
@@ -157,7 +157,7 @@ sequenceDiagram
 
 When you want to mint Editions now, you'll need to present a token account containing the token from this Master Edition mint as proof of ownership and authority to do so. This is why we will later hand this token over to the Auction Manager, so that it can do the same to print off Editions for winners!
 
-Lets take a look at our transaction diagram now.
+Let's take a look at our transaction diagram now.
 
 ```mermaid
 sequenceDiagram
@@ -182,7 +182,7 @@ The above instructions will get bundled up into one instruction and sent to the 
 14. In order to update a bid, a user must first cancel the original bid, and then place a new bid.
 15. Once the auction is over, a user can refund their bid if they did not win by calling `cancel_bid` again. Winners of the auction cannot cancel their bids.
 16. The winner of a bid creates a mint with decimals 0, a token account with 1 token in it, and calls the `redeem_printing_v2_bid` endpoint on the Metaplex contract, all in a single transaction. This token is now _officially_ a Limited Edition of the "Bob's Cool NFT" Master Edition NFT!
-17. You, the auctioneer, visit /#/auction/id/billing and hit the settle button. This first iterates over all three bidders and for each wallet used, calls `claim_bid` on the Metaplex contract, which proxy-calls a `claim_bid` on the Auction contract, telling it to dump the winner's payment into an escrow account called `accept_payment` on the AuctionManager struct. It has the same token type as the auction. Once all payments have been collected, the front end then calls the `empty_payment_account` endpoint one time (since you are the only creator on the Metadata being sold) and the funds in this escrow are paid out to a token account provided of the same type owned by you.
+17. You, the auctioneer, visit /#/auction/id/billing and hit the settle button. This first iterates over all three bidders and for each wallet used, calls `claim_bid` on the Metaplex contract, which proxy-calls a `claim_bid` on the Auction contract, telling it to dump the winner's payment into an escrow account called `accept_payment` on the AuctionManager struct. It has the same token type as the auction. Once all payments have been collected, the front-end then calls the `empty_payment_account` endpoint one time (since you are the only creator on the Metadata being sold) and the funds in this escrow are paid out to a token account provided of the same type owned by you.
 
     Note that our front end reference implementation uses SOL as the "token type." This has some special caveats, namely that SOL isn't really an "spl token." It instead has a work-around called the "Wrapped SOL mint." This is a special mint that is often used in a transient account. What this means is that when we place a bid, we actually make a one-off system account, transfer lamports to it of your bid amount + rent, then label it an spl-token account of the wrapped sol type, use it to place the bid, then close it all in one transaction.
 
