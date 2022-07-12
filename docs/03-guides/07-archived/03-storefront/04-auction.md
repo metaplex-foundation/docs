@@ -12,7 +12,7 @@ Additionally, Metaplex includes a novel concept of the participation NFT, which 
 
 The creator of an auction also has the ability to configure a minimal price that should be charged for redemption, with the option to set it as "free". As mentioned before, participants of your auction are able to see this price.
 
-![Select type](/img/sell/select-type.png#radius)
+![Select type](/img/sell/select-type.png#radius#shadow)
 
 ## Open Edition
 Print as many as you want!
@@ -23,25 +23,25 @@ An open edition auction can either have a set fixed price (equivalent to a Buy N
 
 #### Select which item to sell
 
-![Select item](/img/auction/select-item.png#radius)
+![Select item](/img/auction/select-item.png#radius#shadow)
 
 #### Set the price
 
 Set the price floor and bid tick. Bid tick is the amount of price increment for each bid.
 
-![Set the price](/img/auction/choose-price.png#radius)
+![Set the price](/img/auction/choose-price.png#radius#shadow)
 
 #### Initial phase
 
 The initial phase setting allows you to delay the start of the auction. If you are launching multiple NFTs or an NFT collection, setting a specific date is recommended. 
 
-![Initial phase](/img/auction/initial-phase.png#radius)
+![Initial phase](/img/auction/initial-phase.png#radius#shadow)
 
 #### Ending phase
 
 When would you like your auction to end? We’ve seen projects that set their auction duration from anywhere from a few hours (ie, 3 hours) to a few days (no more than 3 days) have the most success. 
 
-![Ending phase](/img/auction/ending-phase.png#radius)
+![Ending phase](/img/auction/ending-phase.png#radius#shadow)
 
 ##### Gap Time
 Gap Time is a more advanced feature and most auctions don’t use it. If you anticipate that your community will have lots of competitive bids at the very end, you can use the Gap Time feature. Each new higher bid resets the countdown clock for when the auction ends. Based on feedback from recent projects, we recommend setting Gap Time to a few minutes and no more than 5 or 10 minutes. 
@@ -55,9 +55,9 @@ Publish the auction and observe it under **Explore** section.
 
 You will be asked to approve a transaction, so it will reduce a transaction fee in SOL from your wallet.
 
-![Publish](/img/auction/publish.png#radius)
+![Publish](/img/auction/publish.png#radius#shadow)
 
-![Auction page](/img/auction/auction-page.png#radius)
+![Auction page](/img/auction/auction-page.png#radius#shadow)
 
 ## Limited Edition
 
@@ -72,17 +72,17 @@ It is required for limited supply NFTs that there is at least as much supply rem
 Flow is identical to the Open Edition auction, with only a difference in the item selection screen.
 There you can provide the number of copies to sell.
 
-![Limited edition page](/img/auction/limited-edition.png#radius)
+![Limited edition page](/img/auction/limited-edition.png#radius#shadow)
 
 ## Single Item
 
 This type of auction can be used to sell normal NFTs and re-sell Prints, as well as the sale of Master Edition themselves (and the associated printing rights) if the artist so wishes.
 
-![Sell item](/img/auction/sell-item.png#radius)
+![Sell item](/img/auction/sell-item.png#radius#shadow)
 
 On the **Participation NFT** each bidding participant can be rewarded a unique Open Edition NFT for participating in the auction.
 
-![Participation](/img/auction/participation.png#radius)
+![Participation](/img/auction/participation.png#radius#shadow)
 
 ## Tiered Auction
 Tiered Auctions is a useful tool for awarding multiple winners (ie, first, second, third place) with NFTs. This can be editions of the same NFTs or different NFTs as runner-up prizes.
@@ -91,11 +91,11 @@ A tiered auction can contain a mix of the other three auction types as winning p
 
 #### Select the number of winners
 
-![Participation](/img/auction/tiered-select-count.png#radius)
+![Participation](/img/auction/tiered-select-count.png#radius#shadow)
 
 #### Select tiers
 
 On this screen, you can create several tiers to put winners in them. In our example, the first winner will get **Full Rights** transfer for an NFT. The second and third winners will get a **Print** of other NFT.
 
-![Select tier 1](/img/auction/tiered-select-tiers-1.png#radius)
-![Select tier 2](/img/auction/tiered-select-tiers-2.png#radius)
+![Select tier 1](/img/auction/tiered-select-tiers-1.png#radius#shadow)
+![Select tier 2](/img/auction/tiered-select-tiers-2.png#radius#shadow)

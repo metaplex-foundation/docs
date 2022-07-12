@@ -178,7 +178,7 @@ This will use return Empty Data object with 0 size.
 
 The SDK comes with a [sample app][sample]. Please clone it run it on your phone and take what is can help you. 
 
-![Sample App](app.gif "Sample App")
+![Sample App](app.gif#radius#shadow "Sample App")
 
 [github]: https://github.com/metaplex-foundation/metaplex-ios
 [docs]: https://github.com/metaplex-foundation/metaplex-ios#metaplex-ios-sdk

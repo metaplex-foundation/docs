@@ -8,7 +8,7 @@ Metaplex is a protocol built on top of Solana that allows:
 
 Metaplex comprises two core components: an on-chain program, and a self-hosted front-end web3 application.
 
-![Metaplex](/img/metaplex-storefront.png#radius)
+![Metaplex](/img/metaplex-storefront.png#radius#shadow)
 
 ## In Depth Developer's Guide
 

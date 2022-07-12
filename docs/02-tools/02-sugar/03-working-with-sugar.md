@@ -1,6 +1,6 @@
 # Working with Sugar
 
-![Sugar Tutorial](ui/Sugar-Tutorial.gif#radius)
+![Sugar Tutorial](ui/Sugar-Tutorial.gif#radius#shadow)
 
 [Full Sugar Video Tutorial](https://user-images.githubusercontent.com/26067212/165967904-0a551b6e-dc7e-4d8c-9348-3093e0d93883.mp4)
 

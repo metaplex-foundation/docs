@@ -57,7 +57,7 @@ Below are two simple examples of items in this collection:
 
 #### • Image: `0.png`
 
-![0.png](0.png#radius)
+![0.png](0.png#radius#shadow)
 
 #### • Metadata: `0.json`
 
@@ -109,7 +109,7 @@ Below are two simple examples of items in this collection:
 
 #### • Image: `9.png`
 
-![9.png](9.png#radius)
+![9.png](9.png#radius#shadow)
 
 #### • Metadata: `9.json`
 

@@ -18,15 +18,15 @@
 }
 
 html[data-theme="dark"] img[src*="#shadow"] {
-  filter: drop-shadow(0 0 0.5rem black);
+  filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.75));
 }
 
 html[data-theme="light"] img[src*="#shadow"] {
-  filter: drop-shadow(0 0 0.5rem rgba(169, 169, 169, 0.58));
+  filter: drop-shadow(0 0 0.5rem rgba(170, 170, 170, 0.55));
 }
 
 img[src*="#radius"] {
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 

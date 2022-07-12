@@ -6,11 +6,11 @@ When opening a store for the first time you will be asked to connect your wallet
 
 Once connected, the store will first run some checks to see if you've already set up a store. After a minute or so, a welcome screen is presented with an **Init Store** button.
 
-![Init store](/img/installation/init-store.png#radius)
+![Init store](/img/installation/init-store.png#radius#shadow)
 
 From the wallet dropdown (Phantom pictured below), select a network (mainnet for production, testnet or devnet for practice).
 
-![Select network](/img/installation/select-wallet.png#radius)
+![Select network](/img/installation/select-wallet.png#radius#shadow)
 
 :::tip
 
@@ -20,13 +20,13 @@ Before proceeding, you must have some SOL on your wallet to be able to pay the I
 
 Click the **Init Store** button. This starts the store initialization process by prompting you to approve a transaction from your wallet. After approval, your store initialization begins which may take 1-2 minutes.
 
-![Approve transaction](/img/installation/approve-transaction.png#radius)
+![Approve transaction](/img/installation/approve-transaction.png#radius#shadow)
 
 After store initialization completes, you must save your new store addresses. In the **Store configuration** section on the store page click on the **Copy** button and paste in the `.env` file in `js/packages/web`.
 
-![Save env](/img/installation/save-env.png#radius)
+![Save env](/img/installation/save-env.png#radius#shadow)
 
-![Set env](/img/installation/set-env.png#radius)
+![Set env](/img/installation/set-env.png#radius#shadow)
 
 Now restart your webserver (_Ctrl + C_ + `yarn start`) for the `.env` changes to take effect.
 

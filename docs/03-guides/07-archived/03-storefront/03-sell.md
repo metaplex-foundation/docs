@@ -4,7 +4,7 @@ Once you have finished minting NFT assets, you will be able to sell them. Click 
 After clicking on the **Sale** button, you will be redirected to a Sell section. It's intended for selling NFT assets.
 Here you can select the desired sale type, it may be an instant sale or an auction.
 
-![Header button](/img/sell/select-type.png#radius)
+![Header button](/img/sell/select-type.png#radius#shadow)
 
 ## Instant Sale
 
@@ -14,12 +14,12 @@ The instant sale allows you to sell a single Master NFT or copies of it at a sin
 
 _Create copies of a Master Edition NFT?_ option allows you to sell copies of a single Master NFT.
 
-![Select item](/img/sell/select-item.gif#radius)
+![Select item](/img/sell/select-item.gif#radius#shadow)
 
 ### Review and list
 
-![Explore](/img/sell/process.gif#radius)
+![Explore](/img/sell/process.gif#radius#shadow)
 
 After a successful publish you should see your item listed on the home page under **Live Auctions** or in the block below the header.
 
-![Explore](/img/sell/instant-sale-explore.png#radius)
+![Explore](/img/sell/instant-sale-explore.png#radius#shadow)
