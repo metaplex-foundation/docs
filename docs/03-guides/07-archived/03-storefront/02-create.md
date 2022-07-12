@@ -2,14 +2,14 @@
 
 Once you have finished with a store configuration, you will be able to **Create** and **Sell** NFTs.
 
-![Header button](/img/mint-sell/intro.gif#radius)
+![Header button](/assets/storefront/mint-sell/intro.gif#radius)
 
 ## Create NFT
 
 After clicking on the **Create** button, you will be redirected to the Create section, intended for minting NFT assets.
 Metaplex supports a wide variety of NFT types. In this article, we'll be focusing on image assets.
 
-![Create welcome page](/img/mint-sell/create-welcome.png#radius#shadow)
+![Create welcome page](/assets/storefront/mint-sell/create-welcome.png#radius#shadow)
 
 ### Upload
 
@@ -25,13 +25,13 @@ Upload an image directly or provide an absolute url to your file on the internet
 
 After you have finished uploading, you'll see the image name listed below the "Upload" section. Click on **Continue to Mint**
 
-![Upload](/img/mint-sell/upload.png#radius#shadow)
+![Upload](/assets/storefront/mint-sell/upload.png#radius#shadow)
 
 ### Describe your item
 
 Next you'll add your image **Title**, **Description**, **Maximum Supply** and **Attributes**.
 
-![Describe asset](/img/mint-sell/describe-asset.png#radius#shadow)
+![Describe asset](/assets/storefront/mint-sell/describe-asset.png#radius#shadow)
 
 **Maximum Supply** allows you to choose between having a single NFT or multiple copies (prints) from this master edition asset. The main difference between Master Edition and prints is that each print is a numbered edition created from a master edition.
 
@@ -59,15 +59,15 @@ This option allows you to split proceeds from the initial sale between creators.
 
 After you have finished defining royalties, click on **Continue to review**.
 
-![Royalties](/img/mint-sell/royalties.png#radius#shadow)
+![Royalties](/assets/storefront/mint-sell/royalties.png#radius#shadow)
 
 ### Launch
 
 We're on the final stage of minting a new NFT asset. Click on **PAY WITH SOL** to start minting, it will deduct the cost of the transaction from your wallet. Throughout the process of creation, it may ask you to approve transactions in the wallet. After the upload is finished, you will see it in your collection.
 
-![Launch](/img/mint-sell/launch.png#radius#shadow)
+![Launch](/assets/storefront/mint-sell/launch.png#radius#shadow)
 
-![Minting](/img/mint-sell/upload.gif#radius#shadow)
+![Minting](/assets/storefront/mint-sell/upload.gif#radius#shadow)
 
 :::tip
 
@@ -75,8 +75,8 @@ Running locally may require refreshing the page to see the item in Artworks.
 
 :::
 
-![Finish screen](/img/mint-sell/finish.png#radius#shadow)
+![Finish screen](/assets/storefront/mint-sell/finish.png#radius#shadow)
 
-![Item](/img/mint-sell/item.png#radius#shadow)
+![Item](/assets/storefront/mint-sell/item.png#radius#shadow)
 
 [arweave]: https://www.arweave.org/

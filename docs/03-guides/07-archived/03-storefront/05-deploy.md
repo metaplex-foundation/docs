@@ -58,7 +58,7 @@ If you have a custom domain linked to the GitHub Pages in your repo, then the in
 
 Prepare GitHub pages for deploying - select branch in repository then continue:
 
-![Init store](/img/deploy/github-pages-selecting.png#radius#shadow)
+![Init store](/assets/storefront/deploy/github-pages-selecting.png#radius#shadow)
 
 The publishing commands are the same:
 
@@ -79,4 +79,4 @@ After that, configure this project with the following settings:
 
 One last thing: specify `REACT_APP_STORE_OWNER_ADDRESS_ADDRESS` in the Environment Variables section
 
-![Init store](/img/deploy/vercel-configuration.png#radius#shadow)
+![Init store](/assets/storefront/deploy/vercel-configuration.png#radius#shadow)

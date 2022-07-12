@@ -11,7 +11,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   // onBrokenLinks: 'throw',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.png',
+  favicon: 'logo/favicon.png',
   organizationName: 'metaplex',
   projectName: 'docs',
   presets: [
@@ -63,8 +63,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         title: 'Metaplex Docs',
         logo: {
           alt: 'Metaplex logo',
-          src: 'img/meta-white.svg',
-          srcDark: 'img/meta-black.svg',
+          src: 'logo/meta-white.svg',
+          srcDark: 'logo/meta-black.svg',
         },
         items: [
           {
