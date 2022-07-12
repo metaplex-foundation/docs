@@ -106,7 +106,7 @@ follows:
   ```json
   {
     "whitelistMintSettings": {
-      "mode": { "burnEveryTime": true },
+      "mode": "burnEveryTime",
       "mint": <WLIST>,
       "presale": true,
       "discountPrice": null
