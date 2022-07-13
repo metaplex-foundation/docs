@@ -19,8 +19,8 @@
     "check:links": "find . -type f -name '*.md' ! -path './node_modules/*' | xargs -L1 npx markdown-link-check --quiet -c linkcheck.config.json "
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-beta.13",
-    "@docusaurus/preset-classic": "^2.0.0-beta.13",
+    "@docusaurus/core": "^2.0.0-beta.21",
+    "@docusaurus/preset-classic": "^2.0.0-beta.21",
     "@mdx-js/react": "^1.6.21",
     "@metaplex/arweave-cost": "2",
     "@svgr/webpack": "^5.5.0",
