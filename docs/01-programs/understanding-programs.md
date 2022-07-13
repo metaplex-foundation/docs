@@ -145,13 +145,13 @@ We try our best to provide a consistent visual language that is documented below
 - In certain situations, we may use an equal sign `=` to **show the value assigned** to a data attribute.
 - In certain situations, we may **highlight a data attribute in bold** to bring more attention to it.
 
-![](./assets/Understanding-Programs-Diagrams-Accounts.png#radius)
+![](/assets/programs/Understanding-Programs-Diagrams-Accounts.png#radius)
 
 - Relationships between Accounts are **represented with solid grey lines**.
 - The Account that stores the relationship — by keeping track of the other Account's address – has a little triangle at the end of the grey line.
 - When Accounts are represented with their data attributes, a dashed grey line is used instead to link the data attribute with the Account it points to.
 
-![](./assets/Understanding-Programs-Diagrams-Relationships.png#radius)
+![](/assets/programs/Understanding-Programs-Diagrams-Relationships.png#radius)
 
 ### PDAs
 
@@ -160,11 +160,11 @@ We try our best to provide a consistent visual language that is documented below
 - Accounts that are used to derive a PDA Address point towards that PDA Address.
 - PDA Addresses sometimes list their seeds next to them. PID refers to the Program ID or public key. Seeds that are wrapped in double quotes are literals.
 
-![](./assets/Understanding-Programs-Diagrams-PDA.png#radius)
+![](/assets/programs/Understanding-Programs-Diagrams-PDA.png#radius)
 
 Note that PDA Addresses can sometimes host different types of Accounts. For instance, the Edition PDA of an NFT can either host a Master Edition Account or an Edition Account based on whether the NFT is the original or not. In this case, PDA Addresses in diagrams can point to more than one PDA Account to show any of these Accounts can live at this address.
 
-![](./assets/Understanding-Programs-Diagrams-PDA-Complex.png#radius)
+![](/assets/programs/Understanding-Programs-Diagrams-PDA-Complex.png#radius)
 
 ### Instructions
 
@@ -172,8 +172,8 @@ Note that PDA Addresses can sometimes host different types of Accounts. For inst
 - Arrows pointing out of Instructions usually explain in what way the Instruction affects the Account.
 - Arrows can also point to data attributes inside Accounts to be slightly more specific.
 
-![](./assets/Understanding-Programs-Diagrams-Instructions.png#radius)
+![](/assets/programs/Understanding-Programs-Diagrams-Instructions.png#radius)
 
 Showing all Accounts required for an Instruction to be executed in a diagram would make the visual representation too messy and complicated to understand. However, certain diagrams will use arrows from Accounts to Instructions to highlight a subset of the Instruction's required Accounts.
 
-![](./assets/Understanding-Programs-Diagrams-Instructions-Complex.png#radius)
+![](/assets/programs/Understanding-Programs-Diagrams-Instructions-Complex.png#radius)

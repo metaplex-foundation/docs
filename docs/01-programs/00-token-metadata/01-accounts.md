@@ -1,5 +1,5 @@
-import ProgramAccount from '../../../src/program-account.jsx';
-import idl from './idl.js';
+import ProgramAccount from '/src/program-account.jsx';
+import idl from '/src/token-metadata/idl.js';
 
 # Accounts
 
@@ -7,7 +7,7 @@ import idl from './idl.js';
 
 <ProgramAccount idl={idl} account="Metadata">
 
-![Diagram showing a Metadata Account derived from a Mint Account with a list of data fields under the Metadata Account that is listed on the fields table below.](./assets/Token-Metadata-Account-Metadata.png)
+![Diagram showing a Metadata Account derived from a Mint Account with a list of data fields under the Metadata Account that is listed on the fields table below.](/assets/programs/token-metadata/Token-Metadata-Account-Metadata.png)
 
 The Metadata Account is responsible **for storing additional data attached to tokens**. As every account in the Token Metadata program, it derives from the Mint Account of the token using a PDA.
 
@@ -21,7 +21,7 @@ One particular field to notice is the `Uri` field that points to an off-chain JS
 
 <ProgramAccount idl={idl} account="MasterEditionV2">
 
-![Diagram showing a Master Edition Account derived from a Mint Account with a list of data fields under the Master Edition Account that is listed on the fields table below.](./assets/Token-Metadata-Account-Master-Edition.png)
+![Diagram showing a Master Edition Account derived from a Mint Account with a list of data fields under the Master Edition Account that is listed on the fields table below.](/assets/programs/token-metadata/Token-Metadata-Account-Master-Edition.png)
 
 The Master Edition account, derived from a Mint Account, is an important component of NFTs because **its existence is proof of the Non-Fungibility of the token**.
 
@@ -44,7 +44,7 @@ The optional `Max Supply` field of the Master Edition account tells us how many 
 
 <ProgramAccount idl={idl} account="Edition">
 
-![Diagram showing both a Master Edition Account and an Edition Account derived from a Mint Account. There is a big "OR" written between the two to show that only one of the two can exist for a given NFT.](./assets/Token-Metadata-Account-Edition.png)
+![Diagram showing both a Master Edition Account and an Edition Account derived from a Mint Account. There is a big "OR" written between the two to show that only one of the two can exist for a given NFT.](/assets/programs/token-metadata/Token-Metadata-Account-Edition.png)
 
 The Edition account, derived from a Mint Account, **represents an NFT that was copied from a Master Edition NFT**.
 
@@ -60,7 +60,7 @@ Additionally, the Edition account keeps track of the Master Edition account it w
 
 <ProgramAccount idl={idl} account="EditionMarker">
 
-![Diagram showing an Edition Marker Account derived from a Mint Account with a list of data fields under the Edition Marker Account that is listed on the fields table below.](./assets/Token-Metadata-Account-Edition-Marker.png)
+![Diagram showing an Edition Marker Account derived from a Mint Account with a list of data fields under the Edition Marker Account that is listed on the fields table below.](/assets/programs/token-metadata/Token-Metadata-Account-Edition-Marker.png)
 
 Edition Marker accounts are used internally by the program to **keep track of which editions were printed** for a given Master Edition.
 
@@ -80,7 +80,7 @@ This is why `⌊n / 248⌋` is used as a seed of the Edition Marker PDA.
 
 <ProgramAccount idl={idl} account="CollectionAuthorityRecord">
 
-![Diagram showing a Collection Authority Record Account derived from a Mint Account with a list of data fields under the Collection Authority Record Account that is listed on the fields table below.](./assets/Token-Metadata-Account-Collection-Authority-Record.png)
+![Diagram showing a Collection Authority Record Account derived from a Mint Account with a list of data fields under the Collection Authority Record Account that is listed on the fields table below.](/assets/programs/token-metadata/Token-Metadata-Account-Collection-Authority-Record.png)
 
 Collection Authority Record accounts are used internally by the program to **keep track of which authorities are allowed to set and/or verify the collection** of the token's Metadata account.
 
@@ -94,7 +94,7 @@ You can [read more about NFT Collections here](./certified-collections).
 
 <ProgramAccount idl={idl} account="UseAuthorityRecord">
 
-![Diagram showing a Use Authority Record Account derived from a Mint Account with a list of data fields under the Use Authority Record Account that is listed on the fields table below.](./assets/Token-Metadata-Account-Use-Authority-Record.png)
+![Diagram showing a Use Authority Record Account derived from a Mint Account with a list of data fields under the Use Authority Record Account that is listed on the fields table below.](/assets/programs/token-metadata/Token-Metadata-Account-Use-Authority-Record.png)
 
 Use Authority Record accounts are used internally by the program to **keep track of which authorities are allowed to reduce the uses** of the token's Metadata account.
 

@@ -1,5 +1,5 @@
-import ProgramInstruction from '../../../src/program-instruction.jsx';
-import idl from './idl.js';
+import ProgramInstruction from '/src/program-instruction.jsx';
+import idl from '/src/token-metadata/idl.js';
 
 # Instructions
 
@@ -7,7 +7,7 @@ import idl from './idl.js';
 
 <ProgramInstruction idl={idl} instruction="CreateMetadataAccountV2">
 
-![](./assets/Token-Metadata-Instruction-Create-Metadata.png)
+![](/assets/programs/token-metadata/Token-Metadata-Instruction-Create-Metadata.png)
 
 This instruction creates and initializes a new [Metadata](./accounts#metadata) account for a given Mint account. It is required that the Mint account has been created and initialized by the Token Program before executing this instruction.
 
@@ -17,7 +17,7 @@ This instruction creates and initializes a new [Metadata](./accounts#metadata) a
 
 <ProgramInstruction idl={idl} instruction="UpdateMetadataAccountV2">
 
-![](./assets/Token-Metadata-Instruction-Update-Metadata.png)
+![](/assets/programs/token-metadata/Token-Metadata-Instruction-Update-Metadata.png)
 
 This instruction enables us to update parts of the Metadata account. Note that some fields have constraints limiting how they can be updated. For instance, once the `Is Mutable` field is set to `False`, it cannot be changed back to `True`.
 
@@ -27,7 +27,7 @@ This instruction enables us to update parts of the Metadata account. Note that s
 
 <ProgramInstruction idl={idl} instruction="UpdatePrimarySaleHappenedViaToken">
 
-![](./assets/Token-Metadata-Instruction-Update-Primary-Sale-Flag.png)
+![](/assets/programs/token-metadata/Token-Metadata-Instruction-Update-Primary-Sale-Flag.png)
 
 This instruction flips the `Primary Sale Happened` flag to `True`, indicating that the first sale has happened. Note that this field is [indicative](/programs/understanding-programs#indicative-fields) and is typically used by marketplaces to calculate royalties.
 
@@ -37,7 +37,7 @@ This instruction flips the `Primary Sale Happened` flag to `True`, indicating th
 
 <ProgramInstruction idl={idl} instruction="SignMetadata">
 
-![](./assets/Token-Metadata-Instruction-Verify-Creators.png)
+![](/assets/programs/token-metadata/Token-Metadata-Instruction-Verify-Creators.png)
 
 This instruction verifies one creator on the Metadata account. As long as the provided `Creator` account signs the transaction, the `Verified` boolean will be set to `True` on the appropriate creator of the `Creators` array.
 
@@ -47,7 +47,7 @@ This instruction verifies one creator on the Metadata account. As long as the pr
 
 <ProgramInstruction idl={idl} instruction="RemoveCreatorVerification">
 
-![](./assets/Token-Metadata-Instruction-Unverify-Creators.png)
+![](/assets/programs/token-metadata/Token-Metadata-Instruction-Unverify-Creators.png)
 
 This instruction unverifies one creator on the Metadata account. As long as the provided `Creator` account signs the transaction, the `Verified` boolean will be set to `False` on the appropriate creator of the `Creators` array.
 
@@ -57,7 +57,7 @@ This instruction unverifies one creator on the Metadata account. As long as the 
 
 <ProgramInstruction idl={idl} instruction="CreateMasterEditionV3">
 
-![](./assets/Token-Metadata-Instruction-Create-Master-Edition.png)
+![](/assets/programs/token-metadata/Token-Metadata-Instruction-Create-Master-Edition.png)
 
 This instruction creates and initializes a new [Master Edition](./accounts#master-edition) account for a given Mint account. It requires the following conditions to be met:
 
@@ -75,7 +75,7 @@ If these conditions are met, **it will transfer the Mint Authority and the Freez
 
 <ProgramInstruction idl={idl} instruction="MintNewEditionFromMasterEditionViaToken">
 
-![](./assets/Token-Metadata-Instruction-Mint-New-Edition.png)
+![](/assets/programs/token-metadata/Token-Metadata-Instruction-Mint-New-Edition.png)
 
 Given a Masted Edition, this instruction creates a new Edition derived from a new Mint account.
 
@@ -99,7 +99,7 @@ It requires the same conditions as the Master Edition account regarding the Mint
 
 <ProgramInstruction idl={idl} instruction="VerifyCollection">
 
-![](./assets/Token-Metadata-Instruction-Verify-Collection.png)
+![](/assets/programs/token-metadata/Token-Metadata-Instruction-Verify-Collection.png)
 
 This instruction verifies the collection of a Metadata account. As long as the provided `Collection Authority` is allowed to update the parent collection and signs the transaction, the `Verified` boolean will be set to `True` on the `Collection` field.
 
@@ -109,7 +109,7 @@ This instruction verifies the collection of a Metadata account. As long as the p
 
 <ProgramInstruction idl={idl} instruction="UnverifyCollection">
 
-![](./assets/Token-Metadata-Instruction-Unverify-Collection.png)
+![](/assets/programs/token-metadata/Token-Metadata-Instruction-Unverify-Collection.png)
 
 This instruction unverifies the collection of a Metadata account. As long as the provided `Collection Authority` is allowed to update the parent collection and signs the transaction, the `Verified` boolean will be set to `False` on the `Collection` field.
 
@@ -127,7 +127,7 @@ This instruction updated the `Collection` field of a Metadata account using the 
 
 <ProgramInstruction idl={idl} instruction="ApproveCollectionAuthority">
 
-![](./assets/Token-Metadata-Instruction-Approve-Collection-Authority.png)
+![](/assets/programs/token-metadata/Token-Metadata-Instruction-Approve-Collection-Authority.png)
 
 This instruction allows the provided `New Collection Authority` account to update the `Collection` field of a Metadata account.
 
@@ -139,7 +139,7 @@ The program keeps track of all the collection authorities that have been approve
 
 <ProgramInstruction idl={idl} instruction="RevokeCollectionAuthority">
 
-![](./assets/Token-Metadata-Instruction-Revoke-Collection-Authority.png)
+![](/assets/programs/token-metadata/Token-Metadata-Instruction-Revoke-Collection-Authority.png)
 
 This instruction revokes an existing collection authority, meaning they will no longer be able to update the `Collection` field of the Metadata account associated with that Mint account.
 
@@ -151,7 +151,7 @@ It does this by deleting the provided `Collection Authority Record` PDA.
 
 <ProgramInstruction idl={idl} instruction="Utilize">
 
-![](./assets/Token-Metadata-Instruction-Utilize.png)
+![](/assets/programs/token-metadata/Token-Metadata-Instruction-Utilize.png)
 
 This instruction reduces the number of uses of a Metadata account.
 
@@ -163,7 +163,7 @@ This can either be done by the `Update Authority` of the Metadata account or by 
 
 <ProgramInstruction idl={idl} instruction="ApproveUseAuthority">
 
-![](./assets/Token-Metadata-Instruction-Approve-Use-Authority.png)
+![](/assets/programs/token-metadata/Token-Metadata-Instruction-Approve-Use-Authority.png)
 
 This instruction allows the provided `User` account to utilize a Metadata account.
 
@@ -175,7 +175,7 @@ The program keeps track of all the use authorities that have been approved via [
 
 <ProgramInstruction idl={idl} instruction="RevokeUseAuthority">
 
-![](./assets/Token-Metadata-Instruction-Revoke-Use-Authority.png)
+![](/assets/programs/token-metadata/Token-Metadata-Instruction-Revoke-Use-Authority.png)
 
 This instruction revokes an existing use authority, meaning they will no longer be able to reduce the uses of the Metadata account associated with that Mint account.
 

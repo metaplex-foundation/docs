@@ -1,7 +1,7 @@
-import { Accordion, AccordionItem } from '../../../src/accordion.jsx';
-import { AccordionTokenStandard } from '../../../src/accordion-token-standard.jsx';
-import { AccordionCode } from '../../../src/accordion-code.jsx';
-import tokenStandard from './token-standard';
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
+import { AccordionTokenStandard } from '/src/accordion-token-standard.jsx';
+import { AccordionCode } from '/src/accordion-code.jsx';
+import tokenStandard from '/src/token-metadata/token-standard';
 
 # Token Standard
 

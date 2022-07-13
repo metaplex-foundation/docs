@@ -34,7 +34,7 @@ As such, the `Collection` field contains two nested fields:
 - `Key`: This field points to the Collection NFT the NFT belongs to. More precisely, it points to **the public key of the Mint Account** of the Collection NFT. This Mint Account must be owned by the SPL Token program.
 - `Verified`: This boolean is very important as it is used to verify that the NFT is truly part of the collection it points to.
 
-![](./assets/Token-Metadata-Collections-Collection-NFT.png#radius)
+![](/assets/programs/token-metadata/Token-Metadata-Collections-Collection-NFT.png#radius)
 
 Notice that, because Collections and NFTs are linked together via a "Belong To" relationship, it is possible by design to define nested collections.
 
@@ -44,7 +44,7 @@ Also note that there is currently no way to distinguish between a Collection NFT
 
 As mentioned above, the `Collection` field contains a `Verified` boolean which is used to **determine if the NFT is truly part of the collection it points to**. Without this field, anyone could pretend their NFT to be part of any collection.
 
-![](./assets/Token-Metadata-Collections-Verified-Collection.png#radius)
+![](/assets/programs/token-metadata/Token-Metadata-Collections-Verified-Collection.png#radius)
 
 In order to flip that `Verified` boolean to `True`, the Authority of the Collection NFT must sign the NFT to prove that it is allowed to be part of the collection.
 
@@ -119,6 +119,6 @@ Note that the Metaplex team has recorded a video tutorial on how Verified Collec
 
 <div style={{textAlign:'center'}}>
 
-[![Verified Collections Tutorial](./assets/verified-collections.gif#radius#shadow)](https://drive.google.com/file/d/1VU4xL_yF6LCe0UogVn4As5PMAzUV__8C/view?usp=sharing)
+[![Verified Collections Tutorial](/assets/programs/token-metadata/verified-collections.gif#radius#shadow)](https://drive.google.com/file/d/1VU4xL_yF6LCe0UogVn4As5PMAzUV__8C/view?usp=sharing)
 
 </div>
