@@ -6,7 +6,7 @@ Most users should use the `create-config` command to create the config file as t
 
 :::
 
-Sugar uses a JSON configuration file to deploy and interact with a Candy Machine. The configuration file is largely similar to the [existing Candy Machine v2 configuration file](/guides/archived/candy-machine-v2/configuration), but there are important differences.
+Sugar uses a JSON configuration file to deploy and interact with a Candy Machine. The configuration file is largely similar to the [previous Candy Machine v2 configuration file](/guides/archived/candy-machine-v2/configuration), but there are important differences.
 
 A minimum configuration file looks like this:
 

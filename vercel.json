@@ -104,6 +104,11 @@
       "source": "/candy-machine-v2/mint-frontend",
       "destination": "/guides/candy-machine-ui",
       "permanent": true
+    },
+    {
+      "source": "/tools/sugar/asset-preparation-and-deployment",
+      "destination": "/tools/sugar/commands",
+      "permanent": true
     }
   ]
 }

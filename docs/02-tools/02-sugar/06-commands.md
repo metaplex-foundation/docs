@@ -1,20 +1,20 @@
-# Deploying a Candy Machine
+# Sugar Commands
 Apart from the `launch` command, discussed in the `Quick Start` section above, Sugar provide commands to manage the whole process of deployment of a Candy Machine, from the validation of assets to withdrawing funds and closing a Candy Machine account.
 
 In this section we will cover the commands involved in deploying a Candy Machine in the order that they should be executed.
 
 ## Preparing Your Assets
 
-The preparation of the assets is similar to the instructions provided in the [Candy Machine v2 documentation](/guides/archived/candy-machine-v2/preparing-assets). By default, Sugar loads media/metadata files from an `assets` folder in the directory where the command has been executed, but the name of the folder can be specified as a command-line parameter.
+Check [Preparing your Assets](./preparing-assets) for detailed instructions on asset preparation. By default, Sugar loads media/metadata files from an `assets` folder in the directory where the command has been executed, but the name of the folder can be specified as a command-line parameter.
 
-![Screen Shot 2022-04-29 at 10 50 00 AM](https://user-images.githubusercontent.com/26067212/165969928-992c3c7e-8069-4590-97f0-e6c19cd37d74.png#radius#shadow)
+![Example Assets Folder](https://user-images.githubusercontent.com/26067212/165969928-992c3c7e-8069-4590-97f0-e6c19cd37d74.png#radius#shadow)
 
 Example image of how your asset folder should look. 
 
 
 ### Collection Assets
 
-In addition, if you want a collection NFT to be created and set automatically, you will need to additionally include a `collection.json` and a `collection.png/jpg` in your `assets` folder. They should be in the same format as the other assets. An example of a `collection.json` file is below:
+If you want a collection NFT to be created and set automatically, you will need to include a `collection.json` and a `collection.png/jpg` in your `assets` folder. They should be in the same format as the other assets. An example of a `collection.json` file is below:
 
 ```json
 {
