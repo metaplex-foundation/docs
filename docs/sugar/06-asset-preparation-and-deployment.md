@@ -1,5 +1,5 @@
 # Deploying a Candy Machine
-Apart from the `launch` command, discussed in the `Quick Start` section above, Sugar provide commands to manage the whole process of deployment of a Candy Machine, from the validation of assets to withdrawing funds and closing a Candy Machine account.
+Apart from the `launch` command, discussed in the `Quick Start` section above, Sugar provides commands to manage the whole process of deployment of a Candy Machine, from the validation of assets to withdrawing funds and closing a Candy Machine account.
 
 In this section we will cover the commands involved in deploying a Candy Machine in the order that they should be executed.
 
@@ -87,7 +87,7 @@ sugar upload <ASSETS DIR>
 
 There is also the option to specify the path for the configuration file with the `-c` option (default `config.json`) and the name of the cache file with the option `--cache` (default `cache.json`).
 
-The `upload` command can be resumed (re-run) at any point in case the upload is not completed successfully &mdash; only files that have not yet being uploaded are processed. It also automatically detects when the content of media/metadata files change and re-uploads them, updating the cache file accordingly. In other words, if you need to change a file, you only need to copy the new (modified) file to your assets folder and re-run the `upload` command. There is no need to manually edit the cache file.
+The `upload` command can be resumed (re-run) at any point in case the upload is not completed successfully &mdash; only files that have not yet been uploaded are processed. It also automatically detects when the content of media/metadata files changes and re-uploads them, updating the cache file accordingly. In other words, if you need to change a file, you only need to copy the new (modified) file to your assets folder and re-run the `upload` command. There is no need to manually edit the cache file.
 
 ### 4. `deploy`
 
@@ -100,13 +100,13 @@ sugar deploy
 The `deploy` command will write the information of your cache file to the Candy Machine account on-chain. This effectively creates the Candy Machine and displays its on-chain ID &mdash; use this ID to query its information on-chain using an [explorer](https://explorer.solana.com/). You can specify the path for the configuration file with the `-c` option (default `config.json`) and the name of the cache file with the option `--cache` (default `cache.json`) in case you are not using the default names.
 
 
-After a successful deploy, the Candy Machine is ready to be minted according to its `goLiveDate` and `whitelistMintSettings`.
+After a successful deployment, the Candy Machine is ready to be minted according to its `goLiveDate` and `whitelistMintSettings`.
 
 > **Note:** The authority wallet (the one used to create the Candy Machine) can mint bypassing the `goLiveDate` setting.
 
 ### 5. `verify`
 
-The `verify` command checks that all items in your cache file have been successfully written on-chain:
+The `verify` command checks that all items in your cache file were successfully written on-chain:
 
 ```bash
 sugar verify
@@ -201,7 +201,7 @@ where `<CONFIG>` is the path to the configuration file and `<CACHE>` is the path
 
 ### `withdraw`
 
-When the mint from a Candy Machine is complete, it is possible to recover the funds used to pay rent for the data stored on-chain. To initiate the withdraw:
+When the mint from a Candy Machine is complete, it is possible to recover the funds used to pay rent for the data stored on-chain. To initiate the withdrawal:
 
 ```bash
 sugar withdraw <CANDY MACHINE>
@@ -223,7 +223,7 @@ sugar withdraw --list
 
 ### `bundlr`
 
-When you use `bundlr` as your upload method, Sugar automatically funds your account on the Bundlr Network to cover the storage costs. Once the upload is completed, there could be left over funds in your Bundlr account. You can verify your balance on the Bundlr Network with the following command:
+When you use `bundlr` as your upload method, Sugar automatically funds your account on the Bundlr Network to cover the storage costs. Once the upload is completed, there could be leftover funds in your Bundlr account. You can verify your balance on the Bundlr Network with the following command:
 
 ```bash
 sugar bundlr balance
@@ -235,8 +235,8 @@ This will retrieve the balance for the current keypair. You can specify an alter
 sugar bundlr withdraw
 ```
 
-At the end of the withdraw, the funds available on the Bundlr Network will be transferred to your Solana address.
+At the end of the withdrawal, the funds available on the Bundlr Network will be transferred to your Solana address.
 
 ## Further Reading
 
-The [Candy Machine v2 documentation](http://docs.metaplex.com/candy-machine-v2/introduction) provides a more detailed explanation of each step of the deploy of a Candy Machine. Although there a differences in Sugar commands, the overall process is similar.
+The [Candy Machine v2 documentation](http://docs.metaplex.com/candy-machine-v2/introduction) provides a more detailed explanation of each step of the deployment of a Candy Machine. Although there differences in Sugar commands, the overall process is similar.
