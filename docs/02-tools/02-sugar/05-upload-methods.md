@@ -3,7 +3,9 @@
 There are currently four upload (storage) methods available in Sugar: `"aws"`, `"bundlr"`, `"nft_storage"` and `"shdw"`.
 
 :::info
+
 The upload methods in Sugar are designed using a Rust trait to make it easier for new methods to be added, therefore Sugar can support a wide-variety of upload methods&mdash;check the [**Bring your own uploader**](developer/bring-your-own-uploader) section in the Developer Guide.
+
 :::
 
 ## Amazon (AWS) S3
@@ -55,5 +57,7 @@ Uploads to [Arweave](https://www.arweave.org/) using [Bundlr Network](https://bu
 [Shadow Drive](https://shdw.genesysgo.com/shadow-infrastructure-overview/shadow-drive-overview) is a decentralized storage network built specifically for the Solana blockchain. In order to upload data to the Shadow Drive you will need to first create a storage account. This can be done using the [Shadow Drive CLI](https://shdw.genesysgo.com/using-shadow-drive/the-shadow-drive-platform/shadow-drive-cli). After creating a storage account, specify its pubkey address in the configuration file using the property `"shdwStorageAccount"`.
 
 :::info
+
 The Shadow Drive upload method is only available on `mainnet`.
+
 :::

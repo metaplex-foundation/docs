@@ -111,7 +111,9 @@ In case your upload method requires additional parameters, you will need to modi
 Once you completed the upload method trait implementation and added its details to Sugar's configuration file, it is ready to be used to upload assets.
 
 :::info
+
 Do not forget to submit a PR to Sugar's repository to have your implementation added to Sugar's code base.
+
 :::
 
 ## Next steps
