@@ -60,9 +60,9 @@ brew install pkg-config cairo pango libpng jpeg giflib librsvg
 ```
 See additional information: https://github.com/Automattic/node-canvas/wiki/Installation%3A-Mac-OS-X
 
-## Clone and Install Metaplex
+## Clone and Install the JS CLI Repo
 
-Creating and controlling a Candy Machine is done through the Metaplex command line tool, currently distributed in the deprecated-clis GitHub repository. For now, recommend pulling the latest code from the [main branch](https://github.com/metaplex-foundation/deprecated-clis/tree/main):
+Creating and controlling a Candy Machine is done through our JavaScript command line tool, currently distributed in the deprecated-clis GitHub repository. For now, recommend pulling the latest code from the [main branch](https://github.com/metaplex-foundation/deprecated-clis/tree/main):
 
 ```bash
 git clone https://github.com/metaplex-foundation/deprecated-clis.git ~/deprecated-clis
