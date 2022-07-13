@@ -4,12 +4,9 @@ sidebar_position: 6
 ---
 
 # What is Auctioneer
-<<<<<<< HEAD
 :::warning
-Auctioneer is currently an experimental program. This means that the API, SDK, and IDL are subject to change.
+Auctioneer and the Auction House Auctioneer Interface are currently experimental. This means that the API, SDK, and IDL are subject to change.
 :::
-=======
->>>>>>> cbd0bcb93103c46323c470288aa5bfc34b3bfa0f
 
 Auction House is a protocol for marketplaces to implement a decentralized sales contract. It is simple, fast and very cheap, not to mention secure. The current Auction House implementation is designed with instant sales in mind and currently has no features that enable the various auction types that have become popular in the Solana ecosystem.
 
@@ -18,13 +15,10 @@ Rather than add additional complexity to the secure and robust Auction House con
 ## Delegating an Auctioneer
 To fully enable Auctioneer to use an Auction House instance's instructions, it must be explicitly delegated. The `DelegateAuctioneer` command is used to tell the Auction House instance which program will be using the `auctioneer_<method>` instructions. An Auction House with a delegated Auctioneer will no longer be able to use the normal instructions. This is a safety mechanism put in place because the Auctioneer is capable of introducing additional restrictions on bids and listings. By preventing non-Auctioneer calls from executing a sale, malicious actors are prevented from bypassing any restrictions added by the Auctioneer.
 
-<<<<<<< HEAD
 :::warning
 To enable dynamic pricing Auction House does not enforce seller price when an Auctioneer is delegated. The seller price **must** be enforced at the Auctioneer level!
 :::
 
-=======
->>>>>>> cbd0bcb93103c46323c470288aa5bfc34b3bfa0f
 ## Auctioneer Scopes
 By default, the Auctioneer contract has control over the following Auction House methods via the `auctioneer_<method>` instructions.
 * Buy
@@ -35,11 +29,8 @@ By default, the Auctioneer contract has control over the following Auction House
 * Deposit
 * Withdraw
 
-<<<<<<< HEAD
 :::warning
 The Sell scope for Auctioneer is not currently supported for Partial Buy. Any Partial Buys must be executed against a sale listed through the Auction House Sale instruction.
 :::
 
-=======
->>>>>>> cbd0bcb93103c46323c470288aa5bfc34b3bfa0f
 As previously stated, delegating control of these instructions to the Auctioneer prevents the normal Auction House from executing them. The concept of Auctioneer Scopes makes the implementation more flexible by allowing each individual instruction to be delegated separately. To disable the delegation of one of the above instructions exclude its enum value from the scope argument passed in to `DelegateAuctioneer`.
