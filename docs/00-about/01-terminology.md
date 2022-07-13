@@ -22,7 +22,7 @@ A notable and desirable effect of master editions is that as prints are sold, th
 
 A **print** (or `edition`) represents a copy of an NFT, and is created from a Master Edition. Each print has an edition number associated with it.
 
-Prints can be created manually or during a sale from the [Fixed Price Sale program](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/fixed-price-sale).
+Prints can be created manually or through another program such as during a sale from the [Fixed Price Sale program](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/fixed-price-sale).
 
 
 ### Normal NFT
