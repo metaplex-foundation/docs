@@ -29,6 +29,88 @@
       "source": "/token-metadata/Versions/v1.0.0/nft-standard",
       "destination": "/programs/token-metadata/changelog/v1.0",
       "permanent": true
+    },
+    {
+      "source": "/storefront/:path*",
+      "destination": "/guides/archived/storefront/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/fair-launch/:path*",
+      "destination": "/guides/archived/fair-launch/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/architecture/:path*",
+      "destination": "/guides/archived/architecture/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/candy-machine-v1/:path*",
+      "destination": "/guides/archived/candy-machine-v1/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/airdrops/create-gumdrop",
+      "destination": "/guides/airdrops",
+      "permanent": true
+    },
+    {
+      "source": "/auction-house/:path*",
+      "destination": "/guides/auction-house/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/auctioneers/:path*",
+      "destination": "/guides/auction-house/auctioneers/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/sdk/ios/:path*",
+      "destination": "/tools/ios/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/sdk/js/:path*",
+      "destination": "/tools/js/getting-started",
+      "permanent": true
+    },
+    {
+      "source": "/about/terminology",
+      "destination": "/terminology",
+      "permanent": true
+    },
+    {
+      "source": "/sugar/:path*",
+      "destination": "/tools/sugar/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/overviews/storage_overview",
+      "destination": "/guides/storage-overview",
+      "permanent": true
+    },
+    {
+      "source": "/overviews/(candy_machine_overview|burn_NFTS|features_overview|metadata_overview|metaplex_overview|stores_overview)",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/candy-machine-v2/:path(configuration|creating-candy-machine|getting-started|introduction|mint-tokens|preparing-assets|sign-nfts|update|verify-upload|withdraw)",
+      "destination": "/guides/archived/candy-machine-v2/:path",
+      "permanent": true
+    },
+    {
+      "source": "/candy-machine-v2/mint-frontend",
+      "destination": "/guides/candy-machine-ui",
+      "permanent": true
+    },
+    {
+      "source": "/tools/sugar/asset-preparation-and-deployment",
+      "destination": "/tools/sugar/commands",
+      "permanent": true
     }
   ]
 }
+
+

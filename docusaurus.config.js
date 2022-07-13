@@ -8,12 +8,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   tagline: 'Documentation for the Metaplex frontend and NFT standard.',
   url: 'https://docs.metaplex.com',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  // onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.png',
+  favicon: 'logo/favicon.png',
   organizationName: 'metaplex',
   projectName: 'docs',
-
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -51,7 +51,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         // Optional: see doc section below
         contextualSearch: true,
 
-        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites, and we want to navigate with window.location.href to them.
         // externalUrlRegex: 'external\\.com|domain\\.com',
 
         // Optional: Algolia search parameters
@@ -63,8 +63,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         title: 'Metaplex Docs',
         logo: {
           alt: 'Metaplex logo',
-          src: 'img/meta-white.svg',
-          srcDark: 'img/meta-black.svg',
+          src: 'logo/meta-white.svg',
+          srcDark: 'logo/meta-black.svg',
         },
         items: [
           {
@@ -105,7 +105,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ['rust'],
+        additionalLanguages: ['rust', 'swift'],
       },
     }),
 });

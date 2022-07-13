@@ -1,0 +1,9 @@
+{
+  "label": "Auctioneers",
+  "link": {
+    "type": "generated-index",
+    "title": "Auctioneers",
+    "description": "A list of auctioneer implementations.",
+    "slug": "/guides/auction-house/auctioneers"
+  }
+}
