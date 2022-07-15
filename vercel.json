@@ -81,8 +81,13 @@
       "permanent": true
     },
     {
-      "source": "/auctioneers/:path*",
-      "destination": "/guides/auction-house/auctioneers/:path*",
+      "source": "/auctioneers/timed_auction/overview",
+      "destination": "/guides/auction-house/auctioneers/timed_auction",
+      "permanent": true
+    },
+    {
+      "source": "/guides/auction-house/auctioneers/timed_auction/overview",
+      "destination": "/guides/auction-house/auctioneers/timed_auction",
       "permanent": true
     },
     {

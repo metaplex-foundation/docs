@@ -1,3 +1,7 @@
+---
+sidebar_label: Token Metadata
+---
+
 # Overview
 
 ## Introduction
