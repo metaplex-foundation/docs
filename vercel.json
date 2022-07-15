@@ -2,7 +2,7 @@
   "redirects": [
     {
       "source": "/token-metadata/getting-started",
-      "destination": "/programs/token-metadata/overview",
+      "destination": "/programs/token-metadata/",
       "permanent": true
     },
     {
@@ -17,7 +17,7 @@
     },
     {
       "source": "/token-metadata/Versions/v1.2.\\*/overview",
-      "destination": "/programs/token-metadata/changelog/overview",
+      "destination": "/programs/token-metadata/changelog/",
       "permanent": true
     },
     {
@@ -28,6 +28,21 @@
     {
       "source": "/token-metadata/Versions/v1.0.0/nft-standard",
       "destination": "/programs/token-metadata/changelog/v1.0",
+      "permanent": true
+    },
+    {
+      "destination": "/programs/understanding-programs",
+      "source": "/programs/",
+      "permanent": true
+    },
+    {
+      "source": "/programs/token-metadata/overview",
+      "destination": "/programs/token-metadata/",
+      "permanent": true
+    },
+    {
+      "source": "/programs/token-metadata/changelog/overview",
+      "destination": "/programs/token-metadata/changelog/",
       "permanent": true
     },
     {
@@ -56,23 +71,33 @@
       "permanent": true
     },
     {
-      "source": "/auction-house/:path*",
+      "source": "/auction-house/:path(getting-started|faq|cli|roadmap|auctioneer)",
       "destination": "/guides/auction-house/:path*",
       "permanent": true
     },
     {
-      "source": "/auctioneers/:path*",
-      "destination": "/guides/auction-house/auctioneers/:path*",
+      "source": "/auction-house/definition",
+      "destination": "/guides/auction-house/",
+      "permanent": true
+    },
+    {
+      "source": "/auctioneers/timed_auction/overview",
+      "destination": "/guides/auction-house/auctioneers/timed_auction",
+      "permanent": true
+    },
+    {
+      "source": "/guides/auction-house/auctioneers/timed_auction/overview",
+      "destination": "/guides/auction-house/auctioneers/timed_auction",
       "permanent": true
     },
     {
       "source": "/sdk/ios/:path*",
-      "destination": "/tools/ios/:path*",
+      "destination": "/tools/ios/",
       "permanent": true
     },
     {
       "source": "/sdk/js/:path*",
-      "destination": "/tools/js/getting-started",
+      "destination": "/tools/js/",
       "permanent": true
     },
     {
@@ -81,8 +106,23 @@
       "permanent": true
     },
     {
-      "source": "/sugar/:path*",
+      "source": "/sugar/:path(installation|quick-start|working-with-sugar|configuration|upload-methods)",
       "destination": "/tools/sugar/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/sugar/asset-preparation-and-deployment",
+      "destination": "/tools/sugar/commands",
+      "permanent": true
+    },
+    {
+      "source": "/sugar/introduction",
+      "destination": "/tools/sugar/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/sugar/introduction",
+      "destination": "/tools/sugar/",
       "permanent": true
     },
     {
@@ -106,8 +146,13 @@
       "permanent": true
     },
     {
-      "source": "/tools/sugar/asset-preparation-and-deployment",
-      "destination": "/tools/sugar/commands",
+      "source": "/tools/js/getting-started",
+      "destination": "/tools/js/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/ios/getting-started",
+      "destination": "/tools/ios/",
       "permanent": true
     }
   ]

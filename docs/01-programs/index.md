@@ -1,3 +1,7 @@
+---
+sidebar_label: Programs
+---
+
 # Understanding Programs
 
 This page aims to provide a quick overview of how programs work in Solana and offer additional reading material for those who are interested in learning more about a particular subject.

@@ -1,9 +1,10 @@
 ---
 slug: /
+sidebar_label: About
 ---
 
 # Introduction
-Metaplex Studios, ecosystem, and community have been moving quickly to support the thousands of developer teams and creators looking to launch their NFT projects on Solana. In response to feedback, we've created tools like our [Candy Machine v2™](/tools/sugar/introduction), to help mint and sell thousands of NFTs for NFT collections and/or common profile picture projects you all know and love. We've also been hard at work creating primitives, recipes, and extensible storefronts that developers and creators alike can use.
+Metaplex Studios, ecosystem, and community have been moving quickly to support the thousands of developer teams and creators looking to launch their NFT projects on Solana. In response to feedback, we've created tools like our [Candy Machine v2™](/tools/sugar/), to help mint and sell thousands of NFTs for NFT collections and/or common profile picture projects you all know and love. We've also been hard at work creating primitives, recipes, and extensible storefronts that developers and creators alike can use.
 
 We're excited to see what you build with Metaplex, if you have questions please reach out on our [discord!](https://discord.com/invite/metaplex)
 
@@ -14,9 +15,9 @@ Metaplex is built on [Solana](https://crypto-wikipedia.com/what-is-solana-sol/) 
 Metaplex is a collection of tools, smart contracts, and more designed to make the process of creating and launching NFTs easier. While initially focused on supporting the needs of the arts and entertainment industry our plans extend far beyond that to all use cases where an NFT may add value.
 
 Currently, our three major projects are:
-- [Token Metadata](/programs/token-metadata/overview)  - the NFT standard for Solana
-- [The Candy Machine v2™](/tools/sugar/introduction)  - a Profile Picture (PFP) focused tool that works like the gumball-style candy machines of old
-- [Auction House](/guides/auction-house/definition) - a decentralized sales protocol for NFT marketplaces
+- [Token Metadata](/programs/token-metadata/)  - the NFT standard for Solana
+- [The Candy Machine v2™](/tools/sugar/)  - a Profile Picture (PFP) focused tool that works like the gumball-style candy machines of old
+- [Auction House](/guides/auction-house/) - a decentralized sales protocol for NFT marketplaces
 
 ## What's next for Metaplex?
 The Metaplex ecosystem just celebrated its first year exploring the incredible possibilities of NFTs in partnership with the community: 15M NFTs minted, and $3B in value to creators across primary and secondary sales. We are dedicated to enhancing the protocol as a continued source of support, respect and opportunity to garner value for independent builders. If you want to help us on our mission, [join the team](https://apply.workable.com/metaplex-studios/).

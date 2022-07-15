@@ -80,7 +80,7 @@ function ProgramInstructionAccounts({ accounts }) {
                 <td>
                   <div style={{ display: "flex" }}>
                     <Link
-                      href="/programs/understanding-programs#signer-andor-writable-accounts"
+                      href="/programs/#signer-andor-writable-accounts"
                       className={[
                         "program-instruction-account-icon",
                         account.isMut ? "active" : "",
@@ -90,7 +90,7 @@ function ProgramInstructionAccounts({ accounts }) {
                       <WritableIcon></WritableIcon>
                     </Link>
                     <Link
-                      href="/programs/understanding-programs#signer-andor-writable-accounts"
+                      href="/programs/#signer-andor-writable-accounts"
                       className={[
                         "program-instruction-account-icon",
                         account.isSigner ? "active" : "",
