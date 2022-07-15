@@ -39,6 +39,7 @@ Send a tweet to [@metaplex](https://twitter.com/metaplex) or edit this page on G
 - [Hash Table tool](https://aiphotos.art/hash-table) for listing your Candy Machine NFT Collection on secondary marketplaces
 - [Candy Machine V2 Guide](https://hackmd.io/@MarkSackerberg/candyV2)
 - [HashLips](https://github.com/HashLips/hashlips_art_engine) for creating generative art
+- [JustMint - No-Code Launchpad for Generating Art, Deploying your Contract and Creating a Website](https://justmint.org)
 
 ## Fair Launch
 
