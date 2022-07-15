@@ -6,7 +6,7 @@ slug: /terminology
 
 ## Non-fungible tokens
 
-NFTs on Solana can be characterized as a unique [SPL token](https://spl.solana.com/token) with a fixed supply of 1 with 0 decimals that have added metadata attached using the [Token Metadata Program](/programs/token-metadata/overview).
+NFTs on Solana can be characterized as a unique [SPL token](https://spl.solana.com/token) with a fixed supply of 1 with 0 decimals that have added metadata attached using the [Token Metadata Program](/programs/token-metadata/).
 
 Below are the types of NFTs that can be created using Metaplex's Token Metadata program.
 

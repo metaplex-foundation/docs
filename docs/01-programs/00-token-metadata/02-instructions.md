@@ -29,7 +29,7 @@ This instruction enables us to update parts of the Metadata account. Note that s
 
 ![](/assets/programs/token-metadata/Token-Metadata-Instruction-Update-Primary-Sale-Flag.png)
 
-This instruction flips the `Primary Sale Happened` flag to `True`, indicating that the first sale has happened. Note that this field is [indicative](/programs/understanding-programs#indicative-fields) and is typically used by marketplaces to calculate royalties.
+This instruction flips the `Primary Sale Happened` flag to `True`, indicating that the first sale has happened. Note that this field is [indicative](/programs/#indicative-fields) and is typically used by marketplaces to calculate royalties.
 
 </ProgramInstruction>
 

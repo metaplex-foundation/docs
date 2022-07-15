@@ -117,4 +117,4 @@ page](https://github.com/metaplex-foundation/docs/blob/main/docs/overviews/stora
 [arweave path manifest]: https://github.com/ArweaveTeam/arweave/wiki/Path-Manifests
 [cmv2 config guide]: /guides/archived/candy-machine-v2/configuration
 [nft.storage metaplex doc]: https://nft.storage/docs/how-to/mint-solana
-[sugar]: /tools/sugar/introduction
+[sugar]: /tools/sugar/

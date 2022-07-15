@@ -7,7 +7,7 @@ sidebar_label: "Candy Machine Minting UI"
 :::info
 
 This guide assumes you have already uploaded and deployed your Candy Machine. 
-If you haven't yet done this, check out [Sugar CLI](/tools/sugar/introduction) to get started!
+If you haven't yet done this, check out [Sugar CLI](/tools/sugar/) to get started!
 
 :::
 

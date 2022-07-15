@@ -8,8 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   tagline: 'Documentation for the Metaplex frontend and NFT standard.',
   url: 'https://docs.metaplex.com',
   baseUrl: '/',
-  // onBrokenLinks: 'throw',
-  onBrokenLinks: 'warn',
+  onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'logo/favicon.png',
   organizationName: 'metaplex',
@@ -23,7 +22,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/metaplex/docs/tree/main/',
-          remarkPlugins: [require('mdx-mermaid')]
+          remarkPlugins: [require('mdx-mermaid')],
+          showLastUpdateTime: true
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
