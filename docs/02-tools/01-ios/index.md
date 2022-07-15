@@ -1,3 +1,7 @@
+---
+sidebar_label: iOS SDK
+---
+
 # Introduction
 
 The [Metaplex iOS SDK][docs] is a library that allows you to:

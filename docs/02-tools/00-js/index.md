@@ -1,3 +1,7 @@
+---
+sidebar_label: JS SDK
+---
+
 # JavaScript SDK
 
 ## 🚧 Docs currently in construction 🚧
