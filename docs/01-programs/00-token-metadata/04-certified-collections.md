@@ -12,9 +12,9 @@ This feature provides the following advantages:
 
 :::info
 
-The on-chain Certified Collection feature has been added to the Token Metadata program in [version 1.1](./changelog/v1.1).
+The on-chain Certified Collection feature has been added to the Token Metadata program in [version 1.1](./changelog/v1.1). It replaces the `collection` field previously defined in external JSON metadata.
 
-It replaces the `collection` field previously defined in external JSON metadata.
+The additional CollectionDetails field has been added in [version 1.3](./changelog/v1.3).
 
 :::
 
@@ -24,6 +24,9 @@ In order to group NFTs — or any token — together, we must first create a Col
 
 The difference between a Collection NFT and a Regular NFT is that the information provided by the former will be used to define the group of NFTs it contains whereas the latter will be used to define the NFT itself.
 
+
+### Linking Regular NFTs to Collection NFTs.
+
 Collection NFTs and Regular NFTs are **linked together using a "Belong To" relationship** on the Metadata account. The optional `Collection` field on the Metadata account has been created for that purpose.
 
 - If the `Collection` field is set to `None`, it means the NFT is not part of a collection.
@@ -32,13 +35,32 @@ Collection NFTs and Regular NFTs are **linked together using a "Belong To" relat
 As such, the `Collection` field contains two nested fields:
 
 - `Key`: This field points to the Collection NFT the NFT belongs to. More precisely, it points to **the public key of the Mint Account** of the Collection NFT. This Mint Account must be owned by the SPL Token program.
-- `Verified`: This boolean is very important as it is used to verify that the NFT is truly part of the collection it points to.
+- `Verified`: This boolean is very important as it is used to verify that the NFT is truly part of the collection it points to. More on that below.
+
+### Differentiating Regular NFTs from Collection NFTs.
+
+The `Collection` field alone allows us to link NFTs and Collections together but it doesn't help us identify if a given NFT is a Regular NFT or a Collection NFT. That's why the `CollectionDetails` field was created. It provides additional context on Collection NFTs and differentiate them from Regular NFTs.
+
+- If the `CollectionDetails` field is set to `None`, it means the NFT is a **Regular NFT**.
+- If the `CollectionDetails` field is set, it means the NFT is a **Collection NFT** and additional attributes can be found inside this field.
+
+The `CollectionDetails` is an optional enum which currently contains only one option `V1`. This option is a struct that contains the following field:
+
+- `Size`: The size of the collection, i.e. the number of NFTs that are directly linked to this Collection NFT. This number is automatically computed by the Token Metadata program but can also be set manually to facilitate the migration process.
+
+Note that, because `CollectionDetails` is a new field, not all existing collections will use it yet. This means, **it is possible for a Collection NFT created before version 1.3, to have `CollectionDetails` set to `None` but to still be a Collection NFT**.
+
+That being said, we encourage new collections to use it both to allow sizing their collections and provide an on-chain way to determine a Collection NFT from a Regular one. We also encourage existing collections to [migrate their Collection NFT](#migrating-to-sized-collections).
+
 
 ![](/assets/programs/token-metadata/Token-Metadata-Collections-Collection-NFT.png#radius)
 
-Notice that, because Collections and NFTs are linked together via a "Belong To" relationship, it is possible by design to define nested collections.
+### Nested Collections
 
-Also note that there is currently no way to distinguish between a Collection NFT and a Regular NFT that is part of a Collection. This is a limitation we are currently working on as part of [version 1.3](https://github.com/metaplex-foundation/metaplex-program-library/discussions/444).
+Because Collections and NFTs are linked together via a "Belong To" relationship, it is possible by design to define nested collections. In this scenario, the `Collection` and `CollectionDetails` fields can be used together to differentiate Root and Nested Collection NFTs.
+
+![](/assets/programs/token-metadata/
+Token-Metadata-Collections-Nested-Collection.png)
 
 ## Verifying NFTs in Collections
 
@@ -66,11 +88,19 @@ If those 3 steps are not followed you could be exposing fraudulent NFTs on real 
 
 :::
 
-The following instructions are available to set, verify or unverify an NFT as part of a collection:
+The following instructions are available to set, verify or unverify an NFT as part of a sized collection:
 
-- [Verify the collection](./instructions#verify-the-collection)
-- [Unverify the collection](./instructions#unverify-the-collection)
-- [Set and verify the collection](./instructions#set-and-verify-the-collection) (Introduced in version 1.2)
+- [Verify a sized collection item](./instructions#verify-a-sized-collection-item) (Introduced in version 1.3)
+- [Unverify a sized collection item](./instructions#unverify-a-sized-collection-item) (Introduced in version 1.3)
+- [Set and verify a sized collection item](./instructions#set-and-verify-a-sized-collection-item) (Introduced in version 1.3)
+
+If you're Collection NFT does not yet have its `CollectionDetails` field setup, you must use the following instructions instead:
+
+- [Verify a collection item](./instructions#verify-a-collection-item)
+- [Unverify a collection item](./instructions#unverify-a-collection-item)
+- [Set and verify a collection item](./instructions#set-and-verify-a-collection-item) (Introduced in version 1.2)
+
+You may consider [migrating your Collection NFT](#migrating-to-sized-collections) instead.
 
 ## Delegating the Collection Authority
 
@@ -122,3 +152,9 @@ Note that the Metaplex team has recorded a video tutorial on how Verified Collec
 [![Verified Collections Tutorial](/assets/programs/token-metadata/verified-collections.gif#radius#shadow)](https://drive.google.com/file/d/1VU4xL_yF6LCe0UogVn4As5PMAzUV__8C/view?usp=sharing)
 
 </div>
+
+## Migrating to Sized Collections
+
+If your Collection NFT was created before version 1.3, its `CollectionDetails` field will not be set. That means, wallets and applications will not be able to differentiate it with Regular NFTs and we won't know how many items are attached to the Collection NFT.
+
+In order to facilitate the migration of your Collection NFT to a Sized Collection NFT, there is a new instruction available: [Set a collection size](./instructions#set-collection-size). This instruction allows you to set the number of items that are currently attached to the Collection NFT **once**. Afterwards, this information will only be tracked on-chain.

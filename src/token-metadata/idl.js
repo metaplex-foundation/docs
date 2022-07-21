@@ -2,7 +2,7 @@ import docs from "./idl-docs";
 
 export default {
   docs, // <- Injects additional data to the IDL.
-  version: "1.2.7",
+  version: "1.3.1",
   name: "mpl_token_metadata",
   instructions: [
     {
@@ -1455,10 +1455,16 @@ export default {
           desc: "Collection Authority Record PDA",
         },
         {
-          name: "updateAuthority",
+          name: "delegateAuthority",
           isMut: true,
           isSigner: true,
-          desc: "Update Authority of Collection NFT",
+          desc: "Delegated Collection Authority",
+        },
+        {
+          name: "revokeAuthority",
+          isMut: true,
+          isSigner: true,
+          desc: "Update Authority, or Delegated Authority, of Collection NFT",
         },
         {
           name: "metadata",
@@ -1640,6 +1646,360 @@ export default {
         value: 28,
       },
     },
+    {
+      name: "BurnNft",
+      accounts: [
+        {
+          name: "metadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata (pda of ['metadata', program id, mint id])",
+        },
+        {
+          name: "owner",
+          isMut: true,
+          isSigner: true,
+          desc: "NFT owner",
+        },
+        {
+          name: "mint",
+          isMut: true,
+          isSigner: false,
+          desc: "Mint of the NFT",
+        },
+        {
+          name: "tokenAccount",
+          isMut: true,
+          isSigner: false,
+          desc: "Token account to close",
+        },
+        {
+          name: "masterEditionAccount",
+          isMut: true,
+          isSigner: false,
+          desc: "MasterEdition2 of the NFT",
+        },
+        {
+          name: "splTokenProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "SPL Token Program",
+        },
+        {
+          name: "collectionMetadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata of the Collection",
+          optional: true,
+        },
+      ],
+      args: [],
+      discriminant: {
+        type: "u8",
+        value: 29,
+      },
+    },
+    {
+      name: "VerifySizedCollectionItem",
+      accounts: [
+        {
+          name: "metadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata account",
+        },
+        {
+          name: "collectionAuthority",
+          isMut: false,
+          isSigner: true,
+          desc: "Collection Update authority",
+        },
+        {
+          name: "payer",
+          isMut: true,
+          isSigner: true,
+          desc: "payer",
+        },
+        {
+          name: "collectionMint",
+          isMut: false,
+          isSigner: false,
+          desc: "Mint of the Collection",
+        },
+        {
+          name: "collection",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata Account of the Collection",
+        },
+        {
+          name: "collectionMasterEditionAccount",
+          isMut: false,
+          isSigner: false,
+          desc: "MasterEdition2 Account of the Collection Token",
+        },
+        {
+          name: "collectionAuthorityRecord",
+          isMut: false,
+          isSigner: false,
+          desc: "Collection Authority Record PDA",
+          optional: true,
+        },
+      ],
+      args: [],
+      discriminant: {
+        type: "u8",
+        value: 30,
+      },
+    },
+    {
+      name: "UnverifySizedCollectionItem",
+      accounts: [
+        {
+          name: "metadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata account",
+        },
+        {
+          name: "collectionAuthority",
+          isMut: false,
+          isSigner: true,
+          desc: "Collection Authority",
+        },
+        {
+          name: "payer",
+          isMut: true,
+          isSigner: true,
+          desc: "payer",
+        },
+        {
+          name: "collectionMint",
+          isMut: false,
+          isSigner: false,
+          desc: "Mint of the Collection",
+        },
+        {
+          name: "collection",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata Account of the Collection",
+        },
+        {
+          name: "collectionMasterEditionAccount",
+          isMut: false,
+          isSigner: false,
+          desc: "MasterEdition2 Account of the Collection Token",
+        },
+        {
+          name: "collectionAuthorityRecord",
+          isMut: false,
+          isSigner: false,
+          desc: "Collection Authority Record PDA",
+          optional: true,
+        },
+      ],
+      args: [],
+      discriminant: {
+        type: "u8",
+        value: 31,
+      },
+    },
+    {
+      name: "SetAndVerifySizedCollectionItem",
+      accounts: [
+        {
+          name: "metadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata account",
+        },
+        {
+          name: "collectionAuthority",
+          isMut: false,
+          isSigner: true,
+          desc: "Collection Update authority",
+        },
+        {
+          name: "payer",
+          isMut: true,
+          isSigner: true,
+          desc: "payer",
+        },
+        {
+          name: "updateAuthority",
+          isMut: false,
+          isSigner: false,
+          desc: "Update Authority of Collection NFT and NFT",
+        },
+        {
+          name: "collectionMint",
+          isMut: false,
+          isSigner: false,
+          desc: "Mint of the Collection",
+        },
+        {
+          name: "collection",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata Account of the Collection",
+        },
+        {
+          name: "collectionMasterEditionAccount",
+          isMut: true,
+          isSigner: false,
+          desc: "MasterEdition2 Account of the Collection Token",
+        },
+        {
+          name: "collectionAuthorityRecord",
+          isMut: false,
+          isSigner: false,
+          desc: "Collection Authority Record PDA",
+          optional: true,
+        },
+      ],
+      args: [],
+      discriminant: {
+        type: "u8",
+        value: 32,
+      },
+    },
+    {
+      name: "CreateMetadataAccountV3",
+      accounts: [
+        {
+          name: "metadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata key (pda of ['metadata', program id, mint id])",
+        },
+        {
+          name: "mint",
+          isMut: false,
+          isSigner: false,
+          desc: "Mint of token asset",
+        },
+        {
+          name: "mintAuthority",
+          isMut: false,
+          isSigner: true,
+          desc: "Mint authority",
+        },
+        {
+          name: "payer",
+          isMut: true,
+          isSigner: true,
+          desc: "payer",
+        },
+        {
+          name: "updateAuthority",
+          isMut: false,
+          isSigner: false,
+          desc: "update authority info",
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "System program",
+        },
+        {
+          name: "rent",
+          isMut: false,
+          isSigner: false,
+          desc: "Rent info",
+        },
+      ],
+      args: [
+        {
+          name: "createMetadataAccountArgsV3",
+          type: {
+            defined: "CreateMetadataAccountArgsV3",
+          },
+        },
+      ],
+      discriminant: {
+        type: "u8",
+        value: 33,
+      },
+    },
+    {
+      name: "SetCollectionSize",
+      accounts: [
+        {
+          name: "collectionMetadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Collection Metadata account",
+        },
+        {
+          name: "collectionAuthority",
+          isMut: true,
+          isSigner: true,
+          desc: "Collection Update authority",
+        },
+        {
+          name: "collectionMint",
+          isMut: false,
+          isSigner: false,
+          desc: "Mint of the Collection",
+        },
+        {
+          name: "collectionAuthorityRecord",
+          isMut: false,
+          isSigner: false,
+          desc: "Collection Authority Record PDA",
+          optional: true,
+        },
+      ],
+      args: [
+        {
+          name: "setCollectionSizeArgs",
+          type: {
+            defined: "SetCollectionSizeArgs",
+          },
+        },
+      ],
+      discriminant: {
+        type: "u8",
+        value: 34,
+      },
+    },
+    {
+      name: "SetTokenStandard",
+      accounts: [
+        {
+          name: "metadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata account",
+        },
+        {
+          name: "updateAuthority",
+          isMut: true,
+          isSigner: true,
+          desc: "Metadata update authority",
+        },
+        {
+          name: "mint",
+          isMut: false,
+          isSigner: false,
+          desc: "Mint account",
+        },
+        {
+          name: "edition",
+          isMut: false,
+          isSigner: false,
+          desc: "Edition account",
+          optional: true,
+        },
+      ],
+      args: [],
+      discriminant: {
+        type: "u8",
+        value: 35,
+      },
+    },
   ],
   accounts: [
     {
@@ -1742,6 +2102,14 @@ export default {
             type: {
               option: {
                 defined: "Uses",
+              },
+            },
+          },
+          {
+            name: "collectionDetails",
+            type: {
+              option: {
+                defined: "CollectionDetails",
               },
             },
           },
@@ -2061,6 +2429,32 @@ export default {
       },
     },
     {
+      name: "CreateMetadataAccountArgsV3",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "data",
+            type: {
+              defined: "DataV2",
+            },
+          },
+          {
+            name: "isMutable",
+            type: "bool",
+          },
+          {
+            name: "collectionDetails",
+            type: {
+              option: {
+                defined: "CollectionDetails",
+              },
+            },
+          },
+        ],
+      },
+    },
+    {
       name: "CreateMasterEditionArgs",
       type: {
         kind: "struct",
@@ -2105,6 +2499,18 @@ export default {
         fields: [
           {
             name: "numberOfUses",
+            type: "u64",
+          },
+        ],
+      },
+    },
+    {
+      name: "SetCollectionSizeArgs",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "size",
             type: "u64",
           },
         ],
@@ -2343,6 +2749,18 @@ export default {
           },
           {
             name: "Single",
+          },
+        ],
+      },
+    },
+    {
+      name: "CollectionDetails",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "V1",
+            fields: ["u64"],
           },
         ],
       },
@@ -2864,11 +3282,69 @@ export default {
       name: "InvalidUser",
       msg: "Invalid User",
     },
+    {
+      code: 99,
+      name: "RevokeCollectionAuthoritySignerIncorrect",
+      msg: "Revoke Collection Authority signer is incorrect",
+    },
+    {
+      code: 100,
+      name: "TokenCloseFailed",
+      msg: "Token close failed",
+    },
+    {
+      code: 101,
+      name: "UnsizedCollection",
+      msg: "Can't use this function on unsized collection",
+    },
+    {
+      code: 102,
+      name: "SizedCollection",
+      msg: "Can't use this function on a sized collection",
+    },
+    {
+      code: 103,
+      name: "MissingCollectionMetadata",
+      msg: "Can't burn a verified member of a collection w/o providing collection metadata account",
+    },
+    {
+      code: 104,
+      name: "NotAMemberOfCollection",
+      msg: "This NFT is not a member of the specified collection.",
+    },
+    {
+      code: 105,
+      name: "NotVerifiedMemberOfCollection",
+      msg: "This NFT is not a verified member of the specified collection.",
+    },
+    {
+      code: 106,
+      name: "NotACollectionParent",
+      msg: "This NFT is not a collection parent NFT.",
+    },
+    {
+      code: 107,
+      name: "CouldNotDetermineTokenStandard",
+      msg: "Could not determine a TokenStandard type.",
+    },
+    {
+      code: 108,
+      name: "MissingEditionAccount",
+      msg: "This mint account has an edition but none was provided.",
+    },
+    {
+      code: 109,
+      name: "NotAMasterEdition",
+      msg: "This edition is not a Master Edition",
+    },
+    {
+      code: 110,
+      name: "MasterEditionHasPrints",
+      msg: "This Master Edition has existing prints",
+    },
   ],
   metadata: {
     origin: "shank",
     address: "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s",
-    binaryVersion: "0.0.2",
-    libVersion: "~0.0.2",
   },
 };

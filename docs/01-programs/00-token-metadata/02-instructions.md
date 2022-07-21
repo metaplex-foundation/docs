@@ -5,7 +5,7 @@ import idl from '/src/token-metadata/idl.js';
 
 ## Create a Metadata account
 
-<ProgramInstruction idl={idl} instruction="CreateMetadataAccountV2">
+<ProgramInstruction idl={idl} instruction="CreateMetadataAccountV3">
 
 ![](/assets/programs/token-metadata/Token-Metadata-Instruction-Create-Metadata.png)
 
@@ -20,6 +20,23 @@ This instruction creates and initializes a new [Metadata](./accounts#metadata) a
 ![](/assets/programs/token-metadata/Token-Metadata-Instruction-Update-Metadata.png)
 
 This instruction enables us to update parts of the Metadata account. Note that some fields have constraints limiting how they can be updated. For instance, once the `Is Mutable` field is set to `False`, it cannot be changed back to `True`.
+
+</ProgramInstruction>
+
+## Burn a NFT
+
+<ProgramInstruction idl={idl} instruction="BurnNft">
+
+This instruction enables the owner of the NFT to completely burn it:
+
+* burning the SPL token and closing the token account
+* closing the metadata and edition accounts
+* giving the owner the reclaimed funds from closing these accounts
+
+This handler checks if the NFT is a member of a verified collection, and if it is, requires the collection metadata account be passed in so the size can be decremented.
+
+This handler will not close metadata and edition accounts where the token has already been burned and the mint has a supply of 0. At that point there is no official "owner" of the NFT.
+
 
 </ProgramInstruction>
 
@@ -95,23 +112,51 @@ It requires the same conditions as the Master Edition account regarding the Mint
 
 </ProgramInstruction>
 
-## Verify the collection
+## Verify a collection item
 
 <ProgramInstruction idl={idl} instruction="VerifyCollection">
 
 ![](/assets/programs/token-metadata/Token-Metadata-Instruction-Verify-Collection.png)
 
-This instruction verifies the collection of a Metadata account. As long as the provided `Collection Authority` is allowed to update the parent collection and signs the transaction, the `Verified` boolean will be set to `True` on the `Collection` field.
+This instruction verifies the collection of a Metadata account for unsized parent NFTs, by setting the `Verified` boolean to `True` on the `Collection` field. Calling it on a collection whose parent NFT has a size field will throw an error.
+
+Clients should detect if a NFT is part of a sized collection or not and call the appropriate handler for the user to abstract away this detail.
 
 </ProgramInstruction>
 
-## Unverify the collection
+## Verify a sized collection item
+
+<ProgramInstruction idl={idl} instruction="VerifySizedCollectionItem">
+
+![](/assets/programs/token-metadata/Token-Metadata-Instruction-Verify-Sized-Collection.png)
+
+This instruction verifies the collection of a Metadata account, by setting the `Verified` boolean to `True` on the `Collection` field, and increments the size field of the parent NFT. Calling it on a collection whose parent NFT does not have a size field will throw an error. 
+
+Clients should detect if a NFT is part of a sized collection or not and call the appropriate handler for the user to abstract away this detail.
+
+</ProgramInstruction>
+
+## Unverify a collection item
 
 <ProgramInstruction idl={idl} instruction="UnverifyCollection">
 
 ![](/assets/programs/token-metadata/Token-Metadata-Instruction-Unverify-Collection.png)
 
-This instruction unverifies the collection of a Metadata account. As long as the provided `Collection Authority` is allowed to update the parent collection and signs the transaction, the `Verified` boolean will be set to `False` on the `Collection` field.
+This instruction unverifies the collection of a Metadata account for unsized parent NFTs, by setting the `Verified` boolean to `False` on the `Collection` field. Calling it on a collection whose parent NFT has a size field will throw an error.
+
+Clients should detect if a NFT is part of a sized collection or not and call the appropriate handler for the user to abstract away this detail.
+
+</ProgramInstruction>
+
+## Unverify a sized collection item
+
+<ProgramInstruction idl={idl} instruction="UnverifySizedCollectionItem">
+
+![](/assets/programs/token-metadata/Token-Metadata-Instruction-Unverify-Sized-Collection.png)
+
+This instruction unverifies the collection of a Metadata account, by setting the `Verified` boolean to `False` on the `Collection` field, and increments the size field of the parent NFT. Calling it on a collection whose parent NFT does not have a size field will throw an error.
+
+Clients should detect if a NFT is part of a sized collection or not and call the appropriate handler for the user to abstract away this detail.
 
 </ProgramInstruction>
 
@@ -119,7 +164,19 @@ This instruction unverifies the collection of a Metadata account. As long as the
 
 <ProgramInstruction idl={idl} instruction="SetAndVerifyCollection">
 
-This instruction updated the `Collection` field of a Metadata account using the provided `Collection Mint` account as long as its `Collection Authority` signs the transaction.
+This instruction updates the `Collection` field of a Metadata account using the provided `Collection Mint` account as long as its `Collection Authority` signs the transaction and the parent NFT does not have the collection details field populated (unsized).
+
+Clients should detect if a NFT is part of a sized collection or not and call the appropriate handler for the user to abstract away this detail.
+
+</ProgramInstruction>
+
+## Set and verify a sized collection item
+
+<ProgramInstruction idl={idl} instruction="SetAndVerifySizedCollectionItem">
+
+This instruction updates the `Collection` field of a Metadata account for sized collections using the provided `Collection Mint` account as long as its `Collection Authority` signs the transaction and the parent NFT has the collection details field populated (sized).
+
+Clients should detect if a NFT is part of a sized collection or not and call the appropriate handler for the user to abstract away this detail.
 
 </ProgramInstruction>
 
@@ -220,5 +277,29 @@ Note that, this is automatically done by the Token Metadata program when creatin
 <ProgramInstruction idl={idl} instruction="ConvertMasterEditionV1ToV2">
 
 This instruction serves as a migration tool that upgrades a Master Edition account of an NFT from V1 to V2.
+
+</ProgramInstruction>
+
+## Set collection size
+
+<ProgramInstruction idl={idl} instruction="SetCollectionSize">
+
+![](/assets/programs/token-metadata/Token-Metadata-Instruction-Set-Collection-Size.png)
+
+This instruction allows the update authority of a collection parent NFT to set the size of the collection **once** in order to allow existing unsized collections to be updated to track size. Once a collection is sized it can only be verified and unverified by the sized handlers and can't be changed back to unsized. 
+
+</ProgramInstruction>
+
+
+## Set token standard
+
+<ProgramInstruction idl={idl} instruction="SetTokenStandard">
+
+![](/assets/programs/token-metadata/
+Token-Metadata-Instruction-Set-Token-Standard.png)
+
+
+This instruction allows an update authority to pass in a metadata account with an optional edition account and then it determines what the correct TokenStandard type is and writes it to the metadata. See [Token Standard](./token-standard) for more information.
+
 
 </ProgramInstruction>

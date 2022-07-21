@@ -129,6 +129,10 @@ export default {
       },
     },
     Collection: {
+      size: 34,
+      description:
+        "This field optionally links to the Mint address of another NFT that " +
+        "acts as a Collection NFT. It contains the following sub-fields.",
       fields: {
         key: {
           size: 32,
@@ -143,6 +147,10 @@ export default {
       },
     },
     Uses: {
+      size: 18,
+      description:
+        'This field can make NFTs usable. Meaning you can load it with a certain amount of "uses" ' +
+        'and use it until it has run out. You can <a href="/programs/token-metadata/using-nfts">learn more about using NFTs here</a>.',
       fields: {
         useMethod: {
           size: 1,
@@ -160,9 +168,22 @@ export default {
         },
       },
     },
-    CreateMetadataAccountArgsV2: {
+    CollectionDetails: {
+      size: 8,
       description:
-        "An object containing all the arguments for the <code>CreateMetadataAccountV2</code> instruction.",
+        "This optional enum allows us to differentiate Collection NFTs from Regular NFTs whilst adding additional context " +
+        "such as the amount of NFTs that are linked to the Collection NFT. " +
+        'You can <a href="/programs/token-metadata/certified-collections#differentiating-regular-nfts-from-collection-nfts">learn more about the sized collections here</a>',
+      fields: {
+        size: {
+          size: 8,
+          description: "The number of NFTs attached to this Collection NFT.",
+        },
+      },
+    },
+    CreateMetadataAccountArgsV3: {
+      description:
+        "An object containing all the arguments for the <code>CreateMetadataAccountV3</code> instruction.",
       fields: {
         isMutable: sharedFields.isMutable,
       },
@@ -241,18 +262,6 @@ export default {
           size: 2,
           description:
             'This enum captures the fungibility of the token. You can <a href="/programs/token-metadata/token-standard">learn more about the token standard here</a>.',
-        },
-        collection: {
-          size: 34,
-          description:
-            "This field optionally links to the Mint address of another NFT that " +
-            "acts as a Collection NFT. It contains the following sub-fields.",
-        },
-        uses: {
-          size: 18,
-          description:
-            'This field can make NFTs usable. Meaning you can load it with a certain amount of "uses" ' +
-            'and use it until it has run out. You can <a href="/programs/token-metadata/using-nfts">learn more about using NFTs here</a>.',
         },
       },
     },
