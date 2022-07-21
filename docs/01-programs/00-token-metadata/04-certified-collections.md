@@ -59,8 +59,7 @@ That being said, we encourage new collections to use it both to allow sizing the
 
 Because Collections and NFTs are linked together via a "Belong To" relationship, it is possible by design to define nested collections. In this scenario, the `Collection` and `CollectionDetails` fields can be used together to differentiate Root and Nested Collection NFTs.
 
-![](/assets/programs/token-metadata/
-Token-Metadata-Collections-Nested-Collection.png)
+![](/assets/programs/token-metadata/Token-Metadata-Collections-Nested-Collection.png)
 
 ## Verifying NFTs in Collections
 
