@@ -116,6 +116,11 @@
       "permanent": true
     },
     {
+      "source": "/tools/sugar/asset-preparation-and-deployment",
+      "destination": "/tools/sugar/commands",
+      "permanent": true
+    },
+    {
       "source": "/sugar/introduction",
       "destination": "/tools/sugar/",
       "permanent": true
