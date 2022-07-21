@@ -136,6 +136,11 @@
       "permanent": true
     },
     {
+      "source": "/mint-lists",
+      "destination": "/guides/mint-lists",
+      "permanent": true
+    },
+    {
       "source": "/overviews/(candy_machine_overview|burn_NFTS|features_overview|metadata_overview|metaplex_overview|stores_overview)",
       "destination": "/",
       "permanent": true

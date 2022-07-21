@@ -1,5 +1,5 @@
 ---
-sidebar_label: "NFT Hash Lists"
+sidebar_label: "NFT Mint Lists"
 ---
 
 # Mint Account List ("Hash List")
