@@ -17,6 +17,18 @@
   --ifm-code-font-size: 95%;
 }
 
+html[data-theme="dark"] img[src*="#shadow"] {
+  filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.75));
+}
+
+html[data-theme="light"] img[src*="#shadow"] {
+  filter: drop-shadow(0 0 0.5rem rgba(170, 170, 170, 0.55));
+}
+
+img[src*="#radius"] {
+  border-radius: 8px;
+}
+
 .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.1);
   display: block;
@@ -44,10 +56,6 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
 
 .card:hover {
   transform: translate(0px, -5px);
-}
-
-.col {
-  margin-top: 32px;
 }
 
 .api_stability {

@@ -41,7 +41,7 @@
     - ⏳ Writing Your Own Plugin
     - ⏳ Contributing
     - ⏳ FAQ
-  - 📝 Sugar (Needs to be moved inside the "Tools" section)
+  - 📝 Sugar (Needs to be moved inside the "Tools" section and/or guide section)
     - ✅ Overview
     - ✅ Installation
     - ✅ Getting Started
@@ -52,15 +52,19 @@
   - ⏳ Shank
   - ⏳ Solita
   - ⏳ Amman
-  - 📝 Candy Machine CLI (Needs to be moved inside the "Tools" section)
 - ⏳ Guides
-  - 📝 Managing a Fair Launch
-  - 📝 How to Burn Tokens
+  - 📝 Candy Machine
+  - 📝 Auction House
   - 📝 NFT hash lists
-  - 📝 Candy Machine V2
+  - 📝 How to Burn Tokens
+  - 📝 NFT Storage Options
   - 📝 Community Guides
   - ⏳ Archived
-    - 📝 Candy Machine V1
+    - ✅ Candy Machine (v2) JS CLI
+    - ✅ Candy Machine V1
+    - ✅ Fair launch
+    - ✅ Storefront
+    - ✅ Architecture section
 - ⏳ Proposals
 - ✅ Security Policy
 - 📝 Contact Us
@@ -77,6 +81,6 @@
 - **Getting Started**: Provide resources for developers to start using the program. These resources should be internal when possible, i.e. referring to our "Tools" and/or "Guides" sections.
 - **Accounts**: List and explain each type of Account and the data they contain.
 - **Instructions**: List and explain each Instruction and how they update the state of Accounts.
-- **[Feature Pages]\***: Each program will likely have a need for feature-specific pages, e.g. explaining NFT Collections. Each page should provide an overview of the feature it represent and guide the reader through the accounts and instructions needed to use it.
+- **[Feature Pages]\***: Each program will likely have a need for feature-specific pages, e.g. explaining NFT Collections. Each page should provide an overview of the feature it represents and guide the reader through the accounts and instructions needed to use it.
 - **FAQ**: Provides the perfect place for us to insert questions we keep answering on various platforms such as Discord. We can also use that page for documenting gotchas. If the answer is long enough to be a guide, it may point to: a page in the "Guide" section, a public Notion page, a GitHub issue, etc.
 - **Changelog**: Provides a list of major changes that happened in the program.

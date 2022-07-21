@@ -2,7 +2,7 @@
   "redirects": [
     {
       "source": "/token-metadata/getting-started",
-      "destination": "/programs/token-metadata/overview",
+      "destination": "/programs/token-metadata/",
       "permanent": true
     },
     {
@@ -17,7 +17,7 @@
     },
     {
       "source": "/token-metadata/Versions/v1.2.\\*/overview",
-      "destination": "/programs/token-metadata/changelog/overview",
+      "destination": "/programs/token-metadata/changelog/",
       "permanent": true
     },
     {
@@ -29,6 +29,133 @@
       "source": "/token-metadata/Versions/v1.0.0/nft-standard",
       "destination": "/programs/token-metadata/changelog/v1.0",
       "permanent": true
+    },
+    {
+      "destination": "/programs/understanding-programs",
+      "source": "/programs/",
+      "permanent": true
+    },
+    {
+      "source": "/programs/token-metadata/overview",
+      "destination": "/programs/token-metadata/",
+      "permanent": true
+    },
+    {
+      "source": "/programs/token-metadata/changelog/overview",
+      "destination": "/programs/token-metadata/changelog/",
+      "permanent": true
+    },
+    {
+      "source": "/storefront/:path*",
+      "destination": "/guides/archived/storefront/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/fair-launch/:path*",
+      "destination": "/guides/archived/fair-launch/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/architecture/:path*",
+      "destination": "/guides/archived/architecture/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/candy-machine-v1/:path*",
+      "destination": "/guides/archived/candy-machine-v1/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/airdrops/create-gumdrop",
+      "destination": "/guides/airdrops",
+      "permanent": true
+    },
+    {
+      "source": "/auction-house/:path(getting-started|faq|cli|roadmap|auctioneer)",
+      "destination": "/guides/auction-house/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/auction-house/definition",
+      "destination": "/guides/auction-house/",
+      "permanent": true
+    },
+    {
+      "source": "/auctioneers/timed_auction/overview",
+      "destination": "/guides/auction-house/auctioneers/timed_auction",
+      "permanent": true
+    },
+    {
+      "source": "/guides/auction-house/auctioneers/timed_auction/overview",
+      "destination": "/guides/auction-house/auctioneers/timed_auction",
+      "permanent": true
+    },
+    {
+      "source": "/sdk/ios/:path*",
+      "destination": "/tools/ios/",
+      "permanent": true
+    },
+    {
+      "source": "/sdk/js/:path*",
+      "destination": "/tools/js/",
+      "permanent": true
+    },
+    {
+      "source": "/about/terminology",
+      "destination": "/terminology",
+      "permanent": true
+    },
+    {
+      "source": "/sugar/:path(installation|quick-start|working-with-sugar|configuration|upload-methods)",
+      "destination": "/tools/sugar/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/sugar/asset-preparation-and-deployment",
+      "destination": "/tools/sugar/commands",
+      "permanent": true
+    },
+    {
+      "source": "/sugar/introduction",
+      "destination": "/tools/sugar/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/sugar/introduction",
+      "destination": "/tools/sugar/",
+      "permanent": true
+    },
+    {
+      "source": "/overviews/storage_overview",
+      "destination": "/guides/storage-overview",
+      "permanent": true
+    },
+    {
+      "source": "/overviews/(candy_machine_overview|burn_NFTS|features_overview|metadata_overview|metaplex_overview|stores_overview)",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/candy-machine-v2/:path(configuration|creating-candy-machine|getting-started|introduction|mint-tokens|preparing-assets|sign-nfts|update|verify-upload|withdraw)",
+      "destination": "/guides/archived/candy-machine-v2/:path",
+      "permanent": true
+    },
+    {
+      "source": "/candy-machine-v2/mint-frontend",
+      "destination": "/guides/candy-machine-ui",
+      "permanent": true
+    },
+    {
+      "source": "/tools/js/getting-started",
+      "destination": "/tools/js/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/ios/getting-started",
+      "destination": "/tools/ios/",
+      "permanent": true
     }
   ]
 }
+
+
