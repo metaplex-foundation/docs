@@ -1,6 +1,5 @@
 ---
 slug: /
-sidebar_label: About
 ---
 
 # Introduction
