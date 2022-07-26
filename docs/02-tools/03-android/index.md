@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_label: Android SDK
 ---
 
 # Introduction
