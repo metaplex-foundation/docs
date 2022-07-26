@@ -109,7 +109,7 @@ The NFT module can be accessed via `Metaplex.nft` and provide the following meth
 - findAllByCreator(creator, position = 1, callback)
 - findAllByCandyMachine(candyMachine, version = 2, callback)
 
-All the methods return a callback. Its also possible to wrap them inside either RX, and async Result or Combine. We only provide this interface since is the most compatible without forcing any specific framework. 
+All the methods return a callback. It's also possible to wrap them inside either RX or Async Result. We only provide this interface since is the most compatible without forcing any specific framework. 
 
 ### Your first request
 
