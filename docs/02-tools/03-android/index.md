@@ -65,19 +65,21 @@ After that gradle sync.
 The library is now is available through JitPack.io
 
 First, add the JitPack repository to your build:
+```
 
 repositories {
 	...
 	maven { url 'https://jitpack.io' }
 }
 
+```
 Then add the dependency to the 'build.gradle' file for your app/module:
-
+```
 dependencies {
 	...
 	implementation 'com.github.metaplex-foundation:metaplex-android:{version}'
 }
-
+```
 ### Setup
 ## Setup
 
