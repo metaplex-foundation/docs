@@ -30,7 +30,7 @@ This project is in development. **All** interfaces are _very likely_ to change v
 
 - Android 21+
 
-I recomend using the github recomended way to load Artifacts. First get a Github Token from your [account settings](https://github.com/settings/tokens).
+I recommend using the github recommended way to load Artifacts. First get a Github Token from your [account settings](https://github.com/settings/tokens).
 
 Inside settings.gradle add a maven repository:
 
@@ -85,11 +85,11 @@ dependencies {
 
 The entry point to the Android SDK is a `Metaplex` instance that will give you access to its API.
 
-Set the `SolanaConnectionDriver` and setup your enviroment. Provide a `StorageDriver` and `IdentityDriver`. You can also use the concrete implementations OkHttpSharedStorageDriver for OKHttp and ReadOnlyIdentityDriver for a read only Indentity Driver. 
+Set the `SolanaConnectionDriver` and setup your environment. Provide a `StorageDriver` and `IdentityDriver`. You can also use the concrete implementations OkHttpSharedStorageDriver for OKHttp and ReadOnlyIdentityDriver for a read only Identity Driver. 
 
-You can customise who the SDK should interact on behalf of and which storage provider to use when uploading assets. We might provide a default and simple implementation in the future.
+You can customize who the SDK should interact on behalf of and which storage provider to use when uploading assets. We might provide a default and simple implementation in the future.
 
-```koltin
+```kotlin
 val ownerPublicKey = PublicKey("<Any PublicKey>")
 val solanaConnection = SolanaConnectionDriver(RPCEndpoint.mainnetBetaSolana)
 val solanaIdentityDriver = ReadOnlyIdentityDriver(ownerPublicKey, solanaConnection.solanaRPC)
@@ -101,7 +101,7 @@ val metaplex = Metaplex(solanaConnection, solanaIdentityDriver, storageDriver)
 Once properly configured, that `Metaplex` instance can be used to access modules providing different sets of features. Currently, there is only one NFT module that can be accessed via the `nft` property. From that module, you will be able to find, create and update NFTs with more features to come.
 
 ## NFTs
-The NFT module can be accessed via `Metaplex.nft` and provide the following methods. Currently we only support readding methods. Writing and creating NFTs will be suported on the future.
+The NFT module can be accessed via `Metaplex.nft` and provide the following methods. Currently we only support reading methods. Writing and creating NFTs will be supported on the future.
 
 - findByMint(mint, callback)
 - findAllByMintList(mints, callback)
@@ -109,7 +109,7 @@ The NFT module can be accessed via `Metaplex.nft` and provide the following meth
 - findAllByCreator(creator, position = 1, callback)
 - findAllByCandyMachine(candyMachine, version = 2, callback)
 
-All the methods return a callback. Its also posible to wrap them inside either RX, and async Result or Combine. We only provide this interface since is the most compatible without forcing any specific framework. 
+All the methods return a callback. Its also possible to wrap them inside either RX, and async Result or Combine. We only provide this interface since is the most compatible without forcing any specific framework. 
 
 ### Your first request
 
@@ -189,7 +189,7 @@ Let’s have a quick look at the concrete identity drivers available to us.
 
 ### GuestIdentityDriver
 
-The `GuestIdentityDriver` driver is the simpliest identity driver. It is essentially a `null` driver that can be useful when we don’t need to send any signed transactions. It will return failure if you use `signTransaction` methods.
+The `GuestIdentityDriver` driver is the simplest identity driver. It is essentially a `null` driver that can be useful when we don’t need to send any signed transactions. It will return failure if you use `signTransaction` methods.
 
 
 ### KeypairIdentityDriver
@@ -211,11 +211,11 @@ interface StorageDriver {
 }
 ```
 
-Curently its only used to retrive json data off-chain. 
+Currently its only used to retrieve json data off-chain. 
 
 ### OkHttpSharedStorageDriver
 
-This will use OkHttp networking. Which is the most popular Android networking implmentation library. This maybe the most useful implementation.
+This will use OkHttp networking. Which is the most popular Android networking implementation library. This maybe the most useful implementation.
 
 ### MemoryStorageDriver
 
@@ -223,7 +223,7 @@ This will use return Empty Data object with 0 size.
 
 ## Sample app
 
-The SDK cames with a [sample app][sample]. Please clone it run it on your phone and take what is can help you. 
+The SDK comes with a [sample app][sample]. Please clone it run it on your phone and take what is can help you. 
 
 [github]: https://github.com/metaplex-foundation/metaplex-android
 [docs]: https://metaplex-foundation.github.io/android/
