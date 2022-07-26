@@ -31,8 +31,8 @@
       "permanent": true
     },
     {
-      "destination": "/programs/understanding-programs",
-      "source": "/programs/",
+      "source": "/programs/understanding-programs",
+      "destination": "/programs/",
       "permanent": true
     },
     {
