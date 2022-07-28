@@ -12,6 +12,8 @@ this guide we will cover the creation of a simple collection to illustrate the m
 Candy Machine distribution. You should familiarize yourself with
 the [Token Metadata Standard](/programs/token-metadata/token-standard).
 
+You can validate that your assets are created properly through the `sugar validate` command that is further described in the [Sugar Commands](tools/sugar/commands#2-validate) section.
+
 ## Example NFT Collection
 
 A 10-item collection will have 20 regular files in total plus 2 additional collection files:
