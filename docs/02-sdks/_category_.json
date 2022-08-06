@@ -1,0 +1,9 @@
+{
+  "label": "SDKs",
+  "link": {
+    "type": "generated-index",
+    "title": "Metaplex SDKs",
+    "description": "Learn about our SDKs and how to use them.",
+    "slug": "/sdks"
+  }
+}

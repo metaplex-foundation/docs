@@ -1,0 +1,9 @@
+{
+  "label": "Resources",
+  "link": {
+    "type": "generated-index",
+    "title": "Resources",
+    "description": "A collection of helpful resources.",
+    "slug": "/resources"
+  }
+}

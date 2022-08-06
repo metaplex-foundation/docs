@@ -46,6 +46,11 @@
       "permanent": true
     },
     {
+      "source": "/community",
+      "destination": "/guides/community",
+      "permanent": true
+    },
+    {
       "source": "/storefront/:path*",
       "destination": "/guides/archived/storefront/:path*",
       "permanent": true
@@ -163,6 +168,11 @@
     {
       "source": "/tools/ios/getting-started",
       "destination": "/tools/ios/",
+      "permanent": true
+    },
+    {
+      "source": "/products",
+      "destination": "/",
       "permanent": true
     }
   ]
