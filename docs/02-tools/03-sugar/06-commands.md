@@ -1,43 +1,8 @@
 # Sugar Commands
-Apart from the `launch` command, discussed in the `Quick Start` section above, Sugar provide commands to manage the whole process of deployment of a Candy Machine, from the validation of assets to withdrawing funds and closing a Candy Machine account.
 
-In this section we will cover the commands involved in deploying a Candy Machine in the order that they should be executed.
+This section is a reference to all of the Sugar commands and a brief description of how to use them and what they do.
 
-## Preparing Your Assets
-
-Check [Preparing your Assets](./preparing-assets) for detailed instructions on asset preparation. By default, Sugar loads media/metadata files from an `assets` folder in the directory where the command has been executed, but the name of the folder can be specified as a command-line parameter.
-
-![Example Assets Folder](https://user-images.githubusercontent.com/26067212/165969928-992c3c7e-8069-4590-97f0-e6c19cd37d74.png#radius#shadow)
-
-Example image of how your asset folder should look. 
-
-
-### Collection Assets
-
-If you want a collection NFT to be created and set automatically, you will need to include a `collection.json` and a `collection.png/jpg` in your `assets` folder. They should be in the same format as the other assets. An example of a `collection.json` file is below:
-
-```json
-{
-  "name": "Your Collection Name",
-  "symbol": "SYMBOL",
-  "description": "A description of your collection",
-  "image": "collection.png",
-  "attributes": [],
-  "properties": {
-    "files": [
-      {
-        "uri": "collection.png",
-        "type": "image/png"
-      }
-    ]
-  }
-}
-```
-
-If you have a preexisting collection NFT and want to use it for your new Candy Machine, skip this step and use the `collection set` command after deploying the Candy Machine as shown [here](#collection). 
-
-
-### bundlr
+## bundlr
 
 When you use `bundlr` as your upload method, Sugar automatically funds your account on the Bundlr Network to cover the storage costs. Once the upload is completed, there could be left over funds in your Bundlr account. You can verify your balance on the Bundlr Network with the following command:
 
@@ -54,7 +19,7 @@ sugar bundlr withdraw
 At the end of the withdraw, the funds available on the Bundlr Network will be transferred to your Solana address.
 
 
-### collection
+## collection
 
 You can use the `collection` commands to manually set or remove the collection NFT. You can only modify the collection on your Candy Machine before any NFTs have been minted from it.
 
@@ -72,7 +37,7 @@ To remove the collection NFT:
 sugar collection remove
 ```
 
-### create-config
+## create-config
 
 By default, Sugar looks for a `config.json` file in the current directory to load the Candy Machine configuration &mdash; the configuration file name can be specified with a `-c` or `--config` option.
 
@@ -88,7 +53,7 @@ Executing the command starts an interactive process consisting in a sequence of 
 sugar create-config -c my-config.json
 ```
 
-### deploy
+## deploy
 
 Once all assets are uploaded and the cache file is successfully created, you are ready to deploy your items to Solana:
 
@@ -102,7 +67,7 @@ After a successful 'deploy', the Candy Machine is ready to be minted according t
 
 > **Note:** The authority wallet (the one used to create the Candy Machine) can mint bypassing the `goLiveDate` setting.
 
-### hash
+## hash
 
 When using `hiddenSettings`, this command computes a hash of the cache file and updates the hash value in the config file. Hash values are automatically updated by the `deploy` command when using `hiddenSettings`, but this command allows updating for advanced use-cases when users are modifying the cache file manually.
 
@@ -116,7 +81,7 @@ It also allows comparing a published hash value with the value from a cache file
 sugar hash --compare 44oZ3goi9ivakeUnbjWbWJpvdgcWCrsi
 ```
 
-### mint
+## mint
 
 The `mint` command mints NFTs from a Candy Machine from the command-line.
 
@@ -140,7 +105,7 @@ The above command will mint 10 NFTs from the Candy Machine.
 
 > **Note:** It is not possible to mint tokens from the command line if you have `gatekeeper` settings enabled. If you would like to mint tokens, update the `goLiveDate` to `null` and temporarily disable the `gatekeeper` settings.
 
-### reveal
+## reveal
 
 When using `hiddenSettings` to do a mint and reveal, this command can be used to update all minted NFTs with the values from the cache file. It will find all NFTs minted from the candy machine and then match them up to the values in the cache file by NFT number and then update the NFT data. The command checks if a NFTs URI already matches that in the cache file, and if it does, it skips updating, so the command be rerun to only update newly mintd NFTs or to retry ones that failed to update the first run.
 
@@ -148,7 +113,7 @@ When using `hiddenSettings` to do a mint and reveal, this command can be used to
 sugar reveal
 ```
 
-### show
+## show
 
 The `show` command displays the on-chain config of an existing candy machine:
 
@@ -158,7 +123,7 @@ sugar show <CANDY MACHINE>
 
 where the `<CANDY MACHINE>` is the Candy Machine ID &mdash; the ID given by the `deploy` command.
 
-### sign
+## sign
 
 This command allows signing all NFTs with a creator's keypair, to verify that creator in the creators array in the NFT metadata. Each creator can only sign for themself and only one creator can sign at a time with this command. The creator's keypair can be passed in with the `--keypair` option, otherwise it defaults to using whatever keypair is specified in your Solana CLI config.
 
@@ -170,7 +135,7 @@ sugar sign
 sugar sign -k creator.json
 ```
 
-### update
+## update
 
 The `update` command is used to modify the current configuration of a Candy Machine. Most configuration settings can be updated in a CMv2 with a single command, except:
 
@@ -193,7 +158,7 @@ where `<CONFIG>` is the path to the configuration file and `<CACHE>` is the path
 
 > You need to be careful when updating a live Candy Machine, since setting a wrong value will immediately affect its functionality.
 
-### upload
+## upload
 
 The `upload` command uploads assets to the specified storage and creates the cache file for the Candy Machine:
 
@@ -211,7 +176,7 @@ There is also the option to specify the path for the configuration file with the
 
 The `upload` command can be resumed (re-run) at any point in case the upload is not completed successfully &mdash; only files that have not yet being uploaded are processed. It also automatically detects when the content of media/metadata files change and re-uploads them, updating the cache file accordingly. In other words, if you need to change a file, you only need to copy the new (modified) file to your assets folder and re-run the `upload` command. There is no need to manually edit the cache file.
 
-### validate
+## validate
 
 The `validate` command is used to check that all files in the assets folder are in the correct format:
 
@@ -229,7 +194,7 @@ to specify a custom asset `<ASSETS DIR>` folder name.
 
 > **Note:** It is important to validate your assets before the upload to avoid having to repeat the upload process.
 
-### verify
+## verify
 
 The `verify` command checks that all items in your cache file have been successfully written on-chain:
 
@@ -245,7 +210,7 @@ sugar verify --cache <CACHE>
 
 to specify a different cache file path. If you deploy has been successfully, the verification return no errors. At this point, you can set up your [minting webpage](/guides/candy-machine-ui) to allow your community the chance to mint.
 
-### withdraw
+## withdraw
 
 When the mint from a Candy Machine is complete, it is possible to recover the funds used to pay rent for the data stored on-chain. To initiate the withdraw:
 
