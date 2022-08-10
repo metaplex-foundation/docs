@@ -1,9 +1,9 @@
 {
-  "label": "Dev Tools",
+  "label": "Developer Tools",
   "link": {
     "type": "generated-index",
     "title": "Developer Tools",
     "description": "Learn about our tools and how to use them.",
-    "slug": "/tools/"
+    "slug": "/developer-tools/"
   }
 }
