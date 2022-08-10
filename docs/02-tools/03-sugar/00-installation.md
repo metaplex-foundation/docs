@@ -96,7 +96,7 @@ should print the version of the Rust compiler. If the command fails, check if th
 The next step is to install Sugar from Crates.io:
 
 ```bash
-cargo install sugar-cli --locked
+cargo install sugar-cli
 ```
 This will download the Sugar code from Crates.io and automatically install it for you.
 
@@ -131,7 +131,7 @@ cd sugar
 Then, you can build and install the binary to `~/.cargo/bin`:
 
 ```bash
-cargo install --locked --path ./
+cargo install --path ./
 ```
 
 As long as `./cargo/bin` is in your `PATH` environment variable, you will be able to execute `sugar` from any directory in your file system.
