@@ -39,6 +39,11 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      docs: {
+        sidebar: {
+          hideable: true,
+        }
+      },
       algolia: {
         // If Algolia did not provide you any appId, use 'BH4D9OD16A'
         appId: 'ONUK0F738E',
