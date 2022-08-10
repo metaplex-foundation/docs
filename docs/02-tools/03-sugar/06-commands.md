@@ -81,6 +81,11 @@ It also allows comparing a published hash value with the value from a cache file
 sugar hash --compare 44oZ3goi9ivakeUnbjWbWJpvdgcWCrsi
 ```
 
+```bash
+sugar hash --compare 44oZ3goi9ivakeUnbjWbWJpvdgcWCrsi --cache my_custom_cache.json
+```
+
+
 ## mint
 
 The `mint` command mints NFTs from a Candy Machine from the command-line.
