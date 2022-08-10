@@ -1,11 +1,5 @@
 # Fixed Price Sale
 
-:::info
-
-This document is currently being updated
-
-:::
-
 Metaplex's Fixed-Price Sale program is a Solana program for brands to create membership NFTs that they can distribute to a large audience. This NFT can be used for gating access to certain things (games, events, launches, etc.) at a future date.
 Like its name, all NFTs from the program are sold at a fixed price by minting [print editions](/resources/definitions#print) from a single [master edition](/resources/definitions#master-edition) NFT. As a result, all the NFTs will have the same metadata (apart from the edition number). 
 

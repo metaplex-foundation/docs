@@ -4,12 +4,6 @@ sidebar_label: "FAQ"
 
 # Auction House FAQ
 
-:::info
-
-This document is currently being updated
-
-:::
-
 ## Can I get fees when NFTs get sold-on my Auction House?
 Yes, An Auction House may be configured to take `seller fee basis points`. This is part of the create and update command; see the CLI use it.
 

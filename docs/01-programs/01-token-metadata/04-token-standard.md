@@ -1,3 +1,7 @@
+---
+description: "How the Token Standard works."
+---
+
 import { Accordion, AccordionItem } from '/src/accordion.jsx';
 import { AccordionTokenStandard } from '/src/accordion-token-standard.jsx';
 import { AccordionCode } from '/src/accordion-code.jsx';

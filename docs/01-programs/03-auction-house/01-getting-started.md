@@ -4,12 +4,6 @@ sidebar_label: "Getting Started"
 
 # Getting Started with Auction House
 
-:::info
-
-This document is currently being updated
-
-:::
-
 The Auction House is a Solana program running on Mainnet Beta and Devnet. While you may interact with it like any other Solana program by sending transactions to a Solana node, Metaplex has built some tools to make working with it much easier. We have a CLI tool that will let you manage your auction house and some reference JS code to help you build a user interface. 
 
 

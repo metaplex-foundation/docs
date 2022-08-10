@@ -4,12 +4,6 @@ sidebar_label: JS SDK
 
 # JavaScript SDK
 
-:::info
-
-This document is currently being updated
-
-:::
-
 This SDK helps developers get started with the on-chain tools provided by Metaplex. It focuses its API on common
 use-cases to provide a smooth developer experience whilst allowing third parties to extend its features via plugins.
 

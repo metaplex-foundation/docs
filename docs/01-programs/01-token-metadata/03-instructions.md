@@ -1,3 +1,7 @@
+---
+description: "A deep dive on the instruction handlers."
+---
+
 import ProgramInstruction from '/src/program-instruction.jsx';
 import idl from '/src/token-metadata/idl.js';
 

@@ -4,12 +4,6 @@ sidebar_label: Timed Auction
 
 # Overview
 
-:::info
-
-This document is currently being updated
-
-:::
-
 The Timed Auction Auctioneer is an Auctioneer implementation that adds English-style auction rules built on top of Auction House.
 
 # Listing Config

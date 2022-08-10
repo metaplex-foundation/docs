@@ -4,12 +4,6 @@ sidebar_label: "CLI"
 
 # Auction House CLI
 
-:::info
-
-This document is currently being updated
-
-:::
-
 ### Prerequisites
 
 - `ts-node`

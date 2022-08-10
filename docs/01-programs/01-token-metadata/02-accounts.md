@@ -1,3 +1,7 @@
+---
+description: "A comprehensive look at the account structs."
+---
+
 import ProgramAccount from '/src/program-account.jsx';
 import idl from '/src/token-metadata/idl.js';
 

@@ -1,3 +1,7 @@
+---
+description: "All about the on-chain Metaplex Certified Collections spec."
+---
+
 # Certified Collections
 
 ## Introduction

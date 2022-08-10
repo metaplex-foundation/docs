@@ -4,12 +4,6 @@ sidebar_label: "Roadmap"
 
 # Auction House Roadmap
 
-:::info
-
-This document is currently being updated
-
-:::
-
 Our roadmap is dynamic, and we try to release features and fixes as they are ready but this board will give you a general sense of where we are heading with this Product.
 We have two places where you can see the work being done. The Auction House work board and the Auction House Roadmap board.
 

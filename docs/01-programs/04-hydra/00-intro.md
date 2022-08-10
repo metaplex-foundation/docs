@@ -1,4 +1,4 @@
-# Hydra: Fanout Wallet
+# Introduction
 
 Hydra is a wallet of wallets, a fanout wallet if you will. It enables extremely large membership sets that can take part
 in fund distribution from a central wallet. It works with SOL and any SPL token.
