@@ -6,7 +6,7 @@ sidebar_label: "3. Create Mint Website"
 
 :::warning
 
-Candy Machine v1 has been deprecated. Creating a new instance of Candy Machine v1 is no longer possible. Please use [Sugar: Candy Machine CLI](/tools/sugar) instead.
+Candy Machine v1 has been deprecated. Creating a new instance of Candy Machine v1 is no longer possible. Please use [Sugar: Candy Machine CLI](/developer-tools/sugar) instead.
 
 :::
 
@@ -44,7 +44,7 @@ You can also add your custom rpc after the "REACT_APP_SOLANA_RPC_HOST" value.
 
 :::caution
 
-A Candy Machine mint can be network intensive, and may become rate limited on the default RPC if there is enough traffic. We **highly** recommend using a custom RPC. You can find a list of custom RPC services in our [community docs](/guides/community#rpc).
+A Candy Machine mint can be network intensive, and may become rate limited on the default RPC if there is enough traffic. We **highly** recommend using a custom RPC. You can find a list of custom RPC services in our [community docs](/resources/rpc-providers).
 
 :::
 

@@ -1,8 +1,13 @@
 {
   "redirects": [
     {
+      "source": "/overviews/(candy_machine_overview|burn_NFTS|features_overview|metadata_overview|metaplex_overview|stores_overview)",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/token-metadata/getting-started",
-      "destination": "/programs/token-metadata/",
+      "destination": "/programs/token-metadata/getting-started",
       "permanent": true
     },
     {
@@ -31,113 +36,88 @@
       "permanent": true
     },
     {
-      "source": "/programs/understanding-programs",
-      "destination": "/programs/",
-      "permanent": true
-    },
-    {
-      "source": "/programs/token-metadata/overview",
-      "destination": "/programs/token-metadata/",
-      "permanent": true
-    },
-    {
       "source": "/programs/token-metadata/changelog/overview",
       "destination": "/programs/token-metadata/changelog/",
       "permanent": true
     },
     {
-      "source": "/community",
-      "destination": "/guides/community",
-      "permanent": true
-    },
-    {
-      "source": "/storefront/:path*",
-      "destination": "/guides/archived/storefront/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/fair-launch/:path*",
-      "destination": "/guides/archived/fair-launch/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/architecture/:path*",
-      "destination": "/guides/archived/architecture/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/candy-machine-v1/:path*",
-      "destination": "/guides/archived/candy-machine-v1/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/airdrops/create-gumdrop",
-      "destination": "/guides/airdrops",
-      "permanent": true
-    },
-    {
       "source": "/auction-house/:path(getting-started|faq|cli|roadmap|auctioneer)",
-      "destination": "/guides/auction-house/:path*",
+      "destination": "/programs/auction-house/:path*",
       "permanent": true
     },
     {
       "source": "/auction-house/definition",
-      "destination": "/guides/auction-house/",
+      "destination": "/programs/auction-house/",
       "permanent": true
     },
     {
       "source": "/auctioneers/timed_auction/overview",
-      "destination": "/guides/auction-house/auctioneers/timed_auction",
+      "destination": "/programs/auction-house/auctioneers/timed_auction",
       "permanent": true
     },
     {
       "source": "/guides/auction-house/auctioneers/timed_auction/overview",
-      "destination": "/guides/auction-house/auctioneers/timed_auction",
+      "destination": "/programs/auction-house/auctioneers/timed_auction",
+      "permanent": true
+    },
+    {
+      "source": "/tools/android/",
+      "destination": "/sdks/android/",
       "permanent": true
     },
     {
       "source": "/sdk/ios/:path*",
-      "destination": "/tools/ios/",
+      "destination": "/sdks/ios/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/ios/:path*",
+      "destination": "/sdks/ios/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/js/:path*",
+      "destination": "/sdks/js/",
       "permanent": true
     },
     {
       "source": "/sdk/js/:path*",
-      "destination": "/tools/js/",
-      "permanent": true
-    },
-    {
-      "source": "/about/terminology",
-      "destination": "/terminology",
+      "destination": "/sdks/js/",
       "permanent": true
     },
     {
       "source": "/sugar/:path(installation|quick-start|working-with-sugar|configuration|upload-methods)",
-      "destination": "/tools/sugar/:path*",
+      "destination": "/developer-tools/sugar/:path*",
       "permanent": true
     },
     {
       "source": "/sugar/asset-preparation-and-deployment",
-      "destination": "/tools/sugar/commands",
+      "destination": "/developer-tools/sugar/commands",
       "permanent": true
     },
     {
       "source": "/tools/sugar/asset-preparation-and-deployment",
-      "destination": "/tools/sugar/commands",
+      "destination": "/developer-tools/sugar/commands",
       "permanent": true
     },
     {
-      "source": "/sugar/introduction",
-      "destination": "/tools/sugar/",
+      "source": "/tools/sugar/commands",
+      "destination": "/developer-tools/sugar/commands",
+      "permanent": true
+    },
+    {
+      "source": "/tools/sugar/:path(installation|preparing-assets|quick-start|working-with-sugar|configuration|upload-methods|commands|developer)*",
+      "destination": "/developer-tools/sugar/:path*",
       "permanent": true
     },
     {
       "source": "/tools/sugar/introduction",
-      "destination": "/tools/sugar/",
+      "destination": "/developer-tools/sugar/",
       "permanent": true
     },
     {
-      "source": "/overviews/storage_overview",
-      "destination": "/guides/storage-overview",
+      "source": "/sugar/introduction",
+      "destination": "/developer-tools/sugar/",
       "permanent": true
     },
     {
@@ -146,33 +126,88 @@
       "permanent": true
     },
     {
-      "source": "/overviews/(candy_machine_overview|burn_NFTS|features_overview|metadata_overview|metaplex_overview|stores_overview)",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/candy-machine-v2/:path(configuration|creating-candy-machine|getting-started|introduction|mint-tokens|preparing-assets|sign-nfts|update|verify-upload|withdraw)",
-      "destination": "/guides/archived/candy-machine-v2/:path",
-      "permanent": true
-    },
-    {
       "source": "/candy-machine-v2/mint-frontend",
       "destination": "/guides/candy-machine-ui",
       "permanent": true
     },
     {
-      "source": "/tools/js/getting-started",
-      "destination": "/tools/js/",
+      "source": "/airdrops/create-gumdrop",
+      "destination": "/guides/airdrops",
       "permanent": true
     },
     {
-      "source": "/tools/ios/getting-started",
-      "destination": "/tools/ios/",
+      "source": "/community",
+      "destination": "/guides/community",
+      "permanent": true
+    },
+    {
+      "source": "/architecture/:path*",
+      "destination": "/guides/archived/architecture/:path*",
       "permanent": true
     },
     {
       "source": "/products",
-      "destination": "/",
+      "destination": "/resources/stability-index",
+      "permanent": true
+    },
+    {
+      "source": "/overviews/storage_overview",
+      "destination": "/guides/storage-providers",
+      "permanent": true
+    },
+    {
+      "source": "/guides/storage-overview",
+      "destination": "/resources/storage-providers",
+      "permanent": true
+    },
+    {
+      "source": "/terminology",
+      "destination": "/resources/definitions",
+      "permanent": true
+    },
+    {
+      "source": "/about/terminology",
+      "destination": "/resources/definitions",
+      "permanent": true
+    },
+    {
+      "source": "/storefront/:path*",
+      "destination": "/deprecated/storefront/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/guides/archived/storefront/:path*",
+      "destination": "/deprecated/storefront/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/guides/archived/fair-launch/:path*",
+      "destination": "/deprecated/fair-launch/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/fair-launch/:path*",
+      "destination": "/deprecated/fair-launch/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/guides/archived/candy-machine-v1/:path*",
+      "destination": "/deprecated/candy-machine-v1/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/candy-machine-v1/:path*",
+      "destination": "/deprecated/candy-machine-v1/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/guides/archived/candy-machine-v2/:path",
+      "destination": "/deprecated/candy-machine-js-cli/:path",
+      "permanent": true
+    },
+    {
+      "source": "/candy-machine-v2/:path(configuration|creating-candy-machine|getting-started|introduction|mint-tokens|preparing-assets|sign-nfts|update|verify-upload|withdraw)",
+      "destination": "/deprecated/candy-machine-js-cli/:path",
       "permanent": true
     }
   ]

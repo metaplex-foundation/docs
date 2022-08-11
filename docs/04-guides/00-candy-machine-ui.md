@@ -7,7 +7,7 @@ sidebar_label: "How to set up a Minting UI"
 :::info
 
 This guide assumes you have already uploaded and deployed your Candy Machine. 
-If you haven't yet done this, check out [Sugar CLI](/tools/sugar/) to get started!
+If you haven't yet done this, check out [Sugar CLI](/developer-tools/sugar/) to get started!
 
 :::
 
@@ -44,7 +44,7 @@ Open the file `.env.example` located at the root of the new folder `~/candy-mach
 The public RPC endpoints (`https://api.mainnet-beta.solana.com` and `https://api.devnet.solana.com`) are not suitable
 for Candy Machine mints and may cause significant issues to your minting site. We **strongly** recommend that you use a
 custom RPC endpoint for your mint. You can find more information about the custom RPC solutions in the RPC section of
-our [community docs](/guides/community#rpc).
+our [community docs](/resources/rpc-providers).
 
 :::
 

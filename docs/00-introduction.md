@@ -3,7 +3,7 @@ slug: /
 ---
 
 # Introduction
-Metaplex Studios, ecosystem, and community have been moving quickly to support the thousands of developer teams and creators looking to launch their NFT projects on Solana. In response to feedback, we've created tools like our [Candy Machine v2™](/tools/sugar/), to help mint and sell thousands of NFTs for NFT collections and/or common profile picture projects you all know and love. We've also been hard at work creating primitives, recipes, and extensible storefronts that developers and creators alike can use.
+Metaplex Studios, ecosystem, and community have been moving quickly to support the thousands of developer teams and creators looking to launch their NFT projects on Solana. In response to feedback, we've created tools like our [Candy Machine v2™](/developer-tools/sugar/), to help mint and sell thousands of NFTs for NFT collections and/or common profile picture projects you all know and love. We've also been hard at work creating primitives, recipes, and extensible storefronts that developers and creators alike can use.
 
 We're excited to see what you build with Metaplex, if you have questions please reach out on our [discord!](https://discord.com/invite/metaplex)
 
@@ -15,7 +15,7 @@ Metaplex is a collection of tools, smart contracts, and more designed to make th
 
 Currently, our three major projects are:
 - [Token Metadata](/programs/token-metadata/)  - the NFT standard for Solana
-- [The Candy Machine v2™](/tools/sugar/)  - a Profile Picture (PFP) focused tool that works like the gumball-style candy machines of old
+- [The Candy Machine v2™](/programs/candy-machine/)  - a Profile Picture (PFP) focused tool that works like the gumball-style candy machines of old
 - [Auction House](/programs/auction-house/) - a decentralized sales protocol for NFT marketplaces
 
 ## What's next for Metaplex?

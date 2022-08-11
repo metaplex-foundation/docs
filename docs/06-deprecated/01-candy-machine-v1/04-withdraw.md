@@ -6,7 +6,7 @@ sidebar_label: "5. Withdraw Funds"
 
 :::warning
 
-Candy Machine v1 has been deprecated. Creating a new instance of Candy Machine v1 is no longer possible. Please use [Sugar: Candy Machine CLI](/tools/sugar) instead.
+Candy Machine v1 has been deprecated. Creating a new instance of Candy Machine v1 is no longer possible. Please use [Sugar: Candy Machine CLI](/developer-tools/sugar) instead.
 
 :::
 

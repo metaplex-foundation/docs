@@ -31,7 +31,7 @@ ts-node ~/deprecated-clis/src/candy-machine-v2-cli.ts upload \
 
 :::warning
 
-The upload is a network-intensive command, in particular when dealing with larger collections. We highly recommend using a custom RPC, which can be specified by the switch `--rpc-url <string>` in the `upload` command. You can find a list of custom RPC services in our [community docs](/guides/community#rpc).
+The upload is a network-intensive command, in particular when dealing with larger collections. We highly recommend using a custom RPC, which can be specified by the switch `--rpc-url <string>` in the `upload` command. You can find a list of custom RPC services in our [community docs](/resources/rpc-providers).
 
 :::
 
