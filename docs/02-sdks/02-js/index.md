@@ -15,6 +15,8 @@ In the meantime, the README page on the [JS SDK GitHub][github] is a great place
 
 🔗 **Helpful links:**
 
-- [GitHub Repository](https://github.com/metaplex-foundation/js)
+- [GitHub Repository][github]
 - [Examples](https://github.com/metaplex-foundation/js-examples)
 - [NPM Package](https://www.npmjs.com/package/@metaplex-foundation/js)
+
+[github]: https://github.com/metaplex-foundation/js
