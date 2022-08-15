@@ -1,10 +1,12 @@
 # My First Candy Machine
 
-The goal of this tutorial is to take you from zero to one: you will learn to install Sugar and use its basic commands to configure and deploy a candy machine to Solana's devnet. It will provide you with a foothold and enough knowledge that you can then use the rest of the developer resources to learn the more advanced details for using Sugar.
+The goal of this tutorial is to take you from zero to one: you will learn to install Sugar and use its basic commands to configure and deploy a candy machine to Solana's devnet. It will provide you with a foothold on the basics and enough knowledge that you can then use the rest of the developer resources to learn the more advanced details for using Sugar.
 
 ## Prerequisite Knowledge
 
 * You should have a basic understanding of how to find and use a terminal on your OS, including navigating directories, and running commands: an example of a terminal for MacOS is [iTerm2](https://iterm2.com/).
+* You should have basic familiarity with what Solana is but don't need advanced technical knowledge.
+* You should have basic familiarity with the Metaplex Standard but, again, do not need advanced technical knowledge.
 
 ## Setup
 
@@ -12,7 +14,7 @@ This tutorial targets MacOS, Linux, and Windows Subsystem Linux (WSL), but all c
 
 ### Install the Solana CLI Tool Suite
 
-The [Solana CLI Tool Suite](https://docs.solana.com/cli/install-solana-cli-tools) is useful to have for Solana development and we will use the config file to store our keypair file path and RPC node url to simplify the Sugar commands we run by eliding those options. 
+The [Solana CLI Tool Suite](https://docs.solana.com/cli/install-solana-cli-tools) is useful to have for Solana development and we will use the config file to store our keypair file path and RPC node url to simplify the Sugar commands we run, by eliding those options. 
 
 To install, run this script in your terminal:
 
@@ -104,7 +106,7 @@ Commitment: confirmed
 </p>
 </details>
 
-Finally, we need to fund this wallet with devnet SOL:
+Next, we need to fund this wallet with devnet SOL:
 
 ```bash
 solana airdrop 2
@@ -123,6 +125,19 @@ Signature: 41ZEZqpyNMLUy3kQahWSy349PeDz3Q82dNDHKiA7QcsrAzHs3f7YiDEZWjnFi434DoiiD
 ```
 </p>
 </details>
+
+Finally, we can check that the airdrop was successful and we have devnet SOL by running:
+
+```bash
+solana balance
+```
+
+and we should see an output like this:
+
+```
+2 SOL
+```
+
 
 ## Install Sugar
 
@@ -181,7 +196,7 @@ withdraw            Withdraw funds from candy machine account closing it
 
 ## Set Up Your Project
 
-Next we are going to set up a simple project directory with some example assets which you can download from [here](https://arweave.net/gaXufFp_JLByUn-XxC0raGN_cus4As4cSlaht76mlqA). Extract the zip file and rename the folder to 'assets'.
+Next we are going to set up a simple project directory with some example assets which you can download from [here](https://arweave.net/15nVGKOXq1GcqYrbvC0SH1PoaUej7lNKRvQYnGa0Qnw). Extract the zip file and rename the folder to 'assets'.
 
 Create a folder for your project somewhere convenient on your OS. For this tutorial we are creating a folder called MyProject on the Desktop. Next, copy the "assets" folder you downloaded into this folder so your project directory looks like the following:
 
@@ -199,12 +214,12 @@ We will run all our Sugar commands from within the project directory and Sugar w
 
 ## Create a Config File
 
-The config file tells Sugar how to configure your candy machine with values such as number of assets, what creators to use, what settings to apply etc. To create a config file we are going to use the Sugar `create-config` interactive command.
+The config file tells Sugar how to configure your candy machine with values such as number of assets, what creators to use, what settings to apply, etc. To create a config file we are going to use the Sugar `create-config` interactive command.
 
 Run the following command in your terminal from within your project directory:
 
 ```bash
-MyProject > sugar create-config
+sugar create-config
 ```
 
 We will now get a series of questions we need to answer to set up our config file.
@@ -244,7 +259,7 @@ The candy machine "go live date" is when the candy machine becomes active and mi
 ? How many creator wallets do you have? (max limit of 4) ›
 ```
 
-Here we enter the number of creators who are part of this project and who we want to receive royalties from secondary sales. For this tutorial we will use 1 creator so input "1" and press enter.
+Here we enter the number of creators who are part of this project and who we want to receive royalties from secondary sales. For this tutorial we will use one creator so input "1" and press enter.
 
 ```
 ? Enter creator wallet address #1 ›
@@ -297,7 +312,7 @@ This is an advanced setting and lets us give away update authority to the owner 
 ? Do you want your NFTs to remain mutable? We HIGHLY recommend you choose yes. (y/n) ›
 ```
 
-Similarly, we recommend leaving your NFTs as mutable so you, the update authoritiy, can fix any issues post-mint. You can always set your NFTs to be immutable later using a third-party tool such as [Metaboss](https://metaboss.rs), but this is a one way street: once set immutable, you can never make the mutable again. Input `y` to select yes and leave your NFTs mutable.
+Similarly, we recommend leaving your NFTs as mutable so you, the update authoritiy, can fix any issues post-mint. You can always set your NFTs to be immutable later using a third-party tool such as [Metaboss](https://metaboss.rs), but this is a one way street: once set immutable, you can never make them mutable again. Input `y` to select yes and leave your NFTs mutable.
 
 If all steps were followed correctly you should now see:
 
@@ -311,7 +326,7 @@ Successfully generated the config file. 🎉
 ✅ Command successful.
 ```
 
-Open up the generated file, config.json, in your favorite text or code editor (e.g [VS Code](https://code.visualstudio.com/). You should see a file similar to this:
+Open up the generated file, config.json, in your favorite text or code editor (e.g [VS Code](https://code.visualstudio.com/)). You should see a file similar to this:
 
 ```json
 {
@@ -406,6 +421,10 @@ Sugar commands are designed to be robust and commands such as `upload` and `depl
 In such cases it's safe to rerun the command until it succeeds.
 :::
 
+:::caution
+However, some upload methods such as Bundlr, do cost funds to upload and store the data. If you successfully upload your data and then run it again, it will charge you again. If you do this repeatedly with a large amount of data it can cost you a significant amount of SOL. Once you have successfully uploaded your data you should not have to do it again, as the cache file will store all the links to the data. Ask on the Metaplex Discord if you run into any unexpected issues.
+:::
+
 When uploading is finished, sugar will have created a `cache.json` file in our project directory. Open this file and you will see something similar to:
 
 
@@ -414,100 +433,101 @@ When uploading is finished, sugar will have created a `cache.json` file in our p
 <p>
 
 ```json
-{
-"program": {
-"candyMachine": "",
-"candyMachineCreator": "",
-"collectionMint": ""
-},
-"items": {
-"0": {
-"name": "Test NFT #1",
-"image_hash": "07f72b034cd9b070422121d6625505eb99451ae1fee1af84011578612bd72df0",
-"image_link": "https://arweave.net/7Xnhw3OmPMKxozsSb24iA-OqSsFEbQ9A4QVvnfocGXc",
-"metadata_hash": "a553937d33679df9cc7b7efe18c4527b033a0542ffb2164d87783a9675f83561",
-"metadata_link": "https://arweave.net/64XXcR9xcho-_KfmW4wuwq4GRfMq4i2MzkTmovn_3KE",
-"onChain": false
-},
-"1": {
-"name": "Test NFT #2",
-"image_hash": "570c4fa585605dd40446b8af2446c0d521f131c48c0f6542ee9413ba85f1b4b6",
-"image_link": "https://arweave.net/YZsUJzzG49HZFB3tMxvFYf9D4p1PtmG-sYVfwycw-gs",
-"metadata_hash": "83f6c3e962fa7e062e3410541181cb4d570fa24f96a6ac994fa2f249e8ff68e1",
-"metadata_link": "https://arweave.net/TqzPmwMbVJqkvAU8xwK4C2KdrXPQjCbXdSzJ5yorIV0",
-"onChain": false
-},
-"2": {
-"name": "Test NFT #3",
-"image_hash": "904d77afe80cd314120246538f238c4027ae12df572730510717d9d5b4f6eb06",
-"image_link": "https://arweave.net/e_MpJ3qvJLvqobf9irXc-MJ_T7d2lTx1302uCFxkDdU",
-"metadata_hash": "94ed73f0948d81f769c5c78e1a174cca924dfea598b42192b0c43e71f39c4852",
-"metadata_link": "https://arweave.net/ZTbggU65n0KB47tIkqJ-yUgdGDzlo0WC-0PnKwcQELI",
-"onChain": false
-},
-"3": {
-"name": "Test NFT #4",
-"image_hash": "a55573187d20b2724b07cd62a380f1ba8a900add16823fa141c225a12584fb0c",
-"image_link": "https://arweave.net/yX2-EsjAG2ZonBhkTXhaB-aCkqvEdI4ZwyfewIG4ryc",
-"metadata_hash": "96d3d4db2df9a27b9e936dc04f3070549835193ca66c26d359eed64163455ef9",
-"metadata_link": "https://arweave.net/bEsRFiVkeAAgKVYY01fpz1RWsJYaRkNVeYnIXIPEKX0",
-"onChain": false
-},
-"4": {
-"name": "Test NFT #5",
-"image_hash": "d6c51d8cc47da88ccd0b47d5928c4a8fe4e8c7bc2ea6cf617a1ee0526a3497e5",
-"image_link": "https://arweave.net/0UU5Od6Xjcm8Sez526J7PaDrpqxvykoZK4sXBj71LMI",
-"metadata_hash": "32d98af90d9100e4b8890ed9d946fb0c99145f2c2c6a75b224feb5ec82ee42e9",
-"metadata_link": "https://arweave.net/kdF763v1WCArgC8ug7a_rw15vhgTBH8swdjHho23evs",
-"onChain": false
-},
-"5": {
-"name": "Test NFT #6",
-"image_hash": "504ff2410ae3184028a8cd938207fc780d7dac3d290e09dbd82b28fef41fcd4a",
-"image_link": "https://arweave.net/L6b73oJxid4TdFLcToT_QZTD8Ci3bp2GtddIReRBgjQ",
-"metadata_hash": "d621b0419f3ed29f037dcff089f3169860a2b643e1e254d07907dfb4bb01d7fa",
-"metadata_link": "https://arweave.net/7tpabcuW_buQyX7P3eRNXUizCNUnT9v2KQ42ORQPvqU",
-"onChain": false
-},
-"6": {
-"name": "Test NFT #7",
-"image_hash": "edffb12559a10909f4a611eaa0cb3b3e8fe1f1d0b8956645ce1a219a6afb5a57",
-"image_link": "https://arweave.net/JzY25nU-MxljHzWKSX-cmDEJ9e40dsdt5HgcZYJBvy8",
-"metadata_hash": "4abf2481953887a96687640d8909e6f2d6d37595c7ff17e4ad1f262466dac89c",
-"metadata_link": "https://arweave.net/lKLKH2qWX2NcUgemrktOzoCpoYOQ0w5_ZXMv0SMMymc",
-"onChain": false
-},
-"7": {
-"name": "Test NFT #8",
-"image_hash": "b4d3d3079620cde03e587a1f4f032fe8fff1e52b05ac1d4ab1f43be6b4ae27aa",
-"image_link": "https://arweave.net/TZDtID66bmAf6APftrbVLNuM8F0WpT9lzW04Tigs10I",
-"metadata_hash": "3a2a84524ad475edb01e7aff9398bad8173daf43cd3e4f15d81f9a2746a43b2d",
-"metadata_link": "https://arweave.net/cQwesye50AxU4D4k8ARA45w8-s9nsNjTSoe2Qn588J8",
-"onChain": false
-},
-"8": {
-"name": "Test NFT #9",
-"image_hash": "a4cdd0c6f0808ede282e7834cea0e91dc9aee90ce6aca617aa9101d441973a2f",
-"image_link": "https://arweave.net/zXmnNwatv7M_vOQ0DmTgAnMFpRGKuuxby-Un1G0rTZU",
-"metadata_hash": "5d175f8de87fe0ca7637976743d66fb72b30fe29b8a8dbf87958b315dde06ff9",
-"metadata_link": "https://arweave.net/ElAhJTw9d38sdHH9k8ZtZ2FDgHUaAFo3XBWfVnLtvh0",
-"onChain": false
-},
-"9": {
-"name": "Test NFT #10",
-"image_hash": "441d3330a457dc2b0cfa4f1f21d9ca83e6f47e7f5a30988e1f62d406422565b5",
-"image_link": "https://arweave.net/yyh4_Ag99Ae_sXRZqFbLxIPbDlavpHZR9CABMx8bS48",
-"metadata_hash": "2a7a7ccbd1d0f67d69ee9184c2606c4fda8ccd75bf9117d58f6800dbb6694eeb",
-"metadata_link": "https://arweave.net/F1y2pvbqQl9ml6SEI7IushbbFqpzDPgxa5Xn9p2MfOE",
-"onChain": false
+    {
+        "program": {
+            "candyMachine": "",
+            "candyMachineCreator": "",
+            "collectionMint": ""
+        },
+        "items": {
+            "0": {
+                "name": "Studious Crab #1",
+                "image_hash": "6f16570562658640b3dc6b6dd7e5b94190d2f8bd5c5a0aa0a4d0bba20c7fd612",
+                "image_link": "https://arweave.net/i-aYA4PmPGO5mKydXnuaUqIs-ZhSvVWwe9rcWCtMJxk",
+                "metadata_hash": "8d83d51e36ea47a9a5009dbe927ef53cddcdf0c2bc029e369e96ca436a012dd7",
+                "metadata_link": "https://arweave.net/35nZmuuUlK1iY9G-dn5u_raI_lwGoNoR9TrhOKUPez0",
+                "onChain": false
+            },
+            "1": {
+                "name": "Studious Crab #2",
+                "image_hash": "d527d7faf0e0064e2c527909a740aaec670ea505ad07b109e940099d5e5781e2",
+                "image_link": "https://arweave.net/PfEGR3UjmlZIptOoDbdVvga4jjZEF7tT9PHWBbimGL0",
+                "metadata_hash": "add6c7b82e45da98eb53dafc9f3ebdef4fe6587680f6904da4be39cc4666320b",
+                "metadata_link": "https://arweave.net/KxSO5JKmCkRurA_KVFrP1K08Cqh7zFlGT_xvsxMJM4E",
+                "onChain": false
+            },
+            "2": {
+                "name": "Studious Crab #3",
+                "image_hash": "82763aecbf910695ef0bf1311152e2b6c2e9578a8d0d85f3ada320abb9b3551b",
+                "image_link": "https://arweave.net/XXUFcltx3bgpLXZfqxdUYmUuRoRS25eK9nAyoVKDijI",
+                "metadata_hash": "0f0ffd8b65e11347410ea6f8b1fabd04cf3a67d705e1787c6841a38c66f0ce4e",
+                "metadata_link": "https://arweave.net/kUVqhDRs6qmTmQq0vfHH8RJVkALCdVqwju2MTpyD22I",
+                "onChain": false
+            },
+            "3": {
+                "name": "Studious Crab #4",
+                "image_hash": "05d9bed9f734103efc131a0ad0a88b0dbbf46afdd8f7a6b179e8ea7e1b37f046",
+                "image_link": "https://arweave.net/-PwwpoZI9pPcK-X6z7Wha-7d2g78uXAJ2sCvcr8lIjM",
+                "metadata_hash": "44b3407c7da4f0aa004326b231c0e19ee9ef939febc0ef98ff14aebb7508012d",
+                "metadata_link": "https://arweave.net/-RBIW6Xj3NmSfkQXfY-9Zb7AK7IBKLw6OC0pXpxmle4",
+                "onChain": false
+            },
+            "4": {
+                "name": "Studious Crab #5",
+                "image_hash": "92906e1988a4c58125799c3636a567ec47fca77e15ef6a326be07bc4d8a0522c",
+                "image_link": "https://arweave.net/k94CDnb0kU_IWgpFmApNM82GCopduhzPEHStaHctzaQ",
+                "metadata_hash": "0c34fecf846ae872e4f25fb51ca7e3fcf1ec09a3b2a2af99334bc88947ee640b",
+                "metadata_link": "https://arweave.net/64dDlYU8s3oEtSBNA5YHviie0EeIyyvhTnxfx8wrg2Q",
+                "onChain": false
+            },
+            "5": {
+                "name": "Studious Crab #6",
+                "image_hash": "ecf8012c1bedc8d481d20540d47813318c02edfef1080b712155896147b056d9",
+                "image_link": "https://arweave.net/a6rCPvyG_5AM6awHhV9nFDvZuwSubp9lV1l1lbvxnA8",
+                "metadata_hash": "6d6be3c1aeaef771ba38e77e1cd4b942ddee2fff7ffcfa27625244aaff595d7e",
+                "metadata_link": "https://arweave.net/WfYBOi4xA7dfeaJX5xS7l24pcV6tjsMLiOUBplQCrrw",
+                "onChain": false
+            },
+            "6": {
+                "name": "Studious Crab #7",
+                "image_hash": "ffe705980fde6a9fbc6cb29b3505d467499c4e78af08f486bf2cd6f7b3f27151",
+                "image_link": "https://arweave.net/Euy4L7kHX7y-2vgZnUJTtdtZ44IxFZcM7-Q2JvJY8_8",
+                "metadata_hash": "1d9df60037af5fba50222362ba2ec215d117ca622d894d2c16f86936a67e1559",
+                "metadata_link": "https://arweave.net/mWtcYmaT4cfphOUCa78yxSVqB81HpSsSMYCKYGDLe5A",
+                "onChain": false
+            },
+            "7": {
+                "name": "Studious Crab #8",
+                "image_hash": "babd4f81cf056ce35bae9b1330c9c1b13f440ad2a3632c862e5594994a30a5b7",
+                "image_link": "https://arweave.net/CxxgV_nIt0DkN3yGym62KXeyS02l-S9p4r78WRWfjzQ",
+                "metadata_hash": "6ca0b7e89e89dfa586ac13580df046f327c658010f7cd932ca2f8af980611319",
+                "metadata_link": "https://arweave.net/_Vvxf0FrLBf4nUfYKcMdWnpbVBAIfCjgl_Ke6f6r9gA",
+                "onChain": false
+            },
+            "8": {
+                "name": "Studious Crab #9",
+                "image_hash": "c95e11874e94a27b547e5e7457f974a8d299c8c0066f3bf4430aa9c24e03835f",
+                "image_link": "https://arweave.net/ed4IrMGpSuP-EVVVwU7s2plrI3bjDNQl2n09WLROeLU",
+                "metadata_hash": "30c2856dc20bd0a92c16128107e4aba43e4dd88bfe3a2d2e3142b5b958d539c6",
+                "metadata_link": "https://arweave.net/w0uAaDzmLVheaEYyb2c2lw929aKIIun015wcy9-qrl8",
+                "onChain": false
+            },
+            "9": {
+                "name": "Studious Crab #10",
+                "image_hash": "4c16db39492bc794fbde16cf0aa0abe5f172fa88a45bd2e4afdfea782af241d5",
+                "image_link": "https://arweave.net/1cFuW_wwZcZF-a72zga_koleo8y7rcLTc2f5YuaHhcU",
+                "metadata_hash": "517b9e282e2db08ad6bc722e378b983e111d8eba14a62bc964b1177521eac3c5",
+                "metadata_link": "https://arweave.net/Ns82pK1nX9tCCsZiBUKg8VvlketUjR9-BaCRbMcWOfg",
+                "onChain": false
+        }
+    }
 }
-}
-}
+
 ```
 </p>
 </details>
 
-Each asset from our `assets` directory has been uploaded to Arweave and a link to it stored in the cache file. You can open one of these links in the browser to see what this looks like.
+Each asset from our `assets` directory has been uploaded to Arweave and a link to it stored in the cache file. You can open one of these links in the browser to see what this looks like. Within the data in the metadata link, there is another link to the image. Both of these links are stored for each item in the cache file.
 
 If you look at the candy machine values at the top, you'll see they are empty because we have not actually created a candy machine yet. We will do that next.
 
@@ -532,6 +552,8 @@ Sending config line(s) in 1 transaction(s): (Ctrl+C to abort)
 ✅ Command successful.
 </p>
 </details>
+
+Once this finishes, if you open up the cache.json file again you will see that the candy machine values have been filled in as we now have a candy machine created on-chain.
 
 ## Verify Successful Deployment
 
@@ -591,5 +613,7 @@ Minting to PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8
 </details>
 
 Now you can open your wallet in an explorer like [Solana Explorer](https://explorer.solana.com/?cluster=devnet) and view the NFT you just minted by clicking on the "Tokens" tab.
+
+To set up a front end to allow users to mint from your candy machine, see the [Mint UI Guide](../../../guides/candy-machine-ui)
 
 Congratulations! You have successfully configured, created, and deployed your first candy machine!
