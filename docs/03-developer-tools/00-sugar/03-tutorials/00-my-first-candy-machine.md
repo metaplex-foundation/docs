@@ -5,7 +5,6 @@ The goal of this tutorial is to take you from zero to one: you will learn to ins
 ## Prerequisite Knowledge
 
 * You should have a basic understanding of how to find and use a terminal on your OS, including navigating directories, and running commands: an example of a terminal for MacOS is [iTerm2](https://iterm2.com/).
-* 
 
 ## Setup
 
@@ -182,9 +181,9 @@ withdraw            Withdraw funds from candy machine account closing it
 
 ## Set Up Your Project
 
-Next we are going to set up a simple project directory with some example assets which you can download from [here](https://www.youtube.com/watch?v=dQw4w9WgXcQ). 
+Next we are going to set up a simple project directory with some example assets which you can download from [here](https://arweave.net/gaXufFp_JLByUn-XxC0raGN_cus4As4cSlaht76mlqA). Extract the zip file and rename the folder to 'assets'.
 
-Create a folder for your project somewhere convenient on your OS, for this tutorial we are creating a folder called MyProject on the Desktop. Next, copy the "assets" folder you downloaded into this folder so your project directory looks like the following:
+Create a folder for your project somewhere convenient on your OS. For this tutorial we are creating a folder called MyProject on the Desktop. Next, copy the "assets" folder you downloaded into this folder so your project directory looks like the following:
 
 ```
 MyProject/
