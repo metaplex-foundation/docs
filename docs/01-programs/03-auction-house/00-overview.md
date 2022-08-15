@@ -80,12 +80,6 @@ While the receipts can be retrieved using the standard getProgramAccounts data f
 
 ### Partial Order Fulfillment
 
-:::info
-
-Currently only available on devnet
-
-:::
-
 A seller can create a sell order of `FungibleAssets` with a `token_size` quantity greater than 1. The buyer can then create a buy order of said assets that is less than the `token_size` of the sell order. In order for `ExecutePartialSale` to succeed, the buy order must have been created with both a `token_size` and a `sale_price` both lower than the sell order `token_size` and `sale_price`. In `ExecutePartialSale`, `partial_order_price` must match the division of `token_size` in the full order and the `sale_price` times the `partial_order_size`. `partial_order_size` must not be greater than the `token_size` in the original sell order. If there is no partial order needing to take place, `partital_order_price` and `partial_order_size` must be passed in as `None`.
 
 :::info
