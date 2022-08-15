@@ -299,8 +299,7 @@ This instruction allows the update authority of a collection parent NFT to set t
 
 <ProgramInstruction idl={idl} instruction="SetTokenStandard">
 
-![](/assets/programs/token-metadata/
-Token-Metadata-Instruction-Set-Token-Standard.png)
+![](/assets/programs/token-metadata/Token-Metadata-Instruction-Set-Token-Standard.png)
 
 
 This instruction allows an update authority to pass in a metadata account with an optional edition account and then it determines what the correct TokenStandard type is and writes it to the metadata. See [Token Standard](./token-standard) for more information.
