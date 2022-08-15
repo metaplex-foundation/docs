@@ -196,7 +196,7 @@ withdraw            Withdraw funds from candy machine account closing it
 
 ## Set Up Your Project
 
-Next we are going to set up a simple project directory with some example assets which you can download from [here](https://arweave.net/15nVGKOXq1GcqYrbvC0SH1PoaUej7lNKRvQYnGa0Qnw). Extract the zip file and rename the folder to 'assets'.
+Next we are going to set up a simple project directory with some example assets which you can download from [here](https://arweave.net/RhNCVZoqC6iO0xEL0DnsqZGPSG_CK_KeiU4vluOeIoI). Extract the zip file and rename the folder to 'assets'.
 
 Create a folder for your project somewhere convenient on your OS. For this tutorial we are creating a folder called MyProject on the Desktop. Next, copy the "assets" folder you downloaded into this folder so your project directory looks like the following:
 
