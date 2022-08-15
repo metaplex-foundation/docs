@@ -1,9 +1,0 @@
-{
-  "label": "Developer Guide",
-  "link": {
-    "type": "generated-index",
-    "title": "Sugar Developer Guide",
-    "description": "A collection of guides for contributing to Sugar.",
-    "slug": "/tools/sugar/developer"
-  }
-}

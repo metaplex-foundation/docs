@@ -39,6 +39,11 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      docs: {
+        sidebar: {
+          hideable: true,
+        }
+      },
       algolia: {
         // If Algolia did not provide you any appId, use 'BH4D9OD16A'
         appId: 'ONUK0F738E',
@@ -69,8 +74,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         items: [
           {
             href: 'https://github.com/metaplex-foundation/metaplex/',
-            label: 'GitHub',
             position: 'right',
+            className: 'header-github-link',
+            'aria-label': 'GitHub repository',
           },
         ],
       },
@@ -82,7 +88,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             items: [
               {
                 label: 'Discord',
-                href: 'https://discord.gg/RfzFD9g9WE',
+                href: 'https://discord.gg/metaplex',
               },
               {
                 label: 'Twitter',
