@@ -4,19 +4,19 @@ The goal of this tutorial is to take you from zero to one: you will learn to ins
 
 ## Prerequisite Knowledge
 
-* You should have a basic understanding of how to find and use a terminal on your OS, including navigating directories, and running commands: an example of a terminal for MacOS is [iTerm2](https://iterm2.com/).
+* You should have a basic understanding of how to find and use a terminal on your OS, including navigating directories, and running commands: an example of a terminal for macOS is [iTerm2](https://iterm2.com/).
 * You should have basic familiarity with what Solana is but don't need advanced technical knowledge.
 * You should have basic familiarity with the Metaplex Standard but, again, do not need advanced technical knowledge.
 
 ## Setup
 
-This tutorial targets MacOS, Linux, and Windows Subsystem Linux (WSL), but all commands and screenshots are from a MacOS system. It should work on any of those three systems. For installing on Windows see the Windows method on the [installation page](../00-installation.md).
+This tutorial targets macOS, Linux, and Windows Subsystem Linux (WSL), but all commands and screenshots are from a macOS system. It should work on any of those three systems. For installing on Windows see the Windows method on the [installation page](../00-installation.md).
 
 ### Install the Solana CLI Tool Suite
 
-The [Solana CLI Tool Suite](https://docs.solana.com/cli/install-solana-cli-tools) is useful to have for Solana development and we will use the config file to store our keypair file path and RPC node url to simplify the Sugar commands we run, by eliding those options. 
+The [Solana CLI Tool Suite](https://docs.solana.com/cli/install-solana-cli-tools) is useful to have for Solana development, and we will use the config file to store our keypair file path and RPC node url to simplify the Sugar commands we run, by eliding those options. 
 
-To install, follow [this guide](../../../guides/cli-wallet#setting-up-a-devnet-wallet-for-testing) to install the Solana Tool Suite and setup a devnet wallet.
+To install, follow [this guide](../../../guides/cli-wallet#setting-up-a-devnet-wallet-for-testing) to install the Solana Tool Suite and set up a devnet wallet.
 
 Once finished, come back here to resume the tutorial.
 
@@ -28,7 +28,7 @@ To install Sugar, simply copy and paste and run this command in your terminal:
 bash <(curl -sSf https://sugar.metaplex.com/install.sh)
 ```
 
-This will download and run an install script from the Metaplex Sugar repo. The install script checks your OS and downloads the correct binary for it and installs it on your system PATH so you can run the Sugar command from any directory on your system.
+This will download and run an install script from the Metaplex Sugar repo. The install script checks your OS and downloads the correct binary for it and installs it on your system PATH, so you can run the Sugar command from any directory on your system.
 
 Follow any instructions from the install script regarding updating your PATH. This may require closing and reopening your terminal. Once complete you should be able to run the command `sugar` in your terminal and get a list of available commands:
 
@@ -109,13 +109,13 @@ We will now get a series of questions we need to answer to set up our config fil
 ? What is the price of each NFT? ›
 ```
 
-This is the price we wish to charge for selling each of our NFTs. The price is either in SOL or in a SPL token we specify. For this tutorial we are just setting up a basic candy machine that charges users in SOL. Input your desired price and then press "enter" to go to the next step. Decimal values such as `1.33` are ok.
+This is the price we wish to charge for selling each of our NFTs. The price is either in SOL or in an SPL token we specify. For this tutorial we are just setting up a basic candy machine that charges users in SOL. Input your desired price and then press "enter" to go to the next step. Decimal values such as `1.33` are ok.
 
 ```
 ? Found 10 file pairs in "assets". Is this how many NFTs you will have in your candy machine? (y/n) ›
 ```
 
-This is the number of NFTs we are configuring our candy machine to mint and must match the number of asset pairs we have in our `assets` directory. In this case, Sugar has detected we have 10 asset files pairs so we can simply input `y` to confirm this is correct.
+This is the number of NFTs we are configuring our candy machine to mint and must match the number of asset pairs we have in our `assets` directory. In this case, Sugar has detected we have 10 asset files pairs, so we can simply input `y` to confirm this is correct.
 
 ```
 ? Found symbol "TEST" in your metadata file. Is this value correct? (y/n) ›
@@ -146,13 +146,13 @@ Here we enter the number of creators who are part of this project and who we wan
 ? Enter creator wallet address #1 ›
 ```
 
-Now we need to provide the Solana wallet address for each creator. In this case, we only have one creator and we are going to use our own address for that creator so we can run `solana address` in a separate terminal window to retrieve the address of the wallet we configured in a previous step. Input this value and press enter.
+Now we need to provide the Solana wallet address for each creator. In this case, we only have one creator, and we are going to use our own address for that creator, so we can run `solana address` in a separate terminal window to retrieve the address of the wallet we configured in a previous step. Input this value and press enter.
 
 ```
 ? Enter royalty percentage share for creator #1 (e.g., 70). Total shares must add to 100. ›
 ```
 
-We only have a single creator so we put in `100` here.
+We only have a single creator, so we put in `100` here.
 
 ```
 ? Which extra features do you want to use? (use [SPACEBAR] to select options you want and hit [ENTER] when done) ›
@@ -163,7 +163,7 @@ We only have a single creator so we put in `100` here.
 ✔ Hidden Settings
 ```
 
-This step allows us to configure advanced settings for our candy machine, but we are not using any of them in this tutorial so we simply press [Enter] to continue on.
+This step allows us to configure advanced settings for our candy machine, but we are not using any of them in this tutorial, so we simply press [Enter] to continue on.
 
 ```
 ? What is your SOL treasury address? ›
@@ -187,13 +187,13 @@ Use the [SPACEBAR] to select the Bundlr option.
 ? Do you want to retain update authority on your NFTs? We HIGHLY recommend you choose yes. (y/n) ›
 ```
 
-This is an advanced setting and lets us give away update authority to the owner of each NFT individually but we do not recommmend doing this initially as it will prevent you from fixing any mistakes you make in your candy machine after NFTs are minted. Select `yes` for this case by inputting `y`.
+This is an advanced setting and lets us give away update authority to the owner of each NFT individually, but we do not recommend doing this initially as it will prevent you from fixing any mistakes you make in your candy machine after NFTs are minted. Select `yes` for this case by inputting `y`.
 
 ```
 ? Do you want your NFTs to remain mutable? We HIGHLY recommend you choose yes. (y/n) ›
 ```
 
-Similarly, we recommend leaving your NFTs as mutable so you, the update authoritiy, can fix any issues post-mint. You can always set your NFTs to be immutable later using a third-party tool such as [Metaboss](https://metaboss.rs), but this is a one way street: once set immutable, you can never make them mutable again. Input `y` to select yes and leave your NFTs mutable.
+Similarly, we recommend leaving your NFTs as mutable so you, the update authority, can fix any issues post-mint. You can always set your NFTs to be immutable later using a third-party tool such as [Metaboss](https://metaboss.rs), but this is a one way street: once set immutable, you can never make them mutable again. Input `y` to select yes and leave your NFTs mutable.
 
 If all steps were followed correctly you should now see:
 
@@ -207,7 +207,7 @@ Successfully generated the config file. 🎉
 ✅ Command successful.
 ```
 
-Open up the generated file, config.json, in your favorite text or code editor (e.g [VS Code](https://code.visualstudio.com/)). You should see a file similar to this:
+Open up the generated file, config.json, in your favorite text or code editor (e.g. [VS Code](https://code.visualstudio.com/)). You should see a file similar to this:
 
 ```json
 {
@@ -238,21 +238,21 @@ Open up the generated file, config.json, in your favorite text or code editor (e
 }
 ```
 
-Your values will be different depending and what you input for various settings.
+Your values will be different depending on and what you input for various settings.
 
 ## Upload Images and Metadata to External Storage
 
 In this step, we will upload all our assets file pairs to Arweave via Bundlr. 
 
 :::info
-Solana is designed to be a high-throughput low-latency blockchain that can host smart contracts, but one of the design tradeoffs is that storing data on Solana is fairly expensive. For NFTs we only store basic information about the NFT, such as the name, symbol, creators, and seller fee basis points. For the image and all the other metadata, we have a URL on-chain on Solana that points to an external JSON file contain all that information. 
+Solana is designed to be a high-throughput low-latency blockchain that can host smart contracts, but one of the design tradeoffs is that storing data on Solana is fairly expensive. For NFTs, we only store basic information about the NFT, such as the name, symbol, creators, and seller fee basis points. For the image and all the other metadata, we have a URL on-chain on Solana that points to an external JSON file contain all that information. 
 
 This URL can point to any JSON file anywhere. It can be a decentralized file storage blockchain like Arweave or Filecoin, a peer-to-peer distributed file system like IPFS, or even a centralized cloud server like AWS.
 
 Sugar currently supports four upload methods: Arweave via Bundlr, IPFS via NFT Storage, Shadow Drive and AWS.
 :::
 
-In our previous step we selected `Bundlr` as our upload method and we saw this in the config file when we viewed it. Now, all we have to do is run the following command:
+In our previous step we selected `Bundlr` as our upload method, and we saw this in the config file when we viewed it. Now, all we have to do is run the following command:
 
 ```
 sugar upload
@@ -306,7 +306,7 @@ In such cases it's safe to rerun the command until it succeeds.
 However, some upload methods such as Bundlr, do cost funds to upload and store the data. If you successfully upload your data and then run it again, it will charge you again. If you do this repeatedly with a large amount of data it can cost you a significant amount of SOL. Once you have successfully uploaded your data you should not have to do it again, as the cache file will store all the links to the data. Ask on the Metaplex Discord if you run into any unexpected issues.
 :::
 
-When uploading is finished, sugar will have created a `cache.json` file in our project directory. Open this file and you will see something similar to:
+When uploading is finished, sugar will have created a `cache.json` file in our project directory. Open this file, and you will see something similar to:
 
 
 <details>
