@@ -16,7 +16,7 @@ This tutorial targets MacOS, Linux, and Windows Subsystem Linux (WSL), but all c
 
 The [Solana CLI Tool Suite](https://docs.solana.com/cli/install-solana-cli-tools) is useful to have for Solana development and we will use the config file to store our keypair file path and RPC node url to simplify the Sugar commands we run, by eliding those options. 
 
-To install, follow [this guide](http://localhost:3000/guides/cli-wallet#setting-up-a-devnet-wallet-for-testing) to install the Solana Tool Suite and setup a devnet wallet.
+To install, follow [this guide](../../../guides/cli-wallet#setting-up-a-devnet-wallet-for-testing) to install the Solana Tool Suite and setup a devnet wallet.
 
 Once finished, come back here to resume the tutorial.
 
