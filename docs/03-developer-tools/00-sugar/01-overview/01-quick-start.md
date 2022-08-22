@@ -19,7 +19,7 @@ https://api.mainnet-beta.solana.com and https://api.devnet.solana.com. Instead, 
 
 :::
 
-Create a folder for your project and within it, create a folder named `assets` to store your json and media file pairs with the naming convention 0.json, 0.png, 1.json, 1.png, etc., where the extension is `.json`, `.png`, `.jpg`, etc. This is the same format described in [Preparing your Assets](./preparing-assets).
+Create a folder for your project and within it, create a folder named `assets` to store your json and media file pairs with the naming convention 0.json, 0.png, 1.json, 1.png, etc., where the extension is `.json`, `.png`, `.jpg`, etc. This is the same format described in [Preparing your Assets](../guides/preparing-assets).
 
 Your project directory will then look like:
 
