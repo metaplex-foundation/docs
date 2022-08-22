@@ -10,7 +10,7 @@ The goal of this tutorial is to take you from zero to one: you will learn to ins
 
 ## Setup
 
-This tutorial targets macOS, Linux, and Windows Subsystem Linux (WSL), but all commands and screenshots are from a macOS system. It should work on any of those three systems. For installing on Windows see the Windows method on the [installation page](../00-installation.md).
+This tutorial targets macOS, Linux, and Windows Subsystem Linux (WSL), but all commands and screenshots are from a macOS system. It should work on any of those three systems. For installing on Windows see the Windows method on the [installation page](../01-overview/00-installation.md).
 
 ### Install the Solana CLI Tool Suite
 
@@ -303,7 +303,7 @@ In such cases it's safe to rerun the command until it succeeds.
 :::
 
 :::caution
-However, some upload methods such as Bundlr, do cost funds to upload and store the data. If you successfully upload your data and then run it again, it will charge you again. If you do this repeatedly with a large amount of data, it can cost you a significant amount of SOL. Once you have successfully uploaded your data you should not have to do it again, as the cache file will store all the links to the data. Ask on the Metaplex Discord if you run into any unexpected issues.
+However, some upload methods such as Bundlr, do cost funds to upload and store the data. If you successfully upload your data and then run it again, it will charge you again. If you do this repeatedly with a large amount of data it can cost you a significant amount of SOL. Once you have successfully uploaded your data you should not have to do it again, as the cache file will store all the links to the data. Ask on the Metaplex Discord if you run into any unexpected issues.
 :::
 
 When uploading is finished, sugar will have created a `cache.json` file in our project directory. Open this file, and you will see something similar to:
@@ -465,7 +465,7 @@ See your candy machine at:
 
 Our candy machine is now successfully deployed!
 
-## Mint an NFT
+## Mint a NFT
 
 Finally, to round off this tutorial we will mint an NFT from our candy machine to ensure it works as expected. Run:
 

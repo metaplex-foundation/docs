@@ -11,11 +11,6 @@ sudo apt install libudev-dev pkg-config unzip
 
 :::
 
-## Binaries
-
-Binaries for the supported OS can be found at:
-- [Sugar Releases](https://github.com/metaplex-foundation/sugar/releases)
-
 ## Recommended Installation Method
 
 import Tabs from '@theme/Tabs';
@@ -75,6 +70,13 @@ The modifications to your `PATH` variable may not take effect until the terminal
 
 :::
 
+## Binaries
+
+Binaries for the supported OS can be found at:
+
+- [Sugar Releases](https://github.com/metaplex-foundation/sugar/releases)
+
+
 ## Advanced Installation Methods
 
 ### Crates.io
@@ -99,6 +101,7 @@ The next step is to install Sugar from Crates.io:
 cargo install sugar-cli
 ```
 This will download the Sugar code from Crates.io and automatically install it for you.
+
 
 ### Build From Source
 

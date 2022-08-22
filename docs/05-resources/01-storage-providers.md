@@ -77,6 +77,12 @@ NFT.Storage is currently supported in [Sugar][sugar]. Please see the [Sugar stor
 
 For more information about using NFT.Storage with CandyMachine, see the [NFT.Storage documentation on Metaplex][nft.storage metaplex doc].
 
+
+### Shadow Drive
+
+The [GenesysGo Shadow Drive](https://shdw.genesysgo.com/shadow-infrastructure-overview/shadow-drive-overview) is a decentralized storage network designed to run in parallel to, and integrate seamlessly with, Solana. Storage fees are paid in the SPL token, SHDW, and allow immutable or mutable storage of data.
+
+
 ### Looking for another storage option?
 
 Check out [Bring Your Own Uploader](/developer-tools/sugar/developer/bring-your-own-uploader) to learn about adding upload options to Sugar.

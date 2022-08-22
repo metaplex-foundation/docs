@@ -1,0 +1,9 @@
+{
+    "label": "Overview",
+    "link": {
+        "type": "generated-index",
+        "title": "Overview",
+        "description": "Sugar overview, installation and quick start.",
+        "slug": "/tools/sugar/overview/"
+    }
+}
