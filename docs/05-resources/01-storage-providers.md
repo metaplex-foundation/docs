@@ -95,6 +95,6 @@ Check out [Bring Your Own Uploader](/developer-tools/sugar/developer/bring-your-
 [winstons]: https://docs.arweave.org/developers/server/http-api#ar-and-winston
 [S3]: https://aws.amazon.com/s3/
 [arweave path manifest]: https://github.com/ArweaveTeam/arweave/wiki/Path-Manifests
-[sugar nft.storage]: /developer-tools/sugar/upload-methods#nft.storage
+[sugar nft.storage]: /developer-tools/sugar/reference/upload-methods#nft.storage
 [nft.storage metaplex doc]: https://nft.storage/docs/how-to/mint-solana
 [sugar]: /developer-tools/sugar/
