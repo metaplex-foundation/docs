@@ -303,7 +303,7 @@ In such cases it's safe to rerun the command until it succeeds.
 :::
 
 :::caution
-However, some upload methods such as Bundlr, do cost funds to upload and store the data. If you successfully upload your data and then run it again, it will charge you again. If you do this repeatedly with a large amount of data it can cost you a significant amount of SOL. Once you have successfully uploaded your data you should not have to do it again, as the cache file will store all the links to the data. Ask on the Metaplex Discord if you run into any unexpected issues.
+However, some upload methods such as Bundlr, do cost funds to upload and store the data. If you successfully upload your data and then run it again, it will charge you again. If you do this repeatedly with a large amount of data, it can cost you a significant amount of SOL. Once you have successfully uploaded your data you should not have to do it again, as the cache file will store all the links to the data. Ask on the Metaplex Discord if you run into any unexpected issues.
 :::
 
 When uploading is finished, sugar will have created a `cache.json` file in our project directory. Open this file, and you will see something similar to:
@@ -465,7 +465,7 @@ See your candy machine at:
 
 Our candy machine is now successfully deployed!
 
-## Mint a NFT
+## Mint an NFT
 
 Finally, to round off this tutorial we will mint an NFT from our candy machine to ensure it works as expected. Run:
 
