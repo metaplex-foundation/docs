@@ -57,13 +57,26 @@ The main differences with the previous configuration file are:
      "discountPrice": null
   }
   ```
-- **endSettings**: the configuration has been simplified. The `"endSettingsType"` is now specified as either `"Date"` or `"Amount"`; the value is now specified with a property `"number"` - e.g.:
+- **endSettings**: the configuration has been simplified. The `"endSettingsType"` is now specified as either `"Date"` or `"Amount"` and has a corresponding value in either `number` or `date` (depending on the value of `"endSettingsType"`).
+
   ```json
   "endSettings": {
     "endSettingType": "Amount",
+    "date": null,
     "number": 10
   }
   ```
+
+  Date values are stored in an ISO 8601 format, e.g. `"2020-01-01T00:00:00Z"`.
+
+  ```json
+  "endSettings": {
+    "endSettingType": "Date",
+    "date": "2020-01-01T00:00:00Z",
+    "number": null
+  }
+  ```
+
 
   ## Sugar Config Values
 
@@ -80,7 +93,8 @@ The main differences with the previous configuration file are:
 | goLiveDate            |                   | Datetime        | [RFC 3339 standard](https://datatracker.ietf.org/doc/html/rfc3339) timestamp when minting is allowed – the Candy Machine authority and whitelists can bypass this constraint                                                            |
 | endSettings           |                   |                 |                                                                                                                                                                                                                                         |
 |                       | endSettingType    | String          | Either "Date" or "Amount" to stop minting after a specific timestamp or a specific number of NFTs minted                                                                                                                                |
-|                       | value             | Number          | Value to test the end condition. This will either be a Unix timestamp or a integer value for number of NFTs                                                                                                                             |
+|                       |date    | String | Value to test the end condition. This is an ISO8601 formatted date string. |
+|                       | number             | Number          | Value to test the end condition. This is integer value for number of NFTs                                                                                                                             |
 | whitelistMintSettings |                   |                 |                                                                                                                                                                                                                                         |
 |                       | mode              | String          | "burnEveryTime" to burn the whitelist token after minting, and "neverBurn" to return whitelist token to holder after mint.                                                                                                              |
 |                       | mint              | PublicKey       | Mint address of the whitelist token                                                                                                                                                                                                     |
@@ -95,7 +109,10 @@ The main differences with the previous configuration file are:
 |                       |                   | bundlr”         | Uploads to arweave using [Bundlr](https://bundlr.network) and payments are made in SOL (Works on mainnet and devnet. **Files are only stored for 7 days on devnet.**)                                                                   |
 |                       |                   | “nft-storage”   | Uploads to [NFT.Storage](https://nft.storage) (no payment required, works on all networks)                                                                                                                                              |
 |                       |                   | “shdw”          | Uploads to the [GenesysGo Shadow Drive](https://shdw.genesysgo.com/shadow-infrastructure-overview/shadow-drive-overview/the-shadow-drive-storage-stack/the-shadow-drive-overlay/what-is-shadow-drive) (Only works on mainnet currently) |
-| awsS3Bucket           |                   | String          | AWS bucket name                                                                                                                                                                                                                         |
+| awsConfig           |                   |           | AWS bucket name                                                                                                                                                                                                                         |
+|            |bucket                   | String          | AWS bucket name                                                                                                                                                                                                                         |
+|            |profile                   | String          | AWS profile to use from the credentials file name                                                                                                                                                                                                                         |
+|            |directory                   | String          | The directory within the bucket to upload the items to. An empty string means uploading files to the bucket root directory. name                                                                                                                                                                                                                         |
 | nftStorageAuthToken   |                   | String          | NFT.Storage API Key (optional)                                                                                                                                                                                                          |
 | shadowStorageAccount  |                   | String          | Shadow Drive storage pubkey                                                                                                                                                                                                             |
 | retainAuthority       |                   | boolean         | Indicates whether the candy machine authority has the update authority for each mint or if it is transferred to the minter. This should be kept as `true` for the vast majority of cases.                                               |
