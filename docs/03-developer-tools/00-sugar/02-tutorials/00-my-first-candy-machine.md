@@ -10,7 +10,7 @@ The goal of this tutorial is to take you from zero to one: you will learn to ins
 
 ## Setup
 
-This tutorial targets macOS, Linux, and Windows Subsystem Linux (WSL), but all commands and screenshots are from a macOS system. It should work on any of those three systems. For installing on Windows see the Windows method on the [installation page](../01-overview/00-installation.md).
+This tutorial targets macOS, Linux, and Windows Subsystem Linux (WSL), but all commands and screenshots are from a macOS system. It should work on any of those three systems. For installing on Windows see the Windows method on the [installation page](../01-overview/01-installation.md).
 
 ### Install the Solana CLI Tool Suite
 
