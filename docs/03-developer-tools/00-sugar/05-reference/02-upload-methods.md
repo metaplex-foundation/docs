@@ -4,7 +4,7 @@ There are currently four upload (storage) methods available in Sugar: `"aws"`, `
 
 :::info
 
-The upload methods in Sugar are designed using a Rust trait to make it easier for new methods to be added, therefore Sugar can support a wide-variety of upload methods&mdash;check the [**Bring your own uploader**](../06-developer/00-bring-your-own-uploader) section in the Developer Guide.
+The upload methods in Sugar are designed using a Rust trait to make it easier for new methods to be added, therefore Sugar can support a wide-variety of upload methods&mdash;check the [**Bring your own uploader**](../developer/bring-your-own-uploader) section in the Developer Guide.
 
 :::
 
