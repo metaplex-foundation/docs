@@ -1,12 +1,16 @@
 # Quick Start
 
+:::tip
+For developers already familiar with working on Solana, follow this quick start guide to get going with Sugar. If you are new to Solana we recommend you start with the [My First Candy Machine tutorial](../tutorials/my-first-candy-machine) which will take you from 0 to creating your first candy machine using Sugar.
+:::
+
 Set up your Solana CLI config with an RPC url and a keypair:
 
 ```bash
 solana config set --url <rpc url> --keypair <path to keypair file>
 ```
 
-Sugar will then use these settings by default if you don't specify them as CLI options, allowing commands to be much simpler. If you need help setting up Solana CLI and creating a `devnet` wallet, check the [CLI Wallet Guide](/guides/cli-wallet).
+Sugar will then use these settings by default, if you don't specify them as CLI options, allowing commands to be much simpler. If you need help setting up Solana CLI and creating a `devnet` wallet, check the [CLI Wallet Guide](/guides/cli-wallet).
 
 :::tip
 
@@ -15,7 +19,7 @@ https://api.mainnet-beta.solana.com and https://api.devnet.solana.com. Instead, 
 
 :::
 
-Create a folder for your project and within it, create a folder named `assets` to store your json and media file pairs with the naming convention 0.json, 0.png, 1.json, 1.png, etc., where the extension is `.json`, `.png`, `.jpg`, etc. This is the same format described in [Preparing your Assets](./preparing-assets).
+Create a folder for your project and within it, create a folder named `assets` to store your json and media file pairs with the naming convention 0.json, 0.png, 1.json, 1.png, etc., where the extension is `.json`, `.png`, `.jpg`, etc. This is the same format described in [Preparing your Assets](../guides/preparing-assets).
 
 Your project directory will then look like:
 

@@ -1,4 +1,4 @@
-# Sugar Commands
+# Commands
 
 This section is a reference to all of the Sugar commands and a brief description of how to use them and what they do.
 

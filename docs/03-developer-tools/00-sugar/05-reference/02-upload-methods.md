@@ -4,7 +4,7 @@ There are currently four upload (storage) methods available in Sugar: `"aws"`, `
 
 :::info
 
-The upload methods in Sugar are designed using a Rust trait to make it easier for new methods to be added, therefore Sugar can support a wide-variety of upload methods&mdash;check the [**Bring your own uploader**](developer/bring-your-own-uploader) section in the Developer Guide.
+The upload methods in Sugar are designed using a Rust trait to make it easier for new methods to be added, therefore Sugar can support a wide-variety of upload methods&mdash;check the [**Bring your own uploader**](../developer/bring-your-own-uploader) section in the Developer Guide.
 
 :::
 
@@ -17,7 +17,7 @@ The upload methods in Sugar are designed using a Rust trait to make it easier fo
   . . .
   "uploadMethod": "aws",
   . . .
-  "awsConfig": 
+  "awsConfig":
   {
     bucket: "<BUCKET_NAME>",
     profile: "<PROFILE_NAME>",
@@ -26,6 +26,7 @@ The upload methods in Sugar are designed using a Rust trait to make it easier fo
   . . .
 }
 ```
+
 This method uploads files to Amazon S3 storage. When using the `"aws"`, you need to specify the bucket, profile, and directory values in the configuration file under "awsConfig" and set up the credentials in your system. In most cases, this will involve creating a file `~/.aws/credentials` with the following properties:
 
 ```bash
@@ -36,6 +37,7 @@ region=<REGION>
 ```
 
 It is also important to set up the ACL permission of the bucket correctly to enable `"public-read"` and apply Cross-Origin Resource Sharing (CORS) rules to enable content access requested from a different origin (necessary to enable wallets and blockchain explorers load the metadata/media files). More information about these configurations can be found at:
+
 - [Bucket policy examples](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html)
 - [CORS configuration](https://aws.amazon.com/premiumsupport/knowledge-center/s3-configure-cors/)
 
