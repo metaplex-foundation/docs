@@ -30,7 +30,7 @@ Send a tweet to [@metaplex](https://twitter.com/metaplex) or edit this page on G
 - [Steps for Metaplex NFT Display
   ](https://gist.github.com/creativedrewy/9bce794ff278aae23b64e6dc8f10e906)
 
-  ## Token Metadata
+## Token Metadata
 
 - [Mint NFTs on Solana Using Rust and Metaplex Token Metadata](https://betterprogramming.pub/how-to-mint-nfts-on-solana-using-rust-and-metaplex-f66bac717cb8)
 
