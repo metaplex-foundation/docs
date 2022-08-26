@@ -10,11 +10,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.png',
+  favicon: 'logo/favicon.png',
   organizationName: 'metaplex',
   projectName: 'docs',
-  trailingSlash: false,
-
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -24,7 +22,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/metaplex/docs/tree/main/',
-          remarkPlugins: [require('mdx-mermaid')]
+          remarkPlugins: [require('mdx-mermaid')],
+          showLastUpdateTime: true
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -40,6 +39,11 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      docs: {
+        sidebar: {
+          hideable: true,
+        }
+      },
       algolia: {
         // If Algolia did not provide you any appId, use 'BH4D9OD16A'
         appId: 'ONUK0F738E',
@@ -52,7 +56,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         // Optional: see doc section below
         contextualSearch: true,
 
-        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites, and we want to navigate with window.location.href to them.
         // externalUrlRegex: 'external\\.com|domain\\.com',
 
         // Optional: Algolia search parameters
@@ -64,14 +68,15 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         title: 'Metaplex Docs',
         logo: {
           alt: 'Metaplex logo',
-          src: 'img/meta-white.svg',
-          srcDark: 'img/meta-black.svg',
+          src: 'logo/meta-white.svg',
+          srcDark: 'logo/meta-black.svg',
         },
         items: [
           {
             href: 'https://github.com/metaplex-foundation/metaplex/',
-            label: 'GitHub',
             position: 'right',
+            className: 'header-github-link',
+            'aria-label': 'GitHub repository',
           },
         ],
       },
@@ -83,7 +88,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             items: [
               {
                 label: 'Discord',
-                href: 'https://discord.gg/RfzFD9g9WE',
+                href: 'https://discord.gg/metaplex',
               },
               {
                 label: 'Twitter',
@@ -106,7 +111,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ['rust'],
+        additionalLanguages: ['rust', 'swift'],
       },
     }),
 });
