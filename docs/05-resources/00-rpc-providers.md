@@ -8,6 +8,7 @@ Having a good RPC provider is essential for having a blazing fast dApp!
 
 _In alphabetical order_
 
+- [Alchemy](https://alchemy.com/?a=metaplex)
 - [Ankr](https://www.ankr.com/protocol/public/solana/)
 - [Blockdaemon](https://blockdaemon.com/marketplace/solana/)
 - [Figment](https://figment.io/datahub/solana/)
