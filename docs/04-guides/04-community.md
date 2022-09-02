@@ -43,6 +43,7 @@ Send a tweet to [@metaplex](https://twitter.com/metaplex) or edit this page on G
 - [Hash Table tool](https://aiphotos.art/hash-table) for listing your Candy Machine NFT Collection on secondary marketplaces
 - [Candy Machine V2 Guide](https://hackmd.io/@MarkSackerberg/candyV2)
 - [HashLips](https://github.com/HashLips/hashlips_art_engine) for creating generative art
+- [Candy Machine v2 Guide with Credit Card Support](https://medium.com/crossmint-tech/how-to-launch-a-solana-nft-collection-with-credit-card-support-using-candy-machine-e740cffee1bc)
 
 ## Fair Launch
 
