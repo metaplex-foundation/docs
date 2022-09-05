@@ -47,7 +47,7 @@ Meaning the Public Key you set in the `authority` section of the `CreateAuction 
 - Fee Withdraw Destination - A wallet that is used to pay for Solana fees for the seller and buyer if the marketplace chooses to execute the sale in the background.
 - Seller Fee Basis Points - The share of the sale the auction house takes on all NFTs.
 - Requires Sign Off - The auction house must sign all sales orders.
-- Can Change Sale Price - If the buyer intentionally lists their NFT for a price of 0 the Auction House can change the sale price to match a matching Bid that is greater than 0. This allows the Auction house to do complicated order matching to find the best price for the seller.
+- Can Change Sale Price - If the seller intentionally lists their NFT for a price of 0 the Auction House can change the sale price to match a matching Bid that is greater than 0. This allows the Auction house to do complicated order matching to find the best price for the seller.
 - Treasury Mint - The SPL token you accept as the purchase currency
 
 :::warning
@@ -70,7 +70,7 @@ Now that you know what the Auction House is, take a look at our [Getting Started
 
 ### Auction House Receipts
 
-To aid transaction tracking, Auction House supports the generation of receipts for listings, bids, and sales. To generate these receipts, the receipt printing function should be called immediately after the corresponding transaction (`PrintListingReceipt`, `PrintBidReceipt`, and `PrintPurchaseReceipt`). Additionally, the `CancelListingReceipt` and `CancelBidReceipt` instructions should be called in the case of canceled listing add bids. Calling these two instructions will fill the `canceled_at` fields of the `ListingReceipt` and `BidReceipt` accounts.
+To aid transaction tracking, Auction House supports the generation of receipts for listings, bids, and sales. To generate these receipts, the receipt printing function should be called immediately after the corresponding transaction (`PrintListingReceipt`, `PrintBidReceipt`, and `PrintPurchaseReceipt`). Additionally, the `CancelListingReceipt` and `CancelBidReceipt` instructions should be called in the case of canceled listings and bids. Calling these two instructions will fill the `canceled_at` fields of the `ListingReceipt` and `BidReceipt` accounts.
 
 :::info
 
