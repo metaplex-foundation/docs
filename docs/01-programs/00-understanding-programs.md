@@ -56,7 +56,7 @@ Whether we are dealing with a regular Account or a Program Derived Account, Acco
 
 ### Discriminators
 
-Discriminators are used to differentiating between different types of Accounts within a Program. They can be implemented in many ways but here are the three most common ones:
+Discriminators are used to differentiate between different types of Accounts within a Program. They can be implemented in many ways but here are the three most common ones:
 
 - **Use a shared Enum as the first byte of every account**. By prefixing every Account with a shared Enum, we can use the first byte of the serialized data to identify the Account. This is a simple and efficient way to implement discriminators. Most of the programs maintained by Metaplex use this approach.
 - **Use a deterministic hash as the first byte of every account**. This is very similar to the previous point, but it uses a hash instead of an Enum. Programs created using the Anchor framework end up using this approach implicitly because Anchor will automatically generate that hash based on the Account's name.
