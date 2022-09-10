@@ -114,7 +114,7 @@ A Program may require that the Accounts provided within an Instruction are **Sig
 - **Signers**: A Signer Account is required to sign the Transaction for the Instruction to be successful. By attaching a signature, users can prove that they are the owner of the Account.
 - **Writable**: A Writable Account will be mutated by the Instruction. This information is important for the blockchain to know which Transactions can be run in parallel and which ones can't.
 
-Therefore, with these two booleans, we end up with the following four possible scenarios:
+Therefore, with the presence or absence of signers and writable accounts, we end up with the following four possible scenarios:
 
 - **Non-Signer and Non-Writable**: This Account is only used to read data. We cannot mutate it and we cannot make any assumption about its ownership.
 - **Signer and Non-Writable**: This Account can also not be mutated, but we know that the user who sent the Transaction owns its private key. This enables Programs to grant or deny access to certain actions.
