@@ -13,6 +13,7 @@ _In alphabetical order_
 - [Blockdaemon](https://blockdaemon.com/marketplace/solana/)
 - [Figment](https://figment.io/datahub/solana/)
 - [GenesysGo](https://genesysgo.com/)
+- [Node Monkey](https://marketplace.nodemonkey.io/renters)
 - [QuickNode](https://quicknode.com/)
 - [RunNode](https://runnode.com/)
 - [Syndica](https://syndica.io/)
