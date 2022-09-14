@@ -21,40 +21,47 @@ When developing for the web or using [Node.js](https://nodejs.org/en/), one of t
 
 It not only provides a great API to interact with programs but also abstracts away some pain points we have to deal with when interacting with the Solana blockchain. For instance, it encapsulates who is using the SDK via Identity Drivers. On top of that, the SDK was built with modularity in mind so one can easily inject plugins and modules to extend its feature set.
 
-**The main module that interacts with the Candy Machine program is the [NFT module](https://github.com/metaplex-foundation/js-next#nfts)**. It is composed of several methods that focus on real use cases to make our life easier. Here are some of them.
+**The main module that interacts with the Candy Machine program is the [Candy Machine module](https://github.com/metaplex-foundation/js#candy-machines)**. It is composed of several methods that focus on real use cases to make our life easier. Here are some of them.
 
 ```ts
-
+metaplex.candyMachines().addAssets()
+metaplex.candyMachines().create()
+metaplex.candyMachines().createFromConfig()
+metaplex.candyMachines().findAllByAuthority()
+metaplex.candyMachines().findAllByWallet()
+metaplex.candyMachines().findByAddress()
+metaplex.candyMachines().update()
+metaplex.candyMachines().updateAuthority()
+metaplex.candyMachines().uploadAssetsForCandyMachine()
 ```
 
 Note that this SDK is fairly new, and we are planning on adding more methods, modules, and plugins in the future. For now, the entire documentation is written in the README of the GitHub repository. We will be writing more content as we go until the SDK is mature enough to have its own folder in this documentation.
 
 🔗 **Helpful links:**
 
-- [GitHub repository](https://github.com/metaplex-foundation/js-next)
+- [GitHub repository](https://github.com/metaplex-foundation/js)
 - [Repository of examples using the JS SDK](https://github.com/metaplex-foundation/js-examples)
-- [NPM package](https://www.npmjs.com/package/@metaplex-foundation/js-next)
+- [NPM package](https://www.npmjs.com/package/@metaplex-foundation/js)
 
 ## Auto-generated JavaScript library
 
-Another way to interact with the Token Metadata program is to use its auto-generated JavaScript library. Whenever the program (written in Rust) gets updated and published, the library gets regenerated to match the latest version of the program. Note that this is what the JavaScript SDK mentioned above uses under the hood to interact with the program.
+Another way to interact with the Candy Machine program is to use its auto-generated JavaScript library. Whenever the program (written in Rust) gets updated and published, the library gets regenerated to match the latest version of the program. Note that this is what the JavaScript SDK mentioned above uses under the hood to interact with the program.
 
 Therefore, these auto-generated libraries can be used by more advanced developers who wish to interact with the program at a lower level, i.e. by preparing instructions and sending transactions directly.
 
 🔗 **Helpful links:**
 
-- [GitHub repository](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/token-metadata/js)
-- [NPM package](https://www.npmjs.com/package/@metaplex-foundation/mpl-token-metadata)
-- [API references](https://metaplex-foundation.github.io/metaplex-program-library/docs/token-metadata/index.html)
+- [GitHub repository](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/candy-machine/js)
+- [NPM package](https://www.npmjs.com/package/@metaplex-foundation/mpl-candy-machine)
 
 ## Rust crate
 
 If you are a Rust developer, you can also use a Rust crate to interact with the Token Metadata program. Since the program is written in Rust, this crate contains all the program's logic, including helper methods that prepare instructions for us.
 
-This can be helpful if you are developing a Rust client or if you want to make [CPI calls](https://solanacookbook.com/references/programs.html#how-to-do-cross-program-invocation) to the Token Metadata program within your program.
+This can be helpful if you are developing a Rust client or if you want to make [CPI calls](https://solanacookbook.com/references/programs.html#how-to-do-cross-program-invocation) to the Token Metadata program within your program. Be aware that you can NOT mint from Candy Machines through CPI. 
 
 🔗 **Helpful links:**
 
-- [GitHub repository](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/token-metadata/program)
-- [Crate page](https://crates.io/crates/mpl-token-metadata)
-- [API references](https://docs.rs/mpl-token-metadata/latest/mpl_token_metadata/)
+- [GitHub repository](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/candy-machine/program)
+- [Crate page](https://crates.io/crates/mpl-candy-machine)
+- [API references](https://docs.rs/mpl-candy-machine/latest/mpl_candy_machine/)
