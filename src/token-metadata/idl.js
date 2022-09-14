@@ -2,7 +2,7 @@ import docs from "./idl-docs";
 
 export default {
   docs, // <- Injects additional data to the IDL.
-  version: "1.3.1",
+  version: "1.3.6",
   name: "mpl_token_metadata",
   instructions: [
     {
@@ -725,6 +725,7 @@ export default {
           isMut: false,
           isSigner: false,
           desc: "Rent info",
+          optional: true,
         },
       ],
       args: [
@@ -872,6 +873,7 @@ export default {
           isMut: false,
           isSigner: false,
           desc: "Rent info",
+          optional: true,
         },
       ],
       args: [
@@ -976,6 +978,7 @@ export default {
           isMut: false,
           isSigner: false,
           desc: "Rent info",
+          optional: true,
         },
       ],
       args: [
@@ -1047,6 +1050,7 @@ export default {
           isMut: false,
           isSigner: false,
           desc: "Rent info",
+          optional: true,
         },
       ],
       args: [
@@ -1261,6 +1265,7 @@ export default {
           isMut: false,
           isSigner: false,
           desc: "Rent info",
+          optional: true,
         },
       ],
       args: [
@@ -1332,6 +1337,7 @@ export default {
           isMut: false,
           isSigner: false,
           desc: "Rent info",
+          optional: true,
         },
       ],
       args: [],
@@ -1437,6 +1443,7 @@ export default {
           isMut: false,
           isSigner: false,
           desc: "Rent info",
+          optional: true,
         },
       ],
       args: [],
@@ -1457,7 +1464,7 @@ export default {
         {
           name: "delegateAuthority",
           isMut: true,
-          isSigner: true,
+          isSigner: false,
           desc: "Delegated Collection Authority",
         },
         {
@@ -1908,6 +1915,7 @@ export default {
           isMut: false,
           isSigner: false,
           desc: "Rent info",
+          optional: true,
         },
       ],
       args: [
@@ -1998,6 +2006,124 @@ export default {
       discriminant: {
         type: "u8",
         value: 35,
+      },
+    },
+    {
+      name: "BubblegumSetCollectionSize",
+      accounts: [
+        {
+          name: "collectionMetadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Collection Metadata account",
+        },
+        {
+          name: "collectionAuthority",
+          isMut: true,
+          isSigner: true,
+          desc: "Collection Update authority",
+        },
+        {
+          name: "collectionMint",
+          isMut: false,
+          isSigner: false,
+          desc: "Mint of the Collection",
+        },
+        {
+          name: "bubblegumSigner",
+          isMut: false,
+          isSigner: true,
+          desc: "Signing PDA of Bubblegum program",
+        },
+        {
+          name: "collectionAuthorityRecord",
+          isMut: false,
+          isSigner: false,
+          desc: "Collection Authority Record PDA",
+          optional: true,
+        },
+      ],
+      args: [
+        {
+          name: "setCollectionSizeArgs",
+          type: {
+            defined: "SetCollectionSizeArgs",
+          },
+        },
+      ],
+      discriminant: {
+        type: "u8",
+        value: 36,
+      },
+    },
+    {
+      name: "BurnEditionNft",
+      accounts: [
+        {
+          name: "metadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata (pda of ['metadata', program id, mint id])",
+        },
+        {
+          name: "owner",
+          isMut: true,
+          isSigner: true,
+          desc: "NFT owner",
+        },
+        {
+          name: "mint",
+          isMut: true,
+          isSigner: false,
+          desc: "Mint of the print edition NFT",
+        },
+        {
+          name: "originalMint",
+          isMut: true,
+          isSigner: false,
+          desc: "Mint of the original/master NFT",
+        },
+        {
+          name: "tokenAccount",
+          isMut: true,
+          isSigner: false,
+          desc: "Token account the print edition NFT is in",
+        },
+        {
+          name: "originalTokenAccount",
+          isMut: false,
+          isSigner: false,
+          desc: "Token account the Master Edition NFT is in",
+        },
+        {
+          name: "masterEditionAccount",
+          isMut: true,
+          isSigner: false,
+          desc: "MasterEdition2 of the original NFT",
+        },
+        {
+          name: "editionAccount",
+          isMut: true,
+          isSigner: false,
+          desc: "Print Edition account of the NFT",
+        },
+        {
+          name: "editionMarkerAccount",
+          isMut: true,
+          isSigner: false,
+          desc: "Edition Marker PDA of the NFT",
+        },
+        {
+          name: "splTokenProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "SPL Token Program",
+        },
+      ],
+      args: [],
+      discriminant: {
+        type: "u8",
+        value: 37,
       },
     },
   ],
@@ -2760,7 +2886,12 @@ export default {
         variants: [
           {
             name: "V1",
-            fields: ["u64"],
+            fields: [
+              {
+                name: "size",
+                type: "u64",
+              },
+            ],
           },
         ],
       },
@@ -3342,9 +3473,51 @@ export default {
       name: "MasterEditionHasPrints",
       msg: "This Master Edition has existing prints",
     },
+    {
+      code: 111,
+      name: "BorshDeserializationError",
+      msg: "Borsh Deserialization Error",
+    },
+    {
+      code: 112,
+      name: "CannotUpdateVerifiedCollection",
+      msg: "Cannot update a verified colleciton in this command",
+    },
+    {
+      code: 113,
+      name: "CollectionMasterEditionAccountInvalid",
+      msg: "Edition account aoesnt match collection ",
+    },
+    {
+      code: 114,
+      name: "AlreadyVerified",
+      msg: "Item is already verified.",
+    },
+    {
+      code: 115,
+      name: "AlreadyUnverified",
+      msg: "Item is already unverified.",
+    },
+    {
+      code: 116,
+      name: "NotAPrintEdition",
+      msg: "This edition is not a Print Edition",
+    },
+    {
+      code: 117,
+      name: "InvalidEditionMarker",
+      msg: "Invalid Edition Marker",
+    },
+    {
+      code: 118,
+      name: "ReservationListDeprecated",
+      msg: "Reservation List is Deprecated",
+    },
   ],
   metadata: {
     origin: "shank",
     address: "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s",
+    binaryVersion: "0.0.8",
+    libVersion: "~0.0.4",
   },
 };
