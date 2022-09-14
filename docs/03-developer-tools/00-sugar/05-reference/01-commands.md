@@ -18,7 +18,6 @@ sugar bundlr withdraw
 
 At the end of the withdrawal, the funds available on the Bundlr Network will be transferred to your Solana address.
 
-
 ## collection
 
 You can use the `collection` commands to manually set or remove the collection NFT. You can only modify the collection on your Candy Machine before any NFTs have been minted from it.
@@ -67,6 +66,32 @@ After a successful deployment, the Candy Machine is ready to be minted according
 
 > **Note:** The authority wallet (the one used to create the Candy Machine) can mint bypassing the `goLiveDate` setting.
 
+## freeze
+
+Subcommand that allows enabling or disabling the freeze feature on a candy machine.
+
+### enable
+
+Turn on the freeze settings for a candy machine that has not started minting yet.
+
+```
+sugar freeze enable
+```
+
+### disable
+
+Turn off the freeze settings for a candy machine.
+
+```bash
+sugar freeze disable
+```
+
+Both commands default to using the candy machine in the cache file but take an optional <candy_machine> arg.
+
+```
+sugar freeze enable 4j7JaycXWPiwgv7aodQpvW9iXGiZ9hfgdUEPbS8B6ncp
+```
+
 ## hash
 
 When using `hiddenSettings`, this command computes a hash of the cache file and updates the hash value in the config file. Hash values are automatically updated by the `deploy` command when using `hiddenSettings`, but this command allows updating for advanced use-cases when users are modifying the cache file manually.
@@ -87,19 +112,19 @@ sugar hash --compare 44oZ3goi9ivakeUnbjWbWJpvdgcWCrsi --cache my_custom_cache.js
 
 ## launch
 
-The `launch` command is a convenience command that runs four other commands consecutively: 
-* create-config
-* validate
-* upload
-* deploy
-* verify
+The `launch` command is a convenience command that runs four other commands consecutively:
+
+- create-config
+- validate
+- upload
+- deploy
+- verify
 
 These five commands allow you to start from a project folder with an assets subfolder in it and go through the entire process of setting up and creating a candy machine, so it's meant as a quickstart command if you don't want to run the steps individually.
 
 ```bash
 sugar launch
 ```
-
 
 ## mint
 
@@ -153,6 +178,46 @@ sugar sign
 
 ```bash
 sugar sign -k creator.json
+```
+
+## thaw
+
+This command thaws a single frozen NFT, or all frozen NFTs from a candy machine, if the candy machine's freeze settings allow it.
+
+Thaw a single NFT:
+
+```bash
+sugar thaw --candy-machine-id <candy_machine_id> <mint_account>
+```
+
+Thaw all NFTs from a candy machine:
+
+```bash
+sugar thaw --all --candy-machine-id <candy_machine_id>
+```
+
+In both commands, the candy machine id is optional and if left off Sugar will default to the id it finds in the cache file.
+
+E.g.:
+
+```bash
+sugar thaw --all
+```
+
+## unfreeze-funds
+
+Unfreeze a candy machine's treasury funds by closing the freeze PDA and transferring the funds back to the treasury address. This can only be done when the freeze time has elapsed or the candy machine is fully minted out, and all NFTs are unthawed.
+
+```bash
+sugar unfreeze-funds
+```
+
+It defaults to using the candy machine specified in the cache but can optionally take a candy machine address as an argument.
+
+Using it with an optional candy machine arg:
+
+```bash
+sugar unfreeze-funds <candy_machine>
 ```
 
 ## update
@@ -251,7 +316,6 @@ sugar withdraw --list
 ```
 
 > You should not withdraw the rent of a live Candy Machine, as the Candy Machine will stop working when you drain its account.
-
 
 ## Further Reading
 
