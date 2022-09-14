@@ -7,9 +7,9 @@ The Candy Machine is a Solana program running on Mainnet Beta and Devnet. While 
 Sugar is our new Candy Machine CLI that replaced the JavaScript CLI. It allows you to do everything with the Candy Machine that you need, from creation to asset upload, mint and at the end even destroying (withdrawing) it again. Everything it does is super fast and polished.
 
 There are multiple resources in the official docs where you can learn more how to use sugar yourself:
-- [Installation](/developer-tools/sugar/installation)
-- [Quick Start](/developer-tools/sugar/quick-start) for Solana experienced developlers
-- [My first Candy Machine](/developer-tools/sugar/my-first-candy-machine) for developers new to Solana 
+- [Installation](/developer-tools/sugar/overview/installation)
+- [Quick Start](/developer-tools/sugar/overview/quick-start) for Solana experienced developlers
+- [My first Candy Machine](/developer-tools/sugar/tutorials/my-first-candy-machine) for developers new to Solana 
 
 **Additional Helpful links**
 - [Github Repository](https://github.com/metaplex-foundation/sugar)
