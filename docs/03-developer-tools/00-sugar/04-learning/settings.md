@@ -174,8 +174,8 @@ You can use the whitelist settings with the `presale` option set to `true` in co
 
 The candy machine freeze feature allows setting up a candy machine that places creator treasury funds in escrow and automatically mints NFTs with the SPL token freeze feature enabled. This accomplishes two things: 1) prevents users from undercutting the mint price by immediately flipping their NFT on secondary markets at a price below the mint, 2) prevents the creator from running off with funds until all user NFTs are unfrozen.
 
-When the freeze setting is enabled, newly minted NFTs are set as frozen preventing the user from transferring them and listing them with secondary exchanges. Frozen NFTs can be thawed once at least one of two conditions is true: 1) all NFTs have been minted out, 2) freeze time has elapsed (starting from candy machine go live date). Once one of these conditions are met, anyone can call the permissionless
- `thaw_nft` crank on the candy machine to unthaw a NFT. Sugar allows unthawing a single NFT or all NFTs from a candy machine using the [sugar thaw](../reference/commands#thaw) command. This allows a creator, or anyone else, to thaw all NFTs from the candy machine.
+When the freeze setting is enabled, newly minted NFTs are set as frozen preventing the user from transferring them and listing them with secondary exchanges. Frozen NFTs can be thawed once at least one of two conditions is true: 1) all NFTs have been minted out, 2) freeze time has elapsed (starting from time of the first mint). Once one of these conditions are met, anyone can call the permissionless
+`thaw_nft` crank on the candy machine to unthaw a NFT. Sugar allows unthawing a single NFT or all NFTs from a candy machine using the [sugar thaw](../reference/commands#thaw) command. This allows a creator, or anyone else, to thaw all NFTs from the candy machine.
 
 Once all NFTs are thawed, the update authority can then call [unfreeze-funds](../reference/commands#unfreeze-funds) to unlock their funds and transfer them back to the treasury address.
 
