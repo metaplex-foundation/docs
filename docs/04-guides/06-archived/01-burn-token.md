@@ -1,6 +1,12 @@
 ---
-sidebar_position: 12
+description: "OUTDATED: How to burn a token."
+sidebar_label: "Burn Token"
 ---
+:::warning
+There is a full burn instruction now which allows to fully burn Metaplex Tokens. If you use the guide below not all Accounts will be closed and you will not get back all rent SOL!
+
+A new Guide will be added soon.
+:::
 
 # Burn Token
 
