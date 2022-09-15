@@ -22,17 +22,25 @@ OPTIONS:
     -V, --version                  Print version information
 
 SUBCOMMANDS:
-    create-config    Interactive process to create the config file
-    deploy           Deploy cache items into candy machine config on-chain
-    help             Print this message or the help of the given subcommand(s)
-    launch           Create a candy machine deployment from assets
-    mint             Mint one NFT from candy machine
-    show             Show the on-chain config of an existing candy machine
-    update           Update the candy machine config on-chain
-    upload           Upload assets to storage and creates the cache config
-    validate         Validate JSON metadata files
-    verify           Verify uploaded data
-    withdraw         Withdraw funds from candy machine account closing it
+    bundlr            Interact with the bundlr network
+    collection        Manage the collection on the candy machine
+    create-config     Interactive process to create the config file
+    deploy            Deploy cache items into candy machine config on-chain
+    freeze            Commands for the Candy Machine Freeze feature
+    hash              Generate hash of cache file for hidden settings
+    help              Print this message or the help of the given subcommand(s)
+    launch            Create a candy machine deployment from assets
+    mint              Mint one NFT from candy machine
+    reveal            Reveal the NFTs from a hidden settings candy machine
+    show              Show the on-chain config of an existing candy machine
+    sign              Sign one or all NFTs from candy machine
+    thaw              Thaw a NFT or all NFTs in a candy machine
+    unfreeze-funds    Unlock treasury funds after freeze is turned off or expires
+    update            Update the candy machine config on-chain
+    upload            Upload assets to storage and creates the cache config
+    validate          Validate JSON metadata files
+    verify            Verify uploaded data
+    withdraw          Withdraw funds from candy machine account closing it
 ```
 
 To get more information about a particular command (e.g., `deploy`), use the `help` command:
@@ -42,7 +50,7 @@ sugar help deploy
 ```
 
 The list of options together with a short description will be displayed:
- 
+
 ```
 Deploy cache items into candy machine config on-chain
 
