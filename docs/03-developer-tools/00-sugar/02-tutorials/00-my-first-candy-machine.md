@@ -66,7 +66,7 @@ SUBCOMMANDS:
     reveal            Reveal the NFTs from a hidden settings candy machine
     show              Show the on-chain config of an existing candy machine
     sign              Sign one or all NFTs from candy machine
-    thaw              Thaw a NFT or all NFTs in a candy machine
+    thaw              Thaw an NFT or all NFTs in a candy machine
     unfreeze-funds    Unlock treasury funds after freeze is turned off or expires
     update            Update the candy machine config on-chain
     upload            Upload assets to storage and creates the cache config
@@ -250,7 +250,7 @@ Your values will be different depending on and what you input for various settin
 In this step, we will upload all our assets file pairs to Arweave via Bundlr.
 
 :::info
-Solana is designed to be a high-throughput low-latency blockchain that can host smart contracts, but one of the design tradeoffs is that storing data on Solana is fairly expensive. For NFTs, we only store basic information about the NFT, such as the name, symbol, creators, and seller fee basis points. For the image and all the other metadata, we have a URL on-chain on Solana that points to an external JSON file contain all that information.
+Solana is designed to be a high-throughput, low-latency blockchain that can host smart contracts, but one of the design tradeoffs is that storing data on Solana is fairly expensive. For NFTs, we only store basic information about the NFT, such as the name, symbol, creators, and seller fee basis points. For the image and all the other metadata, we have a URL on-chain on Solana that points to an external JSON file containing all that information.
 
 This URL can point to any JSON file anywhere. It can be a decentralized file storage blockchain like Arweave or Filecoin, a peer-to-peer distributed file system like IPFS, or even a centralized cloud server like AWS.
 

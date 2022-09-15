@@ -196,7 +196,7 @@ Thaw all NFTs from a candy machine:
 sugar thaw --all --candy-machine-id <candy_machine_id>
 ```
 
-In both commands, the candy machine id is optional and if left off Sugar will default to the id it finds in the cache file.
+In both commands, the candy machine id is optional, and if left off Sugar will default to the id it finds in the cache file.
 
 E.g.:
 
@@ -206,7 +206,7 @@ sugar thaw --all
 
 ## unfreeze-funds
 
-Unfreeze a candy machine's treasury funds by closing the freeze PDA and transferring the funds back to the treasury address. This can only be done when the freeze time has elapsed or the candy machine is fully minted out, and all NFTs are unthawed.
+Unfreeze a candy machine's treasury funds by closing the freeze PDA and transferring the funds back to the treasury address. This can only be done when the freeze time has elapsed, or the candy machine is fully minted out, and all NFTs are unthawed.
 
 ```bash
 sugar unfreeze-funds
