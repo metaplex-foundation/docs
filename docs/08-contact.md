@@ -12,7 +12,7 @@ sidebar_label: Contact Us
 
 ## Security issues
 
-To report a security issue, please follow the guidance on our [security policy](/security-policy) page.
+To report a security issue, please follow the guidance on our [security](/security) page.
 
 
 [discord]: https://discord.com/invite/metaplex
