@@ -1,8 +1,8 @@
 ---
-sidebar_label: Security Policy
+sidebar_label: Security
 ---
 
-# Security Policy
+# Security
 
 ## Reporting a Vulnerability
 
@@ -26,7 +26,7 @@ This information will help us triage your report more quickly.
 
 You may also be eligible for a bounty. More details can be found [here](https://www.metaplex.com/bounty-program).
 
-## Security Audits
+## Audits
 
 Ongoing automated and manual security audits are routinely performed by our audit partner [Sec3](https://www.sec3.dev/). Automated audits are performed for every PR and security issues must be resolved before merging into the main branch. Manual ongoing audits are initiated for changes above a specific threshold and security issues must be resolved before merging into the main branch.
 
