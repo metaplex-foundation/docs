@@ -25,3 +25,17 @@ Please include the requested information listed below (as much as you can provid
 This information will help us triage your report more quickly.
 
 You may also be eligible for a bounty. More details can be found [here](https://www.metaplex.com/bounty-program).
+
+## Security Audits
+
+Ongoing automated and manual security audits are routinely performed by our audit partner [Sec3](https://www.sec3.dev/). Automated audits are performed for every PR and security issues must be resolved before merging into the main branch. Manual ongoing audits are initiated for changes above a specific threshold and security issues must be resolved before merging into the main branch.
+
+Large one-off audits are also performed when there are large changes to the code or functionality as detailed below.
+
+| Protocol       | Last major one-off audit date |
+| -------------- | ----------------------- |
+| Token Metadata | 2022-07-31 |
+| Auction House  | 2022-06-26 |
+| Gumdrop        | 2022-05-16 |
+| Candy Machine  | 2021-02-01 |
+
