@@ -37,5 +37,7 @@ Large one-off audits are also performed when there are large changes to the code
 | Token Metadata | 2022-07-31 |
 | Auction House  | 2022-06-26 |
 | Gumdrop        | 2022-05-16 |
-| Candy Machine  | 2021-02-01 |
+| Candy Machine*  | 2021-02-01 |
+
+(*) Independent 3rd party audit 
 
