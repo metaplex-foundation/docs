@@ -97,7 +97,7 @@ The following instructions are available to set, verify or unverify an NFT as pa
 - [Unverify a sized collection item](./instructions#unverify-a-sized-collection-item) (Introduced in version 1.3)
 - [Set and verify a sized collection item](./instructions#set-and-verify-a-sized-collection-item) (Introduced in version 1.3)
 
-If you're Collection NFT does not yet have its `CollectionDetails` field setup, you must use the following instructions instead:
+If your Collection NFT does not yet have its `CollectionDetails` field setup, you must use the following instructions instead:
 
 - [Verify a collection item](./instructions#verify-a-collection-item)
 - [Unverify a collection item](./instructions#unverify-a-collection-item)
