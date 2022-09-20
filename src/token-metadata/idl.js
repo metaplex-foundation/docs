@@ -2,7 +2,7 @@ import docs from "./idl-docs";
 
 export default {
   docs, // <- Injects additional data to the IDL.
-  version: "1.3.6",
+  version: "1.4.0",
   name: "mpl_token_metadata",
   instructions: [
     {
@@ -2072,25 +2072,25 @@ export default {
           desc: "NFT owner",
         },
         {
-          name: "mint",
+          name: "printEditionMint",
           isMut: true,
           isSigner: false,
           desc: "Mint of the print edition NFT",
         },
         {
-          name: "originalMint",
+          name: "masterEditionMint",
           isMut: true,
           isSigner: false,
           desc: "Mint of the original/master NFT",
         },
         {
-          name: "tokenAccount",
+          name: "printEditionTokenAccount",
           isMut: true,
           isSigner: false,
           desc: "Token account the print edition NFT is in",
         },
         {
-          name: "originalTokenAccount",
+          name: "masterEditionTokenAccount",
           isMut: false,
           isSigner: false,
           desc: "Token account the Master Edition NFT is in",
@@ -2102,7 +2102,7 @@ export default {
           desc: "MasterEdition2 of the original NFT",
         },
         {
-          name: "editionAccount",
+          name: "printEditionAccount",
           isMut: true,
           isSigner: false,
           desc: "Print Edition account of the NFT",
@@ -3486,7 +3486,7 @@ export default {
     {
       code: 113,
       name: "CollectionMasterEditionAccountInvalid",
-      msg: "Edition account aoesnt match collection ",
+      msg: "Edition account doesnt match collection ",
     },
     {
       code: 114,
@@ -3505,13 +3505,28 @@ export default {
     },
     {
       code: 117,
+      name: "InvalidMasterEdition",
+      msg: "Invalid Master Edition",
+    },
+    {
+      code: 118,
+      name: "InvalidPrintEdition",
+      msg: "Invalid Print Edition",
+    },
+    {
+      code: 119,
       name: "InvalidEditionMarker",
       msg: "Invalid Edition Marker",
     },
     {
-      code: 118,
+      code: 120,
       name: "ReservationListDeprecated",
       msg: "Reservation List is Deprecated",
+    },
+    {
+      code: 121,
+      name: "PrintEditionDoesNotMatchMasterEdition",
+      msg: "Print Edition does not match Master Edition",
     },
   ],
   metadata: {
