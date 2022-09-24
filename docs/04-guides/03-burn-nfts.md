@@ -17,7 +17,8 @@ To burn NFTs different instructions can be run depending on which kind of NFTs y
 * **Websites**: there are web based tools created by the community which allow you to connect your wallet and burn NFTs like [sol-incinerator.com](https://www.sol-incinerator.com/).
 * **Wallets**: Some wallets like Solflare allow you to directly burn a NFT in your wallet by choosing the NFT and clicking something like `close`
 * **[Metaboss](https://metaboss.rs/burn.html)**: Metaboss is a CLI tool primarily targeted at developers which has a `burn` function. You can either burn a single NFT or burn a [list of NFTs](https://metaboss.rs/burn.html#burn-all).
-Assumed that you have metaboss installed already you just have to run `metaboss burn one -k <OWNER_KEYPAIR> --account <MINT_ACCOUNT>` where `<OWNER_KEYPAIR>` is the path to your filesystem wallet and `<MINT_ACCOUNT>`the NFTs address.
+Assumed that you have metaboss installed already you just have to run the following command where `<OWNER_KEYPAIR>` is the path to your filesystem wallet and `<MINT_ACCOUNT>` the NFTs address:
+```metaboss burn one -k <OWNER_KEYPAIR> --account <MINT_ACCOUNT>```
 
 
 ### ... as a developer? 
