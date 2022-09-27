@@ -2,9 +2,7 @@
 
 ## Introduction
 
-Metaplex's Token Entangler program is pulled straight out of quantum mechanics! It enables you to entangle two NFTs together and make it so only one can exist in the wild at a time (and can always be exchanged with the entangled NFT). This could be useful to **'de-rug'** projects by replacing all the rugged NFTs with a new non-rug set.
-
-The Token Entangler is a program which enables you to tie together two NFTs. It was created to help the Exiled Apes community after the Degen Ape Academy’s erroneous mint. You can find more about the back story on the exiled apes website.
+Metaplex's Token Entangler program is pulled straight out of quantum mechanics! It enables you to entangle two NFTs together and make it so only one can exist in the wild at a time (and can always be exchanged with the entangled NFT). This could be useful to **'de-rug'** projects by replacing all the rugged NFTs with a new non-rug set. That's also the reason for Token Entanglers creation: To help the Exiled Apes community after the Degen Ape Academy’s erroneous mint. You can find more about the back story on the exiled apes website.
 
 The idea behind the program was that the initially minted NFTs with damaged metadata could be swapped to new NFTs containing proper metadata. It could also be used for derugging projects or more creative use cases.
 
