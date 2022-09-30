@@ -462,7 +462,7 @@ Verifying 10 config line(s): (Ctrl+C to abort)
 Verification successful. You're good to go!
 
 See your candy machine at:
--> https://www.solaneyes.com/address/Ews3L5NoAjjLEHYqEu47DqQ77nsqgNQs3NuELjBCd5bb
+-> https://www.solaneyes.com/address/Ews3L5NoAjjLEHYqEu47DqQ77nsqgNQs3NuELjBCd5bb?cluster=devnet
 
 ✅ Command successful.
 
