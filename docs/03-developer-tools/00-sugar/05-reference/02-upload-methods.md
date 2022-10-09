@@ -10,7 +10,7 @@ The upload methods in Sugar are designed using a Rust trait to make it easier fo
 
 ## Amazon (AWS) S3
 
-> Configuration settings:
+Configuration settings:
 
 ```json
 {
@@ -21,8 +21,8 @@ The upload methods in Sugar are designed using a Rust trait to make it easier fo
   {
     bucket: "<BUCKET_NAME>",
     profile: "<PROFILE_NAME>",
-    directory: "<DIRECTORY_NAME>",
-  }
+    directory: "<DIRECTORY_NAME>"
+  },
   . . .
 }
 ```
@@ -58,6 +58,38 @@ Configuration settings:
 > **Note:** Files are only stored for 7 days when uploaded with Bundlr on `devnet`.
 
 Uploads to [Arweave](https://www.arweave.org/) using [Bundlr Network](https://bundlr.network/) and payments are made in `SOL`.
+
+## Pinata
+
+Configuration settings:
+
+```json
+{
+  . . .
+  "uploadMethod": "pinata",
+  . . .
+  "pinataConfig":
+  {
+    jwt: "<JWT>",
+    apiGateway: "<URL>",
+    contentGateway: "<URL>",
+    parallelLimit: "<NUMBER>"
+  },
+  . . .
+}
+```
+
+This method uploads files to Pinata storage. When using the `"pinata"`, you need to specify the `jwt`, `apiGateway`, and `contentGateway` values in the configuration file under "pinataConfig":
+- `jwt`: JWT authentication token
+- `apiGateway`: URL to connect to Pinata API (use `https://api.pinata.cloud` for the public API endpoint)
+- `contentGateway`: URL to use as the base for creating the asset links (use `https://gateway.pinata.cloud` for the public gateway)
+- `parallelLimit`: (optional) number of concurrent upload, adjust this value to avoid rate limits.
+
+:::info
+
+The public gateways are not intended to be used in production &mdash; they are good to be used for testing. They are heavily rate limited and not designed for speed.
+
+:::
 
 ## NFT.Storage
 
