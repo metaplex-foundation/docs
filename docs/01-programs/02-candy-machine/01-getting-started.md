@@ -47,7 +47,7 @@ Note that Candy Machine is composed of the following two programs which means yo
 - **Candy Machine Core**: The main program that allows managing Candy Machines and minting without guards.
 - **Candy Guard**: The default Candy Guard program that ships with a large selection of guards to chose from.
 
-### **JavaScript Program Libraries[](https://docs.metaplex.com/programs/token-metadata/getting-started#auto-generated-javascript-library)**
+### JavaScript Program Libraries
 
 - **Candy Machine Core**
     - [GitHub Repository](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/candy-machine-core/js)
@@ -58,11 +58,11 @@ Note that Candy Machine is composed of the following two programs which means yo
     - [NPM Package](https://www.npmjs.com/package/@metaplex-foundation/mpl-candy-guard)
     - API References
 
-### Swift **Program Libraries**
+### Swift Program Libraries
 
 *Coming soon.*
 
-### Kotlin **Program Libraries**
+### Kotlin Program Libraries
 
 *Coming soon.*
 
