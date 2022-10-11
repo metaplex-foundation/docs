@@ -34,7 +34,7 @@ The created Candy Machine keeps track its own settings which helps us understand
 
 However, we still don’t know which NFTs should be minted from that Candy Machine. In other words, the Candy Machine is not loaded. So our next step, is to insert items into the Candy Machine.
 
-![Candy Machines V3 - Overview 2@2x.png](/assets/candy-machine-v3/CandyMachinesV3-Overview2.png)
+![Candy Machines V3 - Overview 2@2x.png](/assets/candy-machine-v3/CandyMachinesV3-Overview2.png#radius)
 
 Each item is composed of two parameters:
 
