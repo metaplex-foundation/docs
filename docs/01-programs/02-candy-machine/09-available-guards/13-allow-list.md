@@ -1,8 +1,10 @@
-# Configuring Candy Machines
+# Allow List
 
-*Coming soon…*
+The **Allow List** guard validates the minting wallet against a predefined list of wallets.
 
-This page is not ready yet but we’re working hard on documenting it. Check back a bit later.
+*More information coming soon…*
+
+This page is not finished yet but we’re working hard on documenting it. Check back a bit later.
 
 In the meantime, you can learn more about Candy Machine V3 via the following resources:
 
