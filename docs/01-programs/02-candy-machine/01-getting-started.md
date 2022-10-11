@@ -40,7 +40,7 @@ Note that the rest of this documentation will provide code examples using this J
 
 ## Program Libraries
 
-Program Libraries are auto-generated from the Program’s IDL using [Solita](https://github.com/metaplex-foundation/solita). Whilst they require you to understand Solana programs and wire your own instructions, they have the advantage of immediately using the latest features when SDKs might take a bit longer to implement them.
+Program Libraries are auto-generated from the Program’s IDL using [Solita](https://github.com/metaplex-foundation/solita). Whilst they require you to [understand Solana programs](/programs/understanding-programs) and wire your own instructions, they have the advantage of immediately using the latest features when SDKs might take a bit longer to implement them.
 
 Note that Candy Machine is composed of the following two programs which means you will need one library for each of them.
 
