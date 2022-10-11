@@ -1,3 +1,0 @@
-# Candy Machine
-
-TODO
