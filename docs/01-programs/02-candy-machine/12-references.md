@@ -1,4 +1,4 @@
-# Minting
+# References
 
 *Coming soon…*
 

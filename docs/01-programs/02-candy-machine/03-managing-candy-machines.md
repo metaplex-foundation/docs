@@ -1,4 +1,4 @@
-# Creating, Updating and Fetching
+# Managing Candy Machines
 
 *Coming soon…*
 
