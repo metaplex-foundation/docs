@@ -30,7 +30,7 @@ Thus, the very first step is for the creator to create a new Candy Machine and c
 
 ![Candy Machines V3 - Overview 1@2x.png](/assets/candy-machine-v3/CandyMachinesV3-Overview1.png#radius)
 
-The created Candy Machine keeps track its own settings which helps us understand how all of its NFTs should be minted. For instance, there is a `creators` parameter which will be assign to all NFTs minted from this Candy Machine. We will see how to create and configure Candy Machines in more details, including some code examples, in the following pages: [Candy Machine Settings](/programs/candy-machine/candy-machine-settings) and [Managing Candy Machines](/programs/candy-machine/managing-candy-machines).
+The created Candy Machine keeps track its own settings which helps us understand how all of its NFTs should be minted. For instance, there is a `creators` parameter which will be assigned to all NFTs minted from this Candy Machine. We will see how to create and configure Candy Machines in more details, including some code examples, in the following pages: [Candy Machine Settings](/programs/candy-machine/candy-machine-settings) and [Managing Candy Machines](/programs/candy-machine/managing-candy-machines).
 
 However, we still don’t know which NFTs should be minted from that Candy Machine. In other words, the Candy Machine is not loaded. So our next step, is to insert items into the Candy Machine.
 
@@ -49,13 +49,13 @@ Notice how, at this point, no real NFTs have been created yet. We are simply loa
 
 Once the Candy Machine is loaded and all pre-configured conditions are met, users can start minting NFTs from it. It’s only at this point that an NFT is created on the Solana blockchain. Note that, before minting, some users may need to perform additional verification steps — such as doing a Captcha or sending a Merkle Proof. See [Minting](/programs/candy-machine/minting) for more details.
 
-Once all NFTs have been minting from a Candy Machine, it has served its purposed and can safely be deleted to free some storage space on the blockchain and claim some rent back. See [Managing Candy Machines](/programs/candy-machine/managing-candy-machines) for more details.
+Once all NFTs have been minted from a Candy Machine, it has served its purpose and can safely be deleted to free some storage space on the blockchain and claim some rent back. See [Managing Candy Machines](/programs/candy-machine/managing-candy-machines) for more details.
 
 ![Candy Machines V3 - Overview 4@2x.png](/assets/candy-machine-v3/CandyMachinesV3-Overview4.png#radius)
 
 ## Candy Guards
 
-Now that we understand how Candy Machines work, let’s dig into the various way creators can protect and customise the mint process of their Candy Machine.
+Now that we understand how Candy Machines work, let’s dig into the various ways creators can protect and customise the mint process of their Candy Machine.
 
 Creators can use what we call “**Guards**” to add various features to their Candy Machine. The Metaplex Candy Machine ships with an additional Solana Program called **Candy Guard** that ships with [**a total of 16 default guards**](/programs/candy-machine/available-guards). By using an additional program, it allows advanced developers to fork the default Candy Guard program to create their own custom guards whilst still being able to rely on the main Candy Machine program.
 
