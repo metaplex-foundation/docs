@@ -1,4 +1,8 @@
-# Candy Machine
+# Candy Machine v2
+
+:::info
+This page refers to a previous iteration of Candy Machine known as Candy Machine v2. If you’re looking to create a new Candy Machine, we recommend you use [Candy Machine v3](/programs/candy-machine) instead.
+:::
 
 The Metaplex Protocol's Candy Machine is the leading minting and distribution program for fair NFT collection launches on Solana. It allows creators to bring their asset metadata on-chain, configure mints with anti-botting protection, and exchange SOL for randomized NFTs like a traditional candy machine.
 
