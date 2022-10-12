@@ -8,7 +8,7 @@ The Candy Machine V3 is the latest iteration of the Metaplex Protocol's Candy Ma
 
 The Candy Machine V3 has a modular architecture, where the mint logic is separated from the mint access control &mdash; check the [overview](../../../01-programs/02-candy-machine/00-overview.md) to read more about Candy Machine V3 and Candy Guard.
 
-This guide will walk throught the changes in the configuration for a Candy Machine V3 and the commands used to set up and manage a Candy Guard. It assumes that you are already familiar with how Sugar works and have deployed a Candy Machine &mdash; if that is not the case, we recommend to first complete the [My First Candy Machine](../02-tutorials/00-my-first-candy-machine.md) tutorial.
+This guide will walk through the changes in the configuration for a Candy Machine V3 and the commands used to set up and manage a Candy Guard. It assumes that you are already familiar with how Sugar works and have deployed a Candy Machine &mdash; if that is not the case, we recommend to first complete the [My First Candy Machine](../02-tutorials/00-my-first-candy-machine.md) tutorial.
 
 ## Configuration
 
@@ -39,10 +39,10 @@ Since the configuration of the mint process has moved to **guards**, Sugar's con
  There are two new elements in the configuration file:
 
  - `isSequential`: indicates to whether a sequential index generation should be used during mint or not (recommended to set this value to `false`);
- - `guards`: indicates the configuration for the Candy Guard. If this value is set to `null`, a Candy Guard will not be used and minted will only be possible using the `mint_authority` of the Candy Machine.
+ - `guards`: indicates the configuration for the Candy Guard. If this value is set to `null`, a Candy Guard will not be used and mint will only be possible using the `mint_authority` of the Candy Machine.
 
  :::info
- You can use `sugar create-config` to create a basic configuration file. The Candy Guard configuration needs to be added manually.
+ You can use the Sugar's `create-config` command to create a basic configuration file. The Candy Guard configuration needs to be added manually.
  :::
 
 ## Available Guards
@@ -71,7 +71,7 @@ The Candy Guard ships with a total of [16 default guards](../../../programs/cand
   "guards": {
       "default": {
           "botTax": {
-              "value": 10000000,
+              "value": 0.01,
               "lastInstruction": true
           }
       },
@@ -109,7 +109,7 @@ The Candy Guard ships with a total of [16 default guards](../../../programs/cand
 }
 ```
 
-In this exaple, there are 2 groups `OGs` and `Public`. The `OGs` specifies that only transactions that are from an address which holds `1` token of the the SPL token `7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf` are allowed to mint from the `2022-10-20 12:00:00 +0000`; the mint will be charged at `1 SOL`.
+In this example, there are 2 groups `OGs` and `Public`. The `OGs` specifies that only transactions that are from an address which holds `1` token of the the SPL token `7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf` are allowed to mint from the `2022-10-20 12:00:00 +0000`; the mint will be charged at `1 SOL`.
 
 The `Public` group is open to any address from the `2022-10-20 18:00:00 +0000`; the mint will be charged at `2 SOL`.
 
@@ -139,7 +139,7 @@ If we wanted to have a single "public" group, all the guard configuration can be
   "guards": {
       "default": {
           "botTax": {
-              "value": 10000000,
+              "value": 0.01,
               "lastInstruction": true
           },
           "startDate": {
@@ -155,7 +155,7 @@ If we wanted to have a single "public" group, all the guard configuration can be
 }
 ```
 
-Bellow is a list of the available guards and their configuration options.
+Below is a list of the available guards and their configuration options.
 
 ### Address Gate
 
@@ -217,7 +217,7 @@ The Gatekeeper guard validates if the payer of the transaction has a token from 
 
 ### Mint Limit
 
-The MintL imit guard allows to specify a limit on the number of mints for each individual address. The `id` configuration represents the unique identification for the limit — changing the id has the effect of restarting the limit, since a different tracking account will be created. The `limit` indicates the maximum number of mints allowed.
+The Mint Limit guard allows to specify a limit on the number of mints for each individual address. The `id` configuration represents the unique identification for the limit — changing the id has the effect of restarting the limit, since a different tracking account will be created. The `limit` indicates the maximum number of mints allowed.
 
 ```json
 "mintLimit" : {
@@ -228,7 +228,7 @@ The MintL imit guard allows to specify a limit on the number of mints for each i
 
 ### NFT Burn
 
-The NFT Burn guard restricts the mint to holders of another NFT (token), requiring that the NFT is burn in exchange of being allowed to mint.
+The NFT Burn guard restricts the mint to holders of another NFT (token), requiring that the NFT is burned in exchange of being allowed to mint.
 
 ```json
 "nftBurn" : {
@@ -292,7 +292,7 @@ The date needs to be specified using [RFC 3339 standard](https://datatracker.iet
 
 ### Third Party Signer
 
-The Third Party Signer guard required an extra signer on the transaction.
+The Third Party Signer guard requires an extra signer on the transaction.
 
 ```json
 "thirdPartySigner" : {
@@ -302,7 +302,7 @@ The Third Party Signer guard required an extra signer on the transaction.
 
 ### Token Burn
 
-The Token Burn guard restricts the mint to holder of a specified SPL Token and required the burn of the tokens. The `amount` determines how many tokens are required.
+The Token Burn guard restricts the mint to holders of a specified SPL Token and requires the burn of the tokens. The `amount` determines how many tokens are required.
 
 ```json
 "tokenBurn" : {
@@ -313,7 +313,7 @@ The Token Burn guard restricts the mint to holder of a specified SPL Token and r
 
 ### Token Gate
 
-The Token Gate guard restricts the mint to holder of a specified SPL Token. The `amount` determines how many tokens are required.
+The Token Gate guard restricts the mint to holders of a specified SPL Token. The `amount` determines how many tokens are required.
 
 ```json
 "tokenGate" : {
@@ -324,12 +324,12 @@ The Token Gate guard restricts the mint to holder of a specified SPL Token. The 
 
 ### Token Payment
 
-The Token Payment guard restricts the mint to holder of a specified SPL Token, transferring the required amount to the `destination_ata` address. The amount determines how many tokens are required.
+The Token Payment guard restricts the mint to holders of a specified SPL Token, transferring the required amount to the `destination_ata` address. The amount determines how many tokens are required.
 
 ```json
 "tokenGate" : {
     "amount": number,
-    "tokenMint": "<PUBKEY>",
+    "mint": "<PUBKEY>",
     "destinationAta": "<PUBKEY>"
 }
 ```
@@ -386,11 +386,11 @@ The candy guard is now the mint authority of the candy machine.
 </p>
 </details>
 
-At this point, `sugar mint` will stop working since the `mint_authority` is not the Candy Guard.
+At this point, `sugar mint` will stop working since the `mint_authority` is now the Candy Guard.
 
 ### `update`
 
-To update the Candy Guard configuration, you first need to make the required modification in Sugar config file and the run the command:
+To update the Candy Guard configuration, you first need to make the required modification in the Sugar config file and the run the command:
 
 ```
 sugar guard update
@@ -529,7 +529,7 @@ The candy guard is no longer the mint authority of the candy machine.
 ✅ Command successful.
 ```
 
-At this point, the `mint_authority` is transferred nack to the Candy Machine `authority`. The Candy Guard account remains on-chain and can be reused.
+At this point, the `mint_authority` is transferred back to the Candy Machine `authority`. The Candy Guard account remains on-chain and can be reused.
 
 </p>
 </details>
@@ -557,8 +557,6 @@ Received ◎ 0.00268656 from rent fee.
 
 ✅ Command successful.
 ```
-
-At this point, the `mint_authority` is transferred nack to the Candy Machine `authority`. The Candy Guard account remains on-chain and can be reused.
 
 </p>
 </details>
