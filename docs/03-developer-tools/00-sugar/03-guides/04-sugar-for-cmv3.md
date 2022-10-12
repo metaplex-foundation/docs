@@ -47,7 +47,7 @@ Since the configuration of the mint process has moved to **guards**, Sugar's con
 
 ## Available Guards
 
-The Candy Guard ships with a total of [16 default guards](../../../01-programs/02-candy-machine/09-available-guards/). These guards can be used to define a single guard set, which will applied to every mint transaction, or to define groups. The example below shows a configuration file with 2 groups:
+The Candy Guard ships with a total of [16 default guards](../../../programs/candy-machine/available-guards). These guards can be used to define a single guard set, which will applied to every mint transaction, or to define groups. The example below shows a configuration file with 2 groups:
 
 ```json
 {
