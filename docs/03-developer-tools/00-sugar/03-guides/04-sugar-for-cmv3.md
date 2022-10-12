@@ -1,6 +1,6 @@
 # Sugar for Candy Machine V3
 
-:::warning
+:::caution
 Sugar support for Candy Machine V3 is experimental.
 :::
 
@@ -8,7 +8,7 @@ The Candy Machine V3 is the latest iteration of the Metaplex Protocol's Candy Ma
 
 The Candy Machine V3 has a modular architecture, where the mint logic is separated from the mint access control &mdash; check the [overview](../../../01-programs/02-candy-machine/00-overview.md) to read more about Candy Machine V3 and Candy Guard.
 
-This guide will walk throught the changes in the configuration for a Candy Machine V3 and the commands used to set up and manage a Candy Guard. It assumes that you are already familiar with how Sugar works and have deployed a Candy Machine &mdash; if that is not the case, we recommend to first complete the ["My First Candy Machine"](../02-tutorials/00-my-first-candy-machine.md) tutorial.
+This guide will walk throught the changes in the configuration for a Candy Machine V3 and the commands used to set up and manage a Candy Guard. It assumes that you are already familiar with how Sugar works and have deployed a Candy Machine &mdash; if that is not the case, we recommend to first complete the [My First Candy Machine](../02-tutorials/00-my-first-candy-machine.md) tutorial.
 
 ## Configuration
 
@@ -41,11 +41,11 @@ Since the configuration of the mint process has moved to **guards**, Sugar's con
  - `isSequential`: indicates to whether a sequential index generation should be used during mint or not (recommended to set this value to `false`);
  - `guards`: indicates the configuration for the Candy Guard. If this value is set to `null`, a Candy Guard will not be used and minted will only be possible using the `mint_authority` of the Candy Machine.
 
- ::: info
+ :::info
  You can use `sugar create-config` to create a basic configuration file. The Candy Guard configuration needs to be added manually.
  :::
 
-### Guards
+## Available Guards
 
 The Candy Guard ships with a total of [16 default guards](../../../01-programs/02-candy-machine/09-available-guards/). These guards can be used to define a single guard set, which will applied to every mint transaction, or to define groups. The example below shows a configuration file with 2 groups:
 
@@ -157,7 +157,7 @@ If we wanted to have a single "public" group, all the guard configuration can be
 
 Bellow is a list of the available guards and their configuration options.
 
-#### Address Gate
+### Address Gate
 
 The AddressGate guard restricts the mint to a single address — the address must match the payer's address of the mint transaction.
 
@@ -167,7 +167,7 @@ The AddressGate guard restricts the mint to a single address — the address mus
 }
 ```
 
-#### Allow List
+### Allow List
 
 The AllowList guard validates the payer's address against a merkle tree-based allow list of addresses.
 
@@ -177,7 +177,7 @@ The AllowList guard validates the payer's address against a merkle tree-based al
 }
 ```
 
-#### Bot Tax
+### Bot Tax
 
 The BotTax guard is used to:
 - charge a penalty for invalid transactions. The value of the penalty is specified by the lamports configuration.
@@ -192,7 +192,19 @@ The bot_tax is applied to any error that occurs during the validation of the gua
 }
 ```
 
-#### Gatekeeper
+### End Date
+
+The End Date guard is used to specify a date to end the mint. Any transaction received after the end date will fail.
+
+The date needs to be specified using [RFC 3339 standard](https://datatracker.ietf.org/doc/html/rfc3339). In most cases, the format used will be "yyyy-mm-dd`T`hh:mm:ss`Z`", where `T` is the separator between the full-date and full-time and `Z` is the timezone offset from UTC (use `Z` or +00:00 for UTC time).
+
+```json
+"endDate" : {
+    "date": "string",
+}
+```
+
+### Gatekeeper
 
 The Gatekeeper guard validates if the payer of the transaction has a token from a specified gateway network &mdash; in most cases, a token after completing a captcha challenge. The `expire_on_use` configuration is used to indicate whether or not the token should expire after minting.
 
@@ -203,7 +215,7 @@ The Gatekeeper guard validates if the payer of the transaction has a token from 
 }
 ```
 
-#### Mint Limit
+### Mint Limit
 
 The MintL imit guard allows to specify a limit on the number of mints for each individual address. The `id` configuration represents the unique identification for the limit — changing the id has the effect of restarting the limit, since a different tracking account will be created. The `limit` indicates the maximum number of mints allowed.
 
@@ -214,7 +226,7 @@ The MintL imit guard allows to specify a limit on the number of mints for each i
 }
 ```
 
-#### NFT Burn
+### NFT Burn
 
 The NFT Burn guard restricts the mint to holders of another NFT (token), requiring that the NFT is burn in exchange of being allowed to mint.
 
@@ -224,7 +236,7 @@ The NFT Burn guard restricts the mint to holders of another NFT (token), requiri
 }
 ```
 
-#### NFT Gate
+### NFT Gate
 
 The NFT Gate guard restricts the mint to holders of a specified `required_collection` NFT collection. The payer is required to hold at least one NFT of the collection.
 
@@ -234,7 +246,7 @@ The NFT Gate guard restricts the mint to holders of a specified `required_collec
 }
 ```
 
-#### NFT Payment
+### NFT Payment
 
 The NFT Payment guard is a payment guard that charges another NFT (token) from a specific collection for the mint. As a requirement of the mint, the specified NFT is transferred to the `destination` address.
 
@@ -245,7 +257,7 @@ The NFT Payment guard is a payment guard that charges another NFT (token) from a
 }
 ```
 
-#### Redeemed Amount
+### Redeemed Amount
 
 The Redeemed Amount guard stops the mint when the number of `items_redeemed` of the Candy Machine reaches the configured `maximum` amount.
 
@@ -255,7 +267,7 @@ The Redeemed Amount guard stops the mint when the number of `items_redeemed` of 
 }
 ```
 
-#### Sol Payment
+### Sol Payment
 
 The Sol Payment guard is used to charge an amount in SOL for the mint. The funds are transferred to the configured `destination` address.
 
@@ -266,7 +278,7 @@ The Sol Payment guard is used to charge an amount in SOL for the mint. The funds
 }
 ```
 
-#### Start Date
+### Start Date
 
 The Start Date guard determines the start date of the mint. If this guard is not specified, mint is allowed — similar to say any date is valid.
 
@@ -278,7 +290,7 @@ The date needs to be specified using [RFC 3339 standard](https://datatracker.iet
 }
 ```
 
-#### Third Party Signer
+### Third Party Signer
 
 The Third Party Signer guard required an extra signer on the transaction.
 
@@ -288,7 +300,7 @@ The Third Party Signer guard required an extra signer on the transaction.
 }
 ```
 
-#### Token Burn
+### Token Burn
 
 The Token Burn guard restricts the mint to holder of a specified SPL Token and required the burn of the tokens. The `amount` determines how many tokens are required.
 
@@ -299,7 +311,7 @@ The Token Burn guard restricts the mint to holder of a specified SPL Token and r
 }
 ```
 
-#### Token Gate
+### Token Gate
 
 The Token Gate guard restricts the mint to holder of a specified SPL Token. The `amount` determines how many tokens are required.
 
@@ -310,7 +322,7 @@ The Token Gate guard restricts the mint to holder of a specified SPL Token. The 
 }
 ```
 
-#### Token Payment
+### Token Payment
 
 The Token Payment guard restricts the mint to holder of a specified SPL Token, transferring the required amount to the `destination_ata` address. The amount determines how many tokens are required.
 
@@ -322,7 +334,7 @@ The Token Payment guard restricts the mint to holder of a specified SPL Token, t
 }
 ```
 
-## Deployment
+## Deployment Commands
 
 The deployment of a Candy Machine V3 follows the same steps:
 
@@ -345,7 +357,7 @@ There are 5 new commands in Sugar to create and interact with a Candy Guard:
 
 Once you completed the guards configuration in your Sugar config file, you can add a Candy Guard using:
 
-```bash
+```
 sugar guard add
 ```
 
@@ -380,7 +392,7 @@ At this point, `sugar mint` will stop working since the `mint_authority` is not 
 
 To update the Candy Guard configuration, you first need to make the required modification in Sugar config file and the run the command:
 
-```bash
+```
 sugar guard update
 ```
 
@@ -406,7 +418,7 @@ Signature: d8ge5n7rzpeYB68m6VEbJQTYrEmnHo4P3XKXAc5KNYMJnxvq63JegsUMAjMZgBiXAYEqx
 
 To print the on-chain configuration of a Candy Guard, use the command:
 
-```bash
+```
 sugar guard show
 ```
 
@@ -499,7 +511,7 @@ sugar guard show
 
 To remove a Candy Guard from a Candy Machine, use the command:
 
-```bash
+```
 sugar guard remove
 ```
 
@@ -526,7 +538,7 @@ At this point, the `mint_authority` is transferred nack to the Candy Machine `au
 
 To close the Candy Guard account and retrieve the rent fee, use the command:
 
-```bash
+```
 sugar guard withdraw
 ```
 
