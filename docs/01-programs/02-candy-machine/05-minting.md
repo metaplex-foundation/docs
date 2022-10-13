@@ -1,3 +1,7 @@
+---
+description: "Explains how to mint from Candy Machines and how to handle pre-mint requirements."
+---
+
 # Minting
 
 *Coming soon…*

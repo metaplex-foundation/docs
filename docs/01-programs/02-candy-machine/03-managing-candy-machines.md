@@ -1,3 +1,7 @@
+---
+description: "Explains how to manage Candy Machines."
+---
+
 # Managing Candy Machines
 
 *Coming soon…*

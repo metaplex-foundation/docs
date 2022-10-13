@@ -1,3 +1,7 @@
+---
+description: "Explains how to configure multiple groups of guards."
+---
+
 # Guard Groups
 
 *Coming soon…*

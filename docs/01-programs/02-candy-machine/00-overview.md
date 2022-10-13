@@ -1,3 +1,7 @@
+---
+description: "Provides a high-level overview of Candy Machines."
+---
+
 # Overview
 
 :::info
