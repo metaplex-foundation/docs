@@ -140,6 +140,7 @@ html .accordion {
   background-color: var(--accordion-background-color);
   border: 1px solid var(--accordion-border-color);
   border-radius: var(--accordion-radius);
+  margin-bottom: var(--ifm-leading);
 }
 
 html[data-theme="dark"] .accordion {
