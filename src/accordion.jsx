@@ -6,7 +6,7 @@ export function Accordion({ children }) {
 }
 
 Accordion.propTypes = {
-  children: PropTypes.array,
+  children: PropTypes.any,
 };
 
 export function AccordionItem({
