@@ -242,8 +242,8 @@ The issue with that last step is that it allows creators to mess with which buye
 
 Therefore, we end up with the following properties on the Hidden Settings attribute:
 
-- **Name**: The “hidden” name for all minted NFTs.
-- **URI**: The “hidden” URI for all minted NFTs.
+- **Name**: The “hidden” name for all minted NFTs. This can have a maximum of 32 characters.
+- **URI**: The “hidden” URI for all minted NFTs. This can have a maximum of 200 characters.
 - **Hash**: The 32-character hash of the file that maps NFT indices with their real JSON metadata allowing buyers to verify it was not tampered with.
 
 Note that, just like for the prefixes of the Config Line Settings, special variables can be used for the **Name** and **URI** of the Hidden Settings. As a reminder, these variables are:
