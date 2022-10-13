@@ -18,7 +18,7 @@ You may use the settings discussed on the previous page to create a brand-new Ca
 
 Our SDKs push this even further and will associate every new Candy Machine account with a new Candy Guard account which keeps track of all activated guards affecting the minting process. On this page, we will focus on the Candy Machine account but we’ll dig into Candy Guard accounts and what we can do with them on [dedicated pages](/programs/candy-machine/candy-guards).
 
-Remember that a Candy Machine must be associated with a Collection NFT and its update authority must authorize this operation. If you haven’t got a Collection NFT for your Candy Machine yet, our SDKs can help with that too.
+Remember that a Candy Machine [must be associated with a Collection NFT](/programs/candy-machine/candy-machine-settings#metaplex-certified-collections) and its update authority must authorize this operation. If you haven’t got a Collection NFT for your Candy Machine yet, our SDKs can help with that too.
 
 <Accordion>
 <AccordionItem title="JS SDK" open={true}>
@@ -74,7 +74,7 @@ First of all, it stores all the settings provided when the account was created a
 
 It also keeps track of the number of NFTs that were minted from the Candy Machine. Note that, as soon as this number goes from 0 to 1, most settings will no longer be updatable. Additionally, there is a **Feature Flags** attribute which helps the program with backward and forward compatibility as more features get introduced.
 
-Finally, it stores all items inserted in the Candy Machine and whether or not they have been minted. This only applies for Candy Machine using **Config Line Settings** since **Hidden Settings** don’t allow you to insert any items. This section contains the following information:
+Finally, it stores all items inserted in the Candy Machine and whether or not they have been minted. This only applies for Candy Machine using [**Config Line Settings**](/programs/candy-machine/candy-machine-settings#config-line-settings) since [**Hidden Settings**](/programs/candy-machine/candy-machine-settings#hidden-settings) don’t allow you to insert any items. This section contains the following information:
 
 - The number of items that have been loaded.
 - A list of all items that have been or will be inserted. When an item is not inserted yet, the name and URI of the item at that position are empty.
@@ -83,7 +83,7 @@ Finally, it stores all items inserted in the Candy Machine and whether or not th
 
 Note that this last section is purposely not deserialised on the program but our SDKs parse all that data for you in a human-friendly format.
 
-For more detailed information about the Candy Machine account, check out the program’s API References.
+For more detailed information about the Candy Machine account, check out the [program’s API References](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/candy-machine-core/program#account).
 
 <Accordion>
 <AccordionItem title="JS SDK" open={true}>
@@ -193,7 +193,7 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 ## Update Shared NFT Data
 
-You may also update the attributes shared between all minted NFTs of a Candy Machine. As mentioned in the previous page, these are: Seller Fee Basis Points, Symbol, Max Edition Supply, Is Mutable and Creators.
+You may also update the attributes shared between all minted NFTs of a Candy Machine. As mentioned in [the previous page](/programs/candy-machine/candy-machine-settings#settings-shared-by-all-nfts), these are: Seller Fee Basis Points, Symbol, Max Edition Supply, Is Mutable and Creators.
 
 Note that once the first NFT has been minted, these attributes can no longer be updated.
 
@@ -313,4 +313,4 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 ## Conclusion
 
-We can now create, read, update and delete Candy Machines but we still don’t know how to load them with items. Let’s tackle this on the next page!
+We can now create, read, update and delete Candy Machines but we still don’t know how to load them with items. Let’s tackle this on [the next page](/programs/candy-machine/inserting-items)!
