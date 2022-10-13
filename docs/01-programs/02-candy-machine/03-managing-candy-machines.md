@@ -100,6 +100,7 @@ candyMachine.address;         // The public key of the Candy Machine account.
 candyMachine.itemsAvailable;  // Number of NFTs available.
 candyMachine.itemsMinted;     // Number of NFTs minted.
 candyMachine.itemsRemaining;  // Number of NFTs left to mint.
+candyMachine.items[0].index;  // The index of the first loaded item.
 candyMachine.items[0].name;   // The name of the first loaded item (with prefix).
 candyMachine.items[0].uri;    // The URI of the first loaded item (with prefix).
 candyMachine.items[0].minted; // Whether the first item has been minted.

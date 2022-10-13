@@ -91,7 +91,7 @@ const candyMachineSettings = {
 Each Candy Machine must be associated with a special NFT known as a [Metaplex Certified Collection (MCC)](/programs/token-metadata/certified-collections). This **Collection NFT** enables minted NFTs to be grouped together
  and for that information to be verified on-chain.
 
-To ensure no one else can use your Collection NFT on their Candy Machine, the **Collection Authority** is required to sign any transaction that changes the Collection on a Candy Machine. As a result, the Candy Machine can safely verify the Collection of all minted NFTs automatically.
+To ensure no one else can use your Collection NFT on their Candy Machine, the **Collection's Update Authority** is required to sign any transaction that changes the Collection on a Candy Machine. As a result, the Candy Machine can safely verify the Collection of all minted NFTs automatically.
 
 <Accordion>
 <AccordionItem title="JS SDK" open={true}>
@@ -210,7 +210,9 @@ That’s right, **our name length is now zero** and we’ve reduced the characte
 When using the JS SDK, both **Config Line Settings** and **Hidden Settings** live under the same object attribute called `itemSettings`. It contains a `type` property used to distinguish the two modes. This ensures exactly one of these settings is used on a Candy Machine.
 - When `type` is equal to `"configLines"`, Config Line Settings are used.
 - When `type` is equal to `"hidden"`, Hidden Settings are used.
+
 Here’s a code snippet showing how you can set up the above example using the SDK.
+
 ```tsx
 const candyMachineSettings = {
   itemSettings: {
@@ -232,7 +234,7 @@ const candyMachineSettings = {
 
 Another way of preparing items is by using **Hidden Settings**. This is a completely different approach than Config Line Settings as, using Hidden Settings, you do not need to insert any items to the Candy Machine as every single minted NFT will share the same name and the same URI. You might be wondering: why would someone want to do that? The reason for that is to create a **hide-and-reveal NFT drop** that reveals all NFTs after they have been minted. So how does that work?
 
-- First, the creator configures the name and the URI of every minted NFTs using the Hidden Settings. The URI usually points to a “teaser” image that makes it clear that a reveal is about to happen.
+- First, the creator configures the name and the URI of every minted NFTs using the Hidden Settings. The URI usually points to a “teaser” JSON metadata that makes it clear that a reveal is about to happen.
 - Then, buyers mint all these NFTs with the same URI and therefore the same “teaser” JSON metadata.
 - Finally, when all NFTs have been minted, the creator updates the URI of every single minted NFT to point to the real URI which is specific to that NFT.
 
@@ -258,7 +260,9 @@ Also note that, since we are not inserting any item to the Candy Machine, Hidden
 When using the JS SDK, both **Config Line Settings** and **Hidden Settings** live under the same object attribute called `itemSettings`. It contains a `type` property used to distinguish the two modes. This ensures exactly one of these settings is used on a Candy Machine.
 - When `type` is equal to `"configLines"`, Config Line Settings are used.
 - When `type` is equal to `"hidden"`, Hidden Settings are used.
+
 Here’s a code snippet showing how you can use Hidden Settings via the JS SDK.
+
 ```tsx
 const candyMachineSettings = {
   itemSettings: {
