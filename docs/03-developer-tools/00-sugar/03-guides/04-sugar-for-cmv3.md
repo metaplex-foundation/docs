@@ -44,7 +44,7 @@ Since the configuration of the mint process has moved to **guards**, Sugar's con
  - `guards`: indicates the configuration for the Candy Guard. If this value is set to `null`, a Candy Guard will not be used and mint will only be possible using the `mint_authority` of the Candy Machine.
 
  :::info
- You can use the Sugar's `create-config` command to create a basic configuration file. The Candy Guard configuration needs to be added manually.
+ You can use the Sugar's `create-config` command to create a basic configuration file. The Candy Guard configuration needs to be added manually, further explained below.
  :::
 
 ## Available Guards
