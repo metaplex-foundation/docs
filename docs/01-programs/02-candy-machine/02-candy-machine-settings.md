@@ -8,11 +8,11 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 ## Introduction
 
-In this page, we’re going to dig into all the settings available on a Candy Machine. We will focus on settings that affect the Candy Machine itself and the NFTs it generates rather than the settings that affect the minting process known as Guards. We will tackle the latter in dedicated pages.
+On this page, we’re going to dig into all the settings available on a Candy Machine. We will focus on settings that affect the Candy Machine itself and the NFTs it generates rather than the settings that affect the minting process known as Guards. We will tackle the latter in dedicated pages.
 
 ## The authority
 
-One of the most important information when creating accounts on Solana is the wallet that is allowed to manage them, known as the **Authority**. Thus, when creating a new Candy Machine, you will need to provide the address of the authority that will, later on, be able to update it, insert items to it, delete it, etc.
+One of the most important pieces of information when creating accounts on Solana is the wallet that is allowed to manage them, known as the **Authority**. Thus, when creating a new Candy Machine, you will need to provide the address of the authority that will, later on, be able to update it, insert items to it, delete it, etc.
 
 There is an additional authority specifically for the minting process called the **Mint Authority**. When a Candy Machine is created without a Candy Guard, this authority is the only wallet that is allowed to mint from the Candy Machine. No one else can mint. However, in practice, this mint authority is set to the address of a Candy Guard which controls the minting process based on some preconfigured sets of rules known as **guards**.
 
@@ -39,7 +39,7 @@ const candyMachineSettings = {
 
 ## Settings shared by all NFTs
 
-A big chunk of the Candy Machine settings is used to define the NFTs that will be minted from them. This is because many of the NFT attributes will be the same for all minted NFTs. Therefore, instead of having to repeat these attributes everytime we load an item in the Candy Machine, we set them up once on the Candy Machine settings.
+A big chunk of the Candy Machine settings is used to define the NFTs that will be minted from them. This is because many of the NFT attributes will be the same for all minted NFTs. Therefore, instead of having to repeat these attributes every time we load an item in the Candy Machine, we set them up once on the Candy Machine settings.
 
 Note that the only attributes that can distinguish one minted NFT from another are the **Name** of the NFT and the **URI** pointing to its JSON metadata. See [Inserting Items](/programs/candy-machine/inserting-items) for more information.
 
@@ -47,9 +47,9 @@ Here is the list of attributes shared between all minted NFTs.
 
 - **Seller Fee Basis Points**: The secondary sale royalties that should be set on minted NFTs in basis points. For instance `250` means `2.50%` royalties.
 - **Symbol**: The symbol to use on minted NFTs — e.g. "MYPROJECT". This can be any text up to 10 characters and can be made optional by providing an empty text.
-- **Max Edition Supply**: The maximum number of editions that can be printed from the minted NFTs. For most use cases, you will want to set this to `0` to prevent minted NFTs to be printed multiple times. Note that you cannot set this to `null` which means unlimited editions are not supported in Candy Machines.
-- **Is Mutable**: Whether the minted NFTs should be mutable or not. We recommend setting this to `true` unless you have a specific reason. You can always make NFTs immutable in the future but you cannot make immutable NFTs mutable ever again.
-- **Creators**: A list of creators that should be set on minted NFTs. It includes their address and their shares of the royalties in percent — i.e. `5` is `5%`. Note that the Candy Machine address will always be set as the first creator of all minted NFTs and will automatically be verified. This makes is possible for anyone to verify that an NFT was minted from a trusted Candy Machine. All other provided creators will be set after that and will need to be verified manually by these creators.
+- **Max Edition Supply**: The maximum number of editions that can be printed from the minted NFTs. For most use cases, you will want to set this to `0` to prevent minted NFTs to be printed multiple times. Note that you cannot set this to `null` which means unlimited editions are not supported in Candy Machines.
+- **Is Mutable**: Whether the minted NFTs should be mutable or not. We recommend setting this to `true` unless you have a specific reason. You can always make NFTs immutable in the future but you cannot make immutable NFTs mutable ever again.
+- **Creators**: A list of creators that should be set on minted NFTs. It includes their address and their shares of the royalties in percent — i.e. `5` is `5%`. Note that the Candy Machine address will always be set as the first creator of all minted NFTs and will automatically be verified. This makes it possible for anyone to verify that an NFT was minted from a trusted Candy Machine. All other provided creators will be set after that and will need to be verified manually by these creators.
 
 <Accordion>
 <AccordionItem title="JS SDK" open={true}>
@@ -89,9 +89,9 @@ const candyMachineSettings = {
 ## Metaplex Certified Collections
 
 Each Candy Machine must be associated with a special NFT known as a [Metaplex Certified Collection (MCC)](/programs/token-metadata/certified-collections). This **Collection NFT** enables minted NFTs to be grouped together
- and for that information to be verified on-chain.
+ and for that information to be verified on-chain.
 
-To ensure no one else can to use your Collection NFT on their Candy Machine, the **Collection Authority** is required to sign any transaction that changes the Collection on a Candy Machine. As a result, the Candy Machine can safely verify the Collection of all minted NFTs automatically.
+To ensure no one else can use your Collection NFT on their Candy Machine, the **Collection Authority** is required to sign any transaction that changes the Collection on a Candy Machine. As a result, the Candy Machine can safely verify the Collection of all minted NFTs automatically.
 
 <Accordion>
 <AccordionItem title="JS SDK" open={true}>
@@ -150,7 +150,7 @@ const candyMachineSettings = {
 </AccordionItem>
 </Accordion>
 
-On top of the **Items Available** attribute, there are two other attributes that defines how items are loaded in the Candy Machine. You must chose exactly one of these attributes and leave the other one empty. These attributes are:
+On top of the **Items Available** attribute, two other attributes define how items are loaded in the Candy Machine. You must choose exactly one of these attributes and leave the other one empty. These attributes are:
 
 - The **Config Line Settings**.
 - The **Hidden Settings**.
@@ -164,10 +164,10 @@ Let’s go through both of them in a bit more detail.
 The **Config Line Settings** attribute allows us to describe the items that are or will be inserted inside our Candy Machine. It enables us to keep the size of the Candy Machine to a minimum by providing exact lengths for the **Names** and **URIs** of our items as well as providing some shared prefixes to reduce that length. The **Config Line Settings** attribute is an object containing the following properties:
 
 - **Name Prefix**: A name prefix shared by all inserted items.
-- **Name Length**: The maximum length for the name of each inserted items excluding the name prefix.
+- **Name Length**: The maximum length for the name of each inserted item excluding the name prefix.
 - **URI Prefix**: A URI prefix shared by all inserted items.
-- **URI Length**: The maximum length for the URI of each inserted items excluding the URI prefix.
-- **Is Sequential**: Indicates whether to mint NFTs sequentially — `true` — or in a random order — `false`.
+- **URI Length**: The maximum length for the URI of each inserted item excluding the URI prefix.
+- **Is Sequential**: Indicates whether to mint NFTs sequentially — `true` — or in random order — `false`.
 
 To understand these **Name** and **URI** properties a bit better, let’s go through an example. Say you want to create a Candy Machine with the following characteristics:
 
@@ -189,7 +189,7 @@ When inserting 1000 items, that’s a total of 83’000 characters that will be 
 
 With 1000 items, we now only need 47’000 characters to store our items.
 
-But that’s not it! You may use **two special variables** within your name or URI prefixes to reduce that size even further. These variable are:
+But that’s not it! You may use **two special variables** within your name or URI prefixes to reduce that size even further. These variables are:
 
 - `$ID$`: This will be replaced by the index of the item starting at 0.
 - `$ID+1$`: This will be replaced by the index of the item starting at 1.
@@ -207,7 +207,7 @@ That’s right, **our name length is now zero** and we’ve reduced the characte
 <AccordionItem title="JS SDK" open={true}>
 <div className="accordion-item-padding">
 
-When using the JS SDK, both **Config Line Settings** and **Hidden Settings** live under the same object attribute called `itemSettings`. It contains a `type` property used to distinguish the two modes. This ensures exactly one of these settings are used on a Candy Machine.
+When using the JS SDK, both **Config Line Settings** and **Hidden Settings** live under the same object attribute called `itemSettings`. It contains a `type` property used to distinguish the two modes. This ensures exactly one of these settings is used on a Candy Machine.
 - When `type` is equal to `"configLines"`, Config Line Settings are used.
 - When `type` is equal to `"hidden"`, Hidden Settings are used.
 Here’s a code snippet showing how you can set up the above example using the SDK.
@@ -236,15 +236,15 @@ Another way of preparing items is by using **Hidden Settings**. This is a comple
 - Then, buyers mint all these NFTs with the same URI and therefore the same “teaser” JSON metadata.
 - Finally, when all NFTs have been minted, the creator updates the URI of every single minted NFT to point to the real URI which is specific to that NFT.
 
-The issue with that last step is that it allows creators to mess with which buyer gets which NFTs. In order to avoid that and allow buyers to verify the mapping between NFTs and JSON metadata was not tempered with, the Hidden Settings contains a **Hash** property which should be filled with a 32-character hash of the file that maps NFT indices with their real JSON metadata. That way, after the reveal, the creator can make that file public and buyers and verify that its hash correspond to the hash provided in the Hidden Settings**.**
+The issue with that last step is that it allows creators to mess with which buyer gets which NFTs. To avoid that and allow buyers to verify the mapping between NFTs and JSON metadata was not tampered with, the Hidden Settings contains a **Hash** property which should be filled with a 32-character hash of the file that maps NFT indices with their real JSON metadata. That way, after the reveal, the creator can make that file public and buyers and verify that its hash corresponds to the hash provided in the Hidden Settings.
 
 Therefore, we end up with the following properties on the Hidden Settings attribute:
 
 - **Name**: The “hidden” name for all minted NFTs.
 - **URI**: The “hidden” URI for all minted NFTs.
-- **Hash**: The 32-character hash of the file that maps NFT indices with their real JSON metadata allowing buyers to verify it was not tempered with.
+- **Hash**: The 32-character hash of the file that maps NFT indices with their real JSON metadata allowing buyers to verify it was not tampered with.
 
-Note that, just like for the prefixes of the Config Line Settings, special variables can be used for the **Name** and **URI** of the Hidden Settings. As a reminder, these variable are:
+Note that, just like for the prefixes of the Config Line Settings, special variables can be used for the **Name** and **URI** of the Hidden Settings. As a reminder, these variables are:
 
 - `$ID$`: This will be replaced by the index of the minted NFT starting at 0.
 - `$ID+1$`: This will be replaced by the index of the minted NFT starting at 1.
@@ -255,7 +255,7 @@ Also note that, since we are not inserting any item to the Candy Machine, Hidden
 <AccordionItem title="JS SDK" open={true}>
 <div className="accordion-item-padding">
 
-When using the JS SDK, both **Config Line Settings** and **Hidden Settings** live under the same object attribute called `itemSettings`. It contains a `type` property used to distinguish the two modes. This ensures exactly one of these settings are used on a Candy Machine.
+When using the JS SDK, both **Config Line Settings** and **Hidden Settings** live under the same object attribute called `itemSettings`. It contains a `type` property used to distinguish the two modes. This ensures exactly one of these settings is used on a Candy Machine.
 - When `type` is equal to `"configLines"`, Config Line Settings are used.
 - When `type` is equal to `"hidden"`, Hidden Settings are used.
 Here’s a code snippet showing how you can use Hidden Settings via the JS SDK.
@@ -276,10 +276,10 @@ const candyMachineSettings = {
 
 ## Guards and Groups
 
-As mention in the introduction, this page focuses on the main Candy Machine settings but there is a lot more you can configure on a Candy Machine by using guards.
+As mentioned in the introduction, this page focuses on the main Candy Machine settings but there is a lot more you can configure on a Candy Machine by using guards.
 
-Since this is a vast subject with lot of available default guards to explain, we’ve dedicated an entire section of this documentation to it. The best place to start is the [Candy Guards](/programs/candy-machine/candy-guards) page.
+Since this is a vast subject with a lot of available default guards to explain, we’ve dedicated an entire section of this documentation to it. The best place to start is the [Candy Guards](/programs/candy-machine/candy-guards) page.
 
 ## Conclusion
 
-Now that we know about how the main Candy Machine settings, in [the next page](/programs/candy-machine/managing-candy-machines), we’ll see how we can use them to create and update our own Candy Machines.
+Now that we know about how the main Candy Machine settings, on [the next page](/programs/candy-machine/managing-candy-machines), we’ll see how we can use them to create and update our own Candy Machines.

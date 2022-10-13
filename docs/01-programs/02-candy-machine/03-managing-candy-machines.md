@@ -8,15 +8,15 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 ## Introduction
 
-In the previous page, we went through the various settings of a Candy Machine. So now, let’s see how we can use these settings to create and update Candy Machines. We’ll also talk about how to fetch an existing Candy Machine and how to delete it when it has served its purpose.
+On [the previous page](/programs/candy-machine/candy-machine-settings), we went through the various settings of a Candy Machine. So now, let’s see how we can use these settings to create and update Candy Machines. We’ll also talk about how to fetch an existing Candy Machine and how to delete it when it has served its purpose.
 
 Essentially, we’ll be going through the Create, Read, Update and Delete steps of a Candy Machine. Let’s go!
 
 ## Create Candy Machines
 
-You may use the settings discussed in the previous page to create a brand new Candy Machine account.
+You may use the settings discussed on the previous page to create a brand-new Candy Machine account.
 
-Our SDKs push this even further and will associate every new Candy Machine account with a new Candy Guard account which keeps track of all activated guards affecting the minting process. In this page, we will focus on the Candy Machine account but we’ll dig into Candy Guard accounts and what we can do with them in dedicated pages.
+Our SDKs push this even further and will associate every new Candy Machine account with a new Candy Guard account which keeps track of all activated guards affecting the minting process. On this page, we will focus on the Candy Machine account but we’ll dig into Candy Guard accounts and what we can do with them on [dedicated pages](/programs/candy-machine/candy-guards).
 
 Remember that a Candy Machine must be associated with a Collection NFT and its update authority must authorize this operation. If you haven’t got a Collection NFT for your Candy Machine yet, our SDKs can help with that too.
 
@@ -70,7 +70,7 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 Now that we’ve created the Candy Machine account, let’s see what data is stored inside it.
 
-First of all, it stores all the settings provided when the account was created and keep tracks of any changes.
+First of all, it stores all the settings provided when the account was created and keeps track of any changes.
 
 It also keeps track of the number of NFTs that were minted from the Candy Machine. Note that, as soon as this number goes from 0 to 1, most settings will no longer be updatable. Additionally, there is a **Feature Flags** attribute which helps the program with backward and forward compatibility as more features get introduced.
 
@@ -79,7 +79,7 @@ Finally, it stores all items inserted in the Candy Machine and whether or not th
 - The number of items that have been loaded.
 - A list of all items that have been or will be inserted. When an item is not inserted yet, the name and URI of the item at that position are empty.
 - A bitmap — a list of yes or no — that keeps track of which items have been loaded. When this bitmap is full of yeses, all items have been loaded.
-- A list of all item that have *not* been minted yet when minting using a random order. This allows the program to grab an index at random without having to worry about picking an index that has already been minted and start again.
+- A list of all items that have *not* been minted yet when minting using a random order. This allows the program to grab an index at random without having to worry about picking an index that has already been minted and start again.
 
 Note that this last section is purposely not deserialised on the program but our SDKs parse all that data for you in a human-friendly format.
 
@@ -89,7 +89,7 @@ For more detailed information about the Candy Machine account, check out the pro
 <AccordionItem title="JS SDK" open={true}>
 <div className="accordion-item-padding">
 
-The best way to check how Candy Machines are modelled in the JS SDK is by checking [the API References of the `CandyMachine` model](https://metaplex-foundation.github.io/js/types/js.CandyMachine.html). Notice how the `CandyMachine` model encapsulate both the Candy Machine account and the (optional) Candy Guard account so you have everything you need under the same object.
+The best way to check how Candy Machines are modelled in the JS SDK is by checking [the API References of the `CandyMachine` model](https://metaplex-foundation.github.io/js/types/js.CandyMachine.html). Notice how the `CandyMachine` model encapsulates both the Candy Machine account and the (optional) Candy Guard account so you have everything you need under the same object.
 
 Here’s a small code example showcasing some of the Candy Machine attributes.
 
@@ -135,10 +135,10 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 ## Update Authorities
 
-Once a Candy Machine is created, you can update most of its settings later on, as long as you are the authority of the Candy Machine. In the next few sections we’ll see how to update these settings but first, let see how you can update the **Authority** and **Mint Authority** of a Candy Machine.
+Once a Candy Machine is created, you can update most of its settings later on, as long as you are the authority of the Candy Machine. In the next few sections we’ll see how to update these settings but first, let's see how you can update the **Authority** and **Mint Authority** of a Candy Machine.
 
 - To update the authority, you need to pass the current authority as a signer and the address of the new authority.
-- To update the mint authority, you need to pass both the current authority and the new mint authority as signers. This is because the mint authority is mostly used to associate a Candy Guard to a Candy Machine. Making the mint authority a signer prevents anyone to use someone else Candy Guard as this could create side-effects on the original Candy Machine.
+- To update the mint authority, you need to pass both the current authority and the new mint authority as signers. This is because the mint authority is mostly used to associate a Candy Guard with a Candy Machine. Making the mint authority a signer prevents anyone to use someone else Candy Guard as this could create side effects on the original Candy Machine.
 
 <Accordion>
 <AccordionItem title="JS SDK" open={true}>
@@ -201,7 +201,7 @@ Note that once the first NFT has been minted, these attributes can no longer be 
 <AccordionItem title="JS SDK" open={true}>
 <div className="accordion-item-padding">
 
-Here’s an example updating some of the shared NFT data on a Candy Machine. Any attribute that are not explicitly provided will stay the same.
+Here’s an example of updating some of the shared NFT data on a Candy Machine. Any attributes that are not explicitly provided will stay the same.
 
 ```tsx
 await metaplex.candyMachines().update({
@@ -251,7 +251,7 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 The item settings of a Candy Machine can also be updated but there are some limitations.
 
 - The **Items Available** attribute cannot be updated when using **Config Line Settings**.
-- The items settings cannot be updated such that we are swapping between **Config Line Settings** and **Hidden Settings**. However, if we’re not swapping the modes, the properties inside these settings can be updated.
+- The item settings cannot be updated such that we are swapping between **Config Line Settings** and **Hidden Settings**. However, if we’re not swapping the modes, the properties inside these settings can be updated.
 - Once the first NFT has been minted, these settings can no longer be updated.
 
 <Accordion>
