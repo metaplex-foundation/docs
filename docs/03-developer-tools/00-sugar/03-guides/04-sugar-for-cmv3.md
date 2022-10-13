@@ -2,6 +2,8 @@
 
 :::caution
 Sugar support for Candy Machine V3 is experimental.
+
+📦 The alpha release binaries can be downloaded [**Sugar's repository**](https://github.com/metaplex-foundation/sugar/releases/tag/sugar-cmv3-alpha).
 :::
 
 The Candy Machine V3 is the latest iteration of the Metaplex Protocol's Candy Machine minting and distribution program. While the deploy of a Candy Machine V3 works largely similar to the previous V2 version, Sugar offers a set of new command to configure and manage a Candy Guard.
