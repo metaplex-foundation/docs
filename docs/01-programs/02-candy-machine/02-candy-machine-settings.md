@@ -163,11 +163,11 @@ Let’s go through both of them in a bit more detail.
 
 The **Config Line Settings** attribute allows us to describe the items that are or will be inserted inside our Candy Machine. It enables us to keep the size of the Candy Machine to a minimum by providing exact lengths for the **Names** and **URIs** of our items as well as providing some shared prefixes to reduce that length. The **Config Line Settings** attribute is an object containing the following properties:
 
-- **Name Prefix**: A name prefix shared by all inserted items.
+- **Name Prefix**: A name prefix shared by all inserted items. This prefix can have a maximum of 32 characters.
 - **Name Length**: The maximum length for the name of each inserted item excluding the name prefix.
-- **URI Prefix**: A URI prefix shared by all inserted items.
+- **URI Prefix**: A URI prefix shared by all inserted items. This prefix can have a maximum of 200 characters.
 - **URI Length**: The maximum length for the URI of each inserted item excluding the URI prefix.
-- **Is Sequential**: Indicates whether to mint NFTs sequentially — `true` — or in random order — `false`.
+- **Is Sequential**: Indicates whether to mint NFTs sequentially — `true` — or in random order — `false`. We recommend setting this to `false` to prevent buyers from predicting which NFT will be minted next. Note that our SDKs will default to using Config Line Settings with Is Sequential set to `false` when creating new Candy Machines.
 
 To understand these **Name** and **URI** properties a bit better, let’s go through an example. Say you want to create a Candy Machine with the following characteristics:
 

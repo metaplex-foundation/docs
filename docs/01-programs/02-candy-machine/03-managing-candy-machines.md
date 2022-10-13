@@ -251,8 +251,10 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 The item settings of a Candy Machine can also be updated but there are some limitations.
 
-- The **Items Available** attribute cannot be updated when using **Config Line Settings**.
 - The item settings cannot be updated such that we are swapping between **Config Line Settings** and **Hidden Settings**. However, if we’re not swapping the modes, the properties inside these settings can be updated.
+- When using **Config Line Settings**:
+  - The **Items Available** attribute cannot be updated.
+  - The **Name Length** and **URI Length** properties can only be updated to smaller values as the program will not resize the Candy Machine account during updates.
 - Once the first NFT has been minted, these settings can no longer be updated.
 
 <Accordion>
