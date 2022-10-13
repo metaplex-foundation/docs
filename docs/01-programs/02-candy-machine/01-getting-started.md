@@ -1,3 +1,7 @@
+---
+description: "Lists the various libraries and SDKs you can use to manage Candy Machines."
+---
+
 # Getting Started
 
 This page aims to help you get started with Candy Machines by listing all relevant SDKs and libraries that interact with them.

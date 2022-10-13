@@ -1,3 +1,7 @@
+---
+description: "Explains how to load items into Candy Machines."
+---
+
 # Inserting Items
 
 *Coming soon…*

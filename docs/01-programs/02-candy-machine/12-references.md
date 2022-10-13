@@ -1,3 +1,7 @@
+---
+description: "Lists API References relevant to Candy Machines."
+---
+
 # References
 
 *Coming soon…*

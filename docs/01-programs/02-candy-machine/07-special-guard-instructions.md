@@ -1,4 +1,8 @@
-# Candy Guards
+---
+description: "Explains how to execute guard-specific instructions."
+---
+
+# Special Guard Instructions
 
 *Coming soon…*
 

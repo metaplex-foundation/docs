@@ -1,3 +1,7 @@
+---
+description: "Documents the latest changes."
+---
+
 # Updates
 
 *Coming soon…*

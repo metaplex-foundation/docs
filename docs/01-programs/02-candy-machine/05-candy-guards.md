@@ -1,4 +1,8 @@
-# Minting
+---
+description: "Explains how guards work and how to enable them."
+---
+
+# Candy Guards
 
 *Coming soon…*
 
