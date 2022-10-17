@@ -44,9 +44,9 @@ Once you have selected a storage provider, you may use the `uploadMetadata` oper
 ```tsx
 // Uploading some JSON metadata contains assets already uploaded.
 const { uri } = await metaplex.nfts().uploadMetadata({
-    name: "My NFT #1",
-    description: "My description",
-    image: "https://arweave.net/123",
+  name: "My NFT #1",
+  description: "My description",
+  image: "https://arweave.net/123",
 });
 ```
 
@@ -55,9 +55,9 @@ If the assets inside your JSON metadata also need to be uploaded to the same sto
 ```tsx
 // Uploading some JSON metadata and its assets (here, in the browser).
 const { uri } = await metaplex.nfts().uploadMetadata({
-    name: "My NFT #1",
-    description: "My description",
-    image: await toMetaplexFileFromBrowser(event.target.files[0]),
+  name: "My NFT #1",
+  description: "My description",
+  image: await toMetaplexFileFromBrowser(event.target.files[0]),
 });
 ```
 
@@ -65,7 +65,7 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 </div>
 </AccordionItem>
-</Accordion>  
+</Accordion>
 
 ## Inserting Items
 
@@ -81,12 +81,12 @@ Here’s how you can insert items into a Candy Machine using the JS SDK.
 
 ```tsx
 await metaplex.candyMachines().insertItems({
-    candyMachine,
-    items: [
-    { name: 'My NFT #1', uri: 'https://example.com/nft1.json' },
-    { name: 'My NFT #2', uri: 'https://example.com/nft2.json' },
-    { name: 'My NFT #3', uri: 'https://example.com/nft3.json' },
-    ],
+  candyMachine,
+  items: [
+    { name: "My NFT #1", uri: "https://example.com/nft1.json" },
+    { name: "My NFT #2", uri: "https://example.com/nft2.json" },
+    { name: "My NFT #3", uri: "https://example.com/nft3.json" },
+  ],
 });
 ```
 
@@ -94,13 +94,13 @@ You may also specify the index in which you want to insert the provided items. B
 
 ```tsx
 await metaplex.candyMachines().insertItems({
-    candyMachine,
-    index: 3,
-    items: [
-    { name: 'My NFT #4', uri: 'https://example.com/nft4.json' },
-    { name: 'My NFT #5', uri: 'https://example.com/nft5.json' },
-    { name: 'My NFT #6', uri: 'https://example.com/nft6.json' },
-    ],
+  candyMachine,
+  index: 3,
+  items: [
+    { name: "My NFT #4", uri: "https://example.com/nft4.json" },
+    { name: "My NFT #5", uri: "https://example.com/nft5.json" },
+    { name: "My NFT #6", uri: "https://example.com/nft6.json" },
+  ],
 });
 ```
 
@@ -108,7 +108,7 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 </div>
 </AccordionItem>
-</Accordion>    
+</Accordion>
 
 ## Inserting Items Using Prefixes
 
@@ -168,20 +168,18 @@ The following examples show how you can insert 3 items and, later on, update the
 
 ```tsx
 await metaplex.candyMachines().insertItems({
-    candyMachine,
-    items: [
-    { name: 'My NFT #1', uri: 'https://example.com/nft1.json' },
-    { name: 'My NFT #2', uri: 'https://example.com/nft2.json' },
-    { name: 'My NFT #3', uri: 'https://example.com/nft3.json' },
-    ],
+  candyMachine,
+  items: [
+    { name: "My NFT #1", uri: "https://example.com/nft1.json" },
+    { name: "My NFT #2", uri: "https://example.com/nft2.json" },
+    { name: "My NFT #3", uri: "https://example.com/nft3.json" },
+  ],
 });
 
 await metaplex.candyMachines().insertItems({
-    candyMachine,
-    index: 1,
-    items: [
-    { name: 'My NFT #X', uri: 'https://example.com/nftX.json' },
-    ],
+  candyMachine,
+  index: 1,
+  items: [{ name: "My NFT #X", uri: "https://example.com/nftX.json" }],
 });
 
 candyMachine = await metaplex.candyMachines().refresh(candyMachine);

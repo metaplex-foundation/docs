@@ -53,22 +53,22 @@ Alright, now that we understand what guards are, let’s see what default guards
 
 In the following list, we’ll provide a short description of each guard with a link pointing to their dedicated page for more advanced reading.
 
-- **Address Gate**: Restricts the mint to a single address.
-- **Allow List**: Uses a wallet address list to determine who is allowed to mint.
-- **Bot Tax**: Configurable tax to charge invalid transactions.
-- **End Date**: Determines a date to end the mint.
-- **Gatekeeper**: Restricts minting via a Gateway Network e.g. captcha integration.
-- **Mint Limit**: Specifies a limit on the number of mints per wallet.
-- **Nft Burn**: Restricts the mint to holders of a specified collection, requiring a burn of the NFT.
-- **Nft Gate**: Restricts the mint to holders of a specified collection.
-- **Nft Payment**: Set the price of the mint as an NFT of a specified collection.
-- **Redeemed Amount**: Determines the end of the mint based on a total amount minted.
-- **Sol Payment**: Set the price of the mint in SOL.
-- **Start Date**: Determines the start date of the mint.
-- **Third Party Signer**: Requires an additional signer on the transaction.
-- **Token Burn**: Restricts the mint to holders of a specified token, requiring a burn of the tokens.
-- **Token Gate**: Restricts the mint to holders of a specified token.
-- **Token Payment**: Set the price of the mint in token amount.
+- [**Address Gate**](/programs/candy-machine/available-guards/address-gate): Restricts the mint to a single address.
+- [**Allow List**](/programs/candy-machine/available-guards/allow-list): Uses a wallet address list to determine who is allowed to mint.
+- [**Bot Tax**](/programs/candy-machine/available-guards/bot-tax): Configurable tax to charge invalid transactions.
+- [**End Date**](/programs/candy-machine/available-guards/end-date): Determines a date to end the mint.
+- [**Gatekeeper**](/programs/candy-machine/available-guards/gatekeeper): Restricts minting via a Gateway Network e.g. captcha integration.
+- [**Mint Limit**](/programs/candy-machine/available-guards/mint-limit): Specifies a limit on the number of mints per wallet.
+- [**Nft Burn**](/programs/candy-machine/available-guards/nft-burn): Restricts the mint to holders of a specified collection, requiring a burn of the NFT.
+- [**Nft Gate**](/programs/candy-machine/available-guards/nft-gate): Restricts the mint to holders of a specified collection.
+- [**Nft Payment**](/programs/candy-machine/available-guards/nft-payment): Set the price of the mint as an NFT of a specified collection.
+- [**Redeemed Amount**](/programs/candy-machine/available-guards/redeemed-amount): Determines the end of the mint based on a total amount minted.
+- [**Sol Payment**](/programs/candy-machine/available-guards/sol-payment): Set the price of the mint in SOL.
+- [**Start Date**](/programs/candy-machine/available-guards/start-date): Determines the start date of the mint.
+- [**Third Party Signer**](/programs/candy-machine/available-guards/third-party-signer): Requires an additional signer on the transaction.
+- [**Token Burn**](/programs/candy-machine/available-guards/token-burn): Restricts the mint to holders of a specified token, requiring a burn of the tokens.
+- [**Token Gate**](/programs/candy-machine/available-guards/token-gate): Restricts the mint to holders of a specified token.
+- [**Token Payment**](/programs/candy-machine/available-guards/token-payment): Set the price of the mint in token amount.
 
 ## Creating a Candy Machine with guards
 
@@ -83,21 +83,21 @@ The concrete implementation will depend on which SDK you are using (see below) b
 To enable guards using the JS SDK, simply provides the `guards` attribute to the `create` operation and pass in the settings of every guard you want to enable. Any guard set to `null` or not provided will be disabled.
 
 ```tsx
-import { sol, toBigNumber, toDateTime } from '@metaplex-foundation/js';
+import { sol, toBigNumber, toDateTime } from "@metaplex-foundation/js";
 
 const { candyMachine } = await metaplex.candyMachines().create({
-    itemsAvailable: toBigNumber(5000),
-    sellerFeeBasisPoints: 333, // 3.33%
-    collection: {
+  itemsAvailable: toBigNumber(5000),
+  sellerFeeBasisPoints: 333, // 3.33%
+  collection: {
     address: collectionNft.address,
     updateAuthority: metaplex.identity(),
-    },
-    guards: {
-        botTax: { lamports: sol(0.01), lastInstruction: false },
-        solPayment: { amount: sol(1.5), destination: treasury },
-    startDate: { date: toDateTime('2022-10-17T16:00:00Z') },
+  },
+  guards: {
+    botTax: { lamports: sol(0.01), lastInstruction: false },
+    solPayment: { amount: sol(1.5), destination: treasury },
+    startDate: { date: toDateTime("2022-10-17T16:00:00Z") },
     // All other guards are disabled...
-    },
+  },
 });
 ```
 
@@ -124,15 +124,15 @@ Note that the entire `guards` object will be updated meaning **it will override 
 Therefore, make sure to provide the settings for all guards you want to enable, even if their settings are not changing.
 
 ```tsx
-import { sol, toDateTime } from '@metaplex-foundation/js';
+import { sol, toDateTime } from "@metaplex-foundation/js";
 
 await metaplex.candyMachines().update({
-    candyMachine,
-    guards: {
-        botTax: { lamports: sol(0.01), lastInstruction: false },
-        solPayment: { amount: sol(3), destination: treasury },
-    startDate: { date: toDateTime('2022-10-18T16:00:00Z') },
-    },
+  candyMachine,
+  guards: {
+    botTax: { lamports: sol(0.01), lastInstruction: false },
+    solPayment: { amount: sol(3), destination: treasury },
+    startDate: { date: toDateTime("2022-10-18T16:00:00Z") },
+  },
 });
 ```
 
@@ -193,39 +193,39 @@ The `create` operation of the JS SDK already takes care of creating and associat
 However, if you wanted to create them separately and manually associate/dissociate them, this is how you’d do it.
 
 ```tsx
-import { sol, toBigNumber, toDateTime } from '@metaplex-foundation/js';
+import { sol, toBigNumber, toDateTime } from "@metaplex-foundation/js";
 
 // Create a Candy Machine without a Candy Guard.
 const { candyMachine } = await metaplex.candyMachines().create({
-    itemsAvailable: toBigNumber(5000),
-    sellerFeeBasisPoints: 333, // 3.33%
-    collection: {
+  itemsAvailable: toBigNumber(5000),
+  sellerFeeBasisPoints: 333, // 3.33%
+  collection: {
     address: collectionNft.address,
     updateAuthority: metaplex.identity(),
-    },
-    withoutCandyGuard: true,
+  },
+  withoutCandyGuard: true,
 });
 
 // Create a Candy Guard.
 const { candyGuard } = await metaplex.candyMachines().createCandyGuard({
-    guards: {
-        botTax: { lamports: sol(0.01), lastInstruction: false },
-        solPayment: { amount: sol(1.5), destination: treasury },
-    startDate: { date: toDateTime('2022-10-17T16:00:00Z') },
-    },
+  guards: {
+    botTax: { lamports: sol(0.01), lastInstruction: false },
+    solPayment: { amount: sol(1.5), destination: treasury },
+    startDate: { date: toDateTime("2022-10-17T16:00:00Z") },
+  },
 });
 
 // Associate the Candy Guard with the Candy Machine.
 await mx.candyMachines().wrapCandyGuard({
-    candyMachine: candyMachine.address,
-    candyGuard: candyGuard.address,
-})
+  candyMachine: candyMachine.address,
+  candyGuard: candyGuard.address,
+});
 
 // Dissociate them.
 await mx.candyMachines().unwrapCandyGuard({
-    candyMachine: candyMachine.address,
-    candyGuard: candyGuard.address,
-})
+  candyMachine: candyMachine.address,
+  candyGuard: candyGuard.address,
+});
 ```
 
 API References:
