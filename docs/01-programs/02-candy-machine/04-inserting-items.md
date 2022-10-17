@@ -50,7 +50,7 @@ const { uri } = await metaplex.nfts().uploadMetadata({
 });
 ```
 
-If the assets inside your JSON metadata also need to be uploaded to the same storage provider, you may give a `[MetaplexFile](https://metaplex-foundation.github.io/js/types/js.MetaplexFile.html)` instead of a URI and it will upload it for you. For instance, here’s how you would upload some JSON metadata using a file uploaded in the browser.
+If the assets inside your JSON metadata also need to be uploaded to the same storage provider, you may give a [`MetaplexFile`](https://metaplex-foundation.github.io/js/types/js.MetaplexFile.html) instead of a URI and it will upload it for you. For instance, here’s how you would upload some JSON metadata using a file uploaded in the browser.
 
 ```tsx
 // Uploading some JSON metadata and its assets (here, in the browser).
