@@ -14,7 +14,7 @@ A guard is a modular piece of code that can restrict access to the mint of a Can
 
 There is a large set of guards to choose from and each of them can be activated and configured at will.
 
-We’ll touch on all available guards later in this documentation but let’s go through a few examples here to illustrate that.
+We’ll touch on [all available guards](/programs/candy-machine/available-guards) later in this documentation but let’s go through a few examples here to illustrate that.
 
 - When the **Start Date** guard is enabled, minting will be forbidden before the preconfigured date. There is also an **End Date** guard to forbid minting after a given date.
 - When the **Sol Payment** guard is enabled, the minting wallet will have to pay a configured amount to a configured destination wallet. Similar guards exist for paying with tokens or NFTs of a specific collection.
@@ -25,7 +25,7 @@ As you can see, each guard takes care of one responsibility and one responsibili
 
 ## The Candy Guard account
 
-If you remember the content of our Candy Machine account, you’ll see no signs of guards in there. This is because guards live in another account called the **Candy Guard account** which is created by the **Candy Guard program**.
+If you remember the content of our [Candy Machine account](/programs/candy-machine/managing-candy-machines#candy-machine-account), you’ll see no signs of guards in there. This is because guards live in another account called the **Candy Guard account** which is created by the **Candy Guard program**.
 
 Each Candy Machine account should typically be associated with its own Candy Guard account which will add a layer of protection to it.
 
@@ -238,4 +238,4 @@ API References:
 
 ## Conclusion
 
-Guards are important components of Candy Machines. They make it easy to configure the minting process whilst allowing anyone to create their own guards for application-specific needs. On the next page, we’ll see how we can create even more minting scenarios by using guard groups!
+Guards are important components of Candy Machines. They make it easy to configure the minting process whilst allowing anyone to create their own guards for application-specific needs. [On the next page](/programs/candy-machine/guard-groups), we’ll see how we can create even more minting scenarios by using guard groups!
