@@ -2,6 +2,8 @@
 description: "Explains how guards work and how to enable them."
 ---
 
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
+
 # Candy Guards
 
 ## Introduction
@@ -31,7 +33,7 @@ Each Candy Machine account should typically be associated with its own Candy Gua
 
 This works by creating a Candy Guard account and making it the **Mint Authority** of the Candy Machine account. By doing so, it is no longer possible to mint directly from the main Candy Machine program — known as the **Candy Machine Core program**. Instead, we must mint via the Candy Guard program which, if all guards are resolved successfully, will defer to the Candy Machine Core program to finish the minting process.
 
-![Candy Machines V3 - Candy Guards 1@2x.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/74660fe7-1842-4ff3-ac5e-ba651e6dcbba/Candy_Machines_V3_-_Candy_Guards_12x.png)
+![Candy Machines V3 - Candy Guards 1@2x.png](/assets/candy-machine-v3/CandyMachinesV3-CandyGuards1.png#radius)
 
 Note that, since Candy Machine and Candy Guard accounts work hand and hand together, our SDKs treat them as one entity. When you create a Candy Machine with our SDKs, an associated Candy Guard account will also be created by default. The same goes when updating Candy Machines as they allow you to update guards at the same time. We will see some concrete examples on this page.
 
@@ -41,7 +43,7 @@ The reason guards don’t live in the main Candy Machine program is to separate 
 
 This enables guards to not only be modular but extendable. Anyone can create and deploy their own Candy Guard program to create custom guards whilst relying on the Candy Machine Core program for all the rest.
 
-![Candy Machines V3 - Candy Guards 2@2x.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f5550f90-9886-46a9-afb5-ca2064622de5/Candy_Machines_V3_-_Candy_Guards_22x.png)
+![Candy Machines V3 - Candy Guards 2@2x.png](/assets/candy-machine-v3/CandyMachinesV3-CandyGuards2.png#radius)
 
 Note that our SDKs also offer ways to register your own Candy Guard programs and their custom guards so you can leverage their friendly API and easily share your guards with others.
 

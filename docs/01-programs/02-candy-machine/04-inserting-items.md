@@ -2,6 +2,8 @@
 description: "Explains how to load items into Candy Machines."
 ---
 
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
+
 # Inserting Items
 
 ## Introduction
