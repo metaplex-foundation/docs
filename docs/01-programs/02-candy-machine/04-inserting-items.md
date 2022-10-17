@@ -6,13 +6,13 @@ description: "Explains how to load items into Candy Machines."
 
 ## Introduction
 
-So far we’ve learnt to create and configure Candy Machines but we’ve not seen how to insert items inside them that can then be minted into NFTs. Thus, let’s tackle that in this page.
+So far we’ve learnt to create and configure Candy Machines but we’ve not seen how to insert items inside them that can then be minted into NFTs. Thus, let’s tackle that on this page.
 
 It is important to remember that **inserting items only applies to Candy Machines using Config Line Settings**. This is because NFTs minted from Candy Machine using Hidden Settings will all share the same “hidden” name and URI.
 
 ## Uploading JSON Metadata
 
-In order to insert items in a Candy Machine, you will need the following two parameters for each item:
+To insert items in a Candy Machine, you will need the following two parameters for each item:
 
 - Its **Name**: The name of the NFT that will be minted from this item. If a Name Prefix was provided in the Config Line Settings, you must only provide the part of the name that comes after that prefix.
 - Its **URI**: The URI pointing to the JSON metadata of the NFT that will be minted from this item. Here also, it excludes the URI Prefix that might have been provided in the Config Line Settings.
@@ -21,13 +21,13 @@ If you do not have URIs for your items, you’ll first need to upload their JSON
 
 Fortunately, our SDKs can help you with that. They allow you to upload a JSON object and retrieve its URI.
 
-Additionally, tools like [Sugar](https://docs.metaplex.com/developer-tools/sugar/guides/sugar-for-cmv3) makes uploading JSON metadata a breeze by uploading in parallel, caching the process and retrying failed uploads.
+Additionally, tools like [Sugar](https://docs.metaplex.com/developer-tools/sugar/guides/sugar-for-cmv3) make uploading JSON metadata a breeze by uploading in parallel, caching the process and retrying failed uploads.
 
 <Accordion>
 <AccordionItem title="JS SDK" open={true}>
 <div className="accordion-item-padding">
 
-To upload some JSON metadata using the JS SDK, you should first select your prefered storage provider. By default, Bundlr will be used to upload to Arweave. Here’s how you can chose another one.
+To upload some JSON metadata using the JS SDK, you should first select your prefered storage provider. By default, Bundlr will be used to upload to Arweave. Here’s how you can choose another one.
 
 ```tsx
 // NFT.Storage is an external plugin so you must first install it:
@@ -67,15 +67,15 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 ## Inserting Items
 
-Now that we have a name and URI for all of our items, all we need to do insert them in our Candy Machine account.
+Now that we have a name and URI for all of our items, all we need to do is insert them into our Candy Machine account.
 
-Note that, because transactions are limited to a certain size, we cannot insert thousands of items within the same transaction. The amount of items you can insert per transaction will depend on the **Name Length** and **URI Length** attributes defined in your Config Line Settings. The shorter your names and URIs are, the more you’ll be able to fit in a transaction.
+Note that, because transactions are limited to a certain size, we cannot insert thousands of items within the same transaction. The number of items you can insert per transaction will depend on the **Name Length** and **URI Length** attributes defined in your Config Line Settings. The shorter your names and URIs are, the more you’ll be able to fit into a transaction.
 
 <Accordion>
 <AccordionItem title="JS SDK" open={true}>
 <div className="accordion-item-padding">
 
-Here’s how you can insert items to a Candy Machine using the JS SDK.
+Here’s how you can insert items into a Candy Machine using the JS SDK.
 
 ```tsx
 await metaplex.candyMachines().insertItems({
@@ -162,7 +162,7 @@ Note that, once minting has started, items can no longer be changed.
 <AccordionItem title="JS SDK" open={true}>
 <div className="accordion-item-padding">
 
-The following examples shows how you can insert 3 items and, later on, update the second item inserted.
+The following examples show how you can insert 3 items and, later on, update the second item inserted.
 
 ```tsx
 await metaplex.candyMachines().insertItems({
@@ -196,6 +196,6 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 ## Conclusion
 
-And just like that, we have a loaded Candy Machine ready to mint NFTs! However, we’ve not actually created any requirements for our minting process. How can we configure the price of the mint? How can we ensure that buyers are holders of a specific token or of an NFT from a specific collection? How can we set the start date of our mint? What about the end conditions?
+And just like that, we have a loaded Candy Machine ready to mint NFTs! However, we've not created any requirements for our minting process. How can we configure the price of the mint? How can we ensure that buyers are holders of a specific token or an NFT from a specific collection? How can we set the start date of our mint? What about the end conditions?
 
 On the next page, we’ll talk about Candy Guards which make all of this possible.

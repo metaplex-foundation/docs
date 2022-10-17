@@ -14,12 +14,12 @@ A guard is a modular piece of code that can restrict access to the mint of a Can
 
 There is a large set of guards to choose from and each of them can be activated and configured at will.
 
-We’ll touch on an all available guards later in this documentation but let’s go through a few examples here to illustrate that.
+We’ll touch on all available guards later in this documentation but let’s go through a few examples here to illustrate that.
 
 - When the **Start Date** guard is enabled, minting will be forbidden before the preconfigured date. There is also an **End Date** guard to forbid minting after a given date.
 - When the **Sol Payment** guard is enabled, the minting wallet will have to pay a configured amount to a configured destination wallet. Similar guards exist for paying with tokens or NFTs of a specific collection.
 - The **Token Gate** and **NFT Gate** guards restrict minting to certain token holders and NFT holders respectively.
-- The **Allow List** guard only allows minting  if the wallet is part of a predefined list of wallets. Kind of like a guest list for minting.
+- The **Allow List** guard only allows minting if the wallet is part of a predefined list of wallets. Kind of like a guest list for minting.
 
 As you can see, each guard takes care of one responsibility and one responsibility only which makes them composable. In other words, you can pick and choose the guards your need to create your perfect Candy Machine.
 
@@ -27,9 +27,9 @@ As you can see, each guard takes care of one responsibility and one responsibili
 
 If you remember the content of our Candy Machine account, you’ll see no signs of guards in there. This is because guards live in another account called the **Candy Guard account** which is created by the **Candy Guard program**.
 
-Each Candy Machine account should typically be associated with their own Candy Guard account which will add a layer of protection to it.
+Each Candy Machine account should typically be associated with its own Candy Guard account which will add a layer of protection to it.
 
-This works by creating a Candy Guard account and making it the **Mint Authority** of the Candy Machine account. By doing so, it is no longer possible to mint directly from the main Candy Machine program — known as the **Candy Machine Core program**. Instead, we must mint via the Candy Guard program which, if all guards resolved successfully, will defer to the Candy Machine Core program to finishing the minting process.
+This works by creating a Candy Guard account and making it the **Mint Authority** of the Candy Machine account. By doing so, it is no longer possible to mint directly from the main Candy Machine program — known as the **Candy Machine Core program**. Instead, we must mint via the Candy Guard program which, if all guards are resolved successfully, will defer to the Candy Machine Core program to finish the minting process.
 
 ![Candy Machines V3 - Candy Guards 1@2x.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/74660fe7-1842-4ff3-ac5e-ba651e6dcbba/Candy_Machines_V3_-_Candy_Guards_12x.png)
 
@@ -43,13 +43,13 @@ This enables guards to not only be modular but extendable. Anyone can create and
 
 ![Candy Machines V3 - Candy Guards 2@2x.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f5550f90-9886-46a9-afb5-ca2064622de5/Candy_Machines_V3_-_Candy_Guards_22x.png)
 
-Note that our SDKs also offer ways to register your own Candy Guard programs and their custom guards so you can leverage their friendly API and easily share your guards to others.
+Note that our SDKs also offer ways to register your own Candy Guard programs and their custom guards so you can leverage their friendly API and easily share your guards with others.
 
 ## All available guards
 
 Alright, now that we understand what guards are, let’s see what default guards are available to us.
 
-In the following list, we’ll provide a short description of each guard with a link pointing to their own dedicated page for more advanced reading.
+In the following list, we’ll provide a short description of each guard with a link pointing to their dedicated page for more advanced reading.
 
 - **Address Gate**: Restricts the mint to a single address.
 - **Allow List**: Uses a wallet address list to determine who is allowed to mint.
@@ -70,7 +70,7 @@ In the following list, we’ll provide a short description of each guard with a 
 
 ## Creating a Candy Machine with guards
 
-So far, the Candy Machine we created did not have any guards enabled. Now that we know all the guards available to us, let’s see how we can set up a new Candy Machines with some guards enabled.
+So far, the Candy Machine we created did not have any guards enabled. Now that we know all the guards available to us, let’s see how we can set up new Candy Machines with some guards enabled.
 
 The concrete implementation will depend on which SDK you are using (see below) but the main idea is that you enable guards by providing their required settings. Any guard that has not been set up will be disabled.
 
@@ -115,11 +115,11 @@ You can enable new guards by providing their settings or disable current ones by
 <AccordionItem title="JS SDK" open={true}>
 <div className="accordion-item-padding">
 
-You may update the guards of a Candy Machine the exact same way you created them. That is by passing their settings inside the `guards` object of the `update` operation. Any guard set to `null` or not provided will be disabled.
+You may update the guards of a Candy Machine the same way you created them. That is, by providing their settings inside the `guards` object of the `update` operation. Any guard set to `null` or not provided will be disabled.
 
 Note that the entire `guards` object will be updated meaning **it will override all existing guards**!
 
-Therefore, make sure to provide the settings for all guards you want enabled, even if their settings are not changing.
+Therefore, make sure to provide the settings for all guards you want to enable, even if their settings are not changing.
 
 ```tsx
 import { sol, toDateTime } from '@metaplex-foundation/js';
@@ -188,7 +188,7 @@ You will first need to create the two accounts separately and associate/dissocia
 
 The `create` operation of the JS SDK already takes care of creating and associating a brand new Candy Guard account for every Candy Machine account created.
 
-However, if you wanted to created them separately and manually associate/dissociate them, this is how you’d do it.
+However, if you wanted to create them separately and manually associate/dissociate them, this is how you’d do it.
 
 ```tsx
 import { sol, toBigNumber, toDateTime } from '@metaplex-foundation/js';
@@ -238,4 +238,4 @@ API References:
 
 ## Conclusion
 
-Guards are important components of Candy Machines. They make it easy to configure the minting process whilst allowing anyone to create their own guards for the application-specific needs. On the next page, we’ll see how we can create even more minting scenarios by using guard groups!
+Guards are important components of Candy Machines. They make it easy to configure the minting process whilst allowing anyone to create their own guards for application-specific needs. On the next page, we’ll see how we can create even more minting scenarios by using guard groups!
