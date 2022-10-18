@@ -86,10 +86,10 @@ Whilst this provides a good overview of Candy Machines, there is a lot more to d
 - [Candy Machine Settings](/programs/candy-machine/candy-machine-settings). Explains Candy Machine settings in great detail.
 - [Managing Candy Machines](/programs/candy-machine/managing-candy-machines). Explains how to manage Candy Machines.
 - [Inserting Items](/programs/candy-machine/inserting-items). Explains how to load items into Candy Machines.
-- [Minting](/programs/candy-machine/minting). Explains how to mint from Candy Machines and how to handle pre-mint requirements.
 - [Candy Guards](/programs/candy-machine/candy-guards). Explains how guards work and how to enable them.
 - [Guard Groups](/programs/candy-machine/guard-groups). Explains how to configure multiple groups of guards.
 - [Special Guard Instructions](/programs/candy-machine/special-guard-instructions). Explains how to execute guard-specific instructions.
+- [Minting](/programs/candy-machine/minting). Explains how to mint from Candy Machines and how to handle pre-mint requirements.
 - [Available Guards](/programs/candy-machine/available-guards). Lists all available default guards.
 - [How-To Guides](/programs/candy-machine/how-to-guides). Lists practical articles relevant to Candy Machines.
 - [Conceptual Guides](/programs/candy-machine/conceptual-guides). Lists theoretical articles relevant to Candy Machines.
