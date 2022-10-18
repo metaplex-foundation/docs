@@ -42,7 +42,7 @@ Now, whenever someone tries to mint from our Candy Machine, **they will have to 
 - It ensures buyers do not experience unexpected minting behaviour. Say we tried to mint for 1 SOL at the very end of the first group’s end date but, by the time the transaction executes, we’re now past that date. If we didn’t ask for the group label, the transaction would succeed and we would be charged 2 SOL even though we expected to only be charged 1 SOL.
 - It makes it possible to support parallel groups. We’ll talk more about this later on this page.
 
-![CandyMachinesV3-GuardGroups1.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/72343a0a-076f-4896-a4e0-289275ff3fd2/CandyMachinesV3-GuardGroups1.png)
+![CandyMachinesV3-GuardGroups1.png](/assets/candy-machine-v3/CandyMachinesV3-GuardGroups1.png#radius)
 
 Now let’s see how we can create and update groups using our SDKs.
 
@@ -152,7 +152,7 @@ To illustrate that, let’s take our example from the previous section and move 
 
 As you can see, default guards are useful to avoid repetition within your groups.
 
-![CandyMachinesV3-GuardGroups2.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6850d33e-89dc-4b7a-be48-d2eb7e7d16bb/CandyMachinesV3-GuardGroups2.png)
+![CandyMachinesV3-GuardGroups2.png](/assets/candy-machine-v3/CandyMachinesV3-GuardGroups2.png#radius)
 
 Note that, even when using default guards, a group must be provided at mint time. That means, when using guard groups, **it is not possible to mint using the default guards only**.
 

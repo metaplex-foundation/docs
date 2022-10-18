@@ -33,7 +33,7 @@ It does that using [Merkle Trees](https://en.m.wikipedia.org/wiki/Merkle_tree) w
 
 Therefore, the Allow List guard **uses its route instruction to verify the Merkle Proof of a given wallet** and, if successful, creates a small PDA account on the blockchain that acts as a proof for the mint instruction.
 
-![CandyMachinesV3-SpecialGuardInstructions1.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5b708956-ace6-4f01-bdd1-ae64d017a484/CandyMachinesV3-SpecialGuardInstructions1.png)
+![CandyMachinesV3-SpecialGuardInstructions1.png](/assets/candy-machine-v3/CandyMachinesV3-SpecialGuardInstructions1.png#radius)
 
 So why can’t we just verify the Merkle Proof directly within the mint instruction? That’s simply because, for big allow lists, that Merkle Proof can end up being pretty lengthy. After a certain size, it becomes impossible to include it within the mint transaction that already contains a decent amount of instructions. By separating the validation process from the minting process, we make it possible for allow list to be as big as we need them to be.
 
