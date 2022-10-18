@@ -71,7 +71,11 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 Now that we have a name and URI for all of our items, all we need to do is insert them into our Candy Machine account.
 
-Note that, because transactions are limited to a certain size, we cannot insert thousands of items within the same transaction. The number of items you can insert per transaction will depend on the **Name Length** and **URI Length** attributes defined in your Config Line Settings. The shorter your names and URIs are, the more you’ll be able to fit into a transaction.
+This is an important part of the process and, when using Config Line Settings, **minting will not be permitted until all items have been inserted**.
+
+Note that the name and URI of each inserted item are respectively constraint by the **Name Length** and **URI Length** attributes of the Config Line Settings.
+
+Additionally, because transactions are limited to a certain size, we cannot insert thousands of items within the same transaction. The number of items we can insert per transaction will depend on the **Name Length** and **URI Length** attributes defined in the Config Line Settings. The shorter our names and URIs are, the more we'll be able to fit into a transaction.
 
 <Accordion>
 <AccordionItem title="JS SDK" open={true}>
@@ -157,8 +161,6 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 ## Overriding Existing Items
 
 When inserting items, you may provide the position in which these items should be inserted. This enables you to insert items in any order you want but also allows you to update items that have already been inserted.
-
-Note that, once minting has started, items can no longer be changed.
 
 <Accordion>
 <AccordionItem title="JS SDK" open={true}>
