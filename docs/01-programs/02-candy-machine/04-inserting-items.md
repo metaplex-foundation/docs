@@ -130,25 +130,25 @@ Here’s how to insert items whilst using prefixes via the JS SDK.
 import { toBigNumber } from '@metaplex-foundation/js';
 
 const { candyMachine } = await metaplex.candyMachines().create({
-    candyMachine,
-    itemsAvailable: toBigNumber(1000),
-    itemSettings: {
+  candyMachine,
+  itemsAvailable: toBigNumber(1000),
+  itemSettings: {
     type: 'configLines',
     prefixName: 'My NFT #',
     nameLength: 4,
     prefixUri: 'https://example.com/nft',
     uriLength: 9,
     isSequential: true,
-    },
+  },
 };
 
 await metaplex.candyMachines().insertItems({
-    candyMachine,
+  candyMachine,
     items: [
     { name: '1', uri: '1.json' },
     { name: '2', uri: '2.json' },
     { name: '3', uri: '3.json' },
-    ],
+  ],
 });
 ```
 
