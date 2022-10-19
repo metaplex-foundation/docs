@@ -2,6 +2,8 @@
 description: "Explains how to execute guard-specific instructions."
 ---
 
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
+
 # Special Guard Instructions
 
 ## Introduction

@@ -2,6 +2,8 @@
 description: "Explains how to configure multiple groups of guards."
 ---
 
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
+
 # Guard Groups
 
 ## Introduction
