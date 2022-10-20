@@ -149,7 +149,7 @@ If we wanted to have a single "public" group, all the guard configuration can be
           },
           "solPayment": {
               "value": 2,
-              "destiantion": "PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8"
+              "destination": "PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8"
           }
       },
       "groups": null
