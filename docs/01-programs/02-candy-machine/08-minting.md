@@ -228,7 +228,7 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 ## Minting With Pre-Validation
 
-It is important to note that some guards may require some additional verification steps before we can mint from their Candy Machine. This pre-validation step usually creates an account on the blockchain or rewards the wallet with a token that acts as proof of that verification.
+It is important to note that some guards may require additional verification steps before we can mint from their Candy Machine. This pre-validation step usually creates an account on the blockchain or rewards the wallet with a token that acts as proof of that verification.
 
 ### Using the route instruction
 
@@ -242,7 +242,7 @@ A good example of that is the **Allow List** guard. When using this guard, we mu
 
 Another way guards may perform that pre-validation step is by relying on an external solution.
 
-For instance, when using the Gatekeeper guard, we must request a Gateway Token by performing a challenge — such as completing a Captcha — which depends on the configured Gatekeep Network. The Gatekeeper guard will then check for the existence of such Gateway Token to either validate or reject the mint. [You can learn more about the Gatekeeper guard on its dedicated page](/programs/candy-machine/available-guards/gatekeeper).
+For instance, when using the Gatekeeper guard, we must request a Gateway Token by performing a challenge — such as completing a Captcha — which depends on the configured Gatekeeper Network. The Gatekeeper guard will then check for the existence of such Gateway Token to either validate or reject the mint. [You can learn more about the Gatekeeper guard on its dedicated page](/programs/candy-machine/available-guards/gatekeeper).
 
 ![CandyMachinesV3-Minting5.png](/assets/candy-machine-v3/CandyMachinesV3-Minting5.png#radius)
 
