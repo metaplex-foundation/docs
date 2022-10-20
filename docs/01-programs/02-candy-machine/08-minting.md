@@ -18,7 +18,7 @@ Our SDKs will also know which program to interact with based on whether a Candy 
 
 So ultimately, in order to mint, all you need to do is pass in the **Candy Machine** you created and any additional attributes that might be required based on the Candy Machine settings. Additionally, in the rare event that your Candy Machine does not have an associated Candy Guard account, it will need to mint from the configured **Mint Authority** which must to be provided as a signer.
 
-![CandyMachinesV3-Minting1.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/24789557-e0d5-45a7-8602-336f885a5337/CandyMachinesV3-Minting1.png)
+![CandyMachinesV3-Minting1.png](/assets/candy-machine-v3/CandyMachinesV3-Minting1.png#radius)
 
 If everything went well, an NFT will be created are returned following the parameters configured in the Candy Machine. For instance, if the given Candy Machine uses **Config Line Settings** with **Is Sequential** set to `false`, then we will get the next item at random.
 
@@ -89,13 +89,13 @@ If you were to build the mint instruction manually, that information would be pr
 
 A good example of guard that requires Mint Settings is the **NFT Payment** guard which requires the mint address of the NFT we should use to pay for the mint.
 
-![CandyMachinesV3-Minting2.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/59c51d1b-db66-43a2-893a-8e2b78d5c80d/CandyMachinesV3-Minting2.png)
+![CandyMachinesV3-Minting2.png](/assets/candy-machine-v3/CandyMachinesV3-Minting2.png#radius)
 
 It is worth noting that some guards may not require any Mint Settings whilst still needing to pass guard-specific arguments or remaining account when minting. That’s because the SDKs are clever enough to fill in the gaps with the data that’s available to them, e.g. the initial settings of the guard.
 
 An example of such guard is the **Mint Limit** guard. This guard requires the address of the PDA account that will keep track of how many NFTs were minted by a given wallet. However, it does not require Mint Settings because the address of this PDA can be infered from other variables we already have such as the payer of the mint.
 
-Each available guard contains its own documentation page and it will tell you whether or not that guard expects Mint Settings to be provided when minting.
+[Each available guard](/programs/candy-machine/available-guards) contains its own documentation page and it will tell you whether or not that guard expects Mint Settings to be provided when minting.
 
 If you were to only use guards that do not require Mint Settings, you may mint in the same way described by the “Basic Minting” section above. Otherwise, you’ll need to provide an additional object attribute containing the Mint Settings of all guards that require them. Let’s have a look at what that looks like in practice using our SDKs.
 
@@ -141,7 +141,7 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 When minting from a Candy Machine using guard groups, **we must explicitely select which group we want to mint from** by providing its label.
 
-Additionally, Mint Settings may also be required as explained on the previous section. However, **the Mint Settings will apply to the “Resolved Guards” of the selected group**.
+Additionally, Mint Settings may also be required as explained on [the previous section](#minting-with-guards). However, **the Mint Settings will apply to the “Resolved Guards” of the selected group**.
 
 For instance, imagine a Candy Machine with the following guards:
 
@@ -168,7 +168,7 @@ The Resolved Guards of Group 1 — labelled “nft” — are:
 
 Therefore, the provided Mint Settings must be related to these Resolved Guards. In the example above, Mint Settings must be provided for the Third Party Signer guard and the NFT Payment guard.
 
-![CandyMachinesV3-Minting3.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e07460bf-b5f7-48d8-88fa-c400565fc807/CandyMachinesV3-Minting3.png)
+![CandyMachinesV3-Minting3.png](/assets/candy-machine-v3/CandyMachinesV3-Minting3.png#radius)
 
 <Accordion>
 <AccordionItem title="JS SDK" open={true}>
@@ -232,25 +232,25 @@ It is important to note that some guards may require some additional verificatio
 
 ### Using the route instruction
 
-One way guards can require a pre-validation step is by using their own special instruction via the “route” instruction.
+One way guards can require a pre-validation step is by using [their own special instruction](/programs/candy-machine/special-guard-instructions) via the “route” instruction.
 
-A good example of that is the **Allow List** guard. When using this guard, we must verify that our wallet belongs to a predefined list of wallets by calling the route instruction and providing a valid Merkle Proof. If this route instruction is successful, it will create an Allow List PDA for that wallet which the mint instruction can then read to validate the Allow List guard. You can read more about the Allow List guard on its dedicated page.
+A good example of that is the **Allow List** guard. When using this guard, we must verify that our wallet belongs to a predefined list of wallets by calling the route instruction and providing a valid Merkle Proof. If this route instruction is successful, it will create an Allow List PDA for that wallet which the mint instruction can then read to validate the Allow List guard. [You can read more about the Allow List guard on its dedicated page](/programs/candy-machine/available-guards/allow-list).
 
-![CandyMachinesV3-Minting4.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6cc0d953-02f7-4db9-9cd4-94451f306e6f/CandyMachinesV3-Minting4.png)
+![CandyMachinesV3-Minting4.png](/assets/candy-machine-v3/CandyMachinesV3-Minting4.png#radius)
 
 ### Using external services
 
 Another way guards may perform that pre-validation step is by relying on an external solution.
 
-For instance, when using the Gatekeeper guard, we must request a Gateway Token by performing a challenge — such as completing a Captcha — which depends on the configured Gatekeep Network. The Gatekeeper guard will then check for the existance of such Gateway Token to either validate or reject the mint. You can learn more about the Gatekeeper guard on its dedicated page.
+For instance, when using the Gatekeeper guard, we must request a Gateway Token by performing a challenge — such as completing a Captcha — which depends on the configured Gatekeep Network. The Gatekeeper guard will then check for the existance of such Gateway Token to either validate or reject the mint. [You can learn more about the Gatekeeper guard on its dedicated page](/programs/candy-machine/available-guards/gatekeeper).
 
-![CandyMachinesV3-Minting5.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a3302478-0b78-456b-ba21-efe658bca948/CandyMachinesV3-Minting5.png)
+![CandyMachinesV3-Minting5.png](/assets/candy-machine-v3/CandyMachinesV3-Minting5.png#radius)
 
 ## Minting With Bot Taxes
 
 One guard you’ll likely want to include in your Candy Machine is the Box Tax guard which protects your Candy Machine against bots by charging failed mints a configurable amount of SOL. This amount is usually small to hurt bots without affecting genuine mistakes from real users. All bot taxes will be transfered to the Candy Machine account so that, once minting is over, you can access these funds by deleting the Candy Machine account.
 
-This guard is a bit special and affects the minting behaviour of all other guards. When the Bot Tax is activated and any other guard fails to validate the mint, **the transaction will pretend to succeed**. This means no errors will be returned by the program but no NFT will be minted either. This is because, the transaction must succeed in order for the funds to be transfered from the bot to the Candy Machine account. You can learn more about the Bot Tax guard on its dedicated page.
+This guard is a bit special and affects the minting behaviour of all other guards. When the Bot Tax is activated and any other guard fails to validate the mint, **the transaction will pretend to succeed**. This means no errors will be returned by the program but no NFT will be minted either. This is because, the transaction must succeed in order for the funds to be transfered from the bot to the Candy Machine account. [You can learn more about the Bot Tax guard on its dedicated page](/programs/candy-machine/available-guards/bot-tax).
 
 ## Conclusion
 
@@ -258,5 +258,5 @@ Congratulations, you now know how Candy Machines work from A to Z!
 
 Here are some additional reading resources you might be interested in:
 
-- All Available Guards: Have a look through all the guards available to you so you can cherry pick the ones you need.
-- Create Your First Candy Machine: This How-To guide helps you upload your assets and create a new Candy Machine from scratch using a CLI tool called “Sugar”. It also uses our JS SDK to spin up a minting website for your Candy Machine.
+- [All Available Guards](/programs/candy-machine/available-guards): Have a look through all the guards available to you so you can cherry pick the ones you need.
+- *Create Your First Candy Machine (coming soon)*: This How-To guide helps you upload your assets and create a new Candy Machine from scratch using a CLI tool called “[Sugar](/developer-tools/sugar/overview/introduction)”. It also uses our JS SDK to spin up a minting website for your Candy Machine.
