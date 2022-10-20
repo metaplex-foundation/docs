@@ -29,7 +29,7 @@ Note that additional attributes may be required by our SDKs.
 <div className="accordion-item-padding">
 
 To mint via the JS SDK, you may use the `mint` operation of the Candy Machine module.
-The minimum required arguments are the `candyMachine` model (or a sub-set of it) and the address of the `collectionUpdateAuthority`. The reason we need the latter is because that information does not live in the `candyMachine` model and it is required by the underlying mint instructions.
+The minimum required arguments are the `candyMachine` model (or a subset of it) and the address of the `collectionUpdateAuthority`. The reason we need the latter is that this information does not live in the `candyMachine` model and it is required by the underlying mint instructions.
 
 The `mint` operation will, if everything went well, fetch and return the newly minted NFT.
 
@@ -105,7 +105,7 @@ If you were to only use guards that do not require Mint Settings, you may mint i
 
 When minting via the JS SDK, you may use the `settings` attribute to provide the required **Mint Settings**. The operation will fail if Mint Settings are missing for any guard that requires them.
 
-Here’s an example using the **Third Party Signer** guard which requires an additional signer and the **Mint Limit** guard which keeps track of own many times a wallet minted from the Candy Machine.
+Here’s an example using the **Third Party Signer** guard which requires an additional signer and the **Mint Limit** guard which keeps track of how many times a wallet minted from the Candy Machine.
 
 ```tsx
 import { Keypair } from "@solana/web3.js";
