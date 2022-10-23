@@ -469,12 +469,111 @@ Minting to PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8
 Now you can open your wallet in an explorer like [Solana Explorer](https://explorer.solana.com/?cluster=devnet) and view the NFT you just minted by clicking on the "Tokens" tab.
 
 ## Candy Guards - further configuration
-You might be wondering where you can set configuration like price or start date. This is where with Candy Machine V3 the Candy Guards comes into place. There is a whole lot of different settings through the default [Guards](/programs/candy-machine/candy-guards) Program. In the next steps we will just use a few of them to give you a better understanding what they do.
+You might be wondering where you can set configuration like price or start date. This is where with Candy Machine V3 the Candy Guards comes into place. There is a whole lot of different settings through the default [Guards](/programs/candy-machine/candy-guards) Program. In the next steps we will just use a few of them to give you a better understanding what they do. In fact we will use some of the easier but often requested or used features: Mint Limit per Wallet, start time and payment with SOL. 
 
-At first you will have to modify the config file manually and add the guard configuration. This is only the case in the current Sugar alpha version.  
+In the current Alpha version you will have to modify the config file manually and add the guard configuration in the `guard` field. Here is an example how it can look like:
+
+```json
+{
+  "number": 10,
+  "symbol": "TEST",
+  "sellerFeeBasisPoints": 500,
+  "isMutable": true,
+  "isSequential": false,
+  "creators": [
+    {
+      "address": "DF2eiJojmgvcXDoQgSFzhrnt9Ds4GoYZmaCRMF8sWMYN",
+      "share": 100
+    }
+  ],
+  "uploadMethod": "bundlr",
+  "awsConfig": null,
+  "nftStorageAuthToken": null,
+  "shdwStorageAccount": null,
+  "pinataConfig": null,
+  "hiddenSettings": null,
+  "guards": {
+    "default": {
+      "mintLimit": {
+        "id": 1,
+        "limit": 3
+      },
+      "solPayment": {
+        "value": 0.5,
+        "destination": "Tes1zkZkXhgTaMFqVgbgvMsVkRJpq4Y6g54SbDBeKVV"
+      },
+      "startDate": {
+        "date": "2022-10-23T20:00:00Z"
+      }
+    }
+  }
+}
+```
+We added a default guard with the following settings:
+- `mintLimit` only allows minting a maximum of three NFTs (`limit`) per wallet.
+- `solPayment` requires a payment of 0.5 SOL (`value`) which is paid to the destination wallet (`destination`).
+- `startDate` restricts the mint function to not allow minting before `2022-10-23T20:00:00Z` (`date`)
+
+You can add multiple different guards e.g. to create multiple phases for OGs, WL and public mint. You can find more information about the possibilities on the [Guards](/programs/candy-machine/candy-guards) page.
+
+After modifying and saving the manually modified config file we deploy the guard and set it as the guard of our candy machine by running:
+
+```bash
+sugar guard add
+```
+
+Afterwards it will only be possible to mint through that guard if all the restrictions are matched.
+
+<details>
+<summary>Output</summary>
+<p>
+[1/3] 🔍 Looking up candy machine
+
+Candy machine ID: Ews3L5NoAjjLEHYqEu47DqQ77nsqgNQs3NuELjBCd5bb
+
+[2/3] 🖥  Loading candy guard
+▪▪▪▪▪ Done
+
+Candy guard ID: 7XJdGaywrtcEpohrcZ7kYeMjEHNFVq1XjVpBQ6Doi7TP
+
+[3/3] 📦 Wrapping
+Signature: 3C7iXdu9msYviFAJz4esMvkMAiSXTfExBYr9E5VEJfrmJnojrfoEEDPGzJ7qGDx1J5Pf6bHZtfRqYvBPLrc35on5
+
+The candy guard is now the mint authority of the candy machine.
+
+✅ Command successful.
+</p>
+</details>
+
+If required you can modify the guard afterwards by running:
+
+```bash
+sugar guard update
+```
+
+To see the current settings like if you want to change the start date you can run:
+
+```bash
+sugar guard update
+```
+
+<details>
+<summary>Output</summary>
+<p>
+[1/2] 🔍 Loading candy guard
+▪▪▪▪▪ Done
+Candy guard ID: 7XJdGaywrtcEpohrcZ7kYeMjEHNFVq1XjVpBQ6Doi7TP
+
+[2/2] 🖥  Updating configuration
+Signature: 5nQ1dasS3QAQJH7fBwFXd2VgyRirfYmnZ8XKgsfvWubX4hJ6jzY4dzqEVpXpULgw1PsC5eyJriSMCnVXxw2Mckae
+
+✅ Command successful.
+</p>
+</details>
+
+
 ## Allow users to mint
 
 Obviously your users will not want to use a CLI like Sugar to mint but for example a Website instead. For Candy Machine v3 there is not a prebuilt frontend yet. You can use the Metaplex JS SDK to build a mint site though. Further information can be found in the [minting section](/programs/candy-machine/minting). 
-
 
 Congratulations! You have successfully configured, created, and deployed your first candy machine!
