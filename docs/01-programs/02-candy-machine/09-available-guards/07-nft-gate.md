@@ -6,15 +6,65 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # NFT Gate
 
-The **NFT Gate** guard restricts minting to holders of a specified NFT collection.
+## Overview
 
-*More information coming soon…*
+The **NFT Gate** guard restricts minting to holders of a specified NFT collection.
 
-This page is not finished yet but we’re working hard on documenting it. Check back a bit later.
+![CandyMachinesV3-GuardsNFTGate.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ccbf6dc4-ec9a-4792-ade1-0d5d53a261fd/CandyMachinesV3-GuardsNFTGate.png)
 
-In the meantime, you can learn more about Candy Machine V3 via the following resources:
+## Guard Settings
 
-- [Candy Machine Core Program documentation](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/candy-machine-core/program)
-- [Candy Guard Program documentation](https://github.com/metaplex-foundation/mpl-candy-guard)
+The NFT Gate guard contains the following settings:
 
-Thank you!
+- **Required Collection**: The mint address of the required NFT Collection. The NFT we provide as a proof when minting with must be part of this collection.
+
+- JS SDK
+    
+    Here’s an example of how to set up a Candy Machine using the NFT Gate guard.
+    
+    ```tsx
+    const { candyMachine } = await metaplex.candyMachines().create({
+      // ...
+      guards: {
+        nftGate: {
+          requiredCollection: requiredCollectionNft.address,
+        },
+      },
+    });
+    ```
+    
+    API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#create), [Input](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#create), [Guard Settings](https://metaplex-foundation.github.io/js/types/js.NftGateGuardSettings.html).
+    
+
+## Mint Settings
+
+The NFT Gate guard contains the following Mint Settings:
+
+- **Mint**: The mint address of the NFT to provide as a proof that the payer owns an NFT from the required collection.
+- **Token Account** (optional): You may optionally provide the token account linking the NFT with its owner explicitly. By default, the associated token account of the payer will be used.
+
+Note that, if you’re planning on constructing instructions without the help of our SDKs, you will need to provide these Mint Settings and more as a combination of instruction arguments and remaining accounts. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-guard#nftgate) for more details.
+
+- JS SDK
+    
+    When minting via the JS SDK, simply provide the mint address of the NFT to use as a proof of ownership via the `mint` attribute like so.
+    
+    ```tsx
+    const { nft } = await metaplex.candyMachines().mint({
+      // ...
+      settings: {
+        nftGate: {
+          mint: nftFromRequiredCollection.address,
+        },
+      }
+    });
+    ```
+    
+    You may also provide the `tokenAccount` attribute explicitly should the NFT not use an associated token account.
+    
+    API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#mint), [Input](https://metaplex-foundation.github.io/js/types/js.MintFromCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.MintFromCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#mint), [Mint Settings](https://metaplex-foundation.github.io/js/types/js.NftGateGuardMintSettings.html).
+    
+
+## Route Instruction
+
+*The NFT Gate guard does not support the route instruction.*

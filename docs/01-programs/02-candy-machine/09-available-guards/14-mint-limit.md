@@ -6,15 +6,46 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # Mint Limit
 
-The **Mint Limit** guard allows to specify a limit on the number of mints for each individual wallet.
+## Overview
 
-*More information coming soon…*
+The **Mint Limit** guard allows to specify a limit on the number of mints for each individual wallet.
 
-This page is not finished yet but we’re working hard on documenting it. Check back a bit later.
+The limit is set per wallet, per candy machine and per identifier — provided in the settings — to allow multiple mint limits within the same Candy Machine.
 
-In the meantime, you can learn more about Candy Machine V3 via the following resources:
+![CandyMachinesV3-GuardsMintLimit.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7514ce7c-ccd2-4a6b-bf83-9327e2aee057/CandyMachinesV3-GuardsMintLimit.png)
 
-- [Candy Machine Core Program documentation](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/candy-machine-core/program)
-- [Candy Guard Program documentation](https://github.com/metaplex-foundation/mpl-candy-guard)
+## Guard Settings
 
-Thank you!
+The Mint Limit guard contains the following settings:
+
+- **ID**: A unique identifier for this guard. Different identifiers will use different counters to track how many items were minted by a given wallet. This is particularly useful when using groups of guards as we may want each of them to have a different mint limit.
+- **Limit**: The maximum number of mints allowed per wallet for that identifier.
+
+- JS SDK
+    
+    Here’s how we can set up a Candy Machine using the Mint Limit guard via the JS SDK.
+    
+    ```tsx
+    const { candyMachine } = await metaplex.candyMachines().create({
+      // ...
+      guards: {
+        mintLimit: {
+          id: 1,
+          limit: 5,
+        },
+      },
+    });
+    ```
+    
+    API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#create), [Input](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#create), [Guard Settings](https://metaplex-foundation.github.io/js/types/js.MintLimitGuardSettings.html).
+    
+
+## Mint Settings
+
+*The Mint Limit guard does not need Mint Settings.*
+
+However, if you’re planning on constructing instructions without the help of our SDKs, you will need to add the Mint Counter PDA to the remaining accounts of the mint instruction. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-guard#mintlimit) for more details.
+
+## Route Instruction
+
+*The Mint Limit guard does not support the route instruction.*

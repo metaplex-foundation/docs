@@ -6,15 +6,46 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # Token Gate
 
-The **Token Gate** guard restricts minting to token holders of a specified mint account. The amount determines how many tokens are required.
+## Overview
 
-*More information coming soon…*
+The **Token Gate** guard restricts minting to token holders of a configured mint account. If the payer does not have the required amount of tokens, minting will fail.
 
-This page is not finished yet but we’re working hard on documenting it. Check back a bit later.
+![CandyMachinesV3-GuardsTokenGate.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/99b061d7-4402-49de-9f33-7228dc0c55a6/CandyMachinesV3-GuardsTokenGate.png)
 
-In the meantime, you can learn more about Candy Machine V3 via the following resources:
+## Guard Settings
 
-- [Candy Machine Core Program documentation](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/candy-machine-core/program)
-- [Candy Guard Program documentation](https://github.com/metaplex-foundation/mpl-candy-guard)
+The Token Gate guard contains the following settings:
 
-Thank you!
+- **Amount**: The amount of tokens required.
+- **Mint**: The address of the mint account defining the SPL Token we want to gate with.
+
+- JS SDK
+    
+    Here’s an example of how to set up a Candy Machine using the Token Gate guard.
+    
+    ```tsx
+    import { token } from '@metaplex-foundation/js';
+    
+    const { candyMachine } = await metaplex.candyMachines().create({
+      // ...
+      guards: {
+        tokenGate: {
+          amount: token(300),
+          mint: tokenMint.address,
+        },
+      },
+    });
+    ```
+    
+    API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#create), [Input](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#create), [Guard Settings](https://metaplex-foundation.github.io/js/types/js.TokenGateGuardSettings.html).
+    
+
+## Mint Settings
+
+*The Token Gate guard does not need Mint Settings.*
+
+However, if you’re planning on constructing instructions without the help of our SDKs, you will need to add the payer’s token account to the remaining accounts of the mint instruction. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-guard#tokengate) for more details.
+
+## Route Instruction
+
+*The Token Gate guard does not support the route instruction.*

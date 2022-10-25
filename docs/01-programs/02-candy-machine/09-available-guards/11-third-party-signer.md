@@ -6,15 +6,64 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # Third Party Signer
 
-The **Third Party Signer** guard requires a predefined address to sign each mint transaction.
+## Overview
 
-*More information coming soon…*
+The **Third Party Signer** guard requires a predefined address to sign each mint transaction. The signer will need to be passed within the mint settings of this guard.
 
-This page is not finished yet but we’re working hard on documenting it. Check back a bit later.
+This allows for more centralized mints where every single mint transaction has to go through a specific signer.
 
-In the meantime, you can learn more about Candy Machine V3 via the following resources:
+![CandyMachinesV3-GuardsThirdPartySigner.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c27f1126-24fc-4a95-9a93-68d7c15ce81a/CandyMachinesV3-GuardsThirdPartySigner.png)
 
-- [Candy Machine Core Program documentation](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/candy-machine-core/program)
-- [Candy Guard Program documentation](https://github.com/metaplex-foundation/mpl-candy-guard)
+## Guard Settings
 
-Thank you!
+The Third Party Signer guard contains the following settings:
+
+- **Signer Key**: The address of the signer that will need to sign each mint transaction.
+
+- JS SDK
+    
+    Here’s how we can set up a Candy Machine using the Third Party Signer guard via the JS SDK.
+    
+    ```tsx
+    const { candyMachine } = await metaplex.candyMachines().create({
+      // ...
+      guards: {
+        thirdPartySigner: {
+          signerKey: someWallet.publicKey,
+        },
+      },
+    });
+    ```
+    
+    In this example, the `someWallet` wallet will need to sign every mint transaction.
+    
+    API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#create), [Input](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#create), [Guard Settings](https://metaplex-foundation.github.io/js/types/js.ThirdPartySignerGuardSettings.html).
+    
+
+## Mint Settings
+
+The Third Party Signer guard contains the following Mint Settings:
+
+- **Signer**: The required third party signer. The address of this signer must match the Signer Key in the guard settings.
+
+- JS SDK
+    
+    When minting via the JS SDK, simply provide the third party signer via the `signer` attribute like so.
+    
+    ```tsx
+    const { nft } = await metaplex.candyMachines().mint({
+      // ...
+      settings: {
+        thirdPartySigner: {
+          signer: someWallet,
+        },
+      }
+    });
+    ```
+    
+    API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#mint), [Input](https://metaplex-foundation.github.io/js/types/js.MintFromCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.MintFromCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#mint), [Mint Settings](https://metaplex-foundation.github.io/js/types/js.ThirdPartySignerGuardMintSettings.html).
+    
+
+## Route Instruction
+
+*The Third Party Signer guard does not support the route instruction.*
