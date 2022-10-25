@@ -16,7 +16,7 @@ The **Token Gate** guard restricts minting to token holders of a configured mint
 
 The Token Gate guard contains the following settings:
 
-- **Amount**: The amount of tokens required.
+- **Amount**: The number of tokens required.
 - **Mint**: The address of the mint account defining the SPL Token we want to gate with.
 
 <Accordion>

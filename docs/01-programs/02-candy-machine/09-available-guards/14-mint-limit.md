@@ -8,7 +8,7 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 ## Overview
 
-The **Mint Limit** guard allows to specify a limit on the number of mints for each individual wallet.
+The **Mint Limit** guard allows specifying a limit on the number of NFTs each wallet can mint.
 
 The limit is set per wallet, per candy machine and per identifier — provided in the settings — to allow multiple mint limits within the same Candy Machine.
 

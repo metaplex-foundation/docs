@@ -8,7 +8,7 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 ## Overview
 
-The **Third Party Signer** guard requires a predefined address to sign each mint transaction. The signer will need to be passed within the mint settings of this guard.
+The **Third Party Signer** guard requires a predefined address to sign each mint transaction. The signer will need to be passed within the mint settings of this guard.
 
 This allows for more centralized mints where every single mint transaction has to go through a specific signer.
 
@@ -49,13 +49,13 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 The Third Party Signer guard contains the following Mint Settings:
 
-- **Signer**: The required third party signer. The address of this signer must match the Signer Key in the guard settings.
+- **Signer**: The required third-party signer. The address of this signer must match the Signer Key in the guard settings.
 
 <Accordion>
 <AccordionItem title="JS SDK" open={true}>
 <div className="accordion-item-padding">
 
-When minting via the JS SDK, simply provide the third party signer via the `signer` attribute like so.
+When minting via the JS SDK, simply provide the third-party signer via the `signer` attribute like so.
 
 ```tsx
 const { nft } = await metaplex.candyMachines().mint({

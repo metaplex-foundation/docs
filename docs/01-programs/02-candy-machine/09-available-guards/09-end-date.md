@@ -8,7 +8,7 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 ## Overview
 
-The **End Date** guard is used to specify a date to end the mint. After this date, minting is no longer allowed.
+The **End Date** guard specifies a date to end the mint. After this date, minting is no longer allowed.
 
 ![CandyMachinesV3-GuardsEndDate.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsEndDate.png#radius)
 

@@ -1,5 +1,5 @@
 ---
-description: "Determines the end of the mint based on a total amount minted."
+description: "Determines the end of the mint based on the total amount minted."
 ---
 
 import { Accordion, AccordionItem } from '/src/accordion.jsx';
@@ -8,7 +8,7 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 ## Overview
 
-The **Redeemed Amount** guard forbids minting when the number of minted NFTs for the entire Candy Machine reaches the configured maximum amount.
+The **Redeemed Amount** guard forbids minting when the number of minted NFTs for the entire Candy Machine reaches the configured maximum amount.
 
 This guard becomes more interesting when used with [Guard Groups](/programs/candy-machine/guard-groups) since it allows us to add global minting thresholds to our groups.
 

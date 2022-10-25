@@ -16,7 +16,7 @@ The **Token Burn** guard allows minting by burning some of the payer’s tokens 
 
 The Token Burn guard contains the following settings:
 
-- **Amount**: The amount of tokens to burn.
+- **Amount**: The number of tokens to burn.
 - **Mint**: The address of the mint account defining the SPL Token we want to burn.
 
 <Accordion>

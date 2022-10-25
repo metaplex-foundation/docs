@@ -8,7 +8,7 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 ## Overview
 
-The **Token Payment** guard allows minting by charging the payer some tokens from a configured mint account. Both the amount of tokens and the destination address can also be configured.
+The **Token Payment** guard allows minting by charging the payer some tokens from a configured mint account. Both the number of tokens and the destination address can also be configured.
 
 If the payer does not have the required amount of tokens to pay, minting will fail.
 
@@ -18,9 +18,9 @@ If the payer does not have the required amount of tokens to pay, minting will fa
 
 The Token Payment guard contains the following settings:
 
-- **Amount**: The amount of tokens to charge the payer.
-- **Token Mint**: The address of the mint account defining the SPL Token we want pay with.
-- **Destination Associated Token Address (ATA)**: The address of the associated token account to send the tokens to. We can get this address by finding the Associated Token Address PDA using the **Token Mint** attribute and the address of any wallet that should received these tokens.
+- **Amount**: The number of tokens to charge the payer.
+- **Token Mint**: The address of the mint account defining the SPL Token we want to pay with.
+- **Destination Associated Token Address (ATA)**: The address of the associated token account to send the tokens to. We can get this address by finding the Associated Token Address PDA using the **Token Mint** attribute and the address of any wallet that should receive these tokens.
 
 <Accordion>
 <AccordionItem title="JS SDK" open={true}>

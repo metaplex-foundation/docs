@@ -8,7 +8,7 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 ## Overview
 
-The **NFT Gate** guard restricts minting to holders of a specified NFT collection.
+The **NFT Gate** guard restricts minting to holders of a specified NFT collection.
 
 ![CandyMachinesV3-GuardsNFTGate.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsNFTGate.png#radius)
 
@@ -16,7 +16,7 @@ The **NFT Gate** guard restricts minting to holders of a specified NFT collect
 
 The NFT Gate guard contains the following settings:
 
-- **Required Collection**: The mint address of the required NFT Collection. The NFT we provide as a proof when minting with must be part of this collection.
+- **Required Collection**: The mint address of the required NFT Collection. The NFT we provide as proof when minting must be part of this collection.
 
 <Accordion>
 <AccordionItem title="JS SDK" open={true}>
@@ -45,7 +45,7 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 The NFT Gate guard contains the following Mint Settings:
 
-- **Mint**: The mint address of the NFT to provide as a proof that the payer owns an NFT from the required collection.
+- **Mint**: The mint address of the NFT to provide as proof that the payer owns an NFT from the required collection.
 - **Token Account** (optional): You may optionally provide the token account linking the NFT with its owner explicitly. By default, the associated token account of the payer will be used.
 
 Note that, if you’re planning on constructing instructions without the help of our SDKs, you will need to provide these Mint Settings and more as a combination of instruction arguments and remaining accounts. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-guard#nftgate) for more details.
@@ -54,7 +54,7 @@ Note that, if you’re planning on constructing instructions without the help of
 <AccordionItem title="JS SDK" open={true}>
 <div className="accordion-item-padding">
 
-When minting via the JS SDK, simply provide the mint address of the NFT to use as a proof of ownership via the `mint` attribute like so.
+When minting via the JS SDK, simply provide the mint address of the NFT to use as proof of ownership via the `mint` attribute like so.
 
 ```tsx
 const { nft } = await metaplex.candyMachines().mint({
