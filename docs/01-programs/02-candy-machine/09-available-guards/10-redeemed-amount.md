@@ -10,7 +10,7 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 The **Redeemed Amount** guard forbids minting when the number of minted NFTs for the entire Candy Machine reaches the configured maximum amount.
 
-This guard becomes more interesting when used with Guard Groups since it allows us to add global minting thresholds to our groups.
+This guard becomes more interesting when used with [Guard Groups](/programs/candy-machine/guard-groups) since it allows us to add global minting thresholds to our groups.
 
 ![CandyMachinesV3-GuardsRedeemedAmount.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsRedeemedAmount.png#radius)
 
@@ -42,7 +42,7 @@ const { candyMachine } = await metaplex.candyMachines().create({
 
 Notice that, even if the Candy Machine contains 500 items, only 300 of these items will be mintable because of this guard.
 
-Thus, this guard becomes more useful when using Guard Groups. Here’s another example using two groups such that the first 300 NFTs can be minted for 1 SOL but the last 200 will need 2 SOL to mint.
+Thus, this guard becomes more useful when using [Guard Groups](/programs/candy-machine/guard-groups). Here’s another example using two groups such that the first 300 NFTs can be minted for 1 SOL but the last 200 will need 2 SOL to mint.
 
 ```tsx
 import { toBigNumber } from '@metaplex-foundation/js';

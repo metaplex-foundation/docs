@@ -83,7 +83,7 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 *The Allow List guard does not need Mint Settings.*
 
-Note that, whilst no Mint Settings are required, **we must still validate the minting wallet by providing a Merkle Proof**. See Validate a Merkle Proof below for more details.
+Note that, whilst no Mint Settings are required, **we must still validate the minting wallet by providing a Merkle Proof**. See [Validate a Merkle Proof](#validate-a-merkle-proof) below for more details.
 
 Also not that, if you’re planning on constructing instructions without the help of our SDKs, you will need to add the Allow List Proof PDA to the remaining accounts of the mint instruction. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-guard#allowlist) for more details.
 
@@ -95,7 +95,7 @@ The Allow List route instruction supports the following features.
 
 *Path: `proof`*
 
-Instead of passing the Merkle Proof direcly to the mint instruction, the minting wallet must perform a Pre-Validation by using the route instruction of the Allow List guard.
+Instead of passing the Merkle Proof direcly to the mint instruction, the minting wallet must perform a [Pre-Validation](http://localhost:3000/programs/candy-machine/minting#minting-with-pre-validation) by using the route instruction of the Allow List guard.
 
 This route instruction will compute the Merkle Root from the provided Merkle Proof and, if valid, will create a new PDA account acting as proof that the minting wallet is part of the allow list. Therefore, when minting, the Allow List guard only need to check for the existance of this PDA account to authorize or deny minting to the wallet.
 
