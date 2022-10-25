@@ -4,7 +4,7 @@ Sugar is our new Candy Machine CLI that replaces the JavaScript CLI. It has been
 
 :::info
 
-View OtterSec's audit of Sugar here: https://docsend.com/view/is7963h8tbbvp2g9 
+View OtterSec's audit of Sugar commissioned by Ape16Z here: https://docsend.com/view/is7963h8tbbvp2g9 
 
 :::
 
