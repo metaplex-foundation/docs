@@ -10,7 +10,7 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 The **Sol Payment** guard allows us to charge the payer an amount in SOL when minting. Both the amount of SOL and the destination address can be configured.
 
-![CandyMachinesV3-GuardsSolPayment.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6afd02dd-4f63-4004-93a2-8fd4bc09de06/CandyMachinesV3-GuardsSolPayment.png)
+![CandyMachinesV3-GuardsSolPayment.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsSolPayment.png#radius)
 
 ## Guard Settings
 

@@ -12,7 +12,7 @@ The **Third Party Signer** guard requires a predefined address to sign each mi
 
 This allows for more centralized mints where every single mint transaction has to go through a specific signer.
 
-![CandyMachinesV3-GuardsThirdPartySigner.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c27f1126-24fc-4a95-9a93-68d7c15ce81a/CandyMachinesV3-GuardsThirdPartySigner.png)
+![CandyMachinesV3-GuardsThirdPartySigner.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsThirdPartySigner.png#radius)
 
 ## Guard Settings
 

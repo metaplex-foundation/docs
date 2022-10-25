@@ -12,7 +12,7 @@ The **Mint Limit** guard allows to specify a limit on the number of mints for 
 
 The limit is set per wallet, per candy machine and per identifier — provided in the settings — to allow multiple mint limits within the same Candy Machine.
 
-![CandyMachinesV3-GuardsMintLimit.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7514ce7c-ccd2-4a6b-bf83-9327e2aee057/CandyMachinesV3-GuardsMintLimit.png)
+![CandyMachinesV3-GuardsMintLimit.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsMintLimit.png#radius)
 
 ## Guard Settings
 

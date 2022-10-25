@@ -10,7 +10,7 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 The **Start Date** guard determines the start date of the mint. Before this date, minting is not allowed.
 
-![CandyMachinesV3-GuardsStartDate.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/afaf62ec-9777-44cc-b3d6-f462ccb28305/CandyMachinesV3-GuardsStartDate.png)
+![CandyMachinesV3-GuardsStartDate.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsStartDate.png#radius)
 
 ## Guard Settings
 

@@ -14,17 +14,17 @@ Providing a big list of wallets in the settings of this guard would require a lo
 
 This works by creating a binary tree of hashes where all leaves hash themselves two by two until we reach the final hash known as the **Merkle Root**. This means that if any leaf were to change, the final Merkle Root would be corrupted.
 
-![CandyMachinesV3-GuardsAllowListMerkleTree1.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0e44c88a-eb85-4eca-b136-83e867034c02/CandyMachinesV3-GuardsAllowListMerkleTree1.png)
+![CandyMachinesV3-GuardsAllowListMerkleTree1.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsAllowListMerkleTree1.png#radius)
 
 In order to verify that a leaf if part of the tree, we simply need a list of all the intermediary hashes that allow us to go up the tree and re-compute the Merkle Root. We call this list of intermediary hashes a **Merkle Proof**. If the computed Merkle Root matches the stored Merkle Root, we can be sure that the leaf is part of the tree and therefore part of the original list.
 
-![CandyMachinesV3-GuardsAllowListMerkleTree2.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4401af6a-e3fd-4e91-b37b-42d769e61c71/CandyMachinesV3-GuardsAllowListMerkleTree2.png)
+![CandyMachinesV3-GuardsAllowListMerkleTree2.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsAllowListMerkleTree2.png#radius)
 
 Therefore, the Allow List guard’s settings require a Merkle Root which acts a source of truth for the preconfigured list of allowed wallet. For a wallet to prove it is on the allowed list, it must provide a valid Merkle Proof that allows the program to re-compute the Merkle Root and ensure it matches the guard’s settings.
 
 Note that our SDKs provide helpers to make it easy to create Merkle Root and Merkle Proofs for a given list of wallets.
 
-![CandyMachinesV3-GuardsAllowList.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6c365adb-8334-4990-bd14-5b31c0acdb23/CandyMachinesV3-GuardsAllowList.png)
+![CandyMachinesV3-GuardsAllowList.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsAllowList.png#radius)
 
 ## Guard Settings
 

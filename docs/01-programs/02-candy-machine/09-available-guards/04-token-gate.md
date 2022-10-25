@@ -10,7 +10,7 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 The **Token Gate** guard restricts minting to token holders of a configured mint account. If the payer does not have the required amount of tokens, minting will fail.
 
-![CandyMachinesV3-GuardsTokenGate.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/99b061d7-4402-49de-9f33-7228dc0c55a6/CandyMachinesV3-GuardsTokenGate.png)
+![CandyMachinesV3-GuardsTokenGate.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsTokenGate.png#radius)
 
 ## Guard Settings
 

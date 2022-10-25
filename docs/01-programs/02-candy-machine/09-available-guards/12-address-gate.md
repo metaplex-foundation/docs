@@ -10,7 +10,7 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 The **Address Gate** guard restricts the mint to a single address which must match the address of the minting wallet.
 
-![CandyMachinesV3-GuardsAddressGate.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5a941102-2f61-4c34-9947-43d4b230b712/CandyMachinesV3-GuardsAddressGate.png)
+![CandyMachinesV3-GuardsAddressGate.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsAddressGate.png#radius)
 
 ## Guard Settings
 

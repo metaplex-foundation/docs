@@ -12,7 +12,7 @@ The **Redeemed Amount** guard forbids minting when the number of minted NFTs f
 
 This guard becomes more interesting when used with Guard Groups since it allows us to add global minting thresholds to our groups.
 
-![CandyMachinesV3-GuardsRedeemedAmount.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0522207a-aaef-4a08-aaa9-8491762196aa/CandyMachinesV3-GuardsRedeemedAmount.png)
+![CandyMachinesV3-GuardsRedeemedAmount.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsRedeemedAmount.png#radius)
 
 ## Guard Settings
 

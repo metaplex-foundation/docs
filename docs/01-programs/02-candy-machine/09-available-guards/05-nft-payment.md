@@ -12,7 +12,7 @@ The **NFT Payment** guard allows minting by charging the payer an NFT from a sp
 
 If the payer does not own an NFT from the required collection, minting will fail.
 
-![CandyMachinesV3-GuardsNFTPayment.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/20a9051f-47c4-416b-b0fa-0c187a0845d4/CandyMachinesV3-GuardsNFTPayment.png)
+![CandyMachinesV3-GuardsNFTPayment.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsNFTPayment.png#radius)
 
 ## Guard Settings
 

@@ -10,7 +10,7 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 The **NFT Gate** guard restricts minting to holders of a specified NFT collection.
 
-![CandyMachinesV3-GuardsNFTGate.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ccbf6dc4-ec9a-4792-ade1-0d5d53a261fd/CandyMachinesV3-GuardsNFTGate.png)
+![CandyMachinesV3-GuardsNFTGate.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsNFTGate.png#radius)
 
 ## Guard Settings
 

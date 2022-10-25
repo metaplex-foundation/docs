@@ -14,7 +14,7 @@ This guard is a bit special and affects the minting behaviour of all other guard
 
 Additionally, the Bot Tax guard enables us to ensure the mint instruction was the last instruction of the transaction. This prevents bots from adding malicious instructions after the mint and return an error to avoid paying the tax.
 
-![CandyMachinesV3-GuardsBotTax.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fdec04fd-4d6c-4d97-9cfa-f6799ad411af/CandyMachinesV3-GuardsBotTax.png)
+![CandyMachinesV3-GuardsBotTax.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsBotTax.png#radius)
 
 ## Guard Settings
 

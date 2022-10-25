@@ -12,7 +12,7 @@ The **Token Payment** guard allows minting by charging the payer some tokens f
 
 If the payer does not have the required amount of tokens to pay, minting will fail.
 
-![CandyMachinesV3-GuardsTokenPayment.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/865add5e-c729-4e56-899d-f7c239cc5764/CandyMachinesV3-GuardsTokenPayment.png)
+![CandyMachinesV3-GuardsTokenPayment.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsTokenPayment.png#radius)
 
 ## Guard Settings
 

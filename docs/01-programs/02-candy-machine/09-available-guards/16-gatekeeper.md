@@ -20,7 +20,7 @@ Here are some additional recommended material you may find helpful when setting 
 - [Gateway JS Library](https://www.npmjs.com/package/@identity.com/solana-gateway-ts)
 - [Gateway React Components](https://www.npmjs.com/package/@civic/solana-gateway-react)
 
-![CandyMachinesV3-GuardsGatekeeper.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3f299902-2c37-456a-bf10-8ba4b8863689/CandyMachinesV3-GuardsGatekeeper.png)
+![CandyMachinesV3-GuardsGatekeeper.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsGatekeeper.png#radius)
 
 ## Guard Settings
 

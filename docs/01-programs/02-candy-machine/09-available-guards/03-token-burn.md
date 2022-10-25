@@ -10,7 +10,7 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 The **Token Burn** guard allows minting by burning some of the payer’s tokens from a configured mint account. If the payer does not have the required amount of tokens to burn, minting will fail.
 
-![CandyMachinesV3-GuardsTokenBurn.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/202e790a-33e7-47e6-bd53-b48776449949/CandyMachinesV3-GuardsTokenBurn.png)
+![CandyMachinesV3-GuardsTokenBurn.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsTokenBurn.png#radius)
 
 ## Guard Settings
 

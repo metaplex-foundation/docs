@@ -10,7 +10,7 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 The **NFT Burn** guard restricts the mint to holders of a predefined NFT Collection and burns the holder's NFT. Thus, the mint address of the NFT to burn must be provided by the payer when minting.
 
-![CandyMachinesV3-GuardsNFTBurn.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cd00806f-e5bc-44f6-b8b2-1dd295e3705d/CandyMachinesV3-GuardsNFTBurn.png)
+![CandyMachinesV3-GuardsNFTBurn.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsNFTBurn.png#radius)
 
 ## Guard Settings
 
