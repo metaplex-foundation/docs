@@ -29,10 +29,10 @@ import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
 const connection = new Connection(clusterApiUrl("devnet"));
 const mx = Metaplex.make(connection);
 const mintAddress = new PublicKey(address);
-    const parameters = {
-      mintAddress : mintAddress
-    }
- mx.nfts().delete(parameters).run();
+const parameters = {
+  mintAddress : mintAddress
+}
+await mx.nfts().delete(parameters);
 ```
 
 * **[Auto-generated JavaScript library](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/token-metadata/js)**: There is also the auto-generated js package `@metaplex-foundation/mpl-token-metadata` which contains the [instructions](https://metaplex-foundation.github.io/metaplex-program-library/docs/token-metadata/index.html#createBurnNftInstruction) to burn NFTs. This can technically be used, we advise to use the `@metaplex-foundation/js` package also called JS SDK where possible though.
