@@ -1,9 +1,9 @@
 {
-  "label": "Available Guards",
+  "label": "How-To Guides",
   "link": {
     "type": "generated-index",
-    "title": "Available Guards",
-    "description": "Lists all available default guards.",
-    "slug": "/programs/candy-machine/available-guards"
+    "title": "How-To Guides",
+    "description": "All the different Candy Machine Guides.",
+    "slug": "/programs/candy-machine/how-to-guides"
   }
 }
