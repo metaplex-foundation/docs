@@ -1,3 +1,9 @@
+---
+description: "Determines the start date of the mint."
+---
+
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
+
 # Start Date
 
 The **Start Date** guard determines the start date of the mint. Before this date, minting is not allowed.

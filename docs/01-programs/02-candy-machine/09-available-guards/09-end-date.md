@@ -1,3 +1,9 @@
+---
+description: "Determines a date to end the mint."
+---
+
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
+
 # End Date
 
 The **End Date** guard is used to specify a date to end the mint. After this date, minting is no longer allowed.

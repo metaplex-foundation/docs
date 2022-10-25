@@ -1,3 +1,9 @@
+---
+description: "Restricts the mint to a single address."
+---
+
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
+
 # Address Gate
 
 The **Address Gate** guard restricts the mint to a single address which must match the minting wallet's address.

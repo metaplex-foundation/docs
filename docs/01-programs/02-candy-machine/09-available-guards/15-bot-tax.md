@@ -1,3 +1,9 @@
+---
+description: "Configurable tax to charge invalid transactions."
+---
+
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
+
 # Bot Tax
 
 The **Bot Tax** guard charges a penalty for invalid transactions in order to discourage bots from attempting to mint NFTs.

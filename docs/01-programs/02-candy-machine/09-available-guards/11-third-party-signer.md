@@ -1,3 +1,9 @@
+---
+description: "Requires an additional signer on the transaction."
+---
+
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
+
 # Third Party Signer
 
 The **Third Party Signer** guard requires a predefined address to sign each mint transaction.

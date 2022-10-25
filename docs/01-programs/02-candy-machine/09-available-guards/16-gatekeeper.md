@@ -1,3 +1,9 @@
+---
+description: "Restricts minting via a Gatekeeper Network e.g. Captcha integration."
+---
+
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
+
 # Gatekeeper
 
 The **Gatekeeper** guard checks whether the minting wallet has a valid Gateway Token from a specified Gateway Network.

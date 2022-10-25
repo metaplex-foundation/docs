@@ -1,3 +1,9 @@
+---
+description: "Set the price of the mint in token amount."
+---
+
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
+
 # Token Payment
 
 The **Token Payment** guard allows minting by charging the payer a specific amount of tokens from a certain mint acount. The tokens will be transfered to a predefined destination.

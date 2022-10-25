@@ -1,3 +1,9 @@
+---
+description: "Determines the end of the mint based on a total amount minted."
+---
+
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
+
 # Redeemed Amount
 
 The **Redeemed Amount** guard forbids minting when the number of minted NFTs for the entire Candy Machine reaches the configured maximum amount.

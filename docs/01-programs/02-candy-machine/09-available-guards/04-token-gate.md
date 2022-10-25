@@ -1,3 +1,9 @@
+---
+description: "Restricts the mint to holders of a specified token."
+---
+
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
+
 # Token Gate
 
 The **Token Gate** guard restricts minting to token holders of a specified mint account. The amount determines how many tokens are required.

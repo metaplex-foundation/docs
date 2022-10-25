@@ -1,3 +1,9 @@
+---
+description: "Restricts the mint to holders of a specified collection."
+---
+
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
+
 # NFT Gate
 
 The **NFT Gate** guard restricts minting to holders of a specified NFT collection.

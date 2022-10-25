@@ -1,3 +1,9 @@
+---
+description: "Specifies a limit on the number of mints per wallet."
+---
+
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
+
 # Mint Limit
 
 The **Mint Limit** guard allows to specify a limit on the number of mints for each individual wallet.

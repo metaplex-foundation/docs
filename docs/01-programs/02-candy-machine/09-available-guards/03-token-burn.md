@@ -1,3 +1,9 @@
+---
+description: "Restricts the mint to holders of a specified token, requiring a burn of the tokens."
+---
+
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
+
 # Token Burn
 
 The **Token Burn** guard restricts minting to token holders of a specified mint account and burns the holder's tokens when minting. The amount determines how many tokens are required.

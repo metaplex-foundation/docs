@@ -1,3 +1,9 @@
+---
+description: "Restricts the mint to holders of a specified collection, requiring a burn of the NFT."
+---
+
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
+
 # NFT Burn
 
 The **NFT Burn** guard restricts the mint to holders of a predefined NFT Collection and burns the holder's NFT when minting.

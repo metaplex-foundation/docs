@@ -1,3 +1,9 @@
+---
+description: "Set the price of the mint in SOL."
+---
+
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
+
 # Sol Payment
 
 The **Sol Payment** guard is used to charge an amount in SOL (lamports) for the mint. The funds are transferred to the configured destination address.

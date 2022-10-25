@@ -1,3 +1,9 @@
+---
+description: "Uses a wallet address list to determine who is allowed to mint."
+---
+
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
+
 # Allow List
 
 The **Allow List** guard validates the minting wallet against a predefined list of wallets.

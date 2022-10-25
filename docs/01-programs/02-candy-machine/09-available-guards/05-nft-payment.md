@@ -1,3 +1,9 @@
+---
+description: "Set the price of the mint as an NFT of a specified collection."
+---
+
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
+
 # NFT Payment
 
 The **NFT Payment** guard allows minting by charging the payer an NFT from a specified NFT collection. The NFT will be transfered to a predefined destination.
