@@ -30,49 +30,54 @@ Note that our SDKs provide helpers to make it easy to create Merkle Root and Mer
 
 The Allow List guard contains the following settings:
 
-- ********Merkle Root********: The Root of the Merkle Tree representing the allow list.
+- **Merkle Root**: The Root of the Merkle Tree representing the allow list.
 
-- JS SDK
-    
-    To help us manage Merkle Trees, the JS SDK provides two helper methods called `getMerkleRoot` and `getMerkleProof` that you may use like so.
-    
-    ```tsx
-    import { getMerkleProof, getMerkleRoot } from '@metaplex-foundation/js';
-    
-    const allowList = [
-      'Ur1CbWSGsXCdedknRbJsEk7urwAvu1uddmQv51nAnXB',
-      'GjwcWFQYzemBtpUoN5fMAP2FZviTtMRWCmrppGuTthJS',
-      'AT8nPwujHAD14cLojTcB1qdBzA1VXnT6LVGuUd6Y73Cy',
-    ];
-    
-    const merkleRoot = getMerkleRoot(allowList);
-    const validMerkleProof = getMerkleProof(allowList, 'Ur1CbWSGsXCdedknRbJsEk7urwAvu1uddmQv51nAnXB');
-    const invalidMerkleProof = getMerkleProof(allowList, 'invalid-address');
-    ```
-    
-    Once we have computed the Merkle Root of our allow list, we can use it to set up the Allow List guard on our Candy Machine.
-    
-    ```tsx
-    import { getMerkleRoot } from '@metaplex-foundation/js';
-    
-    const allowList = [
-      'Ur1CbWSGsXCdedknRbJsEk7urwAvu1uddmQv51nAnXB',
-      'GjwcWFQYzemBtpUoN5fMAP2FZviTtMRWCmrppGuTthJS',
-      'AT8nPwujHAD14cLojTcB1qdBzA1VXnT6LVGuUd6Y73Cy',
-    ];
-    
-    const { candyMachine } = await metaplex.candyMachines().create({
-      // ...
-      guards: {
-        allowList: {
-          merkleRoot: getMerkleRoot(allowList),
-        },
-      },
-    });
-    ```
-    
-    API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#create), [Input](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#create), [Guard Settings](https://metaplex-foundation.github.io/js/types/js.AllowListGuardSettings.html).
-    
+<Accordion>
+<AccordionItem title="JS SDK" open={true}>
+<div className="accordion-item-padding">
+
+To help us manage Merkle Trees, the JS SDK provides two helper methods called `getMerkleRoot` and `getMerkleProof` that you may use like so.
+
+```tsx
+import { getMerkleProof, getMerkleRoot } from '@metaplex-foundation/js';
+
+const allowList = [
+  'Ur1CbWSGsXCdedknRbJsEk7urwAvu1uddmQv51nAnXB',
+  'GjwcWFQYzemBtpUoN5fMAP2FZviTtMRWCmrppGuTthJS',
+  'AT8nPwujHAD14cLojTcB1qdBzA1VXnT6LVGuUd6Y73Cy',
+];
+
+const merkleRoot = getMerkleRoot(allowList);
+const validMerkleProof = getMerkleProof(allowList, 'Ur1CbWSGsXCdedknRbJsEk7urwAvu1uddmQv51nAnXB');
+const invalidMerkleProof = getMerkleProof(allowList, 'invalid-address');
+```
+
+Once we have computed the Merkle Root of our allow list, we can use it to set up the Allow List guard on our Candy Machine.
+
+```tsx
+import { getMerkleRoot } from '@metaplex-foundation/js';
+
+const allowList = [
+  'Ur1CbWSGsXCdedknRbJsEk7urwAvu1uddmQv51nAnXB',
+  'GjwcWFQYzemBtpUoN5fMAP2FZviTtMRWCmrppGuTthJS',
+  'AT8nPwujHAD14cLojTcB1qdBzA1VXnT6LVGuUd6Y73Cy',
+];
+
+const { candyMachine } = await metaplex.candyMachines().create({
+  // ...
+  guards: {
+    allowList: {
+      merkleRoot: getMerkleRoot(allowList),
+    },
+  },
+});
+```
+
+API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#create), [Input](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#create), [Guard Settings](https://metaplex-foundation.github.io/js/types/js.AllowListGuardSettings.html).
+
+</div>
+</AccordionItem>
+</Accordion>    
 
 ## Mint Settings
 
@@ -101,30 +106,36 @@ This path of the route instruction accepts the following arguments:
 - **Path** = `proof`: Selects the path to execute in the route instruction.
 - **Merkle Proof**: The list of intermediary hashes that should be used to compute the Merkle Root and verify that it matches the Merkle Root stored on the guard’s settings.
 
-- JS SDK
-    
-    Here again we can use the Merkle Tree helpers provided by the JS SDK to get the Merkle Proof for the minting wallet.
-    
-    ```tsx
-    import { getMerkleProof, getMerkleRoot } from '@metaplex-foundation/js';
-    
-    const allowList = [
-      'Ur1CbWSGsXCdedknRbJsEk7urwAvu1uddmQv51nAnXB',
-      'GjwcWFQYzemBtpUoN5fMAP2FZviTtMRWCmrppGuTthJS',
-      'AT8nPwujHAD14cLojTcB1qdBzA1VXnT6LVGuUd6Y73Cy',
-    ];
-    const mintingWallet = metaplex.identity().publicKey.toBase58();
-    
-    await metaplex.candyMachines().callGuardRoute({
-      candyMachine,
-      guard: 'allowList',
-      settings: {
-        path: 'proof',
-        merkleProof: getMerkleProof(allowList, mintingWallet),
-      },
-    });
-    
-    // The `mintingWallet` is now allowed to mint from the Candy Machine.
-    ```
-    
-    API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#callGuardRoute), [Input](https://metaplex-foundation.github.io/js/types/js.CallCandyGuardRouteInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.CallCandyGuardRouteOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#callGuardRoute), [Route Settings](https://metaplex-foundation.github.io/js/types/js.AllowListGuardRouteSettings.html).
+<Accordion>
+<AccordionItem title="JS SDK" open={true}>
+<div className="accordion-item-padding">
+
+Here again we can use the Merkle Tree helpers provided by the JS SDK to get the Merkle Proof for the minting wallet.
+
+```tsx
+import { getMerkleProof, getMerkleRoot } from '@metaplex-foundation/js';
+
+const allowList = [
+  'Ur1CbWSGsXCdedknRbJsEk7urwAvu1uddmQv51nAnXB',
+  'GjwcWFQYzemBtpUoN5fMAP2FZviTtMRWCmrppGuTthJS',
+  'AT8nPwujHAD14cLojTcB1qdBzA1VXnT6LVGuUd6Y73Cy',
+];
+const mintingWallet = metaplex.identity().publicKey.toBase58();
+
+await metaplex.candyMachines().callGuardRoute({
+  candyMachine,
+  guard: 'allowList',
+  settings: {
+    path: 'proof',
+    merkleProof: getMerkleProof(allowList, mintingWallet),
+  },
+});
+
+// The `mintingWallet` is now allowed to mint from the Candy Machine.
+```
+
+API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#callGuardRoute), [Input](https://metaplex-foundation.github.io/js/types/js.CallCandyGuardRouteInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.CallCandyGuardRouteOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#callGuardRoute), [Route Settings](https://metaplex-foundation.github.io/js/types/js.AllowListGuardRouteSettings.html).
+
+</div>
+</AccordionItem>
+</Accordion>

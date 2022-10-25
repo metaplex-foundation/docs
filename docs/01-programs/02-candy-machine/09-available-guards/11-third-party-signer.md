@@ -20,25 +20,30 @@ The Third Party Signer guard contains the following settings:
 
 - **Signer Key**: The address of the signer that will need to sign each mint transaction.
 
-- JS SDK
-    
-    Here’s how we can set up a Candy Machine using the Third Party Signer guard via the JS SDK.
-    
-    ```tsx
-    const { candyMachine } = await metaplex.candyMachines().create({
-      // ...
-      guards: {
-        thirdPartySigner: {
-          signerKey: someWallet.publicKey,
-        },
-      },
-    });
-    ```
-    
-    In this example, the `someWallet` wallet will need to sign every mint transaction.
-    
-    API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#create), [Input](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#create), [Guard Settings](https://metaplex-foundation.github.io/js/types/js.ThirdPartySignerGuardSettings.html).
-    
+<Accordion>
+<AccordionItem title="JS SDK" open={true}>
+<div className="accordion-item-padding">
+
+Here’s how we can set up a Candy Machine using the Third Party Signer guard via the JS SDK.
+
+```tsx
+const { candyMachine } = await metaplex.candyMachines().create({
+  // ...
+  guards: {
+    thirdPartySigner: {
+      signerKey: someWallet.publicKey,
+    },
+  },
+});
+```
+
+In this example, the `someWallet` wallet will need to sign every mint transaction.
+
+API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#create), [Input](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#create), [Guard Settings](https://metaplex-foundation.github.io/js/types/js.ThirdPartySignerGuardSettings.html).
+
+</div>
+</AccordionItem>
+</Accordion>    
 
 ## Mint Settings
 
@@ -46,23 +51,28 @@ The Third Party Signer guard contains the following Mint Settings:
 
 - **Signer**: The required third party signer. The address of this signer must match the Signer Key in the guard settings.
 
-- JS SDK
-    
-    When minting via the JS SDK, simply provide the third party signer via the `signer` attribute like so.
-    
-    ```tsx
-    const { nft } = await metaplex.candyMachines().mint({
-      // ...
-      settings: {
-        thirdPartySigner: {
-          signer: someWallet,
-        },
-      }
-    });
-    ```
-    
-    API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#mint), [Input](https://metaplex-foundation.github.io/js/types/js.MintFromCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.MintFromCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#mint), [Mint Settings](https://metaplex-foundation.github.io/js/types/js.ThirdPartySignerGuardMintSettings.html).
-    
+<Accordion>
+<AccordionItem title="JS SDK" open={true}>
+<div className="accordion-item-padding">
+
+When minting via the JS SDK, simply provide the third party signer via the `signer` attribute like so.
+
+```tsx
+const { nft } = await metaplex.candyMachines().mint({
+  // ...
+  settings: {
+    thirdPartySigner: {
+      signer: someWallet,
+    },
+  }
+});
+```
+
+API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#mint), [Input](https://metaplex-foundation.github.io/js/types/js.MintFromCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.MintFromCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#mint), [Mint Settings](https://metaplex-foundation.github.io/js/types/js.ThirdPartySignerGuardMintSettings.html).
+
+</div>
+</AccordionItem>
+</Accordion>    
 
 ## Route Instruction
 

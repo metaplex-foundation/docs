@@ -21,24 +21,29 @@ The Mint Limit guard contains the following settings:
 - **ID**: A unique identifier for this guard. Different identifiers will use different counters to track how many items were minted by a given wallet. This is particularly useful when using groups of guards as we may want each of them to have a different mint limit.
 - **Limit**: The maximum number of mints allowed per wallet for that identifier.
 
-- JS SDK
-    
-    Here’s how we can set up a Candy Machine using the Mint Limit guard via the JS SDK.
-    
-    ```tsx
-    const { candyMachine } = await metaplex.candyMachines().create({
-      // ...
-      guards: {
-        mintLimit: {
-          id: 1,
-          limit: 5,
-        },
-      },
-    });
-    ```
-    
-    API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#create), [Input](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#create), [Guard Settings](https://metaplex-foundation.github.io/js/types/js.MintLimitGuardSettings.html).
-    
+<Accordion>
+<AccordionItem title="JS SDK" open={true}>
+<div className="accordion-item-padding">
+
+Here’s how we can set up a Candy Machine using the Mint Limit guard via the JS SDK.
+
+```tsx
+const { candyMachine } = await metaplex.candyMachines().create({
+  // ...
+  guards: {
+    mintLimit: {
+      id: 1,
+      limit: 5,
+    },
+  },
+});
+```
+
+API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#create), [Input](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#create), [Guard Settings](https://metaplex-foundation.github.io/js/types/js.MintLimitGuardSettings.html).
+
+</div>
+</AccordionItem>
+</Accordion>    
 
 ## Mint Settings
 

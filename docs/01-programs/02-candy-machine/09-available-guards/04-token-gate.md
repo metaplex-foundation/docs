@@ -19,26 +19,31 @@ The Token Gate guard contains the following settings:
 - **Amount**: The amount of tokens required.
 - **Mint**: The address of the mint account defining the SPL Token we want to gate with.
 
-- JS SDK
-    
-    Here’s an example of how to set up a Candy Machine using the Token Gate guard.
-    
-    ```tsx
-    import { token } from '@metaplex-foundation/js';
-    
-    const { candyMachine } = await metaplex.candyMachines().create({
-      // ...
-      guards: {
-        tokenGate: {
-          amount: token(300),
-          mint: tokenMint.address,
-        },
-      },
-    });
-    ```
-    
-    API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#create), [Input](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#create), [Guard Settings](https://metaplex-foundation.github.io/js/types/js.TokenGateGuardSettings.html).
-    
+<Accordion>
+<AccordionItem title="JS SDK" open={true}>
+<div className="accordion-item-padding">
+
+Here’s an example of how to set up a Candy Machine using the Token Gate guard.
+
+```tsx
+import { token } from '@metaplex-foundation/js';
+
+const { candyMachine } = await metaplex.candyMachines().create({
+  // ...
+  guards: {
+    tokenGate: {
+      amount: token(300),
+      mint: tokenMint.address,
+    },
+  },
+});
+```
+
+API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#create), [Input](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#create), [Guard Settings](https://metaplex-foundation.github.io/js/types/js.TokenGateGuardSettings.html).
+
+</div>
+</AccordionItem>
+</Accordion>    
 
 ## Mint Settings
 
