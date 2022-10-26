@@ -1,14 +1,52 @@
+---
+description: "Determines the start date of the mint."
+---
+
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
+
 # Start Date
 
-The **Start Date** guard determines the start date of the mint. Before this date, minting is not allowed.
+## Overview
 
-*More information coming soon…*
+The **Start Date** guard determines the start date of the mint. Before this date, minting is not allowed.
 
-This page is not finished yet but we’re working hard on documenting it. Check back a bit later.
+![CandyMachinesV3-GuardsStartDate.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsStartDate.png#radius)
 
-In the meantime, you can learn more about Candy Machine V3 via the following resources:
+## Guard Settings
 
-- [Candy Machine Core Program documentation](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/candy-machine-core/program)
-- [Candy Guard Program documentation](https://github.com/metaplex-foundation/mpl-candy-guard)
+The Start Date guard contains the following settings:
 
-Thank you!
+- **Date**: The date before which minting is not allowed.
+
+<Accordion>
+<AccordionItem title="JS SDK" open={true}>
+<div className="accordion-item-padding">
+
+Here’s how we can set up a Candy Machine using the Start Date guard via the JS SDK.
+
+```tsx
+import { toDateTime } from '@metaplex-foundation/js';
+
+const { candyMachine } = await metaplex.candyMachines().create({
+  // ...
+  guards: {
+    startDate: {
+      date: toDateTime("2022-10-24T15:30:00.000Z"),
+    },
+  },
+});
+```
+
+API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#create), [Input](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#create), [Guard Settings](https://metaplex-foundation.github.io/js/types/js.StartDateGuardSettings.html).
+
+</div>
+</AccordionItem>
+</Accordion>    
+
+## Mint Settings
+
+*The Start Date guard does not need Mint Settings.*
+
+## Route Instruction
+
+*The Start Date guard does not support the route instruction.*

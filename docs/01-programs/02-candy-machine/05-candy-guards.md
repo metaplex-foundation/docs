@@ -57,12 +57,12 @@ In the following list, we’ll provide a short description of each guard with a 
 - [**Allow List**](/programs/candy-machine/available-guards/allow-list): Uses a wallet address list to determine who is allowed to mint.
 - [**Bot Tax**](/programs/candy-machine/available-guards/bot-tax): Configurable tax to charge invalid transactions.
 - [**End Date**](/programs/candy-machine/available-guards/end-date): Determines a date to end the mint.
-- [**Gatekeeper**](/programs/candy-machine/available-guards/gatekeeper): Restricts minting via a Gateway Network e.g. captcha integration.
+- [**Gatekeeper**](/programs/candy-machine/available-guards/gatekeeper): Restricts minting via a Gatekeeper Network e.g. Captcha integration.
 - [**Mint Limit**](/programs/candy-machine/available-guards/mint-limit): Specifies a limit on the number of mints per wallet.
 - [**Nft Burn**](/programs/candy-machine/available-guards/nft-burn): Restricts the mint to holders of a specified collection, requiring a burn of the NFT.
 - [**Nft Gate**](/programs/candy-machine/available-guards/nft-gate): Restricts the mint to holders of a specified collection.
 - [**Nft Payment**](/programs/candy-machine/available-guards/nft-payment): Set the price of the mint as an NFT of a specified collection.
-- [**Redeemed Amount**](/programs/candy-machine/available-guards/redeemed-amount): Determines the end of the mint based on a total amount minted.
+- [**Redeemed Amount**](/programs/candy-machine/available-guards/redeemed-amount): Determines the end of the mint based on the total amount minted.
 - [**Sol Payment**](/programs/candy-machine/available-guards/sol-payment): Set the price of the mint in SOL.
 - [**Start Date**](/programs/candy-machine/available-guards/start-date): Determines the start date of the mint.
 - [**Third Party Signer**](/programs/candy-machine/available-guards/third-party-signer): Requires an additional signer on the transaction.
