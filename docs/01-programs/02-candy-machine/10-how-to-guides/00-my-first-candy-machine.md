@@ -24,6 +24,10 @@ Once finished, come back here to resume the tutorial.
 
 ## Install Sugar
 
+:::info
+There are some manual steps involved currently. This should change as soon as sugar leaves the alpha stage. You will then again be able to follow the easy steps on the [installation page](/developer-tools/sugar/overview/installation).
+:::
+
 Installing Sugar for Candy Machine v3 is currently a bit more complicated because of it's alpha status. There will be an easier installation procedure soon as soon as Sugar for CM v3 leaves the alpha status.
 
 For now you can download the binary from the [github releases](https://github.com/metaplex-foundation/sugar/releases) page. Navigate through the latest release prefixed with `sugar-cmv3-`, open the assets and download the binary appropriate for your system. E.g. for ubuntu download `sugar-ubuntu-latest`.
