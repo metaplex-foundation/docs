@@ -16,7 +16,9 @@ This tutorial targets macOS, Linux, and Windows Subsystem Linux (WSL), but all c
 
 The [Solana CLI Tool Suite](https://docs.solana.com/cli/install-solana-cli-tools) is useful to have for Solana development, and we will use the config file to store our keypair file path and RPC node url to simplify the Sugar commands we run, by eliding those options.
 
+:::info
 To install, follow [this guide](../../../guides/cli-wallet#setting-up-a-devnet-wallet-for-testing) to install the Solana Tool Suite and set up a devnet wallet.
+:::
 
 Once finished, come back here to resume the tutorial.
 
@@ -28,7 +30,7 @@ For now you can download the binary from the [github releases](https://github.co
 
 Optional: You can add the binary to your PATH so that you do not have to reference the whole path all the time. How to do this differs from OS to OS though. You can find a guide for different operating systems [here](https://zwbetz.com/how-to-add-a-binary-to-your-path-on-macos-linux-windows/).
 
-Once complete you should be able to run the command `sugar` in your terminal and get a list of available commands. This only works if you added it to your PATH, otherwise you will have to mention the specific file like `/home/mark/sugar`
+Once complete you should be able to run the command `sugar` in your terminal and get a list of available commands. This only works if you added it to your PATH, otherwise you will have to mention the specific file like `/home/mark/sugar`.
 
 ```bash
 sugar
