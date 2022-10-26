@@ -10,7 +10,7 @@ The goal of this tutorial is to take you from zero to one: you will learn to ins
 
 ## Setup
 
-This tutorial targets macOS, Linux, and Windows Subsystem Linux (WSL), but all commands and screenshots are from a Linux system. It should work on any of those three systems. For installing on Windows see the Windows method on the [installation page](/developer-tools/sugar/overview/installation.md).
+This tutorial targets macOS, Linux, and Windows Subsystem Linux (WSL), but all commands and screenshots are from a Linux system. It should work on any of those three systems. For installing on Windows see the Windows method on the [installation page](/developer-tools/sugar/overview/installation).
 
 ### Install the Solana CLI Tool Suite
 
@@ -514,7 +514,7 @@ We added a default guard with the following settings:
 - `solPayment` requires a payment of 0.5 SOL (`value`) which is paid to the destination wallet (`destination`).
 - `startDate` restricts the mint function to not allow minting before `2022-10-23T20:00:00Z` (`date`)
 
-You can add multiple different guards e.g. to create multiple phases for OGs, WL and public mint. You can find more information about the possibilities on the [Guards](/programs/candy-machine/candy-guards) page.
+You can add multiple different guards e.g. to create multiple phases for OGs, WL and public mint. You can find more information about the possibilities on the [Guards](/programs/candy-machine/candy-guards) pages.
 
 After modifying and saving the manually modified config file we deploy the guard and set it as the guard of our candy machine by running:
 
@@ -577,3 +577,18 @@ Signature: 5nQ1dasS3QAQJH7fBwFXd2VgyRirfYmnZ8XKgsfvWubX4hJ6jzY4dzqEVpXpULgw1PsC5
 Obviously your users will not want to use a CLI like Sugar to mint but for example a Website instead. For Candy Machine v3 there is not a prebuilt frontend yet. You can use the Metaplex JS SDK to build a mint site though. Further information can be found in the [minting section](/programs/candy-machine/minting). 
 
 Congratulations! You have successfully configured, created, and deployed your first candy machine!
+
+## After the mint
+
+When the mint has concluded and you do not need the candy machine anymore you can get some of your SOL back by running:
+
+```bash
+sugar withdraw
+```
+
+## Further Reading
+
+Do you want to learn more about sugar and the Candy Machine? These documents might be interesting for you:
+
+- [Guards](/programs/candy-machine/candy-guards)
+- [Guard Groups](/programs/candy-machine/guard-groups)
