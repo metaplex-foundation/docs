@@ -1,6 +1,10 @@
+---
+description: "Shows how to create a Candy Machine with Sugar"
+---
+
 import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
-# How to create a Candy Machine v3
+# How to create a Candy Machine v3 - Part 1 (Sugar)
 
 The goal of this tutorial is to take you from zero to one: you will learn to install Sugar and use its basic commands to configure and deploy a candy machine to Solana's devnet. It will provide you with a foothold on the basics and enough knowledge that you can then use the rest of the developer resources to learn the more advanced details for using Sugar.
 
@@ -196,10 +200,10 @@ Successfully generated the config file. 🎉
 ✅ Command successful.
 ```
 
-Open up the generated file, config.json, in your favorite text or code editor (e.g. [VS Code](https://code.visualstudio.com/)). You should see a file similar to this:
+You could now open up the generated file, config.json, in your favorite text or code editor (e.g. [VS Code](https://code.visualstudio.com/)). You should see a file similar to this:
 
 <Accordion>
-<AccordionItem title="config.json Example" open={true}>
+<AccordionItem title="config.json Example">
 <div className="accordion-item-padding">
 
 ```json
@@ -676,7 +680,7 @@ Signature: 5nQ1dasS3QAQJH7fBwFXd2VgyRirfYmnZ8XKgsfvWubX4hJ6jzY4dzqEVpXpULgw1PsC5
 
 ## Allow users to mint
 
-Your users will not want to use a CLI like Sugar to mint but for example a Website instead. For Candy Machine v3 there is not a prebuilt frontend yet. You can use the Metaplex JS SDK to build a mint site though. Further information can be found in the [minting section](/programs/candy-machine/minting). 
+Your users will not want to use a CLI like Sugar to mint but for example a Website instead. For Candy Machine v3 there is not a prebuilt frontend yet. You can use the Metaplex JS SDK to build a mint site though. Further information can be found in [Part 2](./my-first-candy-machine-part2) of this guide!. 
 
 Congratulations! You have successfully configured, created, and deployed your first candy machine!
 
