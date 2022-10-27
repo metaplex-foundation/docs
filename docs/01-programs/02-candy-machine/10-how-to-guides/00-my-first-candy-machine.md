@@ -1,3 +1,5 @@
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
+
 # How to create a Candy Machine v3
 
 The goal of this tutorial is to take you from zero to one: you will learn to install Sugar and use its basic commands to configure and deploy a candy machine to Solana's devnet. It will provide you with a foothold on the basics and enough knowledge that you can then use the rest of the developer resources to learn the more advanced details for using Sugar.
@@ -24,9 +26,7 @@ Once finished, come back here to resume the tutorial.
 
 ## Install Sugar
 
-:::info
 There are some manual steps involved currently. This should change as soon as sugar leaves the alpha stage. You will then again be able to follow the easy steps on the [installation page](/developer-tools/sugar/overview/installation).
-:::
 
 Installing Sugar for Candy Machine v3 is currently a bit more complicated because of it's alpha status. There will be an easier installation procedure soon as soon as Sugar for CM v3 leaves the alpha status.
 
@@ -36,13 +36,18 @@ Optional: You can add the binary to your PATH so that you do not have to referen
 
 Once complete you should be able to run the command `sugar` in your terminal and get a list of available commands. This only works if you added it to your PATH, otherwise you will have to mention the specific file like `/home/mark/sugar`.
 
-```bash
+<Accordion>
+<AccordionItem title="Command" open={true}>
+<div className="accordion-item-padding">
+
+```
 sugar
 ```
 
-<details>
-<summary>Output</summary>
-<p>
+</div>
+</AccordionItem>
+<AccordionItem title="Output">
+<div className="accordion-item-padding">
 
 ```
 sugar-cli 1.1.0-alpha+CMv3
@@ -76,8 +81,9 @@ SUBCOMMANDS:
     withdraw         Withdraw funds a from candy machine account closing it
 ```
 
-</p>
-</details>
+</div>
+</AccordionItem>
+</Accordion>
 
 ## Set Up Your Project
 
@@ -192,6 +198,10 @@ Successfully generated the config file. 🎉
 
 Open up the generated file, config.json, in your favorite text or code editor (e.g. [VS Code](https://code.visualstudio.com/)). You should see a file similar to this:
 
+<Accordion>
+<AccordionItem title="config.json Example" open={true}>
+<div className="accordion-item-padding">
+
 ```json
 {
   "number": 10,
@@ -215,7 +225,11 @@ Open up the generated file, config.json, in your favorite text or code editor (e
 }
 ```
 
-Your values will be different depending on and what you input for various settings.
+</div>
+</AccordionItem>
+</Accordion>
+
+Your values will be different depending on and what you input for various settings. Later in this guide we'll need the file again to manually add the guards.
 
 If you used Sugar with Candy Machine V2 before you might be missing some questions and values like start date or price. Don't worry, Candy Machine V3 has even more features and possibilities than V2, but those will be set later in this guide.
 
@@ -233,13 +247,18 @@ Sugar currently supports four upload methods: Arweave via Bundlr, IPFS via NFT S
 
 In our previous step we selected `Bundlr` as our upload method, and we saw this in the config file when we viewed it. Now, all we have to do is run the following command:
 
+<Accordion>
+<AccordionItem title="Command" open={true}>
+<div className="accordion-item-padding">
+
 ```
 sugar upload
 ```
 
-<details>
-<summary>Output</summary>
-<p>
+</div>
+</AccordionItem>
+<AccordionItem title="Output">
+<div className="accordion-item-padding">
 
 ```
 [1/4] 🗂 Loading assets
@@ -271,8 +290,9 @@ Sending data: (Ctrl+C to abort)
 ✅ Command successful.
 ```
 
-</p>
-</details>
+</div>
+</AccordionItem>
+</Accordion>
 
 :::tip
 Sugar commands are designed to be robust and commands such as `upload` and `deploy` will pick up where they left off when you run them again. You may occasionally get an error such as:
@@ -286,11 +306,11 @@ In such cases it's safe to rerun the command until it succeeds.
 However, some upload methods such as Bundlr, do cost funds to upload and store the data. If you successfully upload your data and then run it again, it will charge you again. If you do this repeatedly with a large amount of data it can cost you a significant amount of SOL. Once you have successfully uploaded your data you should not have to do it again, as the cache file will store all the links to the data. Ask on the Metaplex Discord if you run into any unexpected issues.
 :::
 
-When uploading is finished, sugar will have created a `cache.json` file in our project directory. Open this file, and you will see something similar to:
+When uploading is finished, sugar will have created a `cache.json` file in our project directory. Open this file, and you will see something similar to the following example:
 
-<details>
-<summary>Output</summary>
-<p>
+<Accordion>
+<AccordionItem title="cache.json Example">
+<div className="accordion-item-padding">
 
 ```json
 {
@@ -384,8 +404,9 @@ When uploading is finished, sugar will have created a `cache.json` file in our p
 }
 ```
 
-</p>
-</details>
+</div>
+</AccordionItem>
+</Accordion>
 
 Each asset from our `assets` directory has been uploaded to Arweave and a link to it stored in the cache file. You can open one of these links in the browser to see what this looks like. Within the data in the metadata link, there is another link to the image. Both of these links are stored for each item in the cache file.
 
@@ -394,14 +415,20 @@ If you look at the candy machine values at the top, you'll see they are empty be
 ## Deploy a Candy Machine
 
 To create and deploy a candy machine, run the `deploy` command:
+<Accordion>
+<AccordionItem title="Command"  open={true}>
+<div className="accordion-item-padding">
 
 ```bash
 sugar deploy
 ```
 
-<details>
-<summary>Output</summary>
-<p>
+</div>
+</AccordionItem>
+<AccordionItem title="Output">
+<div className="accordion-item-padding">
+
+```
 [1/2] 🍬 Creating candy machine
 Candy machine ID: Ews3L5NoAjjLEHYqEu47DqQ77nsqgNQs3NuELjBCd5bb
 
@@ -410,9 +437,11 @@ Sending config line(s) in 1 transaction(s): (Ctrl+C to abort)
 [00:00:03] Write config lines successful ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████ 1/1
 
 ✅ Command successful.
+```
 
-</p>
-</details>
+</div>
+</AccordionItem>
+</Accordion>
 
 Once this finishes, if you open up the cache.json file again you will see that the candy machine values have been filled in as we now have a candy machine created on-chain.
 
@@ -420,18 +449,25 @@ Once this finishes, if you open up the cache.json file again you will see that t
 
 Once the deployment finishes, we can verify successful deployment with:
 
+<Accordion>
+<AccordionItem title="Command"  open={true}>
+<div className="accordion-item-padding">
+
 ```bash
 sugar verify
 ```
 
-<details>
-<summary>Output</summary>
-<p>
+</div>
+</AccordionItem>
+<AccordionItem title="Output">
+<div className="accordion-item-padding">
+
+```bash
 ▪▪▪▪▪ Completed
 
 [2/2] 📝 Verification
 Verifying 10 config line(s): (Ctrl+C to abort)
-[00:00:01] Config line verification successful ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████ 10/10
+[00:00:01] Config line verification successful ████████████████████████████ 10/10
 
 Verification successful. You're good to go!
 
@@ -439,25 +475,33 @@ See your candy machine at:
 -> https://www.solaneyes.com/address/Ews3L5NoAjjLEHYqEu47DqQ77nsqgNQs3NuELjBCd5bb?cluster=devnet
 
 ✅ Command successful.
+```
 
-</p>
-</details>
+</div>
+</AccordionItem>
+</Accordion>
 
 Our candy machine is now successfully deployed!
 
 ## Mint a NFT
 
-Finally, to round off this tutorial we will mint an NFT from our candy machine to ensure it works as expected. Run:
+Finally, to round off this tutorial we will mint an NFT from our candy machine to ensure it works as expected. Run the following command to mint one NFT to your wallet address.
+
+<Accordion>
+<AccordionItem title="config.json Example"  open={true}>
+<div className="accordion-item-padding">
 
 ```bash
 sugar mint
 ```
 
-to mint one NFT to your wallet address.
 
-<details>
-<summary>Output</summary>
-<p>
+</div>
+</AccordionItem>
+<AccordionItem title="Output">
+<div className="accordion-item-padding">
+
+```
 [1/2] 🔍 Loading candy machine
 Candy machine ID: Ews3L5NoAjjLEHYqEu47DqQ77nsqgNQs3NuELjBCd5bb
 ▪▪▪▪▪ Done
@@ -468,9 +512,11 @@ Minting to PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8
 ▪▪▪▪▪ Signature: jAUVJv4ezyumvKYWvuEsMcDtWRujCK4xFL9q8MCe7PmDiVuAGHNY5PFGKUH5hY4PnqtGMyvDjX821xxCiGAChzQ
 
 ✅ Command successful.
+```
 
-</p>
-</details>
+</div>
+</AccordionItem>
+</Accordion>
 
 Now you can open your wallet in an explorer like [Solana Explorer](https://explorer.solana.com/?cluster=devnet) and view the NFT you just minted by clicking on the "Tokens" tab.
 
@@ -478,6 +524,10 @@ Now you can open your wallet in an explorer like [Solana Explorer](https://explo
 You might be wondering where you can set configuration like price or start date. This is where with Candy Machine V3 the Candy Guards comes into place. There is a whole lot of different settings through the default [Guards](/programs/candy-machine/candy-guards) Program. In the next steps we will just use a few of them to give you a better understanding what they do. In fact we will use some of the easier but often requested or used features: Mint Limit per Wallet, start time and payment with SOL. 
 
 In the current Alpha version you will have to modify the config file manually and add the guard configuration in the `guard` field. Here is an example how it can look like:
+
+<Accordion>
+<AccordionItem title="config.json Example"  open={true}>
+<div className="accordion-item-padding">
 
 ```json
 {
@@ -515,6 +565,11 @@ In the current Alpha version you will have to modify the config file manually an
   }
 }
 ```
+
+</div>
+</AccordionItem>
+</Accordion>
+
 We added a default guard with the following settings:
 - `mintLimit` only allows minting a maximum of three NFTs (`limit`) per wallet.
 - `solPayment` requires a payment of 0.5 SOL (`value`) which is paid to the destination wallet (`destination`).
@@ -522,17 +577,22 @@ We added a default guard with the following settings:
 
 You can add multiple different guards e.g. to create multiple phases for OGs, WL and public mint. You can find more information about the possibilities on the [Guards](/programs/candy-machine/candy-guards) pages.
 
-After modifying and saving the manually modified config file we deploy the guard and set it as the guard of our candy machine by running:
+After modifying and saving the manually modified config file we deploy the guard and set it as the guard of our candy machine. Afterwards it will only be possible to mint through that guard if all the restrictions are matched. You'll have to use the following command for it:
 
-```bash
+<Accordion>
+<AccordionItem title="Command"  open={true}>
+<div className="accordion-item-padding">
+
+```
 sugar guard add
 ```
 
-Afterwards it will only be possible to mint through that guard if all the restrictions are matched.
+</div>
+</AccordionItem>
+<AccordionItem title="Output">
+<div className="accordion-item-padding">
 
-<details>
-<summary>Output</summary>
-<p>
+```bash
 [1/3] 🔍 Looking up candy machine
 
 Candy machine ID: Ews3L5NoAjjLEHYqEu47DqQ77nsqgNQs3NuELjBCd5bb
@@ -548,24 +608,58 @@ Signature: 3C7iXdu9msYviFAJz4esMvkMAiSXTfExBYr9E5VEJfrmJnojrfoEEDPGzJ7qGDx1J5Pf6
 The candy guard is now the mint authority of the candy machine.
 
 ✅ Command successful.
-</p>
-</details>
+```
+
+</div>
+</AccordionItem>
+</Accordion>
 
 If required you can modify the guard afterwards by running:
 
+<Accordion>
+<AccordionItem title="Command"  open={true}>
+<div className="accordion-item-padding">
+
 ```bash
 sugar guard update
 ```
+
+</div>
+</AccordionItem>
+<AccordionItem title="Output">
+<div className="accordion-item-padding">
+
+```bash
+[1/2] 🔍 Loading candy guard
+▪▪▪▪▪ Done
+Candy guard ID: 7XJdGaywrtcEpohrcZ7kYeMjEHNFVq1XjVpBQ6Doi7TP
+
+[2/2] 🖥  Updating configuration
+Signature: 43oDgKfXeFx3erZbNihJ1a5KxcUPdDLcoB2SW6ZytaxjBhE1M6quSWUyj3kdG64h4aXTZqUj6NiQULbZqpVJABbw
+
+✅ Command successful.
+```
+
+</div>
+</AccordionItem>
+</Accordion>
 
 To see the current settings like if you want to change the start date you can run:
 
+<Accordion>
+<AccordionItem title="Command"  open={true}>
+<div className="accordion-item-padding">
+
 ```bash
-sugar guard update
+sugar guard show
 ```
 
-<details>
-<summary>Output</summary>
-<p>
+</div>
+</AccordionItem>
+<AccordionItem title="Output">
+<div className="accordion-item-padding">
+
+```bash
 [1/2] 🔍 Loading candy guard
 ▪▪▪▪▪ Done
 Candy guard ID: 7XJdGaywrtcEpohrcZ7kYeMjEHNFVq1XjVpBQ6Doi7TP
@@ -574,9 +668,11 @@ Candy guard ID: 7XJdGaywrtcEpohrcZ7kYeMjEHNFVq1XjVpBQ6Doi7TP
 Signature: 5nQ1dasS3QAQJH7fBwFXd2VgyRirfYmnZ8XKgsfvWubX4hJ6jzY4dzqEVpXpULgw1PsC5eyJriSMCnVXxw2Mckae
 
 ✅ Command successful.
-</p>
-</details>
+```
 
+</div>
+</AccordionItem>
+</Accordion>
 
 ## Allow users to mint
 
