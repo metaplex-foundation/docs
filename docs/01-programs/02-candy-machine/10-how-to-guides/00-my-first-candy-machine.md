@@ -580,7 +580,7 @@ Signature: 5nQ1dasS3QAQJH7fBwFXd2VgyRirfYmnZ8XKgsfvWubX4hJ6jzY4dzqEVpXpULgw1PsC5
 
 ## Allow users to mint
 
-Obviously your users will not want to use a CLI like Sugar to mint but for example a Website instead. For Candy Machine v3 there is not a prebuilt frontend yet. You can use the Metaplex JS SDK to build a mint site though. Further information can be found in the [minting section](/programs/candy-machine/minting). 
+Your users will not want to use a CLI like Sugar to mint but for example a Website instead. For Candy Machine v3 there is not a prebuilt frontend yet. You can use the Metaplex JS SDK to build a mint site though. Further information can be found in the [minting section](/programs/candy-machine/minting). 
 
 Congratulations! You have successfully configured, created, and deployed your first candy machine!
 
