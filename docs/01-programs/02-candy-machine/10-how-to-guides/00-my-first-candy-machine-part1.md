@@ -22,9 +22,7 @@ This tutorial targets macOS, Linux, and Windows Subsystem Linux (WSL), but all c
 
 The [Solana CLI Tool Suite](https://docs.solana.com/cli/install-solana-cli-tools) is useful to have for Solana development, and we will use the config file to store our keypair file path and RPC node url to simplify the Sugar commands we run, by eliding those options.
 
-:::info
-To install, follow [this guide](../../../guides/cli-wallet#setting-up-a-devnet-wallet-for-testing) to install the Solana Tool Suite and set up a devnet wallet.
-:::
+To install, **follow [this guide](../../../guides/cli-wallet#setting-up-a-devnet-wallet-for-testing) to install the Solana Tool Suite** and set up a devnet wallet.
 
 Once finished, come back here to resume the tutorial.
 
@@ -241,13 +239,11 @@ If you used Sugar with Candy Machine V2 before you might be missing some questio
 
 In this step, we will upload all our assets file pairs to Arweave via Bundlr.
 
-:::info
 Solana is designed to be a high-throughput, low-latency blockchain that can host smart contracts, but one of the design tradeoffs is that storing data on Solana is fairly expensive. For NFTs, we only store basic information about the NFT, such as the name, symbol, creators, and seller fee basis points. For the image and all the other metadata, we have a URL on-chain on Solana that points to an external JSON file containing all that information.
 
 This URL can point to any JSON file anywhere. It can be a decentralized file storage blockchain like Arweave or Filecoin, a peer-to-peer distributed file system like IPFS, or even a centralized cloud server like AWS.
 
 Sugar currently supports four upload methods: Arweave via Bundlr, IPFS via NFT Storage or Pinata, Shadow Drive and AWS.
-:::
 
 In our previous step we selected `Bundlr` as our upload method, and we saw this in the config file when we viewed it. Now, all we have to do is run the following command:
 
@@ -298,17 +294,15 @@ Sending data: (Ctrl+C to abort)
 </AccordionItem>
 </Accordion>
 
-:::tip
 Sugar commands are designed to be robust and commands such as `upload` and `deploy` will pick up where they left off when you run them again. You may occasionally get an error such as:
 
+```
 🛑 Error running command (re-run needed): Blockhash not found
+```
 
 In such cases it's safe to rerun the command until it succeeds.
-:::
 
-:::caution
-However, some upload methods such as Bundlr, do cost funds to upload and store the data. If you successfully upload your data and then run it again, it will charge you again. If you do this repeatedly with a large amount of data it can cost you a significant amount of SOL. Once you have successfully uploaded your data you should not have to do it again, as the cache file will store all the links to the data. Ask on the Metaplex Discord if you run into any unexpected issues.
-:::
+**Caution!** Some upload methods such as Bundlr, do cost funds to upload and store the data. If you successfully upload your data and then run it again, it will charge you again. If you do this repeatedly with a large amount of data it can cost you a significant amount of SOL. Once you have successfully uploaded your data you should not have to do it again, as the cache file will store all the links to the data. Ask on the Metaplex Discord if you run into any unexpected issues.
 
 When uploading is finished, sugar will have created a `cache.json` file in our project directory. Open this file, and you will see something similar to the following example:
 
@@ -696,5 +690,6 @@ sugar withdraw
 
 Do you want to learn more about sugar and the Candy Machine? These documents might be interesting for you:
 
+- [How to create a Candy Machine v3 - Part 2 (JS SDK)](./my-first-candy-machine-part2)
 - [Guards](/programs/candy-machine/candy-guards)
 - [Guard Groups](/programs/candy-machine/guard-groups)
