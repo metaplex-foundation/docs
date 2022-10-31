@@ -56,11 +56,11 @@ Note that Candy Machine is composed of the following two programs which means yo
 - **Candy Machine Core**
     - [GitHub Repository](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/candy-machine-core/js)
     - [NPM Package](https://www.npmjs.com/package/@metaplex-foundation/mpl-candy-machine-core)
-    - API References
+    - [API References](https://metaplex-foundation.github.io/metaplex-program-library/docs/candy-machine-core/index.html)
 - **Candy Guard**
     - [GitHub Repository](https://github.com/metaplex-foundation/mpl-candy-guard/tree/main/js)
     - [NPM Package](https://www.npmjs.com/package/@metaplex-foundation/mpl-candy-guard)
-    - API References
+    - [API References](https://metaplex-foundation.github.io/mpl-candy-guard/index.html)
 
 ### Swift Program Libraries
 
