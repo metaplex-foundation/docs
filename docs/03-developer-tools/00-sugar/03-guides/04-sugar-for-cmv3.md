@@ -329,7 +329,7 @@ The Token Gate guard restricts the mint to holders of a specified SPL Token. The
 The Token Payment guard restricts the mint to holders of a specified SPL Token, transferring the required amount to the `destination_ata` address. The amount determines how many tokens are required.
 
 ```json
-"tokenGate" : {
+"tokenPayment" : {
     "amount": number,
     "mint": "<PUBKEY>",
     "destinationAta": "<PUBKEY>"
