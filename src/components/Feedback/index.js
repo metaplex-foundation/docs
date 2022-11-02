@@ -3,18 +3,6 @@ import PropTypes from "prop-types";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import styles from "./styles.module.css";
 
-VotedYes.propTypes = {
-  formUrl: PropTypes.string,
-};
-
-VotedNo.propTypes = {
-  formUrl: PropTypes.string,
-};
-
-Feedback.propTypes = {
-  resource: PropTypes.string,
-};
-
 const VotedYes = (formUrl) => {
   return (
     <>
@@ -43,6 +31,18 @@ const VotedNo = (formUrl) => {
   );
 };
 
+VotedYes.propTypes = {
+  formUrl: PropTypes.string,
+};
+
+VotedNo.propTypes = {
+  formUrl: PropTypes.string,
+};
+
+Feedback.propTypes = {
+  resource: PropTypes.string,
+};
+
 export default function Feedback({ resource }) {
   const [reaction, setReaction] = useState(null);
 
@@ -54,7 +54,6 @@ export default function Feedback({ resource }) {
 
   useEffect(() => {
     if (ExecutionEnvironment.canUseDOM) {
-      // eslint-disable-next-line no-undef
       window.HappyReact.init({
         onReaction: handleReaction,
       });
