@@ -13,6 +13,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   favicon: 'logo/favicon.png',
   organizationName: 'metaplex',
   projectName: 'docs',
+  scripts: [
+    {
+      src: 'https://app.happyreact.com/widget/reactions.js',
+      defer: true,
+    }
+  ],
   presets: [
     [
       '@docusaurus/preset-classic',
