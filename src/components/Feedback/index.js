@@ -5,9 +5,13 @@ import styles from "./styles.module.css";
 const VotedYes = (formUrl) => {
   return (
     <>
-        <span>We are glad you like it 😀</span>
-        <br />
-        <small><a href={formUrl.formUrl} target='_blank'>Do you want to give additional Feedback?</a></small>
+      <span>We are glad you like it 😀</span>
+      <br />
+      <small>
+        <a href={formUrl.formUrl} target="_blank">
+          Do you want to give additional Feedback?
+        </a>
+      </small>
     </>
   );
 };
@@ -15,11 +19,16 @@ const VotedYes = (formUrl) => {
 const VotedNo = (formUrl) => {
   return (
     <>
-        <span>We will try to improve 😕</span>
-        <br />
-        <small><a href={formUrl.formUrl} target='_blank'>Do you want to give additional Feedback?</a></small>
+      <span>We will try to improve 😕</span>
+      <br />
+      <small>
+        <a href={formUrl.formUrl} target="_blank">
+          Do you want to give additional Feedback?
+        </a>
+      </small>
     </>
-  );};
+  );
+};
 
 export default function Feedback({ resource }) {
   const [reaction, setReaction] = useState(null);
@@ -41,8 +50,8 @@ export default function Feedback({ resource }) {
   const reportString = resource.replace("/", "+");
 
   const formUrl =
-  "https://docs.google.com/forms/d/e/1FAIpQLSdnLAYSbO1giUzABA3tnsdxR2XzgiiXr5P0Lg9iJkoOi8Ov9g/viewform?usp=pp_url&entry.1912668329=" +
-  reportString;
+    "https://docs.google.com/forms/d/e/1FAIpQLSdnLAYSbO1giUzABA3tnsdxR2XzgiiXr5P0Lg9iJkoOi8Ov9g/viewform?usp=pp_url&entry.1912668329=" +
+    reportString;
 
   return (
     <>
