@@ -49,13 +49,14 @@ nvm install lts
 </AccordionItem>
 </Accordion>
 
-## Clone metaplex-foundation/js-examples
-As a foundation, we will be using the metaplex-foundation/js-examples repository which contains multiple examples of how to use the JS SDK.
+## Clone connect-wallet example
+As a base, we will be using the metaplex-foundation/js-examples repository which contains multiple examples of how to use the JS SDK. Since we want to interact with a users Wallet we will use the `connect-wallet` example:
 
 1. clone https://github.com/metaplex-foundation/js-examples
 2. `cd connect-wallet` run `npm install`
-3. `npm run dev` to test if it runs
-4. 
+3. `npm run dev` to test if everything is set up correctly
+
+## Add mint function
 
 *Coming soon…*
 
