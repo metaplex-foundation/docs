@@ -1,6 +1,19 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import styles from "./styles.module.css";
+
+VotedYes.propTypes = {
+  formUrl: PropTypes.string,
+};
+
+VotedNo.propTypes = {
+  formUrl: PropTypes.string,
+};
+
+Feedback.propTypes = {
+  resource: PropTypes.string,
+};
 
 const VotedYes = (formUrl) => {
   return (
@@ -8,7 +21,7 @@ const VotedYes = (formUrl) => {
       <span>We are glad you like it 😀</span>
       <br />
       <small>
-        <a href={formUrl.formUrl} target="_blank">
+        <a href={formUrl.formUrl} target="_blank" rel="noreferrer">
           Do you want to give additional Feedback?
         </a>
       </small>
@@ -22,7 +35,7 @@ const VotedNo = (formUrl) => {
       <span>We will try to improve 😕</span>
       <br />
       <small>
-        <a href={formUrl.formUrl} target="_blank">
+        <a href={formUrl.formUrl} target="_blank" rel="noreferrer">
           Do you want to give additional Feedback?
         </a>
       </small>
@@ -41,6 +54,7 @@ export default function Feedback({ resource }) {
 
   useEffect(() => {
     if (ExecutionEnvironment.canUseDOM) {
+      // eslint-disable-next-line no-undef
       window.HappyReact.init({
         onReaction: handleReaction,
       });
