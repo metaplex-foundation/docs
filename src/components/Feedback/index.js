@@ -54,6 +54,7 @@ export default function Feedback({ resource }) {
 
   useEffect(() => {
     if (ExecutionEnvironment.canUseDOM) {
+      // eslint-disable-next-line no-undef
       window.HappyReact.init({
         onReaction: handleReaction,
       });
