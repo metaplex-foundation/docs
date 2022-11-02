@@ -7,6 +7,7 @@ import EditThisPage from "@theme/EditThisPage";
 import TagsListInline from "@theme/TagsListInline";
 import styles from "./styles.module.css";
 import Feedback from "../../../components/Feedback";
+import PropTypes from "prop-types";
 
 function TagsRow(props) {
   return (
@@ -22,6 +23,7 @@ function TagsRow(props) {
     </div>
   );
 }
+
 function EditMetaRow({
   editUrl,
   lastUpdatedAt,
@@ -49,6 +51,14 @@ function EditMetaRow({
     </div>
   );
 }
+EditMetaRow.propTypes = {
+  editUrl: PropTypes.any,
+  lastUpdatedAt: PropTypes.any,
+  lastUpdatedBy: PropTypes.any,
+  formattedLastUpdatedAt: PropTypes.any,
+  unversionedId: PropTypes.any,
+};
+
 export default function DocItemFooter() {
   const { metadata } = useDoc();
   const {
