@@ -67,7 +67,7 @@ export default function Feedback({ resource }) {
   const { siteConfig } = useDocusaurusContext();
   const { customFields } = siteConfig;
 
-  const formUrl = customFields?.feedbackUrl + reportString;
+  const formUrl = customFields?.feedbackUrl + "#" + reportString;
 
   return (
     <>
