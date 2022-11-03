@@ -75,7 +75,7 @@ export default function Feedback({ resource }) {
       {!isReacted ? (
         <div
           className={styles.widget}
-          data-hr-token="cfb81bcf-3a5a-4cc9-86d2-1a7ec575100c"
+          data-hr-token={customFields?.happyReactToken}
           data-hr-resource={reportString}
           data-hr-styles={JSON.stringify({
             container: styles.container,
