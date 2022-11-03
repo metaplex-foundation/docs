@@ -20,7 +20,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
     }
   ],
   customFields: {
-    feedbackUrl: 'https://metaplex.canny.io/developers'
+    feedbackUrl: 'https://metaplex.canny.io/developers?selectedCategory=documentation'
   },
   presets: [
     [
