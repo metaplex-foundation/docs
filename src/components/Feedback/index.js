@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import styles from "./styles.module.css";
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 const VotedYes = (formUrl) => {
   return (
@@ -63,9 +64,10 @@ export default function Feedback({ resource }) {
 
   const reportString = resource.replace("/", "+");
 
-  const formUrl =
-    "https://docs.google.com/forms/d/e/1FAIpQLSdnLAYSbO1giUzABA3tnsdxR2XzgiiXr5P0Lg9iJkoOi8Ov9g/viewform?usp=pp_url&entry.1912668329=" +
-    reportString;
+  const { siteConfig } = useDocusaurusContext();
+  const { customFields } = siteConfig;
+
+  const formUrl = customFields?.feedbackUrl + reportString;
 
   return (
     <>
@@ -82,6 +84,7 @@ export default function Feedback({ resource }) {
             reaction: styles.reaction,
             footer: styles.footer,
           })}
+          data-hr-strategy="lazy"
         />
       ) : reaction === "No" ? (
         <VotedNo formUrl={formUrl} />

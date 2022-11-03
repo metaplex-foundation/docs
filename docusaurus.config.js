@@ -19,6 +19,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       defer: true,
     }
   ],
+  customFields: {
+    feedbackUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdnLAYSbO1giUzABA3tnsdxR2XzgiiXr5P0Lg9iJkoOi8Ov9g/viewform?usp=pp_url&entry.1912668329='
+  },
   presets: [
     [
       '@docusaurus/preset-classic',
