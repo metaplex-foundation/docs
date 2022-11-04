@@ -71,7 +71,7 @@ import { Keypair } from "@solana/web3.js";
 const creatorA = Keypair.generate();
 const creatorB = Keypair.generate();
 const candyMachineSettings = {
-  sellerFreeBasisPoints: 200,
+  sellerFeeBasisPoints: 200,
   symbol: "MYPROJECT",
   maxEditionSupply: toBigNumber(0),
   isMutable: true,
