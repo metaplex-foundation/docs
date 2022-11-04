@@ -94,7 +94,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         style: 'dark',
         links: [
           {
-            title: 'Community',
+            title: 'Resources',
             items: [
               {
                 label: 'Discord',
@@ -104,14 +104,26 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
                 label: 'Twitter',
                 href: 'https://twitter.com/metaplex',
               },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
+              {
+                label: 'StackExchange',
+                href: 'https://solana.stackexchange.com/questions/tagged/metaplex',
+              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/metaplex-foundation/metaplex',
+              },
+            ],
+          },
+          {
+            title: 'Powered by',
+            items: [
+              {
+                label: 'Happy React',
+                href: 'https://happyreact.com/',
+              },
+              {
+                label: 'Docusaurus',
+                href: 'https://docusaurus.io/',
               },
             ],
           },
