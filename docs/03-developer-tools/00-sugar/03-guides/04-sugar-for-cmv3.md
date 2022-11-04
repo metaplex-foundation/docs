@@ -38,14 +38,15 @@ Since the configuration of the mint process has moved to **guards**, Sugar's con
   "guards": null
 }
 ```
- There are two new elements in the configuration file:
 
- - `isSequential`: indicates to whether a sequential index generation should be used during mint or not (recommended to set this value to `false`);
- - `guards`: indicates the configuration for the Candy Guard. If this value is set to `null`, a Candy Guard will not be used and mint will only be possible using the `mint_authority` of the Candy Machine.
+There are two new elements in the configuration file:
 
- :::info
- You can use the Sugar's `create-config` command to create a basic configuration file. The Candy Guard configuration needs to be added manually, further explained below.
- :::
+- `isSequential`: indicates to whether a sequential index generation should be used during mint or not (recommended to set this value to `false`);
+- `guards`: indicates the configuration for the Candy Guard. If this value is set to `null`, a Candy Guard will not be used and mint will only be possible using the `mint_authority` of the Candy Machine.
+
+:::info
+You can use the Sugar's `create-config` command to create a basic configuration file. The Candy Guard configuration needs to be added manually, further explained below.
+:::
 
 ## Available Guards
 
@@ -71,42 +72,42 @@ The Candy Guard ships with a total of [16 default guards](../../../programs/cand
   "pinataConfig": null,
   "hiddenSettings": null,
   "guards": {
-      "default": {
-          "botTax": {
-              "value": 0.01,
-              "lastInstruction": true
-          }
-      },
-      "groups": [
-          {
-              "label": "OGs",
-              "guards": {
-                  "startDate": {
-                      "date": "2022-10-20 12:00:00 +0000"
-                  },
-                  "tokenGate": {
-                      "amount": 1,
-                      "mint": "7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf"
-                  },
-                  "solPayment": {
-                      "value": 1,
-                      "destination": "PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8"
-                  }
-              }
+    "default": {
+      "botTax": {
+        "value": 0.01,
+        "lastInstruction": true
+      }
+    },
+    "groups": [
+      {
+        "label": "OGs",
+        "guards": {
+          "startDate": {
+            "date": "2022-10-20 12:00:00 +0000"
           },
-          {
-              "label": "Public",
-              "guards": {
-                  "startDate": {
-                      "date": "2022-10-20 18:00:00 +0000"
-                  },
-                  "solPayment": {
-                      "value": 2,
-                      "destination": "PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8"
-                  }
-              }
+          "tokenGate": {
+            "amount": 1,
+            "mint": "7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf"
+          },
+          "solPayment": {
+            "value": 1,
+            "destination": "PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8"
           }
-      ]
+        }
+      },
+      {
+        "label": "Public",
+        "guards": {
+          "startDate": {
+            "date": "2022-10-20 18:00:00 +0000"
+          },
+          "solPayment": {
+            "value": 2,
+            "destination": "PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8"
+          }
+        }
+      }
+    ]
   }
 }
 ```
@@ -139,20 +140,20 @@ If we wanted to have a single "public" group, all the guard configuration can be
   "pinataConfig": null,
   "hiddenSettings": null,
   "guards": {
-      "default": {
-          "botTax": {
-              "value": 0.01,
-              "lastInstruction": true
-          },
-          "startDate": {
-              "date": "2022-10-20 18:00:00 +0000"
-          },
-          "solPayment": {
-              "value": 2,
-              "destination": "PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8"
-          }
+    "default": {
+      "botTax": {
+        "value": 0.01,
+        "lastInstruction": true
       },
-      "groups": null
+      "startDate": {
+        "date": "2022-10-20 18:00:00 +0000"
+      },
+      "solPayment": {
+        "value": 2,
+        "destination": "PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8"
+      }
+    },
+    "groups": null
   }
 }
 ```
@@ -182,6 +183,7 @@ The AllowList guard validates the payer's address against a merkle tree-based al
 ### Bot Tax
 
 The BotTax guard is used to:
+
 - charge a penalty for invalid transactions. The value of the penalty is specified by the lamports configuration.
 - validate that the mint transaction is the last transaction (last_instruction = true).
 
@@ -437,9 +439,9 @@ sugar guard show
  :.. base: 7z6f7mq7qGjWu6dimqdAyYNhjG5iqGQ7DYnFV2ckpzoY
  :.. bump: 255
  :.. authority: PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8
- :.. data: 
-     :.. default: 
-     :   :.. bot tax: 
+ :.. data:
+     :.. default:
+     :   :.. bot tax:
      :   :   :.. lamports: 10000000 (◎ 0.01)
      :   :   :.. last instruction: true
      :   :.. sol payment: none
@@ -458,17 +460,17 @@ sugar guard show
      :   :.. nft burn: none
      :   :.. token burn: none
      :
-     :.. groups: 
+     :.. groups:
           :.. label: OGslic
           :   :.. bot tax: none
-          :   :.. sol payment: 
+          :   :.. sol payment:
           :   :   :.. lamports: 1 (◎ 0.000000001)
           :   :   :.. destination: PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8
           :   :.. token payment: none
-          :   :.. start date: 
+          :   :.. start date:
           :   :   :.. date: Thu October 20 2022 12:00:00 UTC
           :   :.. third party signer: none
-          :   :.. token gate: 
+          :   :.. token gate:
           :   :   :.. amount: 1000000000
           :   :   :.. mint: 7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf
           :   :.. gatekeeper: none
@@ -484,11 +486,11 @@ sugar guard show
           :
           :.. label: Public
               :.. bot tax: none
-              :.. sol payment: 
+              :.. sol payment:
               :   :.. lamports: 2000000000 (◎ 2)
               :   :.. destination: PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8
               :.. token payment: none
-              :.. start date: 
+              :.. start date:
               :   :.. date: Thu October 20 2022 18:00:00 UTC
               :.. third party signer: none
               :.. token gate: none
