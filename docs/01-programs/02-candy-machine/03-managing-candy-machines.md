@@ -125,7 +125,7 @@ import { PublicKey } from '@solana/web3.js';
 
 const candyMachine = await metaplex
   .candyMachines()
-  .findByAddress({ address: new PublicKey("Gjwc...thJS") };
+  .findByAddress({ address: new PublicKey("Gjwc...thJS") });
 ```
 
 API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#findByAddress), [Input](https://metaplex-foundation.github.io/js/types/js.FindCandyMachineByAddressInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.CandyMachine.html).
@@ -160,7 +160,7 @@ await metaplex.candyMachines().update({
   candyMachine,
   authority: currentAuthority,
   newAuthority: newAuthority.address,
-};
+});
 
 const updatedCandyMachine = await metaplex
   .candyMachines()
@@ -181,7 +181,7 @@ await metaplex.candyMachines().update({
   candyMachine,
   authority: currentAuthority,
   newMintAuthority: newMintAuthority, // Notice this must be a Signer.
-};
+});
 ```
 
 Finally, note that the `update` method can be used to update for a variety of settings and you may also update them all at once. Check out the following API References to see everything available to you.
@@ -210,7 +210,7 @@ await metaplex.candyMachines().update({
   symbol: 'NEW',
   sellerFeeBasisPoints: 100,
   creators: [{ address: newCreator, share: 100 }],
-};
+});
 ```
 
 API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#update), [Input](https://metaplex-foundation.github.io/js/types/js.UpdateCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.UpdateCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#update).
@@ -238,7 +238,7 @@ await metaplex.candyMachines().update({
     address: newCollection.address,
     updateAuthority: newCollectionAuthority,
   },
-};
+});
 ```
 
 API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#update), [Input](https://metaplex-foundation.github.io/js/types/js.UpdateCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.UpdateCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#update).
@@ -274,7 +274,7 @@ await metaplex.candyMachines().update({
     uriLength: 43,
     isSequential: true,
   },
-};
+});
 ```
 
 API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#update), [Input](https://metaplex-foundation.github.io/js/types/js.UpdateCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.UpdateCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#update).
@@ -296,7 +296,7 @@ You may delete a Candy Machine account using the JS SDK like so.
 ```tsx
 await metaplex.candyMachines().delete({
   candyMachine: candyMachine.address,
-};
+});
 ```
 
 Note that this will only delete the Candy Machine account and not the associated Candy Guard account to avoid bad surprises. If you want to delete both of them, you must also provide the address of the Candy Guard address like so.
@@ -305,7 +305,7 @@ Note that this will only delete the Candy Machine account and not the associated
 await metaplex.candyMachines().delete({
   candyMachine: candyMachine.address,
   candyGuard: candyMachine.candyGuard.address,
-};
+});
 ```
 
 API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#delete), [Input](https://metaplex-foundation.github.io/js/types/js.DeleteCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.DeleteCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#delete).
