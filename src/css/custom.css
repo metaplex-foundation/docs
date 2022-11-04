@@ -366,15 +366,15 @@ a.program-instruction-account-icon + a.program-instruction-account-icon {
     no-repeat;
 }
 
-.feedbackWidget h3{
+.feedbackWidget h3 {
   text-align: center;
 }
 
 .hr-container {
-  width:95px;
-  margin:auto;
+  width: 95px;
+  margin: auto;
 }
 
-.theme-edit-this-page{
-  float:right;
+.theme-edit-this-page {
+  float: right;
 }
