@@ -32,23 +32,27 @@ function EditMetaRow({
   unversionedId,
 }) {
   return (
-    <div className={clsx(ThemeClassNames.docs.docFooterEditMetaRow, "row")}>
-      <div className={clsx("col", styles.lastUpdated, "feedbackWidget")}>
-        {<Feedback resource={unversionedId} />}
+    <>
+      <div className={clsx(ThemeClassNames.docs.docFooterEditMetaRow, "row")}>
+        <div className={clsx("col", styles.lastUpdated)}>
+          {(lastUpdatedAt || lastUpdatedBy) && (
+            <LastUpdated
+              lastUpdatedAt={lastUpdatedAt}
+              formattedLastUpdatedAt={formattedLastUpdatedAt}
+              lastUpdatedBy={lastUpdatedBy}
+            />
+          )}
+        </div>
+        <div className={clsx("col")}>
+          {editUrl && <EditThisPage editUrl={editUrl} />}
+        </div>
       </div>
-      <div className={clsx("col", styles.lastUpdated)}>
-        {(lastUpdatedAt || lastUpdatedBy) && (
-          <LastUpdated
-            lastUpdatedAt={lastUpdatedAt}
-            formattedLastUpdatedAt={formattedLastUpdatedAt}
-            lastUpdatedBy={lastUpdatedBy}
-          />
-        )}
+      <div>
+        <div className={clsx(styles.Feedback, "feedbackWidget")}>
+          {<Feedback resource={unversionedId} />}
+        </div>
       </div>
-      <div className={clsx("col")}>
-        {editUrl && <EditThisPage editUrl={editUrl} />}
-      </div>
-    </div>
+    </>
   );
 }
 EditMetaRow.propTypes = {
