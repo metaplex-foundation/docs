@@ -62,7 +62,7 @@ export default function Feedback({ resource }) {
     }
   }, []);
 
-  const reportString = resource.replace("/", "+");
+  const reportString = resource.replace("/", "-");
 
   const { siteConfig } = useDocusaurusContext();
   const { customFields } = siteConfig;
