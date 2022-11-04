@@ -84,7 +84,7 @@ export default function Feedback({ resource }) {
             reaction: styles.reaction,
             footer: styles.footer,
           })}
-          data-hr-strategy="lazy"
+          data-hr-strategy="instant"
         />
       ) : reaction === "No" ? (
         <VotedNo formUrl={formUrl} />
