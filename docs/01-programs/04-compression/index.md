@@ -10,6 +10,4 @@ Bubblegum is the Metaplex Protocol program for creating and interacting with com
 
 
 ## Open Source Code
-- [Read API Repo 1 (All the components that make the Read API possible)](https://github.com/metaplex-foundation/digital-asset-rpc-infrastructure)
-- [Read API Repos 2 (All the components that make the Read API possible)](https://github.com/metaplex-foundation/digital-asset-validator-plugin)
-- [Read API Repos 3 (All the components that make the Read API possible)](https://github.com/metaplex-foundation/digital-asset-protocol)
+- [Digital Asset RPC Infrastructure](https://github.com/metaplex-foundation/digital-asset-rpc-infrastructure)
