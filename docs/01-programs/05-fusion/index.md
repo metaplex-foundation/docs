@@ -4,7 +4,7 @@ Fusion is an extension of the Token Metadata contract. It was created as a new f
 
 🔗 **Helpful links:**
 
-[Token Metadata Escrow](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/token-metadata/program/src/escrow)
-[Trifle Program](https://github.com/metaplex-foundation/metaplex-program-library/tree/trifle/trifle/program)
+- [Token Metadata Escrow](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/token-metadata/program/src/escrow)
+- [Trifle Program](https://github.com/metaplex-foundation/metaplex-program-library/tree/trifle/trifle/program)
 
 
