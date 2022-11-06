@@ -55,6 +55,6 @@ Fusion utilizes the `schema` field of the Constraint Model account to determine 
 `defaults`: The default metadata to use as a baseline when combining the Fusion Parent's metadata. Metadata fields such `external_url` can then be included in the metadata in this way.
 
 ### Setup Trifle
-Lastly, the Constraint Model and Trifle account should then be setup according to [these instructions](../01-programs/05-fusion/01-getting-started.md).
+Lastly, the Constraint Model and Trifle account should then be setup according to [these instructions](/programs/fusion/getting-started).
 
 After the above steps, the Fusion Parent should be re-rendered after every `transfer_in` or `transfer_out` operation.
