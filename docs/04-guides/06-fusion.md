@@ -5,7 +5,7 @@ description: "Composable NFTs, powered by Metaplex."
 
 # How to use Metaplex Fusion
 ## What is Fusion?
-Fusion is Metaplex's answer for composable NFTs. Fusion is itself a composition of several Metaplex programs that enable fully dynamic NFTs to be created by projects, artists, or collectors. At the contract level, Fusion is powered by [Trifle](/programs/trifle) which manages the on-chain tracking and rule-based fuse/defuse operations of an NFT.
+Fusion is Metaplex's answer for composable NFTs. Fusion is itself a composition of several Metaplex programs that enable fully dynamic NFTs to be created by projects, artists, or collectors. At the contract level, Fusion is powered by Trifle which manages the on-chain tracking and rule-based fuse/defuse operations of an NFT.
 ## Steps for Setup
 ### Create a parent NFT
 Fusion is structured as a single NFT (the Fusion Parent) that owns all of the attributes it is composed of. The Fusion Parent will dynamically have its Metadata and Image re-rendered to reflect the layering of all of the Attribute Tokens tracked in its on-chain Trifle account. To enable seamless recomposition of the metadata, a static URI is created using a deterministic format.
@@ -55,6 +55,6 @@ Fusion utilizes the `schema` field of the Constraint Model account to determine 
 `defaults`: The default metadata to use as a baseline when combining the Fusion Parent's metadata. Metadata fields such `external_url` can then be included in the metadata in this way.
 
 ### Setup Trifle
-Lastly, the Constraint Model and Trifle account should then be setup according to [these instructions](/programs/trifle/getting-started).
+Lastly, the Constraint Model and Trifle account should then be setup according to [these instructions](../01-programs/05-fusion/01-getting-started.md).
 
 After the above steps, the Fusion Parent should be re-rendered after every `transfer_in` or `transfer_out` operation.
