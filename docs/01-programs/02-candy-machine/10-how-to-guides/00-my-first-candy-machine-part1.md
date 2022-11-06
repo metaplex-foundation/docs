@@ -622,12 +622,38 @@ sugar guard show
 <AccordionCode title="Output">
 
 ```bash
-[1/2] 🔍 Loading candy guard
+[1/1] 🔍 Loading candy guard
 ▪▪▪▪▪ Done
-Candy guard ID: 7XJdGaywrtcEpohrcZ7kYeMjEHNFVq1XjVpBQ6Doi7TP
 
-[2/2] 🖥  Updating configuration
-Signature: 5nQ1dasS3QAQJH7fBwFXd2VgyRirfYmnZ8XKgsfvWubX4hJ6jzY4dzqEVpXpULgw1PsC5eyJriSMCnVXxw2Mckae
+🛡  Candy Guard ID: 7XJdGaywrtcEpohrcZ7kYeMjEHNFVq1XjVpBQ6Doi7TP
+ :
+ :.. base: FpurUgufcEdfu1SgPtXVQYh5Z5y47LxfKBt8SPamRThi
+ :.. bump: 255
+ :.. authority: Tes1zkZkXhgTaMFqVgbgvMsVkRJpq4Y6g54SbDBeKVV
+ :.. data: 
+     :.. default: 
+     :   :.. bot tax: none
+     :   :.. sol payment: 
+     :   :   :.. lamports: 500000000 (◎ 0.5)
+     :   :   :.. destination: Tes1zkZkXhgTaMFqVgbgvMsVkRJpq4Y6g54SbDBeKVV
+     :   :.. token payment: none
+     :   :.. start date: 
+     :   :   :.. date: Sun November 20 2022 20:00:00 UTC
+     :   :.. third party signer: none
+     :   :.. token gate: none
+     :   :.. gatekeeper: none
+     :   :.. end date: none
+     :   :.. allow list: none
+     :   :.. mint limit: 
+     :   :   :.. id: 1
+     :   :   :.. amount: 3
+     :   :.. nft payment: none
+     :   :.. redeemed amount: none
+     :   :.. address gate: none
+     :   :.. nft gate: none
+     :   :.. nft burn: none
+     :   :.. token burn: none
+     :.. groups: none
 
 ✅ Command successful.
 ```
