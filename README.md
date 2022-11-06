@@ -22,6 +22,7 @@
     - ✅ Instructions
     - ✅ Token Standard
     - ✅ Certified Collections
+    - 📝 NFT Escrow (Under Construction)
     - ✅ Using NFTs
     - ✅ FAQ
     - ✅ Changelog / ...
@@ -29,6 +30,7 @@
   - 📝 Auction House (Needs re-writing using the new [Program template](#program-template))
   - ⏳ Token Vault
   - ⏳ Gumdrop
+  - 📝 Trifle (Under Construction)
 - ⏳ Tools
   - ⏳ JavaScript SDK (The new one at [`metaplex-foundation/js-next`](https://github.com/metaplex-foundation/js-next))
     - ⏳ Overview
@@ -55,6 +57,7 @@
 - ⏳ Guides
   - 📝 Candy Machine
   - 📝 Auction House
+  - 📝 Fusion (Under Construction)
   - 📝 NFT hash lists
   - 📝 How to Burn Tokens
   - 📝 NFT Storage Options
