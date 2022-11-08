@@ -385,6 +385,9 @@ a.program-instruction-account-icon + a.program-instruction-account-icon {
   .theme-doc-footer-edit-meta-row > .col {
     text-align: center;
   }
+  .feedbackWidget {
+    margin-top: calc(2 * var(--ifm-spacing-vertical));
+  }
 }
 
 .theme-last-updated {
