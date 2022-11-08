@@ -9,10 +9,13 @@
 }
 .widget .reaction {
   width: 100%;
-  border: black 1px solid;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-pagination-nav-border-radius);
 }
 .widget .reaction:hover {
-  border: black 1px solid;
+  background-color: var(--ifm-menu-color-background-hover);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-pagination-nav-border-radius);
 }
 .widget .footer {
   margin-top: 0px;
