@@ -381,11 +381,13 @@ a.program-instruction-account-icon + a.program-instruction-account-icon {
   }
 }
 
+@media screen and (max-width: 996px) {
+  .theme-doc-footer-edit-meta-row > .col {
+    text-align: center;
+  }
+}
+
 .theme-last-updated {
   font-size: smaller;
   font-style: italic;
-}
-
-.theme-doc-footer-edit-meta-row > .col {
-  text-align: center;
 }
