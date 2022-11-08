@@ -34,6 +34,9 @@ function EditMetaRow({
   return (
     <>
       <div className={clsx(ThemeClassNames.docs.docFooterEditMetaRow, "row")}>
+        <div className={clsx("col")}>
+          {editUrl && <EditThisPage editUrl={editUrl} />}
+        </div>
         <div className={clsx("col", styles.lastUpdated)}>
           {(lastUpdatedAt || lastUpdatedBy) && (
             <LastUpdated
@@ -42,9 +45,6 @@ function EditMetaRow({
               lastUpdatedBy={lastUpdatedBy}
             />
           )}
-        </div>
-        <div className={clsx("col")}>
-          {editUrl && <EditThisPage editUrl={editUrl} />}
         </div>
       </div>
       <div>

@@ -375,6 +375,13 @@ a.program-instruction-account-icon + a.program-instruction-account-icon {
   margin: auto;
 }
 
-.theme-edit-this-page {
-  float: right;
+@media screen and (min-width: 996px) {
+  .theme-last-updated {
+    float: right;
+  }
+}
+
+.theme-last-updated {
+  font-size: smaller;
+  font-style: italic;
 }
