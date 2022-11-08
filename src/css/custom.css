@@ -385,3 +385,7 @@ a.program-instruction-account-icon + a.program-instruction-account-icon {
   font-size: smaller;
   font-style: italic;
 }
+
+.theme-doc-footer-edit-meta-row > .col {
+  text-align: center;
+}
