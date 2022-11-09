@@ -375,6 +375,22 @@ a.program-instruction-account-icon + a.program-instruction-account-icon {
   margin: auto;
 }
 
-.theme-edit-this-page {
-  float: right;
+@media screen and (min-width: 996px) {
+  .theme-last-updated {
+    float: right;
+  }
+}
+
+@media screen and (max-width: 996px) {
+  .theme-doc-footer-edit-meta-row > .col {
+    text-align: center;
+  }
+  .feedbackWidget {
+    margin-top: calc(2 * var(--ifm-spacing-vertical));
+  }
+}
+
+.theme-last-updated {
+  font-size: smaller;
+  font-style: italic;
 }
