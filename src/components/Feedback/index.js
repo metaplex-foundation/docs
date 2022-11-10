@@ -55,10 +55,15 @@ export default function Feedback({ resource }) {
 
   useEffect(() => {
     if (ExecutionEnvironment.canUseDOM) {
-      // eslint-disable-next-line no-undef
-      window.HappyReact.init({
-        onReaction: handleReaction,
-      });
+      //sometimes HR crashes for unknown reasons.
+      try {
+        // eslint-disable-next-line no-undef
+        window.HappyReact.init({
+          onReaction: handleReaction,
+        });
+      } catch (e) {
+        console.error(e);
+      }
     }
   }, []);
 
