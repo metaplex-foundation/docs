@@ -385,6 +385,7 @@ a.program-instruction-account-icon + a.program-instruction-account-icon {
   .theme-doc-footer-edit-meta-row > .col {
     text-align: center;
   }
+
   .feedbackWidget {
     margin-top: calc(2 * var(--ifm-spacing-vertical));
   }
@@ -393,4 +394,15 @@ a.program-instruction-account-icon + a.program-instruction-account-icon {
 .theme-last-updated {
   font-size: smaller;
   font-style: italic;
+}
+
+/* Stop jumping after HappyReact loaded */
+.feedbackWidget div {
+  height: 50px;
+  font-size: 0px;
+}
+
+/* sometimes HappyReact is rendered twice. This hides it */
+.hr-container:nth-of-type(2) {
+  display: none;
 }
