@@ -57,6 +57,7 @@ export default function Feedback({ resource }) {
     if (ExecutionEnvironment.canUseDOM) {
       //sometimes HR crashes for unknown reasons.
       try {
+        // eslint-disable-next-line no-undef
         window.HappyReact.init({
           onReaction: handleReaction,
         });
