@@ -215,6 +215,10 @@ html[data-theme="dark"] .accordion {
   background-color: var(--accordion-background-color) !important;
 }
 
+.accordion-item-content > .accordion-item-no-padding .theme-code-block {
+  box-shadow: none !important;
+}
+
 .accordion-item-padding {
   padding: 0;
   margin: 1rem;
