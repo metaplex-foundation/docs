@@ -1,16 +1,16 @@
 ---
-sidebar_label: "CLI"
+description: "How to manage Auction House using CLI"
 ---
 
-# Auction House CLI
+# How to manage Auction House using CLI
 
-### Prerequisites
+## Prerequisites
 
 - `ts-node`
 - `git`
 - `yarn`
 
-### Setup
+## Setup
 
 In order to get started with the Auction House CLI please follow these steps.
 
@@ -31,12 +31,12 @@ Once you have cloned the repo and installed packages, make sure you have a local
 - https://docs.solana.com/cli/install-solana-cli-tools
 - https://docs.solana.com/wallet-guide/file-system-wallet
 
-### Running Commands
+## Running Commands
 
 To run commands you will use
 `ts-node auction-house-cli.ts`
 
-#### Help
+### Help
 
 ```
 ts-node auction-house-cli.ts
@@ -63,7 +63,7 @@ help [command]                    display help for command
 
 ```
 
-#### Create
+### Create
 
 Creates an Auction House
 
@@ -99,7 +99,7 @@ Created auction house HsKwc8dQtm8KLxshw67dwsNePkH6wMXo5Lwn1FuKjVYVS <--- Your au
 
 Save this key `HsKwc8dQtm8KLxshw67dwsNePkH6wMXo5Lwn1FuKjVYVS` since it is the public key of the solana account that holds your Auction House. In all subsequent commands you will pass this key with the `-ah` option.
 
-### Show
+## Show
 
 Prints the balances of the fee and treasury wallets configured for the auction house and its current settings options.
 
@@ -138,7 +138,7 @@ AH Fee Bump: 252
 AH Treasury Bump: 254
 ```
 
-#### Fee Account
+### Fee Account
 
 In the above Show command you see a Fee Payer account.
 This account can be used to pay the fees on chain for sales execution, transfers and account creation. For this exercise we will teach you how to fund that account by airdropping some SOL on devnet. Your Auction House fee account is used only when the Auction House authority is signing the transaction. This is usually only in the case of `Requires Sign Off`
@@ -156,7 +156,7 @@ The `solana airdrop` command is sometimes unreliable. If the command doesn't wor
 
 :::
 
-### Sell
+## Sell
 
 Place and NFT UP for sale.
 
@@ -185,7 +185,7 @@ wallet public key: DCDcpZaJUghstQNMHy9VAPnwQe1cGsHq7fbeqkti4kM3
 Set 1 F7fejo7cT1fRyJxj1W2aWy3aeJz8iqLU9YvbBAzwJGh2 for sale for 1 from your account with Auction House Ee53kiwLVw5XG98gSLNHoQRi4J22XEhz3zsKYY2ttsb7
 ```
 
-#### Require Sign-off
+### Require Sign-off
 
 If the auction house is set up to require sign off its wallet, as well as the seller are provided to the command.
 Do this using the `-ak` option.
@@ -198,7 +198,7 @@ ts-node auction-house-cli.ts help sell
 
 In a production scenario where the keypair for the auction house is stored on a sever managed by the organization hosting the auction house the transaction should be partially signed by the seller from the client then passed to the server for signing by the auction house before submitting to Solana.
 
-### Buy
+## Buy
 
 Place an offer on an NFT by its mint address at some price in SOL when using native SOL as the mint.
 
@@ -222,7 +222,7 @@ wallet public key: DCDcpZaJUghstQNMHy9VAPnwQe1cGsHq7fbeqkti4kM3
 Made offer for  2
 ```
 
-### Execute Sale
+## Execute Sale
 
 Sell an NFT to a buyer at the price set by the seller.  Note that this currently requires the auction house authority, the buyer, or the seller to be the fee payer and thus sign the transaction.
 
@@ -246,7 +246,7 @@ wallet public key: DCDcpZaJUghstQNMHy9VAPnwQe1cGsHq7fbeqkti4kM3
 Accepted 1 DCqt9QQ3ot3qv53EhWrYAWFuh4XgSvFJvLRjgsDnhLTp sale from wallet CCJC2s8FDGAs8GqmngE9gviusEuNnkdUwchcYMZ8ZmHB to 3DikCrEsfAVHv9rXENg2Hdmc16L71EjveQEF4NbSfRak for 2 from your account with Auction House HsKwc8dQtm8KLxshw67dwsNePkH6wMXo5Lwn1FuKjVYVS
 ```
 
-### Other Actions
+## Other Actions
 
 Other actions are documented in the CLI and can be found using the `help` and `<command> help` subcommand:
 

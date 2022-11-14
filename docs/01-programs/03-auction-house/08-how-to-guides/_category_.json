@@ -1,0 +1,9 @@
+{
+  "label": "How-To Guides",
+  "link": {
+    "type": "generated-index",
+    "title": "How-To Guides",
+    "description": "Lists practical articles relevant to Auction House.",
+    "slug": "/programs/auction-house/how-to-guides"
+  }
+}
