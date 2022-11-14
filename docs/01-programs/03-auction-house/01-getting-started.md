@@ -73,7 +73,6 @@ Therefore, this library is intended for advanced developers who wish to interact
 **Helpful links:**
 * [Github repository](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/auction-house/js)
 * [NPM package](https://www.npmjs.com/package/@metaplex-foundation/mpl-auction-house)
-* [API references]()
 
 ### Swift Program Libraries
 *Coming soon.*
