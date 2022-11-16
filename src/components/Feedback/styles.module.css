@@ -1,0 +1,24 @@
+.widget .grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  min-height: 50px;
+}
+.widget .cell {
+  width: 50px;
+}
+.widget .reaction {
+  width: 100%;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-pagination-nav-border-radius);
+}
+.widget .reaction:hover {
+  background-color: var(--ifm-menu-color-background-hover);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-pagination-nav-border-radius);
+}
+.widget .footer {
+  margin-top: 0px;
+  margin-left: 0;
+  font-size: small;
+}

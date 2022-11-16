@@ -19,7 +19,7 @@ If the payer does not have the required amount of tokens to pay, minting will fa
 The Token Payment guard contains the following settings:
 
 - **Amount**: The number of tokens to charge the payer.
-- **Token Mint**: The address of the mint account defining the SPL Token we want to pay with.
+- **Mint**: The address of the mint account defining the SPL Token we want to pay with.
 - **Destination Associated Token Address (ATA)**: The address of the associated token account to send the tokens to. We can get this address by finding the Associated Token Address PDA using the **Token Mint** attribute and the address of any wallet that should receive these tokens.
 
 <Accordion>
@@ -36,7 +36,7 @@ const { candyMachine } = await metaplex.candyMachines().create({
   guards: {
     tokenPayment: {
       amount: token(300),
-      tokenMint: tokenMint.address,
+      mint: tokenMint.address,
       destinationAta: metaplex.tokens().pdas().associatedTokenAccount({
         mint: tokenMint.address,
         owner: metaplex.identity().publicKey,

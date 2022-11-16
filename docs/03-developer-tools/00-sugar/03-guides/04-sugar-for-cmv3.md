@@ -3,7 +3,7 @@
 :::caution
 Sugar support for Candy Machine V3 is experimental.
 
-📦 The alpha release binaries can be downloaded from [**Sugar's repository**](https://github.com/metaplex-foundation/sugar/releases/tag/sugar-cmv3-alpha).
+📦 The alpha release binaries can be downloaded from [**Sugar's repository**](https://github.com/metaplex-foundation/sugar/releases). Choose the latest release with `cmv3` in it's name.
 :::
 
 The Candy Machine V3 is the latest iteration of the Metaplex Protocol's Candy Machine minting and distribution program. While the deploy of a Candy Machine V3 works largely similar to the previous V2 version, Sugar offers a set of new command to configure and manage a Candy Guard.
@@ -38,14 +38,15 @@ Since the configuration of the mint process has moved to **guards**, Sugar's con
   "guards": null
 }
 ```
- There are two new elements in the configuration file:
 
- - `isSequential`: indicates to whether a sequential index generation should be used during mint or not (recommended to set this value to `false`);
- - `guards`: indicates the configuration for the Candy Guard. If this value is set to `null`, a Candy Guard will not be used and mint will only be possible using the `mint_authority` of the Candy Machine.
+There are two new elements in the configuration file:
 
- :::info
- You can use the Sugar's `create-config` command to create a basic configuration file. The Candy Guard configuration needs to be added manually, further explained below.
- :::
+- `isSequential`: indicates to whether a sequential index generation should be used during mint or not (recommended to set this value to `false`);
+- `guards`: indicates the configuration for the Candy Guard. If this value is set to `null`, a Candy Guard will not be used and mint will only be possible using the `mint authority` of the Candy Machine.
+
+:::info
+You can use the Sugar's `create-config` command to create a basic configuration file. The Candy Guard configuration needs to be added manually, further explained below.
+:::
 
 ## Available Guards
 
@@ -71,42 +72,42 @@ The Candy Guard ships with a total of [16 default guards](../../../programs/cand
   "pinataConfig": null,
   "hiddenSettings": null,
   "guards": {
-      "default": {
-          "botTax": {
-              "value": 0.01,
-              "lastInstruction": true
-          }
-      },
-      "groups": [
-          {
-              "label": "OGs",
-              "guards": {
-                  "startDate": {
-                      "date": "2022-10-20 12:00:00 +0000"
-                  },
-                  "tokenGate": {
-                      "amount": 1,
-                      "mint": "7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf"
-                  },
-                  "solPayment": {
-                      "value": 1,
-                      "destination": "PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8"
-                  }
-              }
+    "default": {
+      "botTax": {
+        "value": 0.01,
+        "lastInstruction": true
+      }
+    },
+    "groups": [
+      {
+        "label": "OGs",
+        "guards": {
+          "startDate": {
+            "date": "2022-10-20 12:00:00 +0000"
           },
-          {
-              "label": "Public",
-              "guards": {
-                  "startDate": {
-                      "date": "2022-10-20 18:00:00 +0000"
-                  },
-                  "solPayment": {
-                      "value": 2,
-                      "destination": "PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8"
-                  }
-              }
+          "tokenGate": {
+            "amount": 1,
+            "mint": "7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf"
+          },
+          "solPayment": {
+            "value": 1,
+            "destination": "PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8"
           }
-      ]
+        }
+      },
+      {
+        "label": "Public",
+        "guards": {
+          "startDate": {
+            "date": "2022-10-20 18:00:00 +0000"
+          },
+          "solPayment": {
+            "value": 2,
+            "destination": "PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8"
+          }
+        }
+      }
+    ]
   }
 }
 ```
@@ -139,20 +140,20 @@ If we wanted to have a single "public" group, all the guard configuration can be
   "pinataConfig": null,
   "hiddenSettings": null,
   "guards": {
-      "default": {
-          "botTax": {
-              "value": 0.01,
-              "lastInstruction": true
-          },
-          "startDate": {
-              "date": "2022-10-20 18:00:00 +0000"
-          },
-          "solPayment": {
-              "value": 2,
-              "destination": "PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8"
-          }
+    "default": {
+      "botTax": {
+        "value": 0.01,
+        "lastInstruction": true
       },
-      "groups": null
+      "startDate": {
+        "date": "2022-10-20 18:00:00 +0000"
+      },
+      "solPayment": {
+        "value": 2,
+        "destination": "PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8"
+      }
+    },
+    "groups": null
   }
 }
 ```
@@ -171,7 +172,7 @@ The AddressGate guard restricts the mint to a single address — the address mus
 
 ### Allow List
 
-The AllowList guard validates the payer's address against a merkle tree-based allow list of addresses.
+The AllowList guard validates the payer's address against a merkle tree-based allow list of addresses. The hash should be specified as a hexadecimal value.
 
 ```json
 "allowList" : {
@@ -182,6 +183,7 @@ The AllowList guard validates the payer's address against a merkle tree-based al
 ### Bot Tax
 
 The BotTax guard is used to:
+
 - charge a penalty for invalid transactions. The value of the penalty is specified by the lamports configuration.
 - validate that the mint transaction is the last transaction (last_instruction = true).
 
@@ -240,7 +242,7 @@ The NFT Burn guard restricts the mint to holders of another NFT (token), requiri
 
 ### NFT Gate
 
-The NFT Gate guard restricts the mint to holders of a specified `required_collection` NFT collection. The payer is required to hold at least one NFT of the collection.
+The NFT Gate guard restricts the mint to holders of a specified `requiredCollection` NFT collection. The payer is required to hold at least one NFT of the collection.
 
 ```json
 "nftGate" : {
@@ -326,10 +328,10 @@ The Token Gate guard restricts the mint to holders of a specified SPL Token. The
 
 ### Token Payment
 
-The Token Payment guard restricts the mint to holders of a specified SPL Token, transferring the required amount to the `destination_ata` address. The amount determines how many tokens are required.
+The Token Payment guard restricts the mint to holders of a specified SPL Token, transferring the required amount to the `destinationAta` address. The amount determines how many tokens are required.
 
 ```json
-"tokenGate" : {
+"tokenPayment" : {
     "amount": number,
     "mint": "<PUBKEY>",
     "destinationAta": "<PUBKEY>"
@@ -345,7 +347,7 @@ The deployment of a Candy Machine V3 follows the same steps:
 3. `sugar deploy` to create and deploy a Candy Machine;
 4. `sugar verify` to verify that all information is on-chain.
 
-At this point, your Candy Machine is deployed and allows minting only from the `mint_authority`, which is the address that created the Candy Machine. The next step is to add a Candy Guard to the Candy Machine to specify the mint configuration (access control).
+At this point, your Candy Machine is deployed and allows minting only from the `mint authority`, which is the address that created the Candy Machine. The next step is to add a Candy Guard to the Candy Machine to specify the mint configuration (access control).
 
 There are 5 new commands in Sugar to create and interact with a Candy Guard:
 
@@ -388,7 +390,7 @@ The candy guard is now the mint authority of the candy machine.
 </p>
 </details>
 
-At this point, `sugar mint` will stop working since the `mint_authority` is now the Candy Guard.
+At this point, `sugar mint` will stop working since the `mint authority` is now the Candy Guard.
 
 ### `update`
 
@@ -437,9 +439,9 @@ sugar guard show
  :.. base: 7z6f7mq7qGjWu6dimqdAyYNhjG5iqGQ7DYnFV2ckpzoY
  :.. bump: 255
  :.. authority: PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8
- :.. data: 
-     :.. default: 
-     :   :.. bot tax: 
+ :.. data:
+     :.. default:
+     :   :.. bot tax:
      :   :   :.. lamports: 10000000 (◎ 0.01)
      :   :   :.. last instruction: true
      :   :.. sol payment: none
@@ -458,17 +460,17 @@ sugar guard show
      :   :.. nft burn: none
      :   :.. token burn: none
      :
-     :.. groups: 
+     :.. groups:
           :.. label: OGslic
           :   :.. bot tax: none
-          :   :.. sol payment: 
+          :   :.. sol payment:
           :   :   :.. lamports: 1 (◎ 0.000000001)
           :   :   :.. destination: PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8
           :   :.. token payment: none
-          :   :.. start date: 
+          :   :.. start date:
           :   :   :.. date: Thu October 20 2022 12:00:00 UTC
           :   :.. third party signer: none
-          :   :.. token gate: 
+          :   :.. token gate:
           :   :   :.. amount: 1000000000
           :   :   :.. mint: 7nE1GmnMmDKiycFkpHF7mKtxt356FQzVonZqBWsTWZNf
           :   :.. gatekeeper: none
@@ -484,11 +486,11 @@ sugar guard show
           :
           :.. label: Public
               :.. bot tax: none
-              :.. sol payment: 
+              :.. sol payment:
               :   :.. lamports: 2000000000 (◎ 2)
               :   :.. destination: PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8
               :.. token payment: none
-              :.. start date: 
+              :.. start date:
               :   :.. date: Thu October 20 2022 18:00:00 UTC
               :.. third party signer: none
               :.. token gate: none
@@ -531,7 +533,7 @@ The candy guard is no longer the mint authority of the candy machine.
 ✅ Command successful.
 ```
 
-At this point, the `mint_authority` is transferred back to the Candy Machine `authority`. The Candy Guard account remains on-chain and can be reused.
+At this point, the `mint authority` is transferred back to the Candy Machine `authority`. The Candy Guard account remains on-chain and can be reused.
 
 </p>
 </details>

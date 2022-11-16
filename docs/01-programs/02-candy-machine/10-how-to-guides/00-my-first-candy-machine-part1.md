@@ -7,7 +7,7 @@ import { AccordionCode } from '/src/accordion-code.jsx';
 
 # How to create a Candy Machine v3 - Part 1 (Sugar)
 
-The goal of this tutorial is to take you from zero to one: you will learn to install Sugar and use its basic commands to configure and deploy a candy machine to Solana's devnet. It will provide you with a foothold on the basics and enough knowledge that you can then use the rest of the developer resources to learn the more advanced details for using Sugar.
+The goal of this tutorial is to take you from zero to one: you will learn to install Sugar and use its basic commands to configure and deploy a candy machine to Solana's devnet. It will provide you with a foothold on the basics and enough knowledge that you can then use the rest of the developer resources to learn the more advanced details of Sugar.
 
 ## Prerequisite Knowledge
 
@@ -21,7 +21,7 @@ This tutorial targets macOS, Linux, and Windows Subsystem Linux (WSL), but all c
 
 ### Install the Solana CLI Tool Suite
 
-The [Solana CLI Tool Suite](https://docs.solana.com/cli/install-solana-cli-tools) is useful to have for Solana development, and we will use the config file to store our keypair file path and RPC node url to simplify the Sugar commands we run, by eliding those options.
+The [Solana CLI Tool Suite](https://docs.solana.com/cli/install-solana-cli-tools) is useful to have for Solana development, and we will use the config file to store our keypair file path and RPC node URL to simplify the Sugar commands we run, by eliding those options.
 
 To install, **follow [this guide](../../../guides/cli-wallet#setting-up-a-devnet-wallet-for-testing) to install the Solana Tool Suite** and set up a devnet wallet.
 
@@ -31,9 +31,9 @@ Once finished, come back here to resume the tutorial.
 
 There are some manual steps involved currently. This should change as soon as sugar leaves the alpha stage. You will then again be able to follow the easy steps on the [installation page](/developer-tools/sugar/overview/installation).
 
-Installing Sugar for Candy Machine v3 is currently a bit more complicated because of it's alpha status. There will be an easier installation procedure soon as soon as Sugar for CM v3 leaves the alpha status.
+Installing Sugar for Candy Machine v3 is currently a bit more complicated because of its alpha status. There will be an easier installation procedure soon as soon as Sugar for CM v3 leaves the alpha status.
 
-For now you can download the binary from the [github releases](https://github.com/metaplex-foundation/sugar/releases) page. Navigate through the latest release prefixed with `sugar-cmv3-`, open the assets and download the binary appropriate for your system. E.g. for ubuntu download `sugar-ubuntu-latest`.
+For now, you can download the binary from the [github releases](https://github.com/metaplex-foundation/sugar/releases) page. Navigate through the latest release prefixed with `sugar-cmv3-`, open the assets and download the binary appropriate for your system. E.g. for ubuntu download `sugar-ubuntu-latest`.
 
 Optional: You can add the binary to your PATH so that you do not have to reference the whole path all the time. How to do this differs from OS to OS though. You can find a guide for different operating systems [here](https://zwbetz.com/how-to-add-a-binary-to-your-path-on-macos-linux-windows/).
 
@@ -86,9 +86,9 @@ SUBCOMMANDS:
 
 ## Set Up Your Project
 
-Next we are going to set up a simple project directory with some example assets which you can download from [here](https://arweave.net/RhNCVZoqC6iO0xEL0DnsqZGPSG_CK_KeiU4vluOeIoI). Extract the zip file and rename the folder to 'assets'.
+Next, we are going to set up a simple project directory with some example assets which you can download from [here](https://arweave.net/RhNCVZoqC6iO0xEL0DnsqZGPSG_CK_KeiU4vluOeIoI). Extract the zip file and rename the folder to 'assets'.
 
-Create a folder for your project somewhere convenient on your OS. For this tutorial we are creating a folder called MyProject on the Desktop. Next, copy the "assets" folder you downloaded into this folder so your project directory looks like the following:
+Create a folder for your project somewhere convenient on your OS. For this tutorial, we are creating a folder called MyProject on the Desktop. Next, copy the "assets" folder you downloaded into this folder so your project directory looks like the following:
 
 ```
 MyProject/
@@ -104,7 +104,7 @@ We will run all our Sugar commands from within the project directory and Sugar w
 
 ## Create a Config File
 
-The config file tells Sugar how to configure your candy machine with values such as number of assets, what creators to use, what settings to apply, etc. To create a config file we are going to use the Sugar `create-config` interactive command.
+The config file tells Sugar how to configure your candy machine with values such as the number of assets, what creators to use, what settings to apply, etc. To create a config file we are going to use the Sugar `create-config` interactive command.
 
 Run the following command in your terminal from within your project directory:
 
@@ -137,13 +137,13 @@ The seller fee basis points is the amount of royalty we want to charge on second
 ? Do you want to use a sequential mint index generation? We recommend you choose no. (y/n) 
 ```
 
-Candy Machine V3 supports sequential and "random" mint indexes. In most cases you will want to choose `n` here so that the random mint index makes it harder for botters to snipe specific NFTs.
+Candy Machine V3 supports sequential and "random" mint indexes. In most cases, you will want to choose `n` here so that the random mint index makes it harder for botters to snipe specific NFTs.
 
 ```
 ? How many creator wallets do you have? (max limit of 4) ›
 ```
 
-Here we enter the number of creators who are part of this project and who we want to receive royalties from secondary sales. For this tutorial we will use one creator so input "1" and press enter.
+Here we enter the number of creators who are part of this project and who we want to receive royalties from secondary sales. For this tutorial, we will use one creator so input "1" and press enter.
 
 ```
 ? Enter creator wallet address #1 ›
@@ -162,7 +162,7 @@ We only have a single creator, so we put in `100` here.
 ✔ Hidden Settings
 ```
 
-This step allows us to configure advanced settings for our candy machine. It is a relict of Candy Machine v2 and the flow will probably be changed in the future. We are not using hiddensettingsin this tutorial, so we simply press [Enter] to continue on.
+This step allows us to configure advanced settings for our candy machine. It is a relict of Candy Machine v2 and the flow will probably be changed in the future. We are not using hidden settings in this tutorial, so we simply press [Enter] to continue.
 
 ```
 ? What upload method do you want to use? ›
@@ -181,7 +181,7 @@ Use the [SPACEBAR] to select the Bundlr option.
 ? Do you want your NFTs to remain mutable? We HIGHLY recommend you choose yes. (y/n) ›
 ```
 
-Similarly, we recommend leaving your NFTs as mutable so you, the update authority, can fix any issues post-mint. You can always set your NFTs to be immutable later using a third-party tool such as [Metaboss](https://metaboss.rs), but this is a one way street: once set immutable, you can never make them mutable again. Input `y` to select yes and leave your NFTs mutable.
+Similarly, we recommend leaving your NFTs as mutable so you, the update authority, can fix any issues post-mint. You can always set your NFTs to be immutable later using a third-party tool such as [Metaboss](https://metaboss.rs), but this is a one-way street: once set immutable, you can never make them mutable again. Input `y` to select yes and leave your NFTs mutable.
 
 If all steps were followed correctly you should now see:
 
@@ -226,7 +226,7 @@ You could now open up the generated file, config.json, in your favorite text or 
 </AccordionCode>
 </Accordion>
 
-Your values will be different depending on and what you input for various settings. Later in this guide we'll need the file again to manually add the guards.
+Your values will likely be different depending on the input you provided. Later in this guide, we'll need the file again to manually add the guards.
 
 If you used Sugar with Candy Machine V2 before you might be missing some questions and values like start date or price. Don't worry, Candy Machine V3 has even more features and possibilities than V2, but those will be set later in this guide.
 
@@ -240,7 +240,7 @@ This URL can point to any JSON file anywhere. It can be a decentralized file sto
 
 Sugar currently supports four upload methods: Arweave via Bundlr, IPFS via NFT Storage or Pinata, Shadow Drive and AWS.
 
-In our previous step we selected `Bundlr` as our upload method, and we saw this in the config file when we viewed it. Now, all we have to do is run the following command:
+In our previous step, we selected `Bundlr` as our upload method, and we saw this in the config file when we viewed it. Now, all we have to do is run the following command:
 
 <Accordion>
 <AccordionCode title="Command" open={true}>
@@ -285,13 +285,13 @@ Sending data: (Ctrl+C to abort)
 </AccordionCode>
 </Accordion>
 
-Sugar commands are designed to be robust and commands such as `upload` and `deploy` will pick up where they left off when you run them again. You may occasionally get an error such as:
+Sugar commands are designed to be robust and, therefore, commands such as `upload` and `deploy` will pick up where they left off when you run them again. You may occasionally get an error such as:
 
 ```
 🛑 Error running command (re-run needed): Blockhash not found
 ```
 
-In such cases it's safe to rerun the command until it succeeds.
+In such cases, it's safe to rerun the command until it succeeds.
 
 **Caution!** Some upload methods such as Bundlr, do cost funds to upload and store the data. If you successfully upload your data and then run it again, it will charge you again. If you do this repeatedly with a large amount of data it can cost you a significant amount of SOL. Once you have successfully uploaded your data you should not have to do it again, as the cache file will store all the links to the data. Ask on the Metaplex Discord if you run into any unexpected issues.
 
@@ -395,7 +395,7 @@ When uploading is finished, sugar will have created a `cache.json` file in our p
 </AccordionCode>
 </Accordion>
 
-Each asset from our `assets` directory has been uploaded to Arweave and a link to it stored in the cache file. You can open one of these links in the browser to see what this looks like. Within the data in the metadata link, there is another link to the image. Both of these links are stored for each item in the cache file.
+Each asset from our `assets` directory has been uploaded to Arweave and its URI has been stored in the cache file. You can open one of these links in the browser to see what this looks like. Within the data in the metadata link, there is another link to the image. Both of these links are stored for each item in the cache file.
 
 If you look at the candy machine values at the top, you'll see they are empty because we have not actually created a candy machine yet. We will do that next.
 
@@ -462,7 +462,7 @@ See your candy machine at:
 
 Our candy machine is now successfully deployed!
 
-## Mint a NFT
+## Mint an NFT
 
 Finally, to round off this tutorial we will mint an NFT from our candy machine to ensure it works as expected. Run the following command to mint one NFT to your wallet address.
 
@@ -496,9 +496,9 @@ Minting to PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8
 Now you can open your wallet in an explorer like [Solana Explorer](https://explorer.solana.com/?cluster=devnet) and view the NFT you just minted by clicking on the "Tokens" tab.
 
 ## Candy Guards - further configuration
-You might be wondering where you can set configuration like price or start date. This is where with Candy Machine V3 the Candy Guards comes into place. There is a whole lot of different settings through the default [Guards](/programs/candy-machine/candy-guards) Program. In the next steps we will just use a few of them to give you a better understanding what they do. In fact we will use some of the easier but often requested or used features: Mint Limit per Wallet, start time and payment with SOL. 
+You might be wondering where you can set configurations like price or start date. This is where, in Candy Machine V3, guards come into place. There are a whole lot of different settings available via the default [Candy Guard](/programs/candy-machine/candy-guards) Program. In the next steps, we will just use a few of them to give you a better understanding of what they do. We will use some of the easier but popular features: Mint limit per wallet, start time and payment with SOL. 
 
-In the current Alpha version you will have to modify the config file manually and add the guard configuration in the `guard` field. Here is an example how it can look like:
+In the current Alpha version, you will have to modify the config file manually and add the guard configuration in the `guard` field. Here is an example of what it may look like:
 
 <Accordion>
 <AccordionCode title="config.json Example"  open={true}>
@@ -550,7 +550,7 @@ We added a default guard with the following settings:
 
 You can add multiple different guards e.g. to create multiple phases for OGs, WL and public mint. You can find more information about the possibilities on the [Guards](/programs/candy-machine/candy-guards) pages.
 
-After modifying and saving the manually modified config file we deploy the guard and set it as the guard of our candy machine. Afterwards it will only be possible to mint through that guard if all the restrictions are matched. You'll have to use the following command for it:
+After modifying and saving the manually modified config file we deploy the guard and set it as the guard of our candy machine. Afterwards, it will only be possible to mint through that guard if all the restrictions are matched. You'll have to use the following command for it:
 
 <Accordion>
 <AccordionCode title="Command"  open={true}>
@@ -609,7 +609,7 @@ Signature: 43oDgKfXeFx3erZbNihJ1a5KxcUPdDLcoB2SW6ZytaxjBhE1M6quSWUyj3kdG64h4aXTZ
 </AccordionCode>
 </Accordion>
 
-To see the current settings like if you want to change the start date you can run:
+Finally, to see the current guard settings, you may run to following command:
 
 <Accordion>
 <AccordionCode title="Command"  open={true}>
@@ -622,12 +622,38 @@ sugar guard show
 <AccordionCode title="Output">
 
 ```bash
-[1/2] 🔍 Loading candy guard
+[1/1] 🔍 Loading candy guard
 ▪▪▪▪▪ Done
-Candy guard ID: 7XJdGaywrtcEpohrcZ7kYeMjEHNFVq1XjVpBQ6Doi7TP
 
-[2/2] 🖥  Updating configuration
-Signature: 5nQ1dasS3QAQJH7fBwFXd2VgyRirfYmnZ8XKgsfvWubX4hJ6jzY4dzqEVpXpULgw1PsC5eyJriSMCnVXxw2Mckae
+🛡  Candy Guard ID: 7XJdGaywrtcEpohrcZ7kYeMjEHNFVq1XjVpBQ6Doi7TP
+ :
+ :.. base: FpurUgufcEdfu1SgPtXVQYh5Z5y47LxfKBt8SPamRThi
+ :.. bump: 255
+ :.. authority: Tes1zkZkXhgTaMFqVgbgvMsVkRJpq4Y6g54SbDBeKVV
+ :.. data: 
+     :.. default: 
+     :   :.. bot tax: none
+     :   :.. sol payment: 
+     :   :   :.. lamports: 500000000 (◎ 0.5)
+     :   :   :.. destination: Tes1zkZkXhgTaMFqVgbgvMsVkRJpq4Y6g54SbDBeKVV
+     :   :.. token payment: none
+     :   :.. start date: 
+     :   :   :.. date: Sun November 20 2022 20:00:00 UTC
+     :   :.. third party signer: none
+     :   :.. token gate: none
+     :   :.. gatekeeper: none
+     :   :.. end date: none
+     :   :.. allow list: none
+     :   :.. mint limit: 
+     :   :   :.. id: 1
+     :   :   :.. amount: 3
+     :   :.. nft payment: none
+     :   :.. redeemed amount: none
+     :   :.. address gate: none
+     :   :.. nft gate: none
+     :   :.. nft burn: none
+     :   :.. token burn: none
+     :.. groups: none
 
 ✅ Command successful.
 ```
@@ -637,7 +663,7 @@ Signature: 5nQ1dasS3QAQJH7fBwFXd2VgyRirfYmnZ8XKgsfvWubX4hJ6jzY4dzqEVpXpULgw1PsC5
 
 ## Allow users to mint
 
-Your users will not want to use a CLI like Sugar to mint but for example a Website instead. For Candy Machine v3 there is not a prebuilt frontend yet. You can use the Metaplex JS SDK to build a mint site though. Further information can be found in [Part 2](./my-first-candy-machine-part2) of this guide!. 
+Your users will not want to use a CLI like Sugar to mint but for example a Website instead. For Candy Machine v3 there is not a prebuilt frontend yet. You can use the Metaplex JS SDK to build a mint site though. Further information can be found in [Part 2](./my-first-candy-machine-part2) of this guide! 
 
 Congratulations! You have successfully configured, created, and deployed your first candy machine!
 
