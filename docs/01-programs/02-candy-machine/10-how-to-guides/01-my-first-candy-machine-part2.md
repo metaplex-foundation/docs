@@ -27,7 +27,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
 ```
 Then set it to use the current version:
 ```
-nvm install --lts
+nvm install 16.14
 ```
 
 </AccordionItem>
@@ -43,25 +43,119 @@ winget install CoreyButler.NVMforWindows
 3. Restart PowerShell as Administrator
 4. run:
 ```
-nvm install lts
+nvm install 16.14
 ```
 
 </AccordionItem>
 </Accordion>
 
 ## Clone connect-wallet example
-As a base, we will be using the metaplex-foundation/js-examples repository which contains multiple examples of how to use the JS SDK. Since we want to interact with a users Wallet we will use the `connect-wallet` example:
+As a base, we will be using the [metaplex-foundation/js-examples repository](https://github.com/metaplex-foundation/js-examples) which contains multiple examples of how to use the JS SDK. Since we want to interact with a user's Wallet we will use the `connect-wallet` example as a basis and will have the `candy-machine-mint` as result.
 
 1. clone https://github.com/metaplex-foundation/js-examples
 2. `cd connect-wallet` run `npm install`
-3. `npm run dev` to test if everything is set up correctly
+3. `npm run dev` to test if everything is set up correctly. You should see a blank page with a blue connect button. Try to connect your wallet.
+4. To make your website more flexible we add a `.env` file in the `candy-machine-mint` folder which contains a single line. Make sure to replace `<Candy Machine ID>` with your actual Candy Machine ID: 
+
+```
+NEXT_PUBLIC_CANDY_MACHINE_ID=<Candy Machine ID>
+```
+
+You should now have a website where you can connect your wallet, enter a NFT address and see its image. That's a great starting point.
 
 ## Add mint function
+Now let's modify the website so that it can be used for minting.
 
-*Coming soon…*
+### Create a new React Element for minting
 
-This page is not ready yet but we’re working hard on documenting it. Check back a bit later.
+To be more flexible we will create a new react Element which will contain our minting section. 
 
-In the meantime, you can learn more about Candy Machine V3 minting via the [minting documentation](../minting)
+1. Copy the `ShowNFTs.js` page and rename the copy to `MintNFTs.js`
+2. In `MintNFTs.js` rename the `ShowNFTs` constant to `MintNFTs`
+3. In `index.js` add `<MintNFTs onClusterChange={handleChange} />` below the `ShowNFTs` Element
 
-Thank you!
+When starting the website and connecting the wallet now you should see the same element twice. Now let's go ahead and add the candy machine.
+
+### Read the candy machine state
+Let's find your candy machine so that we can use it for minting! Everything that's described in this section has to be done in `MintNFTs.js`.
+
+1. Add the following line into the `MintNFTs` function. This will read the `.env` file and load your candy machines address:
+
+```js
+const candyMachineAddress = new PublicKey(process.env.NEXT_PUBLIC_CANDY_MACHINE_ID);
+```
+
+2. Below this line let's add a `refreshStatus` function. This will be used to get the Candy Machines state. E.g. if there are mints available:
+
+<Accordion>
+<AccordionItem title="Details" open={true}>
+<div className="accordion-item-padding">
+
+At first, we'll add some variables that we will need later.`disableMint` is the most important one since this one will tell the mint button at the end if it should allow the user to try to mint. By default the mint button is deactivated.
+
+```js
+  const [disableMint, setDisableMint] = useState(true);
+  let candyMachine;
+  let collectionNft;
+  let collectionUpdateAuthority;
+  let walletBalance;
+```
+Then we'll add the actual `refreshStatus` function which for now only reads the candy machine data from the chain using the `metaplex.candyMachines().findByAddress()` function.
+
+To mint we will also need to know the update authority of the on chain collection which we will also read in this function:
+
+```js
+  const refreshStatus = async () => {
+    candyMachine = await metaplex
+      .candyMachines()
+      .findByAddress({ address: candyMachineAddress });
+
+    collectionNft = await metaplex
+      .nfts()
+      .findByMint({ mintAddress: candyMachine.collectionMintAddress });
+    collectionUpdateAuthority = collectionNft.updateAuthorityAddress;
+  };
+```
+Before triggering the refresh function we have to make sure that a wallet is connected. Otherwise the connection would fail and our user would see an error message. We can see the connection status in `wallet.connected`, therefore our function call wrapper looks like this:
+```js
+  if (!wallet.connected) {
+    return null;
+  } else {
+    refreshStatus();
+  }
+```
+
+</div>
+</AccordionItem>
+</Accordion>
+
+3. Now that we have our Candy Machine we should add the mint button. Since we used the `ShowNFTs` as Basis we can modify part of its code and replace the show with our mint Button:
+
+<Accordion>
+<AccordionItem title="Details" open={true}>
+<div className="accordion-item-padding">
+1. Replace the onClick function. Instead of showing a random NFT from our wallet, we will run  `metaplex.candyMachines().mint()`
+
+```js
+  const onClick = async () => {
+    const { nft } = await metaplex.candyMachines().mint({
+      candyMachine,
+      collectionUpdateAuthority,
+    });
+
+    setNft(nft);
+  };
+
+2. You might have seen the `setMintedNft(nft);` line at the end. This one is handing over the freshly minted NFT data to our website and will show the image to the user.
+```
+</div>
+</AccordionItem>
+</Accordion>
+
+Technically you can now already start up your website and mint since in Part 1 of this guide we only added Candy Guards which do not require special handling. But wait and please read the next section, too, so that your users do not waste their money.
+
+## Add sanity checks
+To improve the user experience we should 
+1. deactivate the mint button
+2. verify that your user will be able to mint
+3. Allow them to mint!
