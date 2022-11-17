@@ -79,7 +79,7 @@ The Freeze Escrow PDA account will keep track of several parameters such as:
 
 When initializing this Freeze Escrow account, we must provide the following arguments to the route instruction of the guard:
 - **Path** = `initialize`: Selects the path to execute in the route instruction.
-- **Period**: The amount of time in seconds that the Freeze Period should last. This can be a maximum of 30 days (2,592,000 seconds) and it will start from the very first Frozen NFT minted via this guard. The Freeze Period provide a safety mechanism to ensure Frozen NFTs can eventually be thawed even if the Candy Machine never mints out.
+- **Period**: The amount of time in seconds that the Freeze Period should last. This can be a maximum of 30 days (2,592,000 seconds) and it will start from the very first Frozen NFT minted via this guard. The Freeze Period provides a safety mechanism to ensure Frozen NFTs can eventually be thawed even if the Candy Machine never mints out.
 - **Candy Guard Authority**: The authority of the Candy Guard account as a Signer.
 
 ![CandyMachinesV3-GuardsFreezeSolPayment1.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsFreezeSolPayment1.png#radius)
@@ -92,7 +92,7 @@ Last but not least, the Freeze Escrow PDA account will receive the funds of all 
 <AccordionItem title="JS SDK" open={true}>
 <div className="accordion-item-padding">
 
-In the example below, we initialize the Freeze Escrow account with a maximum Freeze Period of 15 day and we use the current identity as the Candy Guard authority.
+In the example below, we initialize the Freeze Escrow account with a maximum Freeze Period of 15 days and we use the current identity as the Candy Guard authority.
 
 ```tsx
 await metaplex.candyMachines().callGuardRoute({
@@ -193,11 +193,11 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 ## Stop Freezing NFTs
 
-It is possible to stop the freezing of NFTs withing a Freeze Sol Payment guard. In other words, new minted NFTs will no longer be frozen but **existing Frozen NFTs will remain frozen**.
+It is possible to stop the freezing of NFTs within a Freeze Sol Payment guard. In other words, new-minted NFTs will no longer be frozen but **existing Frozen NFTs will remain frozen**.
 
 There are several ways of achieving this, which can be separated into two categories:
 - ☀️ **Can Thaw**: Existing Frozen NFTs can be thawed by anyone using the `thaw` path of the route instruction.
-- ❄️ **Cannot Thaw**: Existing Frozen NFTs cannot be thawed yet and we have to wait for one "Can Thaw" conditions to be met.
+- ❄️ **Cannot Thaw**: Existing Frozen NFTs cannot be thawed yet and we have to wait for one "Can Thaw" condition to be met.
 
 With that in mind, here is the exhaustive list of ways to stop freezing NFTs and whether or not each of them allows thawing existing Frozen NFTs:
 - The Candy Machine has minted out → ☀️ **Can Thaw**.
@@ -216,8 +216,8 @@ Therefore, they will also share the same Freeze Period and all funds will be col
 
 It is also possible to use multiple Freeze Sol Payment guards with different Destination addresses. In this case, each Freeze Sol Payment guard will have its own Freeze Escrow account and its own Freeze Period.
 
-The example below illustrate a Candy Machine with three Freeze Sol Payment guards in three groups such that:
-- Group 1 and 2 share the same Destination address and therefore the same Freeze Escrow account.
+The example below illustrates a Candy Machine with three Freeze Sol Payment guards in three groups such that:
+- Groups 1 and 2 share the same Destination address and therefore the same Freeze Escrow account.
 - Group 3 has its own Destination address and therefore its own Freeze Escrow account.
 
 ![CandyMachinesV3-GuardsFreezeSolPayment5.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsFreezeSolPayment5.png#radius)
