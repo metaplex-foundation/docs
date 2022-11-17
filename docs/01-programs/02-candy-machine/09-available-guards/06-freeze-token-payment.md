@@ -1,5 +1,5 @@
 ---
-description: "TODO"
+description: "Set the price of the mint in token amount with a freeze period."
 ---
 
 import { Accordion, AccordionItem } from '/src/accordion.jsx';
@@ -10,7 +10,7 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 The **Freeze Token Payment** guard TODO
 
-![CandyMachinesV3-GuardsFreezeTokenPayment.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsFreezeTokenPayment.png#radius)
+![CandyMachinesV3-GuardsFreezeTokenPayment2.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsFreezeTokenPayment2.png#radius)
 
 ## Guard Settings
 
@@ -52,5 +52,9 @@ _The Freeze Token Payment guard does not need Mint Settings._
 However, if you’re planning on constructing instructions without the help of our SDKs, you will need to add the configured destination address to the remaining accounts of the mint instruction. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-guard#freezetokenpayment) for more details.
 
 ## Route Instruction
+
+TODO
+
+## Freeze Escrows and Guard Groups
 
 TODO
