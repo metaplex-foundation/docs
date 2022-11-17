@@ -8,7 +8,7 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 ## Overview
 
-The **Freeze Token Payment** guard allows minting frozen NFTs by charging the payer a specific amount of tokens from a certain mint acount. Frozen NFTs cannot be transferred or listed on any marketplaces until thawed.
+The **Freeze Token Payment** guard allows minting frozen NFTs by charging the payer a specific amount of tokens from a certain mint account. Frozen NFTs cannot be transferred or listed on any marketplaces until thawed.
 
 Frozen NFTs can be thawed by anyone as long as one of the following conditions is met:
 - The Candy Machine has minted out.
