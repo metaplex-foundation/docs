@@ -19,7 +19,7 @@ The funds are transferred to a "Freeze Escrow" account which must be initialized
 
 You may initialize the Freeze Escrow account, thaw NFTs and unlock funds [via the route instruction](#route-instruction) of this guard.
 
-![CandyMachinesV3-GuardsFreezeSolPayment2.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsFreezeSolPayment2.png#radius)
+![CandyMachinesV3-GuardsFreezeOverview.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsFreezeOverview.png#radius)
 
 ## Guard Settings
 
