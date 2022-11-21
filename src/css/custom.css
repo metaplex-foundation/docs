@@ -215,6 +215,10 @@ html[data-theme="dark"] .accordion {
   background-color: var(--accordion-background-color) !important;
 }
 
+.accordion-item-content > .accordion-item-no-padding .theme-code-block {
+  box-shadow: none !important;
+}
+
 .accordion-item-padding {
   padding: 0;
   margin: 1rem;
@@ -375,6 +379,34 @@ a.program-instruction-account-icon + a.program-instruction-account-icon {
   margin: auto;
 }
 
-.theme-edit-this-page {
-  float: right;
+@media screen and (min-width: 996px) {
+  .theme-last-updated {
+    float: right;
+  }
+}
+
+@media screen and (max-width: 996px) {
+  .theme-doc-footer-edit-meta-row > .col {
+    text-align: center;
+  }
+
+  .feedbackWidget {
+    margin-top: calc(2 * var(--ifm-spacing-vertical));
+  }
+}
+
+.theme-last-updated {
+  font-size: smaller;
+  font-style: italic;
+}
+
+/* Stop jumping after HappyReact loaded */
+.feedbackWidget div {
+  height: 50px;
+  font-size: 0px;
+}
+
+/* sometimes HappyReact is rendered twice. This hides it */
+.hr-container:nth-of-type(2) {
+  display: none;
 }
