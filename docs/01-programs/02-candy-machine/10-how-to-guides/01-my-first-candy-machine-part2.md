@@ -91,29 +91,19 @@ const candyMachineAddress = new PublicKey(process.env.NEXT_PUBLIC_CANDY_MACHINE_
 <AccordionItem title="Details" open={true}>
 <div className="accordion-item-padding">
 
-At first, we'll add some variables that we will need later.`disableMint` is the most important one since this one will tell the mint button at the end if it should allow the user to try to mint. By default the mint button is deactivated.
+At first, we'll add some variables that we will need later.
 
 ```js
-  const [disableMint, setDisableMint] = useState(true);
   let candyMachine;
-  let collectionNft;
-  let collectionUpdateAuthority;
   let walletBalance;
 ```
 Then we'll add the actual `refreshStatus` function which for now only reads the candy machine data from the chain using the `metaplex.candyMachines().findByAddress()` function.
-
-To mint we will also need to know the update authority of the on chain collection which we will also read in this function:
 
 ```js
   const refreshStatus = async () => {
     candyMachine = await metaplex
       .candyMachines()
       .findByAddress({ address: candyMachineAddress });
-
-    collectionNft = await metaplex
-      .nfts()
-      .findByMint({ mintAddress: candyMachine.collectionMintAddress });
-    collectionUpdateAuthority = collectionNft.updateAuthorityAddress;
   };
 ```
 Before triggering the refresh function we have to make sure that a wallet is connected. Otherwise the connection would fail and our user would see an error message. We can see the connection status in `wallet.connected`, therefore our function call wrapper looks like this:
@@ -129,12 +119,14 @@ Before triggering the refresh function we have to make sure that a wallet is con
 </AccordionItem>
 </Accordion>
 
-3. Now that we have our Candy Machine we should add the mint button. Since we used the `ShowNFTs` as Basis we can modify part of its code and replace the show with our mint Button:
+3. Now that we have our Candy Machine we should add the mint button. Since we used the `ShowNFTs` as a Basis we can modify part of its code and replace the show with our mint Button:
 
 <Accordion>
 <AccordionItem title="Details" open={true}>
 <div className="accordion-item-padding">
-1. Replace the onClick function. Instead of showing a random NFT from our wallet, we will run  `metaplex.candyMachines().mint()`
+
+1. Replace the onClick function. Instead of showing a random NFT from our wallet, we will run  `metaplex.candyMachines().mint()` - be aware that depending on the guards that you are using you will have to pass a `settings` array. You can find more information on how to build that mint function on the [minting page](../minting#minting-with-guards) and the [respective guard page](../available-guards).
+
 
 ```js
   const onClick = async () => {
@@ -158,4 +150,43 @@ Technically you can now already start up your website and mint since in Part 1 o
 To improve the user experience we should 
 1. deactivate the mint button
 2. verify that your user will be able to mint
-3. Allow them to mint!
+3. activate the mint button to allow them to mint!
+
+The Details of how those sanity checks can and should look like vary depending on which guards you are using. One check should always be done: If there are NFTs available. In the following example, we additionally descrive how to do such checks for the guards that were added in Part 1: `MintLimit`, `SolPayment` and `StartDate`.
+
+<Accordion>
+<AccordionItem title="Details" open={true}>
+<div className="accordion-item-padding">
+
+1. add a new state constant `disableMint` into the `MintNFTs` function and add it as `disabled={disableMint}` to the button to disable the button by default.
+
+```js
+  const [disableMint, setDisableMint] = useState(true);
+
+  ...
+
+  <button onClick={onClick} disabled={disableMint}>
+    mint NFT
+  </button>
+
+```
+
+2. In the `refreshStatus` function after finding the candy machine data with `metaplex.candyMachines().findByAddress` we can read the `itemsMinted` and `itemsAvailable` overall. If we compare those we can see if there are items available and if not disable the mint with `setDisableMint(true)`.
+
+```js
+    //enough items available?
+    if (
+      candyMachine.itemsMinted.toString(10) -
+        candyMachine.itemsAvailable.toString(10) >
+      0
+    ) {
+      console.error("not enough items available");
+      setDisableMint(true);
+      return;
+    }
+```
+
+3. Guard specific checks: We'll also add some checks for the 
+</div>
+</AccordionItem>
+</Accordion>
