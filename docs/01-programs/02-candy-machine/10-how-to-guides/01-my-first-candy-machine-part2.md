@@ -186,7 +186,8 @@ The Details of how those sanity checks can and should look like vary depending o
     }
 ```
 
-3. Guard specific checks: We'll also add some checks for the 
+3. Guard specific checks: We'll also add some checks to see if one of the guards forbids the user to mint. In this Guide it is explained how to do it for the three Guards `MintLimit`, `SolPayment` and `StartDate`, the example on GitHub contains info for all the guards.
+
 </div>
 </AccordionItem>
 </Accordion>
