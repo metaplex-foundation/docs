@@ -19,13 +19,13 @@ Let us start with listing an asset on an Auction House.
 
 ## Listing assets
 
-We went through the process of listing an asset in the [Overview page](#TODO). This action is also referred to as creating a **Sell Order**. When a sell order is created using Auction House, the asset being listed remains in the wallet of the seller. This is a very important feature of Auction House as it allows users to list assets in an escrow-less fashion and thus users still maintain custody of assets while the assets are listed.
+We went through the process of listing an asset in the [Overview page](/programs/auction-house/overview). This action is also referred to as creating a **Sell Order**. When a sell order is created using Auction House, the asset being listed remains in the wallet of the seller. This is a very important feature of Auction House as it allows users to list assets in an escrow-less fashion and thus users still maintain custody of assets while the assets are listed.
 
 The asset seller can create two types of listings depending on the price at which they list the asset:
 
 1. **Listing at price greater than 0**: when a user lists an asset at a price which is greater than 0 SOL (or any other SPL-token). In this case, the seller's wallet needs to be the signer and thus this wallet should be 
 
-2. **Listing at price of 0**: when a user lists an asset for 0 SOL (or any other SPL-token). In this case, the authority can sign on behalf of the seller if `canChangeSalePrice` option is set to `true` which was discussed in the [Auction House settings page](#TODO). When this happens, the Auction House finds a non-0 matching bid on behalf of the seller. The asset can only be listed and sold for a price of 0 if the seller acts as the signer. There must be one and only one signer; authority or seller must sign.
+2. **Listing at price of 0**: when a user lists an asset for 0 SOL (or any other SPL-token). In this case, the authority can sign on behalf of the seller if `canChangeSalePrice` option is set to `true` which was discussed in the [Auction House settings page](/programs/auction-house/getting-started). When this happens, the Auction House finds a non-0 matching bid on behalf of the seller. The asset can only be listed and sold for a price of 0 if the seller acts as the signer. There must be one and only one signer; authority or seller must sign.
 
 Depending on the type of token being listed, the number of tokens to be listed can also be specified when creating a sell order:
 
@@ -260,4 +260,4 @@ const cancelListingResponse = await metaplex
 
 In this page we covered all the components to manage trading of assets on a marketplace. 
 
-One key point which we haven't discussed is the buyer escrow account, which is needed to escrow, or temporarily hold buyer's funds when the buyer makes a bid on an asset. How are these funds managed in this account and who is responsible for keeping track of these funds? Let's find out in the [next page](#TODO).
+One key point which we haven't discussed is the buyer escrow account, which is needed to escrow, or temporarily hold buyer's funds when the buyer makes a bid on an asset. How are these funds managed in this account and who is responsible for keeping track of these funds? Let's find out in the [next page](/programs/auction-house/managing-auction-house).

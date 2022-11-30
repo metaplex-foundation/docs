@@ -66,4 +66,4 @@ await metaplex
 
 ## Conclusion
 
-Now that we know how to print receipts for easy transaction tracking, how do we actually fetch details regarding these actions in practice? Let us explore ways to find bids, listings and sales for an Auction House in the [next page](#TODO).
+Now that we know how to print receipts for easy transaction tracking, how do we actually fetch details regarding these actions in practice? Let us explore ways to find bids, listings and sales for an Auction House in the [next page](/programs/auction-house/finding-bids-listings-and-sales).

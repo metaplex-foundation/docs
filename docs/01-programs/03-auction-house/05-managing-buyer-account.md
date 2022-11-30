@@ -109,4 +109,4 @@ const withdrawResponse = await metaplex
 
 Now that we have also discussed how to manage the funds in the buyer escrow account, we are very close to be able to fully launch and control our own marketplace.
 
-One important piece of information currently missing: how does a marketplace keep track of the listings, bids and sales? The Auction House program has something in the store for doing this, namely [Receipts](#TODO).
+One important piece of information currently missing: how does a marketplace keep track of the listings, bids and sales? The Auction House program has something in the store for doing this, namely [Receipts](/programs/auction-house/auction-house-receipts).

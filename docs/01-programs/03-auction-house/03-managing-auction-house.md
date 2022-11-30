@@ -8,7 +8,7 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 ## Introduction
 
-[On the previous page](#TODO), we went through the various settings of an Auction House. So now, let’s see how we can use these settings to create and update Auction Houses. 
+[On the previous page](/programs/auction-house/auction-house-settings), we went through the various settings of an Auction House. So now, let’s see how we can use these settings to create and update Auction Houses. 
 
 We'll also talk about different ways of fetching Auction House. Lastly, we'll go see how to withdraw funds from the Auction House fee and treasury accounts.
 
@@ -195,4 +195,4 @@ await metaplex
 
 ## Conclusion
 
-At this point we've gone over the Auction House settings, the data an Auction House instance stores and how to create and update this data. However, we still don't know how assets are traded on Auction Houses. We'll talk about this in the [next page](#TODO).
+At this point we've gone over the Auction House settings, the data an Auction House instance stores and how to create and update this data. However, we still don't know how assets are traded on Auction Houses. We'll talk about this in the [next page](/programs/auction-house/trading-assets-on-auction-house).

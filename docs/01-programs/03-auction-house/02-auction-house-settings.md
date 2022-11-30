@@ -169,7 +169,7 @@ const auctionHouseSettings = {
 
 The `Auctioneer` account is a PDA which uses the composability pattern of the Auction House program to control an Auction House Instance.
 
-The Auctioneer has the ability to be given the control, or Delegation over an Auction House instance using the `DelegateAuctioneer` instruction which we will discuss in the [Auctioneer guide](#TODO).
+The Auctioneer has the ability to be given the control, or Delegation over an Auction House instance using the `DelegateAuctioneer` instruction which we will discuss in the Auctioneer guide (*comming soon*).
 
 There are three setting pertaining to the Auctioneer which can be configured in the Auction House:
 
@@ -204,4 +204,4 @@ const auctionHouseSettings = {
 </Accordion>
 
 ## Conclusion
-Now that we know about Auction House settings, on the [next page](#TODO), we’ll see how we can use them to create and update our own Auction House.
+Now that we know about Auction House settings, on the [next page](/programs/auction-house/managing-auction-house), we’ll see how we can use them to create and update our own Auction House.

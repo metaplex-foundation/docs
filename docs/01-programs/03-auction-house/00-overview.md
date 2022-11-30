@@ -27,7 +27,7 @@ The Auction House program can be used to create a new marketplace by instantiati
 
 ![](https://i.imgur.com/2HPpM9g.png =300x)
 
-The account can be configured in whichever way the user wants. We'll talk [more about these configurations in a dedicated page](/TODO/when-we-the-page-is-written) but here are some interesting configurable parameters:
+The account can be configured in whichever way the user wants. We'll talk [more about these configurations in a dedicated page](/programs/auction-house/auction-house-settings) but here are some interesting configurable parameters:
 
 * `requireSignOff`: this allows marketplaces to gate which assets can be listed and which bids can be placed. On every relevant instruction, the Auction House [authority](https://docs.solana.com/staking/stake-accounts#understanding-account-authorities) needs to sign the transaction.
 * `canChangeSalePrice`: this parameter is only intended to be used on Auction Houses with `requireSignOff` set to `true`. This allows the Auction House to perform custom order matching to find the best price for the seller.
@@ -116,19 +116,19 @@ To enable an Auctioneer instance on an Auction House, it must first be explicitl
 On this page, we have gone through the very basics of the Auction House protocol and the power it possesses. There is a lot more that the Auction House is capable of.
 
 We'll start by listing various libraries that can be used to get started with this program:
-* [Getting Started](/TODO)
+* [Getting Started](/programs/auction-house/getting-started)
 
 We will proceed to dive deeper into the Auction House settings and how to manage Auction House instances:
-* [Auction House Settings](/TODO)
-* [Managing Auction Houses](/TODO)
+* [Auction House Settings](/programs/auction-house/auction-house-settings)
+* [Managing Auction Houses](/programs/auction-house/managing-auction-house)
 
 Once we understand the basics of Auction House, we can begin to learn how to trade assets on Auction House powered marketplaces:
-* [Trading assets on Auction House](/TODO)
-* [Managing Buyer Account](/TODO)
+* [Trading assets on Auction House](/programs/auction-house/trading-assets-on-auction-house)
+* [Managing Buyer Account](/programs/auction-house/managing-buyer-account)
 
 We will also explore how to track listings, bids and sales on Auction Houses and how to fetch them:
-* [Printing Receipts](/TODO)
-* [Finding bids, listings and purchases](/TODO)
+* [Printing Receipts](/programs/auction-house/auction-house-receipts)
+* [Finding bids, listings and purchases](/programs/auction-house/finding-bids-listings-and-sales)
     
 ## Additional Reading Material
 * Prof Lupin's Auction House guide: https://proflupin.xyz/metaplex-auction-house
