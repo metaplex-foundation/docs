@@ -300,6 +300,49 @@ To achieve this we introduce a new function `addListener` before `checkEligibili
 </AccordionItem>
 </Accordion>
 
+## Special cases
+In some cases, the above functionality will not be enough. It might be required to reduce your transaction size because you are using too many guards at the same time, or you are using guards that require the guard route, or you simply want to allow your users to mint multiple NFTs at the same time.
+
+### Reduce Transaction size
+If you are trying to mint and receive an error like `Error: Transaction too large: 1264 > 1232` you have to reduce its size. This is most likely caused by using too many NFTs at the same time. We should be able to solve this by using [address lookup tables](https://docs.solana.com/developing/lookup-tables). We don't want to go into too much detail here, but there are two things that you have to do.
+
+1. Create a `lookup table` containing all the addresses that your mint transactions have in common (e.g. candy machine address)
+
+<Accordion>
+<AccordionItem title="Create Lookup Table" open={false}>
+<div className="accordion-item-padding">
+
+You have to options:
+- use [metaplex/lut CLI](https://github.com/metaplex-foundation/lut) to create the lookup table with `lut create`, then add the accounts with `lut extend <lut_address> -a <address1> -a <address2> -a <address3>`
+- use the following script
+
+```js
+async function createLookupTable() {
+    const [lookupTableInst, lookupTableAddress] =
+        AddressLookupTableProgram.createLookupTable({
+            authority: metaplex.identity().publicKey,
+            payer: metaplex.identity().publicKey,
+            recentSlot: await metaplec.connection.getSlot(),
+        });
+}
+```
+</div>
+</AccordionItem>
+</Accordion>
+
+2. Modify the mint function to leverage the new lookup table
+
+<Accordion>
+<AccordionItem title="Modify mint function" open={false}>
+<div className="accordion-item-padding">
+
+1. To create the 
+
+</div>
+</AccordionItem>
+</Accordion>
+
+
 # Further reading 
 - If you want to use this UI as a basis you can just clone it from [mint-example-ui code on Github](https://github.com/metaplex-foundation/js-examples/tree/main/mint-ui-example)
 - Additional code is required if you want to add guard groups. Find more information on the [minting page](../minting)
