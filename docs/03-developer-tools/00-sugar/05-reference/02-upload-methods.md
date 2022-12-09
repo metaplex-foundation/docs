@@ -10,7 +10,7 @@ The upload methods in Sugar are designed using a Rust trait to make it easier fo
 
 ## Amazon (AWS) S3
 
-> Configuration settings:
+Configuration settings:
 
 ```json
 {
@@ -19,10 +19,11 @@ The upload methods in Sugar are designed using a Rust trait to make it easier fo
   . . .
   "awsConfig":
   {
-    bucket: "<BUCKET_NAME>",
-    profile: "<PROFILE_NAME>",
-    directory: "<DIRECTORY_NAME>",
-  }
+    "bucket": "<BUCKET_NAME>",
+    "profile": "<PROFILE_NAME>",
+    "directory": "<DIRECTORY_NAME>",
+    "domain": "<DOMAIN_NAME>"
+  },
   . . .
 }
 ```
@@ -41,7 +42,7 @@ It is also important to set up the ACL permission of the bucket correctly to ena
 - [Bucket policy examples](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html)
 - [CORS configuration](https://aws.amazon.com/premiumsupport/knowledge-center/s3-configure-cors/)
 
-The `profile` value allows you to specify which profile to read from your credentials file. The `directory` value is the name of the directory in the bucket where the files will be uploaded, allowing you to have multiple candy machine or collections in a single bucket separated by different directories. Leaving this as an empty string will upload the files to the root of the bucket.
+The `profile` value allows you to specify which profile to read from your credentials file. The `directory` value is the name of the directory in the bucket where the files will be uploaded, allowing you to have multiple candy machine or collections in a single bucket separated by different directories. Leaving this as an empty string will upload the files to the root of the bucket. The `domain` (optional) allows you to specify a custom domain to serve the data from AWS &mdash; e.g., using the `domain` as `https://mydomain.com` will create links to files in the format `https://mydomain.com/0.json`. If you do not specify a `domain`, the default AWS S3 domain will be used (`https://<BUCKET_NAME>.s3.amazonaws.com`).
 
 ## Bundlr
 
@@ -58,6 +59,38 @@ Configuration settings:
 > **Note:** Files are only stored for 7 days when uploaded with Bundlr on `devnet`.
 
 Uploads to [Arweave](https://www.arweave.org/) using [Bundlr Network](https://bundlr.network/) and payments are made in `SOL`.
+
+## Pinata
+
+Configuration settings:
+
+```json
+{
+  . . .
+  "uploadMethod": "pinata",
+  . . .
+  "pinataConfig":
+  {
+    "jwt": "<JWT>",
+    "apiGateway": "<URL>",
+    "contentGateway": "<URL>",
+    "parallelLimit": "<NUMBER>"
+  },
+  . . .
+}
+```
+
+This method uploads files to Pinata storage. When using the `"pinata"`, you need to specify the `jwt`, `apiGateway`, and `contentGateway` values in the configuration file under "pinataConfig":
+- `jwt`: JWT authentication token
+- `apiGateway`: URL to connect to Pinata API (use `https://api.pinata.cloud` for the public API endpoint)
+- `contentGateway`: URL to use as the base for creating the asset links (use `https://gateway.pinata.cloud` for the public gateway)
+- `parallelLimit`: (optional) number of concurrent upload, adjust this value to avoid rate limits.
+
+:::info
+
+The public gateways are not intended to be used in production &mdash; they are good to be used for testing. They are heavily rate limited and not designed for speed.
+
+:::
 
 ## NFT.Storage
 

@@ -4,9 +4,9 @@ The goal of this tutorial is to take you from zero to one: you will learn to ins
 
 ## Prerequisite Knowledge
 
-* You should have a basic understanding of how to find and use a terminal on your OS, including navigating directories, and running commands: an example of a terminal for macOS is [iTerm2](https://iterm2.com/).
-* You should have basic familiarity with what Solana is but don't need advanced technical knowledge.
-* You should have basic familiarity with the Metaplex Standard but, again, do not need advanced technical knowledge.
+- You should have a basic understanding of how to find and use a terminal on your OS, including navigating directories, and running commands: an example of a terminal for macOS is [iTerm2](https://iterm2.com/).
+- You should have basic familiarity with what Solana is but don't need advanced technical knowledge.
+- You should have basic familiarity with the Metaplex Standard but, again, do not need advanced technical knowledge.
 
 ## Setup
 
@@ -14,7 +14,7 @@ This tutorial targets macOS, Linux, and Windows Subsystem Linux (WSL), but all c
 
 ### Install the Solana CLI Tool Suite
 
-The [Solana CLI Tool Suite](https://docs.solana.com/cli/install-solana-cli-tools) is useful to have for Solana development, and we will use the config file to store our keypair file path and RPC node url to simplify the Sugar commands we run, by eliding those options. 
+The [Solana CLI Tool Suite](https://docs.solana.com/cli/install-solana-cli-tools) is useful to have for Solana development, and we will use the config file to store our keypair file path and RPC node url to simplify the Sugar commands we run, by eliding those options.
 
 To install, follow [this guide](../../../guides/cli-wallet#setting-up-a-devnet-wallet-for-testing) to install the Solana Tool Suite and set up a devnet wallet.
 
@@ -54,22 +54,25 @@ OPTIONS:
 -V, --version Print version information
 
 SUBCOMMANDS:
-bundlr              Interact with the bundlr network
-collection          Manage the collection on the candy machine
-create-config       Interactive process to create the config file
-deploy              Deploy cache items into candy machine config on-chain
-hash                Generate hash of cache file for hidden settings
-help                Print this message or the help of the given subcommand(s)
-launch              Create a candy machine deployment from assets
-mint                Mint one NFT from candy machine
-reveal              Reveal the NFTs from a hidden settings candy machine
-show                Show the on-chain config of an existing candy machine
-sign                Sign one or all NFTs from candy machine
-update              Update the candy machine config on-chain
-upload              Upload assets to storage and creates the cache config
-validate            Validate JSON metadata files
-verify              Verify uploaded data
-withdraw            Withdraw funds from candy machine account closing it
+    bundlr            Interact with the bundlr network
+    collection        Manage the collection on the candy machine
+    create-config     Interactive process to create the config file
+    deploy            Deploy cache items into candy machine config on-chain
+    freeze            Commands for the Candy Machine Freeze feature
+    hash              Generate hash of cache file for hidden settings
+    help              Print this message or the help of the given subcommand(s)
+    launch            Create a candy machine deployment from assets
+    mint              Mint one NFT from candy machine
+    reveal            Reveal the NFTs from a hidden settings candy machine
+    show              Show the on-chain config of an existing candy machine
+    sign              Sign one or all NFTs from candy machine
+    thaw              Thaw an NFT or all NFTs in a candy machine
+    unfreeze-funds    Unlock treasury funds after freeze is turned off or expires
+    update            Update the candy machine config on-chain
+    upload            Upload assets to storage and creates the cache config
+    validate          Validate JSON metadata files
+    verify            Verify uploaded data
+    withdraw          Withdraw funds from candy machine account closing it
 ```
 
 </p>
@@ -91,7 +94,7 @@ MyProject/
          . . .
 ```
 
-We will run all our Sugar commands from within the project directory and Sugar will create our config and cache files in that directory. If we do this, we can elide the cache and config files from our commands as Sugar will look in the current directory for `config.json` and `cache.json` files. 
+We will run all our Sugar commands from within the project directory and Sugar will create our config and cache files in that directory. If we do this, we can elide the cache and config files from our commands as Sugar will look in the current directory for `config.json` and `cache.json` files.
 
 ## Create a Config File
 
@@ -161,6 +164,7 @@ We only have a single creator, so we put in `100` here.
 ✔ Whitelist Mint
 ✔ End Settings
 ✔ Hidden Settings
+✔ Freeze Settings
 ```
 
 This step allows us to configure advanced settings for our candy machine, but we are not using any of them in this tutorial, so we simply press [Enter] to continue on.
@@ -211,30 +215,31 @@ Open up the generated file, config.json, in your favorite text or code editor (e
 
 ```json
 {
-"price": 1.0,
-"number": 10,
-"gatekeeper": null,
-"creators": [
-{
-"address": "PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8",
-"share": 100
-}
-],
-"solTreasuryAccount": "PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8",
-"splTokenAccount": null,
-"splToken": null,
-"goLiveDate": "11 Aug 2022 18:19:16 +0000",
-"endSettings": null,
-"whitelistMintSettings": null,
-"hiddenSettings": null,
-"uploadMethod": "bundlr",
-"retainAuthority": true,
-"isMutable": true,
-"symbol": "TEST",
-"sellerFeeBasisPoints": 500,
-"awsS3Bucket": null,
-"nftStorageAuthToken": null,
-"shdwStorageAccount": null
+  "price": 1.0,
+  "number": 10,
+  "gatekeeper": null,
+  "creators": [
+    {
+      "address": "PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8",
+      "share": 100
+    }
+  ],
+  "solTreasuryAccount": "PanbgtcTiZ2PveV96t2FHSffiLHXXjMuhvoabUUKKm8",
+  "splTokenAccount": null,
+  "splToken": null,
+  "goLiveDate": "11 Aug 2022 18:19:16 +0000",
+  "endSettings": null,
+  "whitelistMintSettings": null,
+  "hiddenSettings": null,
+  "freezeTime": null,
+  "uploadMethod": "bundlr",
+  "retainAuthority": true,
+  "isMutable": true,
+  "symbol": "TEST",
+  "sellerFeeBasisPoints": 500,
+  "awsS3Bucket": null,
+  "nftStorageAuthToken": null,
+  "shdwStorageAccount": null
 }
 ```
 
@@ -242,10 +247,10 @@ Your values will be different depending on and what you input for various settin
 
 ## Upload Images and Metadata to External Storage
 
-In this step, we will upload all our assets file pairs to Arweave via Bundlr. 
+In this step, we will upload all our assets file pairs to Arweave via Bundlr.
 
 :::info
-Solana is designed to be a high-throughput low-latency blockchain that can host smart contracts, but one of the design tradeoffs is that storing data on Solana is fairly expensive. For NFTs, we only store basic information about the NFT, such as the name, symbol, creators, and seller fee basis points. For the image and all the other metadata, we have a URL on-chain on Solana that points to an external JSON file contain all that information. 
+Solana is designed to be a high-throughput, low-latency blockchain that can host smart contracts, but one of the design tradeoffs is that storing data on Solana is fairly expensive. For NFTs, we only store basic information about the NFT, such as the name, symbol, creators, and seller fee basis points. For the image and all the other metadata, we have a URL on-chain on Solana that points to an external JSON file containing all that information.
 
 This URL can point to any JSON file anywhere. It can be a decentralized file storage blockchain like Arweave or Filecoin, a peer-to-peer distributed file system like IPFS, or even a centralized cloud server like AWS.
 
@@ -291,6 +296,7 @@ Sending data: (Ctrl+C to abort)
 
 ✅ Command successful.
 ```
+
 </p>
 </details>
 
@@ -308,103 +314,102 @@ However, some upload methods such as Bundlr, do cost funds to upload and store t
 
 When uploading is finished, sugar will have created a `cache.json` file in our project directory. Open this file, and you will see something similar to:
 
-
 <details>
 <summary>Output</summary>
 <p>
 
 ```json
-    {
-        "program": {
-            "candyMachine": "",
-            "candyMachineCreator": "",
-            "collectionMint": ""
-        },
-        "items": {
-            "0": {
-                "name": "Studious Crab #1",
-                "image_hash": "6f16570562658640b3dc6b6dd7e5b94190d2f8bd5c5a0aa0a4d0bba20c7fd612",
-                "image_link": "https://arweave.net/i-aYA4PmPGO5mKydXnuaUqIs-ZhSvVWwe9rcWCtMJxk",
-                "metadata_hash": "8d83d51e36ea47a9a5009dbe927ef53cddcdf0c2bc029e369e96ca436a012dd7",
-                "metadata_link": "https://arweave.net/35nZmuuUlK1iY9G-dn5u_raI_lwGoNoR9TrhOKUPez0",
-                "onChain": false
-            },
-            "1": {
-                "name": "Studious Crab #2",
-                "image_hash": "d527d7faf0e0064e2c527909a740aaec670ea505ad07b109e940099d5e5781e2",
-                "image_link": "https://arweave.net/PfEGR3UjmlZIptOoDbdVvga4jjZEF7tT9PHWBbimGL0",
-                "metadata_hash": "add6c7b82e45da98eb53dafc9f3ebdef4fe6587680f6904da4be39cc4666320b",
-                "metadata_link": "https://arweave.net/KxSO5JKmCkRurA_KVFrP1K08Cqh7zFlGT_xvsxMJM4E",
-                "onChain": false
-            },
-            "2": {
-                "name": "Studious Crab #3",
-                "image_hash": "82763aecbf910695ef0bf1311152e2b6c2e9578a8d0d85f3ada320abb9b3551b",
-                "image_link": "https://arweave.net/XXUFcltx3bgpLXZfqxdUYmUuRoRS25eK9nAyoVKDijI",
-                "metadata_hash": "0f0ffd8b65e11347410ea6f8b1fabd04cf3a67d705e1787c6841a38c66f0ce4e",
-                "metadata_link": "https://arweave.net/kUVqhDRs6qmTmQq0vfHH8RJVkALCdVqwju2MTpyD22I",
-                "onChain": false
-            },
-            "3": {
-                "name": "Studious Crab #4",
-                "image_hash": "05d9bed9f734103efc131a0ad0a88b0dbbf46afdd8f7a6b179e8ea7e1b37f046",
-                "image_link": "https://arweave.net/-PwwpoZI9pPcK-X6z7Wha-7d2g78uXAJ2sCvcr8lIjM",
-                "metadata_hash": "44b3407c7da4f0aa004326b231c0e19ee9ef939febc0ef98ff14aebb7508012d",
-                "metadata_link": "https://arweave.net/-RBIW6Xj3NmSfkQXfY-9Zb7AK7IBKLw6OC0pXpxmle4",
-                "onChain": false
-            },
-            "4": {
-                "name": "Studious Crab #5",
-                "image_hash": "92906e1988a4c58125799c3636a567ec47fca77e15ef6a326be07bc4d8a0522c",
-                "image_link": "https://arweave.net/k94CDnb0kU_IWgpFmApNM82GCopduhzPEHStaHctzaQ",
-                "metadata_hash": "0c34fecf846ae872e4f25fb51ca7e3fcf1ec09a3b2a2af99334bc88947ee640b",
-                "metadata_link": "https://arweave.net/64dDlYU8s3oEtSBNA5YHviie0EeIyyvhTnxfx8wrg2Q",
-                "onChain": false
-            },
-            "5": {
-                "name": "Studious Crab #6",
-                "image_hash": "ecf8012c1bedc8d481d20540d47813318c02edfef1080b712155896147b056d9",
-                "image_link": "https://arweave.net/a6rCPvyG_5AM6awHhV9nFDvZuwSubp9lV1l1lbvxnA8",
-                "metadata_hash": "6d6be3c1aeaef771ba38e77e1cd4b942ddee2fff7ffcfa27625244aaff595d7e",
-                "metadata_link": "https://arweave.net/WfYBOi4xA7dfeaJX5xS7l24pcV6tjsMLiOUBplQCrrw",
-                "onChain": false
-            },
-            "6": {
-                "name": "Studious Crab #7",
-                "image_hash": "ffe705980fde6a9fbc6cb29b3505d467499c4e78af08f486bf2cd6f7b3f27151",
-                "image_link": "https://arweave.net/Euy4L7kHX7y-2vgZnUJTtdtZ44IxFZcM7-Q2JvJY8_8",
-                "metadata_hash": "1d9df60037af5fba50222362ba2ec215d117ca622d894d2c16f86936a67e1559",
-                "metadata_link": "https://arweave.net/mWtcYmaT4cfphOUCa78yxSVqB81HpSsSMYCKYGDLe5A",
-                "onChain": false
-            },
-            "7": {
-                "name": "Studious Crab #8",
-                "image_hash": "babd4f81cf056ce35bae9b1330c9c1b13f440ad2a3632c862e5594994a30a5b7",
-                "image_link": "https://arweave.net/CxxgV_nIt0DkN3yGym62KXeyS02l-S9p4r78WRWfjzQ",
-                "metadata_hash": "6ca0b7e89e89dfa586ac13580df046f327c658010f7cd932ca2f8af980611319",
-                "metadata_link": "https://arweave.net/_Vvxf0FrLBf4nUfYKcMdWnpbVBAIfCjgl_Ke6f6r9gA",
-                "onChain": false
-            },
-            "8": {
-                "name": "Studious Crab #9",
-                "image_hash": "c95e11874e94a27b547e5e7457f974a8d299c8c0066f3bf4430aa9c24e03835f",
-                "image_link": "https://arweave.net/ed4IrMGpSuP-EVVVwU7s2plrI3bjDNQl2n09WLROeLU",
-                "metadata_hash": "30c2856dc20bd0a92c16128107e4aba43e4dd88bfe3a2d2e3142b5b958d539c6",
-                "metadata_link": "https://arweave.net/w0uAaDzmLVheaEYyb2c2lw929aKIIun015wcy9-qrl8",
-                "onChain": false
-            },
-            "9": {
-                "name": "Studious Crab #10",
-                "image_hash": "4c16db39492bc794fbde16cf0aa0abe5f172fa88a45bd2e4afdfea782af241d5",
-                "image_link": "https://arweave.net/1cFuW_wwZcZF-a72zga_koleo8y7rcLTc2f5YuaHhcU",
-                "metadata_hash": "517b9e282e2db08ad6bc722e378b983e111d8eba14a62bc964b1177521eac3c5",
-                "metadata_link": "https://arweave.net/Ns82pK1nX9tCCsZiBUKg8VvlketUjR9-BaCRbMcWOfg",
-                "onChain": false
-        }
+{
+  "program": {
+    "candyMachine": "",
+    "candyMachineCreator": "",
+    "collectionMint": ""
+  },
+  "items": {
+    "0": {
+      "name": "Studious Crab #1",
+      "image_hash": "6f16570562658640b3dc6b6dd7e5b94190d2f8bd5c5a0aa0a4d0bba20c7fd612",
+      "image_link": "https://arweave.net/i-aYA4PmPGO5mKydXnuaUqIs-ZhSvVWwe9rcWCtMJxk",
+      "metadata_hash": "8d83d51e36ea47a9a5009dbe927ef53cddcdf0c2bc029e369e96ca436a012dd7",
+      "metadata_link": "https://arweave.net/35nZmuuUlK1iY9G-dn5u_raI_lwGoNoR9TrhOKUPez0",
+      "onChain": false
+    },
+    "1": {
+      "name": "Studious Crab #2",
+      "image_hash": "d527d7faf0e0064e2c527909a740aaec670ea505ad07b109e940099d5e5781e2",
+      "image_link": "https://arweave.net/PfEGR3UjmlZIptOoDbdVvga4jjZEF7tT9PHWBbimGL0",
+      "metadata_hash": "add6c7b82e45da98eb53dafc9f3ebdef4fe6587680f6904da4be39cc4666320b",
+      "metadata_link": "https://arweave.net/KxSO5JKmCkRurA_KVFrP1K08Cqh7zFlGT_xvsxMJM4E",
+      "onChain": false
+    },
+    "2": {
+      "name": "Studious Crab #3",
+      "image_hash": "82763aecbf910695ef0bf1311152e2b6c2e9578a8d0d85f3ada320abb9b3551b",
+      "image_link": "https://arweave.net/XXUFcltx3bgpLXZfqxdUYmUuRoRS25eK9nAyoVKDijI",
+      "metadata_hash": "0f0ffd8b65e11347410ea6f8b1fabd04cf3a67d705e1787c6841a38c66f0ce4e",
+      "metadata_link": "https://arweave.net/kUVqhDRs6qmTmQq0vfHH8RJVkALCdVqwju2MTpyD22I",
+      "onChain": false
+    },
+    "3": {
+      "name": "Studious Crab #4",
+      "image_hash": "05d9bed9f734103efc131a0ad0a88b0dbbf46afdd8f7a6b179e8ea7e1b37f046",
+      "image_link": "https://arweave.net/-PwwpoZI9pPcK-X6z7Wha-7d2g78uXAJ2sCvcr8lIjM",
+      "metadata_hash": "44b3407c7da4f0aa004326b231c0e19ee9ef939febc0ef98ff14aebb7508012d",
+      "metadata_link": "https://arweave.net/-RBIW6Xj3NmSfkQXfY-9Zb7AK7IBKLw6OC0pXpxmle4",
+      "onChain": false
+    },
+    "4": {
+      "name": "Studious Crab #5",
+      "image_hash": "92906e1988a4c58125799c3636a567ec47fca77e15ef6a326be07bc4d8a0522c",
+      "image_link": "https://arweave.net/k94CDnb0kU_IWgpFmApNM82GCopduhzPEHStaHctzaQ",
+      "metadata_hash": "0c34fecf846ae872e4f25fb51ca7e3fcf1ec09a3b2a2af99334bc88947ee640b",
+      "metadata_link": "https://arweave.net/64dDlYU8s3oEtSBNA5YHviie0EeIyyvhTnxfx8wrg2Q",
+      "onChain": false
+    },
+    "5": {
+      "name": "Studious Crab #6",
+      "image_hash": "ecf8012c1bedc8d481d20540d47813318c02edfef1080b712155896147b056d9",
+      "image_link": "https://arweave.net/a6rCPvyG_5AM6awHhV9nFDvZuwSubp9lV1l1lbvxnA8",
+      "metadata_hash": "6d6be3c1aeaef771ba38e77e1cd4b942ddee2fff7ffcfa27625244aaff595d7e",
+      "metadata_link": "https://arweave.net/WfYBOi4xA7dfeaJX5xS7l24pcV6tjsMLiOUBplQCrrw",
+      "onChain": false
+    },
+    "6": {
+      "name": "Studious Crab #7",
+      "image_hash": "ffe705980fde6a9fbc6cb29b3505d467499c4e78af08f486bf2cd6f7b3f27151",
+      "image_link": "https://arweave.net/Euy4L7kHX7y-2vgZnUJTtdtZ44IxFZcM7-Q2JvJY8_8",
+      "metadata_hash": "1d9df60037af5fba50222362ba2ec215d117ca622d894d2c16f86936a67e1559",
+      "metadata_link": "https://arweave.net/mWtcYmaT4cfphOUCa78yxSVqB81HpSsSMYCKYGDLe5A",
+      "onChain": false
+    },
+    "7": {
+      "name": "Studious Crab #8",
+      "image_hash": "babd4f81cf056ce35bae9b1330c9c1b13f440ad2a3632c862e5594994a30a5b7",
+      "image_link": "https://arweave.net/CxxgV_nIt0DkN3yGym62KXeyS02l-S9p4r78WRWfjzQ",
+      "metadata_hash": "6ca0b7e89e89dfa586ac13580df046f327c658010f7cd932ca2f8af980611319",
+      "metadata_link": "https://arweave.net/_Vvxf0FrLBf4nUfYKcMdWnpbVBAIfCjgl_Ke6f6r9gA",
+      "onChain": false
+    },
+    "8": {
+      "name": "Studious Crab #9",
+      "image_hash": "c95e11874e94a27b547e5e7457f974a8d299c8c0066f3bf4430aa9c24e03835f",
+      "image_link": "https://arweave.net/ed4IrMGpSuP-EVVVwU7s2plrI3bjDNQl2n09WLROeLU",
+      "metadata_hash": "30c2856dc20bd0a92c16128107e4aba43e4dd88bfe3a2d2e3142b5b958d539c6",
+      "metadata_link": "https://arweave.net/w0uAaDzmLVheaEYyb2c2lw929aKIIun015wcy9-qrl8",
+      "onChain": false
+    },
+    "9": {
+      "name": "Studious Crab #10",
+      "image_hash": "4c16db39492bc794fbde16cf0aa0abe5f172fa88a45bd2e4afdfea782af241d5",
+      "image_link": "https://arweave.net/1cFuW_wwZcZF-a72zga_koleo8y7rcLTc2f5YuaHhcU",
+      "metadata_hash": "517b9e282e2db08ad6bc722e378b983e111d8eba14a62bc964b1177521eac3c5",
+      "metadata_link": "https://arweave.net/Ns82pK1nX9tCCsZiBUKg8VvlketUjR9-BaCRbMcWOfg",
+      "onChain": false
     }
+  }
 }
-
 ```
+
 </p>
 </details>
 
@@ -431,6 +436,7 @@ Sending config line(s) in 1 transaction(s): (Ctrl+C to abort)
 [00:00:03] Write config lines successful ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████ 1/1
 
 ✅ Command successful.
+
 </p>
 </details>
 
@@ -456,7 +462,7 @@ Verifying 10 config line(s): (Ctrl+C to abort)
 Verification successful. You're good to go!
 
 See your candy machine at:
--> https://www.solaneyes.com/address/Ews3L5NoAjjLEHYqEu47DqQ77nsqgNQs3NuELjBCd5bbdevnet
+-> https://www.solaneyes.com/address/Ews3L5NoAjjLEHYqEu47DqQ77nsqgNQs3NuELjBCd5bb?cluster=devnet
 
 ✅ Command successful.
 
@@ -473,8 +479,7 @@ Finally, to round off this tutorial we will mint an NFT from our candy machine t
 sugar mint
 ```
 
-to mint one NFT to your wallet address. 
-
+to mint one NFT to your wallet address.
 
 <details>
 <summary>Output</summary>

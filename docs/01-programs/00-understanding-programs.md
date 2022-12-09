@@ -56,11 +56,11 @@ Whether we are dealing with a regular Account or a Program Derived Account, Acco
 
 ### Discriminators
 
-Discriminators are used to differentiating between different types of Accounts within a Program. They can be implemented in many ways but here are the three most common ones:
+Discriminators are used to differentiate between different types of Accounts within a Program. They can be implemented in many ways but here are the three most common ones:
 
 - **Use a shared Enum as the first byte of every account**. By prefixing every Account with a shared Enum, we can use the first byte of the serialized data to identify the Account. This is a simple and efficient way to implement discriminators. Most of the programs maintained by Metaplex use this approach.
 - **Use a deterministic hash as the first byte of every account**. This is very similar to the previous point, but it uses a hash instead of an Enum. Programs created using the Anchor framework end up using this approach implicitly because Anchor will automatically generate that hash based on the Account's name.
-- **No discriminator, use the size of the Account**. If all the accounts managed by a Program are of fixed size and if they all have different sizes, then we can examine the length of that array of bytes to determine which Account we are dealing with. This is a performant approach since we don't need to add extra bytes to the data, but it limits how flexible a Program can be with its Accounts. The [SPL Token Program](https://spl.solana.com/token) by Solana uses this approach since it only maintains two accounts of different fixed sizes.
+- **No discriminator, use the size of the Account**. If all the accounts managed by a Program have different sizes, then we can examine the length of that array of bytes to determine which Account we are dealing with. This is a performant approach since we don't need to add extra bytes to the data, but it limits how flexible a Program can be with its Accounts. The [SPL Token Program](https://spl.solana.com/token) by Solana uses this approach since it only maintains two accounts of different fixed sizes.
 
 ### Field types, sizes and offsets
 

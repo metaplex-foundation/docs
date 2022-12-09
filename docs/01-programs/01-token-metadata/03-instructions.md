@@ -44,6 +44,27 @@ This handler will not close metadata and edition accounts where the token has al
 
 </ProgramInstruction>
 
+## Burn an Edition NFT
+
+<ProgramInstruction idl={idl} instruction="BurnEditionNft">
+
+This instruction enables the owner of a Print Edition NFT to completely burn it:
+
+- burning the SPL token and closing the token account
+- closing the metadata and edition accounts
+- giving the owner the reclaimed funds from closing these accounts
+
+This handler checks if the NFT is a Print Edition and not a Master edition, and decrements the Master Edition supply fields after burning the NFT.
+
+The Master Edition `supply` is decremented every time a Print Edition is burned. If the owner of the Master Edition is not the same as the owner of the Print Edition, the `max_supply` is also decremented. 
+
+Print Editions burned by the owner ("the creator") of the Master Edition can be reminted, but print editions burned by other owners ("users") cannot be reminted.
+
+This handler will not close metadata and edition accounts where the token has already been burned and the mint has a supply of 0. At that point there is no official "owner" of the NFT.
+
+</ProgramInstruction>
+
+
 ## Indicate the primary sale has happened
 
 <ProgramInstruction idl={idl} instruction="UpdatePrimarySaleHappenedViaToken">

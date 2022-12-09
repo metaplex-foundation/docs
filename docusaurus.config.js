@@ -13,6 +13,16 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   favicon: 'logo/favicon.png',
   organizationName: 'metaplex',
   projectName: 'docs',
+  scripts: [
+    {
+      src: 'https://app.happyreact.com/widget/reactions.js',
+      defer: true,
+    }
+  ],
+  customFields: {
+    feedbackUrl: 'https://metaplex.canny.io/developers?selectedCategory=documentation',
+    happyReactToken: '8c828a21-ead0-4998-b98b-f465fd3e4e4f'
+  },
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -28,8 +38,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-        googleAnalytics: {
-          trackingID: 'UA-213985918-1',
+        gtag: {
+          trackingID: 'G-TNL3E6G9YK',
           anonymizeIP: true,
         },
       }),
@@ -84,7 +94,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         style: 'dark',
         links: [
           {
-            title: 'Community',
+            title: 'Resources',
             items: [
               {
                 label: 'Discord',
@@ -94,14 +104,26 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
                 label: 'Twitter',
                 href: 'https://twitter.com/metaplex',
               },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
+              {
+                label: 'StackExchange',
+                href: 'https://solana.stackexchange.com/questions/tagged/metaplex',
+              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/metaplex-foundation/metaplex',
+              },
+            ],
+          },
+          {
+            title: 'Powered by',
+            items: [
+              {
+                label: 'Happy React',
+                href: 'https://happyreact.com/',
+              },
+              {
+                label: 'Docusaurus',
+                href: 'https://docusaurus.io/',
               },
             ],
           },

@@ -169,3 +169,24 @@ You can use the whitelist settings with the `presale` option set to `true` in co
       "discountPrice" : null
   }
   ```
+
+## Freeze Settings
+
+The candy machine freeze feature allows setting up a candy machine that places creator treasury funds in escrow and automatically mints NFTs with the SPL token freeze feature enabled. This accomplishes two things: 1) prevents users from undercutting the mint price by immediately flipping their NFT on secondary markets at a price below the mint, 2) prevents the creator from running off with funds until all user NFTs are unfrozen.
+
+When the freeze setting is enabled, newly minted NFTs are set as frozen preventing the user from transferring them and listing them with secondary exchanges. Frozen NFTs can be thawed once at least one of two conditions is true: 1) all NFTs have been minted out, 2) freeze time has elapsed (starting from time of the first mint). Once one of these conditions are met, anyone can call the permissionless
+`thaw_nft` crank on the candy machine to unthaw a NFT. Sugar allows unthawing a single NFT or all NFTs from a candy machine using the [sugar thaw](../reference/commands#thaw) command. This allows a creator, or anyone else, to thaw all NFTs from the candy machine.
+
+Once all NFTs are thawed, the update authority can then call [unfreeze-funds](../reference/commands#unfreeze-funds) to unlock their funds and transfer them back to the treasury address.
+
+The freeze features have a single config value in Sugar, `freezeTime`:
+
+```json
+"freezeTime": 86400
+```
+
+This is the time, in seconds, to keep the NFTs frozen. This value can be anywhere from 0 seconds up to 2,592,000 seconds (30 days). The Sugar `create-config` command accepts the freeze time in days and converts it to seconds behind the scene.
+
+Creating a candy machine with `sugar deploy` while there's a `freezeTime` value set in the config file, will automatically create a candy machine with freeze settings enabled. To enable freeze settings to an existing candy machine _that has not started minting yet_ use the `sugar freeze enable` command.
+
+Disabling the freeze setting on a candy machine can be done at any time with `sugar freeze disable`, but once disabled cannot be re-enabled if minting has already begun. When disabled, any newly minted NFTs will not be frozen, but all currently frozen NFTs will remain frozen until thawed.
