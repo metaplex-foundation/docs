@@ -28,7 +28,6 @@ Solana maintains three public API nodes, one for each cluster which are Devnet, 
 ```
 https://api.devnet.solana.com
 ```
-
 This is the node for Devnet, and it is rate limited.
 
 In the Mainnet Beta cluster, many developers choose to use their own private RPC node to take advantage of higher rate limits not avalible to them from Solana's public API nodes. 
