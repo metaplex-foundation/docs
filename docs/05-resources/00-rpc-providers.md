@@ -18,21 +18,23 @@ _In alphabetical order_
 - [Syndica](https://syndica.io/)
 - [Triton One | RPC Pool](https://www.triton.one/)
 
-## Intro
+## Introduction
 
 Solana makes use of independent nodes which have the responsibility of working to confirm programs and outputs of programs on one of the three Solana clusters, Devnet, Testnet or Mainnet Beta. A cluster is made up of a set of validators that work to confirm transactions. These are owned and operated by individuals.  These nodes are also responsible for storing data and transaction history which is shared amongst the nodes. A node can become a validator node if it is being used to vote on valid blocks and if SOL is delegated to the validator identity it can become a leader node. [This](https://solana.com/validators) is the link to the information on how to become a validator. 
 
 Not all nodes can become leader nodes or vote to confirm blocks. They still serve the other functionalities of validator nodes, but since they cannot vote they are primarily used to respond to requests on the blockchain. These are RPC nodes. RPC stands for remote procedure call, and these RPC nodes are used to send transactions through the blockchain. 
 
 Solana maintains three public API nodes, one for each cluster which are Devnet, Mainnet Beta, and Testnet. These API nodes are what allow users to connect to the cluster. To connect to Devnet users can look at:
+
 ```
 https://api.devnet.solana.com
 ```
+
 This is the node for Devnet, and it is rate limited.
 
 In the Mainnet Beta cluster, many developers choose to use their own private RPC node to take advantage of higher rate limits not avalible to them from Solana's public API nodes. 
 
-<img src="https://i.imgur.com/1GmCbcu.png" width="50%">
+![](https://i.imgur.com/1GmCbcu.png#radius")
 
 For Mainnet Beta in the picture above, from the [Solana Docs](https://docs.solana.com/cluster/rpc-endpoints), we can view the rate limits from using the mainnet api node.
 
@@ -59,7 +61,7 @@ The following section includes multiple RPC providers.
 
 Alchemy offers a free plan with a rate limit of 12 million transactions per month. Their plan is to keep it free for the first 500 people who sign up to use it. Once you sign up, you will have access to the private RPC they provide.
 
-<img src="https://i.imgur.com/v0AZlqf.png" width="50%">
+![](https://i.imgur.com/v0AZlqf.png#radius")
 
 From this image you will notice they have a request counter which is setup to help you confirm your RPC is working.
 
@@ -84,15 +86,16 @@ solana address
 // output 
 DZCjxxxxxxxxx
 ```
+
 And input it into their tester with `getbalance` option chosen for the following result which includes the token balance and time taken to respond:
 
-<img src="https://i.imgur.com/HCcFoym.png" width="50%">
+![](https://i.imgur.com/HCcFoym.png#radius")
 
 ### Blockdaemon
 
 [Blockdaemon](https://blockdaemon.com/documentation/guides/solana/solana-nodes/) offers nodes for the three Solana networks and also provide the option of having an archival node with full history or history from past weeks. They have both a free option and a custom option.
 
-<img src="https://i.imgur.com/1GmCbcu.png" width="50%">
+![](https://i.imgur.com/1GmCbcu.png#radius")
 
 | RPC Info | Free | Custom | 
 | -------- | -------- | -------- |
@@ -125,11 +128,11 @@ Another provider is [QuickNode](https://www.quicknode.com?tap_a=67226-09396e&tap
 
 To begin using it, you will create an account and go to your dashboard. Once you're there, you'll create an endpoint and choose the appropriate blockchain. We will click on Solana. You will then have the option to choose between one of the three networks that Solana has to offer. 
 
-<img src="https://i.imgur.com/iAD5sUi.png" width="50%">
+![](https://i.imgur.com/iAD5sUi.png#radius")
 
 This is followed by optional add-ons and finally you get to choose a plan. Currently, QuickNode offers a **Discover** option for free and paid options if you require higher rate limits along with other features such as additional endpoints.
 
-<img src="https://i.imgur.com/HGvgNOu.png" width="50%">
+![](https://i.imgur.com/HGvgNOu.png#radius")
 
 | RPC Info | Free | 49 USD/month | 299 USD/month |
 | -------- | -------- | -------- | -------- |
@@ -146,7 +149,7 @@ From the [official docs](https://docs.runnode.com/runnode/tutorials/1.-how-to-si
 | Archival Node    | -     | -     | - |
 
 
-<img src="https://i.imgur.com/zO4kjqG.jpg" width="50%">
+![](https://i.imgur.com/zO4kjqG.jpg#radius")
 
 ### Syndica
 
@@ -158,13 +161,13 @@ From the [official docs](https://docs.runnode.com/runnode/tutorials/1.-how-to-si
 | Archival Node    | -     | -     | - |
 
 
-<img src="https://i.imgur.com/42O2GVG.png" width="50%">
+![](https://i.imgur.com/42O2GVG.png#radius")
 
 ### Triton
 
 [Triton](https://triton.one/#/pricing) starts by offering a paid plan at 500 USD per month which provides up to 50 requests per second. They also offer higher rate limits at other price points.
 
-<img src="https://i.imgur.com/qaUayM6.png" width="50%">
+![](https://i.imgur.com/qaUayM6.png#radius")
 
 | RPC Info | 500 USD/month | 1000 USD/month | 1500 USD/month |
 | -------- | -------- | -------- | -------- |
