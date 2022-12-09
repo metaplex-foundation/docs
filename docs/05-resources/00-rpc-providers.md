@@ -1,23 +1,5 @@
 # RPC Providers
 
-On Solana, RPC servers are a very important piece infrastructure. They allow you to communicate with the blockchain. When you send transactions, you first send them to the RPC servers and from there they are forwarded to the validators.
-
-Having a good RPC provider is essential for having a blazing fast dApp!
-
-## Services
-
-_In alphabetical order_
-
-- [Alchemy](https://alchemy.com/?a=metaplex)
-- [Ankr](https://www.ankr.com/protocol/public/solana/)
-- [Blockdaemon](https://blockdaemon.com/marketplace/solana/)
-- [Figment](https://figment.io/datahub/solana/)
-- [GenesysGo](https://genesysgo.com/)
-- [QuickNode](https://quicknode.com/)
-- [RunNode](https://runnode.com/)
-- [Syndica](https://syndica.io/)
-- [Triton One | RPC Pool](https://www.triton.one/)
-
 ## Introduction
 
 Solana makes use of independent nodes which have the responsibility of working to confirm programs and outputs of programs on one of the three Solana clusters, Devnet, Testnet or Mainnet Beta. A cluster is made up of a set of validators that work to confirm transactions. These are owned and operated by individuals.  These nodes are also responsible for storing data and transaction history which is shared amongst the nodes. A node can become a validator node if it is being used to vote on valid blocks and if SOL is delegated to the validator identity it can become a leader node. [This](https://solana.com/validators) is the link to the information on how to become a validator. 
@@ -38,11 +20,6 @@ In the Mainnet Beta cluster, many developers choose to use their own private RPC
 
 For Mainnet Beta in the picture above, from the [Solana Docs](https://docs.solana.com/cluster/rpc-endpoints), we can view the rate limits from using the mainnet api node.
 
-<!--
-The term RPC stands for remote procedure call. RPCs are similar to the enpdoints that Solana provides to connect to Devnet, Mainnet-beta, and Testnet for which you can find more information [here](https://docs.solana.com/cluster/rpc-endpoints). These are all public endpoints. In the previous link, you you will see the following information regarding the rate limits for Mainnet-beta:
-
-Why would you want to get a private RPC? Due to the high volume of transactions, it is highly recommended to work with your own private RPC otherwise you risk being rate limited. Using one will help increase speed of several commands. Some of its uses include uploading assets, minting NFTs, updating metdata, requesting tokens in an account, and more. When choosing to create your private RPC, you will be prompted to choose between one of the three networks in Solana.
--->
 We will proceed to define two types of RPC nodes and then present you with several options. We recommend you choose one based on your project's needs. 
 
 ## Archive and Nonarchive Nodes
@@ -56,6 +33,16 @@ Unlike archival nodes, a non-archive node, or just a regular node, will only hav
 The following section includes multiple RPC providers. 
 > **Note**
 >This list is in alphabetical order. Please choose the RPC provider that best suits your project's needs. If we are missing a provider, let us know in our discord or submit a PR.
+
+- [Alchemy](https://alchemy.com/?a=metaplex)
+- [Ankr](https://www.ankr.com/protocol/public/solana/)
+- [Blockdaemon](https://blockdaemon.com/marketplace/solana/)
+- [Figment](https://figment.io/datahub/solana/)
+- [GenesysGo](https://genesysgo.com/)
+- [QuickNode](https://quicknode.com/)
+- [RunNode](https://runnode.com/)
+- [Syndica](https://syndica.io/)
+- [Triton One | RPC Pool](https://www.triton.one/)
 
 ### Alchemy 
 
