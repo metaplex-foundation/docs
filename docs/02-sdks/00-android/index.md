@@ -169,6 +169,40 @@ nft..metadata(metaplex) { result ->
 }
 ```
 
+## Auctions
+The Metaplex Auction House protocol allows anyone to implement a decentralized sales contract and accept ay SPL token they desire. 
+
+The Auctions module can be accessed via `Metaplex.auctions` and provide the following methods. Currently we only support read methods. Auction House creation, and the ability to interact with and create bids and listings will be supported in the future.
+
+- [`findAuctionHouseByAddress(address)`](#findAuctionHouseByAddress)
+- [`findAuctionHouseByCreatorAndMint(creator, treasuryMint)`](#findAllByMintList)
+- more coming soon!
+
+All methods are provided as composable [suspending functions](https://kotlinlang.org/docs/composing-suspending-functions.html) to provide more flexibility and compatibility in your application.   
+
+**Note:** These suspend functions provided by the Auctions API are an architectural change for the library. We have previously only provided async-callback methods. We highly recommend that everyone migrate to the new suspending functions, however we have also provided async-callback implementations of the available methods. Note that these methods are provided as a interim and may be deprecated in the future:
+
+- [`findAuctionHouseByAddress(address, callback)`](#findAuctionHouseByAddress)
+- [`findAuctionHouseByCreatorAndMint(creator, treasuryMint, callback)`](#findAllByMintList)
+
+### findAuctionHouseByAddress
+
+The `findAuctionHouseByAddress` method accepts a public key and returns an AuctionHouse object, or an error if no AuctionHouse was found for the given address.
+
+```kotlin
+val theAuctionHouse: AuctionHouse? = metaplex.auctions.findAuctionHouseByAddress(addressPublicKey).getOrNull()
+```
+
+### findAuctionHouseByCreatorAndMint
+
+The `findAuctionHouseByCreatorAndMint` method accepts a public key and returns an AuctionHouse object, or an error if no AuctionHouse was found for the given address.
+
+```kotlin
+val theAuctionHouse: AuctionHouse? = metaplex.auctions.findAuctionHouseByCreatorAndMint(creatorPublicKey, mintPublicKey).getOrNull()
+```
+
+The returned `AuctionHouse` model will contain details about the Auction House account on chain. In the future, this model will be used to construct an `AuctionHouseClient` instance to interact with the auction and perform trades. 
+
 ## Identity
 The current identity of a `Metaplex` instance can be accessed via `metaplex.identity()` and provide information on the wallet we are acting on behalf of when interacting with the SDK.
 
