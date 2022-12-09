@@ -11,6 +11,7 @@ Send a tweet to [@metaplex](https://twitter.com/metaplex) or edit this page on G
 ## General
 
 - [Solana and Metaplex FAQ](https://hackmd.io/@archaeopteryx/By4bpbA4F#Solana-and-Metaplex-FAQ)
+- [KeyStrokes - Setup Phantom and CLI wallets for Solana Development, with funding](https://www.youtube.com/watch?v=L_5FbIVtL0U)
 
 ## Storefronts
 
@@ -44,6 +45,11 @@ Send a tweet to [@metaplex](https://twitter.com/metaplex) or edit this page on G
 - [Candy Machine V2 Guide](https://hackmd.io/@MarkSackerberg/candyV2)
 - [HashLips](https://github.com/HashLips/hashlips_art_engine) for creating generative art
 - [Candy Machine v2 Guide with Credit Card Support](https://medium.com/crossmint-tech/how-to-launch-a-solana-nft-collection-with-credit-card-support-using-candy-machine-e740cffee1bc)
+- [KeyStrokes - Metaplex CandyMachine V2 - Launch Simple Solana NFT Collection ](https://www.youtube.com/watch?v=_W0OH3db4gM)
+- [KeyStrokes - Metaplex CandyMachine V2 - Windows Edition! Launch Simple Solana NFT Collection](https://www.youtube.com/watch?v=ZSgXg5eimus)
+- [KeyStrokes - Metaplex CandyMachine V2 - Whitelist and Public Mint](https://www.youtube.com/watch?v=asnupAj-IJg)
+- [KeyStrokes - Metaplex CandyMachine V2 - Mint with Reveal](https://www.youtube.com/watch?v=K2ykv9IffdA)
+- [KeyStrokes - Sugar - Launch Simple Solana NFT Collection ](https://www.youtube.com/watch?v=h37srt7Pm_s)
 
 ## Fair Launch
 
