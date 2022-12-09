@@ -1,0 +1,9 @@
+{
+    "label": "Tutorials",
+    "link": {
+        "type": "generated-index",
+        "title": "Tutorials",
+        "description": "Tutorials for learning how to use Sugar.",
+        "slug": "/developer-tools/sugar/tutorials/"
+    }
+}

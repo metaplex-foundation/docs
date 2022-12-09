@@ -1,0 +1,9 @@
+{
+  "label": "Available Guards",
+  "link": {
+    "type": "generated-index",
+    "title": "Available Guards",
+    "description": "Lists all available default guards.",
+    "slug": "/programs/candy-machine/available-guards"
+  }
+}

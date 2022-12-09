@@ -10,11 +10,19 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.png',
+  favicon: 'logo/favicon.png',
   organizationName: 'metaplex',
   projectName: 'docs',
-  trailingSlash: false,
-
+  scripts: [
+    {
+      src: 'https://app.happyreact.com/widget/reactions.js',
+      defer: true,
+    }
+  ],
+  customFields: {
+    feedbackUrl: 'https://metaplex.canny.io/developers?selectedCategory=documentation',
+    happyReactToken: '8c828a21-ead0-4998-b98b-f465fd3e4e4f'
+  },
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -24,13 +32,14 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/metaplex/docs/tree/main/',
-          remarkPlugins: [require('mdx-mermaid')]
+          remarkPlugins: [require('mdx-mermaid')],
+          showLastUpdateTime: true
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-        googleAnalytics: {
-          trackingID: 'UA-213985918-1',
+        gtag: {
+          trackingID: 'G-TNL3E6G9YK',
           anonymizeIP: true,
         },
       }),
@@ -40,6 +49,11 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      docs: {
+        sidebar: {
+          hideable: true,
+        }
+      },
       algolia: {
         // If Algolia did not provide you any appId, use 'BH4D9OD16A'
         appId: 'ONUK0F738E',
@@ -52,7 +66,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         // Optional: see doc section below
         contextualSearch: true,
 
-        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites, and we want to navigate with window.location.href to them.
         // externalUrlRegex: 'external\\.com|domain\\.com',
 
         // Optional: Algolia search parameters
@@ -64,14 +78,15 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         title: 'Metaplex Docs',
         logo: {
           alt: 'Metaplex logo',
-          src: 'img/meta-white.svg',
-          srcDark: 'img/meta-black.svg',
+          src: 'logo/meta-white.svg',
+          srcDark: 'logo/meta-black.svg',
         },
         items: [
           {
             href: 'https://github.com/metaplex-foundation/metaplex/',
-            label: 'GitHub',
             position: 'right',
+            className: 'header-github-link',
+            'aria-label': 'GitHub repository',
           },
         ],
       },
@@ -79,24 +94,36 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         style: 'dark',
         links: [
           {
-            title: 'Community',
+            title: 'Resources',
             items: [
               {
                 label: 'Discord',
-                href: 'https://discord.gg/RfzFD9g9WE',
+                href: 'https://discord.gg/metaplex',
               },
               {
                 label: 'Twitter',
                 href: 'https://twitter.com/metaplex',
               },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
+              {
+                label: 'StackExchange',
+                href: 'https://solana.stackexchange.com/questions/tagged/metaplex',
+              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/metaplex-foundation/metaplex',
+              },
+            ],
+          },
+          {
+            title: 'Powered by',
+            items: [
+              {
+                label: 'Happy React',
+                href: 'https://happyreact.com/',
+              },
+              {
+                label: 'Docusaurus',
+                href: 'https://docusaurus.io/',
               },
             ],
           },
@@ -106,7 +133,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ['rust'],
+        additionalLanguages: ['rust', 'swift'],
       },
     }),
 });
