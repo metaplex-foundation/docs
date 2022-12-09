@@ -52,9 +52,9 @@ Unlike archival nodes, a non-archive node, or just a regular node, will only hav
 ## RPCs Available
 
 The following section includes multiple RPC providers. 
-:::info
-This list is in alphabetical order. Please choose the RPC provider that best suits your project's needs. If we are missing a provider, let us know in our discord or submit a PR.
-:::
+> **Note**
+>This list is in alphabetical order. Please choose the RPC provider that best suits your project's needs. If we are missing a provider, let us know in our discord or submit a PR.
+
 ### Alchemy 
 
 Alchemy offers a free plan with a rate limit of 12 million transactions per month. Their plan is to keep it free for the first 500 people who sign up to use it. Once you sign up, you will have access to the private RPC they provide.
