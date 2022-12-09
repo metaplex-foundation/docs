@@ -46,6 +46,7 @@ Send a tweet to [@metaplex](https://twitter.com/metaplex) or edit this page on G
 - [HashLips](https://github.com/HashLips/hashlips_art_engine) for creating generative art
 - [Candy Machine v2. Mint solana UI](https://github.com/chmerev/candy-machine-v2-mint-solana-ui) for free and quick creation of a mint page
 - [Candy Machine v2 Guide with Credit Card Support](https://medium.com/crossmint-tech/how-to-launch-a-solana-nft-collection-with-credit-card-support-using-candy-machine-e740cffee1bc)
+- [KeyStrokes - Metaplex CandyMachine V3 - Create Solana NFT Collection (With Sugar)](https://youtu.be/0KHv1dMV8zU)
 - [KeyStrokes - Metaplex CandyMachine V2 - Launch Simple Solana NFT Collection ](https://www.youtube.com/watch?v=_W0OH3db4gM)
 - [KeyStrokes - Metaplex CandyMachine V2 - Windows Edition! Launch Simple Solana NFT Collection](https://www.youtube.com/watch?v=ZSgXg5eimus)
 - [KeyStrokes - Metaplex CandyMachine V2 - Whitelist and Public Mint](https://www.youtube.com/watch?v=asnupAj-IJg)
