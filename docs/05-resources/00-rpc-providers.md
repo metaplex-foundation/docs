@@ -171,5 +171,7 @@ From the [official docs](https://docs.runnode.com/runnode/tutorials/1.-how-to-si
 | Requests/sec     | 25     | 100     | 150 |
 | Archival Node    | -     | -     | - |
 
+
 ## Additional Information
+
 If you have any questions or would like to further understand this topic, you are welcome to ask join the [Metaplex Discord](https://discord.gg/YZZAyMFU22) group.
