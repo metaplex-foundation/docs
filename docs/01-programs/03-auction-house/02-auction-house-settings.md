@@ -91,7 +91,7 @@ There are other accounts that are not created by the Auction House program, but 
 <Accordion>
 <AccordionItem title="JS SDK" open={true}>
 <div className="accordion-item-padding">
-    
+
 The following code snippet builds four different keypairs, corresponding to the four accounts discussed above and sets them.
 
 ```tsx
@@ -124,12 +124,10 @@ Setting `requireSignOff = true` has other powers as well: it allows marketplaces
 <Accordion>
 <AccordionItem title="JS SDK" open={true}>
 <div className="accordion-item-padding">
-    
+
 The following code snippet sets `requireSignOff` to `true`.
 
 ```tsx
-import { Keypair } from "@solana/web3.js";
-
 const auctionHouseSettings = {
     requireSignOff: true
 };
@@ -149,12 +147,10 @@ An important point to note here is that `canChangeSalePrice` can be set to `true
 <Accordion>
 <AccordionItem title="JS SDK" open={true}>
 <div className="accordion-item-padding">
-    
+
 The following code snippet sets `canChangeSalePrice` to `true`, while also ensuring that `requireSignOff` is also `true`
 
 ```tsx
-import { Keypair } from "@solana/web3.js";
-
 const auctionHouseSettings = {
     requireSignOff: true,
     canChangeSalePrice: true
@@ -180,7 +176,7 @@ There are three setting pertaining to the Auctioneer which can be configured in 
 <Accordion>
 <AccordionItem title="JS SDK" open={true}>
 <div className="accordion-item-padding">
-    
+
 The following code snippet sets `hasAuctioneer` to `true`. It also points the `auctioneerAuthority` to a generated public key and sets `auctioneerScopes` to allow the Auctioneer to buy, sell and excecute the sale on behalf of the Auction House.
 
 ```tsx
