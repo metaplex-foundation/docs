@@ -1,95 +1,138 @@
 ---
-sidebar_label: Overview
+description: "gives an overview of the Auction House program"
 ---
 
-# What is Auction House
+import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
-Auction House is a protocol for marketplaces to implement a decentralized sales contract. It is simple, fast and very cheap. Auction House is a Solana program available on Mainnet Beta and Devnet. Anyone can create an Auction House and accept any SPL token they wish.
+# Overview
 
-:::info
+## Introduction
+Auction House is a program that allows users to exchange assets within the Solana blockchain. 
 
-The Auction House Solana program resides within the Metaplex Program Library here:
+There are plenty of ways to exchange assets on Solana, so why another program focused on solving this problem? Let's dive deep into that.
 
-https://github.com/metaplex-foundation/metaplex-program-library
+The ethos of this program is to allow anyone to create and configure their own marketplace and even provide their own custom logic on how assets should be exchanged. The motivation behind the Auction House protocol is to create a healthy ecosystem of marketplaces that focus on different use-cases, and more importantly, each bringing their own flavor into the way they allow users to trade assets.
 
-The Auction House CLI resides in the deprecated-clis monorepo here:
+The most important aspect of the Auction House program is that it provides ownership of assets to the user.
 
-https://github.com/metaplex-foundation/deprecated-clis/blob/main/src/auction-house-cli.ts
+Traditionally, as soon as the user lists an asset on a marketplace, the asset is moved from the user's wallet into a wallet known as the [Escrow](https://www.investopedia.com/terms/e/escrow.asp) wallet owned by the marketplace and is kept or **escrowed** there until the asset is delisted or sold. This poses some concerns:
+* The user can not list the same asset on multiple marketplaces
+* The user has to rely on the marketplaces’ escrow contracts to safely hold their asset.
 
-The MPL JS SDK (low level web3 sdk) lives here and is a great starting point for advanced web3 devs
+This is where Auction House shows its power. Its a transaction protocol that allows marketplaces to implement an **escrow-less** sales contract, thus providing ownership of assets to the users.
 
-https://www.npmjs.com/package/@metaplex-foundation/mpl-auction-house
 
-The High Level Javascript SDK (coming soon) which has high level Auction House functions resides here:
+## Creating an Auction House
+The Auction House program can be used to create a new marketplace by instantiating a new **Auction House** account. The Auction House account is a [Program Derived Address (PDA)](/programs/understanding-programs#program-derived-addresses-pda) which is derived from a given public key and, optionally, an SPL Token to use a currency (more on that below).
 
-https://github.com/metaplex-foundation/js
+<p>
+<img src="https://i.imgur.com/2HPpM9g.png#radius" style={{maxWidth: '400px'}} />
+</p>
 
-:::
+The account can be configured in whichever way the user wants. We'll talk [more about these configurations in a dedicated page](/programs/auction-house/auction-house-settings) but here are some interesting configurable parameters:
 
-Let's dive into Auction House's main features.
+* `requireSignOff`: this allows marketplaces to gate which assets can be listed and which bids can be placed. On every relevant instruction, the Auction House [authority](https://docs.solana.com/staking/stake-accounts#understanding-account-authorities) needs to sign the transaction.
+* `canChangeSalePrice`: this parameter is only intended to be used on Auction Houses with `requireSignOff` set to `true`. This allows the Auction House to perform custom order matching to find the best price for the seller.
+* `sellerFeeBasisPoints`: this represents the share the marketplace takes on all trades. For instance, if this is set to `200`, i.e. 2%, then the marketplace takes 2% of every single trade that happens on their platform.
+    
+## Listing and Bidding
+Once we have an active Auction House, users can start listing assets and bidding on assets on the marketplace.
 
-:::info
+### Listing
+When a user lists an asset, the Auction House does two things:
+1. Auction House creates a **Sell Order**: in other words, creates a PDA known as the `SellerTradeState` which represents the listing of the asset. Trade States are special PDAs that are very cheap in comparison to other PDAs / Accounts. This is because these PDAs only store 1 byte of data, which is the [bump](https://solanacookbook.com/core-concepts/pdas.html#generating-pdas) of the PDA. All other information related to listings such as list price, amount of tokens, mint account etc, are hashed into the seeds of the PDA, instead of storing them inside the PDA itself, and therefore the PDA acts as a "proof of existence" for that listing, while being extremely cost efficient.
 
-Auction House is a completely separate program than the storefront Auction program.
+![](https://i.imgur.com/ki27Ds8.png#radius)
 
-:::
+2. Auction House also assigns another PDA: `programAsSigner` PDA as the **Delegate**. Delegates are a feature of the Solana SPL-token program and are discussed in detail [here](https://spl.solana.com/token#authority-delegation). Delegation allows the Auction House to pull assets out of a token account when a sale goes through at a later point. This way, the asset need not be escrowed and can stay in the user's wallet up until the sale goes through.
 
-### Escrowless
+![](https://i.imgur.com/aIRl7Hb.png#radius)
 
-For the NFT Seller the NFT doesn't leave their wallet until the sale completes. This is due to the use of Solana Token Delegates, and it allows them to list their NFT on other Marketplaces that implement the Auction House protocol. The Auction House program is the delegate, so whichever marketplace has a matching bid can execute the sale, and they get their fee, the buyer gets the NFT and the seller gets the money. This is all done in the execution of the sale. The buyer and seller never need to claim anything like in our other auction system.
+### Bidding
+Similar to the case of listing, when a user places a bid, the Auction House creates a **Buy Order**. In other words, it creates the `BuyerTradeState` PDA representing the bid. The bid amount (native or SPL tokens) needs to be transferred manually by the marketplace to the `BuyerEscrowAccount` PDA, which holds this amount till the sale goes through.
 
-### Auction House Authority Features
+> Example:
+> * Alice lists an asset A for 5 SOL. In doing so, the Auction House creates the `SellerTradeState` PDA representing the bid. The Auction House also assigns the `programAsSigner` PDA as the **Delegate**, hence giving it the **Authority** to pull the asset from Alice's wallet when the sale goes through.
+> * Bob places a bid of 5 SOL on asset A. In doing so, the marketplace pulls 5 SOL from Bob's wallet to the `BuyerEscrowAccount` PDA. This amount will stay here up until the sale goes through.
+    
+## Executing a Sale
+Once we have a listing and at least one bid placed for a given asset, a trade can be completed by calling the `executeSale` instruction. 
 
-When you create an Auction House a new `Instance` of an Auction House is made. This `Instance` is owned and operated by an `Authority`.
-Meaning the Public Key you set in the `authority` section of the `CreateAuction House` instruction is the `Authority` that can update the auction house. Metaplex uses this `Authority` pattern in many contracts to create `Access Control` on certain features and functions. When you create an auction house, you can set the following parameters:
+The `executeSale` instruction is a permission-less crank: in other words, can be executed by anyone without any fee or reward. On the execution of the `executeSale` instruction, two things happen:
+* The Auction House pulls the bid amount stored in the `BuyerEscrowAccount` and transfers this amount to the lister (minus Auction House fees). 
+* The `programAsSigner` PDA, which the Auction House assigned as the **Delegate**, pulls the asset from the lister's wallet (more specifically, from the Token Account in the lister's wallet), and transfers the asset into the bidder's wallet, thus completing the trade.
+![](https://i.imgur.com/gpAX63m.png#radius)
 
-- Treasury Withdraw Destination - The wallet that receives the Auction House fees.
-- Fee Withdraw Destination - A wallet that is used to pay for Solana fees for the seller and buyer if the marketplace chooses to execute the sale in the background.
-- Seller Fee Basis Points - The share of the sale the auction house takes on all NFTs.
-- Requires Sign Off - The auction house must sign all sales orders.
-- Can Change Sale Price - If the seller intentionally lists their NFT for a price of 0 the Auction House can change the sale price to match a matching Bid that is greater than 0. This allows the Auction house to do complicated order matching to find the best price for the seller.
-- Treasury Mint - The SPL token you accept as the purchase currency
+Now that we know how the `executeSale` instruction works, let's discuss the three trade scenarios in which the `executeSale` instruction is executed in different ways:
 
-:::warning
+1. *"Buying" at list price*: This is the case when a user places a bid for a listed asset, at the listed amount itself. In such cases, the `bid` and the `executeSale` instructions are executed in the same transaction, and thus the bidder effectively "buys" the asset.
 
-`Can Change Sale Price` is only intended to be used with Auction Houses that `Requires Sign Off`
+> Example:
+> * Alice lists an asset A for 5 SOL. This creates a **Sell Order** for asset A.
+> * Bob notices the listing and places a bid of 5 SOL for the asset A. This creates a **Buy Order** for asset A.
+> * This enables the marketplace to place a bid on the asset and execute the sale in the same transaction, in practice allowing Bob to "buy" asset A.
 
-:::
+2. *"Selling" at bid price*: This is the case when a user, interested in an unlisted asset, places a bid on it. If the asset owner now lists the asset for the bid amount, the `list` and the `executeSale` instructions are executed in the same instruction, and thus the lister effectively "sells" the asset at the requested price.
 
-#### Requires Sign Off Feature
+> Example:
+> * Bob places a bid of 5 SOL for an unlisted asset A. This creates a **Buy Order** for asset A.
+> * Alice notices the bid and lists the asset A for 5 SOL. This creates a **Sell Order** for asset A. 
+> * This enables the marketplace to list the asset and execute the sale in the same transaction, in practice allowing Alice to "sell" asset A.
 
-This feature allows a marketplace to restrict which NFTs get sold on their platform. It is useful for more centralized marketplaces or a marketplace that has order matching algorithms that the user has allowed them to use (enabled by listing the NFT at the price of 0).
+3. *Lister agreeing to a bid*: This is the case when the `executeSale` instruction is executed independently, after a **Buy Order** and a **Sell Order** exist for a given asset.
 
-Marketplaces who want to stay decentralized and not require sign-off may restrict what their user interfaces show via other means, but behind the scenes, someone can still list an NFT on your Auction House. You may in this scenario build Allow Lists using merkle trees or chose to restrict what your UI shows via other means.
+> Example:
+> * Alice lists an asset A for 5 SOL. This creates a **Sell Order** for asset A.
+> * Bob places a bid of 5 SOL for asset A, unaware of Alice's listing. This creates a **Buy Order** for asset A.
+> * Alice notices the matching bid and executes the sale.
+ 
+## Auctioning Fungible Assets
+So far, we've talked about exchanging assets using an Auction House account, but we've not dug into what type of assets can be exchanged that way. The most popular assets that can be listed in an Auction House are [Non-Fungible Tokens (NFTs)](/resources/definitions#non-fungible-tokens).
 
-### Any SPL Token
+However, these are not the only assets that can benefit from the Auction House program. In fact, an asset can be any SPL Token so long as it has a Metadata account attached to its Mint account. If you'd like to know more about SPL Token and Metadata accounts, you can [read more about this in the overview of our Token Metadata program](/programs/token-metadata/overview).
+    
+## Buying asset using a custom SPL Token
+In the examples showcased above, we've used SOL as the exchange currency to discuss how the Auction House program works. But SOL is not the only currency that can be configured for exchanging assets. The Auction House program allows marketplaces to configure any SPL-token to act as their currency.
 
-Auction House allows you to accept any SPL token as the tender that the buyer deposits into their Buyer Escrow in order to accomplish a sale.
+This can be achieved by setting the `treasuryMint` parameter in the Auction House account to the mint account of the SPL-token of your liking.
 
-Now that you know what the Auction House is, take a look at our [Getting Started](./getting-started) guide.
+## Custom Order Matching
+When we were discussing Trade States, there was a third Trade State which was shown in the Trade State diagram: the `FreeSellerTradeState`. What's the utility of this Trade State?
 
-### Auction House Receipts
+During the introduction to the Auction House program, we briefly discussed how Auction House can be used by marketplaces to provide their own custom logic on how assets should be exchanged. This is where the `FreeSellerTradeState` comes in.
 
-To aid transaction tracking, Auction House supports the generation of receipts for listings, bids, and sales. To generate these receipts, the receipt printing function should be called immediately after the corresponding transaction (`PrintListingReceipt`, `PrintBidReceipt`, and `PrintPurchaseReceipt`). Additionally, the `CancelListingReceipt` and `CancelBidReceipt` instructions should be called in the case of canceled listings and bids. Calling these two instructions will fill the `canceled_at` fields of the `ListingReceipt` and `BidReceipt` accounts.
+When a buyer intentionally lists their asset for a price of 0 SOL / SPL-tokens, the `FreeSellerTradeState` is generated. The Auction House can then change the sale price to match a matching bid that is greater than 0. This allows the Auction House to do complicated order matching to find the best price for the seller and the marketplaces can write their own custom logic to do this order matching.
 
-:::info
+## Auctioneer
+All of the auctions we've seen so far have one thing in common. They are, what we call, [**Double Auctions**](https://blogs.cornell.edu/info2040/2021/11/29/four-common-types-of-auctions/#:~:text=sealed%2Dbid%20auction.-,DOUBLE%20AUCTION,-Both%20buyers%20and). That is, they are un-timed auctions where buyers and sellers, bid and list until they find a common ground.
+However, there are several other forms of auctions such as English auctions and Dutch auctions which have become popular in the Solana ecosystem.
+The Auction House implementation is purposefully designed with instant sales in mind and does not offer other auction types out-of-the-box.
 
-While the receipts can be retrieved using the standard getProgramAccounts data flow, the official recommendation is to use Solana's [AccountsDB](https://docs.solana.com/developing/plugins/geyser-plugins) plug-in to index and track the generated receipts.
+**Auctioneer** is a customized contract type, written by the user, that uses the composability pattern of Auction House to control an individual Auction House account.
 
-:::
+To enable an Auctioneer instance on an Auction House, it must first be explicitly delegated. This Auctioneer instance will then be able to intercept most of the Auction House instructions in order to inject its own custom logic. Metaplex also provides some Auctioneer implementations like Timed Auctions. We will talk about this in greater detail in later pages of this documentation.
 
-### Partial Order Fulfillment
+![](https://i.imgur.com/RyZUfR9.png#radius)
 
-A seller can create a sell order of `FungibleAssets` with a `token_size` quantity greater than 1. The buyer can then create a buy order of said assets that is less than the `token_size` of the sell order. In order for `ExecutePartialSale` to succeed, the buy order must have been created with both a `token_size` and a `sale_price` both lower than the sell order `token_size` and `sale_price`. In `ExecutePartialSale`, `partial_order_price` must match the division of `token_size` in the full order and the `sale_price` times the `partial_order_size`. `partial_order_size` must not be greater than the `token_size` in the original sell order. If there is no partial order needing to take place, `partital_order_price` and `partial_order_size` must be passed in as `None`.
+## Next steps
+On this page, we have gone through the very basics of the Auction House protocol and the power it possesses. There is a lot more that the Auction House is capable of.
 
-:::info
+We'll start by listing various libraries that can be used to get started with this program:
+* [Getting Started](/programs/auction-house/getting-started)
 
-Example:
+We will proceed to dive deeper into the Auction House settings and how to manage Auction House instances:
+* [Auction House Settings](/programs/auction-house/auction-house-settings)
+* [Managing Auction Houses](/programs/auction-house/managing-auction-house)
 
-1. Alice creates a sell order of 6 Alice tokens for 6 SOL.
-2. Bob creates a buy order to purchase 3 Alice tokens for 3 SOL.
-3. Bob now owns 3 Alice tokens and there are 3 remaining for someone else to buy.
-4. John creates a buy order for the remaining 3 Alice tokens for 3 SOL.
-5. John now owns the remaining 3 Alice tokens and the listing is now closed.
+Once we understand the basics of Auction House, we can begin to learn how to trade assets on Auction House powered marketplaces:
+* [Trading assets on Auction House](/programs/auction-house/trading-assets-on-auction-house)
+* [Managing Buyer Account](/programs/auction-house/managing-buyer-account)
 
-:::
+We will also explore how to track listings, bids and sales on Auction Houses and how to fetch them:
+* [Printing Receipts](/programs/auction-house/auction-house-receipts)
+* [Finding bids, listings and purchases](/programs/auction-house/finding-bids-listings-and-sales)
+    
+## Additional Reading Material
+* Prof Lupin's Auction House guide: https://proflupin.xyz/metaplex-auction-house
+* Jordan's twitter thread: https://twitter.com/redacted_j/status/1453926144248623104
+* Armani's twitter thread: https://twitter.com/armaniferrante/status/1460760940454965248

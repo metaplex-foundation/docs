@@ -1,5 +1,5 @@
 ---
-sidebar_label: "FAQ"
+description: "FAQ"
 ---
 
 # Auction House FAQ
