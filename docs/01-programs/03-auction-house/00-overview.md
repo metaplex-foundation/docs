@@ -25,7 +25,9 @@ This is where Auction House shows its power. Its a transaction protocol that all
 ## Creating an Auction House
 The Auction House program can be used to create a new marketplace by instantiating a new **Auction House** account. The Auction House account is a [Program Derived Address (PDA)](/programs/understanding-programs#program-derived-addresses-pda) which is derived from a given public key and, optionally, an SPL Token to use a currency (more on that below).
 
-![](https://i.imgur.com/2HPpM9g.png =300x)
+<p>
+<img src="https://i.imgur.com/2HPpM9g.png#radius" style={{maxWidth: '400px'}} />
+</p>
 
 The account can be configured in whichever way the user wants. We'll talk [more about these configurations in a dedicated page](/programs/auction-house/auction-house-settings) but here are some interesting configurable parameters:
 
@@ -40,11 +42,11 @@ Once we have an active Auction House, users can start listing assets and bidding
 When a user lists an asset, the Auction House does two things:
 1. Auction House creates a **Sell Order**: in other words, creates a PDA known as the `SellerTradeState` which represents the listing of the asset. Trade States are special PDAs that are very cheap in comparison to other PDAs / Accounts. This is because these PDAs only store 1 byte of data, which is the [bump](https://solanacookbook.com/core-concepts/pdas.html#generating-pdas) of the PDA. All other information related to listings such as list price, amount of tokens, mint account etc, are hashed into the seeds of the PDA, instead of storing them inside the PDA itself, and therefore the PDA acts as a "proof of existence" for that listing, while being extremely cost efficient.
 
-![](https://i.imgur.com/ki27Ds8.png)
+![](https://i.imgur.com/ki27Ds8.png#radius)
 
 2. Auction House also assigns another PDA: `programAsSigner` PDA as the **Delegate**. Delegates are a feature of the Solana SPL-token program and are discussed in detail [here](https://spl.solana.com/token#authority-delegation). Delegation allows the Auction House to pull assets out of a token account when a sale goes through at a later point. This way, the asset need not be escrowed and can stay in the user's wallet up until the sale goes through.
 
-![](https://i.imgur.com/aIRl7Hb.png)
+![](https://i.imgur.com/aIRl7Hb.png#radius)
 
 ### Bidding
 Similar to the case of listing, when a user places a bid, the Auction House creates a **Buy Order**. In other words, it creates the `BuyerTradeState` PDA representing the bid. The bid amount (native or SPL tokens) needs to be transferred manually by the marketplace to the `BuyerEscrowAccount` PDA, which holds this amount till the sale goes through.
@@ -59,7 +61,7 @@ Once we have a listing and at least one bid placed for a given asset, a trade ca
 The `executeSale` instruction is a permission-less crank: in other words, can be executed by anyone without any fee or reward. On the execution of the `executeSale` instruction, two things happen:
 * The Auction House pulls the bid amount stored in the `BuyerEscrowAccount` and transfers this amount to the lister (minus Auction House fees). 
 * The `programAsSigner` PDA, which the Auction House assigned as the **Delegate**, pulls the asset from the lister's wallet (more specifically, from the Token Account in the lister's wallet), and transfers the asset into the bidder's wallet, thus completing the trade.
-![](https://i.imgur.com/gpAX63m.png)
+![](https://i.imgur.com/gpAX63m.png#radius)
 
 Now that we know how the `executeSale` instruction works, let's discuss the three trade scenarios in which the `executeSale` instruction is executed in different ways:
 
@@ -110,7 +112,7 @@ The Auction House implementation is purposefully designed with instant sales in 
 
 To enable an Auctioneer instance on an Auction House, it must first be explicitly delegated. This Auctioneer instance will then be able to intercept most of the Auction House instructions in order to inject its own custom logic. Metaplex also provides some Auctioneer implementations like Timed Auctions. We will talk about this in greater detail in later pages of this documentation.
 
-![](https://i.imgur.com/RyZUfR9.png)
+![](https://i.imgur.com/RyZUfR9.png#radius)
 
 ## Next steps
 On this page, we have gone through the very basics of the Auction House protocol and the power it possesses. There is a lot more that the Auction House is capable of.
