@@ -303,7 +303,7 @@ To achieve this we introduce a new function `addListener` before `checkEligibili
 # Conclusion
 After following this guide you should be able to build a simple mint page yourself or use the one built here as an example.
 
-If you are experiencing issues feel free to ask questions e.g. in our [discord](discord.gg/metaplex).
+If you are experiencing issues feel free to ask questions e.g. in our [discord](https://discord.gg/metaplex).
 
 ## Further reading 
 - If you want to use this UI as a basis you can just clone it from [mint-example-ui code on Github](https://github.com/metaplex-foundation/js-examples/tree/main/mint-ui-example)
