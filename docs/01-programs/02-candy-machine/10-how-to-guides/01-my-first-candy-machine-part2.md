@@ -22,6 +22,7 @@ Even though you will not necessarily have to use NPM to build a mint page we wil
 
 <Accordion>
 <AccordionItem title="macOS & Linux" open={false}>
+<div className="accordion-item-padding">
 For Linux and Mac, it's best to use the node version manager (nvm). Run the install script:
 
 ```
@@ -32,10 +33,10 @@ Then set it to use the current version:
 nvm install 16.14
 ```
 
+</div>
 </AccordionItem>
-</Accordion>
-<Accordion>
 <AccordionItem title="Windows" open={false}>
+<div className="accordion-item-padding">
 
 1. Open PowerShell
 2. run:
@@ -48,6 +49,7 @@ winget install CoreyButler.NVMforWindows
 nvm install 16.14
 ```
 
+</div>
 </AccordionItem>
 </Accordion>
 
