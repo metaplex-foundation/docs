@@ -86,7 +86,7 @@ SUBCOMMANDS:
 
 ## Set Up Your Project
 
-Next, we are going to set up a simple project directory with some example assets which you can download from [here](https://arweave.net/CnYUIQ2LrzGEIxR3owYI6saCIQ9Ovid8e3wDr1SwCl4). Extract the zip file and rename the folder to 'assets'.
+Next, we are going to set up a simple project directory with some example assets which you can download from [here](/assets/candy-machine/assets.zip). Extract the zip file and rename the folder to 'assets'.
 
 Create a folder for your project somewhere convenient on your OS. For this tutorial, we are creating a folder called MyProject on the Desktop. Next, copy the "assets" folder you downloaded into this folder so your project directory looks like the following:
 
