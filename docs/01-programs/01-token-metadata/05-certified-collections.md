@@ -77,17 +77,15 @@ In order to flip that `Verified` boolean to `True`, the Authority of the Collect
 
 **EXTREMELY IMPORTANT** 🚨
 
-Explorers, Wallets and Marketplaces, **MUST CHECK** that `Verified` is true. `Verified` can only be set true if the Authority on the Collection NFT has run the `VerifyCollection` instruction over the NFT.
+Explorers, Wallets and Marketplaces, **MUST CHECK** that `Verified` is true. `Verified` can only be set true if the Authority on the Collection NFT has run one of the Token Metadata `VerifyCollection` instructions over the NFT.
 
 This is the same pattern as the `Creators` field where `Verified` must be true to validate the NFT.
 
 In Order to check if a collection is valid on an NFT you **MUST**:
 
-1. Check that the `Collection` struct is set.
-2. Check that the `Key` in the `Collection` struct is owned on chain by the SPL Token program.
-3. Check that `Verified` is true.
+Check that the `Collection` struct is set and the `Verified` field is `true`.
 
-If those 3 steps are not followed you could be exposing fraudulent NFTs on real collections.
+If those two steps are not followed you could be exposing fraudulent NFTs on real collections.
 
 :::
 
