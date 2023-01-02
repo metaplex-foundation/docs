@@ -5,7 +5,7 @@ sidebar_label: "Burn Token"
 :::warning
 There is a full burn instruction now which allows to fully burn Metaplex Tokens. If you use the guide below not all Accounts will be closed and you will not get back all rent SOL!
 
-A new Guide will be added soon.
+You can find the new guide [here](../burn-nfts).
 :::
 
 # Burn Token
