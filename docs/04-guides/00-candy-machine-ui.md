@@ -5,11 +5,12 @@ sidebar_label: "How to set up a Minting UI"
 # A Front End Minting Experience
 
 :::info
+This guide is for CM v2. If you create a CM v3 follow [the v3 guide](/programs/candy-machine/how-to-guides/my-first-candy-machine-part2) instead!
+:::
 
 This guide assumes you have already uploaded and deployed your Candy Machine. 
 If you haven't yet done this, check out [Sugar CLI](/developer-tools/sugar/) to get started!
 
-:::
 
 While the Candy Machine is ready to mint after being deployed, in most cases you will want to provide a front end experience to allow your
 community the chance to mint, too.
