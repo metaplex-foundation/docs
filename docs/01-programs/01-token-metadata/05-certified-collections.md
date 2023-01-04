@@ -81,9 +81,10 @@ Explorers, Wallets and Marketplaces, **MUST CHECK** that `Verified` is true. `Ve
 
 This is the same pattern as the `Creators` field where `Verified` must be true to validate the NFT.
 
-In Order to check if a collection is valid on an NFT you **MUST**:
+In Order to check if a collection is valid on an NFT, it **MUST** have a collection struct set with:
 
-Check that the `Collection` struct is set and the `Verified` field is `true`.
+* The `key` field matching the mint address of the appropriate collection parent
+* The `verified` field set to `true`
 
 If those two steps are not followed you could be exposing fraudulent NFTs on real collections.
 
