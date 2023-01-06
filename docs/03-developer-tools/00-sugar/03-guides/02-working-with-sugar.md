@@ -69,4 +69,4 @@ OPTIONS:
     -r, --rpc-url <RPC_URL>        RPC Url
 ```
 
-> **Note:** This guide assumes that you set up your RPC url and a keypair using Solana CLI config, as described in the `Quick Start` section above.
+> **Note:** This guide assumes that you set up your RPC url and a keypair using Solana CLI config, as described in the [Quick Start](https://docs.metaplex.com/developer-tools/sugar/overview/quick-start) section above.
