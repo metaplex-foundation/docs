@@ -116,7 +116,6 @@ After going through the documentation, you can reserve an account in their [port
 
 After setting up an account and proceed to choose a plan.
 
-![](https://imgur.com/iqO3rE7) 
 
 | RPC Info | Free | Shared |  Custom |
 | -------- | -------- | -------- | -------- |
