@@ -4,8 +4,8 @@ sidebar_label: "How to set up a Minting UI"
 
 # A Front End Minting Experience
 
-:::info
-This guide is for CM v2. If you create a CM v3 follow [the v3 guide](/programs/candy-machine/how-to-guides/my-first-candy-machine-part2) instead!
+:::warning
+This guide is for Candy Machine v2. If you create a Candy Machine v3 follow [the v3 guide](/programs/candy-machine/how-to-guides/my-first-candy-machine-part2) instead!
 :::
 
 This guide assumes you have already uploaded and deployed your Candy Machine. 
