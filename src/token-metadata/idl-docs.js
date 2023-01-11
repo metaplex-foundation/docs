@@ -80,7 +80,8 @@ export default {
           description:
             "The URI of the token, limited to 200 bytes. " +
             "<strong>This URI points to an off-chain JSON file that contains additional data following a certain standard.</strong> " +
-            "You can learn more about this JSON standard here. The JSON file can either be stored in a traditional server " +
+            "You can learn more about this JSON standard <a href='/programs/token-metadata/token-standard'>here</a>." +
+            "The JSON file can either be stored in a traditional server " +
             "(e.g. using AWS) or using a permanent storage solution such as using Arweave.",
         },
         sellerFeeBasisPoints: {
