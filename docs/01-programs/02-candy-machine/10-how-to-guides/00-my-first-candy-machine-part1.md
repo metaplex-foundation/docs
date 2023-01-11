@@ -86,18 +86,20 @@ SUBCOMMANDS:
 
 ## Set Up Your Project
 
-Next, we are going to set up a simple project directory with some example assets which you can download from [here](https://arweave.net/RhNCVZoqC6iO0xEL0DnsqZGPSG_CK_KeiU4vluOeIoI). Extract the zip file and rename the folder to 'assets'.
+Next, we are going to set up a simple project directory with some example assets which you can download from [here](/assets/candy-machine/assets.zip). Extract the zip file and rename the folder to 'assets'.
 
 Create a folder for your project somewhere convenient on your OS. For this tutorial, we are creating a folder called MyProject on the Desktop. Next, copy the "assets" folder you downloaded into this folder so your project directory looks like the following:
 
 ```
 MyProject/
      assets/
-         0.png
-         0.json
-         1.png
-         1.json
-         . . .
+        0.png
+        0.json
+        1.png
+        1.json
+        . . .
+        collection.png
+        collection.json
 ```
 
 We will run all our Sugar commands from within the project directory and Sugar will create our config and cache files in that directory. If we do this, we can elide the cache and config files from our commands as Sugar will look in the current directory for `config.json` and `cache.json` files.
