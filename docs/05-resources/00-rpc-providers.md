@@ -114,8 +114,9 @@ After going through the documentation, you can reserve an account in their [port
 
 [GetBlock](https://getblock.io/) is the blockchain RPC provider that employs a ‘pay per use’ model: its requests have no ‘expiration date’ so that users only pay for the resources they actually use. It supports more than 50 multiple blockchains. GetBlock guarantees the highest rate limit in free tariff, 60 RPS.
 
-After setting up an account and proceed to choose a plan.
+After setting up an account, proceed to choose a convenient plan.
 
+![](https://imgur.com/iqO3rE7.png#radius)
 
 | RPC Info | Free | Shared |  Custom |
 | -------- | -------- | -------- | -------- |
