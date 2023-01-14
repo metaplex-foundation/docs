@@ -1,5 +1,9 @@
 # My First Candy Machine
 
+:::warning
+This guide is for Candy Machine v2. You might want to follow the [more up to date guide](/programs/candy-machine/how-to-guides/my-first-candy-machine-part1) for Candy Machine v3.
+:::
+
 The goal of this tutorial is to take you from zero to one: you will learn to install Sugar and use its basic commands to configure and deploy a candy machine to Solana's devnet. It will provide you with a foothold on the basics and enough knowledge that you can then use the rest of the developer resources to learn the more advanced details for using Sugar.
 
 ## Prerequisite Knowledge
