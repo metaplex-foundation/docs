@@ -59,7 +59,7 @@ When minting via the JS SDK, simply provide the mint address of the NFT to use a
 ```tsx
 const { nft } = await metaplex.candyMachines().mint({
   // ...
-  settings: {
+  guards: {
     nftGate: {
       mint: nftFromRequiredCollection.address,
     },

@@ -123,7 +123,7 @@ const { candyMachine } = await metaplex.candyMachines().create({
 const { nft } = await metaplex.candyMachines().mint({
   candyMachine,
   collectionUpdateAuthority,
-  settings: {
+  guards: {
     thirdPartySigner: { signer: thirdPartySigner },
   },
 });
@@ -213,7 +213,7 @@ const { nft } = await metaplex.candyMachines().mint({
   candyMachine,
   collectionUpdateAuthority,
   group: "nft",
-  settings: {
+  guards: {
     thirdPartySigner: { signer: thirdPartySigner },
     nftPayment: { mint: nftFromRequiredCollection.address },
   },
