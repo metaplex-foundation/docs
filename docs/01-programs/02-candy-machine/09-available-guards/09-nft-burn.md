@@ -59,7 +59,7 @@ When minting via the JS SDK, simply provide the mint address of the NFT to burn 
 ```tsx
 const { nft } = await metaplex.candyMachines().mint({
   // ...
-  settings: {
+  guards: {
     nftBurn: {
       mint: nftToBurn.address,
     },

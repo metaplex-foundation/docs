@@ -76,7 +76,7 @@ In the vast majority of cases, we should not need to provide any Mint Settings t
 ```tsx
 const { nft } = await metaplex.candyMachines().mint({
   // ...
-  settings: {
+  guards: {
     // No mint settings required...
   }
 });
@@ -97,7 +97,7 @@ const gatewayToken = Pda.find(gatewayProgram.address, [
 
 const { nft } = await metaplex.candyMachines().mint({
   // ...
-  settings: {
+  guards: {
     gatekeeper: {
       tokenAccount: gatewayToken,
     },

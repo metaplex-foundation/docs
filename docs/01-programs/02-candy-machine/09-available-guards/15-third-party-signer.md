@@ -60,7 +60,7 @@ When minting via the JS SDK, simply provide the third-party signer via the `sign
 ```tsx
 const { nft } = await metaplex.candyMachines().mint({
   // ...
-  settings: {
+  guards: {
     thirdPartySigner: {
       signer: someWallet,
     },
