@@ -124,7 +124,7 @@ solana config set --url https://api.metaplex.solana.com/
 
 And that's it!
 
-You will have to send **real** SOL to your address now. You can buy SOL from a centralized exchange such as FTX.
+You will have to send **real** SOL to your address now. You can buy SOL from a centralized exchange such as Binance, Coinbase, Crypto.com, and others.
 
 :::warning
 
