@@ -25,6 +25,11 @@ Metaplex recommends only using tools that check for a *verified* creator, otherw
 
 The following third-party tools can be used to generate the mint list:
 
+* [Famous Foxes Snapshot](https://famousfoxes.com/snapshot)
+A web application to create mint lists as well as holder snapshots.
+
+Usage: input your first creator, candy machine creator id or collection key in the Mints tab with the appropriate option.
+
 * [Sol-NFT Tools](https://sol-nft.tools)
 A web-based tool that allows you to generate a mint list and has other useful features as well. Easiest to use for non-developers.
 
