@@ -86,7 +86,7 @@ You can [read more about these standards here](./token-standard).
 
 ## Programmable NFTs
 
-Because the Token Metadata program is building on top of the Solana Token program, anyone can transfer tokens (fungible or not) without going through the Token Metadata program. Whilst this great for program composibility, it also means that the Token Metadata program cannot enforce any rules on the tokens it is attached to.
+Because the Token Metadata program is building on top of the Solana Token program, anyone can transfer tokens (fungible or not) without going through the Token Metadata program. Whilst this is great for program composibility, it also means that the Token Metadata program cannot enforce any rules on the tokens it is attached to.
 
 A good example of why this can be problematic is that Token Metadata cannot enforce secondary sales royalties. Whilst there is **Seller Fee Basis Points** attribute on the Metadata account, it is purely [indicative](/programs/understanding-programs#indicative-fields) and anyone could create a marketplace that does not honor royalties — which is exactly what happened.
 

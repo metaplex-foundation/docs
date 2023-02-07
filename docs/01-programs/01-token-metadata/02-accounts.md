@@ -104,7 +104,7 @@ Metadata Delegate Record accounts are used to store multiple delegate authoritie
 
 It is a PDA derived from the Mint Account, the public key of the delegate authority and the role of the delegate authority. The PDA also derives from the current Update Authority of the Metadata account to ensure that all delegate authorities are automatically voided when the Update Authority is changed.
 
-Dependencing on the role of the delegate authority, it can be used to verify/unverify collection items, use the asset, update part of the Metadata account, etc.
+Depending on the role of the delegate authority, it can be used to verify/unverify collection items, use the asset, update part of the Metadata account, etc.
 
 You can [read more about Metadata Delegate Record accounts and the delegates it supports here](https://github.com/metaplex-foundation/metaplex-program-library/blob/master/token-metadata/program/ProgrammableNFTGuide.md#metadata-delegates).
 
