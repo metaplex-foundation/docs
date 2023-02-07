@@ -182,6 +182,16 @@ export default {
         },
       },
     },
+    ProgrammableConfig: {
+      size: 33,
+      description:
+        "This optional enum stores any data relevant to Programmable NFTs. " +
+        "The different variants of the enum are used as versions so we can " +
+        "add more features later on without introducing breaking changes. " +
+        "The latest version `V1` optionally contains the address of the " +
+        "RuleSet defining authorization rules for the Programmable NFT. " +
+        "If no RuleSet is provided, then all operations are allowed.",
+    },
     CreateMetadataAccountArgsV3: {
       description:
         "An object containing all the arguments for the <code>CreateMetadataAccountV3</code> instruction.",
