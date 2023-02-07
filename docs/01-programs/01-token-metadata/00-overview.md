@@ -78,7 +78,7 @@ To safely identify the fungibility of a token — and, thus, the standard that w
 - `NonFungibleEdition`: This is the same as `NonFungible` but the NFT was printed from an Original NFT and, thus, is associated with an Edition account instead of a Master Edition account.
 - `FungibleAsset`: The Mint account is Fungible but has zero decimal places. Having zero decimals means we can treat the token as an asset whose supply is not limited to one. For instance, Fungible Assets can be used in the gaming industry to store resources such as “Wood” or “Iron”.
 - `Fungible`: The Mint account is Fungible and has more than one decimal place. This is more likely going to be a token used as a decentralised currency.
-- `ProgrammableNonFungible`: TODO. See the next section for more information.
+- `ProgrammableNonFungible`: A special `NonFungible` token that is frozen at all times to enforce custom authorization rules. See the next section for more information.
 
 You can [read more about these standards here](./token-standard).
 
