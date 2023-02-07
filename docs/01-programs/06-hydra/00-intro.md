@@ -75,7 +75,7 @@ const mintPublicKey = "SPL-Token-Public-Key";
 const { fanoutForMint, tokenAccount } = await fanoutSdk.initializeFanoutForMint(
   {
     fanout,
-    mint: mint.publicKey,
+    mint: mintPublicKey,
   }
 );
 ```
