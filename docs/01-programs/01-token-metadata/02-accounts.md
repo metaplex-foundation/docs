@@ -82,7 +82,6 @@ This is why `⌊n / 248⌋` is used as a seed of the Edition Marker PDA.
 
 ## Token Record
 
-
 <ProgramAccount idl={idl} account="TokenRecord">
 
 ![Diagram showing a Token Record Account derived from a Mint Account and a Token Account with a list of data fields under the account that is listed on the fields table below.](/assets/programs/token-metadata/Token-Metadata-Account-Token-Record.png)
