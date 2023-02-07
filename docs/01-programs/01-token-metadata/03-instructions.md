@@ -7,6 +7,12 @@ import idl from '/src/token-metadata/idl.js';
 
 # Instructions
 
+:::info
+Since version v1.7.0, a new set of instructions has been introduced to support the new Programmable NFT Token Standard. These instructions can be used for any Token Standard and will eventually replace some of the instructions listed below.
+
+You can read more about these new instructions in [the Programmable NFTs guide](https://github.com/metaplex-foundation/metaplex-program-library/blob/master/token-metadata/program/ProgrammableNFTGuide.md).
+:::
+
 ## Create a Metadata account
 
 <ProgramInstruction idl={idl} instruction="CreateMetadataAccountV3">

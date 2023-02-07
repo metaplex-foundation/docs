@@ -80,7 +80,42 @@ This is why `⌊n / 248⌋` is used as a seed of the Edition Marker PDA.
 
 </ProgramAccount>
 
+## Token Record
+
+<ProgramAccount idl={idl} account="TokenRecord">
+
+![Diagram showing a Token Record Account derived from a Mint Account and a Token Account with a list of data fields under the account that is listed on the fields table below.](/assets/programs/token-metadata/Token-Metadata-Account-Token-Record.png)
+
+Token Record accounts are used by Programmable NFTs only. Since Programmable NFTs add another layer on top of tokens, Token Record accounts enable us to attach custom data to token accounts rather than mint accounts.
+
+More specifically, they keep track of the current delegate authority on the token account, if any, and its type. When a delegate is set, it provides a locking mechanism via a `state` attribute analogous to the "Frozen" state of the Token program. This can be `Unlocked`, `Locked` or `Listed` based on the current delegate type.
+
+You can [read more about Token Record accounts and the delegates it supports here](https://github.com/metaplex-foundation/metaplex-program-library/blob/master/token-metadata/program/ProgrammableNFTGuide.md#token-delegate).
+
+</ProgramAccount>
+
+## Metadata Delegate Record
+
+<ProgramAccount idl={idl} account="MetadataDelegateRecord">
+
+![Diagram showing a Metadata Delegate Record Account derived from a Mint Account and a Delegate Authority Account with a list of data fields under the account that is listed on the fields table below.](/assets/programs/token-metadata/Token-Metadata-Account-Metadata-Delegate-Record.png)
+
+Metadata Delegate Record accounts are used to store multiple delegate authorities for a given Metadata account.
+
+It is a PDA derived from the Mint Account, the public key of the delegate authority and the role of the delegate authority. The PDA also derives from the current Update Authority of the Metadata account to ensure that all delegate authorities are automatically voided when the Update Authority is changed.
+
+Depending on the role of the delegate authority, it can be used to verify/unverify collection items, use the asset, update part of the Metadata account, etc.
+
+You can [read more about Metadata Delegate Record accounts and the delegates it supports here](https://github.com/metaplex-foundation/metaplex-program-library/blob/master/token-metadata/program/ProgrammableNFTGuide.md#metadata-delegates).
+
+</ProgramAccount>
+
 ## Collection Authority Record
+
+<!-- TODO: Uncomment when Metadata Delegate Records can be fully used. -->
+<!-- :::info
+Note that the **Metadata Delegate Record** account described above can also be used to define new collection authorities. Please consider using **Metadata Delegate Records** instead of **Collection Authority Records** moving forward.
+::: -->
 
 <ProgramAccount idl={idl} account="CollectionAuthorityRecord">
 
@@ -95,6 +130,11 @@ You can [read more about NFT Collections here](./certified-collections).
 </ProgramAccount>
 
 ## Use Authority Record
+
+<!-- TODO: Uncomment when Metadata Delegate Records can be fully used. -->
+<!-- :::info
+Note that the **Metadata Delegate Record** account described above can also be used to define new use authorities. Please consider using **Metadata Delegate Records** instead of **Use Authority Records** moving forward.
+::: -->
 
 <ProgramAccount idl={idl} account="UseAuthorityRecord">
 

@@ -182,6 +182,16 @@ export default {
         },
       },
     },
+    ProgrammableConfig: {
+      size: 33,
+      description:
+        "This optional enum stores any data relevant to Programmable NFTs. " +
+        "The different variants of the enum are used as versions so we can " +
+        "add more features later on without introducing breaking changes. " +
+        "The latest version `V1` optionally contains the address of the " +
+        "RuleSet defining authorization rules for the Programmable NFT. " +
+        "If no RuleSet is provided, then all operations are allowed.",
+    },
     CreateMetadataAccountArgsV3: {
       description:
         "An object containing all the arguments for the <code>CreateMetadataAccountV3</code> instruction.",
@@ -322,6 +332,113 @@ export default {
           description:
             "An array of 31 bytes keeping track of the editions that have been printed within the marker's range. " +
             "With 31 bytes, each marker keep track of 248 editions using a bitmask.",
+        },
+      },
+    },
+    TokenRecord: {
+      seeds: [
+        ...sharedSeeds,
+        {
+          name: "token_record_prefix",
+          type: "literal",
+          value: "token_record",
+          description: "A literal to differentiate Token Record accounts.",
+        },
+        {
+          name: "token",
+          type: "variable",
+          description: "The public key of the Token Account to derive from.",
+        },
+      ],
+      fields: {
+        key: {
+          size: 1,
+          description:
+            "The discriminator of the account as an enum. Equals to: <code>TokenRecord(11)</code>.",
+        },
+        bump: {
+          size: 1,
+          description:
+            "The bump that was used to create the PDA of this account.",
+        },
+        state: {
+          size: 1,
+          description:
+            "The state of the token account as defined by the <code>TokenState</code> enum. " +
+            "You can read more about the different states and what their behaviour in the " +
+            "<a href='https://github.com/metaplex-foundation/metaplex-program-library/blob/master/token-metadata/program/ProgrammableNFTGuide.md#token-delegate'>Programmable NFT guide</a>.",
+        },
+        ruleSetRevision: {
+          size: 9,
+          offset: "~",
+          description:
+            "The current rule set revision attached to the token, if any. " +
+            "This ensures that, if the rule set changes on the Metadata account, " +
+            "the token continues to use the current rule set until it has been unlocked.",
+        },
+        delegate: {
+          size: 33,
+          offset: "~",
+          description: "The address of the delegate authority, if any.",
+        },
+        delegateRole: {
+          size: 2,
+          offset: "~",
+          description:
+            "The role of the delegate authority as defined by the <code>TokenDelegateRole</code> enum.",
+        },
+        lockedTransfer: {
+          size: 33,
+          offset: "~",
+          description:
+            "The only address of the <code>LockedTransfer</code> delegate is allowed to transfer to.",
+        },
+      },
+    },
+    MetadataDelegateRecord: {
+      seeds: [
+        ...sharedSeeds,
+        {
+          name: "metadata_delegate_role",
+          type: "variable",
+          description:
+            "The role of the delegate authority as defined by the <code>MetadataDelegateRole</code> enum.",
+        },
+        {
+          name: "update_authority",
+          type: "variable",
+          description:
+            "The address of the current update authority of the Metadata account.",
+        },
+        {
+          name: "delegate",
+          type: "variable",
+          description: "The address of the delegate authority.",
+        },
+      ],
+      fields: {
+        key: {
+          size: 1,
+          description:
+            "The discriminator of the account as an enum. Equals to: <code>MetadataDelegate(12)</code>.",
+        },
+        bump: {
+          size: 1,
+          description:
+            "The bump that was used to create the PDA of this account.",
+        },
+        mint: {
+          size: 32,
+          description: "The address of the Mint Account.",
+        },
+        delegate: {
+          size: 32,
+          description: "The address of the delegate authority.",
+        },
+        updateAuthority: {
+          size: 32,
+          description:
+            "The address of the Update Authority for which this delegate record is valid.",
         },
       },
     },

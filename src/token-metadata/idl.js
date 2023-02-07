@@ -2,7 +2,7 @@ import docs from "./idl-docs";
 
 export default {
   docs, // <- Injects additional data to the IDL.
-  version: "1.4.0",
+  version: "1.8.1",
   name: "mpl_token_metadata",
   instructions: [
     {
@@ -2079,7 +2079,7 @@ export default {
         },
         {
           name: "masterEditionMint",
-          isMut: true,
+          isMut: false,
           isSigner: false,
           desc: "Mint of the original/master NFT",
         },
@@ -2126,30 +2126,1381 @@ export default {
         value: 37,
       },
     },
-  ],
-  accounts: [
     {
-      name: "UseAuthorityRecord",
-      type: {
-        kind: "struct",
-        fields: [
-          {
-            name: "key",
-            type: {
-              defined: "Key",
-            },
-          },
-          {
-            name: "allowedUses",
-            type: "u64",
-          },
-          {
-            name: "bump",
-            type: "u8",
-          },
-        ],
+      name: "CreateEscrowAccount",
+      accounts: [
+        {
+          name: "escrow",
+          isMut: true,
+          isSigner: false,
+          desc: "Escrow account",
+        },
+        {
+          name: "metadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata account",
+        },
+        {
+          name: "mint",
+          isMut: false,
+          isSigner: false,
+          desc: "Mint account",
+        },
+        {
+          name: "tokenAccount",
+          isMut: false,
+          isSigner: false,
+          desc: "Token account of the token",
+        },
+        {
+          name: "edition",
+          isMut: false,
+          isSigner: false,
+          desc: "Edition account",
+        },
+        {
+          name: "payer",
+          isMut: true,
+          isSigner: true,
+          desc: "Wallet paying for the transaction and new account",
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "System program",
+        },
+        {
+          name: "sysvarInstructions",
+          isMut: false,
+          isSigner: false,
+          desc: "Instructions sysvar account",
+        },
+        {
+          name: "authority",
+          isMut: false,
+          isSigner: true,
+          desc: "Authority/creator of the escrow account",
+          optional: true,
+        },
+      ],
+      args: [],
+      discriminant: {
+        type: "u8",
+        value: 38,
       },
     },
+    {
+      name: "CloseEscrowAccount",
+      accounts: [
+        {
+          name: "escrow",
+          isMut: true,
+          isSigner: false,
+          desc: "Escrow account",
+        },
+        {
+          name: "metadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata account",
+        },
+        {
+          name: "mint",
+          isMut: false,
+          isSigner: false,
+          desc: "Mint account",
+        },
+        {
+          name: "tokenAccount",
+          isMut: false,
+          isSigner: false,
+          desc: "Token account",
+        },
+        {
+          name: "edition",
+          isMut: false,
+          isSigner: false,
+          desc: "Edition account",
+        },
+        {
+          name: "payer",
+          isMut: true,
+          isSigner: true,
+          desc: "Wallet paying for the transaction and new account",
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "System program",
+        },
+        {
+          name: "sysvarInstructions",
+          isMut: false,
+          isSigner: false,
+          desc: "Instructions sysvar account",
+        },
+      ],
+      args: [],
+      discriminant: {
+        type: "u8",
+        value: 39,
+      },
+    },
+    {
+      name: "TransferOutOfEscrow",
+      accounts: [
+        {
+          name: "escrow",
+          isMut: false,
+          isSigner: false,
+          desc: "Escrow account",
+        },
+        {
+          name: "metadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata account",
+        },
+        {
+          name: "payer",
+          isMut: true,
+          isSigner: true,
+          desc: "Wallet paying for the transaction and new account",
+        },
+        {
+          name: "attributeMint",
+          isMut: false,
+          isSigner: false,
+          desc: "Mint account for the new attribute",
+        },
+        {
+          name: "attributeSrc",
+          isMut: true,
+          isSigner: false,
+          desc: "Token account source for the new attribute",
+        },
+        {
+          name: "attributeDst",
+          isMut: true,
+          isSigner: false,
+          desc: "Token account, owned by TM, destination for the new attribute",
+        },
+        {
+          name: "escrowMint",
+          isMut: false,
+          isSigner: false,
+          desc: "Mint account that the escrow is attached",
+        },
+        {
+          name: "escrowAccount",
+          isMut: false,
+          isSigner: false,
+          desc: "Token account that holds the token the escrow is attached to",
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "System program",
+        },
+        {
+          name: "ataProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "Associated Token program",
+        },
+        {
+          name: "tokenProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "Token program",
+        },
+        {
+          name: "sysvarInstructions",
+          isMut: false,
+          isSigner: false,
+          desc: "Instructions sysvar account",
+        },
+        {
+          name: "authority",
+          isMut: false,
+          isSigner: true,
+          desc: "Authority/creator of the escrow account",
+          optional: true,
+        },
+      ],
+      args: [
+        {
+          name: "transferOutOfEscrowArgs",
+          type: {
+            defined: "TransferOutOfEscrowArgs",
+          },
+        },
+      ],
+      discriminant: {
+        type: "u8",
+        value: 40,
+      },
+    },
+    {
+      name: "Burn",
+      accounts: [
+        {
+          name: "metadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata (pda of ['metadata', program id, mint id])",
+        },
+        {
+          name: "owner",
+          isMut: true,
+          isSigner: true,
+          desc: "Asset owner",
+        },
+        {
+          name: "mint",
+          isMut: true,
+          isSigner: false,
+          desc: "Mint of token asset",
+        },
+        {
+          name: "tokenAccount",
+          isMut: true,
+          isSigner: false,
+          desc: "Token account to close",
+        },
+        {
+          name: "masterEditionAccount",
+          isMut: true,
+          isSigner: false,
+          desc: "MasterEdition of the asset",
+        },
+        {
+          name: "splTokenProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "SPL Token Program",
+        },
+        {
+          name: "collectionMetadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata of the Collection",
+          optional: true,
+        },
+        {
+          name: "authorizationRules",
+          isMut: false,
+          isSigner: false,
+          desc: "Token Authorization Rules account",
+          optional: true,
+        },
+        {
+          name: "authorizationRulesProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "Token Authorization Rules Program",
+          optional: true,
+        },
+      ],
+      args: [
+        {
+          name: "burnArgs",
+          type: {
+            defined: "BurnArgs",
+          },
+        },
+      ],
+      defaultOptionalAccounts: true,
+      discriminant: {
+        type: "u8",
+        value: 41,
+      },
+    },
+    {
+      name: "Create",
+      accounts: [
+        {
+          name: "metadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Unallocated metadata account with address as pda of ['metadata', program id, mint id]",
+        },
+        {
+          name: "masterEdition",
+          isMut: true,
+          isSigner: false,
+          desc: "Unallocated edition account with address as pda of ['metadata', program id, mint, 'edition']",
+          optional: true,
+        },
+        {
+          name: "mint",
+          isMut: true,
+          isSigner: false,
+          desc: "Mint of token asset",
+        },
+        {
+          name: "authority",
+          isMut: false,
+          isSigner: true,
+          desc: "Mint authority",
+        },
+        {
+          name: "payer",
+          isMut: true,
+          isSigner: true,
+          desc: "Payer",
+        },
+        {
+          name: "updateAuthority",
+          isMut: false,
+          isSigner: false,
+          desc: "Update authority for the metadata account",
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "System program",
+        },
+        {
+          name: "sysvarInstructions",
+          isMut: false,
+          isSigner: false,
+          desc: "Instructions sysvar account",
+        },
+        {
+          name: "splTokenProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "SPL Token program",
+        },
+      ],
+      args: [
+        {
+          name: "createArgs",
+          type: {
+            defined: "CreateArgs",
+          },
+        },
+      ],
+      defaultOptionalAccounts: true,
+      discriminant: {
+        type: "u8",
+        value: 42,
+      },
+    },
+    {
+      name: "Mint",
+      accounts: [
+        {
+          name: "token",
+          isMut: true,
+          isSigner: false,
+          desc: "Token or Associated Token account",
+        },
+        {
+          name: "tokenOwner",
+          isMut: false,
+          isSigner: false,
+          desc: "Owner of the token account",
+          optional: true,
+        },
+        {
+          name: "metadata",
+          isMut: false,
+          isSigner: false,
+          desc: "Metadata account (pda of ['metadata', program id, mint id])",
+        },
+        {
+          name: "masterEdition",
+          isMut: false,
+          isSigner: false,
+          desc: "Master Edition account",
+          optional: true,
+        },
+        {
+          name: "tokenRecord",
+          isMut: true,
+          isSigner: false,
+          desc: "Token record account",
+          optional: true,
+        },
+        {
+          name: "mint",
+          isMut: true,
+          isSigner: false,
+          desc: "Mint of token asset",
+        },
+        {
+          name: "authority",
+          isMut: false,
+          isSigner: true,
+          desc: "(Mint or Update) authority",
+        },
+        {
+          name: "delegateRecord",
+          isMut: false,
+          isSigner: false,
+          desc: "Metadata delegate record",
+          optional: true,
+        },
+        {
+          name: "payer",
+          isMut: true,
+          isSigner: true,
+          desc: "Payer",
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "System program",
+        },
+        {
+          name: "sysvarInstructions",
+          isMut: false,
+          isSigner: false,
+          desc: "Instructions sysvar account",
+        },
+        {
+          name: "splTokenProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "SPL Token program",
+        },
+        {
+          name: "splAtaProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "SPL Associated Token Account program",
+        },
+        {
+          name: "authorizationRulesProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "Token Authorization Rules program",
+          optional: true,
+        },
+        {
+          name: "authorizationRules",
+          isMut: false,
+          isSigner: false,
+          desc: "Token Authorization Rules account",
+          optional: true,
+        },
+      ],
+      args: [
+        {
+          name: "mintArgs",
+          type: {
+            defined: "MintArgs",
+          },
+        },
+      ],
+      defaultOptionalAccounts: true,
+      discriminant: {
+        type: "u8",
+        value: 43,
+      },
+    },
+    {
+      name: "Delegate",
+      accounts: [
+        {
+          name: "delegateRecord",
+          isMut: true,
+          isSigner: false,
+          desc: "Delegate record account",
+          optional: true,
+        },
+        {
+          name: "delegate",
+          isMut: false,
+          isSigner: false,
+          desc: "Owner of the delegated account",
+        },
+        {
+          name: "metadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata account",
+        },
+        {
+          name: "masterEdition",
+          isMut: false,
+          isSigner: false,
+          desc: "Master Edition account",
+          optional: true,
+        },
+        {
+          name: "tokenRecord",
+          isMut: true,
+          isSigner: false,
+          desc: "Token record account",
+          optional: true,
+        },
+        {
+          name: "mint",
+          isMut: false,
+          isSigner: false,
+          desc: "Mint of metadata",
+        },
+        {
+          name: "token",
+          isMut: true,
+          isSigner: false,
+          desc: "Token account of mint",
+          optional: true,
+        },
+        {
+          name: "authority",
+          isMut: false,
+          isSigner: true,
+          desc: "Update authority or token owner",
+        },
+        {
+          name: "payer",
+          isMut: true,
+          isSigner: true,
+          desc: "Payer",
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "System Program",
+        },
+        {
+          name: "sysvarInstructions",
+          isMut: false,
+          isSigner: false,
+          desc: "Instructions sysvar account",
+        },
+        {
+          name: "splTokenProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "SPL Token Program",
+          optional: true,
+        },
+        {
+          name: "authorizationRulesProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "Token Authorization Rules Program",
+          optional: true,
+        },
+        {
+          name: "authorizationRules",
+          isMut: false,
+          isSigner: false,
+          desc: "Token Authorization Rules account",
+          optional: true,
+        },
+      ],
+      args: [
+        {
+          name: "delegateArgs",
+          type: {
+            defined: "DelegateArgs",
+          },
+        },
+      ],
+      defaultOptionalAccounts: true,
+      discriminant: {
+        type: "u8",
+        value: 44,
+      },
+    },
+    {
+      name: "Revoke",
+      accounts: [
+        {
+          name: "delegateRecord",
+          isMut: true,
+          isSigner: false,
+          desc: "Delegate record account",
+          optional: true,
+        },
+        {
+          name: "delegate",
+          isMut: false,
+          isSigner: false,
+          desc: "Owner of the delegated account",
+        },
+        {
+          name: "metadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata account",
+        },
+        {
+          name: "masterEdition",
+          isMut: false,
+          isSigner: false,
+          desc: "Master Edition account",
+          optional: true,
+        },
+        {
+          name: "tokenRecord",
+          isMut: true,
+          isSigner: false,
+          desc: "Token record account",
+          optional: true,
+        },
+        {
+          name: "mint",
+          isMut: false,
+          isSigner: false,
+          desc: "Mint of metadata",
+        },
+        {
+          name: "token",
+          isMut: true,
+          isSigner: false,
+          desc: "Token account of mint",
+          optional: true,
+        },
+        {
+          name: "authority",
+          isMut: false,
+          isSigner: true,
+          desc: "Update authority or token owner",
+        },
+        {
+          name: "payer",
+          isMut: true,
+          isSigner: true,
+          desc: "Payer",
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "System Program",
+        },
+        {
+          name: "sysvarInstructions",
+          isMut: false,
+          isSigner: false,
+          desc: "Instructions sysvar account",
+        },
+        {
+          name: "splTokenProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "SPL Token Program",
+          optional: true,
+        },
+        {
+          name: "authorizationRulesProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "Token Authorization Rules Program",
+          optional: true,
+        },
+        {
+          name: "authorizationRules",
+          isMut: false,
+          isSigner: false,
+          desc: "Token Authorization Rules account",
+          optional: true,
+        },
+      ],
+      args: [
+        {
+          name: "revokeArgs",
+          type: {
+            defined: "RevokeArgs",
+          },
+        },
+      ],
+      defaultOptionalAccounts: true,
+      discriminant: {
+        type: "u8",
+        value: 45,
+      },
+    },
+    {
+      name: "Lock",
+      accounts: [
+        {
+          name: "authority",
+          isMut: false,
+          isSigner: true,
+          desc: "Delegate account",
+        },
+        {
+          name: "tokenOwner",
+          isMut: false,
+          isSigner: false,
+          desc: "Token owner account",
+          optional: true,
+        },
+        {
+          name: "token",
+          isMut: true,
+          isSigner: false,
+          desc: "Token account",
+        },
+        {
+          name: "mint",
+          isMut: false,
+          isSigner: false,
+          desc: "Mint account",
+        },
+        {
+          name: "metadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata account",
+        },
+        {
+          name: "edition",
+          isMut: false,
+          isSigner: false,
+          desc: "Edition account",
+          optional: true,
+        },
+        {
+          name: "tokenRecord",
+          isMut: true,
+          isSigner: false,
+          desc: "Token record account",
+          optional: true,
+        },
+        {
+          name: "payer",
+          isMut: true,
+          isSigner: true,
+          desc: "Payer",
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "System program",
+        },
+        {
+          name: "sysvarInstructions",
+          isMut: false,
+          isSigner: false,
+          desc: "System program",
+        },
+        {
+          name: "splTokenProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "SPL Token Program",
+          optional: true,
+        },
+        {
+          name: "authorizationRulesProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "Token Authorization Rules Program",
+          optional: true,
+        },
+        {
+          name: "authorizationRules",
+          isMut: false,
+          isSigner: false,
+          desc: "Token Authorization Rules account",
+          optional: true,
+        },
+      ],
+      args: [
+        {
+          name: "lockArgs",
+          type: {
+            defined: "LockArgs",
+          },
+        },
+      ],
+      defaultOptionalAccounts: true,
+      discriminant: {
+        type: "u8",
+        value: 46,
+      },
+    },
+    {
+      name: "Unlock",
+      accounts: [
+        {
+          name: "authority",
+          isMut: false,
+          isSigner: true,
+          desc: "Delegate account",
+        },
+        {
+          name: "tokenOwner",
+          isMut: false,
+          isSigner: false,
+          desc: "Token owner account",
+          optional: true,
+        },
+        {
+          name: "token",
+          isMut: true,
+          isSigner: false,
+          desc: "Token account",
+        },
+        {
+          name: "mint",
+          isMut: false,
+          isSigner: false,
+          desc: "Mint account",
+        },
+        {
+          name: "metadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata account",
+        },
+        {
+          name: "edition",
+          isMut: false,
+          isSigner: false,
+          desc: "Edition account",
+          optional: true,
+        },
+        {
+          name: "tokenRecord",
+          isMut: true,
+          isSigner: false,
+          desc: "Token record account",
+          optional: true,
+        },
+        {
+          name: "payer",
+          isMut: true,
+          isSigner: true,
+          desc: "Payer",
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "System program",
+        },
+        {
+          name: "sysvarInstructions",
+          isMut: false,
+          isSigner: false,
+          desc: "System program",
+        },
+        {
+          name: "splTokenProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "SPL Token Program",
+          optional: true,
+        },
+        {
+          name: "authorizationRulesProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "Token Authorization Rules Program",
+          optional: true,
+        },
+        {
+          name: "authorizationRules",
+          isMut: false,
+          isSigner: false,
+          desc: "Token Authorization Rules account",
+          optional: true,
+        },
+      ],
+      args: [
+        {
+          name: "unlockArgs",
+          type: {
+            defined: "UnlockArgs",
+          },
+        },
+      ],
+      defaultOptionalAccounts: true,
+      discriminant: {
+        type: "u8",
+        value: 47,
+      },
+    },
+    {
+      name: "Migrate",
+      accounts: [
+        {
+          name: "metadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata account",
+        },
+        {
+          name: "edition",
+          isMut: true,
+          isSigner: false,
+          desc: "Edition account",
+        },
+        {
+          name: "token",
+          isMut: true,
+          isSigner: false,
+          desc: "Token account",
+        },
+        {
+          name: "tokenOwner",
+          isMut: false,
+          isSigner: false,
+          desc: "Token account owner",
+        },
+        {
+          name: "mint",
+          isMut: false,
+          isSigner: false,
+          desc: "Mint account",
+        },
+        {
+          name: "payer",
+          isMut: true,
+          isSigner: true,
+          desc: "Payer",
+        },
+        {
+          name: "authority",
+          isMut: false,
+          isSigner: true,
+          desc: "Update authority",
+        },
+        {
+          name: "collectionMetadata",
+          isMut: false,
+          isSigner: false,
+          desc: "Collection metadata account",
+        },
+        {
+          name: "delegateRecord",
+          isMut: false,
+          isSigner: false,
+          desc: "Delegate record account",
+        },
+        {
+          name: "tokenRecord",
+          isMut: true,
+          isSigner: false,
+          desc: "Token record account",
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "System program",
+        },
+        {
+          name: "sysvarInstructions",
+          isMut: false,
+          isSigner: false,
+          desc: "Instruction sysvar account",
+        },
+        {
+          name: "splTokenProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "SPL Token Program",
+        },
+        {
+          name: "authorizationRulesProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "Token Authorization Rules Program",
+          optional: true,
+        },
+        {
+          name: "authorizationRules",
+          isMut: false,
+          isSigner: false,
+          desc: "Token Authorization Rules account",
+          optional: true,
+        },
+      ],
+      args: [
+        {
+          name: "migrateArgs",
+          type: {
+            defined: "MigrateArgs",
+          },
+        },
+      ],
+      defaultOptionalAccounts: true,
+      discriminant: {
+        type: "u8",
+        value: 48,
+      },
+    },
+    {
+      name: "Transfer",
+      accounts: [
+        {
+          name: "token",
+          isMut: true,
+          isSigner: false,
+          desc: "Token account",
+        },
+        {
+          name: "tokenOwner",
+          isMut: false,
+          isSigner: false,
+          desc: "Token account owner",
+        },
+        {
+          name: "destination",
+          isMut: true,
+          isSigner: false,
+          desc: "Destination token account",
+        },
+        {
+          name: "destinationOwner",
+          isMut: false,
+          isSigner: false,
+          desc: "Destination token account owner",
+        },
+        {
+          name: "mint",
+          isMut: false,
+          isSigner: false,
+          desc: "Mint of token asset",
+        },
+        {
+          name: "metadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata (pda of ['metadata', program id, mint id])",
+        },
+        {
+          name: "edition",
+          isMut: false,
+          isSigner: false,
+          desc: "Edition of token asset",
+          optional: true,
+        },
+        {
+          name: "ownerTokenRecord",
+          isMut: true,
+          isSigner: false,
+          desc: "Owner token record account",
+          optional: true,
+        },
+        {
+          name: "destinationTokenRecord",
+          isMut: true,
+          isSigner: false,
+          desc: "Destination token record account",
+          optional: true,
+        },
+        {
+          name: "authority",
+          isMut: false,
+          isSigner: true,
+          desc: "Transfer authority (token owner or delegate)",
+        },
+        {
+          name: "payer",
+          isMut: true,
+          isSigner: true,
+          desc: "Payer",
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "System Program",
+        },
+        {
+          name: "sysvarInstructions",
+          isMut: false,
+          isSigner: false,
+          desc: "Instructions sysvar account",
+        },
+        {
+          name: "splTokenProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "SPL Token Program",
+        },
+        {
+          name: "splAtaProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "SPL Associated Token Account program",
+        },
+        {
+          name: "authorizationRulesProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "Token Authorization Rules Program",
+          optional: true,
+        },
+        {
+          name: "authorizationRules",
+          isMut: false,
+          isSigner: false,
+          desc: "Token Authorization Rules account",
+          optional: true,
+        },
+      ],
+      args: [
+        {
+          name: "transferArgs",
+          type: {
+            defined: "TransferArgs",
+          },
+        },
+      ],
+      defaultOptionalAccounts: true,
+      discriminant: {
+        type: "u8",
+        value: 49,
+      },
+    },
+    {
+      name: "Update",
+      accounts: [
+        {
+          name: "authority",
+          isMut: false,
+          isSigner: true,
+          desc: "Update authority or delegate",
+        },
+        {
+          name: "delegateRecord",
+          isMut: false,
+          isSigner: false,
+          desc: "Delegate record PDA",
+          optional: true,
+        },
+        {
+          name: "token",
+          isMut: false,
+          isSigner: false,
+          desc: "Token account",
+          optional: true,
+        },
+        {
+          name: "mint",
+          isMut: false,
+          isSigner: false,
+          desc: "Mint account",
+        },
+        {
+          name: "metadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata account",
+        },
+        {
+          name: "edition",
+          isMut: true,
+          isSigner: false,
+          desc: "Edition account",
+          optional: true,
+        },
+        {
+          name: "payer",
+          isMut: true,
+          isSigner: true,
+          desc: "Payer",
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "System program",
+        },
+        {
+          name: "sysvarInstructions",
+          isMut: false,
+          isSigner: false,
+          desc: "System program",
+        },
+        {
+          name: "authorizationRulesProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "Token Authorization Rules Program",
+          optional: true,
+        },
+        {
+          name: "authorizationRules",
+          isMut: false,
+          isSigner: false,
+          desc: "Token Authorization Rules account",
+          optional: true,
+        },
+      ],
+      args: [
+        {
+          name: "updateArgs",
+          type: {
+            defined: "UpdateArgs",
+          },
+        },
+      ],
+      defaultOptionalAccounts: true,
+      discriminant: {
+        type: "u8",
+        value: 50,
+      },
+    },
+    {
+      name: "Use",
+      accounts: [
+        {
+          name: "authority",
+          isMut: false,
+          isSigner: true,
+          desc: "Token owner or delegate",
+        },
+        {
+          name: "delegateRecord",
+          isMut: true,
+          isSigner: false,
+          desc: "Delegate record PDA",
+          optional: true,
+        },
+        {
+          name: "token",
+          isMut: true,
+          isSigner: false,
+          desc: "Token account",
+          optional: true,
+        },
+        {
+          name: "mint",
+          isMut: false,
+          isSigner: false,
+          desc: "Mint account",
+        },
+        {
+          name: "metadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata account",
+        },
+        {
+          name: "edition",
+          isMut: true,
+          isSigner: false,
+          desc: "Edition account",
+          optional: true,
+        },
+        {
+          name: "payer",
+          isMut: false,
+          isSigner: true,
+          desc: "Payer",
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "System program",
+        },
+        {
+          name: "sysvarInstructions",
+          isMut: false,
+          isSigner: false,
+          desc: "System program",
+        },
+        {
+          name: "splTokenProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "SPL Token Program",
+          optional: true,
+        },
+        {
+          name: "authorizationRulesProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "Token Authorization Rules Program",
+          optional: true,
+        },
+        {
+          name: "authorizationRules",
+          isMut: false,
+          isSigner: false,
+          desc: "Token Authorization Rules account",
+          optional: true,
+        },
+      ],
+      args: [
+        {
+          name: "useArgs",
+          type: {
+            defined: "UseArgs",
+          },
+        },
+      ],
+      defaultOptionalAccounts: true,
+      discriminant: {
+        type: "u8",
+        value: 51,
+      },
+    },
+    {
+      name: "Verify",
+      accounts: [
+        {
+          name: "metadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata account",
+        },
+        {
+          name: "collectionAuthority",
+          isMut: true,
+          isSigner: true,
+          desc: "Collection Update authority",
+        },
+        {
+          name: "payer",
+          isMut: true,
+          isSigner: true,
+          desc: "payer",
+        },
+        {
+          name: "authorizationRules",
+          isMut: false,
+          isSigner: false,
+          desc: "Token Authorization Rules account",
+          optional: true,
+        },
+        {
+          name: "authorizationRulesProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "Token Authorization Rules Program",
+          optional: true,
+        },
+      ],
+      args: [
+        {
+          name: "verifyArgs",
+          type: {
+            defined: "VerifyArgs",
+          },
+        },
+      ],
+      defaultOptionalAccounts: true,
+      discriminant: {
+        type: "u8",
+        value: 52,
+      },
+    },
+  ],
+  accounts: [
     {
       name: "CollectionAuthorityRecord",
       type: {
@@ -2164,6 +3515,168 @@ export default {
           {
             name: "bump",
             type: "u8",
+          },
+          {
+            name: "updateAuthority",
+            type: {
+              option: "publicKey",
+            },
+          },
+        ],
+      },
+    },
+    {
+      name: "MetadataDelegateRecord",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "key",
+            type: {
+              defined: "Key",
+            },
+          },
+          {
+            name: "bump",
+            type: "u8",
+          },
+          {
+            name: "mint",
+            type: "publicKey",
+          },
+          {
+            name: "delegate",
+            type: "publicKey",
+          },
+          {
+            name: "updateAuthority",
+            type: "publicKey",
+          },
+        ],
+      },
+    },
+    {
+      name: "Edition",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "key",
+            type: {
+              defined: "Key",
+            },
+          },
+          {
+            name: "parent",
+            type: "publicKey",
+          },
+          {
+            name: "edition",
+            type: "u64",
+          },
+        ],
+      },
+    },
+    {
+      name: "EditionMarker",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "key",
+            type: {
+              defined: "Key",
+            },
+          },
+          {
+            name: "ledger",
+            type: {
+              array: ["u8", 31],
+            },
+          },
+        ],
+      },
+    },
+    {
+      name: "TokenOwnedEscrow",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "key",
+            type: {
+              defined: "Key",
+            },
+          },
+          {
+            name: "baseToken",
+            type: "publicKey",
+          },
+          {
+            name: "authority",
+            type: {
+              defined: "EscrowAuthority",
+            },
+          },
+          {
+            name: "bump",
+            type: "u8",
+          },
+        ],
+      },
+    },
+    {
+      name: "MasterEditionV2",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "key",
+            type: {
+              defined: "Key",
+            },
+          },
+          {
+            name: "supply",
+            type: "u64",
+          },
+          {
+            name: "maxSupply",
+            type: {
+              option: "u64",
+            },
+          },
+        ],
+      },
+    },
+    {
+      name: "MasterEditionV1",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "key",
+            type: {
+              defined: "Key",
+            },
+          },
+          {
+            name: "supply",
+            type: "u64",
+          },
+          {
+            name: "maxSupply",
+            type: {
+              option: "u64",
+            },
+          },
+          {
+            name: "printingMint",
+            type: "publicKey",
+          },
+          {
+            name: "oneTimePrintingAuthorizationMint",
+            type: "publicKey",
           },
         ],
       },
@@ -2239,11 +3752,19 @@ export default {
               },
             },
           },
+          {
+            name: "programmableConfig",
+            type: {
+              option: {
+                defined: "ProgrammableConfig",
+              },
+            },
+          },
         ],
       },
     },
     {
-      name: "MasterEditionV2",
+      name: "TokenRecord",
       type: {
         kind: "struct",
         fields: [
@@ -2254,68 +3775,40 @@ export default {
             },
           },
           {
-            name: "supply",
-            type: "u64",
+            name: "bump",
+            type: "u8",
           },
           {
-            name: "maxSupply",
+            name: "state",
             type: {
-              option: "u64",
-            },
-          },
-        ],
-      },
-    },
-    {
-      name: "MasterEditionV1",
-      type: {
-        kind: "struct",
-        fields: [
-          {
-            name: "key",
-            type: {
-              defined: "Key",
+              defined: "TokenState",
             },
           },
           {
-            name: "supply",
-            type: "u64",
-          },
-          {
-            name: "maxSupply",
+            name: "ruleSetRevision",
             type: {
               option: "u64",
             },
           },
           {
-            name: "printingMint",
-            type: "publicKey",
-          },
-          {
-            name: "oneTimePrintingAuthorizationMint",
-            type: "publicKey",
-          },
-        ],
-      },
-    },
-    {
-      name: "Edition",
-      type: {
-        kind: "struct",
-        fields: [
-          {
-            name: "key",
+            name: "delegate",
             type: {
-              defined: "Key",
+              option: "publicKey",
             },
           },
           {
-            name: "parent",
-            type: "publicKey",
+            name: "delegateRole",
+            type: {
+              option: {
+                defined: "TokenDelegateRole",
+              },
+            },
           },
           {
-            name: "edition",
-            type: "u64",
+            name: "lockedTransfer",
+            type: {
+              option: "publicKey",
+            },
           },
         ],
       },
@@ -2393,7 +3886,7 @@ export default {
       },
     },
     {
-      name: "EditionMarker",
+      name: "UseAuthorityRecord",
       type: {
         kind: "struct",
         fields: [
@@ -2404,16 +3897,94 @@ export default {
             },
           },
           {
-            name: "ledger",
-            type: {
-              array: ["u8", 31],
-            },
+            name: "allowedUses",
+            type: "u64",
+          },
+          {
+            name: "bump",
+            type: "u8",
           },
         ],
       },
     },
   ],
   types: [
+    {
+      name: "SetCollectionSizeArgs",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "size",
+            type: "u64",
+          },
+        ],
+      },
+    },
+    {
+      name: "CreateMetadataAccountArgsV2",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "data",
+            type: {
+              defined: "DataV2",
+            },
+          },
+          {
+            name: "isMutable",
+            type: "bool",
+          },
+        ],
+      },
+    },
+    {
+      name: "CreateMetadataAccountArgs",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "data",
+            type: {
+              defined: "Data",
+            },
+          },
+          {
+            name: "isMutable",
+            type: "bool",
+          },
+        ],
+      },
+    },
+    {
+      name: "UpdateMetadataAccountArgs",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "data",
+            type: {
+              option: {
+                defined: "Data",
+              },
+            },
+          },
+          {
+            name: "updateAuthority",
+            type: {
+              option: "publicKey",
+            },
+          },
+          {
+            name: "primarySaleHappened",
+            type: {
+              option: "bool",
+            },
+          },
+        ],
+      },
+    },
     {
       name: "MintPrintingTokensViaTokenArgs",
       type: {
@@ -2457,28 +4028,64 @@ export default {
       },
     },
     {
-      name: "UpdateMetadataAccountArgs",
+      name: "CreateMasterEditionArgs",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "maxSupply",
+            type: {
+              option: "u64",
+            },
+          },
+        ],
+      },
+    },
+    {
+      name: "MintNewEditionFromMasterEditionViaTokenArgs",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "edition",
+            type: "u64",
+          },
+        ],
+      },
+    },
+    {
+      name: "TransferOutOfEscrowArgs",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "amount",
+            type: "u64",
+          },
+        ],
+      },
+    },
+    {
+      name: "CreateMetadataAccountArgsV3",
       type: {
         kind: "struct",
         fields: [
           {
             name: "data",
             type: {
+              defined: "DataV2",
+            },
+          },
+          {
+            name: "isMutable",
+            type: "bool",
+          },
+          {
+            name: "collectionDetails",
+            type: {
               option: {
-                defined: "Data",
+                defined: "CollectionDetails",
               },
-            },
-          },
-          {
-            name: "updateAuthority",
-            type: {
-              option: "publicKey",
-            },
-          },
-          {
-            name: "primarySaleHappened",
-            type: {
-              option: "bool",
             },
           },
         ],
@@ -2519,94 +4126,6 @@ export default {
       },
     },
     {
-      name: "CreateMetadataAccountArgs",
-      type: {
-        kind: "struct",
-        fields: [
-          {
-            name: "data",
-            type: {
-              defined: "Data",
-            },
-          },
-          {
-            name: "isMutable",
-            type: "bool",
-          },
-        ],
-      },
-    },
-    {
-      name: "CreateMetadataAccountArgsV2",
-      type: {
-        kind: "struct",
-        fields: [
-          {
-            name: "data",
-            type: {
-              defined: "DataV2",
-            },
-          },
-          {
-            name: "isMutable",
-            type: "bool",
-          },
-        ],
-      },
-    },
-    {
-      name: "CreateMetadataAccountArgsV3",
-      type: {
-        kind: "struct",
-        fields: [
-          {
-            name: "data",
-            type: {
-              defined: "DataV2",
-            },
-          },
-          {
-            name: "isMutable",
-            type: "bool",
-          },
-          {
-            name: "collectionDetails",
-            type: {
-              option: {
-                defined: "CollectionDetails",
-              },
-            },
-          },
-        ],
-      },
-    },
-    {
-      name: "CreateMasterEditionArgs",
-      type: {
-        kind: "struct",
-        fields: [
-          {
-            name: "maxSupply",
-            type: {
-              option: "u64",
-            },
-          },
-        ],
-      },
-    },
-    {
-      name: "MintNewEditionFromMasterEditionViaTokenArgs",
-      type: {
-        kind: "struct",
-        fields: [
-          {
-            name: "edition",
-            type: "u64",
-          },
-        ],
-      },
-    },
-    {
       name: "ApproveUseAuthorityArgs",
       type: {
         kind: "struct",
@@ -2631,13 +4150,129 @@ export default {
       },
     },
     {
-      name: "SetCollectionSizeArgs",
+      name: "AuthorizationData",
       type: {
         kind: "struct",
         fields: [
           {
-            name: "size",
-            type: "u64",
+            name: "payload",
+            type: {
+              defined: "Payload",
+            },
+          },
+        ],
+      },
+    },
+    {
+      name: "AssetData",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "name",
+            type: "string",
+          },
+          {
+            name: "symbol",
+            type: "string",
+          },
+          {
+            name: "uri",
+            type: "string",
+          },
+          {
+            name: "sellerFeeBasisPoints",
+            type: "u16",
+          },
+          {
+            name: "creators",
+            type: {
+              option: {
+                vec: {
+                  defined: "Creator",
+                },
+              },
+            },
+          },
+          {
+            name: "primarySaleHappened",
+            type: "bool",
+          },
+          {
+            name: "isMutable",
+            type: "bool",
+          },
+          {
+            name: "tokenStandard",
+            type: {
+              defined: "TokenStandard",
+            },
+          },
+          {
+            name: "collection",
+            type: {
+              option: {
+                defined: "Collection",
+              },
+            },
+          },
+          {
+            name: "uses",
+            type: {
+              option: {
+                defined: "Uses",
+              },
+            },
+          },
+          {
+            name: "collectionDetails",
+            type: {
+              option: {
+                defined: "CollectionDetails",
+              },
+            },
+          },
+          {
+            name: "ruleSet",
+            type: {
+              option: "publicKey",
+            },
+          },
+        ],
+      },
+    },
+    {
+      name: "Collection",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "verified",
+            type: "bool",
+          },
+          {
+            name: "key",
+            type: "publicKey",
+          },
+        ],
+      },
+    },
+    {
+      name: "Creator",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "address",
+            type: "publicKey",
+          },
+          {
+            name: "verified",
+            type: "bool",
+          },
+          {
+            name: "share",
+            type: "u8",
           },
         ],
       },
@@ -2727,64 +4362,6 @@ export default {
       },
     },
     {
-      name: "Uses",
-      type: {
-        kind: "struct",
-        fields: [
-          {
-            name: "useMethod",
-            type: {
-              defined: "UseMethod",
-            },
-          },
-          {
-            name: "remaining",
-            type: "u64",
-          },
-          {
-            name: "total",
-            type: "u64",
-          },
-        ],
-      },
-    },
-    {
-      name: "Collection",
-      type: {
-        kind: "struct",
-        fields: [
-          {
-            name: "verified",
-            type: "bool",
-          },
-          {
-            name: "key",
-            type: "publicKey",
-          },
-        ],
-      },
-    },
-    {
-      name: "Creator",
-      type: {
-        kind: "struct",
-        fields: [
-          {
-            name: "address",
-            type: "publicKey",
-          },
-          {
-            name: "verified",
-            type: "bool",
-          },
-          {
-            name: "share",
-            type: "u8",
-          },
-        ],
-      },
-    },
-    {
       name: "Reservation",
       type: {
         kind: "struct",
@@ -2825,6 +4402,658 @@ export default {
       },
     },
     {
+      name: "SeedsVec",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "seeds",
+            type: {
+              vec: "bytes",
+            },
+          },
+        ],
+      },
+    },
+    {
+      name: "LeafInfo",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "leaf",
+            type: {
+              array: ["u8", 32],
+            },
+          },
+          {
+            name: "proof",
+            type: {
+              vec: {
+                array: ["u8", 32],
+              },
+            },
+          },
+        ],
+      },
+    },
+    {
+      name: "Payload",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "map",
+            type: {
+              hashMap: [
+                "string",
+                {
+                  defined: "PayloadType",
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+    {
+      name: "Uses",
+      type: {
+        kind: "struct",
+        fields: [
+          {
+            name: "useMethod",
+            type: {
+              defined: "UseMethod",
+            },
+          },
+          {
+            name: "remaining",
+            type: "u64",
+          },
+          {
+            name: "total",
+            type: "u64",
+          },
+        ],
+      },
+    },
+    {
+      name: "BurnArgs",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "V1",
+            fields: [
+              {
+                name: "authorization_data",
+                type: {
+                  option: {
+                    defined: "AuthorizationData",
+                  },
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      name: "VerifyArgs",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "V1",
+            fields: [
+              {
+                name: "authorization_data",
+                type: {
+                  option: {
+                    defined: "AuthorizationData",
+                  },
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      name: "DelegateArgs",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "CollectionV1",
+            fields: [
+              {
+                name: "authorization_data",
+                type: {
+                  option: {
+                    defined: "AuthorizationData",
+                  },
+                },
+              },
+            ],
+          },
+          {
+            name: "SaleV1",
+            fields: [
+              {
+                name: "amount",
+                type: "u64",
+              },
+              {
+                name: "authorization_data",
+                type: {
+                  option: {
+                    defined: "AuthorizationData",
+                  },
+                },
+              },
+            ],
+          },
+          {
+            name: "TransferV1",
+            fields: [
+              {
+                name: "amount",
+                type: "u64",
+              },
+              {
+                name: "authorization_data",
+                type: {
+                  option: {
+                    defined: "AuthorizationData",
+                  },
+                },
+              },
+            ],
+          },
+          {
+            name: "UpdateV1",
+            fields: [
+              {
+                name: "authorization_data",
+                type: {
+                  option: {
+                    defined: "AuthorizationData",
+                  },
+                },
+              },
+            ],
+          },
+          {
+            name: "UtilityV1",
+            fields: [
+              {
+                name: "amount",
+                type: "u64",
+              },
+              {
+                name: "authorization_data",
+                type: {
+                  option: {
+                    defined: "AuthorizationData",
+                  },
+                },
+              },
+            ],
+          },
+          {
+            name: "StakingV1",
+            fields: [
+              {
+                name: "amount",
+                type: "u64",
+              },
+              {
+                name: "authorization_data",
+                type: {
+                  option: {
+                    defined: "AuthorizationData",
+                  },
+                },
+              },
+            ],
+          },
+          {
+            name: "StandardV1",
+            fields: [
+              {
+                name: "amount",
+                type: "u64",
+              },
+            ],
+          },
+          {
+            name: "LockedTransferV1",
+            fields: [
+              {
+                name: "amount",
+                type: "u64",
+              },
+              {
+                name: "locked_address",
+                type: "publicKey",
+              },
+              {
+                name: "authorization_data",
+                type: {
+                  option: {
+                    defined: "AuthorizationData",
+                  },
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      name: "RevokeArgs",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "CollectionV1",
+          },
+          {
+            name: "SaleV1",
+          },
+          {
+            name: "TransferV1",
+          },
+          {
+            name: "UpdateV1",
+          },
+          {
+            name: "UtilityV1",
+          },
+          {
+            name: "StakingV1",
+          },
+          {
+            name: "StandardV1",
+          },
+          {
+            name: "LockedTransferV1",
+          },
+        ],
+      },
+    },
+    {
+      name: "MetadataDelegateRole",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "Authority",
+          },
+          {
+            name: "Collection",
+          },
+          {
+            name: "Use",
+          },
+          {
+            name: "Update",
+          },
+        ],
+      },
+    },
+    {
+      name: "CreateArgs",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "V1",
+            fields: [
+              {
+                name: "asset_data",
+                type: {
+                  defined: "AssetData",
+                },
+              },
+              {
+                name: "decimals",
+                type: {
+                  option: "u8",
+                },
+              },
+              {
+                name: "print_supply",
+                type: {
+                  option: {
+                    defined: "PrintSupply",
+                  },
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      name: "MintArgs",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "V1",
+            fields: [
+              {
+                name: "amount",
+                type: "u64",
+              },
+              {
+                name: "authorization_data",
+                type: {
+                  option: {
+                    defined: "AuthorizationData",
+                  },
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      name: "TransferArgs",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "V1",
+            fields: [
+              {
+                name: "amount",
+                type: "u64",
+              },
+              {
+                name: "authorization_data",
+                type: {
+                  option: {
+                    defined: "AuthorizationData",
+                  },
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      name: "UpdateArgs",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "V1",
+            fields: [
+              {
+                name: "new_update_authority",
+                type: {
+                  option: "publicKey",
+                },
+              },
+              {
+                name: "data",
+                type: {
+                  option: {
+                    defined: "Data",
+                  },
+                },
+              },
+              {
+                name: "primary_sale_happened",
+                type: {
+                  option: "bool",
+                },
+              },
+              {
+                name: "is_mutable",
+                type: {
+                  option: "bool",
+                },
+              },
+              {
+                name: "collection",
+                type: {
+                  defined: "CollectionToggle",
+                },
+              },
+              {
+                name: "collection_details",
+                type: {
+                  defined: "CollectionDetailsToggle",
+                },
+              },
+              {
+                name: "uses",
+                type: {
+                  defined: "UsesToggle",
+                },
+              },
+              {
+                name: "rule_set",
+                type: {
+                  defined: "RuleSetToggle",
+                },
+              },
+              {
+                name: "authorization_data",
+                type: {
+                  option: {
+                    defined: "AuthorizationData",
+                  },
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      name: "CollectionToggle",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "None",
+          },
+          {
+            name: "Clear",
+          },
+          {
+            name: "Set",
+            fields: [
+              {
+                defined: "Collection",
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      name: "UsesToggle",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "None",
+          },
+          {
+            name: "Clear",
+          },
+          {
+            name: "Set",
+            fields: [
+              {
+                defined: "Uses",
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      name: "CollectionDetailsToggle",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "None",
+          },
+          {
+            name: "Clear",
+          },
+          {
+            name: "Set",
+            fields: [
+              {
+                defined: "CollectionDetails",
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      name: "RuleSetToggle",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "None",
+          },
+          {
+            name: "Clear",
+          },
+          {
+            name: "Set",
+            fields: ["publicKey"],
+          },
+        ],
+      },
+    },
+    {
+      name: "MigrateArgs",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "V1",
+            fields: [
+              {
+                name: "migration_type",
+                type: {
+                  defined: "MigrationType",
+                },
+              },
+              {
+                name: "rule_set",
+                type: {
+                  option: "publicKey",
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      name: "LockArgs",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "V1",
+            fields: [
+              {
+                name: "authorization_data",
+                type: {
+                  option: {
+                    defined: "AuthorizationData",
+                  },
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      name: "UnlockArgs",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "V1",
+            fields: [
+              {
+                name: "authorization_data",
+                type: {
+                  option: {
+                    defined: "AuthorizationData",
+                  },
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      name: "UseArgs",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "V1",
+            fields: [
+              {
+                name: "authorization_data",
+                type: {
+                  option: {
+                    defined: "AuthorizationData",
+                  },
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      name: "TokenStandard",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "NonFungible",
+          },
+          {
+            name: "FungibleAsset",
+          },
+          {
+            name: "Fungible",
+          },
+          {
+            name: "NonFungibleEdition",
+          },
+          {
+            name: "ProgrammableNonFungible",
+          },
+        ],
+      },
+    },
+    {
       name: "Key",
       type: {
         kind: "enum",
@@ -2859,22 +5088,14 @@ export default {
           {
             name: "CollectionAuthorityRecord",
           },
-        ],
-      },
-    },
-    {
-      name: "UseMethod",
-      type: {
-        kind: "enum",
-        variants: [
           {
-            name: "Burn",
+            name: "TokenOwnedEscrow",
           },
           {
-            name: "Multiple",
+            name: "TokenRecord",
           },
           {
-            name: "Single",
+            name: "MetadataDelegate",
           },
         ],
       },
@@ -2897,21 +5118,220 @@ export default {
       },
     },
     {
-      name: "TokenStandard",
+      name: "EscrowAuthority",
       type: {
         kind: "enum",
         variants: [
           {
-            name: "NonFungible",
+            name: "TokenOwner",
           },
           {
-            name: "FungibleAsset",
+            name: "Creator",
+            fields: ["publicKey"],
+          },
+        ],
+      },
+    },
+    {
+      name: "PrintSupply",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "Zero",
           },
           {
-            name: "Fungible",
+            name: "Limited",
+            fields: ["u64"],
           },
           {
-            name: "NonFungibleEdition",
+            name: "Unlimited",
+          },
+        ],
+      },
+    },
+    {
+      name: "ProgrammableConfig",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "V1",
+            fields: [
+              {
+                name: "rule_set",
+                type: {
+                  option: "publicKey",
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      name: "MigrationType",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "CollectionV1",
+          },
+          {
+            name: "ProgrammableV1",
+          },
+        ],
+      },
+    },
+    {
+      name: "TokenState",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "Unlocked",
+          },
+          {
+            name: "Locked",
+          },
+          {
+            name: "Listed",
+          },
+        ],
+      },
+    },
+    {
+      name: "TokenDelegateRole",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "Sale",
+          },
+          {
+            name: "Transfer",
+          },
+          {
+            name: "Utility",
+          },
+          {
+            name: "Staking",
+          },
+          {
+            name: "Standard",
+          },
+          {
+            name: "LockedTransfer",
+          },
+          {
+            name: "Migration",
+          },
+        ],
+      },
+    },
+    {
+      name: "AuthorityType",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "None",
+          },
+          {
+            name: "Metadata",
+          },
+          {
+            name: "Delegate",
+          },
+          {
+            name: "Holder",
+          },
+        ],
+      },
+    },
+    {
+      name: "PayloadKey",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "Amount",
+          },
+          {
+            name: "Authority",
+          },
+          {
+            name: "AuthoritySeeds",
+          },
+          {
+            name: "Delegate",
+          },
+          {
+            name: "DelegateSeeds",
+          },
+          {
+            name: "Destination",
+          },
+          {
+            name: "DestinationSeeds",
+          },
+          {
+            name: "Holder",
+          },
+          {
+            name: "Source",
+          },
+          {
+            name: "SourceSeeds",
+          },
+        ],
+      },
+    },
+    {
+      name: "PayloadType",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "Pubkey",
+            fields: ["publicKey"],
+          },
+          {
+            name: "Seeds",
+            fields: [
+              {
+                defined: "SeedsVec",
+              },
+            ],
+          },
+          {
+            name: "MerkleProof",
+            fields: [
+              {
+                defined: "LeafInfo",
+              },
+            ],
+          },
+          {
+            name: "Number",
+            fields: ["u64"],
+          },
+        ],
+      },
+    },
+    {
+      name: "UseMethod",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "Burn",
+          },
+          {
+            name: "Multiple",
+          },
+          {
+            name: "Single",
           },
         ],
       },
@@ -3291,7 +5711,7 @@ export default {
     {
       code: 74,
       name: "CollectionCannotBeVerifiedInThisInstruction",
-      msg: "Cannont Verify Collection in this Instruction",
+      msg: "Collection cannot be verified in this instruction",
     },
     {
       code: 75,
@@ -3481,7 +5901,7 @@ export default {
     {
       code: 112,
       name: "CannotUpdateVerifiedCollection",
-      msg: "Cannot update a verified colleciton in this command",
+      msg: "Cannot update a verified collection in this command",
     },
     {
       code: 113,
@@ -3528,11 +5948,271 @@ export default {
       name: "PrintEditionDoesNotMatchMasterEdition",
       msg: "Print Edition does not match Master Edition",
     },
+    {
+      code: 122,
+      name: "EditionNumberGreaterThanMaxSupply",
+      msg: "Edition Number greater than max supply",
+    },
+    {
+      code: 123,
+      name: "MustUnverify",
+      msg: "Must unverify before migrating collections.",
+    },
+    {
+      code: 124,
+      name: "InvalidEscrowBumpSeed",
+      msg: "Invalid Escrow Account Bump Seed",
+    },
+    {
+      code: 125,
+      name: "MustBeEscrowAuthority",
+      msg: "Must Escrow Authority",
+    },
+    {
+      code: 126,
+      name: "InvalidSystemProgram",
+      msg: "Invalid System Program",
+    },
+    {
+      code: 127,
+      name: "MustBeNonFungible",
+      msg: "Must be a Non Fungible Token",
+    },
+    {
+      code: 128,
+      name: "InsufficientTokens",
+      msg: "Insufficient tokens for transfer",
+    },
+    {
+      code: 129,
+      name: "BorshSerializationError",
+      msg: "Borsh Serialization Error",
+    },
+    {
+      code: 130,
+      name: "NoFreezeAuthoritySet",
+      msg: "Cannot create NFT with no Freeze Authority.",
+    },
+    {
+      code: 131,
+      name: "InvalidCollectionSizeChange",
+      msg: "Invalid collection size change",
+    },
+    {
+      code: 132,
+      name: "InvalidBubblegumSigner",
+      msg: "Invalid bubblegum signer",
+    },
+    {
+      code: 133,
+      name: "EscrowParentHasDelegate",
+      msg: "Escrow parent cannot have a delegate",
+    },
+    {
+      code: 134,
+      name: "MintIsNotSigner",
+      msg: "Mint needs to be signer to initialize the account",
+    },
+    {
+      code: 135,
+      name: "InvalidTokenStandard",
+      msg: "Invalid token standard",
+    },
+    {
+      code: 136,
+      name: "InvalidMintForTokenStandard",
+      msg: "Invalid mint account for specified token standard",
+    },
+    {
+      code: 137,
+      name: "InvalidAuthorizationRules",
+      msg: "Invalid authorization rules account",
+    },
+    {
+      code: 138,
+      name: "MissingAuthorizationRules",
+      msg: "Missing authorization rules account",
+    },
+    {
+      code: 139,
+      name: "MissingProgrammableConfig",
+      msg: "Missing programmable configuration",
+    },
+    {
+      code: 140,
+      name: "InvalidProgrammableConfig",
+      msg: "Invalid programmable configuration",
+    },
+    {
+      code: 141,
+      name: "DelegateAlreadyExists",
+      msg: "Delegate already exists",
+    },
+    {
+      code: 142,
+      name: "DelegateNotFound",
+      msg: "Delegate not found",
+    },
+    {
+      code: 143,
+      name: "MissingAccountInBuilder",
+      msg: "Required account not set in instruction builder",
+    },
+    {
+      code: 144,
+      name: "MissingArgumentInBuilder",
+      msg: "Required argument not set in instruction builder",
+    },
+    {
+      code: 145,
+      name: "FeatureNotSupported",
+      msg: "Feature not supported currently",
+    },
+    {
+      code: 146,
+      name: "InvalidSystemWallet",
+      msg: "Invalid system wallet",
+    },
+    {
+      code: 147,
+      name: "OnlySaleDelegateCanTransfer",
+      msg: "Only the sale delegate can transfer while its set",
+    },
+    {
+      code: 148,
+      name: "MissingTokenAccount",
+      msg: "Missing token account",
+    },
+    {
+      code: 149,
+      name: "MissingSplTokenProgram",
+      msg: "Missing SPL token program",
+    },
+    {
+      code: 150,
+      name: "MissingAuthorizationRulesProgram",
+      msg: "Missing authorization rules program",
+    },
+    {
+      code: 151,
+      name: "InvalidDelegateRoleForTransfer",
+      msg: "Invalid delegate role for transfer",
+    },
+    {
+      code: 152,
+      name: "InvalidTransferAuthority",
+      msg: "Invalid transfer authority",
+    },
+    {
+      code: 153,
+      name: "InstructionNotSupported",
+      msg: "Instruction not supported for ProgrammableNonFungible assets",
+    },
+    {
+      code: 154,
+      name: "KeyMismatch",
+      msg: "Public key does not match expected value",
+    },
+    {
+      code: 155,
+      name: "LockedToken",
+      msg: "Token is locked",
+    },
+    {
+      code: 156,
+      name: "UnlockedToken",
+      msg: "Token is unlocked",
+    },
+    {
+      code: 157,
+      name: "MissingDelegateRole",
+      msg: "Missing delegate role",
+    },
+    {
+      code: 158,
+      name: "InvalidAuthorityType",
+      msg: "Invalid authority type",
+    },
+    {
+      code: 159,
+      name: "MissingTokenRecord",
+      msg: "Missing token record account",
+    },
+    {
+      code: 160,
+      name: "MintSupplyMustBeZero",
+      msg: "Mint supply must be zero for programmable assets",
+    },
+    {
+      code: 161,
+      name: "DataIsEmptyOrZeroed",
+      msg: "Data is empty or zeroed",
+    },
+    {
+      code: 162,
+      name: "MissingTokenOwnerAccount",
+      msg: "Missing token owner",
+    },
+    {
+      code: 163,
+      name: "InvalidMasterEditionAccountLength",
+      msg: "Master edition account has an invalid length",
+    },
+    {
+      code: 164,
+      name: "IncorrectTokenState",
+      msg: "Incorrect token state",
+    },
+    {
+      code: 165,
+      name: "InvalidDelegateRole",
+      msg: "Invalid delegate role",
+    },
+    {
+      code: 166,
+      name: "MissingPrintSupply",
+      msg: "Print supply is required for non-fungibles",
+    },
+    {
+      code: 167,
+      name: "MissingMasterEditionAccount",
+      msg: "Missing master edition account",
+    },
+    {
+      code: 168,
+      name: "AmountMustBeGreaterThanZero",
+      msg: "Amount must be greater than zero",
+    },
+    {
+      code: 169,
+      name: "InvalidDelegateArgs",
+      msg: "Invalid delegate args",
+    },
+    {
+      code: 170,
+      name: "MissingLockedTransferAddress",
+      msg: "Missing address for locked transfer",
+    },
+    {
+      code: 171,
+      name: "InvalidLockedTransferAddress",
+      msg: "Invalid destination address for locked transfer",
+    },
+    {
+      code: 172,
+      name: "DataIncrementLimitExceeded",
+      msg: "Exceeded account realloc increase limit",
+    },
+    {
+      code: 173,
+      name: "CannotUpdateAssetWithDelegate",
+      msg: "Cannot update the rule set of a programmable asset that has a delegate",
+    },
   ],
   metadata: {
     origin: "shank",
     address: "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s",
-    binaryVersion: "0.0.8",
-    libVersion: "~0.0.4",
+    binaryVersion: "0.0.11",
+    libVersion: "0.0.11",
   },
 };
