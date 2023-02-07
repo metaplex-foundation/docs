@@ -37,6 +37,7 @@ The Token Standard field can have the following values:
 - `FungibleAsset`: A token with metadata that can also have attributes, sometimes called Semi-Fungible.
 - `Fungible`: A token with simple metadata.
 - `NonFungibleEdition`: A non-fungible token with an Edition account (printed from a Master edition).
+- `ProgrammableNonFungible`: A special `NonFungible` token that is frozen at all times to enforce custom authorization rules.
 
 It is important to note that the Token Standard is set automatically by the Token Metadata program and cannot be manually updated. It uses the following logic to apply the correct standard:
 
