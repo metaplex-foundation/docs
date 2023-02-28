@@ -10,10 +10,10 @@ This extension of the Token Metadata contract was created as a new feature primi
 Aside from the requisite security and ownership checks necessary, the functionality this feature affords has been left generic enough to allow users to implement whatever they desire on top of the composability of the token and its escrow account.
 
 ## Types of Escrow Accounts
-It is currently possible to create two different types of escrow accounts on an NFT: A Token Owned Escrow (TOE) used for ownership and a Creator Owned Escrow (COE) used for associations. The existence both types of escrow accounts are not mutually exclusive.
+It is currently possible to create two different types of escrow accounts on an NFT: A Token Owned Escrow (TOE) used for ownership and a Creator Owned Escrow (COE) used for associations. The existence of both types of escrow accounts is not mutually exclusive.
 
 ### Token Owned Escrow
-A Token Owned Escrow account, or TOE, is an escrow account attached the NFT that is managed by the holder of the NFT. Transferring a token out of this escrow account is only allowable by the token's holder and the permissions follow the NFT as it is transferred between wallets.
+A Token Owned Escrow account, or TOE, is an escrow account attached to the NFT that is managed by the holder of the NFT. Transferring a token out of this escrow account is only allowable by the NFT's holder and the permissions follow the NFT as it is transferred between wallets.
 
 This means Alice can add a token to a TOE on her NFT, then sell her NFT to Bob. Bob would then be the only one allowed to transfer that token out of the TOE.
 
