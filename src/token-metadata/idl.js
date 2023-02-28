@@ -2,7 +2,7 @@ import docs from "./idl-docs";
 
 export default {
   docs, // <- Injects additional data to the IDL.
-  version: "1.8.1",
+  version: "1.8.5",
   name: "mpl_token_metadata",
   instructions: [
     {
@@ -2349,40 +2349,10 @@ export default {
       name: "Burn",
       accounts: [
         {
-          name: "metadata",
-          isMut: true,
-          isSigner: false,
-          desc: "Metadata (pda of ['metadata', program id, mint id])",
-        },
-        {
-          name: "owner",
+          name: "authority",
           isMut: true,
           isSigner: true,
-          desc: "Asset owner",
-        },
-        {
-          name: "mint",
-          isMut: true,
-          isSigner: false,
-          desc: "Mint of token asset",
-        },
-        {
-          name: "tokenAccount",
-          isMut: true,
-          isSigner: false,
-          desc: "Token account to close",
-        },
-        {
-          name: "masterEditionAccount",
-          isMut: true,
-          isSigner: false,
-          desc: "MasterEdition of the asset",
-        },
-        {
-          name: "splTokenProgram",
-          isMut: false,
-          isSigner: false,
-          desc: "SPL Token Program",
+          desc: "Asset owner or Utility delegate",
         },
         {
           name: "collectionMetadata",
@@ -2392,18 +2362,82 @@ export default {
           optional: true,
         },
         {
-          name: "authorizationRules",
-          isMut: false,
+          name: "metadata",
+          isMut: true,
           isSigner: false,
-          desc: "Token Authorization Rules account",
+          desc: "Metadata (pda of ['metadata', program id, mint id])",
+        },
+        {
+          name: "edition",
+          isMut: true,
+          isSigner: false,
+          desc: "MasterEdition of the asset",
           optional: true,
         },
         {
-          name: "authorizationRulesProgram",
+          name: "mint",
+          isMut: true,
+          isSigner: false,
+          desc: "Mint of token asset",
+        },
+        {
+          name: "token",
+          isMut: true,
+          isSigner: false,
+          desc: "Token account to close",
+        },
+        {
+          name: "parentEdition",
           isMut: false,
           isSigner: false,
-          desc: "Token Authorization Rules Program",
+          desc: "Print edition token account",
           optional: true,
+        },
+        {
+          name: "parentMint",
+          isMut: false,
+          isSigner: false,
+          desc: "Print edition mint of the asset",
+          optional: true,
+        },
+        {
+          name: "parentToken",
+          isMut: false,
+          isSigner: false,
+          desc: "Print edition token account to close",
+          optional: true,
+        },
+        {
+          name: "editionMarker",
+          isMut: true,
+          isSigner: false,
+          desc: "Edition marker account",
+          optional: true,
+        },
+        {
+          name: "tokenRecord",
+          isMut: true,
+          isSigner: false,
+          desc: "Token record account",
+          optional: true,
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "System program",
+        },
+        {
+          name: "sysvarInstructions",
+          isMut: false,
+          isSigner: false,
+          desc: "Instructions sysvar account",
+        },
+        {
+          name: "splTokenProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "SPL Token Program",
         },
       ],
       args: [
@@ -2832,7 +2866,7 @@ export default {
           name: "authority",
           isMut: false,
           isSigner: true,
-          desc: "Delegate account",
+          desc: "Delegate or freeze authority",
         },
         {
           name: "tokenOwner",
@@ -2934,7 +2968,7 @@ export default {
           name: "authority",
           isMut: false,
           isSigner: true,
-          desc: "Delegate account",
+          desc: "Delegate or freeze authority",
         },
         {
           name: "tokenOwner",
@@ -4487,12 +4521,8 @@ export default {
             name: "V1",
             fields: [
               {
-                name: "authorization_data",
-                type: {
-                  option: {
-                    defined: "AuthorizationData",
-                  },
-                },
+                name: "amount",
+                type: "u64",
               },
             ],
           },
@@ -4649,6 +4679,19 @@ export default {
               },
             ],
           },
+          {
+            name: "ProgrammableConfigV1",
+            fields: [
+              {
+                name: "authorization_data",
+                type: {
+                  option: {
+                    defined: "AuthorizationData",
+                  },
+                },
+              },
+            ],
+          },
         ],
       },
     },
@@ -4681,6 +4724,12 @@ export default {
           {
             name: "LockedTransferV1",
           },
+          {
+            name: "ProgrammableConfigV1",
+          },
+          {
+            name: "MigrationV1",
+          },
         ],
       },
     },
@@ -4700,6 +4749,9 @@ export default {
           },
           {
             name: "Update",
+          },
+          {
+            name: "ProgrammableConfig",
           },
         ],
       },
@@ -5241,10 +5293,13 @@ export default {
             name: "Metadata",
           },
           {
-            name: "Delegate",
+            name: "Holder",
           },
           {
-            name: "Holder",
+            name: "MetadataDelegate",
+          },
+          {
+            name: "TokenDelegate",
           },
         ],
       },
@@ -6207,6 +6262,66 @@ export default {
       code: 173,
       name: "CannotUpdateAssetWithDelegate",
       msg: "Cannot update the rule set of a programmable asset that has a delegate",
+    },
+    {
+      code: 174,
+      name: "InvalidAmount",
+      msg: "Invalid token amount for this operation or token standard",
+    },
+    {
+      code: 175,
+      name: "MissingParentMintAccount",
+      msg: "Missing parent mint account",
+    },
+    {
+      code: 176,
+      name: "MissingParentEditionAccount",
+      msg: "Missing parent edition account",
+    },
+    {
+      code: 177,
+      name: "MissingParentTokenAccount",
+      msg: "Missing parent token account",
+    },
+    {
+      code: 178,
+      name: "MissingEditionMarkerAccount",
+      msg: "Missing edition marker account",
+    },
+    {
+      code: 179,
+      name: "CannotBurnWithDelegate",
+      msg: "Cannot burn while persistent delegate is set",
+    },
+    {
+      code: 180,
+      name: "MissingEdition",
+      msg: "Missing edition account",
+    },
+    {
+      code: 181,
+      name: "InvalidAssociatedTokenAccountProgram",
+      msg: "Invalid Associated Token Account Program",
+    },
+    {
+      code: 182,
+      name: "InvalidInstructionsSysvar",
+      msg: "Invalid InstructionsSysvar",
+    },
+    {
+      code: 183,
+      name: "InvalidParentAccounts",
+      msg: "Invalid or Unneeded parent accounts",
+    },
+    {
+      code: 184,
+      name: "InvalidUpdateArgs",
+      msg: "Authority cannot apply all update args",
+    },
+    {
+      code: 185,
+      name: "InsufficientTokenBalance",
+      msg: "Token account does not have enough tokens",
     },
   ],
   metadata: {
