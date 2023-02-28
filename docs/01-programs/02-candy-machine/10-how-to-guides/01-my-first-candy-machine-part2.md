@@ -76,7 +76,8 @@ To be more flexible we will create a new react Element which will contain our mi
 
 1. Copy the `ShowNFTs.js` page and rename the copy to `MintNFTs.js`
 2. In `MintNFTs.js` rename the `ShowNFTs` constant to `MintNFTs`
-3. In `index.js` add `<MintNFTs onClusterChange={handleChange} />` below the `ShowNFTs` Element
+3. In `index.js` add `import { MintNFTs } from './MintNFTs'` near the top of the file
+4. In `index.js` add `<MintNFTs onClusterChange={handleChange} />` below the `ShowNFTs` Element
 
 When starting the website and connecting the wallet now you should see the same element twice. Now let's go ahead and add the candy machine.
 
