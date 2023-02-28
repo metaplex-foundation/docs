@@ -50,7 +50,7 @@ sugar
 <AccordionCode title="Output">
 
 ```
-sugar-cli 2.0.0-beta.2
+sugar-cli 2.0.0
 Command line tool for creating and managing Metaplex Candy Machines.
 
 USAGE:
