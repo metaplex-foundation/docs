@@ -15,8 +15,8 @@ description: "How to manage Auction House using CLI"
 In order to get started with the Auction House CLI please follow these steps.
 
 ```
-git clone https://github.com/metaplex-foundation/deprecated-clis.git
-cd deprecated-clis
+git clone https://github.com/metaplex-foundation/metaplex-program-library.git
+cd auction-house/cli
 ```
 Note: By default you will be using the latest code on the tip of the `main` branch.
 
