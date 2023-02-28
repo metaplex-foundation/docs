@@ -50,7 +50,7 @@ sugar
 <AccordionCode title="Output">
 
 ```
-sugar-cli 1.1.0-alpha+CMv3
+sugar-cli 2.0.0-beta.2
 Command line tool for creating and managing Metaplex Candy Machines.
 
 USAGE:
@@ -62,10 +62,12 @@ OPTIONS:
     -V, --version                  Print version information
 
 SUBCOMMANDS:
+    airdrop          Airdrop NFTs from candy machine
     bundlr           Interact with the bundlr network
     collection       Manage the collection on the candy machine
     create-config    Interactive process to create the config file
     deploy           Deploy cache items into candy machine config on-chain
+    freeze           Manage freeze guard actions
     guard            Manage guards on the candy machine
     hash             Generate hash of cache file for hidden settings
     help             Print this message or the help of the given subcommand(s)
