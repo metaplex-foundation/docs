@@ -8,10 +8,9 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 ## Overview
 
-The **Gatekeeper** guard checks whether the minting wallet has a valid **Gateway Token** — also known as a **Civic Pass**. There are different types of Civic Pass you can use to guard your mint, ranging from completing a simple Captcha challenge, to a 3D video selfie that guarantees a "one NFT per human" mint. 
+The **Gatekeeper** guard checks whether the minting wallet has a valid **Gateway Token** — also known as a **Civic Pass**. There are various types of Civic Pass you can use to guard your mint, ranging from completing a simple Captcha challenge, all the way to capturing a 3D video selfie that guarantees a "one NFT per human" mint. 
 
-You choose a type of Civic Pass to protect your mint by setting the corresponding [**Gatekeeper Network**](https://docs.civic.com/civic-pass/overview/how-it-works#the-on-chain-gatekeeper-network) in the Gatekeeper guard. The table bellow lists the availablable
-Networks. 
+ You select the type of Civic Pass to use by configuring the corresponding [**Gatekeeper Network**](https://docs.civic.com/civic-pass/overview/how-it-works#the-on-chain-gatekeeper-network) in the Gatekeeper guard.
 
 | **Civic Pass**                                                      	    | **Features**                                                                                                                                    	| **Gatekeeper Network**                                                       	|
 |---------------------------------------------------------------------	    |-------------------------------------------------------------------------------------------------------------------------------------------------	|------------------------------------------------------------------------------	|
@@ -20,9 +19,9 @@ Networks.
 | **Identity Document Verification** ([Demo](https://verify.civic.com)) 	| ID Document Authenticity  - Selfie matches ID Document photo - 18+ age check - Email - Liveness check - Location - Banned countries check: OFAC 	| [Reach out to Civic](https://share.hsforms.com/1Z4QgWNh0RN2-81jJDcrN2Qbzn0a) 	|
 | **Custom Verification**                                             	    | Additional specific countries, on-chain checks or other verifications.                                                                          	| [Reach out to Civic](https://share.hsforms.com/1NvBk0zfyR3aWcMosBxJETQbzn0a) 	|
 
-While the Captcha Verification is free to use without any restrictions, other Passes require you to reach out to Civic as they involve user PII. For the rest of this guide, we will be using the Captcha Verification.
+ The Captcha Verification is free to use without any restrictions, which is what we will be using in this guide. Other verification types involve Personal Identifiable Information (PII) are require you to reach out to Civic first.
 
-For a more in-depth understanding of Civic Passes and Gatekeeper Networks, please refer to the [official CIVIC Documentation](https://docs.civic.com/civic-pass/overview)
+For a more in-depth understanding of Civic Passes and Gatekeeper Networks, please refer to the [official CIVIC Documentation](https://docs.civic.com/civic-pass/overview).
 
 ![CandyMachinesV3-GuardsGatekeeper.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsGatekeeper.png#radius)
 
