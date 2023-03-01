@@ -208,9 +208,11 @@ The date needs to be specified using [RFC 3339 standard](https://datatracker.iet
 }
 ```
 
-### Gatekeeper
+### Gatekeeper / Civic Pass
 
-The Gatekeeper guard validates if the payer of the transaction has a token from a specified gateway network &mdash; in most cases, a token after completing a captcha challenge. The `expire_on_use` configuration is used to indicate whether or not the token should expire after minting.
+The Gatekeeper guard validates if the payer of the transaction has a valid Gateway Token - also known as Civic Pass. To get a Civic Pass, the user has to complete a challenge - in its simplest form a simple captcha challenge. For more advanced challenges refer to the complete [Gatekeeper / Civic Pass documentation](../../../01-programs/02-candy-machine/09-available-guards/07-gatekeeper.md)
+
+The `expire_on_use` configuration is used to indicate whether or not the token should expire after minting.
 
 ```json
 "gatekeeper" : {
