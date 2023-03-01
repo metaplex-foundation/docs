@@ -8,17 +8,21 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 ## Overview
 
-The **Gatekeeper** guard checks whether the minting wallet has a valid **Gateway Token** — also known as a **Civic Pass** — from a specified **Gatekeeper Network**.
+The **Gatekeeper** guard checks whether the minting wallet has a valid **Gateway Token** — also known as a **Civic Pass**. There are different types of Civic Pass you can use to guard your mint, ranging from completing a simple Captcha challenge, to a 3D video selfie that guarantees a "one NFT per human" mint. 
 
-In most cases, this token will be obtained after completing a Captcha challenge but any Gatekeeper Network may be used.
+You choose a type of Civic Pass to protect your mint by setting the corresponding [**Gatekeeper Network**](https://docs.civic.com/civic-pass/overview/how-it-works#the-on-chain-gatekeeper-network) in the Gatekeeper guard. The table bellow lists the availablable
+Networks. 
 
-There isn’t much to set up on the Candy Machine side but, depending on the selected Gatekeeper Network, you may need to ask the minting wallet to perform so pre-validation checks to grant them the required Gateway Token.
+| **Civic Pass**                                                      	    | **Features**                                                                                                                                    	| **Gatekeeper Network**                                                       	|
+|---------------------------------------------------------------------	    |-------------------------------------------------------------------------------------------------------------------------------------------------	|------------------------------------------------------------------------------	|
+| **Captcha Verification** ([Demo](https://getpass.civic.com))         	| Captcha check to filter bots.                                                                                                                   	| ignREusXmGrscGNUesoU9mxfds9AiYTezUKex2PsZV6                                  	|
+| **Uniqueness Verification** ([Demo](https://unique.civic.com))       	| 3D video selfie to capture a 3D face map. Limits one user to one wallet only                                                                    	| [Reach out to Civic](https://share.hsforms.com/1NhExhEX0Sf6NLptdGi4cAwbzn0a) 	|
+| **Identity Document Verification** ([Demo](https://verify.civic.com)) 	| ID Document Authenticity  - Selfie matches ID Document photo - 18+ age check - Email - Liveness check - Location - Banned countries check: OFAC 	| [Reach out to Civic](https://share.hsforms.com/1Z4QgWNh0RN2-81jJDcrN2Qbzn0a) 	|
+| **Custom Verification**                                             	    | Additional specific countries, on-chain checks or other verifications.                                                                          	| [Reach out to Civic](https://share.hsforms.com/1NvBk0zfyR3aWcMosBxJETQbzn0a) 	|
 
-Here are some additional recommended materials you may find helpful when setting up a Gatekeep Network.
+While the Captcha Verification is free to use without any restrictions, other Passes require you to reach out to Civic as they involve user PII. For the rest of this guide, we will be using the Captcha Verification.
 
-- [The CIVIC Documentation](https://docs.civic.com/civic-pass/overview)
-- [Gateway JS Library](https://www.npmjs.com/package/@identity.com/solana-gateway-ts)
-- [Gateway React Components](https://www.npmjs.com/package/@civic/solana-gateway-react)
+For a more in-depth understanding of Civic Passes and Gatekeeper Networks, please refer to the [official CIVIC Documentation](https://docs.civic.com/civic-pass/overview)
 
 ![CandyMachinesV3-GuardsGatekeeper.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsGatekeeper.png#radius)
 
