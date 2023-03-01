@@ -4,7 +4,7 @@ description: "Restricts minting via a Gatekeeper Network e.g. Captcha integratio
 
 import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
-# Gatekeeper
+# Gatekeeper / Civic Pass
 
 ## Overview
 
