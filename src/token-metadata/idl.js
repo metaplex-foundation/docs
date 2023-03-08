@@ -2,7 +2,7 @@ import docs from "./idl-docs";
 
 export default {
   docs, // <- Injects additional data to the IDL.
-  version: "1.8.5",
+  version: "1.9.0",
   name: "mpl_token_metadata",
   instructions: [
     {
@@ -2371,7 +2371,7 @@ export default {
           name: "edition",
           isMut: true,
           isSigner: false,
-          desc: "MasterEdition of the asset",
+          desc: "Edition of the asset",
           optional: true,
         },
         {
@@ -2387,24 +2387,24 @@ export default {
           desc: "Token account to close",
         },
         {
-          name: "parentEdition",
-          isMut: false,
+          name: "masterEdition",
+          isMut: true,
           isSigner: false,
-          desc: "Print edition token account",
+          desc: "Master edition account",
           optional: true,
         },
         {
-          name: "parentMint",
+          name: "masterEditionMint",
           isMut: false,
           isSigner: false,
-          desc: "Print edition mint of the asset",
+          desc: "Master edition mint of the asset",
           optional: true,
         },
         {
-          name: "parentToken",
+          name: "masterEditionToken",
           isMut: false,
           isSigner: false,
-          desc: "Print edition token account to close",
+          desc: "Master edition token account",
           optional: true,
         },
         {
@@ -2551,7 +2551,7 @@ export default {
         },
         {
           name: "masterEdition",
-          isMut: false,
+          isMut: true,
           isSigner: false,
           desc: "Master Edition account",
           optional: true,
@@ -3487,43 +3487,63 @@ export default {
       name: "Verify",
       accounts: [
         {
+          name: "authority",
+          isMut: false,
+          isSigner: true,
+          desc: "Creator to verify, collection update authority or delegate",
+        },
+        {
+          name: "delegateRecord",
+          isMut: false,
+          isSigner: false,
+          desc: "Delegate record PDA",
+          optional: true,
+        },
+        {
           name: "metadata",
           isMut: true,
           isSigner: false,
           desc: "Metadata account",
         },
         {
-          name: "collectionAuthority",
-          isMut: true,
-          isSigner: true,
-          desc: "Collection Update authority",
-        },
-        {
-          name: "payer",
-          isMut: true,
-          isSigner: true,
-          desc: "payer",
-        },
-        {
-          name: "authorizationRules",
+          name: "collectionMint",
           isMut: false,
           isSigner: false,
-          desc: "Token Authorization Rules account",
+          desc: "Mint of the Collection",
           optional: true,
         },
         {
-          name: "authorizationRulesProgram",
+          name: "collectionMetadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata Account of the Collection",
+          optional: true,
+        },
+        {
+          name: "collectionMasterEdition",
           isMut: false,
           isSigner: false,
-          desc: "Token Authorization Rules Program",
+          desc: "Master Edition Account of the Collection Token",
           optional: true,
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "System program",
+        },
+        {
+          name: "sysvarInstructions",
+          isMut: false,
+          isSigner: false,
+          desc: "Instructions sysvar account",
         },
       ],
       args: [
         {
-          name: "verifyArgs",
+          name: "verificationArgs",
           type: {
-            defined: "VerifyArgs",
+            defined: "VerificationArgs",
           },
         },
       ],
@@ -3531,6 +3551,69 @@ export default {
       discriminant: {
         type: "u8",
         value: 52,
+      },
+    },
+    {
+      name: "Unverify",
+      accounts: [
+        {
+          name: "authority",
+          isMut: false,
+          isSigner: true,
+          desc: "Creator to verify, collection (or metadata if parent burned) update authority or delegate",
+        },
+        {
+          name: "delegateRecord",
+          isMut: false,
+          isSigner: false,
+          desc: "Delegate record PDA",
+          optional: true,
+        },
+        {
+          name: "metadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata account",
+        },
+        {
+          name: "collectionMint",
+          isMut: false,
+          isSigner: false,
+          desc: "Mint of the Collection",
+          optional: true,
+        },
+        {
+          name: "collectionMetadata",
+          isMut: true,
+          isSigner: false,
+          desc: "Metadata Account of the Collection",
+          optional: true,
+        },
+        {
+          name: "systemProgram",
+          isMut: false,
+          isSigner: false,
+          desc: "System program",
+        },
+        {
+          name: "sysvarInstructions",
+          isMut: false,
+          isSigner: false,
+          desc: "Instructions sysvar account",
+        },
+      ],
+      args: [
+        {
+          name: "verificationArgs",
+          type: {
+            defined: "VerificationArgs",
+          },
+        },
+      ],
+      defaultOptionalAccounts: true,
+      discriminant: {
+        type: "u8",
+        value: 53,
       },
     },
   ],
@@ -4530,27 +4613,6 @@ export default {
       },
     },
     {
-      name: "VerifyArgs",
-      type: {
-        kind: "enum",
-        variants: [
-          {
-            name: "V1",
-            fields: [
-              {
-                name: "authorization_data",
-                type: {
-                  option: {
-                    defined: "AuthorizationData",
-                  },
-                },
-              },
-            ],
-          },
-        ],
-      },
-    },
-    {
       name: "DelegateArgs",
       type: {
         kind: "enum",
@@ -5078,6 +5140,20 @@ export default {
                 },
               },
             ],
+          },
+        ],
+      },
+    },
+    {
+      name: "VerificationArgs",
+      type: {
+        kind: "enum",
+        variants: [
+          {
+            name: "CreatorV1",
+          },
+          {
+            name: "CollectionV1",
           },
         ],
       },
@@ -5911,7 +5987,7 @@ export default {
     {
       code: 103,
       name: "MissingCollectionMetadata",
-      msg: "Can't burn a verified member of a collection w/o providing collection metadata account",
+      msg: "Missing collection metadata account",
     },
     {
       code: 104,
@@ -6270,58 +6346,63 @@ export default {
     },
     {
       code: 175,
-      name: "MissingParentMintAccount",
-      msg: "Missing parent mint account",
+      name: "MissingMasterEditionMintAccount",
+      msg: "Missing master edition mint account",
     },
     {
       code: 176,
-      name: "MissingParentEditionAccount",
-      msg: "Missing parent edition account",
+      name: "MissingMasterEditionTokenAccount",
+      msg: "Missing master edition token account",
     },
     {
       code: 177,
-      name: "MissingParentTokenAccount",
-      msg: "Missing parent token account",
-    },
-    {
-      code: 178,
       name: "MissingEditionMarkerAccount",
       msg: "Missing edition marker account",
     },
     {
-      code: 179,
+      code: 178,
       name: "CannotBurnWithDelegate",
       msg: "Cannot burn while persistent delegate is set",
     },
     {
-      code: 180,
+      code: 179,
       name: "MissingEdition",
       msg: "Missing edition account",
     },
     {
-      code: 181,
+      code: 180,
       name: "InvalidAssociatedTokenAccountProgram",
       msg: "Invalid Associated Token Account Program",
     },
     {
-      code: 182,
+      code: 181,
       name: "InvalidInstructionsSysvar",
       msg: "Invalid InstructionsSysvar",
     },
     {
-      code: 183,
+      code: 182,
       name: "InvalidParentAccounts",
       msg: "Invalid or Unneeded parent accounts",
     },
     {
-      code: 184,
+      code: 183,
       name: "InvalidUpdateArgs",
       msg: "Authority cannot apply all update args",
     },
     {
-      code: 185,
+      code: 184,
       name: "InsufficientTokenBalance",
       msg: "Token account does not have enough tokens",
+    },
+    {
+      code: 185,
+      name: "MissingCollectionMint",
+      msg: "Missing collection mint account",
+    },
+    {
+      code: 186,
+      name: "MissingCollectionMasterEdition",
+      msg: "Missing collection master edition account",
     },
   ],
   metadata: {
