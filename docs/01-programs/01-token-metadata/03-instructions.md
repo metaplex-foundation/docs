@@ -41,14 +41,13 @@ This instruction enables us to update parts of the Metadata account. Note that s
 
 This instruction enables the owner of the NFT to completely burn it:
 
-* burning the SPL token and closing the token account
-* closing the metadata and edition accounts
-* giving the owner the reclaimed funds from closing these accounts
+- burning the SPL token and closing the token account
+- closing the metadata and edition accounts
+- giving the owner the reclaimed funds from closing these accounts
 
 This handler checks if the NFT is a member of a verified collection, and if it is, requires the collection metadata account be passed in so the size can be decremented.
 
 This handler will not close metadata and edition accounts where the token has already been burned and the mint has a supply of 0. At that point there is no official "owner" of the NFT.
-
 
 </ProgramInstruction>
 
@@ -64,14 +63,13 @@ This instruction enables the owner of a Print Edition NFT to completely burn it:
 
 This handler checks if the NFT is a Print Edition and not a Master edition, and decrements the Master Edition supply fields after burning the NFT.
 
-The Master Edition `supply` is decremented every time a Print Edition is burned. If the owner of the Master Edition is not the same as the owner of the Print Edition, the `max_supply` is also decremented. 
+The Master Edition `supply` is decremented every time a Print Edition is burned. If the owner of the Master Edition is not the same as the owner of the Print Edition, the `max_supply` is also decremented.
 
 Print Editions burned by the owner ("the creator") of the Master Edition can be reminted, but print editions burned by other owners ("users") cannot be reminted.
 
 This handler will not close metadata and edition accounts where the token has already been burned and the mint has a supply of 0. At that point there is no official "owner" of the NFT.
 
 </ProgramInstruction>
-
 
 ### Indicate the primary sale has happened
 
@@ -163,7 +161,7 @@ Clients should detect if a NFT is part of a sized collection or not and call the
 
 ![](/assets/programs/token-metadata/Token-Metadata-Instruction-Verify-Sized-Collection.png)
 
-This instruction verifies the collection of a Metadata account, by setting the `Verified` boolean to `True` on the `Collection` field, and increments the size field of the parent NFT. Calling it on a collection whose parent NFT does not have a size field will throw an error. 
+This instruction verifies the collection of a Metadata account, by setting the `Verified` boolean to `True` on the `Collection` field, and increments the size field of the parent NFT. Calling it on a collection whose parent NFT does not have a size field will throw an error.
 
 Clients should detect if a NFT is part of a sized collection or not and call the appropriate handler for the user to abstract away this detail.
 
@@ -319,10 +317,9 @@ This instruction serves as a migration tool that upgrades a Master Edition accou
 
 ![](/assets/programs/token-metadata/Token-Metadata-Instruction-Set-Collection-Size.png)
 
-This instruction allows the update authority of a collection parent NFT to set the size of the collection **once** in order to allow existing unsized collections to be updated to track size. Once a collection is sized it can only be verified and unverified by the sized handlers and can't be changed back to unsized. 
+This instruction allows the update authority of a collection parent NFT to set the size of the collection **once** in order to allow existing unsized collections to be updated to track size. Once a collection is sized it can only be verified and unverified by the sized handlers and can't be changed back to unsized.
 
 </ProgramInstruction>
-
 
 ### Set token standard
 
@@ -330,12 +327,9 @@ This instruction allows the update authority of a collection parent NFT to set t
 
 ![](/assets/programs/token-metadata/Token-Metadata-Instruction-Set-Token-Standard.png)
 
-
 This instruction allows an update authority to pass in a metadata account with an optional edition account and then it determines what the correct TokenStandard type is and writes it to the metadata. See [Token Standard](./token-standard) for more information.
 
-
 </ProgramInstruction>
-
 
 ## New Unified Handlers V1.7+
 
@@ -345,13 +339,13 @@ This instruction allows an update authority to pass in a metadata account with a
 
 ![](/assets/programs/token-metadata/Token-Metadata-Instruction-Burn.png)
 
-
 Burns an asset, closing associated accounts.
 
 Supports burning the following asset types:
+
 - ProgrammableNonFungible
 - NonFungible
-- NonFungigbleEdition
+- NonFungibleEdition
 - Fungible
 - FungibleAsset
 
@@ -362,15 +356,19 @@ The Token Record account is required for burning a ProgrammableNonFungible asset
 This handler closes the following accounts:
 
 For ProgrammableNonFungible assets:
+
 - Metadata, Edition, Token, TokenRecord
 
 For NonFungible assets:
+
 - Metadata, Edition, Token
 
 For NonFungibleEdition assets:
+
 - Metadata, Edition, Token, and the EditionMarker, if all prints for it are burned.
 
 For Fungible assets:
+
 - Only the token account, if all tokens are burned.
 
 Mint accounts are owned by the immutable Token program and cannot be closed.
