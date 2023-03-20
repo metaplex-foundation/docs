@@ -26,36 +26,85 @@ The `initializeV2` instruction can also be used to create a Candy Machine that m
 
 Note that no changes are needed for the Candy Guard program here since it delegates to the Candy Machine Core when minting the NFT.
 
-TODO: code example for `initializeV2`
+<Accordion>
+<AccordionItem title="Solita library" open={true}>
+<div className="accordion-item-padding">
+
+```ts
+import { createInitializeV2Instruction } from "@metaplex-foundation/mpl-candy-machine-core";
+import { TokenStandard } from "@metaplex-foundation/mpl-token-metadata";
+
+const initializeV1Instruction: TransactionInstruction =
+  createInitializeV2Instruction(
+    {
+      authorityPda,
+      collectionUpdateAuthority,
+      candyMachine,
+      authority,
+      payer,
+      ruleSet,
+      collectionMetadata,
+      collectionMint,
+      collectionMasterEdition,
+      collectionDelegateRecord,
+      tokenMetadataProgram,
+      systemProgram,
+      sysvarInstructions,
+    },
+    {
+      data: {...},
+      tokenStandard: TokenStandard.ProgrammableNonFungible,
+    }
+  );
+```
+
+API References: [Typedoc](https://metaplex-foundation.github.io/mpl-candy-guard/functions/createInitializeV2Instruction.html), [Program](https://docs.rs/mpl-candy-machine-core/0.2.0/mpl_candy_machine_core/accounts/struct.InitializeV2.html).
+
+</div>
+</AccordionItem>
+</Accordion>
 
 ## For existing candy machines
 
 It is possible to update the token standard of existing Candy Machines via the new `setTokenStandard` instruction. When calling this instruction on a Candy Machine `V1`, it will also upgrade the Candy Machine to `V2` and store the token standard in the account data.
 
+<Accordion>
+<AccordionItem title="Solita library" open={true}>
+<div className="accordion-item-padding">
+
 TODO: code example for `setTokenStandard`
+
+</div>
+</AccordionItem>
+</Accordion>
 
 Additionally, a new `setCollectionV2` instruction has been added to support setting a collection that is compatible with Programmable NFTs. This instruction also works with regular NFTs and deprecates the `setCollection` instruction.
 
+<Accordion>
+<AccordionItem title="Solita library" open={true}>
+
+<div className="accordion-item-padding">
+
 TODO: code example for `setCollectionV2`
+
+</div>
+</AccordionItem>
+</Accordion>
 
 ## A new minting instruction
 
 The `mint` instruction of both the Candy Machine Core and the Candy Guard programs has been updated to support minting Programmable NFTs. This new instruction is called `mintV2` and it is similar to the `mint` instruction, but requires additional accounts to be passed in. Here as well, the new `mintV2` instructions can be used to mint regular NFTs and, therefore, they deprecate the existing `mint` instructions.
 
-TODO: code example for `mintV2` in Candy Guard.
-
-Note that some of the guards offered by the Candy Guard program have also been updated to support Programmable NFTs. Whilst the updates do not introduce breaking changes when minting regular NFTs, they may expect more remaining accounts when minting depending on the token standard.
-
-The guards affected by this changes are the `FreezeSolPayment` and `FreezeTokenPayment` guards. Since Programmable NFTs are by definition always frozen, they are Locked when minted via a Utility delegate and Unlocked when the thaw conditions have been met.
-
 <Accordion>
 <AccordionItem title="Solita library" open={true}>
 <div className="accordion-item-padding">
 
-TODO
-
-API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#mint), [Input](https://metaplex-foundation.github.io/js/types/js.MintFromCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.MintFromCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#mint).
+TODO: code example for `mintV2` in Candy Guard.
 
 </div>
 </AccordionItem>
 </Accordion>
+
+Note that some of the guards offered by the Candy Guard program have also been updated to support Programmable NFTs. Whilst the updates do not introduce breaking changes when minting regular NFTs, they may expect more remaining accounts when minting depending on the token standard.
+
+The guards affected by this changes are the `FreezeSolPayment` and `FreezeTokenPayment` guards. Since Programmable NFTs are by definition always frozen, they are Locked when minted via a Utility delegate and Unlocked when the thaw conditions have been met.
