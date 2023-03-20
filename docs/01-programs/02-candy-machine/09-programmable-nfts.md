@@ -26,6 +26,8 @@ The `initializeV2` instruction can also be used to create a Candy Machine that m
 
 Also, note that some optional accounts may be required depending on the token standard you choose. For example, the `ruleSet` account may be provided to assign a specific rule set to all minted Programmable NFTs. If no `ruleSet` account is provided, it will use the rule set of the Collection NFT if any. Otherwise, minted Programmable NFTs will simply not have any rule set assigned. On the other hand, the `ruleSet` account will be ignored when minting regular NFTs.
 
+Additionally, the `collectionDelegateRecord` account should now refer to the new [Metadata Delegate Record](https://docs.rs/mpl-token-metadata/latest/mpl_token_metadata/state/struct.MetadataDelegateRecord.html) from Token Metadata.
+
 <Accordion>
 <AccordionItem title="Solita library" open={true}>
 <div className="accordion-item-padding">
@@ -72,7 +74,33 @@ It is possible to update the token standard of existing Candy Machines via the n
 <AccordionItem title="Solita library" open={true}>
 <div className="accordion-item-padding">
 
-TODO: code example for `setTokenStandard`
+```ts
+import { createSetTokenStandardInstruction } from "@metaplex-foundation/mpl-candy-machine-core";
+import { TokenStandard } from "@metaplex-foundation/mpl-token-metadata";
+
+const setTokenStandardInstruction: TransactionInstruction =
+  createSetTokenStandardInstruction(
+    {
+      authority,
+      authorityPda,
+      candyMachine,
+      collectionAuthorityRecord,
+      collectionDelegateRecord,
+      collectionMetadata,
+      collectionMint,
+      collectionUpdateAuthority,
+      payer,
+      ruleSet,
+      sysvarInstructions,
+      tokenMetadataProgram,
+    },
+    {
+      tokenStandard: TokenStandard.ProgrammableNonFungible,
+    }
+  );
+```
+
+API References: [Typedoc](https://metaplex-foundation.github.io/metaplex-program-library/docs/candy-machine-core/functions/createSetTokenStandardInstruction.html), [Program](https://docs.rs/mpl-candy-machine-core/1.0.0/mpl_candy_machine_core/accounts/struct.SetTokenStandard.html).
 
 </div>
 </AccordionItem>
@@ -82,10 +110,32 @@ Additionally, a new `setCollectionV2` instruction has been added to support sett
 
 <Accordion>
 <AccordionItem title="Solita library" open={true}>
-
 <div className="accordion-item-padding">
 
-TODO: code example for `setCollectionV2`
+```ts
+import { createSetCollectionV2Instruction } from "@metaplex-foundation/mpl-candy-machine-core";
+
+const setCollectionV2Instruction: TransactionInstruction =
+  createSetCollectionV2Instruction({
+    authority,
+    authorityPda,
+    candyMachine,
+    collectionDelegateRecord,
+    collectionMetadata,
+    collectionMint,
+    collectionUpdateAuthority,
+    newCollectionDelegateRecord,
+    newCollectionMasterEdition,
+    newCollectionMetadata,
+    newCollectionMint,
+    newCollectionUpdateAuthority,
+    payer,
+    sysvarInstructions,
+    tokenMetadataProgram,
+  });
+```
+
+API References: [Typedoc](https://metaplex-foundation.github.io/metaplex-program-library/docs/candy-machine-core/functions/createSetCollectionV2Instruction.html), [Program](https://docs.rs/mpl-candy-machine-core/1.0.0/mpl_candy_machine_core/accounts/struct.SetCollectionV2.html).
 
 </div>
 </AccordionItem>
@@ -99,7 +149,45 @@ The `mint` instruction of both the Candy Machine Core and the Candy Guard progra
 <AccordionItem title="Solita library" open={true}>
 <div className="accordion-item-padding">
 
-TODO: code example for `mintV2` in Candy Guard.
+```ts
+import { createMintV2Instruction } from "@metaplex-foundation/mpl-candy-guard";
+
+const mintV2Instruction: TransactionInstruction = createMintV2Instruction(
+  {
+    candyGuard,
+    candyMachine,
+    candyMachineAuthorityPda,
+    candyMachineProgram,
+    collectionDelegateRecord,
+    collectionMasterEdition,
+    collectionMetadata,
+    collectionMint,
+    collectionUpdateAuthority,
+    minter,
+    nftMasterEdition,
+    nftMetadata,
+    nftMint,
+    nftMintAuthority,
+    payer,
+    recentSlothashes,
+    splTokenProgram,
+    sysvarInstructions,
+    token,
+    tokenMetadataProgram,
+    tokenRecord,
+    anchorRemainingAccounts: [], // Any remaining accounts used by registered guards.
+  },
+  {
+    label: null, // Or the label of the group when minting from one.
+    mintArgs: new Uint8Array([]), // The serialized data to pass to registered guards when applicable.
+  }
+);
+```
+
+API References:
+
+- Candy Guard [Typedoc](https://metaplex-foundation.github.io/mpl-candy-guard/functions/createMintV2Instruction.html), [Program](https://docs.rs/mpl-candy-guard/latest/mpl_candy_guard/accounts/struct.MintV2.html).
+- Candy Machine Core: [Typedoc](https://metaplex-foundation.github.io/metaplex-program-library/docs/candy-machine-core/functions/createMintV2Instruction.html), [Program](https://docs.rs/mpl-candy-machine-core/1.0.0/mpl_candy_machine_core/accounts/struct.MintV2.html).
 
 </div>
 </AccordionItem>
@@ -107,7 +195,10 @@ TODO: code example for `mintV2` in Candy Guard.
 
 Note that some of the guards offered by the Candy Guard program have also been updated to support Programmable NFTs. Whilst the updates do not introduce breaking changes when minting regular NFTs, they may expect more remaining accounts when minting depending on the token standard.
 
-The guards affected by these changes are the `FreezeSolPayment` and `FreezeTokenPayment` guards. Since Programmable NFTs are by definition always frozen, they are Locked when minted via a Utility delegate and Unlocked when the thaw conditions have been met.
+The guards affected by these changes are:
+
+- The `nftBurn` and `nftPayment` guards which now allow the burned/sent NFT to be a Programmable NFT.
+- The `FreezeSolPayment` and `FreezeTokenPayment` guards. Since Programmable NFTs are by definition always frozen, they are Locked when minted via a Utility delegate and Unlocked when the thaw conditions have been met.
 
 ## Additional reading
 
