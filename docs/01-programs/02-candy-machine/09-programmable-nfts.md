@@ -20,22 +20,33 @@ In the meantime, you can use the Solita-generated libraries [mpl-candy-machine-c
 
 ## For new candy machines
 
-TODO
+A new instruction called `initializeV2` has been added to the Candy Machine Core program. This instruction is similar to the `initialize` instruction, but it allows you to specify the token standard you want to use for your candy machine. This instruction will mark the newly created Candy Machine as `V2` to differentiate it from the `V1` Candy Machines that do not store the token standard. These new fields are using existing padding in the Candy Machine account data to avoid breaking changes in the Candy Machine serialization logic.
 
-- initializeV2 for CM
+The `initializeV2` instruction can also be used to create a Candy Machine that mints regular NFTs and, therefore, the `initialize` instruction is now deprecated.
+
+Note that no changes are needed for the Candy Guard program here since it delegates to the Candy Machine Core when minting the NFT.
+
+TODO: code example for `initializeV2`
 
 ## For existing candy machines
 
-TODO
+It is possible to update the token standard of existing Candy Machines via the new `setTokenStandard` instruction. When calling this instruction on a Candy Machine `V1`, it will also upgrade the Candy Machine to `V2` and store the token standard in the account data.
 
-- setCollectionV2
-- setTokenStandardV2
+TODO: code example for `setTokenStandard`
+
+Additionally, a new `setCollectionV2` instruction has been added to support setting a collection that is compatible with Programmable NFTs. This instruction also works with regular NFTs and deprecates the `setCollection` instruction.
+
+TODO: code example for `setCollectionV2`
 
 ## A new minting instruction
 
-TODO
+The `mint` instruction of both the Candy Machine Core and the Candy Guard programs has been updated to support minting Programmable NFTs. This new instruction is called `mintV2` and it is similar to the `mint` instruction, but requires additional accounts to be passed in. Here as well, the new `mintV2` instructions can be used to mint regular NFTs and, therefore, they deprecate the existing `mint` instructions.
 
-- mintV1 for both programs
+TODO: code example for `mintV2` in Candy Guard.
+
+Note that some of the guards offered by the Candy Guard program have also been updated to support Programmable NFTs. Whilst the updates do not introduce breaking changes when minting regular NFTs, they may expect more remaining accounts when minting depending on the token standard.
+
+The guards affected by this changes are the `FreezeSolPayment` and `FreezeTokenPayment` guards. Since Programmable NFTs are by definition always frozen, they are Locked when minted via a Utility delegate and Unlocked when the thaw conditions have been met.
 
 <Accordion>
 <AccordionItem title="Solita library" open={true}>
