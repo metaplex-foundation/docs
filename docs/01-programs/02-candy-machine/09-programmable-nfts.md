@@ -34,7 +34,7 @@ Also, note that some optional accounts may be required depending on the token st
 import { createInitializeV2Instruction } from "@metaplex-foundation/mpl-candy-machine-core";
 import { TokenStandard } from "@metaplex-foundation/mpl-token-metadata";
 
-const initializeV1Instruction: TransactionInstruction =
+const initializeV2Instruction: TransactionInstruction =
   createInitializeV2Instruction(
     {
       authorityPda,
@@ -58,7 +58,7 @@ const initializeV1Instruction: TransactionInstruction =
   );
 ```
 
-API References: [Typedoc](https://metaplex-foundation.github.io/mpl-candy-guard/functions/createInitializeV2Instruction.html), [Program](https://docs.rs/mpl-candy-machine-core/1.0.0/mpl_candy_machine_core/accounts/struct.InitializeV2.html).
+API References: [Typedoc](https://metaplex-foundation.github.io/metaplex-program-library/docs/candy-machine-core/functions/createInitializeV2Instruction.html), [Program](https://docs.rs/mpl-candy-machine-core/1.0.0/mpl_candy_machine_core/accounts/struct.InitializeV2.html).
 
 </div>
 </AccordionItem>
@@ -116,3 +116,5 @@ You may find the following resources about Programmable NFTs and Candy Machines 
 - [Programmable NFTs Guide](https://github.com/metaplex-foundation/metaplex-program-library/blob/master/token-metadata/program/ProgrammableNFTGuide.md)
 - [Candy Machine Core Program](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/candy-machine-core/program)
 - [Candy Guard Program](https://github.com/metaplex-foundation/mpl-candy-guard/tree/main)
+- [Candy Machine Core JS Typedoc](https://metaplex-foundation.github.io/metaplex-program-library/docs/candy-machine-core/index.html)
+- [Candy Guard JS Typedoc](https://metaplex-foundation.github.io/mpl-candy-guard/index.html)
