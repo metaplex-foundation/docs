@@ -108,3 +108,11 @@ TODO: code example for `mintV2` in Candy Guard.
 Note that some of the guards offered by the Candy Guard program have also been updated to support Programmable NFTs. Whilst the updates do not introduce breaking changes when minting regular NFTs, they may expect more remaining accounts when minting depending on the token standard.
 
 The guards affected by this changes are the `FreezeSolPayment` and `FreezeTokenPayment` guards. Since Programmable NFTs are by definition always frozen, they are Locked when minted via a Utility delegate and Unlocked when the thaw conditions have been met.
+
+## Additional reading
+
+You may find the following resources about Programmable NFTs and Candy Machines useful:
+
+- [Programmable NFTs Guide](https://github.com/metaplex-foundation/metaplex-program-library/blob/master/token-metadata/program/ProgrammableNFTGuide.md)
+- [Candy Machine Core Program](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/candy-machine-core/program)
+- [Candy Guard Program](https://github.com/metaplex-foundation/mpl-candy-guard/tree/main)
