@@ -36,20 +36,114 @@ To remove the collection NFT:
 sugar collection remove
 ```
 
-## create-config
+## config
+
+Manage candy machine configurations.
+
+### create
+
+```
+Interactive process to create a config file
+
+USAGE:
+    sugar config create [OPTIONS] [ASSETS_DIR]
+
+ARGS:
+    <ASSETS_DIR>    Path to the directory with the assets [default: assets]
+
+OPTIONS:
+    -c, --config <CONFIG>          Path to the config file
+    -h, --help                     Print help information
+    -k, --keypair <KEYPAIR>        Path to the keypair file [default: solana config or
+                                   "~/.config/solana/id.json"]
+    -l, --log-level <LOG_LEVEL>    Log level: trace, debug, info, warn, error, off
+    -r, --rpc-url <RPC_URL>        RPC Url
+```
 
 By default, Sugar looks for a `config.json` file in the current directory to load the Candy Machine configuration &mdash; the configuration file name can be specified with a `-c` or `--config` option.
 
-You can either create this file manually, following the instructions above, or use the `create-config` command:
+You can either create this file manually, following the instructions above, or use the `config create` command.
 
 ```bash
-sugar create-config
+sugar config create
 ```
 
 Executing the command starts an interactive process consisting in a sequence of prompts to gather information about all configuration options. At the end of it, a configuration file is saved (default to `config.json`) or its content is displayed on screen. To specify a custom file name, use the option `-c`:
 
 ```bash
-sugar create-config -c my-config.json
+sugar config create -c my-config.json
+```
+
+### set
+
+This command supports changing the type of asset your Candy Machine mints: either NFTs or pNFTs using the `--token-standard` option.
+It also allows you to specify a rule set for minted pNFTs.
+
+```
+sugar-config-set 
+Set specific candy machine config values
+
+USAGE:
+    sugar config set [OPTIONS]
+
+OPTIONS:
+        --cache <CACHE>
+            Path to the cache file, defaults to "cache.json" [default: cache.json]
+
+        --candy-machine <CANDY_MACHINE>
+            Address of candy machine to update
+
+    -h, --help
+            Print help information
+
+    -k, --keypair <KEYPAIR>
+            Path to the keypair file, uses Sol config or defaults to "~/.config/solana/id.json"
+
+    -l, --log-level <LOG_LEVEL>
+            Log level: trace, debug, info, warn, error, off
+
+    -r, --rpc-url <RPC_URL>
+            RPC Url
+
+        --rule-set <RULE_SET>
+            Address of the rule set to use
+
+    -t, --token-standard <TOKEN_STANDARD>
+            Token Standard to set
+```
+
+### update
+
+```
+Update the candy machine config on-chain
+
+USAGE:
+    sugar config update [OPTIONS]
+
+OPTIONS:
+    -c, --config <CONFIG>
+            Path to the config file, defaults to "config.json" [default: config.json]
+
+        --cache <CACHE>
+            Path to the cache file, defaults to "cache.json" [default: cache.json]
+
+        --candy-machine <CANDY_MACHINE>
+            Address of candy machine to update
+
+    -h, --help
+            Print help information
+
+    -k, --keypair <KEYPAIR>
+            Path to the keypair file, uses Sol config or defaults to "~/.config/solana/id.json"
+
+    -l, --log-level <LOG_LEVEL>
+            Log level: trace, debug, info, warn, error, off
+
+    -n, --new-authority <NEW_AUTHORITY>
+            Pubkey for the new authority
+
+    -r, --rpc-url <RPC_URL>
+            RPC Url
 ```
 
 ## deploy
