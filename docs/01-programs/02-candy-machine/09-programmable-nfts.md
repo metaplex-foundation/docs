@@ -10,7 +10,7 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 Version `1.7` of Token Metadata introduced a [new type of asset class called Programmable NFTs](programs/token-metadata/overview#programmable-nfts) allowing, amongst other things, creators to enforce royalties on secondary sales.
 
-Since version `0.2` of Candy Machine Core and version `0.4` of Candy Guard, it is now possible to **mint Programmable NFTs from candy machines** and even update the token standard of existing candy machines.
+Since version `1.0` of Candy Machine Core and version `1.0` of Candy Guard, it is now possible to **mint Programmable NFTs from candy machines** and even update the token standard of existing candy machines.
 
 :::info
 Note that, for JavaScript clients, the rest of the documentation currently provides examples using the Metaplex JS SDK. However, Programmable NFTs will not be supported on the JS SDK as we are working on a new JavaScript client framework that will be released soon.
@@ -58,7 +58,7 @@ const initializeV1Instruction: TransactionInstruction =
   );
 ```
 
-API References: [Typedoc](https://metaplex-foundation.github.io/mpl-candy-guard/functions/createInitializeV2Instruction.html), [Program](https://docs.rs/mpl-candy-machine-core/0.2.0/mpl_candy_machine_core/accounts/struct.InitializeV2.html).
+API References: [Typedoc](https://metaplex-foundation.github.io/mpl-candy-guard/functions/createInitializeV2Instruction.html), [Program](https://docs.rs/mpl-candy-machine-core/1.0.0/mpl_candy_machine_core/accounts/struct.InitializeV2.html).
 
 </div>
 </AccordionItem>
