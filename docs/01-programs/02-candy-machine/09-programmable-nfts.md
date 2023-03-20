@@ -8,11 +8,34 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 ## Introduction
 
+Version `1.7` of Token Metadata introduced a [new type of asset class called Programmable NFTs](programs/token-metadata/overview#programmable-nfts) allowing, amongts other things, creators to enforce royalties on secondary sales.
+
+Since version `0.2` of Candy Machine Core and version `0.4` of Candy Guard, it is now possible to **mint Programmable NFTs from candy machines** and even update the token standard of existing candy machines.
+
+:::info
+Note that, for JavaScript clients, the rest of the documentation currently provides examples using the Metaplex JS SDK. However, Programmable NFTs will not be supported on the JS SDK as we are working on a new JavaScript client framework that will be released soon.
+
+In the meantime, you can use the Solita-generated libraries [mpl-candy-machine-core](https://www.npmjs.com/package/@metaplex-foundation/mpl-candy-machine-core) and [mpl-candy-guard](https://www.npmjs.com/package/@metaplex-foundation/mpl-candy-guard) since these are the ones the current JS SDK use under the hood. Thus, we will use these libraries to provide examples in this page.
+:::
+
+## For new candy machines
+
 TODO
 
-## TODO
+- initializeV2 for CM
+
+## For existing candy machines
 
 TODO
+
+- setCollectionV2
+- setTokenStandardV2
+
+## A new minting instruction
+
+TODO
+
+- mintV1 for both programs
 
 <Accordion>
 <AccordionItem title="Solita library" open={true}>

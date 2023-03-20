@@ -6,4 +6,10 @@ description: "Documents the latest changes."
 
 This pages aims to list all significant updates in the Candy Machine v3 programs.
 
-_There are no significant updates to report at this time…_
+## Candy Machine Core
+
+- `v0.2`: [Adds supports for Programmable NFTs](/programs/candy-machine/programmable-nfts).
+
+## Candy Guard
+
+- `v0.4`: [Adds supports for Programmable NFTs](/programs/candy-machine/programmable-nfts).
