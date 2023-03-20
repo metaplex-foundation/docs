@@ -22,9 +22,9 @@ In the meantime, you can use the Solita-generated libraries [mpl-candy-machine-c
 
 A new instruction called `initializeV2` has been added to the Candy Machine Core program. This instruction is similar to the `initialize` instruction, but it allows you to specify the token standard you want to use for your candy machine. This instruction will mark the newly created Candy Machine as `V2` to differentiate it from the `V1` Candy Machines that do not store the token standard. These new fields are using existing padding in the Candy Machine account data to avoid breaking changes in the Candy Machine serialization logic.
 
-The `initializeV2` instruction can also be used to create a Candy Machine that mints regular NFTs and, therefore, the `initialize` instruction is now deprecated.
+The `initializeV2` instruction can also be used to create a Candy Machine that mints regular NFTs and, therefore, the `initialize` instruction is now deprecated. Note that no changes are needed for the Candy Guard program here since it delegates to the Candy Machine Core when minting the NFT.
 
-Note that no changes are needed for the Candy Guard program here since it delegates to the Candy Machine Core when minting the NFT.
+Also, note that some optional accounts may be required depending on the token standard you choose. For example, the `ruleSet` account may be provided to assign a specific rule set to all minted Programmable NFTs. If no `ruleSet` account is provided, it will use the rule set of the Collection NFT if any. Otherwise, minted Programmable NFTs will simply not have any rule set assigned. On the other hand, the `ruleSet` account will be ignored when minting regular NFTs.
 
 <Accordion>
 <AccordionItem title="Solita library" open={true}>
