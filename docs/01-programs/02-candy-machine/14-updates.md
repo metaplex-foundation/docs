@@ -6,4 +6,4 @@ description: "Documents the latest changes."
 
 This pages aims to list all significant updates in the Candy Machine v3 programs.
 
-*There are no significant updates to report at this time…*
+_There are no significant updates to report at this time…_
