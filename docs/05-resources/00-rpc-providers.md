@@ -37,6 +37,7 @@ The following section includes multiple RPC providers.
 - [Alchemy](https://alchemy.com/?a=metaplex)
 - [Ankr](https://www.ankr.com/protocol/public/solana/)
 - [Blockdaemon](https://blockdaemon.com/marketplace/solana/)
+- [Chainstack](https://chainstack.com/build-better-with-solana/)
 - [Figment](https://figment.io/datahub/solana/)
 - [GenesysGo](https://genesysgo.com/)
 - [GetBlock](https://getblock.io/)
@@ -89,6 +90,17 @@ And input it into their tester with `getbalance` option chosen for the following
 | -------- | -------- | -------- |
 | Calls/month     | -     | 1+ million     | 
 | Archival Node    | -     | Yes    |
+
+### Chainstack
+
+[Chainstack](https://chainstack.com/build-better-with-solana/) offers elastic and dedicated high-performance Solana nodes across a number of cloud locations and providers. Chainstack has a free option, the Developer plan, that allows for 3 million included monthly requests with more included requests available with paid plans.
+
+![](https://i.imgur.com/otznOWo.png)
+
+| RPC Info | Free | 50 USD/month | 350 USD/month | 990 USD/month |
+| -------- | -------- | -------- | -------- | -------- |
+| Requests/month     | 3 million     | 20 million     | 140 million     | 400 million     
+| Archival Node    | -     | -     | - | - |
 
 ### Figment
 
