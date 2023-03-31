@@ -49,7 +49,14 @@ Now, whenever someone tries to mint from our Candy Machine, **they will have to 
 Now let’s see how we can create and update groups using our SDKs.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 To create Candy Machines with guard groups, simply provide the `groups` array to the `create` operation. Each item of this array must contain a `label` and a `guards` object containing the settings of all guards we wish to activate in that group.
@@ -159,7 +166,14 @@ As you can see, default guards are useful to avoid repetition within your groups
 Note that, even when using default guards, a group must be provided when minting. That means, when using guard groups, **it is not possible to mint using the default guards only**.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 To use default guards in the JS SDK, simply use the `guards` attribute in conjunction with the `groups` array when creating or updating a Candy Machine.
@@ -221,7 +235,14 @@ Let’s illustrate that with a new example. Say we have an NFT collection called
 As you can see, with these guard settings, it is possible for both groups to mint at the same time. It is even possible for an NFT holder to pay the full 2 SOL should they decide to mint from the “public” group. However, it is in their best interest to select the “nft” group if they can.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 Here’s how you’d create a Candy Machine using the guard settings described above via the JS SDK.

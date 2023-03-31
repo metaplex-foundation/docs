@@ -23,13 +23,20 @@ The Token Payment guard contains the following settings:
 - **Destination Associated Token Address (ATA)**: The address of the associated token account to send the tokens to. We can get this address by finding the Associated Token Address PDA using the **Token Mint** attribute and the address of any wallet that should receive these tokens.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 Here’s an example of how to set up a Candy Machine using the Token Payment guard. You may use the Associated Token Address (ATA) of any wallet. In this example, we’ll use the ATA of the current identity.
 
 ```tsx
-import { token } from '@metaplex-foundation/js';
+import { token } from "@metaplex-foundation/js";
 
 const { candyMachine } = await metaplex.candyMachines().create({
   // ...

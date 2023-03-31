@@ -22,7 +22,14 @@ The NFT Payment guard contains the following settings:
 - **Destination**: The address of the wallet that will receive all NFTs.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 Here’s an example of how to set up a Candy Machine using the NFT Payment guard. You may use any wallet as a destination but, in this example, we’ll use the address of the current identity.
@@ -43,7 +50,7 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 </div>
 </AccordionItem>
-</Accordion>    
+</Accordion>
 
 ## Mint Settings
 
@@ -55,7 +62,14 @@ The NFT Payment guard contains the following Mint Settings:
 Note that, if you’re planning on constructing instructions without the help of our SDKs, you will need to provide these Mint Settings and more as a combination of instruction arguments and remaining accounts. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-guard#nftpayment) for more details.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 When minting via the JS SDK, simply provide the mint address of the NFT to pay with via the `mint` attribute like so.
@@ -67,7 +81,7 @@ const { nft } = await metaplex.candyMachines().mint({
     nftPayment: {
       mint: nftToPayWith.address,
     },
-  }
+  },
 });
 ```
 
@@ -77,8 +91,8 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 </div>
 </AccordionItem>
-</Accordion>    
+</Accordion>
 
 ## Route Instruction
 
-*The NFT Payment guard does not support the route instruction.*
+_The NFT Payment guard does not support the route instruction._

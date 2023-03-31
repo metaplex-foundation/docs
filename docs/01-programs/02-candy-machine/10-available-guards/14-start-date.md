@@ -19,13 +19,20 @@ The Start Date guard contains the following settings:
 - **Date**: The date before which minting is not allowed.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 Here’s how we can set up a Candy Machine using the Start Date guard via the JS SDK.
 
 ```tsx
-import { toDateTime } from '@metaplex-foundation/js';
+import { toDateTime } from "@metaplex-foundation/js";
 
 const { candyMachine } = await metaplex.candyMachines().create({
   // ...
@@ -41,12 +48,12 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 </div>
 </AccordionItem>
-</Accordion>    
+</Accordion>
 
 ## Mint Settings
 
-*The Start Date guard does not need Mint Settings.*
+_The Start Date guard does not need Mint Settings._
 
 ## Route Instruction
 
-*The Start Date guard does not support the route instruction.*
+_The Start Date guard does not support the route instruction._

@@ -40,7 +40,14 @@ Therefore, the Allow List guard **uses its route instruction to verify the Merkl
 So why can’t we just verify the Merkle Proof directly within the mint instruction? That’s simply because, for big allow lists, Merkle Proofs can end up being pretty lengthy. After a certain size, it becomes impossible to include it within the mint transaction that already contains a decent amount of instructions. By separating the validation process from the minting process, we make it possible for allow lists to be as big as we need them to be.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 You may use the `callGuardRoute` operation to call the route instruction of a guard using the JS SDK. You must pass the guard’s name via the `guard` attribute and the route settings via the `settings` attribute.
@@ -97,7 +104,14 @@ When calling the route instruction whilst using guard groups, it is important to
 For instance, say we had an **Allow List** of handpicked VIP wallets in one group and another **Allow List** for the winners of a raffle in another group. Then saying we want to verify the Merkle Proof for the Allow List guard is not enough, we also need to know for which group we should perform that verification.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 When using groups in the JS SDK, the `callGuardRoute` operation accepts an additional `group` attribute which must be set to the label of the group we want to select.

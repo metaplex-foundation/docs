@@ -20,13 +20,20 @@ The Sol Payment guard contains the following settings:
 - **Destination**: The address of the wallet that should receive all payments related to this guard.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 Here’s how we can create a Candy Machine using the Sol Payment guard via the JS SDK. Note that, in this example, we’re using the current identity as the destination wallet.
 
 ```tsx
-import { sol } from '@metaplex-foundation/js';
+import { sol } from "@metaplex-foundation/js";
 
 const { candyMachine } = await metaplex.candyMachines().create({
   // ...
@@ -40,7 +47,7 @@ const { candyMachine } = await metaplex.candyMachines().create({
 ```
 
 API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#create), [Input](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.CreateCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#create), [Guard Settings](https://metaplex-foundation.github.io/js/types/js.SolPaymentGuardSettings.html).
-    
+
 </div>
 </AccordionItem>
 </Accordion>

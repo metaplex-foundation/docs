@@ -24,13 +24,20 @@ The Bot Tax guard contains the following settings:
 - **Last Instruction**: Whether or not we should forbid minting and charge a bot tax when the mint instruction is not the last instruction of the transaction. We recommend setting this to `true` to be better protected against bots.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 Here’s how we can set up a Candy Machine using the Bot Tax guard via the JS SDK.
 
 ```tsx
-import { sol } from '@metaplex-foundation/js';
+import { sol } from "@metaplex-foundation/js";
 
 const { candyMachine } = await metaplex.candyMachines().create({
   // ...
@@ -47,12 +54,12 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 </div>
 </AccordionItem>
-</Accordion>    
+</Accordion>
 
 ## Mint Settings
 
-*The Bot Tax guard does not need Mint Settings.*
+_The Bot Tax guard does not need Mint Settings._
 
 ## Route Instruction
 
-*The Bot Tax guard does not support the route instruction.*
+_The Bot Tax guard does not support the route instruction._

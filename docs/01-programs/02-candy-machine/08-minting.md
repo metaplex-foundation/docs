@@ -25,7 +25,14 @@ If everything went well, an NFT will be created are returned following the param
 Note that additional attributes may be required by our SDKs.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 To mint via the JS SDK, you may use the `mint` operation of the Candy Machine module.
@@ -100,7 +107,14 @@ An example of such a guard is the **Mint Limit** guard. This guard requires the 
 If you were to only use guards that do not require Mint Settings, you may mint in the same way described by the “Basic Minting” section above. Otherwise, you’ll need to provide an additional object attribute containing the Mint Settings of all guards that require them. Let’s have a look at what that looks like in practice using our SDKs.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 When minting via the JS SDK, you may use the `settings` attribute to provide the required **Mint Settings**. The operation will fail if Mint Settings are missing for any guard that requires them.
@@ -171,7 +185,14 @@ Therefore, the provided Mint Settings must be related to these Resolved Guards. 
 ![CandyMachinesV3-Minting3.png](/assets/candy-machine-v3/CandyMachinesV3-Minting3.png#radius)
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 When minting from a Candy Machine using guard groups, the label of the group we want to select must be provided via the `group` attribute.
@@ -259,4 +280,4 @@ Congratulations, you now know how Candy Machines work from A to Z!
 Here are some additional reading resources you might be interested in:
 
 - [All Available Guards](/programs/candy-machine/available-guards): Have a look through all the guards available to you so you can cherry-pick the ones you need.
-- *Create Your First Candy Machine (coming soon)*: This How-To guide helps you upload your assets and create a new Candy Machine from scratch using a CLI tool called “[Sugar](/developer-tools/sugar/overview/introduction)”. It also uses our JS SDK to spin up a minting website for your Candy Machine.
+- _Create Your First Candy Machine (coming soon)_: This How-To guide helps you upload your assets and create a new Candy Machine from scratch using a CLI tool called “[Sugar](/developer-tools/sugar/overview/introduction)”. It also uses our JS SDK to spin up a minting website for your Candy Machine.

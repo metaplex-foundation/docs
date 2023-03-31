@@ -21,19 +21,26 @@ Our SDKs push this even further and will associate every new Candy Machine accou
 Remember that a Candy Machine [must be associated with a Collection NFT](/programs/candy-machine/candy-machine-settings#metaplex-certified-collections) and its update authority must authorize this operation. If you haven’t got a Collection NFT for your Candy Machine yet, our SDKs can help with that too.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 Here’s how you can create a Candy Machine using a brand new Collection NFT using the JS SDK. Notice that, by default, the current identity is used as the authority of these entities.
 
 ```tsx
-import { toBigNumber } from '@metaplex-foundation/js';
-import { Keypair } from '@solana/web3.js';
+import { toBigNumber } from "@metaplex-foundation/js";
+import { Keypair } from "@solana/web3.js";
 
 // Create the Collection NFT.
 const { nft: collectionNft } = await metaplex.nfts().create({
-  name: 'My Collection NFT',
-  uri: 'https://example.com/path/to/some/json/metadata.json',
+  name: "My Collection NFT",
+  uri: "https://example.com/path/to/some/json/metadata.json",
   sellerFeeBasisPoints: 0,
   isCollection: true,
 });
@@ -64,7 +71,7 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 </div>
 </AccordionItem>
-</Accordion>    
+</Accordion>
 
 ## Candy Machine Account
 
@@ -79,14 +86,21 @@ Finally, it stores all items inserted in the Candy Machine and whether or not th
 - The number of items that have been loaded.
 - A list of all items that have been or will be inserted. When an item is not inserted yet, the name and URI of the item at that position are empty.
 - A bitmap — a list of yes or no — that keeps track of which items have been loaded. When this bitmap is full of yeses, all items have been loaded.
-- A list of all items that have *not* been minted yet when minting using a random order. This allows the program to grab an index at random without having to worry about picking an index that has already been minted and start again.
+- A list of all items that have _not_ been minted yet when minting using a random order. This allows the program to grab an index at random without having to worry about picking an index that has already been minted and start again.
 
 Note that this last section is purposely not deserialised on the program but our SDKs parse all that data for you in a human-friendly format.
 
 For more detailed information about the Candy Machine account, check out the [program’s API References](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/candy-machine-core/program#account).
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 The best way to check how Candy Machines are modelled in the JS SDK is by checking [the API References of the `CandyMachine` model](https://metaplex-foundation.github.io/js/types/js.CandyMachine.html). Notice how the `CandyMachine` model encapsulates both the Candy Machine account and the (optional) Candy Guard account so you have everything you need under the same object.
@@ -108,20 +122,27 @@ candyMachine.items[0].minted; // Whether the first item has been minted.
 
 </div>
 </AccordionItem>
-</Accordion>    
+</Accordion>
 
 ## Fetch Candy Machines
 
 To fetch an existing Candy Machine, you simply need to provide its address and our SDKs will take care of parsing the account data for you.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 Here’s how you can fetch a Candy Machine using its address on the JS SDK.
 
 ```tsx
-import { PublicKey } from '@solana/web3.js';
+import { PublicKey } from "@solana/web3.js";
 
 const candyMachine = await metaplex
   .candyMachines()
@@ -132,7 +153,7 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 </div>
 </AccordionItem>
-</Accordion>  
+</Accordion>
 
 ## Update Authorities
 
@@ -142,7 +163,14 @@ Once a Candy Machine is created, you can update most of its settings later on, a
 - To update the mint authority, you need to pass both the current authority and the new mint authority as signers. This is because the mint authority is mostly used to associate a Candy Guard with a Candy Machine. Making the mint authority a signer prevents anyone to use someone else Candy Guard as this could create side effects on the original Candy Machine.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 Here’s how you can update the authority of a Candy Machine using the JS SDK.
@@ -172,7 +200,7 @@ Note that, contrary to the `create` operation, the `update` operation does not r
 Whilst you’d probably never want to update the `mintAuthority` directly since it would override the associated Candy Guard account, this is how you’d do it.
 
 ```tsx
-import { Keypair } from '@solana/web3.js';
+import { Keypair } from "@solana/web3.js";
 
 const currentAuthority = Keypair.generate();
 const newMintAuthority = Keypair.generate();
@@ -199,7 +227,14 @@ You may also update the attributes shared between all minted NFTs of a Candy Mac
 Note that once the first NFT has been minted, these attributes can no longer be updated.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 Here’s an example of updating some of the shared NFT data on a Candy Machine. Any attributes that are not explicitly provided will stay the same.
@@ -207,7 +242,7 @@ Here’s an example of updating some of the shared NFT data on a Candy Machine. 
 ```tsx
 await metaplex.candyMachines().update({
   candyMachine,
-  symbol: 'NEW',
+  symbol: "NEW",
   sellerFeeBasisPoints: 100,
   creators: [{ address: newCreator, share: 100 }],
 });
@@ -226,7 +261,14 @@ Changing the Collection NFT associated with a Candy Machine is also possible. Yo
 Note that, here also, once the first NFT has been minted, the collection cannot be changed.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 To update the Collection NFT of a Candy Machine using the JS SDK you must provide a `collection` object containing the `address` of the Collection NFT’s mint account and the `updateAuthority` of the Collection NFT as a signer.
@@ -258,7 +300,14 @@ The item settings of a Candy Machine can also be updated but there are some limi
 - Once the first NFT has been minted, these settings can no longer be updated.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 The following example shows how to update the Config Line Settings of a Candy Machine using the JS SDK. The same can be done with Hidden Settings and the Items Available attribute (when using Hidden Settings).
@@ -267,10 +316,10 @@ The following example shows how to update the Config Line Settings of a Candy Ma
 await metaplex.candyMachines().update({
   candyMachine,
   itemSettings: {
-    type: 'configLines',
-    prefixName: 'My New NFT #$ID+1$',
+    type: "configLines",
+    prefixName: "My New NFT #$ID+1$",
     nameLength: 0,
-    prefixUri: 'https://arweave.net/',
+    prefixUri: "https://arweave.net/",
     uriLength: 43,
     isSequential: true,
   },
@@ -288,7 +337,14 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 Once a Candy Machine has been fully minted, it has served its purpose and can safely be disposed of. This allows its creator to gain back the storage cost of the Candy Machine account and, optionally, the Candy Guard account too.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 You may delete a Candy Machine account using the JS SDK like so.

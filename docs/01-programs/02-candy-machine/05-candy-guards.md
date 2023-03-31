@@ -79,7 +79,14 @@ So far, the Candy Machine we created did not have any guards enabled. Now that w
 The concrete implementation will depend on which SDK you are using (see below) but the main idea is that you enable guards by providing their required settings. Any guard that has not been set up will be disabled.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 To enable guards using the JS SDK, simply provides the `guards` attribute to the `create` operation and pass in the settings of every guard you want to enable. Any guard set to `null` or not provided will be disabled.
@@ -116,7 +123,14 @@ Did you set something wrong in your guards? Did you change your mind about the m
 You can enable new guards by providing their settings or disable current ones by giving them empty settings.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 You may update the guards of a Candy Machine the same way you created them. That is, by providing their settings inside the `guards` object of the `update` operation. Any guard set to `null` or not provided will be disabled.
@@ -151,7 +165,14 @@ Once you have set up your guards on a Candy Machine, all the provided settings c
 When using our SDKs, Candy Machines associated with Candy Guards will automatically contain the relevant Candy Guard account so you have all the data you need in one place.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 The Candy Machine model contains an optional `candyGuard` property which, when not `null`, contains all the information regarding the guards of a Candy Machine.
@@ -187,7 +208,14 @@ However, it is important to note that Candy Machines and Candy Guards can be cre
 You will first need to create the two accounts separately and associate/dissociate them manually.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 The `create` operation of the JS SDK already takes care of creating and associating a brand new Candy Guard account for every Candy Machine account created.

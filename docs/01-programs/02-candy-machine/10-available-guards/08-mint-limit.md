@@ -22,7 +22,14 @@ The Mint Limit guard contains the following settings:
 - **Limit**: The maximum number of mints allowed per wallet for that identifier.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 Here’s how we can set up a Candy Machine using the Mint Limit guard via the JS SDK.
@@ -43,14 +50,14 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 </div>
 </AccordionItem>
-</Accordion>    
+</Accordion>
 
 ## Mint Settings
 
-*The Mint Limit guard does not need Mint Settings.*
+_The Mint Limit guard does not need Mint Settings._
 
 However, if you’re planning on constructing instructions without the help of our SDKs, you will need to add the Mint Counter PDA to the remaining accounts of the mint instruction. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-guard#mintlimit) for more details.
 
 ## Route Instruction
 
-*The Mint Limit guard does not support the route instruction.*
+_The Mint Limit guard does not support the route instruction._

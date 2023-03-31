@@ -19,14 +19,21 @@ The Address Gate guard contains the following settings:
 - **Address**: The only address that is allowed to mint from the Candy Machine.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 Here’s how we can set up a Candy Machine using the Address Gate guard via the JS SDK.
 
 ```tsx
-import { TODO } from '@metaplex-foundation/js';
-import { TODO } from '@solana/web3.js';
+import { TODO } from "@metaplex-foundation/js";
+import { TODO } from "@solana/web3.js";
 
 const { candyMachine } = await metaplex.candyMachines().create({
   // ...
@@ -44,12 +51,12 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 </div>
 </AccordionItem>
-</Accordion>    
+</Accordion>
 
 ## Mint Settings
 
-*The Address Gate guard does not need Mint Settings.*
+_The Address Gate guard does not need Mint Settings._
 
 ## Route Instruction
 
-*The Address Gate guard does not support the route instruction.*
+_The Address Gate guard does not support the route instruction._

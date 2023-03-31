@@ -70,7 +70,14 @@ Here is the list of attributes shared between all minted NFTs.
 - **Rule Set**: If a candy machine uses the "ProgrammableNonFungible" token standard, it can provide an explicit rule set that will be assigned to every minted programmable NFT. If no rule set is provided, it will default to using the rule set on the collection NFT, if any. Otherwise programmable NFTs will be minted without a rule set. Note that this is only available on Candy Machines version 2 and above.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 When creating a Candy Machine, only the `sellerFeeBasisPoints` attribute is required out of the attributes listed above. The other attributes have the following default values:
@@ -112,7 +119,14 @@ and for that information to be verified on-chain.
 To ensure no one else can use your Collection NFT on their Candy Machine, the **Collection's Update Authority** is required to sign any transaction that changes the Collection on a Candy Machine. As a result, the Candy Machine can safely verify the Collection of all minted NFTs automatically.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 When creating a new Candy Machine or updating the collection of a Candy Machine, you will need to provide the `collection` attribute as an object containing the following properties:
@@ -153,7 +167,14 @@ const candyMachineSettings = {
 Candy Machine settings also contain information regarding the items that are or will be loaded inside it. The **Items Available** attribute falls in that category and stores the maximum amount of NFTs that will be minted from the Candy Machine.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 When creating a new Candy Machine, the `itemsAvailable` attribute is required and must be passed like so.
@@ -224,7 +245,14 @@ In our above example, we could leverage the `$ID+1$` variable for the name prefi
 That’s right, **our name length is now zero** and we’ve reduced the characters needed down to 43’000 characters.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 When using the JS SDK, both **Config Line Settings** and **Hidden Settings** live under the same object attribute called `itemSettings`. It contains a `type` property used to distinguish the two modes. This ensures exactly one of these settings is used on a Candy Machine.
@@ -275,7 +303,14 @@ Note that, just like for the prefixes of the Config Line Settings, special varia
 Also note that, since we are not inserting any item to the Candy Machine, Hidden Settings make it possible to create very large drops. The only caveat is that there is a need for an off-chain process to update the name and URI of each NFT after the mint.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 When using the JS SDK, both **Config Line Settings** and **Hidden Settings** live under the same object attribute called `itemSettings`. It contains a `type` property used to distinguish the two modes. This ensures exactly one of these settings is used on a Candy Machine.

@@ -26,7 +26,14 @@ Fortunately, our SDKs can help you with that. They allow you to upload a JSON ob
 Additionally, tools like [Sugar](/developer-tools/sugar/guides/sugar-for-cmv3) make uploading JSON metadata a breeze by uploading in parallel, caching the process and retrying failed uploads.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 To upload some JSON metadata using the JS SDK, you should first select your prefered storage provider. By default, Bundlr will be used to upload to Arweave. Here’s how you can choose another one.
@@ -78,7 +85,14 @@ Note that the name and URI of each inserted item are respectively constraint by 
 Additionally, because transactions are limited to a certain size, we cannot insert thousands of items within the same transaction. The number of items we can insert per transaction will depend on the **Name Length** and **URI Length** attributes defined in the Config Line Settings. The shorter our names and URIs are, the more we'll be able to fit into a transaction.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 Here’s how you can insert items into a Candy Machine using the JS SDK.
@@ -121,7 +135,14 @@ When using name and/or URI prefixes, you only need to insert the part that comes
 Note that, since using prefixes can significantly reduce the Name Length and URI Length, it should help you fit a lot more items per transaction.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 Here’s how to insert items whilst using prefixes via the JS SDK.
@@ -163,7 +184,14 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 When inserting items, you may provide the position in which these items should be inserted. This enables you to insert items in any order you want but also allows you to update items that have already been inserted.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 The following examples show how you can insert 3 items and, later on, update the second item inserted.

@@ -28,19 +28,28 @@ The Gatekeeper guard contains the following settings:
 
 - **Gatekeeper Network**: The public key of the Gatekeeper Network that will be used to check the validity of the minting wallet. For instance, you may use the "**Civic Captcha Pass**" Network — which ensures the minting wallet has passed a captcha — by using the following address: `ignREusXmGrscGNUesoU9mxfds9AiYTezUKex2PsZV6`.
 - **Expire On Use**: Whether we should mark the Gateway Token of the minting wallet as expired after the NFT has been minting.
-    - When set to `true`, they will need to go through the Gatekeeper Network again to mint another NFT.
-    - When set to `false`, they will be able to mint another NFT until the Gateway Token expires naturally.
+  - When set to `true`, they will need to go through the Gatekeeper Network again to mint another NFT.
+  - When set to `false`, they will be able to mint another NFT until the Gateway Token expires naturally.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 Here’s how we can set up a Candy Machine using the Gatekeeper guard via the JS SDK.
 
 ```tsx
-import { PublicKey } from '@solana/web3.js';
+import { PublicKey } from "@solana/web3.js";
 
-const CAPTCHA_NETWORK = new PublicKey("ignREusXmGrscGNUesoU9mxfds9AiYTezUKex2PsZV6");
+const CAPTCHA_NETWORK = new PublicKey(
+  "ignREusXmGrscGNUesoU9mxfds9AiYTezUKex2PsZV6"
+);
 
 const { candyMachine } = await metaplex.candyMachines().create({
   // ...
@@ -68,7 +77,14 @@ The Gatekeeper guard does not require Mint Settings. However, it does accept the
 Note that, if you’re planning on constructing instructions without the help of our SDKs, you will need to provide these Mint Settings and more as a combination of instruction arguments and remaining accounts. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-guard#gatekeeper) for more details.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+TODO
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 In the vast majority of cases, we should not need to provide any Mint Settings to the Gatekeeper guard as the JS SDK will default to provide the right addresses and PDAs to the mint instruction.
@@ -78,19 +94,19 @@ const { nft } = await metaplex.candyMachines().mint({
   // ...
   guards: {
     // No mint settings required...
-  }
+  },
 });
 ```
 
 However, in some rare use cases, we may need to explicitly provide the PDA address of the Gateway Token. Thus, here’s an example providing a Gateway Token that uses non-default seeds.
 
 ```tsx
-import { Pda } from '@metaplex-foundation/js';
+import { Pda } from "@metaplex-foundation/js";
 
 const gatewayProgram = metaplex.programs().getGateway(programs);
 const gatewayToken = Pda.find(gatewayProgram.address, [
   payer.publicKey.toBuffer(),
-  Buffer.from('gateway'),
+  Buffer.from("gateway"),
   Buffer.from([0, 0, 0, 0, 0, 0, 0, 1]), // <- Custom seeds array.
   gatewayNetwork.toBuffer(),
 ]);
@@ -101,7 +117,7 @@ const { nft } = await metaplex.candyMachines().mint({
     gatekeeper: {
       tokenAccount: gatewayToken,
     },
-  }
+  },
 });
 ```
 
@@ -109,8 +125,8 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 </div>
 </AccordionItem>
-</Accordion>    
+</Accordion>
 
 ## Route Instruction
 
-*The Gatekeeper guard does not support the route instruction.*
+_The Gatekeeper guard does not support the route instruction._
