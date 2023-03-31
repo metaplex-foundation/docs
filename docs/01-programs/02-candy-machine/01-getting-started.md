@@ -69,7 +69,7 @@ Prior to releasing the Umi framework, we provided program-specific libraries gen
 
 ### JS SDK
 
-Prior to releasing the Umi framework, we provided a monolithic [JavaScript SDK](https://github.com/metaplex-foundation/js) that encapsulated the Solita library into one big heavy API. This SDK is still available for you to use but we now recommend using the Umi library instead.
+Prior to releasing the Umi framework, we provided a monolithic [JavaScript SDK](https://github.com/metaplex-foundation/js) that encapsulated the Solita library into one big heavy API. This SDK is still available for you to use but we now recommend using the Umi library instead. Also note that the JS SDK does not support minting Programmable NFTs.
 
 Once the JS SDK installed, you can access its Candy Machine module via `metaplex.candyMachines()`. It is composed of several methods that focus on real use-cases to make our life easier. Here are some of them.
 
