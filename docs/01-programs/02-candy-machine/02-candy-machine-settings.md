@@ -73,12 +73,41 @@ Here is the list of attributes shared between all minted NFTs.
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+From the attributes listed above, only the `sellerFeeBasisPoints`, `creators` and `tokenStandard` attributes are required. The other attributes have the following default values:
+
+- `symbol` defaults to an empty string — i.e. minted NFTs don’t use symbols.
+- `maxEditionSupply` defaults to zero — i.e. minted NFTs are not printable.
+- `isMutable` defaults to `true`.
+
+You may explicitly provide any of these attributes like so.
+
+```tsx
+import { percentAmount, generateSigner, some } from "@metaplex-foundation/umi";
+import { TokenStandard } from "@metaplex-foundation/mpl-token-metadata";
+
+const creatorA = generateSigner(umi).publicKey;
+const creatorB = generateSigner(umi).publicKey;
+const candyMachineSettings = {
+  tokenStandard: TokenStandard.NonFungible,
+  sellerFeeBasisPoints: percentAmount(33.3, 2),
+  symbol: "MYPROJECT",
+  maxEditionSupply: 0,
+  isMutable: true,
+  creators: [
+    { address: creatorA, percentageShare: 50, verified: false },
+    { address: creatorB, percentageShare: 50, verified: false },
+  ],
+};
+```
 
 </div>
 </AccordionItem>
 <AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
+
+:::warning
+The JS SDK is not compatible with Candy Machines version 2 and above. Please use the Umi library instead.
+:::
 
 When creating a Candy Machine, only the `sellerFeeBasisPoints` attribute is required out of the attributes listed above. The other attributes have the following default values:
 
