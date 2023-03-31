@@ -20,6 +20,7 @@ To get started, you'll need to [install the Umi framework](https://github.com/me
 npm install \
   @metaplex-foundation/umi \
   @metaplex-foundation/umi-bundle-defaults \
+  @solana/web3.js \
   @metaplex-foundation/mpl-candy-machine@alpha
 ```
 
