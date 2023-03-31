@@ -19,7 +19,23 @@ There is an additional authority specifically for the minting process called the
 It is important to note that, when using our SDKs, Candy Machines will always be created with an associated Candy Guard by default so you do not need to worry about this mint authority.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+When creating a new Candy Machine, the authority will default to the Umi identity. You may explicitly set this authority by providing a valid signer to the `authority` property.
+
+```tsx
+import { generateSigner } from "@metaplex-foundation/umi";
+
+const myCustomAuthority = generateSigner(umi);
+const candyMachineSettings = {
+  authority: myCustomAuthority,
+};
+```
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 When using the JS SDK, the authority of a Candy Machine will always default to the current identity. You may explicitly set this authority by providing a valid signer to the `authority` property.
@@ -50,6 +66,8 @@ Here is the list of attributes shared between all minted NFTs.
 - **Max Edition Supply**: The maximum number of editions that can be printed from the minted NFTs. For most use cases, you will want to set this to `0` to prevent minted NFTs to be printed multiple times. Note that you cannot set this to `null` which means unlimited editions are not supported in Candy Machines.
 - **Is Mutable**: Whether the minted NFTs should be mutable or not. We recommend setting this to `true` unless you have a specific reason. You can always make NFTs immutable in the future but you cannot make immutable NFTs mutable ever again.
 - **Creators**: A list of creators that should be set on minted NFTs. It includes their address and their shares of the royalties in percent — i.e. `5` is `5%`. Note that the Candy Machine address will always be set as the first creator of all minted NFTs and will automatically be verified. This makes it possible for anyone to verify that an NFT was minted from a trusted Candy Machine. All other provided creators will be set after that and will need to be verified manually by these creators.
+- **Token Standard**: The [token standard](../token-metadata/token-standard) to use on minted NFTs. So far only two token standards are supported: "NonFungible" and "ProgrammableNonFungible". Note that this is only available on Candy Machines version 2 and above.
+- **Rule Set**: If a candy machine uses the "ProgrammableNonFungible" token standard, it can provide an explicit rule set that will be assigned to every minted programmable NFT. If no rule set is provided, it will default to using the rule set on the collection NFT, if any. Otherwise programmable NFTs will be minted without a rule set. Note that this is only available on Candy Machines version 2 and above.
 
 <Accordion>
 <AccordionItem title="JS SDK" open={true}>
@@ -89,7 +107,7 @@ const candyMachineSettings = {
 ## Metaplex Certified Collections
 
 Each Candy Machine must be associated with a special NFT known as a [Metaplex Certified Collection (MCC)](/programs/token-metadata/certified-collections). This **Collection NFT** enables minted NFTs to be grouped together
- and for that information to be verified on-chain.
+and for that information to be verified on-chain.
 
 To ensure no one else can use your Collection NFT on their Candy Machine, the **Collection's Update Authority** is required to sign any transaction that changes the Collection on a Candy Machine. As a result, the Candy Machine can safely verify the Collection of all minted NFTs automatically.
 
@@ -98,6 +116,7 @@ To ensure no one else can use your Collection NFT on their Candy Machine, the **
 <div className="accordion-item-padding">
 
 When creating a new Candy Machine or updating the collection of a Candy Machine, you will need to provide the `collection` attribute as an object containing the following properties:
+
 - `address`: The address of the mint account of the Collection NFT.
 - `updateAuthority`: The update authority of the Collection NFT as a signer.
 
@@ -138,6 +157,7 @@ Candy Machine settings also contain information regarding the items that are or 
 <div className="accordion-item-padding">
 
 When creating a new Candy Machine, the `itemsAvailable` attribute is required and must be passed like so.
+
 ```tsx
 import { toBigNumber } from "@metaplex-foundation/js";
 
@@ -208,6 +228,7 @@ That’s right, **our name length is now zero** and we’ve reduced the characte
 <div className="accordion-item-padding">
 
 When using the JS SDK, both **Config Line Settings** and **Hidden Settings** live under the same object attribute called `itemSettings`. It contains a `type` property used to distinguish the two modes. This ensures exactly one of these settings is used on a Candy Machine.
+
 - When `type` is equal to `"configLines"`, Config Line Settings are used.
 - When `type` is equal to `"hidden"`, Hidden Settings are used.
 
@@ -258,6 +279,7 @@ Also note that, since we are not inserting any item to the Candy Machine, Hidden
 <div className="accordion-item-padding">
 
 When using the JS SDK, both **Config Line Settings** and **Hidden Settings** live under the same object attribute called `itemSettings`. It contains a `type` property used to distinguish the two modes. This ensures exactly one of these settings is used on a Candy Machine.
+
 - When `type` is equal to `"configLines"`, Config Line Settings are used.
 - When `type` is equal to `"hidden"`, Hidden Settings are used.
 
