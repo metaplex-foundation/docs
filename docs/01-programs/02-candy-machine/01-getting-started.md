@@ -40,13 +40,11 @@ import { publicKey } from "@metaplex-foundation/umi";
 import {
   fetchCandyMachine,
   fetchCandyGuard,
-  findCandyGuardPda,
 } from "@metaplex-foundation/mpl-candy-machine";
 
 const candyMachinePublicKey = publicKey("...");
-const candyGuardPda = findCandyGuardPda(umi, { base: candyMachinePublicKey });
 const candyMachine = await fetchCandyMachine(umi, candyMachinePublicKey);
-const candyGuard = await fetchCandyGuard(umi, candyGuardPda);
+const candyGuard = await fetchCandyGuard(umi, candyMachine.mintAuthority);
 ```
 
 🔗 **Helpful Links:**
