@@ -65,7 +65,7 @@ await create(umi, {
     uriLength: 200,
     isSequential: false,
   }),
-});
+}).sendAndConfirm(umi);
 ```
 
 As mentioned above, this operation will also take care of creating and associating a new Candy Guard account with the created Candy Machine. That’s because a Candy Machine without a Candy Guard is not very useful and you’ll want to do that most of the time. Still, if you’d like to disable that behaviour, you may use the `createCandyMachineV2` method instead.
@@ -75,7 +75,7 @@ import { createCandyMachineV2 } from "@metaplex-foundation/mpl-candy-machine";
 
 await createCandyMachineV2(umi, {
   // ...
-});
+}).sendAndConfirm(umi);
 ```
 
 In these examples, we only focused on the required parameters but you may want to check out the following API References to see what you can do with this `create` function.
@@ -256,7 +256,46 @@ Once a Candy Machine is created, you can update most of its settings later on, a
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+Here’s how you can update the authority of a Candy Machine using the Umi library. Note that, in most cases, you'll want to update the authority of the associated Candy Guard account as well.
+
+```ts
+import { generateSigner } from "@metaplex-foundation/umi";
+import {
+  setCandyMachineAuthority,
+  setCandyGuardAuthority,
+} from "@metaplex-foundation/mpl-candy-machine";
+
+const newAuthority = generateSigner(umi);
+await setCandyMachineAuthority(umi, {
+  candyMachine: candyMachine.publicKey,
+  authority: currentAuthority,
+  newAuthority: newAuthority.publicKey,
+})
+  .add(
+    setCandyGuardAuthority(umi, {
+      candyGuard: candyMachine.mintAuthority,
+      authority: currentAuthority,
+      newAuthority: newAuthority.publicKey,
+    })
+  )
+  .sendAndConfirm(umi);
+```
+
+Whilst you’d probably never want to update the `mintAuthority` directly since it would override the associated Candy Guard account, this is how you’d do it.
+
+```ts
+import { generateSigner } from "@metaplex-foundation/umi";
+import { setMintAuthority } from "@metaplex-foundation/mpl-candy-machine";
+
+const newMintAuthority = generateSigner(umi);
+await setMintAuthority(umi, {
+  candyMachine: candyMachine.publicKey,
+  authority: currentAuthority,
+  mintAuthority: newMintAuthority,
+}).sendAndConfirm(umi);
+```
+
+API References: [`setCandyMachineAuthority`](https://mpl-candy-machine-js-docs.vercel.app/functions/setCandyMachineAuthority.html), [`setCandyGuardAuthority`](https://mpl-candy-machine-js-docs.vercel.app/functions/setCandyGuardAuthority.html), [`setMintAuthority`](https://mpl-candy-machine-js-docs.vercel.app/functions/setMintAuthority.html).
 
 </div>
 </AccordionItem>
