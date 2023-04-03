@@ -157,7 +157,6 @@ The best way to check how Candy Machines are modelled in the Umi library is by c
 Here’s a small code example showcasing some of the Candy Machine attributes.
 
 ```tsx
-import { generateSigner } from "@metaplex-foundation/umi";
 import {
   fetchCandyMachine,
   fetchCandyGuard,
@@ -210,7 +209,20 @@ To fetch an existing Candy Machine, you simply need to provide its address and o
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+Here’s how you can fetch a Candy Machine using its address and its associated Candy Guard account if any.
+
+```ts
+import { publicKey } from "@metaplex-foundation/umi";
+import {
+  fetchCandyMachine,
+  fetchCandyGuard,
+} from "@metaplex-foundation/mpl-candy-machine";
+
+const candyMachine = await fetchCandyMachine(umi, publicKey("..."));
+const candyGuard = await fetchCandyGuard(umi, candyMachine.mintAuthority);
+```
+
+API References: [`fetchCandyMachine`](https://mpl-candy-machine-js-docs.vercel.app/functions/fetchCandyMachine.html), [`fetchCandyGuard`](https://mpl-candy-machine-js-docs.vercel.app/functions/fetchCandyGuard.html).
 
 </div>
 </AccordionItem>
