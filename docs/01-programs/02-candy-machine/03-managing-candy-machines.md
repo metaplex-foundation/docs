@@ -24,7 +24,63 @@ Remember that a Candy Machine [must be associated with a Collection NFT](/progra
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+Here’s how you can create a Candy Machine using a brand new Collection NFT via the Umi library. Notice that, by default, the identity is used as the authority of these entities.
+
+```tsx
+import { generateSigner, percentAmount } from "@metaplex-foundation/umi";
+import { createNft } from "@metaplex-foundation/mpl-token-metadata";
+import { create } from "@metaplex-foundation/mpl-candy-machine";
+
+// Create the Collection NFT.
+const collectionUpdateAuthority = generateSigner(umi);
+const collectionMint = generateSigner(umi);
+await createNft(umi, {
+  mint: collectionMint,
+  authority: collectionUpdateAuthority,
+  name: "My Collection NFT",
+  uri: "https://example.com/path/to/some/json/metadata.json",
+  sellerFeeBasisPoints: percentAmount(9.99, 2), // 9.99%
+  isCollection: true,
+}).sendAndConfirm(umi);
+
+// Create the Candy Machine.
+const candyMachine = generateSigner(umi);
+await create(umi, {
+  candyMachine,
+  collectionMint: collectionMint.publicKey,
+  collectionUpdateAuthority,
+  sellerFeeBasisPoints: percentAmount(9.99, 2), // 9.99%
+  itemsAvailable: 5000,
+  creators: [
+    {
+      address: umi.identity.publicKey,
+      verified: true,
+      percentageShare: 100,
+    },
+  ],
+  configLineSettings: some({
+    prefixName: "",
+    nameLength: 32,
+    prefixUri: "",
+    uriLength: 200,
+    isSequential: false,
+  }),
+});
+```
+
+As mentioned above, this operation will also take care of creating and associating a new Candy Guard account with the created Candy Machine. That’s because a Candy Machine without a Candy Guard is not very useful and you’ll want to do that most of the time. Still, if you’d like to disable that behaviour, you may use the `createCandyMachineV2` method instead.
+
+```tsx
+import { createCandyMachineV2 } from "@metaplex-foundation/mpl-candy-machine";
+
+await createCandyMachineV2(umi, {
+  // ...
+});
+```
+
+In these examples, we only focused on the required parameters but you may want to check out the following API References to see what you can do with this `create` function.
+
+API References: [`create`](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [`createCandyMachineV2`](https://mpl-candy-machine-js-docs.vercel.app/functions/createCandyMachineV2.html).
 
 </div>
 </AccordionItem>
