@@ -404,10 +404,6 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 </AccordionItem>
 </Accordion>
 
-## Update Token Standard
-
-TODO
-
 ## Update Collection
 
 Changing the Collection NFT associated with a Candy Machine is also possible. You’ll need to provide the address of the Collection NFT’s mint account as well as its update authority as a signer to approve this change.
@@ -485,6 +481,10 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 </div>
 </AccordionItem>
 </Accordion>
+
+## Update Token Standard
+
+TODO
 
 ## Delete Candy Machines
 
