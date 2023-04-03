@@ -359,7 +359,28 @@ Note that once the first NFT has been minted, these attributes can no longer be 
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+Here’s an example of updating some of the shared NFT data on a Candy Machine.
+
+```tsx
+import { percentAmount } from "@metaplex-foundation/umi";
+import {
+  updateCandyMachine,
+  fetchCandyMachine,
+} from "@metaplex-foundation/mpl-candy-machine";
+
+const candyMachine = await fetchCandyMachine(umi, candyMachineAddress);
+await updateCandyMachine(umi, {
+  candyMachine: candyMachine.publicKey,
+  data: {
+    ...candyMachine.data,
+    symbol: "NEW",
+    sellerFeeBasisPoints: percentAmount(5.5, 2),
+    creators: [{ address: newCreator, verified: false, percentageShare: 100 }],
+  },
+}).sendAndConfirm(umi);
+```
+
+API References: [`updateCandyMachine`](https://mpl-candy-machine-js-docs.vercel.app/functions/updateCandyMachine.html).
 
 </div>
 </AccordionItem>
@@ -382,6 +403,10 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 </div>
 </AccordionItem>
 </Accordion>
+
+## Update Token Standard
+
+TODO
 
 ## Update Collection
 
