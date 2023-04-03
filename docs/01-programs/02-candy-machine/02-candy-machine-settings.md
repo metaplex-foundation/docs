@@ -151,7 +151,35 @@ To ensure no one else can use your Collection NFT on their Candy Machine, the **
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+When creating a new candy machine or when updating its collection NFT, you will need to provide the following attributes:
+
+- `collectionMint`: The address of the mint account of the Collection NFT.
+- `collectionUpdateAuthority`: The update authority of the Collection NFT as a signer.
+
+Here’s an example.
+
+```tsx
+import { generateSigner, percentAmount } from "@metaplex-foundation/umi";
+import { createNft } from "@metaplex-foundation/mpl-token-metadata";
+
+// Create the Collection NFT.
+const collectionUpdateAuthority = generateSigner(umi);
+const collectionMint = generateSigner(umi);
+await createNft(umi, {
+  mint: collectionMint,
+  authority: collectionUpdateAuthority,
+  name: "My Collection NFT",
+  uri: "https://example.com/path/to/some/json/metadata.json",
+  sellerFeeBasisPoints: percentAmount(9.99, 2), // 9.99%
+  isCollection: true,
+}).sendAndConfirm(umi);
+
+// Pass the collection address and its authority in the settings.
+const candyMachineSettings = {
+  collectionMint: collectionMint.publicKey,
+  collectionUpdateAuthority,
+};
+```
 
 </div>
 </AccordionItem>
@@ -199,7 +227,13 @@ Candy Machine settings also contain information regarding the items that are or 
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+When creating a new Candy Machine, the `itemsAvailable` attribute is required and may be a number or a native `bigint` for large integers.
+
+```tsx
+const candyMachineSettings = {
+  itemsAvailable: 500,
+};
+```
 
 </div>
 </AccordionItem>
@@ -277,7 +311,24 @@ That’s right, **our name length is now zero** and we’ve reduced the characte
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+When using Umi, you can use the `some` and `none` helper functions to tell the library whether to use Config Line Settings or Hidden Settings via the `configLineSettings` and `hiddenSettings` attributes respectively. Only one of these settings must be used, thus, one of them must be configured and the other one must be set to `none()`.
+
+Here’s a code snippet showing how you can set up the above example using the Umi library.
+
+```tsx
+import { some, none } from "@metaplex-foundation/umi";
+
+const candyMachineSettings = {
+  hiddenSettings: none(),
+  configLineSettings: some({
+    prefixName: "My NFT Project #$ID+1$",
+    nameLength: 0,
+    prefixUri: "https://arweave.net/",
+    uriLength: 43,
+    isSequential: false,
+  }),
+};
+```
 
 </div>
 </AccordionItem>
@@ -335,7 +386,22 @@ Also note that, since we are not inserting any item to the Candy Machine, Hidden
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+When using Umi, you can use the `some` and `none` helper functions to tell the library whether to use Config Line Settings or Hidden Settings via the `configLineSettings` and `hiddenSettings` attributes respectively. Only one of these settings must be used, thus, one of them must be configured and the other one must be set to `none()`.
+
+Here’s a code snippet showing how you can set up the above example using the Umi library.
+
+```tsx
+import { some, none } from "@metaplex-foundation/umi";
+
+const candyMachineSettings = {
+  configLineSettings: none(),
+  hiddenSettings: some({
+    name: "My NFT Project #$ID+1$",
+    uri: "https://example.com/path/to/teaser.json",
+    hash: hashOfTheFileThatMapsUris,
+  }),
+};
+```
 
 </div>
 </AccordionItem>
