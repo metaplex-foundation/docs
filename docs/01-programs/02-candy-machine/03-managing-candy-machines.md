@@ -520,7 +520,33 @@ The item settings of a Candy Machine can also be updated but there are some limi
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+The following example shows how to update the Config Line Settings of a Candy Machine using the Umi library. The same can be done with Hidden Settings and the Items Available attribute (when using Hidden Settings).
+
+```ts
+import {
+  updateCandyMachine,
+  fetchCandyMachine,
+} from "@metaplex-foundation/mpl-candy-machine";
+
+const candyMachine = await fetchCandyMachine(umi, candyMachineAddress);
+await updateCandyMachine(umi, {
+  candyMachine: candyMachine.publicKey,
+  data: {
+    ...candyMachine.data,
+    hiddenSettings: none(),
+    configLineSettings: some({
+      type: "configLines",
+      prefixName: "My New NFT #$ID+1$",
+      nameLength: 0,
+      prefixUri: "https://arweave.net/",
+      uriLength: 43,
+      isSequential: true,
+    }),
+  },
+}).sendAndConfirm(umi);
+```
+
+API References: [updateCandyMachine](https://mpl-candy-machine-js-docs.vercel.app/functions/updateCandyMachine.html).
 
 </div>
 </AccordionItem>
