@@ -82,7 +82,23 @@ The concrete implementation will depend on which SDK you are using (see below) b
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+To enable guards using the Umi library, simply provides the `guards` attribute to the `create` function and pass in the settings of every guard you want to enable. Any guard set to `none()` or not provided will be disabled.
+
+```ts
+import { some, sol, dateTime } from "@metaplex-foundation/umi";
+
+await create(umi, {
+  // ...
+  guards: {
+    botTax: some({ lamports: sol(0.01), lastInstruction: true }),
+    solPayment: some({ lamports: sol(1.5), destination: treasury }),
+    startDate: some({ date: dateTime("2023-04-04T16:00:00Z") }),
+    // All other guards are disabled...
+  },
+}).sendAndConfirm(umi);
+```
+
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [DefaultGuardSetArgs](https://mpl-candy-machine-js-docs.vercel.app/types/DefaultGuardSetArgs.html)
 
 </div>
 </AccordionItem>
@@ -126,7 +142,27 @@ You can enable new guards by providing their settings or disable current ones by
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+You may update the guards of a Candy Machine the same way you created them. That is, by providing their settings inside the `guards` object of the `updateCandyGuard` function. Any guard set to `none()` or not provided will be disabled.
+
+Note that the entire `guards` object will be updated meaning **it will override all existing guards**!
+
+Therefore, make sure to provide the settings for all guards you want to enable, even if their settings are not changing. You may want to fetch the candy guard account first to fallback to its current guards.
+
+```tsx
+import { some, none, sol } from "@metaplex-foundation/umi";
+
+const candyGuard = fetchCandyGuard(umi, candyMachine.mintAuthority);
+await updateCandyGuard(umi, {
+  candyGuard: candyGuard.publicKey,
+  guards: {
+    ...candyGuard.guards,
+    botTax: none(),
+    solPayment: some({ lamports: sol(3), destination: treasury }),
+  },
+});
+```
+
+API References: [updateCandyGuard](https://mpl-candy-machine-js-docs.vercel.app/functions/updateCandyGuard.html), [CandyGuard](https://mpl-candy-machine-js-docs.vercel.app/types/CandyGuard.html), [DefaultGuardSetArgs](https://mpl-candy-machine-js-docs.vercel.app/types/DefaultGuardSetArgs.html)
 
 </div>
 </AccordionItem>
@@ -162,20 +198,59 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 Once you have set up your guards on a Candy Machine, all the provided settings can be retrieved and viewed by anyone on the Candy Guard account.
 
-When using our SDKs, Candy Machines associated with Candy Guards will automatically contain the relevant Candy Guard account so you have all the data you need in one place.
-
 <Accordion>
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+You may access the candy guard associated with a candy machine by using the `fetchCandyGuard` function on the `mintAuthority` attribute of the candy machine account.
+
+```ts
+import {
+  fetchCandyMachine,
+  fetchCandyGuard,
+} from "@metaplex-foundation/mpl-candy-machine";
+
+const candyMachine = await fetchCandyMachine(umi, candyMachineAddress);
+const candyGuard = await fetchCandyGuard(umi, candyMachine.mintAuthority);
+
+candyGuard.guards; // All guard settings.
+candyGuard.guards.botTax; // Bot Tax settings.
+candyGuard.guards.solPayment; // Sol Payment settings.
+// ...
+```
+
+Note that, when using the `create` function, an associated candy guard account is automatically created for each candy machine such that their address is deterministic. Therefore, in this case, we could fetch both accounts using only one RPC call like so.
+
+```ts
+import { assertAccountExists } from "@metaplex-foundation/umi";
+import {
+  findCandyGuardPda,
+  deserializeCandyMachine,
+  deserializeCandyGuard,
+} from "@metaplex-foundation/mpl-candy-machine";
+
+const candyGuardAddress = findCandyGuardPda(umi, { base: candyMachineAddress });
+const [rawCandyMachine, rawCandyGuard] = await umi.rpc.getAccounts([
+  candyMachineAddress,
+  candyGuardAddress,
+]);
+assertAccountExists(rawCandyMachine);
+assertAccountExists(rawCandyGuard);
+
+const candyMachine = deserializeCandyMachine(umi, rawCandyMachine);
+const candyGuard = deserializeCandyGuard(umi, rawCandyGuard);
+```
+
+API References: [fetchCandyGuard](https://mpl-candy-machine-js-docs.vercel.app/functions/fetchCandyGuard.html), [findCandyGuardPda](https://mpl-candy-machine-js-docs.vercel.app/functions/findCandyGuardPda.html), [CandyGuard](https://mpl-candy-machine-js-docs.vercel.app/types/CandyGuard.html), [DefaultGuardSetArgs](https://mpl-candy-machine-js-docs.vercel.app/types/DefaultGuardSetArgs.html)
 
 </div>
 </AccordionItem>
 <AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
-The Candy Machine model contains an optional `candyGuard` property which, when not `null`, contains all the information regarding the guards of a Candy Machine.
+When using the JS SDK, Candy Machines associated with Candy Guards will automatically contain the relevant Candy Guard account so you have all the data you need in one place.
+
+Namely, the Candy Machine model contains an optional `candyGuard` property which, when not `null`, contains all the information regarding the guards of a Candy Machine.
 
 When `candyGuard` is `null`, it means the Candy Machine is not associated with any Candy Guard account.
 
@@ -211,7 +286,60 @@ You will first need to create the two accounts separately and associate/dissocia
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+The `create` function of the Umi library already takes care of creating and associating a brand new Candy Guard account for every Candy Machine account created.
+
+However, if you wanted to create them separately and manually associate/dissociate them, this is how you’d do it.
+
+```ts
+import { some, percentAmount, sol, dateTime } from "@metaplex-foundation/umi";
+
+// Create a Candy Machine without a Candy Guard.
+const candyMachine = generateSigner(umi);
+await createCandyMachineV2({
+  candyMachine,
+  tokenStandard: TokenStandard.NonFungible,
+  collectionMint: collectionMint.publicKey,
+  collectionUpdateAuthority: umi.identity,
+  itemsAvailable: 100,
+  sellerFeeBasisPoints: percentAmount(1.23),
+  creators: [
+    { address: umi.identity.publicKey, verified: false, percentageShare: 100 },
+  ],
+  configLineSettings: some({
+    prefixName: "My NFT #",
+    nameLength: 3,
+    prefixUri: "https://example.com/",
+    uriLength: 20,
+    isSequential: false,
+  }),
+}).sendAndConfirm(umi);
+
+// Create a Candy Guard.
+const base = generateSigner(umi);
+const candyGuard = findCandyGuardPda(umi, { base: base.publicKey });
+await createCandyGuard({
+  base,
+  guards: {
+    botTax: { lamports: sol(0.01), lastInstruction: false },
+    solPayment: { lamports: sol(1.5), destination: treasury },
+    startDate: { date: dateTime("2022-10-17T16:00:00Z") },
+  },
+}).sendAndConfirm(umi);
+
+// Associate the Candy Guard with the Candy Machine.
+await wrap({
+  candyMachine: candyMachine.publicKey,
+  candyGuard,
+}).sendAndConfirm(umi);
+
+// Dissociate them.
+await unwrap({
+  candyMachine: candyMachine.publicKey,
+  candyGuard,
+}).sendAndConfirm(umi);
+```
+
+API References: [createCandyMachineV2](https://mpl-candy-machine-js-docs.vercel.app/functions/createCandyMachineV2.html), [createCandyGuard](https://mpl-candy-machine-js-docs.vercel.app/functions/createCandyGuard.html), [wrap](https://mpl-candy-machine-js-docs.vercel.app/functions/wrap.html), [unwrap](https://mpl-candy-machine-js-docs.vercel.app/functions/unwrap.html)
 
 </div>
 </AccordionItem>
