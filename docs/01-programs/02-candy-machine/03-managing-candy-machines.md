@@ -80,7 +80,7 @@ await createCandyMachineV2(umi, {
 
 In these examples, we only focused on the required parameters but you may want to check out the following API References to see what you can do with this `create` function.
 
-API References: [`create`](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [`createCandyMachineV2`](https://mpl-candy-machine-js-docs.vercel.app/functions/createCandyMachineV2.html).
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [createCandyMachineV2](https://mpl-candy-machine-js-docs.vercel.app/functions/createCandyMachineV2.html).
 
 </div>
 </AccordionItem>
@@ -222,7 +222,7 @@ const candyMachine = await fetchCandyMachine(umi, publicKey("..."));
 const candyGuard = await fetchCandyGuard(umi, candyMachine.mintAuthority);
 ```
 
-API References: [`fetchCandyMachine`](https://mpl-candy-machine-js-docs.vercel.app/functions/fetchCandyMachine.html), [`fetchCandyGuard`](https://mpl-candy-machine-js-docs.vercel.app/functions/fetchCandyGuard.html).
+API References: [fetchCandyMachine](https://mpl-candy-machine-js-docs.vercel.app/functions/fetchCandyMachine.html), [fetchCandyGuard](https://mpl-candy-machine-js-docs.vercel.app/functions/fetchCandyGuard.html).
 
 </div>
 </AccordionItem>
@@ -295,7 +295,7 @@ await setMintAuthority(umi, {
 }).sendAndConfirm(umi);
 ```
 
-API References: [`setCandyMachineAuthority`](https://mpl-candy-machine-js-docs.vercel.app/functions/setCandyMachineAuthority.html), [`setCandyGuardAuthority`](https://mpl-candy-machine-js-docs.vercel.app/functions/setCandyGuardAuthority.html), [`setMintAuthority`](https://mpl-candy-machine-js-docs.vercel.app/functions/setMintAuthority.html).
+API References: [setCandyMachineAuthority](https://mpl-candy-machine-js-docs.vercel.app/functions/setCandyMachineAuthority.html), [setCandyGuardAuthority](https://mpl-candy-machine-js-docs.vercel.app/functions/setCandyGuardAuthority.html), [setMintAuthority](https://mpl-candy-machine-js-docs.vercel.app/functions/setMintAuthority.html).
 
 </div>
 </AccordionItem>
@@ -380,7 +380,7 @@ await updateCandyMachine(umi, {
 }).sendAndConfirm(umi);
 ```
 
-API References: [`updateCandyMachine`](https://mpl-candy-machine-js-docs.vercel.app/functions/updateCandyMachine.html).
+API References: [updateCandyMachine](https://mpl-candy-machine-js-docs.vercel.app/functions/updateCandyMachine.html).
 
 </div>
 </AccordionItem>
@@ -399,6 +399,61 @@ await metaplex.candyMachines().update({
 ```
 
 API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.CandyMachineClient.html#update), [Input](https://metaplex-foundation.github.io/js/types/js.UpdateCandyMachineInput.html), [Output](https://metaplex-foundation.github.io/js/types/js.UpdateCandyMachineOutput.html), [Transaction Builder](https://metaplex-foundation.github.io/js/classes/js.CandyMachineBuildersClient.html#update).
+
+</div>
+</AccordionItem>
+</Accordion>
+
+## Update Token Standard
+
+The Token Standard and Rule Set attributes can also be updated on a Candy Machine using the "Set Token Standard" instruction. This allows us to switch from regular NFTs to programmable NFTs and vice versa. When switching to programmable NFTs, we can optionally specify or update the Rule Set that minted NFTs should adhere to.
+
+Note that, if you candy machine is using an old version, this instruction will also automatically upgrade it to the latest version that supports programmable NFTs as well as regular NFTs. Once upgraded, you will need to use the latest instructions for minting from the candy machine or candy guard.
+
+<Accordion>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+Here's an example of updating the token standard and rule set on a Candy Machine using Umi.
+
+```ts
+import { TokenStandard } from "@metaplex-foundation/mpl-token-metadata";
+import { setTokenStandard } from "@metaplex-foundation/mpl-candy-machine";
+
+await setTokenStandard(umi, {
+  candyMachine: candyMachine.publicKey,
+  collectionMint: candyMachine.collectionMint,
+  collectionUpdateAuthority,
+  tokenStandard: TokenStandard.ProgrammableNonFungible,
+  ruleSet: newRuleSetAccount,
+}).sendAndConfirm(umi);
+```
+
+Note that if your candy machine is using version `V1`, you will need to explicitly set the `collectionAuthorityRecord` account as it uses the legacy collection delegate authority record account.
+
+```ts
+import { findCollectionAuthorityRecordPda } from "@metaplex-foundation/mpl-token-metadata";
+import { findCandyMachineAuthorityPda } from "@metaplex-foundation/mpl-candy-machine";
+
+await setTokenStandard(umi, {
+  // ...
+  collectionAuthorityRecord: findCollectionAuthorityRecordPda(umi, {
+    mint: candyMachine.collectionMint,
+    collectionAuthority: findCandyMachineAuthorityPda(umi, {
+      candyMachine: candyMachine.publicKey,
+    }),
+  }),
+}).sendAndConfirm(umi);
+```
+
+API References: [setTokenStandard](https://mpl-candy-machine-js-docs.vercel.app/functions/setTokenStandard.html).
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
+<div className="accordion-item-padding">
+
+_This operation is not supported by the JS SDK._
 
 </div>
 </AccordionItem>
@@ -481,10 +536,6 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 </div>
 </AccordionItem>
 </Accordion>
-
-## Update Token Standard
-
-TODO
 
 ## Delete Candy Machines
 
