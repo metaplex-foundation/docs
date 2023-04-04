@@ -127,7 +127,7 @@ await addConfigLines(umi, {
 
 To simply append items to the end of the currently loaded items, you may using the `candyMachine.itemsLoaded` property as the index like so.
 
-```tsx
+```ts
 await addConfigLines(umi, {
   candyMachine: candyMachine.publicKey,
   index: candyMachine.itemsLoaded,
@@ -189,7 +189,38 @@ Note that, since using prefixes can significantly reduce the Name Length and URI
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+When adding config lines to a candy machine that uses prefixes, you may only provide the part of the name and URI that comes after the prefix when using the `addConfigLines` function.
+
+For instance, say you had a candy machine with the following config line settings.
+
+```ts
+await create(umi, {
+  // ...
+  configLineSettings: some({
+    prefixName: "My NFT #",
+    nameLength: 4,
+    prefixUri: "https://example.com/nft",
+    uriLength: 9,
+    isSequential: false,
+  }),
+}).sendAndConfirm(umi);
+```
+
+Then, you can insert config lines like so.
+
+```ts
+await addConfigLines(umi, {
+  candyMachine: candyMachine.publicKey,
+  index: candyMachine.itemsLoaded,
+  configLines: [
+    { name: "1", uri: "1.json" },
+    { name: "2", uri: "2.json" },
+    { name: "3", uri: "3.json" },
+  ],
+}).sendAndConfirm(umi);
+```
+
+API References: [addConfigLines](https://mpl-candy-machine-js-docs.vercel.app/functions/addConfigLines.html)
 
 </div>
 </AccordionItem>
@@ -238,7 +269,32 @@ When inserting items, you may provide the position in which these items should b
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+The following examples show how you can insert 3 items and, later on, update the second item inserted.
+
+```ts
+await addConfigLines(umi, {
+  candyMachine: candyMachine.publicKey,
+  index: 0,
+  configLines: [
+    { name: "My NFT #1", uri: "https://example.com/nft1.json" },
+    { name: "My NFT #2", uri: "https://example.com/nft2.json" },
+    { name: "My NFT #3", uri: "https://example.com/nft3.json" },
+  ],
+}).sendAndConfirm(umi);
+
+await addConfigLines(umi, {
+  candyMachine: candyMachine.publicKey,
+  index: 1,
+  configLines: [{ name: "My NFT #X", uri: "https://example.com/nftX.json" }],
+}).sendAndConfirm(umi);
+
+candyMachine = await fetchCandyMachine(candyMachine.publicKey);
+candyMachine.items[0].name; // "My NFT #1"
+candyMachine.items[1].name; // "My NFT #X"
+candyMachine.items[2].name; // "My NFT #3"
+```
+
+API References: [addConfigLines](https://mpl-candy-machine-js-docs.vercel.app/functions/addConfigLines.html)
 
 </div>
 </AccordionItem>
