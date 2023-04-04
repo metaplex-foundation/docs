@@ -469,7 +469,19 @@ Note that, here also, once the first NFT has been minted, the collection cannot 
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+To update the Collection NFT of a Candy Machine using the Umi library you may use the `setCollectionV2` method like so.
+
+```tsx
+await setCollectionV2(umi, {
+  candyMachine: candyMachine.publicKey,
+  collectionMint: candyMachine.collectionMint,
+  collectionUpdateAuthority: collectionUpdateAuthority.publicKey,
+  newCollectionMint: newCollectionMint.publicKey,
+  newCollectionUpdateAuthority,
+}).sendAndConfirm(umi);
+```
+
+API References: [setCollectionV2](https://mpl-candy-machine-js-docs.vercel.app/functions/setCollectionV2.html).
 
 </div>
 </AccordionItem>
