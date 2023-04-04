@@ -112,7 +112,34 @@ Additionally, because transactions are limited to a certain size, we cannot inse
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+When using the Umi library, you may use the `addConfigLines` function to insert items into a Candy Machine. It requires the config lines to add as well as the index in which you want to insert them.
+
+```ts
+await addConfigLines(umi, {
+  candyMachine: candyMachine.publicKey,
+  index: 0,
+  configLines: [
+    { name: "My NFT #1", uri: "https://example.com/nft1.json" },
+    { name: "My NFT #2", uri: "https://example.com/nft2.json" },
+  ],
+}).sendAndConfirm(umi);
+```
+
+To simply append items to the end of the currently loaded items, you may using the `candyMachine.itemsLoaded` property as the index like so.
+
+```tsx
+await addConfigLines(umi, {
+  candyMachine: candyMachine.publicKey,
+  index: candyMachine.itemsLoaded,
+  configLines: [
+    { name: "My NFT #3", uri: "https://example.com/nft3.json" },
+    { name: "My NFT #4", uri: "https://example.com/nft4.json" },
+    { name: "My NFT #5", uri: "https://example.com/nft5.json" },
+  ],
+}).sendAndConfirm(umi);
+```
+
+API References: [addConfigLines](https://mpl-candy-machine-js-docs.vercel.app/functions/addConfigLines.html)
 
 </div>
 </AccordionItem>
