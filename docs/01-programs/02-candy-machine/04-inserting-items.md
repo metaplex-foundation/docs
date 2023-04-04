@@ -29,7 +29,31 @@ Additionally, tools like [Sugar](/developer-tools/sugar/guides/sugar-for-cmv3) m
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+Umi ships with an `uploader` interface that can be used to upload JSON data to the storage provider of your choice. For instance, this is how you'd select the NFT.Storage implementation of the uploader interface.
+
+```ts
+import { nftStorage } from "@metaplex-foundation/umi-uploader-nft-storage";
+umi.use(nftStorage());
+```
+
+You may then use the `upload` and `uploadJson` methods of the `uploader` interface to upload your assets and their JSON metadata.
+
+```ts
+import { createGenericFileFromBrowserFile } from "@metaplex-foundation/umi";
+
+// Upload the asset.
+const file = await createGenericFileFromBrowserFile(event.target.files[0]);
+const [fileUri] = await umi.uploader.upload([file]);
+
+// Upload the JSON metadata.
+const uri = await umi.uploader.uploadJson({
+  name: "My NFT #1",
+  description: "My description",
+  image: fileUri,
+});
+```
+
+API References: [UploaderInterface](https://umi-docs.vercel.app/interfaces/umi.UploaderInterface.html), [createGenericFileFromBrowserFile](https://umi-docs.vercel.app/functions/umi.createGenericFileFromBrowserFile.html).
 
 </div>
 </AccordionItem>
