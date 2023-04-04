@@ -52,7 +52,74 @@ Now let’s see how we can create and update groups using our SDKs.
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+To create Candy Machines with guard groups, simply provide the `groups` array to the `create` function. Each item of this array must contain a `label` and a `guards` object containing the settings of all guards we wish to activate in that group.
+
+Here’s how we’d implement the above example using the Umi library.
+
+```ts
+import { some, sol, dateTime } from "@metaplex-foundation/umi";
+
+await create(umi, {
+  // ...
+  groups: [
+    {
+      label: "early",
+      guards: {
+        solPayment: some({ lamports: sol(1), destination: treasury }),
+        startDate: some({ date: dateTime("2022-10-18T16:00:00Z") }),
+        endDate: some({ date: dateTime("2022-10-18T17:00:00Z") }),
+        botTax: some({ lamports: sol(0.001), lastInstruction: true }),
+      },
+    },
+    {
+      label: "late",
+      guards: {
+        solPayment: some({ lamports: sol(2), destination: treasury }),
+        startDate: some({ date: dateTime("2022-10-18T17:00:00Z") }),
+        botTax: some({ lamports: sol(0.001), lastInstruction: true }),
+      },
+    },
+  ],
+}).sendAndConfirm(umi);
+```
+
+To update groups, simply provide that same `groups` attribute to the `updateCandyGuard` function.
+Please note that the entire `guards` object and `groups` array will be updated meaning **it will override all existing data**!
+
+Therefore, make sure to provide the settings for all your groups, even if their settings are not changing. You may want to fetch the latest candy guard account data beforehand to avoid overwriting any existing settings.
+
+Here’s an example, changing the SOL payment guard for the “late” group to 3 SOL instead of 2 SOL.
+
+```ts
+import { some, sol, dateTime } from "@metaplex-foundation/umi";
+
+const candyGuard = await fetchCandyGuard(umi, candyMachine.mintAuthority);
+await updateCandyGuard(umi, {
+  candyGuard: candyGuard.publicKey,
+  guards: candyGuard.guards,
+  groups: [
+    {
+      label: "early",
+      guards: {
+        solPayment: some({ lamports: sol(1), destination: treasury }),
+        startDate: some({ date: dateTime("2022-10-18T16:00:00Z") }),
+        endDate: some({ date: dateTime("2022-10-18T17:00:00Z") }),
+        botTax: some({ lamports: sol(0.001), lastInstruction: true }),
+      },
+    },
+    {
+      label: "late",
+      guards: {
+        solPayment: some({ lamports: sol(3), destination: treasury }),
+        startDate: some({ date: dateTime("2022-10-18T17:00:00Z") }),
+        botTax: some({ lamports: sol(0.001), lastInstruction: true }),
+      },
+    },
+  ],
+}).sendAndConfirm(umi);
+```
+
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [updateCandyGuard](https://mpl-candy-machine-js-docs.vercel.app/functions/updateCandyGuard.html), [DefaultGuardSetArgs](https://mpl-candy-machine-js-docs.vercel.app/types/DefaultGuardSetArgs.html)
 
 </div>
 </AccordionItem>
