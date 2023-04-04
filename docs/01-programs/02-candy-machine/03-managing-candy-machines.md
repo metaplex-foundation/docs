@@ -583,7 +583,24 @@ Once a Candy Machine has been fully minted, it has served its purpose and can sa
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+You may delete a Candy Machine account and/or its associated Candy Guard account using the Umi library like so.
+
+```ts
+import {
+  deleteCandyMachine,
+  deleteCandyGuard,
+} from "@metaplex-foundation/mpl-candy-machine";
+
+await deleteCandyMachine(umi, {
+  candyMachine: candyMachine.publicKey,
+}).sendAndConfirm(umi);
+
+await deleteCandyGuard(umi, {
+  candyGuard: candyMachine.mintAuthority,
+}).sendAndConfirm(umi);
+```
+
+API References: [deleteCandyMachine](https://mpl-candy-machine-js-docs.vercel.app/functions/deleteCandyMachine.html), [deleteCandyGuard](https://mpl-candy-machine-js-docs.vercel.app/functions/deleteCandyGuard.html).
 
 </div>
 </AccordionItem>
