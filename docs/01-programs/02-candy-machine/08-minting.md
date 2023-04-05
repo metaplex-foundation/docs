@@ -12,11 +12,13 @@ So far, we’ve learned how to create and maintain Candy Machines. We’ve seen 
 
 ## Basic Minting
 
-Whether we are minting from a Candy Guard program or directly from the core Candy Machine program, we will need to construct a few instructions to create an empty mint account before reaching the mint instruction. If this is confusing to you, don’t worry, our SDKs handle all of that wiring for you.
+As mentioned [in the Candy Guards page](/programs/candy-machine/candy-guards#why-another-program), there are two programs responsible for minting NFTs from Candy Machines: The Candy Machine Core program — responsible for the minting the NFT — and the Candy Guard program which adds a configurable Access Control layer on top of it and can be forked to offer custom guards.
 
-Our SDKs will also know which program to interact with based on whether a Candy Guard account was created for the provided Candy Machine.
+As such, there are two ways to mint from a Candy Machine:
 
-So ultimately, to mint, all you need to do is pass in the **Candy Machine** you created and any additional attributes that might be required based on the Candy Machine settings. Additionally, in the rare event that your Candy Machine does not have an associated Candy Guard account, it will need to mint from the configured **Mint Authority** which must be provided as a signer.
+- **From a Candy Guard program** which will then delegate the minting to the Candy Machine Core program. Most of the time, you will want to do this as it allows for much more complex minting workflows. You may need to pass extra remaining accounts and instruction data to the mint instruction based on the guards configured in the account. Fortunately, our SDKs make this easy by requiring a few extra parameters and computing the rest for us.
+
+- **Directly from the Candy Machine Core program**. In this case, only the configured mint authority can mint from it and, therefore, it will need to sign the transaction.
 
 ![CandyMachinesV3-Minting1.png](/assets/candy-machine-v3/CandyMachinesV3-Minting1.png#radius)
 
@@ -34,6 +36,10 @@ TODO
 </AccordionItem>
 <AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
+
+> Our SDKs will also know which program to interact with based on whether a Candy Guard account was created for the provided Candy Machine.
+>
+> So ultimately, to mint, all you need to do is pass in the **Candy Machine** you created and any additional attributes that might be required based on the Candy Machine settings. Additionally, in the rare event that your Candy Machine does not have an associated Candy Guard account, it will need to mint from the configured **Mint Authority** which must be provided as a signer.
 
 To mint via the JS SDK, you may use the `mint` operation of the Candy Machine module.
 The minimum required arguments are the `candyMachine` model (or a subset of it) and the address of the `collectionUpdateAuthority`. The reason we need the latter is that this information does not live in the `candyMachine` model and it is required by the underlying mint instructions.
