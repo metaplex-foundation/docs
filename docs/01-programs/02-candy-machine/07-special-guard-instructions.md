@@ -65,7 +65,7 @@ const allowList = [
 const merkleRoot = getMerkleRoot(allowList);
 
 // Create a Candy Machine with an Allow List guard.
-await create({
+await create(umi, {
   // ...
   guards: {
     allowList: some({ merkleRoot }),
@@ -76,7 +76,7 @@ await create({
 // we did not verify our Merkle Proof.
 
 // Verify the Merkle Proof using the route instruction.
-await route({
+await route(umi, {
   candyMachine: candyMachine.publicKey,
   guard: "allowList",
   routeArgs: {
@@ -172,7 +172,7 @@ const allowListA = [...];
 const allowListB = [...];
 
 // Create a Candy Machine with two Allow List guards.
-await create({
+await create(umi, {
   // ...
   groups: [
     {
@@ -191,7 +191,7 @@ await create({
 }).sendAndConfirm(umi);
 
 // Verify the Merkle Proof by specifying which group to select.
-await route({
+await route(umi, {
   candyMachine: candyMachine.publicKey,
   guard: 'allowList',
   group: some('listA'), // <- We are veryfing using "allowListA".
