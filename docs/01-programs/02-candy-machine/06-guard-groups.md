@@ -236,7 +236,37 @@ Note that, even when using default guards, a group must be provided when minting
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+To use default guards in the Umi library, simply use the `guards` attribute in conjunction with the `groups` array when creating or updating a Candy Machine. For instance, here’s how you’d create a Candy Machine using the guard settings described above.
+
+```ts
+import { some, sol, dateTime } from "@metaplex-foundation/umi";
+
+await create(umi, {
+  // ...
+  guards: {
+    botTax: some({ lamports: sol(0.001), lastInstruction: true }),
+  },
+  groups: [
+    {
+      label: "early",
+      guards: {
+        solPayment: some({ lamports: sol(1), destination: treasury }),
+        startDate: some({ date: dateTime("2022-10-18T16:00:00Z") }),
+        endDate: some({ date: dateTime("2022-10-18T17:00:00Z") }),
+      },
+    },
+    {
+      label: "late",
+      guards: {
+        solPayment: some({ lamports: sol(2), destination: treasury }),
+        startDate: some({ date: dateTime("2022-10-18T17:00:00Z") }),
+      },
+    },
+  ],
+}).sendAndConfirm(umi);
+```
+
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [DefaultGuardSetArgs](https://mpl-candy-machine-js-docs.vercel.app/types/DefaultGuardSetArgs.html)
 
 </div>
 </AccordionItem>
@@ -305,7 +335,38 @@ As you can see, with these guard settings, it is possible for both groups to min
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+Here’s how you’d create a Candy Machine using the guard settings described above via the Umi library.
+
+```ts
+import { some, sol, dateTime } from "@metaplex-foundation/umi";
+
+await create(umi, {
+  // ...
+  guards: {
+    botTax: some({ lamports: sol(0.001), lastInstruction: true }),
+    startDate: some({ date: dateTime("2022-10-18T16:00:00Z") }),
+  },
+  groups: [
+    {
+      label: "early",
+      guards: {
+        solPayment: some({ amount: sol(1), destination: treasury }),
+        nftGate: some({
+          requiredCollection: innocentBirdCollectionNft.publicKey,
+        }),
+      },
+    },
+    {
+      label: "late",
+      guards: {
+        solPayment: some({ amount: sol(2), destination: treasury }),
+      },
+    },
+  ],
+}).sendAndConfirm(umi);
+```
+
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [DefaultGuardSetArgs](https://mpl-candy-machine-js-docs.vercel.app/types/DefaultGuardSetArgs.html)
 
 </div>
 </AccordionItem>
