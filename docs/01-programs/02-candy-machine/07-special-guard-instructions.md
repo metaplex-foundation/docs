@@ -50,6 +50,7 @@ Here is an example using the Allow List guard which validates the wallet’s Mer
 ```ts
 import {
   create,
+  route,
   getMerkleProof,
   getMerkleRoot,
 } from "@metaplex-foundation/mpl-candy-machine";
@@ -155,7 +156,57 @@ For instance, say we had an **Allow List** of handpicked VIP wallets in one grou
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+When using groups, the `route` function of the Umi library accepts an additional `group` attribute of type `Option<string>` which must be set to the label of the group we want to select.
+
+```ts
+import {
+  create,
+  route,
+  getMerkleProof,
+  getMerkleRoot,
+} from "@metaplex-foundation/mpl-candy-machine";
+import { base58PublicKey, some } from "@metaplex-foundation/umi";
+
+// Prepare the allow lists.
+const allowListA = [...];
+const allowListB = [...];
+
+// Create a Candy Machine with two Allow List guards.
+await create({
+  // ...
+  groups: [
+    {
+      label: "listA",
+      guards: {
+        allowList: some({ merkleRoot: getMerkleRoot(allowListA) }),
+      },
+    },
+    {
+      label: "listB",
+      guards: {
+        allowList: some({ merkleRoot: getMerkleRoot(allowListB) }),
+      },
+    },
+  ],
+}).sendAndConfirm(umi);
+
+// Verify the Merkle Proof by specifying which group to select.
+await route({
+  candyMachine: candyMachine.publicKey,
+  guard: 'allowList',
+  group: some('listA'), // <- We are veryfing using "allowListA".
+  routeArgs: {
+    path: 'proof',
+    merkleRoot: getMerkleRoot(allowListA),
+    merkleProof: getMerkleProof(
+      allowListA,
+      base58PublicKey(umi.identity),
+    ),
+  },
+}).sendAndConfirm(umi);
+```
+
+API References: [route](https://mpl-candy-machine-js-docs.vercel.app/functions/route.html), [DefaultGuardSetRouteArgs](https://mpl-candy-machine-js-docs.vercel.app/types/DefaultGuardSetRouteArgs.html)
 
 </div>
 </AccordionItem>
