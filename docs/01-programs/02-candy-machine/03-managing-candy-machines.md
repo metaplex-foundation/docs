@@ -471,13 +471,30 @@ Note that, here also, once the first NFT has been minted, the collection cannot 
 
 To update the Collection NFT of a Candy Machine using the Umi library you may use the `setCollectionV2` method like so.
 
-```tsx
+```ts
 await setCollectionV2(umi, {
   candyMachine: candyMachine.publicKey,
   collectionMint: candyMachine.collectionMint,
   collectionUpdateAuthority: collectionUpdateAuthority.publicKey,
   newCollectionMint: newCollectionMint.publicKey,
   newCollectionUpdateAuthority,
+}).sendAndConfirm(umi);
+```
+
+Note that if your candy machine is using version `V1`, you will need to explicitly set the `collectionDelegateRecord` account as it uses the legacy collection delegate authority record account.
+
+```ts
+import { findCollectionAuthorityRecordPda } from "@metaplex-foundation/mpl-token-metadata";
+import { findCandyMachineAuthorityPda } from "@metaplex-foundation/mpl-candy-machine";
+
+await setCollectionV2(umi, {
+  // ...
+  collectionDelegateRecord: findCollectionAuthorityRecordPda(umi, {
+    mint: candyMachine.collectionMint,
+    collectionAuthority: findCandyMachineAuthorityPda(umi, {
+      candyMachine: candyMachine.publicKey,
+    }),
+  }),
 }).sendAndConfirm(umi);
 ```
 
