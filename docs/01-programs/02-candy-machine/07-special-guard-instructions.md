@@ -43,7 +43,55 @@ So why can’t we just verify the Merkle Proof directly within the mint instruct
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+You may use the `route` function to call the route instruction of a guard using the Umi library. You will need to pass the guard’s name via the `guard` attribute and its route settings via the `routeArgs` attribute.
+
+Here is an example using the Allow List guard which validates the wallet’s Merkle Proof before minting.
+
+```ts
+import {
+  create,
+  getMerkleProof,
+  getMerkleRoot,
+} from "@metaplex-foundation/mpl-candy-machine";
+
+// Prepare the allow list.
+// Let's assume the first wallet on the list is the Metaplex identity.
+const allowList = [
+  "GjwcWFQYzemBtpUoN5fMAP2FZviTtMRWCmrppGuTthJS",
+  "2vjCrmEFiN9CLLhiqy8u1JPh48av8Zpzp3kNkdTtirYG",
+  "AT8nPwujHAD14cLojTcB1qdBzA1VXnT6LVGuUd6Y73Cy",
+];
+const merkleRoot = getMerkleRoot(allowList);
+
+// Create a Candy Machine with an Allow List guard.
+await create({
+  // ...
+  guards: {
+    allowList: some({ merkleRoot }),
+  },
+}).sendAndConfirm(umi);
+
+// If we try to mint now, it will fail because
+// we did not verify our Merkle Proof.
+
+// Verify the Merkle Proof using the route instruction.
+await route({
+  candyMachine: candyMachine.publicKey,
+  guard: "allowList",
+  routeArgs: {
+    path: "proof",
+    merkleRoot,
+    merkleProof: getMerkleProof(
+      allowList,
+      "GjwcWFQYzemBtpUoN5fMAP2FZviTtMRWCmrppGuTthJS"
+    ),
+  },
+}).sendAndConfirm(umi);
+
+// If we try to mint now, it will succeed.
+```
+
+API References: [route](https://mpl-candy-machine-js-docs.vercel.app/functions/route.html), [DefaultGuardSetRouteArgs](https://mpl-candy-machine-js-docs.vercel.app/types/DefaultGuardSetRouteArgs.html)
 
 </div>
 </AccordionItem>
