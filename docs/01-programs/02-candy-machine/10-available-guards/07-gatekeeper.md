@@ -35,7 +35,19 @@ The Gatekeeper guard contains the following settings:
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+Here’s how we can set up a Candy Machine using the Gatekeeper guard.
+
+```ts
+create(umi, {
+  // ...
+  guards: {
+    gatekeeper: some({
+      network: publicKey("ignREusXmGrscGNUesoU9mxfds9AiYTezUKex2PsZV6"),
+      expireOnUse: true,
+    }),
+  },
+});
+```
 
 API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [Gatekeeper](https://mpl-candy-machine-js-docs.vercel.app/types/Gatekeeper.html)
 
@@ -72,8 +84,10 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 ## Mint Settings
 
-The Gatekeeper guard does not require Mint Settings. However, it does accept the following optional settings:
+The Gatekeeper guard accepts the following mint settings:
 
+- **Gatekeeper Network**: The public key of the Gatekeeper Network that will be used to check the validity of the minting wallet.
+- **Expire On Use**: Whether we should mark the Gateway Token of the minting wallet as expired after the NFT has been minting.
 - **Token Account** (optional): As a little disclaimer, you should very rarely need to provide this setting but it’s here if you need to. This refers to the Gateway Token PDA derived from the payer and the Gatekeeper Network which is used to verify the payer's eligibility to mint. This PDA address can be inferred by our SDKs which is why you do not need to provide it. However, some Gatekeeper Networks may issue multiple Gateway Tokens to the same wallet. To differentiate their PDA addresses, it uses a **Seeds** array which defaults to `[0, 0, 0, 0, 0, 0, 0, 0]`.
 
 Note that, if you’re planning on constructing instructions without the help of our SDKs, you will need to provide these Mint Settings and more as a combination of instruction arguments and remaining accounts. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-machine/tree/main/programs/candy-guard#gatekeeper) for more details.
@@ -82,7 +96,21 @@ Note that, if you’re planning on constructing instructions without the help of
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+You may pass the Mint Settings of the Gatekeeper guard using the `mintArgs` argument like so.
+
+```ts
+mintV2(umi, {
+  // ...
+  mintArgs: {
+    gatekeeper: some({
+      network: publicKey("ignREusXmGrscGNUesoU9mxfds9AiYTezUKex2PsZV6"),
+      expireOnUse: true,
+    }),
+  },
+});
+```
+
+API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/mintV2.html), [GatekeeperMintArgs](https://mpl-candy-machine-js-docs.vercel.app/types/GatekeeperMintArgs.html)
 
 </div>
 </AccordionItem>
