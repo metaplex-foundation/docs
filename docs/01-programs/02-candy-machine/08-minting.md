@@ -175,15 +175,11 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 When minting from a Candy Machine that uses a bunch of guards, you may need to provide additional guard-specific information.
 
-If you were to build the mint instruction manually, that information would be provided as a mixture of instruction arguments and remaining accounts. However, using our SDKs, each guard that requires additional information at mint time defines a set of settings that we call **Mint Settings**. These Mint Settings will then be parsed for you into whatever the program needs.
+If you were to build the mint instruction manually, that information would be provided as a mixture of instruction data and remaining accounts. However, using our SDKs, each guard that requires additional information at mint time defines a set of settings that we call **Mint Settings**. These Mint Settings will then be parsed into whatever the program needs.
 
-A good example of a guard that requires Mint Settings is the **NFT Payment** guard which requires the mint address of the NFT we should use to pay for the mint.
+A good example of a guard that requires Mint Settings is the **NFT Payment** guard which requires the mint address of the NFT we should use to pay for the mint amongst other things.
 
 ![CandyMachinesV3-Minting2.png](/assets/candy-machine-v3/CandyMachinesV3-Minting2.png#radius)
-
-It is worth noting that some guards may not require any Mint Settings whilst still needing to pass guard-specific arguments or remaining accounts when minting. That’s because the SDKs are clever enough to fill in the gaps with the data that’s available to them, e.g. the initial settings of the guard.
-
-An example of such a guard is the **Mint Limit** guard. This guard requires the address of the PDA account that will keep track of how many NFTs were minted by a given wallet. However, it does not require Mint Settings because the address of this PDA can be inferred from other variables we already have such as the payer of the mint.
 
 [Each available guard](/programs/candy-machine/available-guards) contains its own documentation page and it will tell you whether or not that guard expects Mint Settings to be provided when minting.
 
@@ -193,7 +189,47 @@ If you were to only use guards that do not require Mint Settings, you may mint i
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+When minting via the Umi library, you may use the `mintArgs` attribute to provide the required **Mint Settings**.
+
+Here’s an example using the **Third Party Signer** guard which requires an additional signer and the **Mint Limit** guard which keeps track of how many times a wallet minted from the Candy Machine.
+
+```ts
+import {
+  some,
+  generateSigner,
+  transactionBuilder,
+} from "@metaplex-foundation/umi";
+import { create, mintV2 } from "@metaplex-foundation/mpl-candy-machine";
+import { setComputeUnitLimit } from "@metaplex-foundation/mpl-essentials";
+
+// Create a Candy Machine with guards.
+const thirdPartySigner = generateSigner();
+await create(umi, {
+  // ...
+  guards: {
+    thirdPartySigner: some({ signer: thirdPartySigner.publicKey }),
+    mintLimit: some({ id: 1, limit: 3 }),
+  },
+}).sendAndConfirm(umi);
+
+// Mint from it using guards.
+const nftMint = generateSigner(umi);
+await transactionBuilder()
+  .add(setComputeUnitLimit(umi, { units: 800_000 }))
+  .add(
+    mintV2(umi, {
+      candyMachine: candyMachine.publicKey,
+      nftMint,
+      collectionMint: collectionNft.publicKey,
+      collectionUpdateAuthority: collectionNft.metadata.updateAuthority,
+      mintArgs: {
+        thirdPartySigner: some({ signer: thirdPartySigner }),
+        mintLimit: some({ id: 1 }),
+      },
+    })
+  )
+  .sendAndConfirm(umi);
+```
 
 API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/mintV2.html), [DefaultGuardSetMintArgs](https://mpl-candy-machine-js-docs.vercel.app/types/DefaultGuardSetMintArgs.html)
 
@@ -203,6 +239,8 @@ API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/
 <div className="accordion-item-padding">
 
 When minting via the JS SDK, you may use the `settings` attribute to provide the required **Mint Settings**. The operation will fail if Mint Settings are missing for any guard that requires them.
+
+Since the JS SDK requires the whole Candy Machine model and its guard settings to be provided, it can infer most of the mint settings from that model and, therefore, its mint settings object is typically smaller than the other SDKs.
 
 Here’s an example using the **Third Party Signer** guard which requires an additional signer and the **Mint Limit** guard which keeps track of how many times a wallet minted from the Candy Machine.
 
