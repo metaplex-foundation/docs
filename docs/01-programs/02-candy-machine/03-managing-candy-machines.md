@@ -27,9 +27,12 @@ Remember that a Candy Machine [must be associated with a Collection NFT](/progra
 Here’s how you can create a Candy Machine using a brand new Collection NFT via the Umi library. Notice that, by default, the identity is used as the authority of these entities.
 
 ```tsx
-import { generateSigner, percentAmount } from "@metaplex-foundation/umi";
-import { createNft } from "@metaplex-foundation/mpl-token-metadata";
+import {
+  createNft,
+  TokenStandard,
+} from "@metaplex-foundation/mpl-token-metadata";
 import { create } from "@metaplex-foundation/mpl-candy-machine";
+import { generateSigner, percentAmount } from "@metaplex-foundation/umi";
 
 // Create the Collection NFT.
 const collectionUpdateAuthority = generateSigner(umi);
@@ -49,6 +52,7 @@ await create(umi, {
   candyMachine,
   collectionMint: collectionMint.publicKey,
   collectionUpdateAuthority,
+  tokenStandard: TokenStandard.NonFungible,
   sellerFeeBasisPoints: percentAmount(9.99, 2), // 9.99%
   itemsAvailable: 5000,
   creators: [
