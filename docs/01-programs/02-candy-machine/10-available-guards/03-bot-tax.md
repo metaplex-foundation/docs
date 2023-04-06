@@ -27,7 +27,19 @@ The Bot Tax guard contains the following settings:
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+Here’s how we can set up a Candy Machine using the Bot Tax guard.
+
+```ts
+create(umi, {
+  // ...
+  guards: {
+    botTax: some({
+      lamports: sol(0.01),
+      lastInstruction: true,
+    }),
+  },
+});
+```
 
 API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [BotTax](https://mpl-candy-machine-js-docs.vercel.app/types/BotTax.html)
 
