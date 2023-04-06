@@ -36,7 +36,46 @@ The Allow List guard contains the following settings:
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+To help us manage Merkle Trees, the Umi library provides two helper methods called `getMerkleRoot` and `getMerkleProof` that you may use like so.
+
+```ts
+import {
+  getMerkleProof,
+  getMerkleRoot,
+} from "@metaplex-foundation/mpl-candy-machine";
+
+const allowList = [
+  "Ur1CbWSGsXCdedknRbJsEk7urwAvu1uddmQv51nAnXB",
+  "GjwcWFQYzemBtpUoN5fMAP2FZviTtMRWCmrppGuTthJS",
+  "AT8nPwujHAD14cLojTcB1qdBzA1VXnT6LVGuUd6Y73Cy",
+];
+
+const merkleRoot = getMerkleRoot(allowList);
+const validMerkleProof = getMerkleProof(
+  allowList,
+  "Ur1CbWSGsXCdedknRbJsEk7urwAvu1uddmQv51nAnXB"
+);
+const invalidMerkleProof = getMerkleProof(allowList, "invalid-address");
+```
+
+Once we have computed the Merkle Root of our allow list, we can use it to set up the Allow List guard on our Candy Machine.
+
+```ts
+import { getMerkleRoot } from "@metaplex-foundation/mpl-candy-machine";
+
+const allowList = [
+  "Ur1CbWSGsXCdedknRbJsEk7urwAvu1uddmQv51nAnXB",
+  "GjwcWFQYzemBtpUoN5fMAP2FZviTtMRWCmrppGuTthJS",
+  "AT8nPwujHAD14cLojTcB1qdBzA1VXnT6LVGuUd6Y73Cy",
+];
+
+create(umi, {
+  // ...
+  guards: {
+    allowList: some({ merkleRoot: getMerkleRoot(allowList) }),
+  },
+});
+```
 
 API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [AllowList](https://mpl-candy-machine-js-docs.vercel.app/types/AllowList.html)
 
@@ -93,11 +132,49 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 ## Mint Settings
 
-_The Allow List guard does not need Mint Settings._
+The Allow List guard contains the following Mint Settings:
 
-Note that, whilst no Mint Settings are required, **we must still validate the minting wallet by providing a Merkle Proof**. See [Validate a Merkle Proof](#validate-a-merkle-proof) below for more details.
+- **Merkle Root**: The Root of the Merkle Tree representing the allow list.
+
+Note that, before being able to mint, **we must validate the minting wallet by providing a Merkle Proof**. See [Validate a Merkle Proof](#validate-a-merkle-proof) below for more details.
 
 Also note that, if you’re planning on constructing instructions without the help of our SDKs, you will need to add the Allow List Proof PDA to the remaining accounts of the mint instruction. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-guard#allowlist) for more details.
+
+<Accordion>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+You may pass the Mint Settings of the Allow List guard using the `mintArgs` argument like so.
+
+```ts
+import { getMerkleRoot } from "@metaplex-foundation/mpl-candy-machine";
+
+const allowList = [
+  "Ur1CbWSGsXCdedknRbJsEk7urwAvu1uddmQv51nAnXB",
+  "GjwcWFQYzemBtpUoN5fMAP2FZviTtMRWCmrppGuTthJS",
+  "AT8nPwujHAD14cLojTcB1qdBzA1VXnT6LVGuUd6Y73Cy",
+];
+
+mintV2(umi, {
+  // ...
+  mintArgs: {
+    allowList: some({ merkleRoot: getMerkleRoot(allowList) }),
+  },
+});
+```
+
+API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/mintV2.html), [AllowListMintArgs](https://mpl-candy-machine-js-docs.vercel.app/types/AllowListMintArgs.html)
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
+<div className="accordion-item-padding">
+
+_The JS SDK does not require any Mint Settings for the Allow List guard since it can infer them from the provided Candy Machine model._
+
+</div>
+</AccordionItem>
+</Accordion>
 
 ## Route Instruction
 

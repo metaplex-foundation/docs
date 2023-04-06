@@ -24,6 +24,8 @@ The NFT Burn guard contains the following settings:
 
 TODO
 
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [NftBurn](https://mpl-candy-machine-js-docs.vercel.app/types/NftBurn.html)
+
 </div>
 </AccordionItem>
 <AccordionItem title="JavaScript — SDK">
@@ -62,8 +64,6 @@ Note that, if you’re planning on constructing instructions without the help of
 <div className="accordion-item-padding">
 
 TODO
-
-API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [NftBurn](https://mpl-candy-machine-js-docs.vercel.app/types/NftBurn.html)
 
 </div>
 </AccordionItem>
