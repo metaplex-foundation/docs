@@ -113,7 +113,11 @@ API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/
 <div className="accordion-item-padding">
 
 :::info
-The JS SDK does not support the latest `mintV2` instruction and therefore cannot mint Programmable NFTs. Consider using the Umi library instead.
+The JS SDK is only compatible with Candy Machines with account version 1. That means, it does not support minting programmable NFTs and it is not compatible with Candy Machines created with the latest version of [Sugar](/developer-tools/sugar/overview/introduction).
+
+You may consider [using the Umi library](/programs/candy-machine/getting-started#umi-library-recommended) instead which supports all versions of Candy Machines. Alternatively, you may downgrade you Sugar version to `2.0.0` or use the Solita-generated library.
+
+See [Programmable NFTs](/programs/candy-machine/programmable-nfts) for more details.
 :::
 
 To mint via the JS SDK, you may use the `mint` operation of the Candy Machine module.
@@ -237,6 +241,14 @@ API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/
 </AccordionItem>
 <AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
+
+:::info
+The JS SDK is only compatible with Candy Machines with account version 1. That means, it does not support minting programmable NFTs and it is not compatible with Candy Machines created with the latest version of [Sugar](/developer-tools/sugar/overview/introduction).
+
+You may consider [using the Umi library](/programs/candy-machine/getting-started#umi-library-recommended) instead which supports all versions of Candy Machines. Alternatively, you may downgrade you Sugar version to `2.0.0` or use the Solita-generated library.
+
+See [Programmable NFTs](/programs/candy-machine/programmable-nfts) for more details.
+:::
 
 When minting via the JS SDK, you may use the `settings` attribute to provide the required **Mint Settings**. The operation will fail if Mint Settings are missing for any guard that requires them.
 
@@ -374,6 +386,14 @@ API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/
 </AccordionItem>
 <AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
+
+:::info
+The JS SDK is only compatible with Candy Machines with account version 1. That means, it does not support minting programmable NFTs and it is not compatible with Candy Machines created with the latest version of [Sugar](/developer-tools/sugar/overview/introduction).
+
+You may consider [using the Umi library](/programs/candy-machine/getting-started#umi-library-recommended) instead which supports all versions of Candy Machines. Alternatively, you may downgrade you Sugar version to `2.0.0` or use the Solita-generated library.
+
+See [Programmable NFTs](/programs/candy-machine/programmable-nfts) for more details.
+:::
 
 When minting from a Candy Machine using guard groups, the label of the group we want to select must be provided via the `group` attribute.
 
