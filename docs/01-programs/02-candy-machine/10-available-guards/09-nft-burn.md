@@ -22,13 +22,13 @@ The NFT Burn guard contains the following settings:
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-Here’s how we can set up a Candy Machine using the TODO guard.
+Here’s how we can set up a Candy Machine using the NFT Burn guard.
 
 ```ts
 create(umi, {
   // ...
   guards: {
-    TODO: some({}),
+    nftBurn: some({ requiredCollection: requiredCollectionNft.publicKey }),
   },
 });
 ```
@@ -63,7 +63,9 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 The NFT Burn guard contains the following Mint Settings:
 
+- **Required Collection**: The mint address of the required NFT Collection.
 - **Mint**: The mint address of the NFT to burn. This must be part of the required collection and must belong to the payer.
+- **Token Standard**: The token standard of the NFT to burn.
 - **Token Account** (optional): You may optionally provide the token account linking the NFT with its owner explicitly. By default, the associated token account of the payer will be used.
 
 Note that, if you’re planning on constructing instructions without the help of our SDKs, you will need to provide these Mint Settings and more as a combination of instruction arguments and remaining accounts. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-machine/tree/main/programs/candy-guard#nftburn) for more details.
@@ -72,7 +74,24 @@ Note that, if you’re planning on constructing instructions without the help of
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+You may pass the Mint Settings of the NFT Burn guard using the `mintArgs` argument like so.
+
+```ts
+import { TokenStandard } from "@metaplex-foundation/mpl-token-metadata";
+
+mintV2(umi, {
+  // ...
+  mintArgs: {
+    nftBurn: some({
+      requiredCollection: requiredCollectionNft.publicKey,
+      mint: nftToBurn.publicKey,
+      tokenStandard: TokenStandard.NonFungible,
+    }),
+  },
+});
+```
+
+API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/mintV2.html), [NftBurnMintArgs](https://mpl-candy-machine-js-docs.vercel.app/types/NftBurnMintArgs.html)
 
 </div>
 </AccordionItem>
@@ -81,7 +100,9 @@ TODO
 
 When minting via the JS SDK, simply provide the mint address of the NFT to burn via the `mint` attribute like so.
 
-```tsx
+Note that the JS SDK does not require the Required Collection to be passed in since it can get it from the provided Candy Machine model. It also does not require the Token Standard as it does not support minting Programmable NFTs.
+
+```ts
 const { nft } = await metaplex.candyMachines().mint({
   // ...
   guards: {
