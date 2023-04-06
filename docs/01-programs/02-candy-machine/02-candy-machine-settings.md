@@ -105,8 +105,12 @@ const candyMachineSettings = {
 <AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
-:::warning
-The JS SDK is not compatible with Candy Machines version 2 and above. Please use the Umi library instead.
+:::info
+The JS SDK is only compatible with Candy Machines with account version 1. That means, it does not support minting programmable NFTs and it is not compatible with Candy Machines created with the latest version of [Sugar](/developer-tools/sugar/overview/introduction).
+
+You may consider [using the Umi library](/programs/candy-machine/getting-started#umi-library-recommended) instead which supports all versions of Candy Machines. Alternatively, you may downgrade you Sugar version to `2.0.0` or use the Solita-generated library.
+
+See [Programmable NFTs](/programs/candy-machine/programmable-nfts) for more details.
 :::
 
 When creating a Candy Machine, only the `sellerFeeBasisPoints` attribute is required out of the attributes listed above. The other attributes have the following default values:
