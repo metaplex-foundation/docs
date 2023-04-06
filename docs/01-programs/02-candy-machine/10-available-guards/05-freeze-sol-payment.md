@@ -26,14 +26,26 @@ You may initialize the Freeze Escrow account, thaw NFTs and unlock funds [via th
 
 The Freeze Sol Payment guard contains the following settings:
 
-- **Amount**: The amount in SOL (or lamports) to charge the payer.
+- **Lamports**: The amount in SOL (or lamports) to charge the payer.
 - **Destination**: The address of the wallet that should eventually receive all payments related to this guard.
 
 <Accordion>
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+Here’s how we can create a Candy Machine using the Freeze Sol Payment guard. Note that, in this example, we’re using Umi's identity as the destination wallet.
+
+```tsx
+create(umi, {
+  // ...
+  guards: {
+    freezeSolPayment: some({
+      lamports: sol(1.5),
+      destination: umi.identity.publicKey,
+    }),
+  },
+});
+```
 
 API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [FreezeSolPayment](https://mpl-candy-machine-js-docs.vercel.app/types/FreezeSolPayment.html)
 
