@@ -213,7 +213,7 @@ API References: [Typedoc](https://metaplex-foundation.github.io/metaplex-program
 
 The `mint` instruction of both the Candy Machine Core and the Candy Guard programs has been updated to support minting Programmable NFTs. This new instruction is called `mintV2` and it is similar to the `mint` instruction, but requires additional accounts to be passed in. Here as well, the new `mintV2` instructions can be used to mint regular NFTs and, therefore, they deprecate the existing `mint` instructions.
 
-The entire "[Minting](/programs/candy-machine/minting)" page as been updated to use the new `mintV2` instructions but here's a quick example on how to use them with Programmable NFTs.
+The entire "[Minting](/programs/candy-machine/minting)" page has been updated to use the new `mintV2` instructions but here's a quick example of how to use them with Programmable NFTs.
 
 <Accordion>
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
@@ -295,7 +295,7 @@ Note that some of the guards offered by the Candy Guard program have also been u
 
 The guards affected by these changes are:
 
-- The `nftBurn` and `nftPayment` guards which now allow the burned/sent NFT to be a Programmable NFT.
+- The `nftBurn` and `nftPayment` guards now allow the burned/sent NFT to be a Programmable NFT.
 - The `FreezeSolPayment` and `FreezeTokenPayment` guards. Since Programmable NFTs are by definition always frozen, they are Locked when minted via a Utility delegate and Unlocked when the thaw conditions have been met.
 
 ## Additional reading
