@@ -56,9 +56,11 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 ## Mint Settings
 
-_The Token Gate guard does not need Mint Settings._
+The TODO guard contains the following Mint Settings:
 
-However, if you’re planning on constructing instructions without the help of our SDKs, you will need to add the payer’s token account to the remaining accounts of the mint instruction. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-machine/tree/main/programs/candy-guard#tokengate) for more details.
+- **TODO**: TODO.
+
+Note that, if you’re planning on constructing instructions without the help of our SDKs, you will need to provide these Mint Settings and more as a combination of instruction arguments and remaining accounts. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-machine/tree/main/programs/candy-guard#tokengate) for more details.
 
 ## Route Instruction
 
