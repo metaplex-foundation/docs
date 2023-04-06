@@ -80,7 +80,7 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 _The Freeze Sol Payment guard does not need Mint Settings._
 
-However, if you’re planning on constructing instructions without the help of our SDKs, you will need to add the configured destination address to the remaining accounts of the mint instruction. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-guard#freezesolpayment) for more details.
+However, if you’re planning on constructing instructions without the help of our SDKs, you will need to add the configured destination address to the remaining accounts of the mint instruction. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-machine/tree/main/programs/candy-guard#freezesolpayment) for more details.
 
 ## Route Instruction
 
