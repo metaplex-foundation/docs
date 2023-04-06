@@ -24,6 +24,8 @@ The Start Date guard contains the following settings:
 
 TODO
 
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [StartDate](https://mpl-candy-machine-js-docs.vercel.app/types/StartDate.html)
+
 </div>
 </AccordionItem>
 <AccordionItem title="JavaScript — SDK">

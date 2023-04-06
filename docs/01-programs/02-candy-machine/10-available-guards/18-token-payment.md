@@ -28,6 +28,8 @@ The Token Payment guard contains the following settings:
 
 TODO
 
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [TokenPayment](https://mpl-candy-machine-js-docs.vercel.app/types/TokenPaymentArgs.html)
+
 </div>
 </AccordionItem>
 <AccordionItem title="JavaScript — SDK">

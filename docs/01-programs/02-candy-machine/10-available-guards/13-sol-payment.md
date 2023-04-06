@@ -25,6 +25,8 @@ The Sol Payment guard contains the following settings:
 
 TODO
 
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [SolPayment](https://mpl-candy-machine-js-docs.vercel.app/types/SolPayment.html)
+
 </div>
 </AccordionItem>
 <AccordionItem title="JavaScript — SDK">

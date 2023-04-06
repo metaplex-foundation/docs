@@ -36,6 +36,8 @@ The Freeze Token Payment guard contains the following settings:
 
 TODO
 
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [FreezeTokenPayment](https://mpl-candy-machine-js-docs.vercel.app/types/FreezeTokenPaymentArgs.html)
+
 </div>
 </AccordionItem>
 <AccordionItem title="JavaScript — SDK">

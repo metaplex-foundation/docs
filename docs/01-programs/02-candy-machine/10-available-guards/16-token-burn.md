@@ -25,6 +25,8 @@ The Token Burn guard contains the following settings:
 
 TODO
 
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [TokenBurn](https://mpl-candy-machine-js-docs.vercel.app/types/TokenBurnArgs.html)
+
 </div>
 </AccordionItem>
 <AccordionItem title="JavaScript — SDK">

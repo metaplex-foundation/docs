@@ -24,6 +24,8 @@ The NFT Gate guard contains the following settings:
 
 TODO
 
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [NftGate](https://mpl-candy-machine-js-docs.vercel.app/types/NftGate.html)
+
 </div>
 </AccordionItem>
 <AccordionItem title="JavaScript — SDK">

@@ -26,6 +26,8 @@ The Redeemed Amount guard contains the following settings:
 
 TODO
 
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [RedeemedAmount](https://mpl-candy-machine-js-docs.vercel.app/types/RedeemedAmountArgs.html)
+
 </div>
 </AccordionItem>
 <AccordionItem title="JavaScript — SDK">

@@ -38,6 +38,8 @@ The Allow List guard contains the following settings:
 
 TODO
 
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [AllowList](https://mpl-candy-machine-js-docs.vercel.app/types/AllowList.html)
+
 </div>
 </AccordionItem>
 <AccordionItem title="JavaScript — SDK">

@@ -24,6 +24,8 @@ The End Date guard contains the following settings:
 
 TODO
 
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [EndDate](https://mpl-candy-machine-js-docs.vercel.app/types/EndDate.html)
+
 </div>
 </AccordionItem>
 <AccordionItem title="JavaScript — SDK">

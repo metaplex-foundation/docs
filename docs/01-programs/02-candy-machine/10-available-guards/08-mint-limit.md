@@ -27,6 +27,8 @@ The Mint Limit guard contains the following settings:
 
 TODO
 
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [MintLimit](https://mpl-candy-machine-js-docs.vercel.app/types/MintLimit.html)
+
 </div>
 </AccordionItem>
 <AccordionItem title="JavaScript — SDK">
