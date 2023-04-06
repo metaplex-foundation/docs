@@ -112,6 +112,8 @@ Last but not least, the Freeze Escrow PDA account will receive the tokens of all
 
 TODO
 
+API References: [route](https://mpl-candy-machine-js-docs.vercel.app/functions/route.html), [FreezeTokenPaymentRouteArgsInitialize](https://mpl-candy-machine-js-docs.vercel.app/types/FreezeTokenPaymentRouteArgsInitialize.html)
+
 </div>
 </AccordionItem>
 <AccordionItem title="JavaScript — SDK">
@@ -163,6 +165,8 @@ To thaw a Frozen NFT, we must provide the following arguments to the route instr
 
 TODO
 
+API References: [route](https://mpl-candy-machine-js-docs.vercel.app/functions/route.html), [FreezeTokenPaymentRouteArgsThaw](https://mpl-candy-machine-js-docs.vercel.app/types/FreezeTokenPaymentRouteArgsThaw.html)
+
 </div>
 </AccordionItem>
 <AccordionItem title="JavaScript — SDK">
@@ -208,6 +212,8 @@ To unlock the funds, we must provide the following arguments to the route instru
 <div className="accordion-item-padding">
 
 TODO
+
+API References: [route](https://mpl-candy-machine-js-docs.vercel.app/functions/route.html), [FreezeTokenPaymentRouteArgsUnlockFunds](https://mpl-candy-machine-js-docs.vercel.app/types/FreezeTokenPaymentRouteArgsUnlockFunds.html)
 
 </div>
 </AccordionItem>
