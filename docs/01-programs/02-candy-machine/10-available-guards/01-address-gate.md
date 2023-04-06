@@ -22,7 +22,20 @@ The Address Gate guard contains the following settings:
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+Here’s how we can set up a Candy Machine using the Address Gate guard.
+
+```ts
+create(umi, {
+  // ...
+  guards: {
+    addressGate: some({ address: someWallet.publicKey }),
+  },
+});
+```
+
+Now, only `someWallet` will be able to mint from this Candy Machine.
+
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [AddressGate](https://mpl-candy-machine-js-docs.vercel.app/types/AddressGate.html)
 
 </div>
 </AccordionItem>
@@ -31,10 +44,7 @@ TODO
 
 Here’s how we can set up a Candy Machine using the Address Gate guard via the JS SDK.
 
-```tsx
-import { TODO } from "@metaplex-foundation/js";
-import { TODO } from "@solana/web3.js";
-
+```ts
 const { candyMachine } = await metaplex.candyMachines().create({
   // ...
   guards: {
