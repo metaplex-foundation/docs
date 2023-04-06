@@ -25,13 +25,16 @@ The NFT Payment guard contains the following settings:
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-Here’s how we can set up a Candy Machine using the TODO guard.
+Here’s an example of how to set up a Candy Machine using the NFT Payment guard. You may use any wallet as a destination but, in this example, we’ll use the address of the current identity.
 
 ```ts
 create(umi, {
   // ...
   guards: {
-    TODO: some({}),
+    nftPayment: some({
+      requiredCollection: requiredCollectionNft.publicKey,
+      destination: umi.identity.publicKey,
+    }),
   },
 });
 ```
@@ -67,8 +70,11 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 The NFT Payment guard contains the following Mint Settings:
 
+- **Destination**: The address of the wallet that will receive all NFTs.
 - **Mint**: The mint address of the NFT to pay with. This must be part of the required collection and must belong to the payer.
+- **Token Standard**: The token standard of the NFT used to pay.
 - **Token Account** (optional): You may optionally provide the token account linking the NFT with its owner explicitly. By default, the associated token account of the payer will be used.
+- **Rule Set** (optional): The Rule Set of the NFT used to pay, if we are paying using a Programmable NFT with a Rule Set.
 
 Note that, if you’re planning on constructing instructions without the help of our SDKs, you will need to provide these Mint Settings and more as a combination of instruction arguments and remaining accounts. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-machine/tree/main/programs/candy-guard#nftpayment) for more details.
 
@@ -76,7 +82,24 @@ Note that, if you’re planning on constructing instructions without the help of
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+You may pass the Mint Settings of the NFT Payment guard using the `mintArgs` argument like so.
+
+```ts
+import { TokenStandard } from "@metaplex-foundation/mpl-token-metadata";
+
+mintV2(umi, {
+  // ...
+  mintArgs: {
+    nftPayment: some({
+      destination,
+      mint: nftToPayWith.publicKey,
+      tokenStandard: TokenStandard.NonFungible,
+    }),
+  },
+});
+```
+
+API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/mintV2.html), [NftPaymentMintArgs](https://mpl-candy-machine-js-docs.vercel.app/types/NftPaymentMintArgs.html)
 
 </div>
 </AccordionItem>
