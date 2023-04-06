@@ -212,7 +212,7 @@ await create(umi, {
   },
 }).sendAndConfirm(umi);
 
-// Mint from it using guards.
+// Mint from the Candy Machine.
 const nftMint = generateSigner(umi);
 await transactionBuilder()
   .add(setComputeUnitLimit(umi, { units: 800_000 }))
@@ -311,7 +311,64 @@ Therefore, the provided Mint Settings must be related to these Resolved Guards. 
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+When minting from a Candy Machine using guard groups, the label of the group we want to select must be provided via the `group` attribute.
+
+Additionally, the Mint Settings for the Resolved Guards of that group may be provided via the `mintArgs` attribute.
+
+Here is how we would use the Umi library to mint from the example Candy Machine described above.
+
+```ts
+// Create a Candy Machine with guards.
+const thirdPartySigner = generateSigner();
+await create(umi, {
+  // ...
+  guards: {
+    botTax: some({ lamports: sol(0.001), lastInstruction: true }),
+    thirdPartySigner: some({ signer: thirdPartySigner.publicKey }),
+    startDate: some({ date: dateTime("2022-10-18T17:00:00Z") }),
+  },
+  groups: [
+    {
+      label: "nft",
+      guards: {
+        nftPayment: some({ requiredCollection, destination: nftTreasury }),
+        startDate: some({ date: dateTime("2022-10-18T16:00:00Z") }),
+      },
+    },
+    {
+      label: "public",
+      guards: {
+        solPayment: some({ lamports: sol(1), destination: solTreasury }),
+      },
+    },
+  ],
+}).sendAndConfirm(umi);
+
+// Mint from the Candy Machine.
+const nftMint = generateSigner(umi);
+await transactionBuilder()
+  .add(setComputeUnitLimit(umi, { units: 800_000 }))
+  .add(
+    mintV2(umi, {
+      candyMachine: candyMachine.publicKey,
+      nftMint,
+      collectionMint: collectionNft.publicKey,
+      collectionUpdateAuthority: collectionNft.metadata.updateAuthority,
+      group: some("nft"),
+      mintArgs: {
+        thirdPartySigner: some({ signer: thirdPartySigner }),
+        nftPayment: some({
+          mint: nftFromRequiredCollection.publicKey,
+          destination: nftTreasury,
+          tokenStandard: TokenStandard.NonFungible,
+        }),
+      },
+    })
+  )
+  .sendAndConfirm(umi);
+```
+
+API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/mintV2.html), [DefaultGuardSetMintArgs](https://mpl-candy-machine-js-docs.vercel.app/types/DefaultGuardSetMintArgs.html)
 
 </div>
 </AccordionItem>
