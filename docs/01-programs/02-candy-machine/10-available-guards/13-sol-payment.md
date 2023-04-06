@@ -62,6 +62,34 @@ The TODO guard contains the following Mint Settings:
 
 Note that, if you’re planning on constructing instructions without the help of our SDKs, you will need to provide these Mint Settings and more as a combination of instruction arguments and remaining accounts. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-machine/tree/main/programs/candy-guard#solpayment) for more details.
 
+<Accordion>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+You may pass the Mint Settings of the TODO guard using the `mintArgs` argument like so.
+
+```ts
+mintV2(umi, {
+  // ...
+  mintArgs: {
+    TODO: some({}),
+  },
+});
+```
+
+API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/mintV2.html), [TODOMintArgs](https://mpl-candy-machine-js-docs.vercel.app/types/TODOMintArgs.html)
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
+<div className="accordion-item-padding">
+
+_The JS SDK does not require any Mint Settings for the TODO guard since it can infer them from the provided Candy Machine model._
+
+</div>
+</AccordionItem>
+</Accordion>
+
 ## Route Instruction
 
 _The Sol Payment guard does not support the route instruction._
