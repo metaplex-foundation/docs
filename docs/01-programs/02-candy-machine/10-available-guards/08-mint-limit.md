@@ -25,7 +25,16 @@ The Mint Limit guard contains the following settings:
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+Here’s how we can set up a Candy Machine using the Mint Limit guard.
+
+```ts
+create(umi, {
+  // ...
+  guards: {
+    mintLimit: some({ id: 1, limit: 5 }),
+  },
+});
+```
 
 API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [MintLimit](https://mpl-candy-machine-js-docs.vercel.app/types/MintLimit.html)
 
@@ -56,9 +65,9 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 ## Mint Settings
 
-The TODO guard contains the following Mint Settings:
+The Mint Limit guard contains the following Mint Settings:
 
-- **TODO**: TODO.
+- **ID**: A unique identifier for this guard.
 
 Note that, if you’re planning on constructing instructions without the help of our SDKs, you will need to provide these Mint Settings and more as a combination of instruction arguments and remaining accounts. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-machine/tree/main/programs/candy-guard#mintlimit) for more details.
 
@@ -66,25 +75,25 @@ Note that, if you’re planning on constructing instructions without the help of
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-You may pass the Mint Settings of the TODO guard using the `mintArgs` argument like so.
+You may pass the Mint Settings of the Mint Limit guard using the `mintArgs` argument like so.
 
 ```ts
 mintV2(umi, {
   // ...
   mintArgs: {
-    TODO: some({}),
+    mintLimit: some({ id: 1 }),
   },
 });
 ```
 
-API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/mintV2.html), [TODOMintArgs](https://mpl-candy-machine-js-docs.vercel.app/types/TODOMintArgs.html)
+API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/mintV2.html), [MintLimitMintArgs](https://mpl-candy-machine-js-docs.vercel.app/types/MintLimitMintArgs.html)
 
 </div>
 </AccordionItem>
 <AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
-_The JS SDK does not require any Mint Settings for the TODO guard since it can infer them from the provided Candy Machine model._
+_The JS SDK does not require any Mint Settings for the Mint Limit guard since it can infer them from the provided Candy Machine model._
 
 </div>
 </AccordionItem>
