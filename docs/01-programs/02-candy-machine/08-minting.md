@@ -12,7 +12,7 @@ So far, we’ve learned how to create and maintain Candy Machines. We’ve seen 
 
 ## Basic Minting
 
-As mentioned [in the Candy Guards page](/programs/candy-machine/candy-guards#why-another-program), there are two programs responsible for minting NFTs from Candy Machines: The Candy Machine Core program — responsible for the minting the NFT — and the Candy Guard program which adds a configurable Access Control layer on top of it and can be forked to offer custom guards.
+As mentioned [in the Candy Guards page](/programs/candy-machine/candy-guards#why-another-program), there are two programs responsible for minting NFTs from Candy Machines: The Candy Machine Core program — responsible for minting the NFT — and the Candy Guard program which adds a configurable Access Control layer on top of it and can be forked to offer custom guards.
 
 As such, there are two ways to mint from a Candy Machine:
 
@@ -55,7 +55,7 @@ await transactionBuilder()
   .sendAndConfirm(umi);
 ```
 
-Note that the `mintV2` instruction takes care of creating the Mint and Token accounts for us by default and will set the NFT owner to the `minter`. If you wish to create these yourself before hand, you may simply give the NFT mind address as a public key instead of a signer. Here's an example using the `createMintWithAssociatedToken` function from the `mpl-essentials` Umi library:
+Note that the `mintV2` instruction takes care of creating the Mint and Token accounts for us by default and will set the NFT owner to the `minter`. If you wish to create these yourself beforehand, you may simply give the NFT mind address as a public key instead of a signer. Here's an example using the `createMintWithAssociatedToken` function from the `mpl-essentials` Umi library:
 
 ```ts
 import { mintV2 } from "@metaplex-foundation/mpl-candy-machine";
