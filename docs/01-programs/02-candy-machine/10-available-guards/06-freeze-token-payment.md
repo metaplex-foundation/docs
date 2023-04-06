@@ -34,7 +34,25 @@ The Freeze Token Payment guard contains the following settings:
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+Here’s how we can create a Candy Machine using the Freeze Token Payment guard. Note that, in this example, we’re using the current identity as the destination wallet.
+
+```ts
+import { findAssociatedTokenPda } from "@metaplex-foundation/mpl-essentials";
+
+create(umi, {
+  // ...
+  guards: {
+    freezeTokenPayment: some({
+      amount: 300,
+      mint: tokenMint.publicKey,
+      destinationAta: findAssociatedTokenPda({
+        mint: tokenMint.publicKey,
+        owner: umi.identity.publicKey,
+      }),
+    }),
+  },
+});
+```
 
 API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [FreezeTokenPayment](https://mpl-candy-machine-js-docs.vercel.app/types/FreezeTokenPaymentArgs.html)
 
@@ -51,7 +69,7 @@ import { token } from "@metaplex-foundation/js";
 const { candyMachine } = await metaplex.candyMachines().create({
   // ...
   guards: {
-    tokenPayment: {
+    freezeTokenPayment: {
       amount: token(300),
       mint: tokenMint.address,
       destinationAta: metaplex.tokens().pdas().associatedTokenAccount({
@@ -71,9 +89,11 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 ## Mint Settings
 
-The TODO guard contains the following Mint Settings:
+The Freeze Token Payment guard contains the following Mint Settings:
 
-- **TODO**: TODO.
+- **Mint**: The address of the mint account defining the SPL Token we want to pay with.
+- **Destination Associated Token Address (ATA)**: The address of the associated token account to eventually send the tokens to. We can get this address by finding the Associated Token Address PDA using the **Mint** attribute and the address of any wallet that should receive these tokens.
+- **NFT Rule Set** (optional): The Rule Set of the minted NFT, if we are minting a Programmable NFT with a Rule Set.
 
 Note that, if you’re planning on constructing instructions without the help of our SDKs, you will need to provide these Mint Settings and more as a combination of instruction arguments and remaining accounts. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-machine/tree/main/programs/candy-guard#freezetokenpayment) for more details.
 
@@ -81,25 +101,31 @@ Note that, if you’re planning on constructing instructions without the help of
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-You may pass the Mint Settings of the TODO guard using the `mintArgs` argument like so.
+You may pass the Mint Settings of the Freeze Token Payment guard using the `mintArgs` argument like so.
 
 ```ts
 mintV2(umi, {
   // ...
   mintArgs: {
-    TODO: some({}),
+    freezeTokenPayment: some({
+      mint: tokenMint.publicKey,
+      destinationAta: findAssociatedTokenPda({
+        mint: tokenMint.publicKey,
+        owner: umi.identity.publicKey,
+      }),
+    }),
   },
 });
 ```
 
-API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/mintV2.html), [TODOMintArgs](https://mpl-candy-machine-js-docs.vercel.app/types/TODOMintArgs.html)
+API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/mintV2.html), [FreezeTokenPaymentMintArgs](https://mpl-candy-machine-js-docs.vercel.app/types/FreezeTokenPaymentMintArgs.html)
 
 </div>
 </AccordionItem>
 <AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
-_The JS SDK does not require any Mint Settings for the TODO guard since it can infer them from the provided Candy Machine model._
+_The JS SDK does not require any Mint Settings for the Freeze Token Payment guard since it can infer them from the provided Candy Machine model._
 
 </div>
 </AccordionItem>
