@@ -219,11 +219,9 @@ await route(umi, {
   // ...
   guard: "allowList",
   routeArgs: {
-    allowList: {
-      path: "proof",
-      merkleRoot: getMerkleRoot(allowList),
-      merkleProof: getMerkleProof(allowList, base58PublicKey(umi.identity)),
-    },
+    path: "proof",
+    merkleRoot: getMerkleRoot(allowList),
+    merkleProof: getMerkleProof(allowList, base58PublicKey(umi.identity)),
   },
 }).sendAndConfirm(umi);
 
@@ -239,7 +237,7 @@ API References: [route](https://mpl-candy-machine-js-docs.vercel.app/functions/r
 
 Here again, we can use the Merkle Tree helpers provided by the JS SDK to get the Merkle Proof for the minting wallet.
 
-Note that the JS SDK does not require the Merkle Root to be passed to the route instruction since it can get it from the provided Candy Machine model.
+Note that the JS SDK does not require the Merkle Root to be passed in since it can get it from the provided Candy Machine model.
 
 ```ts
 import { getMerkleProof, getMerkleRoot } from "@metaplex-foundation/js";

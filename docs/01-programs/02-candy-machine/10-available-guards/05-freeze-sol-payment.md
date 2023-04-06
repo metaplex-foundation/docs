@@ -78,9 +78,10 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 ## Mint Settings
 
-The TODO guard contains the following Mint Settings:
+The Freeze Sol Payment guard contains the following Mint Settings:
 
-- **TODO**: TODO.
+- **Destination**: The address of the wallet that should eventually receive all payments related to this guard.
+- **NFT Rule Set** (optional): The Rule Set of the minted NFT, if we are minting a Programmable NFT with a Rule Set.
 
 Note that, if you’re planning on constructing instructions without the help of our SDKs, you will need to provide these Mint Settings and more as a combination of instruction arguments and remaining accounts. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-machine/tree/main/programs/candy-guard#freezesolpayment) for more details.
 
@@ -88,25 +89,25 @@ Note that, if you’re planning on constructing instructions without the help of
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-You may pass the Mint Settings of the TODO guard using the `mintArgs` argument like so.
+You may pass the Mint Settings of the Freeze Sol Payment guard using the `mintArgs` argument like so.
 
 ```ts
 mintV2(umi, {
   // ...
   mintArgs: {
-    TODO: some({}),
+    freezeSolPayment: some({ destination: umi.identity.publicKey }),
   },
 });
 ```
 
-API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/mintV2.html), [TODOMintArgs](https://mpl-candy-machine-js-docs.vercel.app/types/TODOMintArgs.html)
+API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/mintV2.html), [FreezeSolPaymentMintArgs](https://mpl-candy-machine-js-docs.vercel.app/types/FreezeSolPaymentMintArgs.html)
 
 </div>
 </AccordionItem>
 <AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
-_The JS SDK does not require any Mint Settings for the TODO guard since it can infer them from the provided Candy Machine model._
+_The JS SDK does not require any Mint Settings for the Freeze Sol Payment guard since it can infer them from the provided Candy Machine model._
 
 </div>
 </AccordionItem>
@@ -134,6 +135,7 @@ The Freeze Escrow PDA account will keep track of several parameters such as:
 When initializing this Freeze Escrow account, we must provide the following arguments to the route instruction of the guard:
 
 - **Path** = `initialize`: Selects the path to execute in the route instruction.
+- **Destination**: The address of the wallet that should eventually receive all payments related to this guard.
 - **Period**: The amount of time in seconds that the Freeze Period should last. This can be a maximum of 30 days (2,592,000 seconds) and it will start from the very first Frozen NFT minted via this guard. The Freeze Period provides a safety mechanism to ensure Frozen NFTs can eventually be thawed even if the Candy Machine never mints out.
 - **Candy Guard Authority**: The authority of the Candy Guard account as a Signer.
 
@@ -147,7 +149,20 @@ Last but not least, the Freeze Escrow PDA account will receive the funds of all 
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+In the example below, we initialize the Freeze Escrow account with a maximum Freeze Period of 15 days and we use the current identity as the Candy Guard authority.
+
+```ts
+route(umi, {
+  // ...
+  guard: "freezeSolPayment",
+  routeArgs: {
+    path: "initialize",
+    destination: umi.identity.publicKey,
+    period: 15 * 24 * 60 * 60, // 15 days.
+    candyGuardAuthority: metaplex.identity,
+  },
+});
+```
 
 API References: [route](https://mpl-candy-machine-js-docs.vercel.app/functions/route.html), [FreezeSolPaymentRouteArgsInitialize](https://mpl-candy-machine-js-docs.vercel.app/types/FreezeSolPaymentRouteArgsInitialize.html)
 
@@ -157,6 +172,8 @@ API References: [route](https://mpl-candy-machine-js-docs.vercel.app/functions/r
 <div className="accordion-item-padding">
 
 In the example below, we initialize the Freeze Escrow account with a maximum Freeze Period of 15 days and we use the current identity as the Candy Guard authority.
+
+Note that the JS SDK does not require the Destination to be passed in since it can get it from the provided Candy Machine model.
 
 ```tsx
 await metaplex.candyMachines().callGuardRoute({
@@ -191,8 +208,11 @@ Note that since the funds in the Freeze Escrow are not transferrable until all N
 To thaw a Frozen NFT, we must provide the following arguments to the route instruction of the guard:
 
 - **Path** = `thaw`: Selects the path to execute in the route instruction.
+- **Destination**: The address of the wallet that should eventually receive all payments related to this guard.
 - **NFT Mint**: The mint address of the Frozen NFT to thaw.
 - **NFT Owner**: The address of the owner of the Frozen NFT to thaw.
+- **NFT Token Standard**: The token standard of the Frozen NFT to thaw.
+- **NFT Rule Set** (optional): The Rule Set of the Frozen NFT to thaw, if we are thawing a Programmable NFT with a Rule Set.
 
 ![CandyMachinesV3-GuardsFreezeSolPayment3.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsFreezeSolPayment3.png#radius)
 
@@ -200,7 +220,21 @@ To thaw a Frozen NFT, we must provide the following arguments to the route instr
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+In the example below, we thaw a Frozen NFT that belongs to the current identity.
+
+```ts
+route(umi, {
+  // ...
+  guard: "freezeSolPayment",
+  routeArgs: {
+    path: "thaw",
+    destination,
+    nftMint: nftMint.publicKey,
+    nftOwner: umi.identity.publicKey,
+    nftTokenStandard: candyMachine.tokenStandard,
+  },
+});
+```
 
 API References: [route](https://mpl-candy-machine-js-docs.vercel.app/functions/route.html), [FreezeSolPaymentRouteArgsThaw](https://mpl-candy-machine-js-docs.vercel.app/types/FreezeSolPaymentRouteArgsThaw.html)
 
@@ -211,7 +245,9 @@ API References: [route](https://mpl-candy-machine-js-docs.vercel.app/functions/r
 
 In the example below, we thaw a Frozen NFT that belongs to the current identity.
 
-```tsx
+Note that the JS SDK does not require the Destination to be passed in since it can get it from the provided Candy Machine model. It also does not require the NFT Token Standard or the NFT Rule Set as it does not support minting Programmable NFTs.
+
+```ts
 import { toPublicKey } from "@metaplex-foundation/js";
 
 await metaplex.candyMachines().callGuardRoute({
@@ -240,6 +276,7 @@ Once all Frozen NFTs have been thawed, the treasury can unlock the funds from th
 To unlock the funds, we must provide the following arguments to the route instruction of the guard:
 
 - **Path** = `unlockFunds`: Selects the path to execute in the route instruction.
+- **Destination**: The address of the wallet that should eventually receive all payments related to this guard.
 - **Candy Guard Authority**: The authority of the Candy Guard account as a Signer.
 
 ![CandyMachinesV3-GuardsFreezeSolPayment4.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsFreezeSolPayment4.png#radius)
@@ -248,7 +285,19 @@ To unlock the funds, we must provide the following arguments to the route instru
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+In the example below, we unlock the funds from the Freeze Escrow account using the current identity as the Candy Guard authority.
+
+```tsx
+route(umi, {
+  // ...
+  guard: "freezeSolPayment",
+  routeArgs: {
+    path: "unlockFunds",
+    destination,
+    candyGuardAuthority: metaplex.identity,
+  },
+});
+```
 
 API References: [route](https://mpl-candy-machine-js-docs.vercel.app/functions/route.html), [FreezeSolPaymentRouteArgsUnlockFunds](https://mpl-candy-machine-js-docs.vercel.app/types/FreezeSolPaymentRouteArgsUnlockFunds.html)
 
@@ -258,6 +307,8 @@ API References: [route](https://mpl-candy-machine-js-docs.vercel.app/functions/r
 <div className="accordion-item-padding">
 
 In the example below, we unlock the funds from the Freeze Escrow account using the current identity as the Candy Guard authority.
+
+Note that the JS SDK does not require the Destination to be passed in since it can get it from the provided Candy Machine model.
 
 ```tsx
 await metaplex.candyMachines().callGuardRoute({
