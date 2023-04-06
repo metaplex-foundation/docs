@@ -193,13 +193,44 @@ So why can’t we just verify the Merkle Proof directly within the mint instruct
 This path of the route instruction accepts the following arguments:
 
 - **Path** = `proof`: Selects the path to execute in the route instruction.
+- **Merkle Root**: The Root of the Merkle Tree representing the allow list.
 - **Merkle Proof**: The list of intermediary hashes that should be used to compute the Merkle Root and verify that it matches the Merkle Root stored on the guard’s settings.
 
 <Accordion>
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+You may pass the "Proof" Route Settings of the Allow List guard using the `routeArgs` argument like so.
+
+```ts
+import {
+  getMerkleProof,
+  getMerkleRoot,
+} from "@metaplex-foundation/mpl-candy-machine";
+import { base58PublicKey } from "@metaplex-foundation/umi";
+
+const allowList = [
+  "Ur1CbWSGsXCdedknRbJsEk7urwAvu1uddmQv51nAnXB",
+  "GjwcWFQYzemBtpUoN5fMAP2FZviTtMRWCmrppGuTthJS",
+  "AT8nPwujHAD14cLojTcB1qdBzA1VXnT6LVGuUd6Y73Cy",
+];
+
+await route(umi, {
+  // ...
+  guard: "allowList",
+  routeArgs: {
+    allowList: {
+      path: "proof",
+      merkleRoot: getMerkleRoot(allowList),
+      merkleProof: getMerkleProof(allowList, base58PublicKey(umi.identity)),
+    },
+  },
+}).sendAndConfirm(umi);
+
+// The `umi.identity` wallet is now allowed to mint from the Candy Machine.
+```
+
+API References: [route](https://mpl-candy-machine-js-docs.vercel.app/functions/route.html), [AllowListRouteArgs](https://mpl-candy-machine-js-docs.vercel.app/types/AllowListRouteArgs.html)
 
 </div>
 </AccordionItem>
@@ -208,7 +239,9 @@ TODO
 
 Here again, we can use the Merkle Tree helpers provided by the JS SDK to get the Merkle Proof for the minting wallet.
 
-```tsx
+Note that the JS SDK does not require the Merkle Root to be passed to the route instruction since it can get it from the provided Candy Machine model.
+
+```ts
 import { getMerkleProof, getMerkleRoot } from "@metaplex-foundation/js";
 
 const allowList = [
