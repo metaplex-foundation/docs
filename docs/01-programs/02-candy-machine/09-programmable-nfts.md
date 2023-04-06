@@ -13,9 +13,9 @@ Version `1.7` of Token Metadata introduced a [new type of asset class called Pro
 Since version `1.0` of Candy Machine Core and version `1.0` of Candy Guard, it is now possible to **mint Programmable NFTs from candy machines** and even update the token standard of existing candy machines.
 
 :::info
-Note that, for JavaScript clients, the rest of the documentation currently provides examples using the Metaplex JS SDK. However, Programmable NFTs will not be supported on the JS SDK as we are working on a new JavaScript client framework that will be released soon.
+Note that, for JavaScript clients, the Metaplex JS SDK does not and will not support minting Programmable NFTs from candy machines. This is because we released a new [Umi-compatible library](/programs/candy-machine/getting-started#umi-library-recommended) that does support everything on the programs, which is the new recommended way to manage candy machines in JavaScript.
 
-In the meantime, you can use the Solita-generated libraries [mpl-candy-machine-core](https://www.npmjs.com/package/@metaplex-foundation/mpl-candy-machine-core) from `v0.2.1` and [mpl-candy-guard](https://www.npmjs.com/package/@metaplex-foundation/mpl-candy-guard) from `v0.4.1` since these are the ones the current JS SDK use under the hood. Thus, we will use these libraries to provide examples on this page.
+Alternatively, if you do not wish to switch to the Umi framework, you may instead use the Solita-generated libraries [mpl-candy-machine-core](https://www.npmjs.com/package/@metaplex-foundation/mpl-candy-machine-core) from `v0.2.1` and [mpl-candy-guard](https://www.npmjs.com/package/@metaplex-foundation/mpl-candy-guard) from `v0.4.1`.
 :::
 
 ## For new candy machines
