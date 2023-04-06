@@ -22,7 +22,16 @@ The NFT Burn guard contains the following settings:
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+Here’s how we can set up a Candy Machine using the TODO guard.
+
+```ts
+create(umi, {
+  // ...
+  guards: {
+    TODO: some({}),
+  },
+});
+```
 
 API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [NftBurn](https://mpl-candy-machine-js-docs.vercel.app/types/NftBurn.html)
 

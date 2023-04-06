@@ -64,7 +64,16 @@ The Third Party Signer guard contains the following Mint Settings:
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+Here’s how we can set up a Candy Machine using the TODO guard.
+
+```ts
+create(umi, {
+  // ...
+  guards: {
+    TODO: some({}),
+  },
+});
+```
 
 </div>
 </AccordionItem>
