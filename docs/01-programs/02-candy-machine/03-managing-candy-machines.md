@@ -24,9 +24,9 @@ Remember that a Candy Machine [must be associated with a Collection NFT](/progra
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-Here’s how you can create a Candy Machine using a brand new Collection NFT via the Umi library. Notice that, by default, the identity is used as the authority of these entities.
+Here’s how you can create a Candy Machine using a brand new Collection NFT via the Umi library.
 
-```tsx
+```ts
 import {
   createNft,
   TokenStandard,
@@ -91,9 +91,17 @@ API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/
 <AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
+:::info
+The JS SDK is only compatible with Candy Machines with account version 1. That means, it does not support minting programmable NFTs and it is not compatible with Candy Machines created with the latest version of [Sugar](/developer-tools/sugar/overview/introduction).
+
+You may consider [using the Umi library](/programs/candy-machine/getting-started#umi-library-recommended) instead which supports all versions of Candy Machines. Alternatively, you may downgrade you Sugar version to `2.0.0` or use the Solita-generated library.
+
+See [Programmable NFTs](/programs/candy-machine/programmable-nfts) for more details.
+:::
+
 Here’s how you can create a Candy Machine using a brand new Collection NFT using the JS SDK. Notice that, by default, the current identity is used as the authority of these entities.
 
-```tsx
+```ts
 import { toBigNumber } from "@metaplex-foundation/js";
 import { Keypair } from "@solana/web3.js";
 
@@ -457,7 +465,15 @@ API References: [setTokenStandard](https://mpl-candy-machine-js-docs.vercel.app/
 <AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
-_This operation is not supported by the JS SDK._
+:::info
+The JS SDK is only compatible with Candy Machines with account version 1. That means, it does not support minting programmable NFTs and it is not compatible with Candy Machines created with the latest version of [Sugar](/developer-tools/sugar/overview/introduction).
+
+You may consider [using the Umi library](/programs/candy-machine/getting-started#umi-library-recommended) instead which supports all versions of Candy Machines. Alternatively, you may downgrade you Sugar version to `2.0.0` or use the Solita-generated library.
+
+See [Programmable NFTs](/programs/candy-machine/programmable-nfts) for more details.
+:::
+
+_This operation is not supported by the JS SDK but you may use the Solita-generated library as explained in the [Programmable NFTs](/programs/candy-machine/programmable-nfts#for-existing-candy-machines) page._
 
 </div>
 </AccordionItem>
@@ -508,6 +524,14 @@ API References: [setCollectionV2](https://mpl-candy-machine-js-docs.vercel.app/f
 </AccordionItem>
 <AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
+
+:::info
+The JS SDK is only compatible with Candy Machines with account version 1. That means, it does not support minting programmable NFTs and it is not compatible with Candy Machines created with the latest version of [Sugar](/developer-tools/sugar/overview/introduction).
+
+You may consider [using the Umi library](/programs/candy-machine/getting-started#umi-library-recommended) instead which supports all versions of Candy Machines. Alternatively, you may downgrade you Sugar version to `2.0.0` or use the Solita-generated library.
+
+See [Programmable NFTs](/programs/candy-machine/programmable-nfts) for more details.
+:::
 
 To update the Collection NFT of a Candy Machine using the JS SDK you must provide a `collection` object containing the `address` of the Collection NFT’s mint account and the `updateAuthority` of the Collection NFT as a signer.
 
