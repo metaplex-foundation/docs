@@ -22,13 +22,15 @@ The NFT Gate guard contains the following settings:
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-Here’s how we can set up a Candy Machine using the TODO guard.
+Here’s how we can set up a Candy Machine using the NFT Gate guard.
 
 ```ts
 create(umi, {
   // ...
   guards: {
-    TODO: some({}),
+    nftGate: some({
+      requiredCollection: requiredCollectionNft.publicKey,
+    }),
   },
 });
 ```
@@ -72,7 +74,18 @@ Note that, if you’re planning on constructing instructions without the help of
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+When minting via the Umi library, simply provide the mint address of the NFT to use as proof of ownership via the `mint` attribute like so.
+
+```ts
+mintV2(umi, {
+  // ...
+  mintArgs: {
+    nftGate: some({ mint: nftToBurn.publicKey }),
+  },
+});
+```
+
+API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/mintV2.html), [NftGateMintArgs](https://mpl-candy-machine-js-docs.vercel.app/types/NftGateMintArgs.html)
 
 </div>
 </AccordionItem>
