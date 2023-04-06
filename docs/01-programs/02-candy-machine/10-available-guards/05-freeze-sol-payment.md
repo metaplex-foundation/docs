@@ -287,7 +287,7 @@ To unlock the funds, we must provide the following arguments to the route instru
 
 In the example below, we unlock the funds from the Freeze Escrow account using the current identity as the Candy Guard authority.
 
-```tsx
+```ts
 route(umi, {
   // ...
   guard: "freezeSolPayment",

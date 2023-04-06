@@ -225,8 +225,12 @@ Note that since the tokens in the Freeze Escrow are not transferrable until all 
 To thaw a Frozen NFT, we must provide the following arguments to the route instruction of the guard:
 
 - **Path** = `thaw`: Selects the path to execute in the route instruction.
+- **Mint**: The address of the mint account defining the SPL Token we want to pay with.
+- **Destination Associated Token Address (ATA)**: The address of the associated token account to eventually send the tokens to.
 - **NFT Mint**: The mint address of the Frozen NFT to thaw.
 - **NFT Owner**: The address of the owner of the Frozen NFT to thaw.
+- **NFT Token Standard**: The token standard of the Frozen NFT to thaw.
+- **NFT Rule Set** (optional): The Rule Set of the Frozen NFT to thaw, if we are thawing a Programmable NFT with a Rule Set.
 
 ![CandyMachinesV3-GuardsFreezeTokenPayment3.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsFreezeTokenPayment3.png#radius)
 
@@ -234,7 +238,22 @@ To thaw a Frozen NFT, we must provide the following arguments to the route instr
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+In the example below, we thaw a Frozen NFT that belongs to the current identity.
+
+```ts
+route(umi, {
+  // ...
+  guard: "freezeTokenPayment",
+  routeArgs: {
+    path: "thaw",
+    mint: tokenMint.publicKey,
+    destinationAta,
+    nftMint: nftMint.publicKey,
+    nftOwner: umi.identity.publicKey,
+    nftTokenStandard: candyMachine.tokenStandard,
+  },
+});
+```
 
 API References: [route](https://mpl-candy-machine-js-docs.vercel.app/functions/route.html), [FreezeTokenPaymentRouteArgsThaw](https://mpl-candy-machine-js-docs.vercel.app/types/FreezeTokenPaymentRouteArgsThaw.html)
 
@@ -245,7 +264,9 @@ API References: [route](https://mpl-candy-machine-js-docs.vercel.app/functions/r
 
 In the example below, we thaw a Frozen NFT that belongs to the current identity.
 
-```tsx
+Note that the JS SDK does not require the Mint and Destination ATA to be passed in since it can get it from the provided Candy Machine model. It also does not require the NFT Token Standard or the NFT Rule Set as it does not support minting Programmable NFTs.
+
+```ts
 import { toPublicKey } from "@metaplex-foundation/js";
 
 await metaplex.candyMachines().callGuardRoute({
@@ -274,6 +295,8 @@ Once all Frozen NFTs have been thawed, the treasury can unlock the funds from th
 To unlock the funds, we must provide the following arguments to the route instruction of the guard:
 
 - **Path** = `unlockFunds`: Selects the path to execute in the route instruction.
+- **Mint**: The address of the mint account defining the SPL Token we want to pay with.
+- **Destination Associated Token Address (ATA)**: The address of the associated token account to eventually send the tokens to.
 - **Candy Guard Authority**: The authority of the Candy Guard account as a Signer.
 
 ![CandyMachinesV3-GuardsFreezeTokenPayment4.png](/assets/candy-machine-v3/CandyMachinesV3-GuardsFreezeTokenPayment4.png#radius)
@@ -282,7 +305,20 @@ To unlock the funds, we must provide the following arguments to the route instru
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+In the example below, we unlock the funds from the Freeze Escrow account using the current identity as the Candy Guard authority.
+
+```ts
+route(umi, {
+  // ...
+  guard: "freezeTokenPayment",
+  routeArgs: {
+    path: "unlockFunds",
+    mint: tokenMint.publicKey,
+    destinationAta,
+    candyGuardAuthority: umi.identity,
+  },
+});
+```
 
 API References: [route](https://mpl-candy-machine-js-docs.vercel.app/functions/route.html), [FreezeTokenPaymentRouteArgsUnlockFunds](https://mpl-candy-machine-js-docs.vercel.app/types/FreezeTokenPaymentRouteArgsUnlockFunds.html)
 
