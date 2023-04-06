@@ -159,7 +159,7 @@ route(umi, {
     path: "initialize",
     destination: umi.identity.publicKey,
     period: 15 * 24 * 60 * 60, // 15 days.
-    candyGuardAuthority: metaplex.identity,
+    candyGuardAuthority: umi.identity,
   },
 });
 ```
@@ -294,7 +294,7 @@ route(umi, {
   routeArgs: {
     path: "unlockFunds",
     destination,
-    candyGuardAuthority: metaplex.identity,
+    candyGuardAuthority: umi.identity,
   },
 });
 ```

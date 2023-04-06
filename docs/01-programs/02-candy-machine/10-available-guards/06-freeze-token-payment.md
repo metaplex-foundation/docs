@@ -92,7 +92,7 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 The Freeze Token Payment guard contains the following Mint Settings:
 
 - **Mint**: The address of the mint account defining the SPL Token we want to pay with.
-- **Destination Associated Token Address (ATA)**: The address of the associated token account to eventually send the tokens to. We can get this address by finding the Associated Token Address PDA using the **Mint** attribute and the address of any wallet that should receive these tokens.
+- **Destination Associated Token Address (ATA)**: The address of the associated token account to eventually send the tokens to.
 - **NFT Rule Set** (optional): The Rule Set of the minted NFT, if we are minting a Programmable NFT with a Rule Set.
 
 Note that, if you’re planning on constructing instructions without the help of our SDKs, you will need to provide these Mint Settings and more as a combination of instruction arguments and remaining accounts. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-machine/tree/main/programs/candy-guard#freezetokenpayment) for more details.
@@ -109,10 +109,7 @@ mintV2(umi, {
   mintArgs: {
     freezeTokenPayment: some({
       mint: tokenMint.publicKey,
-      destinationAta: findAssociatedTokenPda({
-        mint: tokenMint.publicKey,
-        owner: umi.identity.publicKey,
-      }),
+      destinationAta,
     }),
   },
 });
@@ -153,6 +150,8 @@ The Freeze Escrow PDA account will keep track of several parameters such as:
 When initializing this Freeze Escrow account, we must provide the following arguments to the route instruction of the guard:
 
 - **Path** = `initialize`: Selects the path to execute in the route instruction.
+- **Mint**: The address of the mint account defining the SPL Token we want to pay with.
+- **Destination Associated Token Address (ATA)**: The address of the associated token account to eventually send the tokens to.
 - **Period**: The amount of time in seconds that the Freeze Period should last. This can be a maximum of 30 days (2,592,000 seconds) and it will start from the very first Frozen NFT minted via this guard. The Freeze Period provides a safety mechanism to ensure Frozen NFTs can eventually be thawed even if the Candy Machine never mints out.
 - **Candy Guard Authority**: The authority of the Candy Guard account as a Signer.
 
@@ -166,7 +165,21 @@ Last but not least, the Freeze Escrow PDA account will receive the tokens of all
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-TODO
+In the example below, we initialize the Freeze Escrow account with a maximum Freeze Period of 15 days and we use the current identity as the Candy Guard authority.
+
+```ts
+route(umi, {
+  // ...
+  guard: "freezeTokenPayment",
+  routeArgs: {
+    path: "initialize",
+    mint: tokenMint.publicKey,
+    destinationAta,
+    period: 15 * 24 * 60 * 60, // 15 days.
+    candyGuardAuthority: umi.identity,
+  },
+});
+```
 
 API References: [route](https://mpl-candy-machine-js-docs.vercel.app/functions/route.html), [FreezeTokenPaymentRouteArgsInitialize](https://mpl-candy-machine-js-docs.vercel.app/types/FreezeTokenPaymentRouteArgsInitialize.html)
 
@@ -176,6 +189,8 @@ API References: [route](https://mpl-candy-machine-js-docs.vercel.app/functions/r
 <div className="accordion-item-padding">
 
 In the example below, we initialize the Freeze Escrow account with a maximum Freeze Period of 15 days and we use the current identity as the Candy Guard authority.
+
+Note that the JS SDK does not require the Mint and Destination ATA to be passed in since it can get it from the provided Candy Machine model.
 
 ```tsx
 await metaplex.candyMachines().callGuardRoute({
