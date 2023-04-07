@@ -64,7 +64,7 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 The NFT Burn guard contains the following Mint Settings:
 
 - **Required Collection**: The mint address of the required NFT Collection.
-- **Mint**: The mint address of the NFT to burn. This must be part of the required collection and must belong to the payer.
+- **Mint**: The mint address of the NFT to burn. This must be part of the required collection and must belong to the minter.
 - **Token Standard**: The token standard of the NFT to burn.
 - **Token Account** (optional): You may optionally provide the token account linking the NFT with its owner explicitly. By default, the associated token account of the payer will be used.
 

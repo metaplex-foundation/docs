@@ -71,7 +71,7 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 The NFT Payment guard contains the following Mint Settings:
 
 - **Destination**: The address of the wallet that will receive all NFTs.
-- **Mint**: The mint address of the NFT to pay with. This must be part of the required collection and must belong to the payer.
+- **Mint**: The mint address of the NFT to pay with. This must be part of the required collection and must belong to the minter.
 - **Token Standard**: The token standard of the NFT used to pay.
 - **Token Account** (optional): You may optionally provide the token account linking the NFT with its owner explicitly. By default, the associated token account of the payer will be used.
 - **Rule Set** (optional): The Rule Set of the NFT used to pay, if we are paying using a Programmable NFT with a Rule Set.

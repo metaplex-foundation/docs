@@ -24,14 +24,41 @@ The Redeemed Amount guard contains the following settings:
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-Here’s how we can set up a Candy Machine using the TODO guard.
+Here’s how we can set up a Candy Machine using the Redeemed Amount guard.
 
 ```ts
 create(umi, {
   // ...
+  itemsAvailable: 500,
   guards: {
-    TODO: some({}),
+    redeemedAmount: some({ maximum: 300 }),
   },
+});
+```
+
+Notice that, even if the Candy Machine contains 500 items, only 300 of these items will be mintable because of this guard.
+
+Thus, this guard becomes more useful when using [Guard Groups](/programs/candy-machine/guard-groups). Here’s another example using two groups such that the first 300 NFTs can be minted for 1 SOL but the last 200 will need 2 SOL to mint.
+
+```ts
+create(umi, {
+  // ...
+  itemsAvailable: 500,
+  groups: [
+    {
+      label: "early",
+      guards: {
+        redeemedAmount: some({ maximum: 300 }),
+        solPayment: some({ lamports: sol(1), destination: treasury }),
+      },
+    },
+    {
+      label: "late",
+      guards: {
+        solPayment: some({ lamports: sol(2), destination: treasury }),
+      },
+    },
+  ],
 });
 ```
 
