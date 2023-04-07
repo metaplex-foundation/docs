@@ -23,13 +23,16 @@ The Token Burn guard contains the following settings:
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-Here’s how we can set up a Candy Machine using the TODO guard.
+Here’s how we can set up a Candy Machine using the Token Burn guard.
 
 ```ts
 create(umi, {
   // ...
   guards: {
-    TODO: some({}),
+    tokenBurn: some({
+      amount: 300,
+      mint: tokenMint.publicKey,
+    }),
   },
 });
 ```
@@ -65,9 +68,9 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 ## Mint Settings
 
-The TODO guard contains the following Mint Settings:
+The Token Burn guard contains the following Mint Settings:
 
-- **TODO**: TODO.
+- **Mint**: The address of the mint account defining the SPL Token we want to burn.
 
 Note that, if you’re planning on constructing instructions without the help of our SDKs, you will need to provide these Mint Settings and more as a combination of instruction arguments and remaining accounts. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-machine/tree/main/programs/candy-guard#tokenburn) for more details.
 
@@ -75,25 +78,25 @@ Note that, if you’re planning on constructing instructions without the help of
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-You may pass the Mint Settings of the TODO guard using the `mintArgs` argument like so.
+You may pass the Mint Settings of the Token Burn guard using the `mintArgs` argument like so.
 
 ```ts
 mintV2(umi, {
   // ...
   mintArgs: {
-    TODO: some({}),
+    tokenBurn: some({ mint: tokenMint.publicKey }),
   },
 });
 ```
 
-API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/mintV2.html), [TODOMintArgs](https://mpl-candy-machine-js-docs.vercel.app/types/TODOMintArgs.html)
+API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/mintV2.html), [TokenBurnMintArgs](https://mpl-candy-machine-js-docs.vercel.app/types/TokenBurnMintArgs.html)
 
 </div>
 </AccordionItem>
 <AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
-_The JS SDK does not require any Mint Settings for the TODO guard since it can infer them from the provided Candy Machine model._
+_The JS SDK does not require any Mint Settings for the Token Burn guard since it can infer them from the provided Candy Machine model._
 
 </div>
 </AccordionItem>

@@ -45,7 +45,7 @@ create(umi, {
     freezeTokenPayment: some({
       amount: 300,
       mint: tokenMint.publicKey,
-      destinationAta: findAssociatedTokenPda({
+      destinationAta: findAssociatedTokenPda(umi, {
         mint: tokenMint.publicKey,
         owner: umi.identity.publicKey,
       }),
