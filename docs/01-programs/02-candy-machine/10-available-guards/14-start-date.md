@@ -22,13 +22,15 @@ The Start Date guard contains the following settings:
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-Here’s how we can set up a Candy Machine using the TODO guard.
+Here’s how we can set up a Candy Machine using the Start Date guard.
 
 ```ts
+import { dateTime } from "@metaplex-foundation/umi";
+
 create(umi, {
   // ...
   guards: {
-    TODO: some({}),
+    startDate: some({ date: dateTime("2022-10-24T15:30:00.000Z") }),
   },
 });
 ```

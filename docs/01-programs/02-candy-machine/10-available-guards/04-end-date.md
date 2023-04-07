@@ -25,6 +25,8 @@ The End Date guard contains the following settings:
 Here’s how we can set up a Candy Machine using the End Date guard.
 
 ```ts
+import { dateTime } from "@metaplex-foundation/umi";
+
 create(umi, {
   // ...
   guards: {
