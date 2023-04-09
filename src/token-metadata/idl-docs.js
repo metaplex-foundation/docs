@@ -170,7 +170,7 @@ export default {
       },
     },
     CollectionDetails: {
-      size: 8,
+      size: 10,
       description:
         "This optional enum allows us to differentiate Collection NFTs from Regular NFTs whilst adding additional context " +
         "such as the amount of NFTs that are linked to the Collection NFT. " +
