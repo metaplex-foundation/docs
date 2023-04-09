@@ -183,7 +183,7 @@ export default {
       },
     },
     ProgrammableConfig: {
-      size: 33,
+      size: 35,
       description:
         "This optional enum stores any data relevant to Programmable NFTs. " +
         "The different variants of the enum are used as versions so we can " +
