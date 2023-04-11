@@ -170,7 +170,7 @@ export default {
       },
     },
     CollectionDetails: {
-      size: 8,
+      size: 10,
       description:
         "This optional enum allows us to differentiate Collection NFTs from Regular NFTs whilst adding additional context " +
         "such as the amount of NFTs that are linked to the Collection NFT. " +
@@ -183,7 +183,7 @@ export default {
       },
     },
     ProgrammableConfig: {
-      size: 33,
+      size: 35,
       description:
         "This optional enum stores any data relevant to Programmable NFTs. " +
         "The different variants of the enum are used as versions so we can " +
