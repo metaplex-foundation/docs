@@ -195,6 +195,7 @@ This path of the route instruction accepts the following arguments:
 - **Path** = `proof`: Selects the path to execute in the route instruction.
 - **Merkle Root**: The Root of the Merkle Tree representing the allow list.
 - **Merkle Proof**: The list of intermediary hashes that should be used to compute the Merkle Root and verify that it matches the Merkle Root stored on the guard’s settings.
+- **Minter** (optional): The minter account as a signer if it is not the same as the payer. When provided, this account must be part of the allow list for the proof to be valid.
 
 <Accordion>
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
