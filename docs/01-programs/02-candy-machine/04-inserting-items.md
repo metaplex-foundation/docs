@@ -269,7 +269,7 @@ When inserting items, you may provide the position in which these items should b
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
-The following examples show how you can insert 3 items and, later on, update the second item inserted.
+The following examples show how you can insert three items and, later on, update the second item inserted.
 
 ```ts
 await addConfigLines(umi, {

@@ -145,9 +145,13 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 Now that we’ve created the Candy Machine account, let’s see what data is stored inside it.
 
-First of all, it stores all the settings provided when the account was created and keeps track of any changes.
+First of all, it stores all the settings provided when the account was created and keeps track of any changes. See the [previous page](/programs/candy-machine/candy-machine-settings) for more details on these settings.
 
-It also keeps track of the number of NFTs that were minted from the Candy Machine. Note that, as soon as this number goes from 0 to 1, most settings will no longer be updatable. Additionally, there is a **Feature Flags** attribute which helps the program with backward and forward compatibility as more features get introduced.
+Additionally, it stores the following attributes:
+
+- **Items Redeemed**. This keeps track of the number of NFTs that were minted from the Candy Machine. Note that, as soon as this number goes from 0 to 1, most settings will no longer be updatable.
+- **Account Version**. This enum is used to keep track of the account version of the Candy Machine. It is used to determine which features are available and how the account should be interpreted. Note that this is not to be confused with "Candy Machine V3" which refers to the third and latest iteration of the Candy Machine programs (including the Candy Machine Core and Candy Guard programs).
+- **Feature Flags**. This helps the program with backward and forward compatibility as more features get introduced.
 
 Finally, it stores all items inserted in the Candy Machine and whether or not they have been minted. This only applies for Candy Machine using [**Config Line Settings**](/programs/candy-machine/candy-machine-settings#config-line-settings) since [**Hidden Settings**](/programs/candy-machine/candy-machine-settings#hidden-settings) don’t allow you to insert any items. This section contains the following information:
 
