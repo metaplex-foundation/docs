@@ -92,9 +92,9 @@ API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/
 <div className="accordion-item-padding">
 
 :::info
-The JS SDK is only compatible with Candy Machines with account version 1. That means, it does not support minting programmable NFTs and it is not compatible with Candy Machines created with the latest version of [Sugar](/developer-tools/sugar/overview/introduction).
+The JS SDK is only compatible with Candy Machine V3 accounts whose account version is 1. That means, it does not support minting programmable NFTs and it is not compatible with Candy Machines created with the latest version of [Sugar](/developer-tools/sugar/overview/introduction).
 
-You may consider [using the Umi library](/programs/candy-machine/getting-started#umi-library-recommended) instead which supports all versions of Candy Machines. Alternatively, you may downgrade you Sugar version to `2.0.0` or use the Solita-generated library.
+You may consider [using the Umi library](/programs/candy-machine/getting-started#umi-library-recommended) instead which supports all account versions of Candy Machine V3. Alternatively, you may downgrade you Sugar version to `2.0.0` or use the Solita-generated library.
 
 See [Programmable NFTs](/programs/candy-machine/programmable-nfts) for more details.
 :::
@@ -420,7 +420,7 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 The Token Standard and Rule Set attributes can also be updated on a Candy Machine using the "Set Token Standard" instruction. This allows us to switch from regular NFTs to programmable NFTs and vice versa. When switching to programmable NFTs, we can optionally specify or update the Rule Set that minted NFTs should adhere to.
 
-Note that, if you candy machine is using an old version, this instruction will also automatically upgrade it to the latest version that supports programmable NFTs as well as regular NFTs. Once upgraded, you will need to use the latest instructions for minting from the candy machine or candy guard.
+Note that, if you candy machine is using an old account version, this instruction will also automatically upgrade it to the latest account version that supports programmable NFTs as well as regular NFTs. Once upgraded, you will need to use the latest instructions for minting from the candy machine or candy guard.
 
 <Accordion>
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
@@ -441,7 +441,7 @@ await setTokenStandard(umi, {
 }).sendAndConfirm(umi);
 ```
 
-Note that if your candy machine is using version `V1`, you will need to explicitly set the `collectionAuthorityRecord` account as it uses the legacy collection delegate authority record account.
+Note that if your candy machine is using account version `V1`, you will need to explicitly set the `collectionAuthorityRecord` account as it uses the legacy collection delegate authority record account.
 
 ```ts
 import { findCollectionAuthorityRecordPda } from "@metaplex-foundation/mpl-token-metadata";
@@ -466,9 +466,9 @@ API References: [setTokenStandard](https://mpl-candy-machine-js-docs.vercel.app/
 <div className="accordion-item-padding">
 
 :::info
-The JS SDK is only compatible with Candy Machines with account version 1. That means, it does not support minting programmable NFTs and it is not compatible with Candy Machines created with the latest version of [Sugar](/developer-tools/sugar/overview/introduction).
+The JS SDK is only compatible with Candy Machine V3 accounts whose account version is 1. That means, it does not support minting programmable NFTs and it is not compatible with Candy Machines created with the latest version of [Sugar](/developer-tools/sugar/overview/introduction).
 
-You may consider [using the Umi library](/programs/candy-machine/getting-started#umi-library-recommended) instead which supports all versions of Candy Machines. Alternatively, you may downgrade you Sugar version to `2.0.0` or use the Solita-generated library.
+You may consider [using the Umi library](/programs/candy-machine/getting-started#umi-library-recommended) instead which supports all account versions of Candy Machine V3. Alternatively, you may downgrade you Sugar version to `2.0.0` or use the Solita-generated library.
 
 See [Programmable NFTs](/programs/candy-machine/programmable-nfts) for more details.
 :::
@@ -501,7 +501,7 @@ await setCollectionV2(umi, {
 }).sendAndConfirm(umi);
 ```
 
-Note that if your candy machine is using version `V1`, you will need to explicitly set the `collectionDelegateRecord` account as it uses the legacy collection delegate authority record account.
+Note that if your candy machine is using account version `V1`, you will need to explicitly set the `collectionDelegateRecord` account as it uses the legacy collection delegate authority record account.
 
 ```ts
 import { findCollectionAuthorityRecordPda } from "@metaplex-foundation/mpl-token-metadata";
@@ -526,9 +526,9 @@ API References: [setCollectionV2](https://mpl-candy-machine-js-docs.vercel.app/f
 <div className="accordion-item-padding">
 
 :::info
-The JS SDK is only compatible with Candy Machines with account version 1. That means, it does not support minting programmable NFTs and it is not compatible with Candy Machines created with the latest version of [Sugar](/developer-tools/sugar/overview/introduction).
+The JS SDK is only compatible with Candy Machine V3 accounts whose account version is 1. That means, it does not support minting programmable NFTs and it is not compatible with Candy Machines created with the latest version of [Sugar](/developer-tools/sugar/overview/introduction).
 
-You may consider [using the Umi library](/programs/candy-machine/getting-started#umi-library-recommended) instead which supports all versions of Candy Machines. Alternatively, you may downgrade you Sugar version to `2.0.0` or use the Solita-generated library.
+You may consider [using the Umi library](/programs/candy-machine/getting-started#umi-library-recommended) instead which supports all account versions of Candy Machine V3. Alternatively, you may downgrade you Sugar version to `2.0.0` or use the Solita-generated library.
 
 See [Programmable NFTs](/programs/candy-machine/programmable-nfts) for more details.
 :::

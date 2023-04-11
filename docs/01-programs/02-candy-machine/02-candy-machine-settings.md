@@ -66,8 +66,8 @@ Here is the list of attributes shared between all minted NFTs.
 - **Max Edition Supply**: The maximum number of editions that can be printed from the minted NFTs. For most use cases, you will want to set this to `0` to prevent minted NFTs to be printed multiple times. Note that you cannot set this to `null` which means unlimited editions are not supported in Candy Machines.
 - **Is Mutable**: Whether the minted NFTs should be mutable or not. We recommend setting this to `true` unless you have a specific reason. You can always make NFTs immutable in the future but you cannot make immutable NFTs mutable ever again.
 - **Creators**: A list of creators that should be set on minted NFTs. It includes their address and their shares of the royalties in percent — i.e. `5` is `5%`. Note that the Candy Machine address will always be set as the first creator of all minted NFTs and will automatically be verified. This makes it possible for anyone to verify that an NFT was minted from a trusted Candy Machine. All other provided creators will be set after that and will need to be verified manually by these creators.
-- **Token Standard**: The [token standard](../token-metadata/token-standard) to use on minted NFTs. So far only two token standards are supported: "NonFungible" and "ProgrammableNonFungible". Note that this is only available on Candy Machines version 2 and above.
-- **Rule Set**: If a candy machine uses the "ProgrammableNonFungible" token standard, it can provide an explicit rule set that will be assigned to every minted programmable NFT. If no rule set is provided, it will default to using the rule set on the collection NFT, if any. Otherwise programmable NFTs will be minted without a rule set. Note that this is only available on Candy Machines version 2 and above.
+- **Token Standard**: The [token standard](../token-metadata/token-standard) to use on minted NFTs. So far only two token standards are supported: "NonFungible" and "ProgrammableNonFungible". Note that this is only available for Candy Machines whose _account version_ is 2 and above.
+- **Rule Set**: If a candy machine uses the "ProgrammableNonFungible" token standard, it can provide an explicit rule set that will be assigned to every minted programmable NFT. If no rule set is provided, it will default to using the rule set on the collection NFT, if any. Otherwise programmable NFTs will be minted without a rule set. Note that this is only available for Candy Machines whose _account version_ is 2 and above.
 
 <Accordion>
 <AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
@@ -106,9 +106,9 @@ const candyMachineSettings = {
 <div className="accordion-item-padding">
 
 :::info
-The JS SDK is only compatible with Candy Machines with account version 1. That means, it does not support minting programmable NFTs and it is not compatible with Candy Machines created with the latest version of [Sugar](/developer-tools/sugar/overview/introduction).
+The JS SDK is only compatible with Candy Machine V3 accounts whose account version is 1. That means, it does not support minting programmable NFTs and it is not compatible with Candy Machines created with the latest version of [Sugar](/developer-tools/sugar/overview/introduction).
 
-You may consider [using the Umi library](/programs/candy-machine/getting-started#umi-library-recommended) instead which supports all versions of Candy Machines. Alternatively, you may downgrade you Sugar version to `2.0.0` or use the Solita-generated library.
+You may consider [using the Umi library](/programs/candy-machine/getting-started#umi-library-recommended) instead which supports all account versions of Candy Machine V3. Alternatively, you may downgrade you Sugar version to `2.0.0` or use the Solita-generated library.
 
 See [Programmable NFTs](/programs/candy-machine/programmable-nfts) for more details.
 :::
