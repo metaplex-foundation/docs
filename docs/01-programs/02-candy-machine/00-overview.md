@@ -76,7 +76,7 @@ What we end up with is a bot-protected Candy Machine that charges SOL, launches 
 
 ![Candy Machines V3 - Overview 5@2x.png](/assets/candy-machine-v3/CandyMachinesV3-Overview5.png#radius)
 
-As you can see, with 16 default guards and the ability to create custom guards, it enables creators to cherry-pick the features that matters to them and compose their perfect Candy Machine. This is such a powerful feature that we’ve dedicated many pages to it. The best place to start to know more about guards is the [Candy Guards](/programs/candy-machine/candy-guards) page.
+As you can see, with more than 16 default guards and the ability to create custom guards, it enables creators to cherry-pick the features that matters to them and compose their perfect Candy Machine. This is such a powerful feature that we’ve dedicated many pages to it. The best place to start to know more about guards is the [Candy Guards](/programs/candy-machine/candy-guards) page.
 
 ## Next steps
 

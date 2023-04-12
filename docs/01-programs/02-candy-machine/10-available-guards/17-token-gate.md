@@ -20,13 +20,34 @@ The Token Gate guard contains the following settings:
 - **Mint**: The address of the mint account defining the SPL Token we want to gate with.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+Here’s how we can set up a Candy Machine using the Token Gate guard.
+
+```ts
+create(umi, {
+  // ...
+  guards: {
+    tokenGate: some({
+      amount: 300,
+      mint: tokenMint.publicKey,
+    }),
+  },
+});
+```
+
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [TokenGate](https://mpl-candy-machine-js-docs.vercel.app/types/TokenGateArgs.html)
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 Here’s an example of how to set up a Candy Machine using the Token Gate guard.
 
 ```tsx
-import { token } from '@metaplex-foundation/js';
+import { token } from "@metaplex-foundation/js";
 
 const { candyMachine } = await metaplex.candyMachines().create({
   // ...
@@ -43,14 +64,44 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 </div>
 </AccordionItem>
-</Accordion>    
+</Accordion>
 
 ## Mint Settings
 
-*The Token Gate guard does not need Mint Settings.*
+The Token Gate guard contains the following Mint Settings:
 
-However, if you’re planning on constructing instructions without the help of our SDKs, you will need to add the payer’s token account to the remaining accounts of the mint instruction. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-guard#tokengate) for more details.
+- **Mint**: The address of the mint account defining the SPL Token we want to gate with.
+
+Note that, if you’re planning on constructing instructions without the help of our SDKs, you will need to provide these Mint Settings and more as a combination of instruction arguments and remaining accounts. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-machine/tree/main/programs/candy-guard#tokengate) for more details.
+
+<Accordion>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+You may pass the Mint Settings of the Token Gate guard using the `mintArgs` argument like so.
+
+```ts
+mintV2(umi, {
+  // ...
+  mintArgs: {
+    tokenGate: some({ mint: tokenMint.publicKey }),
+  },
+});
+```
+
+API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/mintV2.html), [TokenGateMintArgs](https://mpl-candy-machine-js-docs.vercel.app/types/TokenGateMintArgs.html)
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
+<div className="accordion-item-padding">
+
+_The JS SDK does not require any Mint Settings for the Token Gate guard since it can infer them from the provided Candy Machine model._
+
+</div>
+</AccordionItem>
+</Accordion>
 
 ## Route Instruction
 
-*The Token Gate guard does not support the route instruction.*
+_The Token Gate guard does not support the route instruction._

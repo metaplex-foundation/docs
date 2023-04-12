@@ -22,7 +22,25 @@ The Mint Limit guard contains the following settings:
 - **Limit**: The maximum number of mints allowed per wallet for that identifier.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+Here’s how we can set up a Candy Machine using the Mint Limit guard.
+
+```ts
+create(umi, {
+  // ...
+  guards: {
+    mintLimit: some({ id: 1, limit: 5 }),
+  },
+});
+```
+
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [MintLimit](https://mpl-candy-machine-js-docs.vercel.app/types/MintLimit.html)
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 Here’s how we can set up a Candy Machine using the Mint Limit guard via the JS SDK.
@@ -43,14 +61,44 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 </div>
 </AccordionItem>
-</Accordion>    
+</Accordion>
 
 ## Mint Settings
 
-*The Mint Limit guard does not need Mint Settings.*
+The Mint Limit guard contains the following Mint Settings:
 
-However, if you’re planning on constructing instructions without the help of our SDKs, you will need to add the Mint Counter PDA to the remaining accounts of the mint instruction. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-guard#mintlimit) for more details.
+- **ID**: A unique identifier for this guard.
+
+Note that, if you’re planning on constructing instructions without the help of our SDKs, you will need to provide these Mint Settings and more as a combination of instruction arguments and remaining accounts. See the [Candy Guard’s program documentation](https://github.com/metaplex-foundation/mpl-candy-machine/tree/main/programs/candy-guard#mintlimit) for more details.
+
+<Accordion>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+You may pass the Mint Settings of the Mint Limit guard using the `mintArgs` argument like so.
+
+```ts
+mintV2(umi, {
+  // ...
+  mintArgs: {
+    mintLimit: some({ id: 1 }),
+  },
+});
+```
+
+API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/mintV2.html), [MintLimitMintArgs](https://mpl-candy-machine-js-docs.vercel.app/types/MintLimitMintArgs.html)
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
+<div className="accordion-item-padding">
+
+_The JS SDK does not require any Mint Settings for the Mint Limit guard since it can infer them from the provided Candy Machine model._
+
+</div>
+</AccordionItem>
+</Accordion>
 
 ## Route Instruction
 
-*The Mint Limit guard does not support the route instruction.*
+_The Mint Limit guard does not support the route instruction._

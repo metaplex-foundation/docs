@@ -13,9 +13,9 @@ Version `1.7` of Token Metadata introduced a [new type of asset class called Pro
 Since version `1.0` of Candy Machine Core and version `1.0` of Candy Guard, it is now possible to **mint Programmable NFTs from candy machines** and even update the token standard of existing candy machines.
 
 :::info
-Note that, for JavaScript clients, the rest of the documentation currently provides examples using the Metaplex JS SDK. However, Programmable NFTs will not be supported on the JS SDK as we are working on a new JavaScript client framework that will be released soon.
+Note that, for JavaScript clients, the Metaplex JS SDK does not and will not support minting Programmable NFTs from candy machines. This is because we released a new [Umi-compatible library](/programs/candy-machine/getting-started#umi-library-recommended) that does support everything on the programs, which is the new recommended way to manage candy machines in JavaScript.
 
-In the meantime, you can use the Solita-generated libraries [mpl-candy-machine-core](https://www.npmjs.com/package/@metaplex-foundation/mpl-candy-machine-core) from `v0.2.1` and [mpl-candy-guard](https://www.npmjs.com/package/@metaplex-foundation/mpl-candy-guard) from `v0.4.1` since these are the ones the current JS SDK use under the hood. Thus, we will use these libraries to provide examples on this page.
+Alternatively, if you do not wish to switch to the Umi framework, you may instead use the Solita-generated libraries [mpl-candy-machine-core](https://www.npmjs.com/package/@metaplex-foundation/mpl-candy-machine-core) from `v0.2.1` and [mpl-candy-guard](https://www.npmjs.com/package/@metaplex-foundation/mpl-candy-guard) from `v0.4.1`.
 :::
 
 ## For new candy machines
@@ -28,9 +28,31 @@ Also, note that some optional accounts may be required depending on the token st
 
 Additionally, the `collectionDelegateRecord` account should now refer to the new [Metadata Delegate Record](https://docs.rs/mpl-token-metadata/latest/mpl_token_metadata/state/struct.MetadataDelegateRecord.html) from Token Metadata.
 
+You may want to read the "[Create Candy Machines](/programs/candy-machine/managing-candy-machines#create-candy-machines)" section of this documentation for more details but here are some examples on how to use our SDKs to create a new Candy Machine that mints Programmable NFTs.
+
 <Accordion>
-<AccordionItem title="Solita library" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
+
+```ts
+import { TokenStandard } from "@metaplex-foundation/mpl-token-metadata";
+import { create } from "@metaplex-foundation/mpl-candy-machine";
+import { generateSigner } from "@metaplex-foundation/umi";
+
+await create(umi, {
+  // ...
+  tokenStandard: TokenStandard.ProgrammableNonFungible,
+}).sendAndConfirm(umi);
+```
+
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html)
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
+<div className="accordion-item-padding">
+
+_This operation is not supported by the JS SDK but you may use the underlying Solita-generated library instead like so._
 
 ```ts
 import { createInitializeV2Instruction } from "@metaplex-foundation/mpl-candy-machine-core";
@@ -70,9 +92,32 @@ API References: [Typedoc](https://metaplex-foundation.github.io/metaplex-program
 
 It is possible to update the token standard of existing Candy Machines via the new `setTokenStandard` instruction. When calling this instruction on a Candy Machine `V1`, it will also upgrade the Candy Machine to `V2` and store the token standard in the account data.
 
+You may want to read the "[Update Token Standard](/programs/candy-machine/managing-candy-machines#update-token-standard)" section of this documentation for more details but here are some examples on how to use our SDKs to update the token standard of an existing Candy Machine to Programmable NFTs.
+
 <Accordion>
-<AccordionItem title="Solita library" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
+
+```ts
+import { TokenStandard } from "@metaplex-foundation/mpl-token-metadata";
+import { setTokenStandard } from "@metaplex-foundation/mpl-candy-machine";
+
+await setTokenStandard(umi, {
+  candyMachine: candyMachine.publicKey,
+  collectionMint: candyMachine.collectionMint,
+  collectionUpdateAuthority,
+  tokenStandard: TokenStandard.ProgrammableNonFungible,
+}).sendAndConfirm(umi);
+```
+
+API References: [setTokenStandard](https://mpl-candy-machine-js-docs.vercel.app/functions/setTokenStandard.html)
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
+<div className="accordion-item-padding">
+
+_This operation is not supported by the JS SDK but you may use the underlying Solita-generated library instead like so._
 
 ```ts
 import { createSetTokenStandardInstruction } from "@metaplex-foundation/mpl-candy-machine-core";
@@ -108,9 +153,32 @@ API References: [Typedoc](https://metaplex-foundation.github.io/metaplex-program
 
 Additionally, a new `setCollectionV2` instruction has been added to support setting a collection that is compatible with Programmable NFTs. This instruction also works with regular NFTs and deprecates the `setCollection` instruction.
 
+Here as well, you can read more about it in the "[Update Collection](/programs/candy-machine/managing-candy-machines#update-collection)" section of this documentation.
+
 <Accordion>
-<AccordionItem title="Solita library" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
+
+```ts
+import { setCollectionV2 } from "@metaplex-foundation/mpl-candy-machine";
+
+await setCollectionV2(umi, {
+  candyMachine: candyMachine.publicKey,
+  collectionMint: candyMachine.collectionMint,
+  collectionUpdateAuthority: collectionUpdateAuthority.publicKey,
+  newCollectionMint: newCollectionMint.publicKey,
+  newCollectionUpdateAuthority,
+}).sendAndConfirm(umi);
+```
+
+API References: [setCollectionV2](https://mpl-candy-machine-js-docs.vercel.app/functions/setCollectionV2.html)
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
+<div className="accordion-item-padding">
+
+_This operation is not supported by the JS SDK but you may use the underlying Solita-generated library instead like so._
 
 ```ts
 import { createSetCollectionV2Instruction } from "@metaplex-foundation/mpl-candy-machine-core";
@@ -145,9 +213,39 @@ API References: [Typedoc](https://metaplex-foundation.github.io/metaplex-program
 
 The `mint` instruction of both the Candy Machine Core and the Candy Guard programs has been updated to support minting Programmable NFTs. This new instruction is called `mintV2` and it is similar to the `mint` instruction, but requires additional accounts to be passed in. Here as well, the new `mintV2` instructions can be used to mint regular NFTs and, therefore, they deprecate the existing `mint` instructions.
 
+The entire "[Minting](/programs/candy-machine/minting)" page has been updated to use the new `mintV2` instructions but here's a quick example of how to use them with Programmable NFTs.
+
 <Accordion>
-<AccordionItem title="Solita library" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
+
+```ts
+import { mintV2 } from "@metaplex-foundation/mpl-candy-machine";
+import { setComputeUnitLimit } from "@metaplex-foundation/mpl-essentials";
+import { transactionBuilder, generateSigner } from "@metaplex-foundation/umi";
+
+const nftMint = generateSigner(umi);
+await transactionBuilder()
+  .add(setComputeUnitLimit(umi, { units: 800_000 }))
+  .add(
+    mintV2(umi, {
+      candyMachine: candyMachine.publicKey,
+      nftMint,
+      collectionMint: collectionNft.publicKey,
+      collectionUpdateAuthority: collectionNft.metadata.updateAuthority,
+    })
+  )
+  .sendAndConfirm(umi);
+```
+
+API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/mintV2.html)
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
+<div className="accordion-item-padding">
+
+_This operation is not supported by the JS SDK but you may use the underlying Solita-generated library instead like so._
 
 ```ts
 import { createMintV2Instruction } from "@metaplex-foundation/mpl-candy-guard";
@@ -197,7 +295,7 @@ Note that some of the guards offered by the Candy Guard program have also been u
 
 The guards affected by these changes are:
 
-- The `nftBurn` and `nftPayment` guards which now allow the burned/sent NFT to be a Programmable NFT.
+- The `nftBurn` and `nftPayment` guards now allow the burned/sent NFT to be a Programmable NFT.
 - The `FreezeSolPayment` and `FreezeTokenPayment` guards. Since Programmable NFTs are by definition always frozen, they are Locked when minted via a Utility delegate and Unlocked when the thaw conditions have been met.
 
 ## Additional reading
@@ -205,7 +303,5 @@ The guards affected by these changes are:
 You may find the following resources about Programmable NFTs and Candy Machines useful:
 
 - [Programmable NFTs Guide](https://github.com/metaplex-foundation/metaplex-program-library/blob/master/token-metadata/program/ProgrammableNFTGuide.md)
-- [Candy Machine Core Program](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/candy-machine-core/program)
-- [Candy Guard Program](https://github.com/metaplex-foundation/mpl-candy-guard/tree/main)
-- [Candy Machine Core JS Typedoc](https://metaplex-foundation.github.io/metaplex-program-library/docs/candy-machine-core/index.html)
-- [Candy Guard JS Typedoc](https://metaplex-foundation.github.io/mpl-candy-guard/index.html)
+- [Candy Machine Core Program](https://github.com/metaplex-foundation/mpl-candy-machine/tree/main/programs/candy-machine-core)
+- [Candy Guard Program](https://github.com/metaplex-foundation/mpl-candy-machine/tree/main/programs/candy-guard)

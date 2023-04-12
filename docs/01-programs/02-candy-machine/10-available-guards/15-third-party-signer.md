@@ -21,7 +21,27 @@ The Third Party Signer guard contains the following settings:
 - **Signer Key**: The address of the signer that will need to sign each mint transaction.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+Here’s how we can set up a Candy Machine using the Third Party Signer guard.
+
+```ts
+const myConfiguredSigner = generateSigner(umi);
+
+create(umi, {
+  // ...
+  guards: {
+    thirdPartySigner: some({ signerKey: myConfiguredSigner.publicKey }),
+  },
+});
+```
+
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [ThirdPartySigner](https://mpl-candy-machine-js-docs.vercel.app/types/ThirdPartySigner.html)
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 Here’s how we can set up a Candy Machine using the Third Party Signer guard via the JS SDK.
@@ -43,7 +63,7 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 </div>
 </AccordionItem>
-</Accordion>    
+</Accordion>
 
 ## Mint Settings
 
@@ -52,7 +72,23 @@ The Third Party Signer guard contains the following Mint Settings:
 - **Signer**: The required third-party signer. The address of this signer must match the Signer Key in the guard settings.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+When minting via the Umi library, simply provide the third-party signer via the `signer` attribute like so.
+
+```ts
+create(umi, {
+  // ...
+  guards: {
+    thirdPartySigner: some({ signer: myConfiguredSigner }),
+  },
+});
+```
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 When minting via the JS SDK, simply provide the third-party signer via the `signer` attribute like so.
@@ -64,7 +100,7 @@ const { nft } = await metaplex.candyMachines().mint({
     thirdPartySigner: {
       signer: someWallet,
     },
-  }
+  },
 });
 ```
 
@@ -72,8 +108,8 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 </div>
 </AccordionItem>
-</Accordion>    
+</Accordion>
 
 ## Route Instruction
 
-*The Third Party Signer guard does not support the route instruction.*
+_The Third Party Signer guard does not support the route instruction._

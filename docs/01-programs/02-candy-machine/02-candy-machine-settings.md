@@ -19,7 +19,23 @@ There is an additional authority specifically for the minting process called the
 It is important to note that, when using our SDKs, Candy Machines will always be created with an associated Candy Guard by default so you do not need to worry about this mint authority.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+When creating a new Candy Machine, the authority will default to the Umi identity. You may explicitly set this authority by providing a valid signer to the `authority` property.
+
+```tsx
+import { generateSigner } from "@metaplex-foundation/umi";
+
+const myCustomAuthority = generateSigner(umi);
+const candyMachineSettings = {
+  authority: myCustomAuthority,
+};
+```
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 When using the JS SDK, the authority of a Candy Machine will always default to the current identity. You may explicitly set this authority by providing a valid signer to the `authority` property.
@@ -50,10 +66,52 @@ Here is the list of attributes shared between all minted NFTs.
 - **Max Edition Supply**: The maximum number of editions that can be printed from the minted NFTs. For most use cases, you will want to set this to `0` to prevent minted NFTs to be printed multiple times. Note that you cannot set this to `null` which means unlimited editions are not supported in Candy Machines.
 - **Is Mutable**: Whether the minted NFTs should be mutable or not. We recommend setting this to `true` unless you have a specific reason. You can always make NFTs immutable in the future but you cannot make immutable NFTs mutable ever again.
 - **Creators**: A list of creators that should be set on minted NFTs. It includes their address and their shares of the royalties in percent — i.e. `5` is `5%`. Note that the Candy Machine address will always be set as the first creator of all minted NFTs and will automatically be verified. This makes it possible for anyone to verify that an NFT was minted from a trusted Candy Machine. All other provided creators will be set after that and will need to be verified manually by these creators.
+- **Token Standard**: The [token standard](../token-metadata/token-standard) to use on minted NFTs. So far only two token standards are supported: "[NonFungible](/programs/token-metadata/token-standard#the-non-fungible-standard))" and "[ProgrammableNonFungible](/programs/token-metadata/token-standard#the-programmable-non-fungible-standard)". Note that this is only available for Candy Machines whose _account version_ is 2 and above.
+- **Rule Set**: If a candy machine uses the "ProgrammableNonFungible" token standard, it can provide an explicit rule set that will be assigned to every minted programmable NFT. If no rule set is provided, it will default to using the rule set on the collection NFT, if any. Otherwise programmable NFTs will be minted without a rule set. Note that this is only available for Candy Machines whose _account version_ is 2 and above.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
+
+From the attributes listed above, only the `sellerFeeBasisPoints`, `creators` and `tokenStandard` attributes are required. The other attributes have the following default values:
+
+- `symbol` defaults to an empty string — i.e. minted NFTs don’t use symbols.
+- `maxEditionSupply` defaults to zero — i.e. minted NFTs are not printable.
+- `isMutable` defaults to `true`.
+
+You may explicitly provide any of these attributes like so.
+
+```tsx
+import { percentAmount, generateSigner, some } from "@metaplex-foundation/umi";
+import { TokenStandard } from "@metaplex-foundation/mpl-token-metadata";
+
+const creatorA = generateSigner(umi).publicKey;
+const creatorB = generateSigner(umi).publicKey;
+const candyMachineSettings = {
+  tokenStandard: TokenStandard.NonFungible,
+  sellerFeeBasisPoints: percentAmount(33.3, 2),
+  symbol: "MYPROJECT",
+  maxEditionSupply: 0,
+  isMutable: true,
+  creators: [
+    { address: creatorA, percentageShare: 50, verified: false },
+    { address: creatorB, percentageShare: 50, verified: false },
+  ],
+};
+```
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
+<div className="accordion-item-padding">
+
+:::info
+The JS SDK is only compatible with Candy Machine V3 accounts whose account version is 1. That means, it does not support minting programmable NFTs and it is not compatible with Candy Machines created with the latest version of [Sugar](/developer-tools/sugar/overview/introduction).
+
+You may consider [using the Umi library](/programs/candy-machine/getting-started#umi-library-recommended) instead which supports all account versions of Candy Machine V3. Alternatively, you may downgrade you Sugar version to `2.0.0` or use the Solita-generated library.
+
+See [Programmable NFTs](/programs/candy-machine/programmable-nfts) for more details.
+:::
 
 When creating a Candy Machine, only the `sellerFeeBasisPoints` attribute is required out of the attributes listed above. The other attributes have the following default values:
 
@@ -89,15 +147,51 @@ const candyMachineSettings = {
 ## Metaplex Certified Collections
 
 Each Candy Machine must be associated with a special NFT known as a [Metaplex Certified Collection (MCC)](/programs/token-metadata/certified-collections). This **Collection NFT** enables minted NFTs to be grouped together
- and for that information to be verified on-chain.
+and for that information to be verified on-chain.
 
 To ensure no one else can use your Collection NFT on their Candy Machine, the **Collection's Update Authority** is required to sign any transaction that changes the Collection on a Candy Machine. As a result, the Candy Machine can safely verify the Collection of all minted NFTs automatically.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+When creating a new candy machine or when updating its collection NFT, you will need to provide the following attributes:
+
+- `collectionMint`: The address of the mint account of the Collection NFT.
+- `collectionUpdateAuthority`: The update authority of the Collection NFT as a signer.
+
+Here’s an example.
+
+```tsx
+import { generateSigner, percentAmount } from "@metaplex-foundation/umi";
+import { createNft } from "@metaplex-foundation/mpl-token-metadata";
+
+// Create the Collection NFT.
+const collectionUpdateAuthority = generateSigner(umi);
+const collectionMint = generateSigner(umi);
+await createNft(umi, {
+  mint: collectionMint,
+  authority: collectionUpdateAuthority,
+  name: "My Collection NFT",
+  uri: "https://example.com/path/to/some/json/metadata.json",
+  sellerFeeBasisPoints: percentAmount(9.99, 2), // 9.99%
+  isCollection: true,
+}).sendAndConfirm(umi);
+
+// Pass the collection address and its authority in the settings.
+const candyMachineSettings = {
+  collectionMint: collectionMint.publicKey,
+  collectionUpdateAuthority,
+};
+```
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 When creating a new Candy Machine or updating the collection of a Candy Machine, you will need to provide the `collection` attribute as an object containing the following properties:
+
 - `address`: The address of the mint account of the Collection NFT.
 - `updateAuthority`: The update authority of the Collection NFT as a signer.
 
@@ -134,10 +228,24 @@ const candyMachineSettings = {
 Candy Machine settings also contain information regarding the items that are or will be loaded inside it. The **Items Available** attribute falls in that category and stores the maximum amount of NFTs that will be minted from the Candy Machine.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+When creating a new Candy Machine, the `itemsAvailable` attribute is required and may be a number or a native `bigint` for large integers.
+
+```tsx
+const candyMachineSettings = {
+  itemsAvailable: 500,
+};
+```
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 When creating a new Candy Machine, the `itemsAvailable` attribute is required and must be passed like so.
+
 ```tsx
 import { toBigNumber } from "@metaplex-foundation/js";
 
@@ -204,10 +312,35 @@ In our above example, we could leverage the `$ID+1$` variable for the name prefi
 That’s right, **our name length is now zero** and we’ve reduced the characters needed down to 43’000 characters.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+When using Umi, you can use the `some` and `none` helper functions to tell the library whether to use Config Line Settings or Hidden Settings via the `configLineSettings` and `hiddenSettings` attributes respectively. Only one of these settings must be used, thus, one of them must be configured and the other one must be set to `none()`.
+
+Here’s a code snippet showing how you can set up the above example using the Umi library.
+
+```tsx
+import { some, none } from "@metaplex-foundation/umi";
+
+const candyMachineSettings = {
+  hiddenSettings: none(),
+  configLineSettings: some({
+    prefixName: "My NFT Project #$ID+1$",
+    nameLength: 0,
+    prefixUri: "https://arweave.net/",
+    uriLength: 43,
+    isSequential: false,
+  }),
+};
+```
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 When using the JS SDK, both **Config Line Settings** and **Hidden Settings** live under the same object attribute called `itemSettings`. It contains a `type` property used to distinguish the two modes. This ensures exactly one of these settings is used on a Candy Machine.
+
 - When `type` is equal to `"configLines"`, Config Line Settings are used.
 - When `type` is equal to `"hidden"`, Hidden Settings are used.
 
@@ -254,10 +387,33 @@ Note that, just like for the prefixes of the Config Line Settings, special varia
 Also note that, since we are not inserting any item to the Candy Machine, Hidden Settings make it possible to create very large drops. The only caveat is that there is a need for an off-chain process to update the name and URI of each NFT after the mint.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+When using Umi, you can use the `some` and `none` helper functions to tell the library whether to use Config Line Settings or Hidden Settings via the `configLineSettings` and `hiddenSettings` attributes respectively. Only one of these settings must be used, thus, one of them must be configured and the other one must be set to `none()`.
+
+Here’s a code snippet showing how you can set up the above example using the Umi library.
+
+```tsx
+import { some, none } from "@metaplex-foundation/umi";
+
+const candyMachineSettings = {
+  configLineSettings: none(),
+  hiddenSettings: some({
+    name: "My NFT Project #$ID+1$",
+    uri: "https://example.com/path/to/teaser.json",
+    hash: hashOfTheFileThatMapsUris,
+  }),
+};
+```
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 When using the JS SDK, both **Config Line Settings** and **Hidden Settings** live under the same object attribute called `itemSettings`. It contains a `type` property used to distinguish the two modes. This ensures exactly one of these settings is used on a Candy Machine.
+
 - When `type` is equal to `"configLines"`, Config Line Settings are used.
 - When `type` is equal to `"hidden"`, Hidden Settings are used.
 

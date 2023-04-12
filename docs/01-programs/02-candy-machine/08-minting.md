@@ -12,24 +12,118 @@ So far, we’ve learned how to create and maintain Candy Machines. We’ve seen 
 
 ## Basic Minting
 
-Whether we are minting from a Candy Guard program or directly from the core Candy Machine program, we will need to construct a few instructions to create an empty mint account before reaching the mint instruction. If this is confusing to you, don’t worry, our SDKs handle all of that wiring for you.
+As mentioned [in the Candy Guards page](/programs/candy-machine/candy-guards#why-another-program), there are two programs responsible for minting NFTs from Candy Machines: The Candy Machine Core program — responsible for minting the NFT — and the Candy Guard program which adds a configurable Access Control layer on top of it and can be forked to offer custom guards.
 
-Our SDKs will also know which program to interact with based on whether a Candy Guard account was created for the provided Candy Machine.
+As such, there are two ways to mint from a Candy Machine:
 
-So ultimately, to mint, all you need to do is pass in the **Candy Machine** you created and any additional attributes that might be required based on the Candy Machine settings. Additionally, in the rare event that your Candy Machine does not have an associated Candy Guard account, it will need to mint from the configured **Mint Authority** which must be provided as a signer.
+- **From a Candy Guard program** which will then delegate the minting to the Candy Machine Core program. Most of the time, you will want to do this as it allows for much more complex minting workflows. You may need to pass extra remaining accounts and instruction data to the mint instruction based on the guards configured in the account. Fortunately, our SDKs make this easy by requiring a few extra parameters and computing the rest for us.
+
+- **Directly from the Candy Machine Core program**. In this case, only the configured mint authority can mint from it and, therefore, it will need to sign the transaction.
 
 ![CandyMachinesV3-Minting1.png](/assets/candy-machine-v3/CandyMachinesV3-Minting1.png#radius)
 
-If everything went well, an NFT will be created are returned following the parameters configured in the Candy Machine. For instance, if the given Candy Machine uses **Config Line Settings** with **Is Sequential** set to `false`, then we will get the next item at random.
+If everything went well, an NFT will be created following the parameters configured in the Candy Machine. For instance, if the given Candy Machine uses **Config Line Settings** with **Is Sequential** set to `false`, then we will get the next item at random.
 
-Note that additional attributes may be required by our SDKs.
+Starting from version `1.0` of the Candy Guard program, The mint instruction accepts an additional `minter` signer which can be different than the existing `payer` signer. This allows us to create minting workflows where the wallet that mints the NFT is no longer requires to pay SOL fees — such as storage fees and SOL mint payments — as the `payer` signer will abstract away those fees. Note that the `minter` signer will still need to pay for token-based fees and will be used to validate the configured guards.
+
+Please note that the latest mint instruction relies on the latest Token Metadata instructions which use a fair amount of compute units. As such, you may need to increase the compute unit limit of the transaction to ensure it is successful. Our SDKs may also help with this.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
+
+To mint from a Candy Machine via a configured Candy Guard account, you may use the `mintV2` function and provide the mint address and update authority of the collection NFT the minted NFT will belong to. A `minter` signer and `payer` signer may also be provided but they will default to Umi's identity and payer respectively.
+
+As mentioned above, you may need to increase the compute unit limit of the transaction to ensure the `mintV2` instruction is successful. You may do this by using the `setComputeUnitLimit` helper function on the `mpl-essentials` Umi library as illustrated in the code snippet below.
+
+```ts
+import { mintV2 } from "@metaplex-foundation/mpl-candy-machine";
+import { setComputeUnitLimit } from "@metaplex-foundation/mpl-essentials";
+import { transactionBuilder, generateSigner } from "@metaplex-foundation/umi";
+
+const nftMint = generateSigner(umi);
+await transactionBuilder()
+  .add(setComputeUnitLimit(umi, { units: 800_000 }))
+  .add(
+    mintV2(umi, {
+      candyMachine: candyMachine.publicKey,
+      nftMint,
+      collectionMint: collectionNft.publicKey,
+      collectionUpdateAuthority: collectionNft.metadata.updateAuthority,
+    })
+  )
+  .sendAndConfirm(umi);
+```
+
+Note that the `mintV2` instruction takes care of creating the Mint and Token accounts for us by default and will set the NFT owner to the `minter`. If you wish to create these yourself beforehand, you may simply give the NFT mind address as a public key instead of a signer. Here's an example using the `createMintWithAssociatedToken` function from the `mpl-essentials` Umi library:
+
+```ts
+import { mintV2 } from "@metaplex-foundation/mpl-candy-machine";
+import {
+  createMintWithAssociatedToken,
+  setComputeUnitLimit,
+} from "@metaplex-foundation/mpl-essentials";
+import { transactionBuilder, generateSigner } from "@metaplex-foundation/umi";
+
+const nftMint = generateSigner(umi);
+const nftOwner = generateSigner(umi).publicKey;
+await transactionBuilder()
+  .add(setComputeUnitLimit(umi, { units: 800_000 }))
+  .add(createMintWithAssociatedToken(umi, { mint: nftMint, owner: nftOwner }))
+  .add(
+    mintV2(umi, {
+      candyMachine: candyMachine.publicKey,
+      nftMint: nftMint.publicKey,
+      collectionMint: collectionNft.publicKey,
+      collectionUpdateAuthority: collectionNft.metadata.updateAuthority,
+    })
+  )
+  .sendAndConfirm(umi);
+```
+
+In the rare event that you wish to mint directly from the Candy Machine Core program, you may use the `mintFromCandyMachineV2` function instead. This function requires the mint authority of the candy machine to be provided as a signer and accepts an explicit `nftOwner` attribute.
+
+```ts
+import { mintFromCandyMachineV2 } from "@metaplex-foundation/mpl-candy-machine";
+import { setComputeUnitLimit } from "@metaplex-foundation/mpl-essentials";
+import { transactionBuilder, generateSigner } from "@metaplex-foundation/umi";
+
+const nftMint = generateSigner(umi);
+const nftOwner = generateSigner(umi).publicKey;
+await transactionBuilder()
+  .add(setComputeUnitLimit(umi, { units: 800_000 }))
+  .add(
+    mintFromCandyMachineV2(umi, {
+      candyMachine: candyMachine.publicKey,
+      mintAuthority: umi.identity,
+      nftOwner,
+      nftMint,
+      collectionMint: collectionNft.publicKey,
+      collectionUpdateAuthority: collectionNft.metadata.updateAuthority,
+    })
+  )
+  .sendAndConfirm(umi);
+```
+
+API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/mintV2.html), [mintFromCandyMachineV2](https://mpl-candy-machine-js-docs.vercel.app/functions/mintFromCandyMachineV2.html)
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
+<div className="accordion-item-padding">
+
+:::info
+The JS SDK is only compatible with Candy Machine V3 accounts whose account version is 1. That means, it does not support minting programmable NFTs and it is not compatible with Candy Machines created with the latest version of [Sugar](/developer-tools/sugar/overview/introduction).
+
+You may consider [using the Umi library](/programs/candy-machine/getting-started#umi-library-recommended) instead which supports all account versions of Candy Machine V3. Alternatively, you may downgrade you Sugar version to `2.0.0` or use the Solita-generated library.
+
+See [Programmable NFTs](/programs/candy-machine/programmable-nfts) for more details.
+:::
 
 To mint via the JS SDK, you may use the `mint` operation of the Candy Machine module.
 The minimum required arguments are the `candyMachine` model (or a subset of it) and the address of the `collectionUpdateAuthority`. The reason we need the latter is that this information does not live in the `candyMachine` model and it is required by the underlying mint instructions.
+
+The JS SDK will know which program to interact with based on whether a Candy Guard account was created for the provided Candy Machine. It will also fetch most of the mint parameters from the candy guard data in the provided Candy Machine model.
 
 The `mint` operation will, if everything went well, fetch and return the newly minted NFT.
 
@@ -85,25 +179,80 @@ API References: [Operation](https://metaplex-foundation.github.io/js/classes/js.
 
 When minting from a Candy Machine that uses a bunch of guards, you may need to provide additional guard-specific information.
 
-If you were to build the mint instruction manually, that information would be provided as a mixture of instruction arguments and remaining accounts. However, using our SDKs, each guard that requires additional information at mint time defines a set of settings that we call **Mint Settings**. These Mint Settings will then be parsed for you into whatever the program needs.
+If you were to build the mint instruction manually, that information would be provided as a mixture of instruction data and remaining accounts. However, using our SDKs, each guard that requires additional information at mint time defines a set of settings that we call **Mint Settings**. These Mint Settings will then be parsed into whatever the program needs.
 
-A good example of a guard that requires Mint Settings is the **NFT Payment** guard which requires the mint address of the NFT we should use to pay for the mint.
+A good example of a guard that requires Mint Settings is the **NFT Payment** guard which requires the mint address of the NFT we should use to pay for the mint amongst other things.
 
 ![CandyMachinesV3-Minting2.png](/assets/candy-machine-v3/CandyMachinesV3-Minting2.png#radius)
-
-It is worth noting that some guards may not require any Mint Settings whilst still needing to pass guard-specific arguments or remaining accounts when minting. That’s because the SDKs are clever enough to fill in the gaps with the data that’s available to them, e.g. the initial settings of the guard.
-
-An example of such a guard is the **Mint Limit** guard. This guard requires the address of the PDA account that will keep track of how many NFTs were minted by a given wallet. However, it does not require Mint Settings because the address of this PDA can be inferred from other variables we already have such as the payer of the mint.
 
 [Each available guard](/programs/candy-machine/available-guards) contains its own documentation page and it will tell you whether or not that guard expects Mint Settings to be provided when minting.
 
 If you were to only use guards that do not require Mint Settings, you may mint in the same way described by the “Basic Minting” section above. Otherwise, you’ll need to provide an additional object attribute containing the Mint Settings of all guards that require them. Let’s have a look at what that looks like in practice using our SDKs.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
 
+When minting via the Umi library, you may use the `mintArgs` attribute to provide the required **Mint Settings**.
+
+Here’s an example using the **Third Party Signer** guard which requires an additional signer and the **Mint Limit** guard which keeps track of how many times a wallet minted from the Candy Machine.
+
+```ts
+import {
+  some,
+  generateSigner,
+  transactionBuilder,
+} from "@metaplex-foundation/umi";
+import { create, mintV2 } from "@metaplex-foundation/mpl-candy-machine";
+import { setComputeUnitLimit } from "@metaplex-foundation/mpl-essentials";
+
+// Create a Candy Machine with guards.
+const thirdPartySigner = generateSigner();
+await create(umi, {
+  // ...
+  guards: {
+    thirdPartySigner: some({ signer: thirdPartySigner.publicKey }),
+    mintLimit: some({ id: 1, limit: 3 }),
+  },
+}).sendAndConfirm(umi);
+
+// Mint from the Candy Machine.
+const nftMint = generateSigner(umi);
+await transactionBuilder()
+  .add(setComputeUnitLimit(umi, { units: 800_000 }))
+  .add(
+    mintV2(umi, {
+      candyMachine: candyMachine.publicKey,
+      nftMint,
+      collectionMint: collectionNft.publicKey,
+      collectionUpdateAuthority: collectionNft.metadata.updateAuthority,
+      mintArgs: {
+        thirdPartySigner: some({ signer: thirdPartySigner }),
+        mintLimit: some({ id: 1 }),
+      },
+    })
+  )
+  .sendAndConfirm(umi);
+```
+
+API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/mintV2.html), [DefaultGuardSetMintArgs](https://mpl-candy-machine-js-docs.vercel.app/types/DefaultGuardSetMintArgs.html)
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
+<div className="accordion-item-padding">
+
+:::info
+The JS SDK is only compatible with Candy Machine V3 accounts whose account version is 1. That means, it does not support minting programmable NFTs and it is not compatible with Candy Machines created with the latest version of [Sugar](/developer-tools/sugar/overview/introduction).
+
+You may consider [using the Umi library](/programs/candy-machine/getting-started#umi-library-recommended) instead which supports all account versions of Candy Machine V3. Alternatively, you may downgrade you Sugar version to `2.0.0` or use the Solita-generated library.
+
+See [Programmable NFTs](/programs/candy-machine/programmable-nfts) for more details.
+:::
+
 When minting via the JS SDK, you may use the `settings` attribute to provide the required **Mint Settings**. The operation will fail if Mint Settings are missing for any guard that requires them.
+
+Since the JS SDK requires the whole Candy Machine model and its guard settings to be provided, it can infer most of the mint settings from that model and, therefore, its mint settings object is typically smaller than the other SDKs.
 
 Here’s an example using the **Third Party Signer** guard which requires an additional signer and the **Mint Limit** guard which keeps track of how many times a wallet minted from the Candy Machine.
 
@@ -171,8 +320,80 @@ Therefore, the provided Mint Settings must be related to these Resolved Guards. 
 ![CandyMachinesV3-Minting3.png](/assets/candy-machine-v3/CandyMachinesV3-Minting3.png#radius)
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
 <div className="accordion-item-padding">
+
+When minting from a Candy Machine using guard groups, the label of the group we want to select must be provided via the `group` attribute.
+
+Additionally, the Mint Settings for the Resolved Guards of that group may be provided via the `mintArgs` attribute.
+
+Here is how we would use the Umi library to mint from the example Candy Machine described above.
+
+```ts
+// Create a Candy Machine with guards.
+const thirdPartySigner = generateSigner();
+await create(umi, {
+  // ...
+  guards: {
+    botTax: some({ lamports: sol(0.001), lastInstruction: true }),
+    thirdPartySigner: some({ signer: thirdPartySigner.publicKey }),
+    startDate: some({ date: dateTime("2022-10-18T17:00:00Z") }),
+  },
+  groups: [
+    {
+      label: "nft",
+      guards: {
+        nftPayment: some({ requiredCollection, destination: nftTreasury }),
+        startDate: some({ date: dateTime("2022-10-18T16:00:00Z") }),
+      },
+    },
+    {
+      label: "public",
+      guards: {
+        solPayment: some({ lamports: sol(1), destination: solTreasury }),
+      },
+    },
+  ],
+}).sendAndConfirm(umi);
+
+// Mint from the Candy Machine.
+const nftMint = generateSigner(umi);
+await transactionBuilder()
+  .add(setComputeUnitLimit(umi, { units: 800_000 }))
+  .add(
+    mintV2(umi, {
+      candyMachine: candyMachine.publicKey,
+      nftMint,
+      collectionMint: collectionNft.publicKey,
+      collectionUpdateAuthority: collectionNft.metadata.updateAuthority,
+      group: some("nft"),
+      mintArgs: {
+        thirdPartySigner: some({ signer: thirdPartySigner }),
+        nftPayment: some({
+          mint: nftFromRequiredCollection.publicKey,
+          destination: nftTreasury,
+          tokenStandard: TokenStandard.NonFungible,
+        }),
+      },
+    })
+  )
+  .sendAndConfirm(umi);
+```
+
+API References: [mintV2](https://mpl-candy-machine-js-docs.vercel.app/functions/mintV2.html), [DefaultGuardSetMintArgs](https://mpl-candy-machine-js-docs.vercel.app/types/DefaultGuardSetMintArgs.html)
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
+<div className="accordion-item-padding">
+
+:::info
+The JS SDK is only compatible with Candy Machine V3 accounts whose account version is 1. That means, it does not support minting programmable NFTs and it is not compatible with Candy Machines created with the latest version of [Sugar](/developer-tools/sugar/overview/introduction).
+
+You may consider [using the Umi library](/programs/candy-machine/getting-started#umi-library-recommended) instead which supports all account versions of Candy Machine V3. Alternatively, you may downgrade you Sugar version to `2.0.0` or use the Solita-generated library.
+
+See [Programmable NFTs](/programs/candy-machine/programmable-nfts) for more details.
+:::
 
 When minting from a Candy Machine using guard groups, the label of the group we want to select must be provided via the `group` attribute.
 
@@ -259,4 +480,4 @@ Congratulations, you now know how Candy Machines work from A to Z!
 Here are some additional reading resources you might be interested in:
 
 - [All Available Guards](/programs/candy-machine/available-guards): Have a look through all the guards available to you so you can cherry-pick the ones you need.
-- *Create Your First Candy Machine (coming soon)*: This How-To guide helps you upload your assets and create a new Candy Machine from scratch using a CLI tool called “[Sugar](/developer-tools/sugar/overview/introduction)”. It also uses our JS SDK to spin up a minting website for your Candy Machine.
+- _Create Your First Candy Machine (coming soon)_: This How-To guide helps you upload your assets and create a new Candy Machine from scratch using a CLI tool called “[Sugar](/developer-tools/sugar/overview/introduction)”. It also uses our JS SDK to spin up a minting website for your Candy Machine.

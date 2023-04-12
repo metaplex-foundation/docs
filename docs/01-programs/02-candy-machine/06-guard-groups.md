@@ -49,7 +49,81 @@ Now, whenever someone tries to mint from our Candy Machine, **they will have to 
 Now let’s see how we can create and update groups using our SDKs.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+To create Candy Machines with guard groups, simply provide the `groups` array to the `create` function. Each item of this array must contain a `label` and a `guards` object containing the settings of all guards we wish to activate in that group.
+
+Here’s how we’d implement the above example using the Umi library.
+
+```ts
+import { some, sol, dateTime } from "@metaplex-foundation/umi";
+
+await create(umi, {
+  // ...
+  groups: [
+    {
+      label: "early",
+      guards: {
+        solPayment: some({ lamports: sol(1), destination: treasury }),
+        startDate: some({ date: dateTime("2022-10-18T16:00:00Z") }),
+        endDate: some({ date: dateTime("2022-10-18T17:00:00Z") }),
+        botTax: some({ lamports: sol(0.001), lastInstruction: true }),
+      },
+    },
+    {
+      label: "late",
+      guards: {
+        solPayment: some({ lamports: sol(2), destination: treasury }),
+        startDate: some({ date: dateTime("2022-10-18T17:00:00Z") }),
+        botTax: some({ lamports: sol(0.001), lastInstruction: true }),
+      },
+    },
+  ],
+}).sendAndConfirm(umi);
+```
+
+To update groups, simply provide that same `groups` attribute to the `updateCandyGuard` function.
+Please note that the entire `guards` object and `groups` array will be updated meaning **it will override all existing data**!
+
+Therefore, make sure to provide the settings for all your groups, even if their settings are not changing. You may want to fetch the latest candy guard account data beforehand to avoid overwriting any existing settings.
+
+Here’s an example, changing the SOL payment guard for the “late” group to 3 SOL instead of 2 SOL.
+
+```ts
+import { some, sol, dateTime } from "@metaplex-foundation/umi";
+
+const candyGuard = await fetchCandyGuard(umi, candyMachine.mintAuthority);
+await updateCandyGuard(umi, {
+  candyGuard: candyGuard.publicKey,
+  guards: candyGuard.guards,
+  groups: [
+    {
+      label: "early",
+      guards: {
+        solPayment: some({ lamports: sol(1), destination: treasury }),
+        startDate: some({ date: dateTime("2022-10-18T16:00:00Z") }),
+        endDate: some({ date: dateTime("2022-10-18T17:00:00Z") }),
+        botTax: some({ lamports: sol(0.001), lastInstruction: true }),
+      },
+    },
+    {
+      label: "late",
+      guards: {
+        solPayment: some({ lamports: sol(3), destination: treasury }),
+        startDate: some({ date: dateTime("2022-10-18T17:00:00Z") }),
+        botTax: some({ lamports: sol(0.001), lastInstruction: true }),
+      },
+    },
+  ],
+}).sendAndConfirm(umi);
+```
+
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [updateCandyGuard](https://mpl-candy-machine-js-docs.vercel.app/functions/updateCandyGuard.html), [DefaultGuardSetArgs](https://mpl-candy-machine-js-docs.vercel.app/types/DefaultGuardSetArgs.html)
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 To create Candy Machines with guard groups, simply provide the `groups` array to the `create` operation. Each item of this array must contain a `label` and a `guards` object containing the settings of all guards we wish to activate in that group.
@@ -159,7 +233,44 @@ As you can see, default guards are useful to avoid repetition within your groups
 Note that, even when using default guards, a group must be provided when minting. That means, when using guard groups, **it is not possible to mint using the default guards only**.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+To use default guards in the Umi library, simply use the `guards` attribute in conjunction with the `groups` array when creating or updating a Candy Machine. For instance, here’s how you’d create a Candy Machine using the guard settings described above.
+
+```ts
+import { some, sol, dateTime } from "@metaplex-foundation/umi";
+
+await create(umi, {
+  // ...
+  guards: {
+    botTax: some({ lamports: sol(0.001), lastInstruction: true }),
+  },
+  groups: [
+    {
+      label: "early",
+      guards: {
+        solPayment: some({ lamports: sol(1), destination: treasury }),
+        startDate: some({ date: dateTime("2022-10-18T16:00:00Z") }),
+        endDate: some({ date: dateTime("2022-10-18T17:00:00Z") }),
+      },
+    },
+    {
+      label: "late",
+      guards: {
+        solPayment: some({ lamports: sol(2), destination: treasury }),
+        startDate: some({ date: dateTime("2022-10-18T17:00:00Z") }),
+      },
+    },
+  ],
+}).sendAndConfirm(umi);
+```
+
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [DefaultGuardSetArgs](https://mpl-candy-machine-js-docs.vercel.app/types/DefaultGuardSetArgs.html)
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 To use default guards in the JS SDK, simply use the `guards` attribute in conjunction with the `groups` array when creating or updating a Candy Machine.
@@ -221,7 +332,45 @@ Let’s illustrate that with a new example. Say we have an NFT collection called
 As you can see, with these guard settings, it is possible for both groups to mint at the same time. It is even possible for an NFT holder to pay the full 2 SOL should they decide to mint from the “public” group. However, it is in their best interest to select the “nft” group if they can.
 
 <Accordion>
-<AccordionItem title="JS SDK" open={true}>
+<AccordionItem title="JavaScript — Umi library (recommended)" open={true}>
+<div className="accordion-item-padding">
+
+Here’s how you’d create a Candy Machine using the guard settings described above via the Umi library.
+
+```ts
+import { some, sol, dateTime } from "@metaplex-foundation/umi";
+
+await create(umi, {
+  // ...
+  guards: {
+    botTax: some({ lamports: sol(0.001), lastInstruction: true }),
+    startDate: some({ date: dateTime("2022-10-18T16:00:00Z") }),
+  },
+  groups: [
+    {
+      label: "early",
+      guards: {
+        solPayment: some({ amount: sol(1), destination: treasury }),
+        nftGate: some({
+          requiredCollection: innocentBirdCollectionNft.publicKey,
+        }),
+      },
+    },
+    {
+      label: "late",
+      guards: {
+        solPayment: some({ amount: sol(2), destination: treasury }),
+      },
+    },
+  ],
+}).sendAndConfirm(umi);
+```
+
+API References: [create](https://mpl-candy-machine-js-docs.vercel.app/functions/create.html), [DefaultGuardSetArgs](https://mpl-candy-machine-js-docs.vercel.app/types/DefaultGuardSetArgs.html)
+
+</div>
+</AccordionItem>
+<AccordionItem title="JavaScript — SDK">
 <div className="accordion-item-padding">
 
 Here’s how you’d create a Candy Machine using the guard settings described above via the JS SDK.
