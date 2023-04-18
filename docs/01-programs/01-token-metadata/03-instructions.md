@@ -343,34 +343,95 @@ Burns an asset, closing associated accounts.
 
 Supports burning the following asset types:
 
-- ProgrammableNonFungible
-- NonFungible
-- NonFungibleEdition
-- Fungible
-- FungibleAsset
+- `ProgrammableNonFungible`
+- `NonFungible`
+- `NonFungibleEdition`
+- `Fungible`
+- `FungibleAsset`
 
 Parent accounts are only required for burning print editions and are the accounts for the master edition associated with the print edition. Parent edition is the master edition account, parent mint is the mint account of the master edition NFT etc.
 
-The Token Record account is required for burning a ProgrammableNonFungible asset.
+The Token Record account is required for burning a `ProgrammableNonFungible` asset.
 
 This handler closes the following accounts:
 
-For ProgrammableNonFungible assets:
+For `ProgrammableNonFungible` assets:
 
-- Metadata, Edition, Token, TokenRecord
+- `Metadata`, `Edition`, `Token`, `TokenRecord`
 
-For NonFungible assets:
+For `NonFungible` assets:
 
-- Metadata, Edition, Token
+- `Metadata`, `Edition`, `Token`
 
-For NonFungibleEdition assets:
+For `NonFungibleEdition` assets:
 
-- Metadata, Edition, Token, and the EditionMarker, if all prints for it are burned.
+- `Metadata`, `Edition`, `Token`, and the `EditionMarker`, if all prints for it are burned.
 
-For Fungible assets:
+For `Fungible` and `FungibleAsset` assets:
 
 - Only the token account, if all tokens are burned.
 
 Mint accounts are owned by the immutable Token program and cannot be closed.
+
+</ProgramInstruction>
+
+### Update
+
+<ProgramInstruction idl={idl} instruction="Update">
+
+---
+#### TODO INSERT PICTURE HERE
+```
+  _    _           _       _
+ | |  | |         | |     | |
+ | |  | |_ __   __| | __ _| |_ ___
+ | |  | | '_ \ / _` |/ _` | __/ _ \
+ | |__| | |_) | (_| | (_| | ||  __/
+  \____/| .__/ \__,_|\__,_|\__\___|
+        | |
+        |_|
+```
+---
+
+Updates the metadata of an asset.
+
+This handler supports the following asset types:
+
+- `ProgrammableNonFungible`
+- `NonFungible`
+- `NonFungibleEdition`
+- `Fungible`
+- `FungibleAsset`
+
+Fields the caller wishes to update are passed in via `UpdateArgs`. Values that are set to `None` are not changed.  Any value set to `Some(...)` will have its value updated. There are properties that have three valid states, and use a "toggle" type that allows the value to be set, cleared, or remain the same.
+
+The asset's update authority can update metadata using all the fields of `UpdateArgs`.  Metadata delegates are only authorized to use specific subsets of the `UpdateArgs` as shown in the table below.  The handler will fail if a delegate attempts to update a piece of the metadata for which it is not authorized.
+
+The token holder is currently supported as an authority type that can be passed in, but will result in a "Feature not supported" error.  Lastly, token delegates are not authorized to update an asset's metadata.
+
+| Authority type                                            | Authorized `UpdateArgs` fields |
+| --------------------------------------------------------- | ------------------------------ |
+| Item Update Authority                                     | All fields for self (includes `uses` and `collection_details`, which cannot be changed by delegates) |
+| `MetadataDelegateRole::Authority`                         | `new_update_authority`, `primary_sale_happened`, `is_mutable`, `token_standard` for self |
+| `MetadataDelegateRole::Data`                              | `data` for self |
+| `MetadataDelegateRole::Collection`                        | `collection` for self and any children assets if this is a collection parent |
+| `MetadataDelegateRole::CollectionItem`                    | `collection` for self only |
+| `MetadataDelegateRole::ProgrammableConfig`                | `rule_set` for self and any children assets if this is a collection parent |
+| `MetadataDelegateRole::ProgrammableConfigItem`            | `rule_set` for self only |
+| Token holder                                              | Not currently supported |
+| All token delegates (`TokenDelegateRole::Transfer`, etc.) | None |
+
+#### Token standard
+If the asset's token standard is unknown (because it was created with legacy instructions that did not set it), then this handler will infer and set the appropriate standard, based on whether the asset has an edition account as the mint authority, the type of the edition account, the current supply, and decimals.
+
+If the asset's mint authority is a master edition account, but the master edition account was not provided to the `Update` handler, the handler will detect this and fail rather than erroneously inferring the asset is a `FungibleAsset`.
+
+If the token standard is inferred to be or already `Fungible` or `FungibleAsset`, the item update authority or the `MetadataDelegateRole::Authority` can freely switch the asset between those two standard types.
+
+#### Specifying optional accounts
+- The `delegate_record` optional account is only required if using a delegate.
+- The `token` optional account is only required if the authority is the owner/holder.  But since this is currently not supported, the account effectively does not need to be passed in at this time.
+- The `edition` optional account must be passed in if the token standard is currently not set and the asset is truly a `NonFungible`, or `NonFungibleEdition` asset type with mint authority set to the `edition` account already.  The `Update` handler will use the `edition` account to infer the token standard.
+- Both the `authorization_rules_program` and `authorization_rules` optional accounts are required if the asset is a `ProgrammableNonFungible` and the item has a `RuleSet` stored in its metadata.
 
 </ProgramInstruction>
