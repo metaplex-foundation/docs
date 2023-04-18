@@ -379,19 +379,7 @@ Mint accounts are owned by the immutable Token program and cannot be closed.
 
 <ProgramInstruction idl={idl} instruction="Update">
 
----
-#### TODO INSERT PICTURE HERE
-```
-  _    _           _       _
- | |  | |         | |     | |
- | |  | |_ __   __| | __ _| |_ ___
- | |  | | '_ \ / _` |/ _` | __/ _ \
- | |__| | |_) | (_| | (_| | ||  __/
-  \____/| .__/ \__,_|\__,_|\__\___|
-        | |
-        |_|
-```
----
+![](/assets/programs/token-metadata/Token-Metadata-Instruction-Update.png)
 
 Updates the metadata of an asset.
 
