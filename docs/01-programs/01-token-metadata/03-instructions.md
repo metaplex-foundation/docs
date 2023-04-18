@@ -399,22 +399,28 @@ The token holder is currently supported as an authority type that can be passed 
 
 | Authority type                                            | Authorized `UpdateArgs` fields |
 | --------------------------------------------------------- | ------------------------------ |
-| Item Update Authority                                     | All fields for self (includes `uses` and `collection_details`, which cannot be changed by delegates) |
-| `MetadataDelegateRole::Authority`                         | `new_update_authority`, `primary_sale_happened`, `is_mutable`, `token_standard` for self |
-| `MetadataDelegateRole::Data`                              | `data` for self |
-| `MetadataDelegateRole::Collection`                        | `collection` for self and any children assets if this is a collection parent |
+| Item Update Authority                                     | All fields for self only (includes `uses` and `collection_details`, which cannot be changed by delegates) |
+| `MetadataDelegateRole::AuthorityItem`                     | `new_update_authority`, `primary_sale_happened`, `is_mutable`, `token_standard` for self only |
+| `MetadataDelegateRole::DataItem`                          | `data` for self only |
+| `MetadataDelegateRole::Data    `                          | `data` for self and any children assets if this is a collection parent |
 | `MetadataDelegateRole::CollectionItem`                    | `collection` for self only |
-| `MetadataDelegateRole::ProgrammableConfig`                | `rule_set` for self and any children assets if this is a collection parent |
+| `MetadataDelegateRole::Collection`                        | `collection` for self and any children assets if this is a collection parent |
 | `MetadataDelegateRole::ProgrammableConfigItem`            | `rule_set` for self only |
+| `MetadataDelegateRole::ProgrammableConfig`                | `rule_set` for self and any children assets if this is a collection parent |
 | Token holder                                              | Not currently supported |
 | All token delegates (`TokenDelegateRole::Transfer`, etc.) | None |
 
-#### Token standard
+#### Specific limitations
+- Creators and collections cannot be set to verified by this instruction if they already in the asset's metadata as unverified.  Conversely, this instruction cannot unverify creators or collections if they are already in the asset's metadata as verified.
+- `primary_sale_happened` can only be switched from `False` to `True` and cannot be switched back.
+- `is_mutable` can only be switched from `True` to `False` and cannot be switched back.
+- If the token standard is inferred to be or already set to `Fungible` or `FungibleAsset`, the item update authority or the `MetadataDelegateRole::Authority` can freely switch the asset between those two standard types (see below for more on token standard inference).
+- `collection_details` can only be used to set size on an unsized collection, and only once.  Once the collection size is set it is managed by the token-metadata program when items are added/removed from the collection using other instructions (i.e., `Verify`, `Burn`).
+
+#### Token standard inference
 If the asset's token standard is unknown (because it was created with legacy instructions that did not set it), then this handler will infer and set the appropriate standard, based on whether the asset has an edition account as the mint authority, the type of the edition account, the current supply, and decimals.
 
 If the asset's mint authority is a master edition account, but the master edition account was not provided to the `Update` handler, the handler will detect this and fail rather than erroneously inferring the asset is a `FungibleAsset`.
-
-If the token standard is inferred to be or already `Fungible` or `FungibleAsset`, the item update authority or the `MetadataDelegateRole::Authority` can freely switch the asset between those two standard types.
 
 #### Specifying optional accounts
 - The `delegate_record` optional account is only required if using a delegate.
