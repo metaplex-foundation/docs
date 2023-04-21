@@ -12,6 +12,8 @@ The code that you will see in this Guide and the [mint-example-ui code on Github
 
 :::caution
 This Guide is for Candy Machine v3 Account version v1. If you want to use the JS SDK the highest sugar version you can use is [v2.0](https://github.com/metaplex-foundation/sugar/releases/tag/v2.0.0). With later versions you have to the [Umi Guide](./my-first-candy-machine-part2-umi).
+
+This guide does NOT support programmable NFT (pNFT, royalty enforcement)
 :::
 
 ## Prerequisite Knowledge
