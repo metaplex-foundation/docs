@@ -430,7 +430,7 @@ If the asset's mint authority is a master edition account, but the master editio
 
 #### Specifying optional accounts
 - The `delegate_record` optional account is only required if using a delegate.
-- The `token` optional account is required if the `RuleSet` is being changed.  This is because we do not allow for a `RuleSet` to be changed if the token currently has a delegate.  The `token` account is also needed if the authority is the owner/holder.  Also, if updates byt the owner/holder were supported (currently they are not), then the `token` account would be needed for authorizing the owner/holder.
+- The `token` optional account is required if the `RuleSet` is being changed.  This is because we do not allow for a `RuleSet` to be changed if the token currently has a delegate.  The `token` account is also needed if the authority is the owner/holder.  However, note that owner/holder authorization is not useful at present, as updates by the owner/holder are currently not supported.
 - The `edition` optional account must be passed in if the token standard is currently not set and the asset is truly a `NonFungible`, or `NonFungibleEdition` asset type with mint authority set to the `edition` account already.  The `Update` handler will use the `edition` account to infer the token standard.
 - Both the `authorization_rules_program` and `authorization_rules` optional accounts are required if the asset is a `ProgrammableNonFungible` and the item has a `RuleSet` stored in its metadata.
 
