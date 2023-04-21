@@ -393,22 +393,28 @@ This handler supports the following asset types:
 
 Fields the caller wishes to update are passed in via `UpdateArgs`. Values that are set to `None` are not changed.  Any value set to `Some(...)` will have its value updated. There are properties that have three valid states, and use a "toggle" type that allows the value to be set, cleared, or remain the same.
 
-The asset's update authority can update metadata using all the fields of `UpdateArgs`.  Metadata delegates are only authorized to use specific subsets of the `UpdateArgs` as shown in the table below.  The handler will fail if a delegate attempts to update a piece of the metadata for which it is not authorized.
+The asset's update authority can update all user-modifiable metadata items.  Metadata delegates are only authorized to use specific subsets of the metadata.  This is enforced through the variants of `UpdateArgs`.
+
+To maintain backwards compatibility, the asset's update authority and a Programmable Config delegate are allowed to use `UpdateArgs::V1`.  The handler will fail if the Programmable Config delegate attempts to update anything other than the `rule_set`.
+
+All of the V2 variants of `UpdateArgs` contain only the fields authorized for that authority type, as shown in the table below.
 
 The token holder is currently supported as an authority type that can be passed in, but will result in a "Feature not supported" error.  Lastly, token delegates are not authorized to update an asset's metadata.
 
-| Authority type                                            | Authorized `UpdateArgs` fields |
-| --------------------------------------------------------- | ------------------------------ |
-| Item Update Authority                                     | All fields for self only (includes `uses` and `collection_details`, which cannot be changed by delegates) |
-| `MetadataDelegateRole::AuthorityItem`                     | `new_update_authority`, `primary_sale_happened`, `is_mutable`, `token_standard` for self only |
-| `MetadataDelegateRole::DataItem`                          | `data` for self only |
-| `MetadataDelegateRole::Data    `                          | `data` for self and any children assets if this is a collection parent |
-| `MetadataDelegateRole::CollectionItem`                    | `collection` for self only |
-| `MetadataDelegateRole::Collection`                        | `collection` for self and any children assets if this is a collection parent |
-| `MetadataDelegateRole::ProgrammableConfigItem`            | `rule_set` for self only |
-| `MetadataDelegateRole::ProgrammableConfig`                | `rule_set` for self and any children assets if this is a collection parent |
-| Token holder                                              | Not currently supported |
-| All token delegates (`TokenDelegateRole::Transfer`, etc.) | None |
+| Authority type                                            | Authorized `UpdateArgs` variants                     | Authorized `UpdateArgs` fields |
+| --------------------------------------------------------- | ---------------------------------------------------- | ------------------------------ |
+| Asset's Update Authority                                  | `UpdateArgs::V1`*, `UpdateArgs::UpdateAuthorityV2   ` | All fields for self only (includes `uses` and `collection_details`, which cannot be changed by delegates) |
+| `MetadataDelegateRole::AuthorityItem`                     | `UpdateArgs::AuthorityItemDelegateV2`                |`new_update_authority`, `primary_sale_happened`, `is_mutable`, `token_standard` for self only |
+| `MetadataDelegateRole::DataItem`                          | `UpdateArgs::DataItemDelegateV2`                     |`data` for self only |
+| `MetadataDelegateRole::Data    `                          | `UpdateArgs::DataDelegateV2`                         |`data` for self and any children assets if this is a collection parent |
+| `MetadataDelegateRole::CollectionItem`                    | `UpdateArgs::CollectionItemDelegateV2`               |`collection` for self only |
+| `MetadataDelegateRole::Collection`                        | `UpdateArgs::CollectionDelegateV2`                   |`collection` for self and any children assets if this is a collection parent |
+| `MetadataDelegateRole::ProgrammableConfigItem`            | `UpdateArgs::ProgConfigItemDelegateV2`               |`rule_set` for self only |
+| `MetadataDelegateRole::ProgrammableConfig`                | `UpdateArgs::V1`*, `UpdateArgs::ProgConfigDelegateV2` |`rule_set` for self and any children assets if this is a collection parent |
+| Token holder                                              | Not currently supported                              | Not applicable |
+| All token delegates (`TokenDelegateRole::Transfer`, etc.) | None                                                 | Not applicable |
+
+*For backwards compatibility.
 
 #### Specific limitations
 - Creators and collections cannot be set to verified by this instruction if they already in the asset's metadata as unverified.  Conversely, this instruction cannot unverify creators or collections if they are already in the asset's metadata as verified.
@@ -424,7 +430,7 @@ If the asset's mint authority is a master edition account, but the master editio
 
 #### Specifying optional accounts
 - The `delegate_record` optional account is only required if using a delegate.
-- The `token` optional account is only required if the authority is the owner/holder.  But since this is currently not supported, the account effectively does not need to be passed in at this time.
+- The `token` optional account is required if the `RuleSet` is being changed.  This is because we do not allow for a `RuleSet` to be changed if the token currently has a delegate.  The `token` account is also needed if the authority is the owner/holder.  Also, if updates byt the owner/holder were supported (currently they are not), then the `token` account would be needed for authorizing the owner/holder.
 - The `edition` optional account must be passed in if the token standard is currently not set and the asset is truly a `NonFungible`, or `NonFungibleEdition` asset type with mint authority set to the `edition` account already.  The `Update` handler will use the `edition` account to infer the token standard.
 - Both the `authorization_rules_program` and `authorization_rules` optional accounts are required if the asset is a `ProgrammableNonFungible` and the item has a `RuleSet` stored in its metadata.
 
