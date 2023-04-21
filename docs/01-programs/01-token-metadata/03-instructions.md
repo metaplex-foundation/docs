@@ -401,20 +401,20 @@ All of the V2 variants of `UpdateArgs` contain only the fields authorized for th
 
 The token holder is currently supported as an authority type that can be passed in, but will result in a "Feature not supported" error.  Lastly, token delegates are not authorized to update an asset's metadata.
 
-| Authority type                                            | Authorized `UpdateArgs` variants                     | Authorized `UpdateArgs` fields |
-| --------------------------------------------------------- | ---------------------------------------------------- | ------------------------------ |
-| Asset's Update Authority                                  | `UpdateArgs::V1`*, `UpdateArgs::UpdateAuthorityV2   ` | All fields for self only (includes `uses` and `collection_details`, which cannot be changed by delegates) |
-| `MetadataDelegateRole::AuthorityItem`                     | `UpdateArgs::AuthorityItemDelegateV2`                |`new_update_authority`, `primary_sale_happened`, `is_mutable`, `token_standard` for self only |
-| `MetadataDelegateRole::DataItem`                          | `UpdateArgs::DataItemDelegateV2`                     |`data` for self only |
-| `MetadataDelegateRole::Data    `                          | `UpdateArgs::DataDelegateV2`                         |`data` for self and any children assets if this is a collection parent |
-| `MetadataDelegateRole::CollectionItem`                    | `UpdateArgs::CollectionItemDelegateV2`               |`collection` for self only |
-| `MetadataDelegateRole::Collection`                        | `UpdateArgs::CollectionDelegateV2`                   |`collection` for self and any children assets if this is a collection parent |
-| `MetadataDelegateRole::ProgrammableConfigItem`            | `UpdateArgs::ProgConfigItemDelegateV2`               |`rule_set` for self only |
-| `MetadataDelegateRole::ProgrammableConfig`                | `UpdateArgs::V1`*, `UpdateArgs::ProgConfigDelegateV2` |`rule_set` for self and any children assets if this is a collection parent |
-| Token holder                                              | Not currently supported                              | Not applicable |
-| All token delegates (`TokenDelegateRole::Transfer`, etc.) | None                                                 | Not applicable |
+| Authority type                                            | Authorized `UpdateArgs` variants                      | Authorized `UpdateArgs` fields |
+| --------------------------------------------------------- | ----------------------------------------------------- | ------------------------------ |
+| Asset's Update Authority                                  | `UpdateArgs::V1`*, `UpdateArgs::UpdateAuthorityV2`    | All fields for self only (includes `uses` and `collection_details`, which cannot be changed by delegates) |
+| `AuthorityItem` delegate                                  | `UpdateArgs::AuthorityItemDelegateV2`                 |`new_update_authority`, `primary_sale_happened`, `is_mutable`, `token_standard` for self only |
+| `DataItem` delegate                                       | `UpdateArgs::DataItemDelegateV2`                      |`data` for self only |
+| `MetadataDelegateRole` delegate                           | `UpdateArgs::DataDelegateV2`                          |`data` for self and any children assets if this is a collection parent |
+| `CollectionItem` delegate                                 | `UpdateArgs::CollectionItemDelegateV2`                |`collection` for self only |
+| `Collection` delegate                                     | `UpdateArgs::CollectionDelegateV2`                    |`collection` for self and any children assets if this is a collection parent |
+| `ProgrammableConfigItem` delegate                         | `UpdateArgs::ProgConfigItemDelegateV2`                |`rule_set` for self only |
+| `ProgrammableConfig` delegate                             | `UpdateArgs::V1`*, `UpdateArgs::ProgConfigDelegateV2` |`rule_set` for self and any children assets if this is a collection parent |
+| Token holder                                              | Not currently supported                               | Not applicable |
+| All token delegates (`TokenDelegateRole::Transfer`, etc.) | None                                                  | Not applicable |
 
-*For backwards compatibility.
+_*For backwards compatibility._
 
 #### Specific limitations
 - Creators and collections cannot be set to verified by this instruction if they already in the asset's metadata as unverified.  Conversely, this instruction cannot unverify creators or collections if they are already in the asset's metadata as verified.
