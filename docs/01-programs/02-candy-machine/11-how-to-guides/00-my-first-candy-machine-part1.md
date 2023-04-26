@@ -50,7 +50,7 @@ sugar
 <AccordionCode title="Output">
 
 ```
-sugar-cli 2.0.0
+sugar-cli 2.1.1
 Command line tool for creating and managing Metaplex Candy Machines.
 
 USAGE:
@@ -62,25 +62,24 @@ OPTIONS:
     -V, --version                  Print version information
 
 SUBCOMMANDS:
-    airdrop          Airdrop NFTs from candy machine
-    bundlr           Interact with the bundlr network
-    collection       Manage the collection on the candy machine
-    create-config    Interactive process to create the config file
-    deploy           Deploy cache items into candy machine config on-chain
-    freeze           Manage freeze guard actions
-    guard            Manage guards on the candy machine
-    hash             Generate hash of cache file for hidden settings
-    help             Print this message or the help of the given subcommand(s)
-    launch           Create a candy machine deployment from assets
-    mint             Mint one NFT from candy machine
-    reveal           Reveal the NFTs from a hidden settings candy machine
-    show             Show the on-chain config of an existing candy machine
-    sign             Sign one or all NFTs from candy machine
-    update           Update the candy machine config on-chain
-    upload           Upload assets to storage and creates the cache config
-    validate         Validate JSON metadata files
-    verify           Verify uploaded data
-    withdraw         Withdraw funds a from candy machine account closing it
+    airdrop       Airdrop NFTs from candy machine
+    bundlr        Interact with the bundlr network
+    collection    Manage the collection on the candy machine
+    config        Manage candy machine configuration
+    deploy        Deploy cache items into candy machine config on-chain
+    freeze        Manage freeze guard actions
+    guard         Manage guards on the candy machine
+    hash          Generate hash of cache file for hidden settings
+    help          Print this message or the help of the given subcommand(s)
+    launch        Create a candy machine deployment from assets
+    mint          Mint one NFT from candy machine
+    reveal        Reveal the NFTs from a hidden settings candy machine
+    show          Show the on-chain config of an existing candy machine
+    sign          Sign one or all NFTs from candy machine
+    upload        Upload assets to storage and creates the cache config
+    validate      Validate JSON metadata files
+    verify        Verify uploaded data
+    withdraw      Withdraw funds a from candy machine account closing it
 ```
 
 </AccordionCode>
@@ -108,12 +107,12 @@ We will run all our Sugar commands from within the project directory and Sugar w
 
 ## Create a Config File
 
-The config file tells Sugar how to configure your candy machine with values such as the number of assets, what creators to use, what settings to apply, etc. To create a config file we are going to use the Sugar `create-config` interactive command.
+The config file tells Sugar how to configure your candy machine with values such as the number of assets, what creators to use, what settings to apply, etc. To create a config file we are going to use the Sugar `config create` interactive command.
 
 Run the following command in your terminal from within your project directory:
 
 ```bash
-sugar create-config
+sugar config create
 ```
 
 We will now get a series of questions we need to answer to set up our config file.
@@ -683,6 +682,7 @@ sugar withdraw
 
 Do you want to learn more about sugar and the Candy Machine? These documents might be interesting for you:
 
+- [How to create a Candy Machine v3 - Part 2 (Umi)](./my-first-candy-machine-part2-umi)
 - [How to create a Candy Machine v3 - Part 2 (JS SDK)](./my-first-candy-machine-part2)
 - [Guards](/programs/candy-machine/candy-guards)
 - [Guard Groups](/programs/candy-machine/guard-groups)

@@ -24,7 +24,7 @@ Run this install script in your terminal:
 bash <(curl -sSf https://sugar.metaplex.com/install.sh)
 ```
 
-This will install the binary to your machine and add it to your PATH.
+This will install the binary to your machine and add it to your PATH. You will be asked which version you want to use. V1.x is for Candy Machine v2, V2.x is for Candy Machine v3. We recommend to use the latest version.
 
 </TabItem>
 

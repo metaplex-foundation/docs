@@ -10,6 +10,12 @@ In this Guide, we will show you how to leverage the [Metaplex JS SDK](https://gi
 
 The code that you will see in this Guide and the [mint-example-ui code on Github](https://github.com/metaplex-foundation/js-examples/tree/main/mint-ui-example) is written to be as easily understandable as possible, and neither perfectly compliant with Next JS rules nor being as smart as possible, but instead to make it as easily readable as possible.
 
+:::caution
+This Guide is for Candy Machine v3 Account version v1. If you want to use the JS SDK the highest sugar version you can use is [v2.0](https://github.com/metaplex-foundation/sugar/releases/tag/v2.0.0). With later versions you have to the [Umi Guide](./my-first-candy-machine-part2-umi).
+
+This guide does NOT support programmable NFT (pNFT, royalty enforcement)
+:::
+
 ## Prerequisite Knowledge
 
 - You should have a basic understanding of how to find and use a terminal on your OS, including navigating directories, and running commands: an example of a terminal for macOS is [iTerm2](https://iterm2.com/).
