@@ -8,7 +8,7 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 ## Introduction
 
-Version `1.7` of Token Metadata introduced a [new type of asset class called Programmable NFTs](programs/token-metadata/overview#programmable-nfts) allowing, amongst other things, creators to enforce royalties on secondary sales.
+Version `1.7` of Token Metadata introduced a [new type of asset class called Programmable NFTs](/programs/token-metadata/overview#programmable-nfts) allowing, amongst other things, creators to enforce royalties on secondary sales.
 
 Since version `1.0` of Candy Machine Core and version `1.0` of Candy Guard, it is now possible to **mint Programmable NFTs from candy machines** and even update the token standard of existing candy machines.
 
