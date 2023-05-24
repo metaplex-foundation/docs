@@ -2,6 +2,21 @@
 
 The Metaplex Foundation currently charges the following protocol fees:
 
+## **Revised Fee Schedule (as of May 24th, 2023)**
+
+Based on community feedback, Metaplex Foundation has announced an updated fee schedule with the following changes:
+- The Update, Verify, Freeze and Thaw fees for Token Metadata have been removed
+- The Create fee for Token Metadata has changed to 0.012 to be in line with the Solana rent cost
+
+| Instruction       | Program         | Typical Payer   | Amount (SOL) | Notes |
+|-------------------|-----------------|---------|--------------|---------|
+| Create            | Token Metadata  | Collector  | 0.012         | The minter for most NFTs created on Solana are the individual collectors minting from new drops. Creators that mint many NFTs may consider using compression for radically lower mint costs. |
+| Combine           | Fusion (Trifle) | Collector | 0.002        ||
+| Split             | Fusion (Trifle) | Collector | 0.002        ||
+| Edit constraint   | Fusion (Trifle) | Creator | 0.01         ||
+
+## Fee Schedule (as of May 22nd, 2023)
+
 | Instruction       | Program         | Typical Payer   | Amount (SOL) | Notes |
 |-------------------|-----------------|---------|--------------|---------|
 | Create            | Token Metadata  | Collector  | 0.01         | The minter for most NFTs created on Solana are the individual collectors minting from new drops. Creators that mint many NFTs may consider using compression for radically lower mint costs. |
@@ -23,11 +38,7 @@ We are constantly monitoring community feedback related to the fees and may chan
 
 ### How much will it cost me, as a creator, in Token Metadata fees to launch a 10k NFT collection through Candy Machine?
 
-- Standard 10k drop: Create: 0 SOL, fees are spread amongst the collectors
-- [Optional] If using CMv3's reveal feature:
-  - Freeze: 0 SOL, fees are spread amongst the collectors
-  - Reveal: Update 20* SOL
-  - Thaw: 10* SOL
+Creators will incur 0 SOL in Token Metadata fees for a standard 10k NFT drop since the Create fees are spread amongst the collectors who are minting from the Candy Machine.
 
 ### Do the freeze and thaw fees impact pNFT transfers?
 
