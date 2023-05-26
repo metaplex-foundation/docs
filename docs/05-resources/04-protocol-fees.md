@@ -9,7 +9,7 @@ Based on community feedback, Metaplex Foundation has announced an updated fee sc
 
 | Instruction       | Program         | Typical Payer   | Amount (SOL) | Notes |
 |-------------------|-----------------|---------|--------------|---------|
-| Create            | Token Metadata  | Collector  | 0.01         | The minter for most NFTs created on Solana are the individual collectors minting from new drops. Creators that mint many NFTs may consider using compression for radically lower mint costs. |
+| Create            | Token Metadata  | Collector  | 0.01         | The minter for most NFTs created on Solana are the individual collectors minting from new drops. Creators that mint many NFTs may consider using compression for radically lower mint costs. (Includes all instructions that "create" an NFT including ones that create print editions.)|
 | Combine           | Fusion (Trifle) | Collector | 0.002        ||
 | Split             | Fusion (Trifle) | Collector | 0.002        ||
 | Edit constraint   | Fusion (Trifle) | Creator | 0.01         ||
