@@ -37,6 +37,7 @@ Send a tweet to [@metaplex](https://twitter.com/metaplex) or edit this page on G
 
 ## Candy Machine
 
+- [MintUI - cmv3-v2/sugar 2.1.1](https://porcupineplaygroundpals.com/how-to-create-a-minting-ui-for-collection-deployed-with-metaplex-sugar-2-1-1/) How to/starter project to mint using umi for collection deployed with sugar 2.1.1 (Candy Machine V3 Account V2)
 - [MintUI - An extensible UI for creating Metaplex Candy Machines](https://github.com/InnerMindDAO/MintUI)
 - [TreatToolbox - Generative art manager for the non-technical](https://treattoolbox.com/)
 - [Metaplex Candy Machine Missing Guide](https://hackmd.io/@levicook/HJcDneEWF)
