@@ -168,6 +168,17 @@ The AddressGate guard restricts the mint to a single address — the address mus
 }
 ```
 
+### Allocation
+
+The Allocation guard allows to specify a limit on the overall number of mints for a group, either the default or a specific one. The `id` configuration represents the unique identification for the limit — changing the id has the effect of restarting the limit, since a different tracking account will be created. The `limit` indicates the maximum number of mints allowed within the group.
+
+```json
+"allocation" : {
+    "id": number,
+    "limit": number
+}
+```
+
 ### Allow List
 
 The AllowList guard validates the payer's address against a merkle tree-based allow list of addresses. The hash should be specified as a hexadecimal value.
@@ -203,6 +214,41 @@ The date needs to be specified using [RFC 3339 standard](https://datatracker.iet
 ```json
 "endDate" : {
     "date": "string",
+}
+```
+
+### Freeze Sol Payment
+
+The Freeze Sol Payment guard allows minting frozen NFTs by charging the payer an amount in SOL. Frozen NFTs cannot be transferred or listed on any marketplaces until thawed. 
+
+Frozen NFTs can be thawed by anyone as long as one of the following conditions is met:
+
+* The Candy Machine has minted out.
+* The Candy Machine was deleted.
+* The configured Freeze Period — which can be a maximum of 30 days — has passed.
+
+```json
+"freezeSolPayment" : {
+    "value": SOL value,
+    "destination": "<PUBKEY>"
+}
+```
+
+### Freeze Token Payment
+
+The Freeze Token Payment guard allows minting frozen NFTs by charging the payer a specific amount of tokens from a certain mint account. Frozen NFTs cannot be transferred or listed on any marketplaces until thawed. The amount determines how many tokens are required.
+
+Frozen NFTs can be thawed by anyone as long as one of the following conditions is met:
+
+* The Candy Machine has minted out.
+* The Candy Machine was deleted.
+* The configured Freeze Period — which can be a maximum of 30 days — has passed.
+
+```json
+"freezeTokenPayment" : {
+    "amount": number,
+    "mint": "<PUBKEY>",
+    "destinationAta": "<PUBKEY>"
 }
 ```
 
@@ -256,6 +302,16 @@ The NFT Payment guard is a payment guard that charges another NFT (token) from a
 "nftPayment" : {
     "requiredCollection": "<PUBKEY>",
     "destination": "<PUBKEY>"
+}
+```
+
+### Program Gate
+
+The Program Gate guard allows to specify a group of programs (up to 5) that can be present in the same transaction of the mint instruction. This can be used to limit the programs that are allowed to CPI to mint from the Candy Machine.
+
+```json
+"programGate" : {
+    "additional": ["<PUBKEY 1>", "<PUBKEY 2>", ..., "<PUBKEY 5>"],
 }
 ```
 
@@ -330,6 +386,18 @@ The Token Payment guard restricts the mint to holders of a specified SPL Token, 
 
 ```json
 "tokenPayment" : {
+    "amount": number,
+    "mint": "<PUBKEY>",
+    "destinationAta": "<PUBKEY>"
+}
+```
+
+### Token2022 Payment
+
+The Token2022 Payment guard allows minting by charging the payer some tokens from a configured Token-2022 mint account. Both the amount of tokens and the destination address can also be configured.
+
+```json
+"token2022Payment" : {
     "amount": number,
     "mint": "<PUBKEY>",
     "destinationAta": "<PUBKEY>"
