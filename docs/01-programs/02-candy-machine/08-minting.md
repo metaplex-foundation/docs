@@ -36,6 +36,8 @@ To mint from a Candy Machine via a configured Candy Guard account, you may use t
 
 As mentioned above, you may need to increase the compute unit limit of the transaction to ensure the `mintV2` instruction is successful. You may do this by using the `setComputeUnitLimit` helper function on the `mpl-essentials` Umi library as illustrated in the code snippet below.
 
+If you want to mint pNFT (e.g. for royalty enforcement) and have your Candy Machine set up accordingly you will have to add the `tokenStandard` field. By default `NonFungible` is used. If you fetched the Candy Machine before you could use `candyMachine.tokenStandard`, otherwise you have to assign it yourself by using `tokenStandard: TokenStandard.ProgrammableNonFungible` from `@metaplex-foundation/mpl-token-metadata`.
+
 ```ts
 import { mintV2 } from "@metaplex-foundation/mpl-candy-machine";
 import { setComputeUnitLimit } from "@metaplex-foundation/mpl-essentials";
@@ -50,6 +52,7 @@ await transactionBuilder()
       nftMint,
       collectionMint: collectionNft.publicKey,
       collectionUpdateAuthority: collectionNft.metadata.updateAuthority,
+      tokenStandard: candyMachine.tokenStandard
     })
   )
   .sendAndConfirm(umi);
