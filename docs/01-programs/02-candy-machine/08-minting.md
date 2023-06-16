@@ -34,11 +34,11 @@ Please note that the latest mint instruction relies on the latest Token Metadata
 
 To mint from a Candy Machine via a configured Candy Guard account, you may use the `mintV2` function and provide the mint address and update authority of the collection NFT the minted NFT will belong to. A `minter` signer and `payer` signer may also be provided but they will default to Umi's identity and payer respectively.
 
-As mentioned above, you may need to increase the compute unit limit of the transaction to ensure the `mintV2` instruction is successful. You may do this by using the `setComputeUnitLimit` helper function on the `mpl-essentials` Umi library as illustrated in the code snippet below.
+As mentioned above, you may need to increase the compute unit limit of the transaction to ensure the `mintV2` instruction is successful. You may do this by using the `setComputeUnitLimit` helper function on the `mpl-toolbox` Umi library as illustrated in the code snippet below.
 
 ```ts
 import { mintV2 } from "@metaplex-foundation/mpl-candy-machine";
-import { setComputeUnitLimit } from "@metaplex-foundation/mpl-essentials";
+import { setComputeUnitLimit } from "@metaplex-foundation/mpl-toolbox";
 import { transactionBuilder, generateSigner } from "@metaplex-foundation/umi";
 
 const nftMint = generateSigner(umi);
@@ -55,14 +55,14 @@ await transactionBuilder()
   .sendAndConfirm(umi);
 ```
 
-Note that the `mintV2` instruction takes care of creating the Mint and Token accounts for us by default and will set the NFT owner to the `minter`. If you wish to create these yourself beforehand, you may simply give the NFT mind address as a public key instead of a signer. Here's an example using the `createMintWithAssociatedToken` function from the `mpl-essentials` Umi library:
+Note that the `mintV2` instruction takes care of creating the Mint and Token accounts for us by default and will set the NFT owner to the `minter`. If you wish to create these yourself beforehand, you may simply give the NFT mind address as a public key instead of a signer. Here's an example using the `createMintWithAssociatedToken` function from the `mpl-toolbox` Umi library:
 
 ```ts
 import { mintV2 } from "@metaplex-foundation/mpl-candy-machine";
 import {
   createMintWithAssociatedToken,
   setComputeUnitLimit,
-} from "@metaplex-foundation/mpl-essentials";
+} from "@metaplex-foundation/mpl-toolbox";
 import { transactionBuilder, generateSigner } from "@metaplex-foundation/umi";
 
 const nftMint = generateSigner(umi);
@@ -85,7 +85,7 @@ In the rare event that you wish to mint directly from the Candy Machine Core pro
 
 ```ts
 import { mintFromCandyMachineV2 } from "@metaplex-foundation/mpl-candy-machine";
-import { setComputeUnitLimit } from "@metaplex-foundation/mpl-essentials";
+import { setComputeUnitLimit } from "@metaplex-foundation/mpl-toolbox";
 import { transactionBuilder, generateSigner } from "@metaplex-foundation/umi";
 
 const nftMint = generateSigner(umi);
@@ -204,7 +204,7 @@ import {
   transactionBuilder,
 } from "@metaplex-foundation/umi";
 import { create, mintV2 } from "@metaplex-foundation/mpl-candy-machine";
-import { setComputeUnitLimit } from "@metaplex-foundation/mpl-essentials";
+import { setComputeUnitLimit } from "@metaplex-foundation/mpl-toolbox";
 
 // Create a Candy Machine with guards.
 const thirdPartySigner = generateSigner();
