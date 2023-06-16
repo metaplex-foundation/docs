@@ -221,7 +221,7 @@ The entire "[Minting](/programs/candy-machine/minting)" page has been updated to
 
 ```ts
 import { mintV2 } from "@metaplex-foundation/mpl-candy-machine";
-import { setComputeUnitLimit } from "@metaplex-foundation/mpl-essentials";
+import { setComputeUnitLimit } from "@metaplex-foundation/mpl-toolbox";
 import { transactionBuilder, generateSigner } from "@metaplex-foundation/umi";
 
 const nftMint = generateSigner(umi);

@@ -29,7 +29,7 @@ The Token Payment guard contains the following settings:
 Here’s how we can set up a Candy Machine using the Token Payment guard. Note that, in this example, we’re using the current identity as the destination wallet.
 
 ```ts
-import { findAssociatedTokenPda } from "@metaplex-foundation/mpl-essentials";
+import { findAssociatedTokenPda } from "@metaplex-foundation/mpl-toolbox";
 create(umi, {
   // ...
   guards: {
