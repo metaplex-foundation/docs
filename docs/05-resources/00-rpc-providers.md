@@ -45,7 +45,8 @@ The following section includes multiple RPC providers.
 - [RunNode](https://runnode.com/)
 - [Syndica](https://syndica.io/)
 - [Triton One | RPC Pool](https://www.triton.one/)
-
+- [NOWNodes](https://nownodes.io/)
+  
 ### Alchemy 
 
 Alchemy offers a free plan with a rate limit of 12 million transactions per month. Their plan is to keep it free for the first 500 people who sign up to use it. Once you sign up, you will have access to the private RPC they provide.
@@ -189,6 +190,16 @@ From the [official docs](https://docs.runnode.com/runnode/tutorials/1.-how-to-si
 | Requests/sec     | 25     | 100     | 150 |
 | Archival Node    | -     | -     | - |
 
+### NOWNodes
+
+NOWNodes offers a free trial plan with a rate limit of 100 000 requests per month. They also offer a premium service that has no rate limits. Here you can setup your RPC: [Setup](https://account.nownodes.io/auth/login). Once you sign up, you need to create an API key in your account, and you will have access to the private RPC they provide.
+
+You can find Solana full mainnet node in the list of available [nodes](https://nownodes.io/nodes).
+
+| RPC Info | Free | 20 USD/month | 200 USD/month | 500 USD/month | By request |
+| -------- | -------- | -------- | -------- | -------- | -------- |
+| Requests/month     | 100 000     | 1 000 000  | 30 000 000 | 100 000 000 | Unlimited |
+| Archival Node    | -     | -     | - | - | Yes |
 
 ## Additional Information
 
