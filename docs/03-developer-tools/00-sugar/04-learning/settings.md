@@ -65,19 +65,46 @@ To enable hidden settings, you need to provide the details for the _hiddenSettin
 
 ```json
 "hiddenSettings": {
-    "name":"My Hidden Collection ",
+    "name":"My Hidden Collection #$ID+1$",
    	"uri": <place_holder_uri>,
    	"hash":""
 }
 ```
 
-The place_holder_uri points to the place holder metadata and image you want all mints from this candy machine to have initially. This may be the cover art for your collection or a blank image or whatever you want to be the default "hidden" image for all the initial mints.
+For the full details on Hidden Settings see the Candy Machine docs [here](https://docs.metaplex.com/programs/candy-machine/candy-machine-settings#hidden-settings).
 
-The hash you can leave blank as the `sugar deploy` command will generate a hash for you from the cache file. You still need to run the `sugar upload` command to upload all your assets to the your external storage provider of your choice. The difference between this and a regular candy machine is that the uploaded values do not get written on-chain with `deploy`, until after the reveal.
+For performing a reveal with Sugar it is important to ensure the naming of your assets in the JSON files in the assets folder matches the naming of the assets in the `name` field of the `hiddenSettings` object. If your NFT names start at "1" you should use the `$ID+1$` variable in the `name` field. If your NFT names start at "0" you should use the `$ID$` variable in the `name` field.
 
-Once hidden settings are enabled, every mint will have the same URI and the name will be created by appending the mint number (e.g., “#45”) to the name specified. The hash is expected to be a 32 character string corresponding to the hash of a cache file that has the mapping between a mint number and the actual metadata URI. This allows the order of the mint to be verified by others after the mint is complete. Sugar will generate a hash for you during the `deploy` command, so you typically don't need to do this manually unless you have advanced needs.
+Examples:
 
-Since the metadata is not on-chain, it is possible to create very large drops. Once the mint is finished, you can then run `sugar reveal` which will find all the minted NFTs and match them by name to the values in your cache file and update the metadata on-chain.
+A NFT Collection with the naming convention: "My NFT #1", "My NFT #2", "My NFT #3", etc. should use this `name` value:
+
+```json
+"hiddenSettings": {
+    "name":"My NFT #$ID+1$",
+    . . .
+}
+```
+
+A NFT Collection with the naming convention: "My NFT #0", "My NFT #1", "My NFT #2", etc. should use this `name` value:
+
+```json
+"hiddenSettings": {
+    "name":"My NFT #$ID$",
+    . . .
+```
+
+A NFT Collection with the naming convention: "My NFT1", "My NFT2", "My NFT3", etc. should use this `name` value:
+
+
+```json
+"hiddenSettings": {
+    "name":"My NFT$ID+1$",
+    . . .
+}
+```
+
+
 
 ## End Settings
 
