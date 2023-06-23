@@ -73,11 +73,11 @@ To enable hidden settings, you need to provide the details for the _hiddenSettin
 
 For the full details on Hidden Settings see the Candy Machine docs [here](https://docs.metaplex.com/programs/candy-machine/candy-machine-settings#hidden-settings).
 
-For performing a reveal with Sugar it is important to ensure the naming of your assets in the JSON files in the assets folder matches the naming of the assets in the `name` field of the `hiddenSettings` object. If your NFT names start at "1" you should use the `$ID+1$` variable in the `name` field. If your NFT names start at "0" you should use the `$ID$` variable in the `name` field.
+Your unrevealed name can be different than the final names of your assets in the JSON metadata folder. E.g. your name pattern in the hidden settings configuration could be `"My Unrevealed NFT #$ID+1$"` whereas your assets in the assets folder could have the naming pattern `Revealed NFT #1`, `Revealed NFT #2`, etc. If your NFT names start at "1" you should use the `$ID+1$` variable in the `name` field. If your NFT names start at "0" you should use the `$ID$` variable in the `name` field.
 
 Examples:
 
-A NFT Collection with the naming convention: "My NFT #1", "My NFT #2", "My NFT #3", etc. should use this `name` value:
+A NFT Collection with the naming convention: `"My NFT #1"`, `"My NFT #2"`, `"My NFT #3"`, etc. should use the `$ID+1$` pattern:
 
 ```json
 "hiddenSettings": {
@@ -86,7 +86,7 @@ A NFT Collection with the naming convention: "My NFT #1", "My NFT #2", "My NFT #
 }
 ```
 
-A NFT Collection with the naming convention: "My NFT #0", "My NFT #1", "My NFT #2", etc. should use this `name` value:
+A NFT Collection with the naming convention: `"My NFT #0"`, `"My NFT #1"`, `"My NFT #2"`, etc. should use the `$ID$` pattern:
 
 ```json
 "hiddenSettings": {
@@ -94,7 +94,7 @@ A NFT Collection with the naming convention: "My NFT #0", "My NFT #1", "My NFT #
     . . .
 ```
 
-A NFT Collection with the naming convention: "My NFT1", "My NFT2", "My NFT3", etc. should use this `name` value:
+A NFT Collection with the naming convention: `"My NFT1"`, `"My NFT2"`, `"My NFT3"`, etc. should use also use the `$ID+1$` pattern:
 
 
 ```json
