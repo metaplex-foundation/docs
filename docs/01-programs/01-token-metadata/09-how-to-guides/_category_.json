@@ -1,0 +1,9 @@
+{
+  "label": "How-To Guides",
+  "link": {
+    "type": "generated-index",
+    "title": "How-To Guides",
+    "description": "Lists practical articles relevant to the Token Metadata Program.",
+    "slug": "/programs/token-metadata/how-to-guides"
+  }
+}
