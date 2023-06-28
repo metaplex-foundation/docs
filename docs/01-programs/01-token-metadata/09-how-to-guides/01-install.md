@@ -47,6 +47,7 @@ import { useWallet } from "@solana/wallet-adapter-react";
 After that you are ready to go.
 </div>
 </AccordionItem>
+</Accordion>
 
 In some cases it might make sense to use additional Umi plugins like `@metaplex-foundation/umi-uploader-bundlr` to upload files to Arweave through Bundlr.
 
