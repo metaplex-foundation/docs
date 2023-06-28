@@ -2,14 +2,15 @@
 sidebar_label: Create NFT
 ---
 
-# Create a NFT
-This recipie shows how you can mint a NFT using Umi. It assumes that your metadata has already been uploaded and is accessible through a URI.
+# Introduction
+In this guide you will learn how to use the Token Metadata Program to create NFT, pNFT, [SFT](../token-standard#the-fungible-asset-standard). 
 
-## Install dependencies.
-First of all we need to install the dependencies. For general Umi installation refer the [install recipie](install).
-```
-npm install @metaplex-foundation/umi \
-  @metaplex-foundation/mpl-token-metadata@alpha
+The Guide assumes that you already followed the [install guide](install) and have a umi instance in your project. It also assumes that your metadata has already been uploaded and is accessible through an URI.
+
+# Create a NFT
+
+
+
 ```
 
 <Accordion>
@@ -19,3 +20,8 @@ npm install @metaplex-foundation/umi \
 
 </div>
 </AccordionItem>
+</Accordion>
+
+# Create a PNFT
+
+# Create a SFT
