@@ -14,7 +14,8 @@ The Metaplex Protocol **Candy Machine** is the leading minting and distribution 
 
 The name refers to the vending machines that dispense candy for coins via a mechanical crank. In this case the candy are NFTs and the payment is SOL or a SPL token.
 
-![Candy Machine](/assets/candy-machine-v3/CandyMachine.png)
+![Candy Machine](/assets/candy-machine-v3/CandyMachine.png#radius)
+A typical candy machine
 
 By September 2022, 78% of all NFTs in Solana were minted through Metaplex’s Candy Machine. This includes most of the well known NFT projects in the Solana ecosystem.
 
