@@ -10,7 +10,13 @@ This documentation refers to the latest iteration of Candy Machine known as Cand
 
 ## Introduction
 
-The Metaplex Protocol **Candy Machine** is the leading minting and distribution program for fair NFT collection launches on Solana. It allows creators to bring their digital assets on-chain in a secure and customisable way.
+The Metaplex Protocol **Candy Machine** is the leading minting and distribution program for fair NFT collection launches on Solana. Much like its name suggests, you can think of a Candy Machine as a temporary structure which is first loaded by creators and then unloaded by buyers. It allows creators to bring their digital assets on-chain in a secure and customisable way.
+
+The name refers to the vending machines that dispense candy for coins via a mechanical crank. In this case the candy are NFTs and the payment is SOL or a SPL token.
+
+<img src="/assets/candy-machine-v3/CandyMachine.png" alt="a typical candy machine" width="400"/>
+
+**A Typical Candy Machine**
 
 By September 2022, 78% of all NFTs in Solana were minted through Metaplex’s Candy Machine. This includes most of the well known NFT projects in the Solana ecosystem.
 
@@ -28,9 +34,7 @@ Interested? Let’s give you a little tour of how Candy Machines work!
 
 ## The Lifecycle of a Candy Machine
 
-Much like its name suggests, you can think of a Candy Machine as a temporary structure which is first loaded by creators and then unloaded by buyers.
-
-Thus, the very first step is for the creator to create a new Candy Machine and configure it however they want.
+The very first step is for the creator to create a new Candy Machine and configure it however they want.
 
 ![Candy Machines V3 - Overview 1@2x.png](/assets/candy-machine-v3/CandyMachinesV3-Overview1.png#radius)
 
