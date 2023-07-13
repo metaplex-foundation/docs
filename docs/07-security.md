@@ -34,7 +34,7 @@ Large one-off audits are also performed when there are large changes to the code
 | Protocol              | Last major one-off audit date |
 | --------------------- | ----------------------------- |
 | Token Metadata        | 2023-06-24 |
-| Fusion/Trifle         | 2023-04-13 |
+| Trifle/Fusion         | 2023-04-13 |
 | Bubblegum/Compression | 2022-11-02 |
 | Candy Machine V3      | 2022-11-01 |
 | Candy Machine V2      | 2022-11-01 |
