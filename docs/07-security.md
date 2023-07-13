@@ -45,7 +45,7 @@ We do not have ongoing automated nor manual security audits that are routinely p
 
 | Developer Tools| Last audit date         |
 | -------------- | ----------------------- |
-| Sugar CLI*     | 2022-08-31 |
+| Sugar CLI*     | 2022-08-26 |
 
 
-(*) Independent 3rd party audit
+(*) Audited by [OtterSec](https://osec.io)
