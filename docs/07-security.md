@@ -36,13 +36,16 @@ Large one-off audits are also performed when there are large changes to the code
 | Token Metadata        | 2023-06-24 |
 | Fusion/Trifle         | 2023-04-13 |
 | Bubblegum/Compression | 2022-11-02 |
+| Candy Machine V3      | 2022-11-01 |
+| Candy Machine V2      | 2022-11-01 |
 | Auction House         | 2022-10-24 |
 | Gumdrop               | 2022-05-16 |
-| Candy Machine V3      | 2022-11-01 |
-| Candy Machine V2      | 2021-02-01 |
 
 We do not have ongoing automated nor manual security audits that are routinely performed by our audit partners for our developer tools. However, audits may be ordered, facilitated, and paid for by our community of 3rd party Solana ecosystem developers or entities of thier own accord.
 
 | Developer Tools| Last audit date         |
 | -------------- | ----------------------- |
-| Sugar CLI      | 2022-08-31 |
+| Sugar CLI*     | 2022-08-31 |
+
+
+(*) Independent 3rd party audit
