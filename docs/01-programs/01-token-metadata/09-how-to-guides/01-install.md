@@ -19,11 +19,7 @@ npm install \
   @metaplex-foundation/umi \
   @metaplex-foundation/umi-bundle-defaults \
   @metaplex-foundation/mpl-token-metadata@alpha \
-  @solana/wallet-adapter-react \
-  @metaplex-foundation/umi-signer-wallet-adapters \
-  @solana/wallet-adapter-base \
-  @solana/wallet-adapter-react-ui
-
+  @solana/web3.js
 ```
 
 Then, you can create a new Umi instance using the createUmi function of the default bundle and add the `mplTokenMetadata` Program to it.
@@ -47,40 +43,36 @@ To use your keypair, for example one that has been read from a local file in a n
 ```js
 // use a keypair
   const myKeypair = umi.eddsa.createKeypairFromSecretKey(mySecretKey); // e.g. Keypair that has been read from file
-  const myKeypairSigner = createSignerFromKeypair(myKeypair);          // create the signer object
-  umi.use(keypairIdentity(myKeypairSigner));                           // Tell umi to use the signer
+  umi.use(keypairIdentity(myKeypair));                           // Tell umi to use the signer
 ```
 
 **Browser Wallet**
 If you want to use a browser wallet like Backpack or Solflare instead you will have to leverage the wallet adapter. The following example is using the react adapter. 
+
+First install some additional packages:
+```sh
+npm install \
+  @metaplex-foundation/umi \
+  @metaplex-foundation/umi-bundle-defaults \
+  @metaplex-foundation/mpl-token-metadata@alpha \
+  @solana/wallet-adapter-react \
+  @metaplex-foundation/umi-signer-wallet-adapters \
+  @solana/wallet-adapter-base \
+  @solana/wallet-adapter-react-ui
+
+```
+
+Initialize the wallet adapter as you might be used to. If you don't know how you can find an [example](https://github.com/solana-labs/wallet-adapter/blob/master/APP.md) in the [wallet adapter repository](https://github.com/solana-labs/wallet-adapter) which also points to more docs. 
+
+Then you can use the `walletAdapterIdentity` function to add the wallet adapter to umi.
 ```js
-import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
-import { WalletProvider, useWallet } from "@solana/wallet-adapter-react";
-import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
-import {
-  BackpackWalletAdapter,
-  SolflareWalletAdapter,
-} from "@solana/wallet-adapter-wallets";
-import { walletAdapterIdentity } from "@metaplex-foundation/umi-signer-wallet-adapters";
-
-  const network = WalletAdapterNetwork.Devnet;
-  const wallets = useMemo(
-    () => [
-      new SolflareWalletAdapter({ network }),
-      new BackpackWalletAdapter,
-    ],
-    [network]
-  );
-
 const wallet = useWallet();
 umi.use(walletAdapterIdentity(wallet))
 ```
 
-After that you are ready to go.
 </div>
 </AccordionItem>
 </Accordion>
 
-🔗 **Helpful links:**
-
+After that you are ready to go and can use umi to interact with the Token Metadata program.
 
