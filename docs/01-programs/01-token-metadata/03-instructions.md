@@ -243,7 +243,7 @@ It does this by deleting the provided `Collection Authority Record` PDA.
 
 This instruction reduces the number of uses of a Metadata account.
 
-This can either be done by the `Update Authority` of the Metadata account or by an approved `Use Authority`.
+This can either be done by the owner of the NFT or by an approved `Use Authority`.
 
 </ProgramInstruction>
 
