@@ -94,7 +94,7 @@ A good example of why this can be problematic is that Token Metadata cannot enfo
 
 It is then up to the creators to define custom operation-specific authorization rules that will be enforced by the Token Metadata program. These are defined in a special **RuleSet** account which is attached to the Metadata account. An example of such RuleSet could be an allowlist of program addresses that honor royalties. RuleSets are part of a new Metaplex program called [Token Auth Rules](https://github.com/metaplex-foundation/mpl-token-auth-rules).
 
-You can [read more about Programmable NFTs here](https://github.com/metaplex-foundation/metaplex-program-library/blob/master/token-metadata/program/ProgrammableNFTGuide.md).
+You can [read more about Programmable NFTs here](https://github.com/metaplex-foundation/mpl-token-metadata/blob/main/programs/token-metadata/program/ProgrammableNFTGuide.md).
 
 ![Diagram of a Programmable NFT listing all the accounts they require.](/assets/programs/token-metadata/Token-Metadata-Overview-8.png#radius)
 

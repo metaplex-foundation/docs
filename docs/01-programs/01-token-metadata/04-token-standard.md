@@ -188,7 +188,7 @@ These are the "standard" non-fungible tokens the community is already familiar w
 
 This standard is similar to the **Non-Fungible** standard above, except that the underlying token account is kept frozen at all times to ensure nobody can transfer, lock or burn Programmable NFTs without going through the Token Metadata program. This enables creators to define custom authorization rules for their NFTs such as enforcing secondary sales royalties.
 
-You can [read more about Programmable NFTs here](https://github.com/metaplex-foundation/metaplex-program-library/blob/master/token-metadata/program/ProgrammableNFTGuide.md).
+You can [read more about Programmable NFTs here](https://github.com/metaplex-foundation/mpl-token-metadata/blob/main/programs/token-metadata/program/ProgrammableNFTGuide.md).
 
 <Accordion>
 <AccordionTokenStandard
