@@ -5,7 +5,7 @@ Bubblegum is the Metaplex Protocol program for creating and interacting with com
 🔗 **Helpful links:**
 
 - [Code Examples](https://github.com/metaplex-foundation/compression-read-api-js-examples)
-- [NFT Compression Program (By Metaplex)](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/bubblegum/program)
+- [NFT Compression Program (By Metaplex)](https://github.com/metaplex-foundation/mpl-bubblegum)
 - [Generic Merkle Tree Program (By Solana)](https://github.com/solana-labs/solana-program-library/tree/master/account-compression)
 
 
