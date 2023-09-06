@@ -135,5 +135,13 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         darkTheme: darkCodeTheme,
         additionalLanguages: ['rust', 'swift'],
       },
+      announcementBar: {
+        id: 'deprecation-notice',
+        content:
+          'These docs are old and won\'t be updated. Go to <a target="_blank" rel="noopener noreferrer" href="https://developers.metaplex.com">developers.metaplex.com</a> to access the new Metaplex Developer Hub.',
+        backgroundColor: '#0284c7',
+        textColor: '#ffffff',
+        isCloseable: false,
+      },
     }),
 });
