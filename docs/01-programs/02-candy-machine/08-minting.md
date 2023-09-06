@@ -6,6 +6,12 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # Minting
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/candy-machine/mint).**
+
+:::
+
 ## Introduction
 
 So far, we’ve learned how to create and maintain Candy Machines. We’ve seen how to configure them and how to set up complex minting workflows using guard and guard groups. It’s about time we talk about the last piece of the puzzle: Minting!
@@ -52,7 +58,7 @@ await transactionBuilder()
       nftMint,
       collectionMint: collectionNft.publicKey,
       collectionUpdateAuthority: collectionNft.metadata.updateAuthority,
-      tokenStandard: candyMachine.tokenStandard
+      tokenStandard: candyMachine.tokenStandard,
     })
   )
   .sendAndConfirm(umi);

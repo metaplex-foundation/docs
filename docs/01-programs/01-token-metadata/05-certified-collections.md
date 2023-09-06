@@ -4,6 +4,12 @@ description: "All about the on-chain Metaplex Certified Collections spec."
 
 # Certified Collections
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/token-metadata/collections).**
+
+:::
+
 ## Introduction
 
 Certified Collections enables NFTs – and tokens in general — **to be grouped together** and for that information to be **verified on-chain**. Additionally, it makes it easier to manage these collections by allocating data for them on-chain.
@@ -27,7 +33,6 @@ The additional CollectionDetails field has been added in [version 1.3](./changel
 In order to group NFTs — or any token — together, we must first create a Collection NFT whose purpose is to store any metadata related to that collection. That's right, **a collection of NFT is itself, an NFT**. It has the same data layout on-chain as any other NFT.
 
 The difference between a Collection NFT and a Regular NFT is that the information provided by the former will be used to define the group of NFTs it contains whereas the latter will be used to define the NFT itself.
-
 
 ### Linking Regular NFTs to Collection NFTs.
 
@@ -56,7 +61,6 @@ Note that, because `CollectionDetails` is a new field, not all existing collecti
 
 That being said, we encourage new collections to use it both to allow sizing their collections and provide an on-chain way to determine a Collection NFT from a Regular one. We also encourage existing collections to [migrate their Collection NFT](#migrating-to-sized-collections).
 
-
 ![](/assets/programs/token-metadata/Token-Metadata-Collections-Collection-NFT.png#radius)
 
 ### Nested Collections
@@ -83,8 +87,8 @@ This is the same pattern as the `Creators` field where `Verified` must be true t
 
 In Order to check if a collection is valid on an NFT, it **MUST** have a collection struct set with:
 
-* The `key` field matching the mint address of the appropriate collection parent
-* The `verified` field set to `true`
+- The `key` field matching the mint address of the appropriate collection parent
+- The `verified` field set to `true`
 
 If those two steps are not followed you could be exposing fraudulent NFTs on real collections.
 

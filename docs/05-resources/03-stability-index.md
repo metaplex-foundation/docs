@@ -1,8 +1,15 @@
 # Stability Index
+
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/stability-index).**
+
+:::
+
 Below is a list of our products and their stability levels.
 
 | Product Name          | Stability Level  |
-|-----------------------|------------------|
+| --------------------- | ---------------- |
 | Token Metadata        | 2 (Stable)       |
 | Auction House         | 2 (Stable)       |
 | Auctions              | 2 (Stable)       |
@@ -18,19 +25,16 @@ Below is a list of our products and their stability levels.
 | Gum Drop              | 1 (Experimental) |
 | Membership Token Sale | 1 (Experimental) |
 
-
-
 ## Stability Index System
 
 Throughout the documentation are indications of a section's stability. Some APIs
 and projects are so proven and so relied upon that they are unlikely to ever
-change at all.  Others are brand new and experimental, or known to be hazardous.
+change at all. Others are brand new and experimental, or known to be hazardous.
 
 The stability indices are as follows:
 
 <div class="api_stability api_stability_0">Stability: 0 - Deprecated. The
 feature may emit warnings. Backward compatibility is not guaranteed.</div>
-
 
 <div class="api_stability api_stability_1">Stability: 1 - Experimental. The
 feature may emit warnings. The feature is not subject to <a href="https://semver.org/">Semantic Versioning</a> rules. Non-backward

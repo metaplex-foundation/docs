@@ -4,6 +4,12 @@ description: "Lists the various libraries you can use to manage Candy Machines."
 
 # Getting Started
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/candy-machine/getting-started).**
+
+:::
+
 This page aims to help you get started with Candy Machines by listing all relevant libraries that interact with them.
 
 ## JavaScript

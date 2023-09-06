@@ -6,6 +6,12 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # Programmable NFTs
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/candy-machine/pnfts).**
+
+:::
+
 ## Introduction
 
 Version `1.7` of Token Metadata introduced a [new type of asset class called Programmable NFTs](/programs/token-metadata/overview#programmable-nfts) allowing, amongst other things, creators to enforce royalties on secondary sales.

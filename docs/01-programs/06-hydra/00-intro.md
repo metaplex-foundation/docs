@@ -1,5 +1,11 @@
 # Introduction
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/hydra).**
+
+:::
+
 Hydra is a wallet of wallets, a fanout wallet if you will. It enables extremely large membership sets that can take part
 in fund distribution from a central wallet. It works with SOL and any SPL token.
 

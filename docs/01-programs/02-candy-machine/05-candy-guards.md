@@ -6,6 +6,12 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # Candy Guards
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/candy-machine/guards).**
+
+:::
+
 ## Introduction
 
 Now that we know how Candy Machines work and how to load them, it’s time we talk about the last piece of the puzzle: Guards.

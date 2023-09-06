@@ -1,10 +1,16 @@
 # Introduction
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/sugar).**
+
+:::
+
 Sugar is our new Candy Machine CLI that replaces the JavaScript CLI. It has been written from the ground up and includes several improvements:
 
 :::info
 
-View OtterSec's audit of Sugar commissioned by Ape16Z here: https://docsend.com/view/is7963h8tbbvp2g9 
+View OtterSec's audit of Sugar commissioned by Ape16Z here: https://docsend.com/view/is7963h8tbbvp2g9
 
 :::
 

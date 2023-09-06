@@ -1,5 +1,11 @@
 # FAQ
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/token-metadata/faq).**
+
+:::
+
 ### How can I filter Metadata accounts by fields located after the `creators` array using `getProgramAccounts`?
 
 When using [the `getProgramAccounts` method from the RPC API](https://docs.solana.com/developing/clients/jsonrpc-api#getprogramaccounts), it is common to want to filter accounts by fields using `memcmp` filters.

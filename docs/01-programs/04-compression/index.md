@@ -1,5 +1,11 @@
 # Compression
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/bubblegum).**
+
+:::
+
 Bubblegum is the Metaplex Protocol program for creating and interacting with compressed Metaplex NFTs. Compressed NFTs are secured on-chain using Merkle trees.
 
 🔗 **Helpful links:**
@@ -10,4 +16,5 @@ Bubblegum is the Metaplex Protocol program for creating and interacting with com
 - [Generic Merkle Tree Program (By Solana)](https://github.com/solana-labs/solana-program-library/tree/master/account-compression)
 
 ## Open Source Code
+
 - [Digital Asset RPC Infrastructure](https://github.com/metaplex-foundation/digital-asset-rpc-infrastructure)

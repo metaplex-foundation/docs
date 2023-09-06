@@ -6,6 +6,12 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # Start Date
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/candy-machine/guards/start-date).**
+
+:::
+
 ## Overview
 
 The **Start Date** guard determines the start date of the mint. Before this date, minting is not allowed.

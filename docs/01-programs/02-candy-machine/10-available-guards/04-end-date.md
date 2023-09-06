@@ -6,6 +6,12 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # End Date
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/candy-machine/guards/end-date).**
+
+:::
+
 ## Overview
 
 The **End Date** guard specifies a date to end the mint. After this date, minting is no longer allowed.

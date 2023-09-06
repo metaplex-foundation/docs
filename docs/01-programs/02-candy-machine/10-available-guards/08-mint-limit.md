@@ -6,6 +6,12 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # Mint Limit
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/candy-machine/guards/mint-limit).**
+
+:::
+
 ## Overview
 
 The **Mint Limit** guard allows specifying a limit on the number of NFTs each wallet can mint.
