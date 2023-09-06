@@ -3,6 +3,12 @@ sidebar_label: "Introduction"
 sidebar_position: 1
 ---
 
+:::danger
+
+Please note that this program is marked as deprecated and is no longer actively maintained by the Metaplex Foundation team. New features, security fixes and backward compatibility are not guaranteed. Please use with caution.
+
+:::
+
 # Introduction
 
 Metaplex's Fixed-Price Sale program is a Solana program for brands to create membership NFTs that they can distribute to a large audience. This NFT can be used for gating access to certain things (games, events, launches, etc.) at a future date.
