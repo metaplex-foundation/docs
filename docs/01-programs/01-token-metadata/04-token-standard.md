@@ -9,6 +9,12 @@ import tokenStandard from '/src/token-metadata/token-standard';
 
 # Token Standard
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/token-metadata/token-standard).**
+
+:::
+
 ## Introduction
 
 As token usage has evolved on Solana, it has become clear that there are more types of tokens than simply "fungible" and "non-fungible" tokens.
@@ -230,7 +236,7 @@ You can [read more about Programmable NFTs here](https://github.com/metaplex-fou
         "type": "video/mp4"
       }
     ],
-    "category": "video",
+    "category": "video"
   }
 }
 ```

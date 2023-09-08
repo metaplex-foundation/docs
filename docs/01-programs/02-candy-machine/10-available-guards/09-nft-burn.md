@@ -6,6 +6,12 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # NFT Burn
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/candy-machine/guards/nft-burn).**
+
+:::
+
 ## Overview
 
 The **NFT Burn** guard restricts the mint to holders of a predefined NFT Collection and burns the holder's NFT. Thus, the mint address of the NFT to burn must be provided by the payer when minting.

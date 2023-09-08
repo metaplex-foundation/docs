@@ -6,6 +6,12 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # Freeze Sol Payment
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/candy-machine/guards/freeze-sol-payment).**
+
+:::
+
 ## Overview
 
 The **Freeze Sol Payment** guard allows minting frozen NFTs by charging the payer an amount in SOL. Frozen NFTs cannot be transferred or listed on any marketplaces until thawed.

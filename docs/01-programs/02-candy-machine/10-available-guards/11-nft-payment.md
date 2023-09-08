@@ -6,6 +6,12 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # NFT Payment
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/candy-machine/guards/nft-payment).**
+
+:::
+
 ## Overview
 
 The **NFT Payment** guard allows minting by charging the payer an NFT from a specified NFT collection. The NFT will be transferred to a predefined destination.

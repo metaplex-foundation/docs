@@ -1,5 +1,11 @@
 # Understanding Programs
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/understanding-programs).**
+
+:::
+
 This page aims to provide a quick overview of how programs work in Solana and offer additional reading material for those who are interested in learning more about a particular subject.
 
 ## Introduction

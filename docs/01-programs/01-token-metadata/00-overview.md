@@ -1,5 +1,11 @@
 # Overview
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/token-metadata).**
+
+:::
+
 ## Introduction
 
 The Token Metadata program is one of the most important programs when dealing with NFTs on the Solana blockchain. Its main goal is to **attach additional data to [Fungible](https://en.wikipedia.org/wiki/Fungibility) or Non-Fungible [Tokens](https://spl.solana.com/token)** on Solana.

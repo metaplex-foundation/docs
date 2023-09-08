@@ -1,5 +1,11 @@
 # Quick Start
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/hydra/quick-start).**
+
+:::
+
 To get started with Hydra, you'll need the package for your programming environment.
 
 If you are using Rust grab the crate here:

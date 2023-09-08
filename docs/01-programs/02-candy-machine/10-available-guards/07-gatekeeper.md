@@ -6,6 +6,12 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # Gatekeeper
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/candy-machine/guards/gatekeeper).**
+
+:::
+
 ## Overview
 
 The **Gatekeeper** guard checks whether the minting wallet has a valid **Gateway Token** — also known as a **Civic Pass** — from a specified **Gatekeeper Network**.

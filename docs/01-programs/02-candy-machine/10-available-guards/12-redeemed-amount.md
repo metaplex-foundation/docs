@@ -6,6 +6,12 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # Redeemed Amount
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/candy-machine/guards/redeemed-amount).**
+
+:::
+
 ## Overview
 
 The **Redeemed Amount** guard forbids minting when the number of minted NFTs for the entire Candy Machine reaches the configured maximum amount.

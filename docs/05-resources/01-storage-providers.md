@@ -1,8 +1,14 @@
 # Storage Providers
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/storage-providers).**
+
+:::
+
 NFTs are meant to live forever, being bought, sold, held and enjoyed for the
 rest of time. As such, the storage on which your assets are written should be
-_permanent_.  NFTs created through Metaplex are written to scalable, durable,
+_permanent_. NFTs created through Metaplex are written to scalable, durable,
 permanent, censorship resistant storage by default, but there are other options
 available too. Let's take a look.
 
@@ -12,7 +18,7 @@ available too. Let's take a look.
 
 [Arweave][] is a decentralized, trust-minimized, censorship-resistant data
 storage network designed to retain data permanently, making it a great fit for
-NFTs.  To cover the cost of storing your media forever, storage and mining fees
+NFTs. To cover the cost of storing your media forever, storage and mining fees
 are paid at the time of upload and distributed to storage providers
 participating in the network.
 
@@ -39,7 +45,7 @@ import ArweaveCostCalc from '../../src/arweave-cost-calc.jsx'
 
 ### AWS S3
 
-[Amazon Web Services S3][S3] is a global, affordable but centralized storage
+[Amazon Web Services S3][s3] is a global, affordable but centralized storage
 provider. Because S3 is centralized, NFTs stored there are not censorship
 resistant. If AWS receives legal threats, decides they no longer support NFTs,
 goes out of business, or you stop making payments, they can remove your assets
@@ -54,7 +60,7 @@ Please visit https://aws.amazon.com/s3/pricing/ for details.
 
 ### IPFS
 
-The [InterPlanetary File System][IPFS], or IPFS, is a decentralized,
+The [InterPlanetary File System][ipfs], or IPFS, is a decentralized,
 trust-minimized, censorship-resistant, peer-to-peer hypermedia protocol designed
 to preserve and grow humanity's knowledge by making the web upgradeable,
 resilient, and more open. It's P2P design allows for file deduplication and
@@ -67,7 +73,7 @@ Please visit https://infura.io/docs/ipfs for details.
 
 ### NFT.Storage
 
-[NFT.Storage](https://nft.storage) is a free service that provides long-term NFT data storage on the decentralized [Filecoin](https://filecoin.io) network with fast retrieval through [IPFS][IPFS].
+[NFT.Storage](https://nft.storage) is a free service that provides long-term NFT data storage on the decentralized [Filecoin](https://filecoin.io) network with fast retrieval through [IPFS][ipfs].
 
 NFT.Storage currently supports files up to 31 Gib and does not charge for storage.
 
@@ -77,23 +83,20 @@ NFT.Storage is currently supported in [Sugar][sugar]. Please see the [Sugar stor
 
 For more information about using NFT.Storage with CandyMachine, see the [NFT.Storage documentation on Metaplex][nft.storage metaplex doc].
 
-
 ### Shadow Drive
 
 The [GenesysGo Shadow Drive](https://shdw.genesysgo.com/shadow-infrastructure-overview/shadow-drive-overview) is a decentralized storage network designed to run in parallel to, and integrate seamlessly with, Solana. Storage fees are paid in the SPL token, SHDW, and allow immutable or mutable storage of data.
-
 
 ### Looking for another storage option?
 
 Check out [Bring Your Own Uploader](/developer-tools/sugar/developer/bring-your-own-uploader) to learn about adding upload options to Sugar.
 
-
-[Arweave]: https://arweave.org
+[arweave]: https://arweave.org
 [arweave price service]: https://node1.bundlr.network/price/0
 [repo]: https://github.com/metaplex-foundation/metaplex
-[IPFS]: https://ipfs.io/
+[ipfs]: https://ipfs.io/
 [winstons]: https://docs.arweave.org/developers/server/http-api#ar-and-winston
-[S3]: https://aws.amazon.com/s3/
+[s3]: https://aws.amazon.com/s3/
 [arweave path manifest]: https://github.com/ArweaveTeam/arweave/wiki/Path-Manifests
 [sugar nft.storage]: /developer-tools/sugar/reference/upload-methods#nft.storage
 [nft.storage metaplex doc]: https://nft.storage/docs/how-to/mint-solana

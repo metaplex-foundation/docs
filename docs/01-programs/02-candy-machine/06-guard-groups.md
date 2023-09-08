@@ -6,6 +6,12 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # Guard Groups
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/candy-machine/guard-groups).**
+
+:::
+
 ## Introduction
 
 On [the previous page](/programs/candy-machine/candy-guards), we introduced guards and used them to define the access control of our Candy Machines. We’ve seen that using guards, we can for instance add payments of 1 SOL per mint and ensure the mint start after a certain date. But what if we also wanted to charge 2 SOL after a second date? What if we wanted to allow certain token holders to mint for free or at a discounted price?

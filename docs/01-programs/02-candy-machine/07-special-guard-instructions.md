@@ -6,6 +6,12 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # Special Guard Instructions
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/candy-machine/guard-route).**
+
+:::
+
 ## Introduction
 
 As we’ve seen on the previous pages, guards are a powerful way to customize the minting process of your Candy Machines. But did you know guards can even provide their own custom instructions?

@@ -1,5 +1,11 @@
 # Getting Started
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/token-metadata/getting-started).**
+
+:::
+
 Like any Solana program, one can interact with the Token Metadata program by sending UDP packets to the network or by using the API provided by RPC nodes. However, this is not a great developer experience and, as such, this page aims to help you get started with the Token Metadata program in a much more developer-friendly way.
 
 ## JavaScript SDK

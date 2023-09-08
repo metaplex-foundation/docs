@@ -6,6 +6,12 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # Allow List
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/candy-machine/guards/allow-list).**
+
+:::
+
 ## Overview
 
 The **Allow List** guard validates the minting wallet against a predefined list of wallets. If the minting wallet is not part of this list, minting will fail.

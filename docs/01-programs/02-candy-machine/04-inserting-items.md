@@ -6,6 +6,12 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # Inserting Items
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/candy-machine/insert-items).**
+
+:::
+
 ## Introduction
 
 So far we’ve learnt to create and configure Candy Machines but we’ve not seen how to insert items inside them that can then be minted into NFTs. Thus, let’s tackle that on this page.

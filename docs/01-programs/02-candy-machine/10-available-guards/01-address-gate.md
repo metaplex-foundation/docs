@@ -6,6 +6,12 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # Address Gate
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/candy-machine/guards/address-gate).**
+
+:::
+
 ## Overview
 
 The **Address Gate** guard restricts the mint to a single address which must match the address of the minting wallet.

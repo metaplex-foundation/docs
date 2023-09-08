@@ -6,6 +6,12 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # Third Party Signer
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/candy-machine/guards/third-party-signer).**
+
+:::
+
 ## Overview
 
 The **Third Party Signer** guard requires a predefined address to sign each mint transaction. The signer will need to be passed within the mint settings of this guard.

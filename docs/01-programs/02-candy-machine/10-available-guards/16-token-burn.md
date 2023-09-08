@@ -6,6 +6,12 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # Token Burn
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/candy-machine/guards/token-burn).**
+
+:::
+
 ## Overview
 
 The **Token Burn** guard allows minting by burning some of the payer’s tokens from a configured mint account. If the payer does not have the required amount of tokens to burn, minting will fail.

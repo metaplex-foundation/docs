@@ -6,6 +6,12 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # Token Gate
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/candy-machine/guards/token-gate).**
+
+:::
+
 ## Overview
 
 The **Token Gate** guard restricts minting to token holders of a configured mint account. If the payer does not have the required amount of tokens, minting will fail.

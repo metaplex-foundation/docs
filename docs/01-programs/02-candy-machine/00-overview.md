@@ -5,7 +5,9 @@ description: "Provides a high-level overview of Candy Machines."
 # Overview
 
 :::info
-This documentation refers to the latest iteration of Candy Machine known as Candy Machine V3. If you’re looking for Candy Machine V2, [please refer to this documentation instead](/deprecated/candy-machine-v2/).
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/candy-machine).**
+
 :::
 
 ## Introduction

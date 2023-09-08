@@ -6,6 +6,12 @@ import { Accordion, AccordionItem } from '/src/accordion.jsx';
 
 # NFT Gate
 
+:::info
+
+**A newer version of this page is available in the Developer Hub. [Click here to read it](https://developers.metaplex.com/candy-machine/guards/nft-gate).**
+
+:::
+
 ## Overview
 
 The **NFT Gate** guard restricts minting to holders of a specified NFT collection.
