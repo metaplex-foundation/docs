@@ -48,6 +48,7 @@ The following section includes multiple RPC providers.
 - [Figment](https://figment.io/datahub/solana/)
 - [GenesysGo](https://genesysgo.com/)
 - [GetBlock](https://getblock.io/)
+- [Helius](https://helius.xyz/)
 - [NOWNodes](https://nownodes.io/)
 - [QuickNode](https://quicknode.com/)
 - [RunNode](https://runnode.com/)
