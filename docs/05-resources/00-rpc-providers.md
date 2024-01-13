@@ -48,6 +48,7 @@ The following section includes multiple RPC providers.
 - [Figment](https://figment.io/datahub/solana/)
 - [GenesysGo](https://genesysgo.com/)
 - [GetBlock](https://getblock.io/)
+- [Helius](https://www.helius.dev/)
 - [NOWNodes](https://nownodes.io/)
 - [QuickNode](https://quicknode.com/)
 - [RunNode](https://runnode.com/)
@@ -144,6 +145,19 @@ After setting up an account, proceed to choose a convenient plan.
 | Archival Node  | No     | No                          | Yes       |
 
 GetBlock users can set up an account using nothing but a cryptocurrency wallet.
+
+### Helius
+
+[Helius](https://www.helius.dev/) is Solana's leading blockchain developer platform. With Helius, developers can access to a wide range of enhanced APIs, webhooks, RPC nodes, and cutting-edge infrastructure such as Geyser Nodes for low-latency streaming. Helius has a generous free tier available for developers to test their infrastructure. It comes with 1M monthly credits, 25 RPC requests per second, 5 API/DAS requests per second, and 1 webhook. Developers can also test Helius using [Test Drive](https://testdrive.helius.xyz/), the ultimate tool for testing Solana RPCs. 
+
+To get started with Helius, sign into the [Helius developer dashboard](https://dev.helius.xyz/dashboard/app). Users can pay in crypto or fiat to upgrade to a paid plan.
+
+| RPC Info        | Free | Developer (49USDC/mo) | Business (399USDC/mo) | Performance (699/mo) |
+|-----------------|------|-----------------------|-----------------------|----------------------|
+| Requests/sec    | 25   | 50                    | 150                   | 500                  |
+| Monthly Credits | 1M   | 10M                   | 200M                  | 500M                 |
+
+Helius also offers an Enterprise plan. This is a custom plan with higher throughput, dedicated infrastructure, volume pricing, 24/7 priority support engineers, usage optimization, and more, starting at $1100/mo. Helius also offers [dedicated nodes](https://w2hh5e4o0ga.typeform.com/to/T9UN3ZoD?typeform-source=www.helius.dev). For inquiries, visit the [Helius Discord](https://discord.com/invite/6GXdee3gBj) and get started, today.
 
 ### NOWNodes
 
