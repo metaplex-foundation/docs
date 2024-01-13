@@ -157,7 +157,7 @@ To get started with Helius, sign into the [Helius developer dashboard](https://d
 | Requests/sec    | 25   | 50                    | 150                   | 500                  |
 | Monthly Credits | 1M   | 10M                   | 200M                  | 500M                 |
 
-Helius also offers an Enterprise plan. This is a custom plan with higher throughput, dedicated infrastructure, volume pricing, 24/7 priority support engineers, usage optimization, and more, starting at $1100/mo. Helius also offers [dedicated nodes](https://w2hh5e4o0ga.typeform.com/to/T9UN3ZoD?typeform-source=www.helius.dev). For inquiries, visit the [Helius Discord](https://discord.com/invite/6GXdee3gBj) and get started, today.
+Helius also offers an [Enterprise plan](https://w2hh5e4o0ga.typeform.com/to/KiacmxpZ?typeform-source=www.helius.dev). This is a custom plan with higher throughput, volume pricing, 24/7 priority support engineers, usage optimization, and more, starting at $900/mo. Helius also offers [dedicated nodes](https://w2hh5e4o0ga.typeform.com/to/T9UN3ZoD?typeform-source=www.helius.dev) starting at $1100/mo. For inquiries, visit the [Helius Discord](https://discord.com/invite/6GXdee3gBj) and get started, today.
 
 ### NOWNodes
 
