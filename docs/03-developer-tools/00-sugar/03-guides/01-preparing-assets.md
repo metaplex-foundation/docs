@@ -7,7 +7,7 @@ Your assets consist of a collection of images (e.g., `.png`) and metadata (`.jso
 i.e., each image has a corresponding metadata file.
 
 There are a multitude of unique ways to generate images and metadata, and in most scenarios, you will automate this
-process. A good example of an image generation tool is [HashLips](https://github.com/HashLips/hashlips_art_engine). In
+process. A good example of an image generation tool is [HashLips](https://github.com/HashLips/hashlips_art_engine) or [NFT Art Generator](https://nft-generator.art) (paid). In
 this guide we will cover the creation of a simple collection to illustrate the metadata requirements and
 Candy Machine distribution. You should familiarize yourself with
 the [Token Metadata Standard](/programs/token-metadata/token-standard).
